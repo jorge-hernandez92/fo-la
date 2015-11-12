@@ -1,0 +1,44 @@
+
+
+<!--TABLE DISABLE 
+              <table style="width:60%">
+                  <tr>
+                    <td>
+                      <p>Vinculada a: </p>
+                      <p>'7-Eleven'</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Folio:</p>
+                    </td>
+                    <td>
+                      <p>123456</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>RFC:</p>
+                    </td>
+                    <td>
+                      <p>SEV56789HDF</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Fecha:</p>
+                    </td>
+                    <td>
+                      <p>12/03/2015 10:32:54</p>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p>Monto:</p>
+                    </td>
+                    <td>
+                      <p>$ 1,235.45</p>
+                    </td>
+                  </tr>
+              </table>
+-->
