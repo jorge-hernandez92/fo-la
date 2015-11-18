@@ -1,0 +1,34 @@
+<project>
+
+	<property name="war.location" value="/var/lib/jenkins/jobs/incentivos/workspace/Lealtad-Web/target/${app.name}.war" />
+	<property name="app.name" value="Lealtad-Web" />
+	<property name="env.Admin_Password" value="admin" />
+	<property name="server.name" value="localhost" />
+	<property name="admin.port" value="4848" />
+	<property name="env.Admin_Username" value="admin" />
+
+	<target name="undeploy.from.glassfish">
+		<echo message="Undeploying app: ${app.name}" />
+		<echo file="/tmp/gf.txt" message="AS_ADMIN_PASSWORD=${env.Admin_Password}" />
+		<sun-appserv-undeploy 
+			name="${app.name}" 
+			host="${server.name}"
+			port="${admin.port}" 
+			user="${env.Admin_Username}" 
+			passwordfile="/tmp/gf.txt" />
+		<delete file="/tmp/gf.txt" />
+	</target>
+
+	<target name="deploy.to.glassfish">
+		<sun-appserv-deploy 
+			file="${war.location}" 
+			name="${app.name}"
+			force="true"
+			host="${server.name}" 
+			port="${admin.port}" 
+			user="${env.Admin_Username}"
+			passwordfile="/tmp/gf.txt" />
+	</target>
+
+
+</project>
