@@ -1,0 +1,38 @@
+<%@page import="java.util.Map"%>
+<%@ page language="java" contentType="text/html; charset=US-ASCII"
+	pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+
+<%
+Map<String, Object> userDetails = (Map<String, Object>)session.getAttribute("userDetails"); 
+%>
+
+<div class="collapse navbar-collapse navbar-ex1-collapse">
+	<ul class="nav navbar-nav side-nav">
+		<s:if test="#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@CARD_HOLDER || 
+					#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@SUPERVISOR">
+		<li><a
+			href="<s:url action="homeAction"/>"><i class="fa fa-fw fa-home"></i> Inicio						
+		</a></li>
+		</s:if>
+		<s:if test="#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@CARD_HOLDER || 
+					#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@SUPERVISOR">					
+		<li><a 
+			href="<s:url action="redirectToTransactionsAction"/>"><i class="fa fa-fw fa-money"></i> Conciliación </a></li>
+		</s:if>
+		<s:if test="#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@CARD_HOLDER || 
+					#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@SUPERVISOR">			
+		<li><a
+			href="<s:url action="checkingAction"/>"> <i class="fa fa-fw fa-file-text-o"></i> Comprobación</a></li>
+		</s:if>
+		<s:if test="#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@SUPERVISOR">	
+		<li><a
+			href="<s:url action="reportsAction"/>"><i class="fa fa-fw fa-bar-chart"></i> Reportes</a></li>
+		</s:if>
+		<s:if test="#session.userDetails.profile == @com.twobig.sivale.utils.CommonsConstants@ADMIN">
+		<li><a
+			href="<s:url action="settingsAction"/>"><i class="fa fa-fw fa-cog"></i> Configuración</a></li>
+		</s:if>
+	</ul>
+</div>
+

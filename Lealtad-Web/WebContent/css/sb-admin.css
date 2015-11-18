@@ -1,0 +1,525 @@
+/*!
+ * Start Bootstrap - SB Admin Bootstrap Admin Template (http://startbootstrap.com)
+ * Code licensed under the Apache License v2.0.
+ * For details, see http://www.apache.org/licenses/LICENSE-2.0.
+ */
+ 
+ 
+[ng\:cloak], [ng-cloak], .ng-cloak {
+    display: none;
+}
+
+/* Global Styles */
+
+body {
+    margin-top: 100px;
+    background-color: #FFF;
+}
+
+.loginBackground{
+	background-image: url("../img/bg_content_home.jpg");
+    background-size: cover;
+}
+
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+}
+
+#wrapper {
+    padding-left: 0;
+}
+
+#page-wrapper {
+    width: 100%;
+    padding: 0;
+    background-color: #fff;
+}
+
+
+
+.huge {
+    font-size: 50px;
+    line-height: normal;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 10px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+    line-height: 25px;
+    color: #777;
+	font-weight: bold;	
+}
+
+.top-nav>li>a:hover,
+.top-nav>li>a:focus,
+.top-nav>.open>a,
+.top-nav>.open>a:hover,
+.top-nav>.open>a:focus {
+    color: #000;
+    background-color: transparent;
+}
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: relative;
+    margin-top: 0;
+    border: 1px solid rgba(0,0,0,.15);
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+
+.btn-file {
+          position: relative;
+          overflow: hidden;
+      }
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: #f5f5f5;
+    background-color: #f5f5f5;
+    cursor: inherit;
+    display: block;
+}
+
+
+.daterangepicker .calendar th, .daterangepicker .calendar td {
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  white-space: nowrap;
+  text-align: center;
+  min-width: 32px;
+  font-size: 14px; 
+}
+
+
+
+ul.message-dropdown {
+    padding: 0;
+    max-height: 250px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+li.message-preview {
+    width: 275px;
+    border-bottom: 1px solid rgba(0,0,0,.15);
+}
+
+li.message-preview>a {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li.message-footer {
+    margin: 5px 0;
+}
+
+ul.alert-dropdown {
+    width: 200px;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 51px;
+        left: 225px;
+        width: 200px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        overflow-y: auto;
+        background-color: #FFFFFF;
+        border-color: #e7e7e7;
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+    }   
+}
+
+.modal-footer-login {   border-top: 0px; }
+
+
+.navbar-inverse .navbar-nav>li:focus,
+.navbar-inverse .navbar-nav>li:hover>span>a
+	{
+	color:#FFF;	
+	}
+.navbar-inverse .navbar-nav>li:focus,
+.navbar-inverse .navbar-nav>li:hover{
+	background-color: #54A1FF;
+	}
+}
+
+.side-nav>li>ul {
+    padding: 0;
+}
+
+.navbar-inverse .navbar-nav>li>span>a {
+    display: inline-block;
+    padding: 10px 15px 10px 10px
+    text-decoration: none;
+    color: #777;
+	border-color: #e7e7e7;
+}
+
+.navbar-inverse .navbar-nav>.active, 
+.navbar-inverse .navbar-nav>.active:focus, 
+.navbar-inverse .navbar-nav>.active:hover {    
+    background-color: #F78D1D;
+}
+
+.navbar-inverse .navbar-nav>.active>span>a, 
+.navbar-inverse .navbar-nav>.active>span>a:focus, 
+.navbar-inverse .navbar-nav>.active>span>a:hover {    
+    color: #FFF;
+}
+
+.navbar-inverse {
+    background-color: #FFFFFF;
+    border-color: #e7e7e7;
+}
+
+.ng-table th{
+	text-align:left;
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
+}
+
+/* Flot Chart Containers */
+
+.flot-chart {
+    display: block;
+    height: 400px;
+}
+
+.flot-chart-content {
+    width: 100%;
+    height: 100%;
+}
+
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 25px;
+}
+
+.panel-green {
+    border-color: #5cb85c;
+}
+
+.panel-green > .panel-heading {
+    border-color: #5cb85c;
+    color: #fff;
+    background-color: #5cb85c;
+}
+
+.panel-green > a {
+    color: #5cb85c;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.panel-red {
+    border-color: #d9534f;
+}
+
+.panel-red > .panel-heading {
+    border-color: #EF4A84;
+    color: #fff;
+    background-color: #EF4A84;
+}
+
+.panel-red > a {
+    color: #d9534f;
+}
+
+.panel-red > a:hover {
+    color: #b52b27;
+}
+
+.panel-yellow {
+    border-color: #f0ad4e;
+}
+
+.panel-yellow > .panel-heading {
+    border-color: #f0ad4e;
+    color: #fff;
+    background-color: #f0ad4e;
+}
+
+.panel-yellow > a {
+    color: #f0ad4e;
+}
+
+.panel-yellow > a:hover {
+    color: #df8a13;
+}
+
+.page-header {
+	padding-bottom: 9px;
+	margin: 0 0 20px;
+	border-bottom: 1px solid #eee; 
+	color: #F78D1D;  	
+}
+
+.panel-title {
+    color: inherit;    
+    font-weight: bold;
+}
+
+.table {
+font-size: 14px 
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {    
+    vertical-align: middle;
+
+}
+
+.text-warning {
+    color: #e10000;
+}
+
+
+.container-fluid {
+  float: left;
+  width: 86%;
+  padding-left: 0;
+}
+
+
+
+#banner{
+  	position:relative;
+    float:right;    
+    width: 14%;           
+                 
+}
+
+.banner-fixed{
+	position: fixed;
+    right: 10;
+	top: 60;
+}
+
+.button-search{
+	padding: 9px 12px;
+    border-left-width: 0;
+    left: -2px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+}
+
+.panel-title-accordeon{
+	font-size: 14px; 	
+}
+
+.p-checking{
+	margin: 0 0 0px;	
+}
+
+/* css for userBudgetModal */
+
+       .blueTotal {
+        color:  #1874CD;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+       .greenTotal {
+        color:  #00AA00;
+        font-size: 20px;
+        font-weight: bold;
+      }
+      .gray{
+      	color:  #757575;
+        font-size: 15px;
+        font-weight: bold;
+      }
+      
+      .grayRejected{
+      	color:  #757575;
+        font-size: 15px;
+        font-weight: bold;
+        text-decoration: line-through;
+      }
+      
+      .blue {
+        color:  #1874CD;
+        font-size: 15px;
+        font-weight: bold;        
+      }
+      
+      .red {
+	    color: #CD3700;
+	    font-size: 15px;
+	    font-weight: bold;
+	    text-decoration: line-through;
+	  }
+
+       .green {
+        color:  #00AA00;
+        font-size: 15px;  
+        font-weight: bold;      
+      }
+      
+      .head4 {
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+       .userName {
+        font-size: 15px;
+      }
+      
+/* end css for userBudgetModal */
+
+/* start css for home page */
+
+ i.home {
+ 
+  font-weight:bold;
+	list-style-image: url("../img/reportes.jpg");
+
+}
+
+li.menu{
+	color: #FFF;
+    display: block;
+    padding: 0px 115px 0px 0px;
+    margin-bottom: 5px;
+	background-color: #E8E8E8;    
+}
+a.menu{	
+	font-weight: bold;
+	width: 20px;
+	text-decoration: none;
+	display:block;
+}
+a.alerts{
+	text-decoration: none;
+}
+
+.side-nav {
+	left: 240px;
+	top: 75px;
+}
+
+.modal-title {    
+    color: #F78D1D;
+    font-size: 22px;
+}
+
+.col-lg-3-user-email {
+    width: 35%;
+}
+
+.col-lg-3-balance {
+    width: 30%;
+}
+
+.font-size-email{
+	font-size: 20px;
+}
+
+.font-title-item{
+	font-weight: bold;
+}
+
+.font-alert-balance{	
+    font-size: 17px;
+    color: #FFF;
+}
+.info-balance{
+    margin: 0 30px 10px;
+}
+
+.navbar-brand {    
+    padding: 15px 35px;
+}
+
+.title {
+    margin-top: 15px;
+}
+
+.margin-tableau{
+	margin-left: 45px;
+}
+
+/* end css for home page */
+
+
+
+/* start css for morris chart */
+.panel-default>.panel-heading {
+    font-weight: bold;
+    text-align: center;
+	font-size: 18;
+}
+/* end css for morris chart */ 
+
+.ng-table th.text-right {
+    text-align: right;
+}
+.ng-table th.text-left {
+    text-align: left;
+}
+.ng-table th.text-center {
+    text-align: center;
+}
+
+.link-more-invoces{
+	text-decoration: underline;
+    color: #337ab7;
+}
+.container-download{
+	width: 100%;
+}

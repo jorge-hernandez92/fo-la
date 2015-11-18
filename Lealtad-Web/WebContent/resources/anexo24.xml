@@ -1,0 +1,35 @@
+<Balanza Version="1.0" RFC="SIN120706RX7" TotalCtas="33" Mes="07" Ano="2014">
+	<Ctas NumCta="120" SaldoIni="0.00" Debe="23990.00" Haber="5448.41" SaldoFin="18541.59"/>
+	<Ctas NumCta="120-0001" SaldoIni="0.00" Debe="23990.00" Haber="5448.41" SaldoFin="18541.59"/>
+	<Ctas NumCta="130" SaldoIni="0.00" Debe="3574.00" Haber="3574.00" SaldoFin="0.00"/>
+	<Ctas NumCta="130-0001" SaldoIni="0.00" Debe="500.00" Haber="500.00" SaldoFin="0.00"/>
+	<Ctas NumCta="130-0002" SaldoIni="0.00" Debe="1078.80" Haber="1078.80" SaldoFin="0.00"/>
+	<Ctas NumCta="130-0003" SaldoIni="0.00" Debe="1647.20" Haber="1647.20" SaldoFin="0.00"/>
+	<Ctas NumCta="130-0004" SaldoIni="0.00" Debe="348.00" Haber="348.00" SaldoFin="0.00"/>
+	<Ctas NumCta="150" SaldoIni="0.00" Debe="3440.82" Haber="0.00" SaldoFin="3440.82"/>
+	<Ctas NumCta="150-0001" SaldoIni="0.00" Debe="3440.82" Haber="0.00" SaldoFin="3440.82"/>
+	<Ctas NumCta="160" SaldoIni="0.00" Debe="2144.71" Haber="3440.82" SaldoFin="-1296.11"/>
+	<Ctas NumCta="160-0001" SaldoIni="0.00" Debe="2144.71" Haber="3440.82" SaldoFin="-1296.11"/>
+	<Ctas NumCta="200" SaldoIni="0.00" Debe="4448.41" Haber="35072.41" SaldoFin="30624.00"/>
+	<Ctas NumCta="200-0001" SaldoIni="0.00" Debe="4124.41" Haber="4124.41" SaldoFin="0.00"/>
+	<Ctas NumCta="200-0002" SaldoIni="0.00" Debe="324.00" Haber="324.00" SaldoFin="0.00"/>
+	<Ctas NumCta="200-0003" SaldoIni="0.00" Debe="0.00" Haber="30624.00" SaldoFin="30624.00"/>
+	<Ctas NumCta="210" SaldoIni="0.00" Debe="1000.00" Haber="1000.00" SaldoFin="0.00"/>
+	<Ctas NumCta="210-0001" SaldoIni="0.00" Debe="1000.00" Haber="1000.00" SaldoFin="0.00"/>
+	<Ctas NumCta="230" SaldoIni="0.00" Debe="0.00" Haber="493.00" SaldoFin="493.00"/>
+	<Ctas NumCta="230-0001" SaldoIni="0.00" Debe="0.00" Haber="493.00" SaldoFin="493.00"/>
+	<Ctas NumCta="240" SaldoIni="0.00" Debe="493.00" Haber="493.00" SaldoFin="0.00"/>
+	<Ctas NumCta="240-0001" SaldoIni="0.00" Debe="493.00" Haber="493.00" SaldoFin="0.00"/>
+	<Ctas NumCta="275" SaldoIni="0.00" Debe="0.00" Haber="216.79" SaldoFin="216.79"/>
+	<Ctas NumCta="275-0001" SaldoIni="0.00" Debe="0.00" Haber="111.89" SaldoFin="111.89"/>
+	<Ctas NumCta="275-0002" SaldoIni="0.00" Debe="0.00" Haber="104.90" SaldoFin="104.90"/>
+	<Ctas NumCta="400" SaldoIni="0.00" Debe="0.00" Haber="3081.00" SaldoFin="3081.00"/>
+	<Ctas NumCta="400-0001" SaldoIni="0.00" Debe="0.00" Haber="3081.00" SaldoFin="3081.00"/>
+	<Ctas NumCta="500" SaldoIni="0.00" Debe="1048.96" Haber="0.00" SaldoFin="1048.96"/>
+	<Ctas NumCta="500-0001" SaldoIni="0.00" Debe="1048.96" Haber="0.00" SaldoFin="1048.96"/>
+	<Ctas NumCta="600" SaldoIni="0.00" Debe="12679.53" Haber="0.00" SaldoFin="12679.53"/>
+	<Ctas NumCta="600-0003" SaldoIni="0.00" Debe="3555.53" Haber="0.00" SaldoFin="3555.53"/>
+	<Ctas NumCta="600-0018" SaldoIni="0.00" Debe="324.00" Haber="0.00" SaldoFin="324.00"/>
+	<Ctas NumCta="600-0018-0002" SaldoIni="0.00" Debe="324.00" Haber="0.00" SaldoFin="324.00"/>
+	<Ctas NumCta="600-0019" SaldoIni="0.00" Debe="8800.00" Haber="0.00" SaldoFin="8800.00"/>
+</Balanza>

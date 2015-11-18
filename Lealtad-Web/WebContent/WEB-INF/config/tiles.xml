@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+	<definition name="baseLayout" template="/templates/BaseTemplate.jsp">
+		<put-attribute name="title" value="" />
+		<put-attribute name="header" value="/templates/headerTemplate.jsp" />
+		<put-attribute name="menu" value="/templates/menuTemplate.jsp" />
+		<put-attribute name="banner" value="/templates/bannerTemplate.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/templates/footerTemplate.jsp" />
+	</definition>
+
+
+	<!-- ***************** ***************** CARDHOLDER (Just for my self) ***************** 
+		***************** -->
+
+	<!-- ***************** MY HOME ***************** -->
+	<definition name="home" extends="baseLayout">
+		<put-attribute name="title" value="Inicio | Si Vale" />
+		<put-attribute name="body" value="/secured/homeTh.jsp" />
+	</definition>
+	
+	<definition name="homeSuper" extends="baseLayout">
+		<put-attribute name="title" value="Inicio | Si Vale" />
+		<put-attribute name="body" value="/secured/homeSuper.jsp" />
+	</definition>
+
+	<!-- ***************** MY TRANSACTIONS ***************** -->
+	<definition name="myTransactions" extends="baseLayout">
+		<put-attribute name="title" value="Conciliación | Si Vale" />
+		<put-attribute name="body" value="/secured/myTransactions.jsp" />
+	</definition>
+
+	<!-- ***************** MY INVOICES ***************** -->
+	<definition name="myInvoices" extends="baseLayout">
+		<put-attribute name="title" value="Conciliación | Si Vale" />
+		<put-attribute name="body" value="/secured/myInvoices.jsp" />
+	</definition>
+
+	<!-- ***************** MY NEW BUDGET ***************** -->
+	<definition name="myNewBudget" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/myNewBudget.jsp" />
+	</definition>
+
+	<!--  ***************** MY EDIT EVENT ***************** -->
+	<definition name="editEvent" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/editEvent.jsp" />
+	</definition>	
+	
+	<!--  ***************** MY EDIT BUDGETS ***************** -->
+	<definition name="editBudgets" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/editBudgets.jsp" />
+	</definition>	
+	
+	<!--  ***************** MY EDIT EVENT ***************** -->
+	<definition name="editEvent" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/editEvent.jsp" />
+	</definition>	
+	
+	<!--  ***************** MY EDIT BUDGETS ***************** -->
+	<definition name="editBudgets" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/editBudgets.jsp" />
+	</definition>	
+	
+	<!--  ***************** MY BUDGETS LIST ***************** -->
+	<definition name="myBudgets" extends="baseLayout">
+		<put-attribute name="title" value="Solicitudes | Si Vale" />
+		<put-attribute name="body" value="/secured/myBudgets.jsp" />
+	</definition>
+
+	<!-- ***************** BUDGETS LIST ***************** -->
+	<definition name="otherBudgets" extends="baseLayout">
+		<put-attribute name="title" value="Presupuestos | Si Vale" />
+		<put-attribute name="body" value="/secured/otherBudgets.jsp" />
+	</definition>
+
+	<!-- ***************** ***************** TO BE UPDATED (YEN) - CARDHOLDER 
+		(Just for my self) ***************** ***************** -->
+
+	<!-- ***************** CHECKING ***************** -->
+	<definition name="checking" extends="baseLayout">
+		<put-attribute name="title" value="Comprobación | Si Vale" />
+		<put-attribute name="body" value="/secured/checking.jsp" />
+	</definition>
+	
+	<definition name="checkingSuper" extends="baseLayout">
+		<put-attribute name="title" value="Comprobación | Si Vale" />
+		<put-attribute name="body" value="/secured/checkingSuper.jsp" />
+	</definition>	
+
+	<!-- ***************** BUDGET DETAIL ***************** -->
+	<definition name="budgetDetails" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/budgetDetails.jsp" />
+	</definition>
+
+
+
+	<!-- ***************** ***************** OTHERS USERS ***************** 
+		***************** -->
+	<!-- ***************** OTHERS TRANSACTIONS ***************** -->
+	<definition name="otherTransactions" extends="baseLayout">
+		<put-attribute name="title" value="Conciliación | Si Vale" />
+		<put-attribute name="body" value="/secured/otherTransactions.jsp" />
+	</definition>
+
+	<!-- ***************** OTHERS INVOICES ***************** -->
+	<definition name="otherInvoices" extends="baseLayout">
+		<put-attribute name="title" value="Conciliación | Si Vale" />
+		<put-attribute name="body" value="/secured/otherInvoices.jsp" />
+	</definition>
+
+	<!-- ***************** OTHER NEW BUDGET ***************** -->
+	<definition name="otherNewBudget" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/otherNewBudget.jsp" />
+	</definition>
+
+	<!-- ***************** CHECK BUDGET ***************** -->
+	<definition name="checkBudgets" extends="baseLayout">
+		<put-attribute name="title" value="Detalles | Si Vale" />
+		<put-attribute name="body" value="/secured/checkBudgets.jsp" />
+	</definition>
+
+
+
+	<!-- ***************** ***************** CONFIGURATION ***************** 
+		***************** -->
+	<definition name="settings" extends="baseLayout">
+		<put-attribute name="title" value="Configuración | Si Vale" />
+		<put-attribute name="body" value="/secured/settings.jsp" />
+	</definition>
+	
+	
+
+	<definition name="downloadInvoices" extends="baseLayout">
+		<put-attribute name="title" value="Descarga Facturas | Si Vale" />
+		<put-attribute name="body" value="/secured/downloadInvoices.jsp" />
+	</definition>
+
+	<!-- ***************** USERS ***************** -->
+	<definition name="users" extends="baseLayout">
+		<put-attribute name="title" value="Creacion Usuarios | Si Vale" />
+		<put-attribute name="body" value="/secured/users.jsp" />
+	</definition>
+	<definition name="editUsers" extends="baseLayout">
+		<put-attribute name="title" value="Edicion Usuarios | Si Vale" />
+		<put-attribute name="body" value="/secured/editUsers.jsp" />
+	</definition>
+	<definition name="mainUsers" extends="baseLayout">
+		<put-attribute name="title" value="Usuarios | Si Vale" />
+		<put-attribute name="body" value="/secured/mainUsers.jsp" />
+	</definition>
+
+
+
+	<definition name="companies" extends="baseLayout">
+		<put-attribute name="title" value="Compañias | Si Vale" />
+		<put-attribute name="body" value="/secured/companies.jsp" />
+	</definition>
+
+	<!-- ***************** ***************** REPORTS ***************** ***************** -->
+	<!-- ***************** REPORTS ***************** -->
+	<definition name="reports" extends="baseLayout">
+		<put-attribute name="title" value="Reportes | Si Vale" />
+		<put-attribute name="body" value="/secured/reports.jsp" />
+	</definition>
+
+	<!-- ***************** REPORTS SI VALE ***************** -->
+	<definition name="reportsSiVale" extends="baseLayout">
+		<put-attribute name="title" value="Configuración | Si Vale" />
+		<put-attribute name="body" value="/secured/reportsSiVale.jsp" />
+	</definition>
+
+
+</tiles-definitions>

@@ -1,0 +1,39 @@
+
+
+Flujo de Prueba
+
+
+
+	* Login
+	* Resumen de cuenta.
+
+	* Movimientos:
+		Movs_Iniciales.
+
+	* Facturas:
+		Fact pendientes Iniciales.
+
+	* Ver justificantes.
+
+	
+
+
+
+
+
+
+	* Asociar Factura a una transaccion.
+		(una vez asociada la factura nos llevara)
+
+		* Movimeintos (inicial + una transaccion recientemente asociada con factura, click en Factura para ver detalle)
+
+
+
+
+**************************
+**************************
+
+	Condiciones iniciales
+	- Monto comprobado: $2,385.50
+
+
