@@ -1,0 +1,228 @@
+.back-image{  
+    background-image:url('../img/bg_content_clientes.jpg'); 
+	background-size:cover; 
+} 
+
+.margin-table{
+	margin-top:70px;
+	margin-right:100px;
+	margin-left:100px;
+}
+
+.back-sivale{
+	background-color: #fff;
+	border-color: #fff;
+}
+
+.table-top-sivale{
+	margin-top:20px;
+}
+.table-sivale{
+	background-color: #8c8c8c;
+	border-color: #8c8c8c;
+	color: #fff;
+}
+
+.panel-default>.panel-heading {
+    background-color: #8c8c8c;
+    border-color: #ddd;
+	color: #fff;
+}
+
+.panel-rosa{
+	text-align: left;
+	background-color: #EF4A84;
+	color: #fff;
+}
+
+.panel-azul{
+	background-color: #8c8c8c;
+	color: #fff;
+}
+
+.panel-verde{
+	background-color: #5cb85c;
+	color: #fff;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover {
+    color: #df8d2e;
+}
+
+.navbar-inverse .navbar-nav>li>a {
+    color: #8c8c8c;
+}
+
+.a-sivale{
+    color: #8c8c8c;
+}
+
+.btn-primary {
+    color: #fff;
+    background-color: #df8d2e;
+    border-color: #df8d2e;
+}
+
+.btn-primary:focus {
+    color: #fff;
+    background-color: #C5781F;
+    border-color: #C5781F;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #C5781F;
+    border-color: #C5781F;
+}
+
+.btn-primary.active.focus, .btn-primary.active:focus, .btn-primary.active:hover, .btn-primary:active.focus, .btn-primary:active:focus, .btn-primary:active:hover, .open>.dropdown-toggle.btn-primary.focus, .open>.dropdown-toggle.btn-primary:focus, .open>.dropdown-toggle.btn-primary:hover {
+    color: #fff;
+    background-color: #8a6d3b;
+    border-color: #8a6d3b;
+}
+
+.label-default {
+    background-color: #df8d2e;
+}
+
+.top-cero{
+    margin-top: 0px;
+}
+
+.padding-cero {
+	padding: 0px 0px;
+}
+
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    outline: none;
+    background: white;
+    cursor: inherit;
+    display: block;
+}
+
+.top-35{
+	margin-top: 35px;
+	padding-left: 20px;
+}
+
+.left-35{
+	margin-left: 35px;
+}
+
+
+
+
+
+
+
+body{
+    padding-top: 50px;   
+}
+
+
+
+.breadcrumb-arrow {
+    height: 36px;
+    padding: 0;
+    line-height: 36px;
+    list-style: none;
+    background-color: #8c8c8c
+}
+.breadcrumb-arrow li:first-child a {
+    border-radius: 4px 0 0 4px;
+    -webkit-border-radius: 4px 0 0 4px;
+    -moz-border-radius: 4px 0 0 4px
+}
+.breadcrumb-arrow li, .breadcrumb-arrow li a, .breadcrumb-arrow li span {
+    display: inline-block;
+    vertical-align: top
+}
+.breadcrumb-arrow li:not(:first-child) {
+    margin-left: -5px
+}
+.breadcrumb-arrow li+li:before {
+    padding: 0;
+    content: ""
+}
+.breadcrumb-arrow li span {
+    padding: 0 10px
+}
+.breadcrumb-arrow li a, .breadcrumb-arrow li:not(:first-child) span {
+    height: 36px;
+    padding: 0 10px 0 25px;
+    line-height: 36px
+}
+.breadcrumb-arrow li:first-child a {
+    padding: 0 10px
+}
+.breadcrumb-arrow li a {
+    position: relative;
+    color: #fff;
+    text-decoration: none;
+    background-color: #df8d2e;
+    border: 1px solid #df8d2e
+}
+.breadcrumb-arrow li:first-child a {
+    padding-left: 10px
+}
+.breadcrumb-arrow li a:after, .breadcrumb-arrow li a:before {
+    position: absolute;
+    top: -1px;
+    width: 0;
+    height: 0;
+    content: '';
+    border-top: 18px solid transparent;
+    border-bottom: 18px solid transparent
+}
+.breadcrumb-arrow li a:before {
+    right: -10px;
+    z-index: 3;
+    border-left-color: #df8d2e;
+    border-left-style: solid;
+    border-left-width: 11px
+}
+.breadcrumb-arrow li a:after {
+    right: -11px;
+    z-index: 2;
+    border-left: 11px solid #CE6E06
+}
+.breadcrumb-arrow li a:focus, .breadcrumb-arrow li a:hover {
+    background-color: #ffcc00;
+    border: 1px solid #ffcc00
+}
+.breadcrumb-arrow li a:focus:before, .breadcrumb-arrow li a:hover:before {
+    border-left-color: #ffcc00
+}
+.breadcrumb-arrow li a:active {
+    background-color: #CE6E06;
+    border: 1px solid #CE6E06
+}
+.breadcrumb-arrow li a:active:after, .breadcrumb-arrow li a:active:before {
+    border-left-color: #CE6E06
+}
+.breadcrumb-arrow li span {
+    color: #fff
+}
+
+.ng-table th.text-right {
+    text-align: right;
+}
+.ng-table th.text-left {
+    text-align: left;
+}
+.ng-table th.text-center {
+    text-align: center;
+}

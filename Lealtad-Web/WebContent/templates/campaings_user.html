@@ -1,0 +1,53 @@
+<div class="navbar">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li class="active"><span>Inicio</span></li>
+		</ol>
+</div>
+	
+<div class="panel panel-default table-top-sivale">
+	<!-- Default panel contents -->
+	<div class="panel-heading">
+		<div class="container-fluid">
+			<div class="navbar-header">Campaña Ford A</div>
+		</div>
+	</div>
+
+	<div class="input-group">
+		<div class="input-group-addon">
+			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+		</div>
+		<input class="form-control" type="text"
+			data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
+	</div>
+
+	<div class="panel-body">
+		<div data-ng-controller="getCampaings" ng-cloak>
+			<table ng-table="tableCampaings" class="table">
+				<tr ng-repeat="campaings in $data">
+
+					<td title="'Nombre de Campaña'" header-class="'text-left'"
+						sortable="'campaingName'">
+						<h3 class="top-cero">
+							<span class="label label-default">{{campaings.campaingName}}</span>
+						</h3>
+					</td>
+
+					<td title="'Clasificacion'" header-class="'text-left'"
+						sortable="'classification'">{{campaings.classification}}</td>
+
+					<td title="'Inicio'" header-class="'text-left'"
+						sortable="'startDate'">{{campaings.startDate}}</td>
+
+					<td title="'Cierre'" header-class="'text-left'"
+						sortable="'endDate'">{{campaings.endDate}}</td>
+					<td>
+						<button type="button" class="btn btn-primary"
+							aria-label="Left Align" ui-sref="campaing">Abrir</button>
+					</td>
+
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</div>
