@@ -9,10 +9,10 @@
 	<!-- Default panel contents -->
 	<div class="panel-heading">
 		<div class="container-fluid">
-			<div class="navbar-header">Campaña Ford A</div>
+			<div class="navbar-header">{{campaign.campaignName}}</div>
 			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">Duración 10/10/2015 al
-					30/01/2015
+				<ul class="nav navbar-nav navbar-right">Duración {{campaign.startDate}} al
+					{{campaign.endDate}}
 				</ul>
 			</div>
 		</div>
@@ -30,12 +30,12 @@
 
 
 	<div class="panel-body">
-		<div data-ng-controller="getCampaing" ng-cloak>
+		<div data-ng-controller="getCampaign" ng-cloak>
 			<table ng-table="tablePublications" class="table">
 				<tr ng-repeat="publication in $data">
 
 					<td title="'Publicacion'" header-class="'text-left'"
-						sortable="'campaingName'">
+						sortable="'campaignName'">
 						<h3 class="top-cero">
 							<span class="label label-default">{{publication.name}}</span>
 						</h3>

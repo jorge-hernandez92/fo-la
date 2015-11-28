@@ -1,34 +1,36 @@
 
 var appres = angular.module('app', ['ngTable', 'ui.router']); 
-appres.controller('campaingController', function($scope, $filter, $rootScope, $http, NgTableParams){	
+appres.controller('campaignController', function($scope, $filter, $rootScope, $http, NgTableParams){	
 	
 	$scope.filters = {
             myfilter: ''
         };
 	
-	$scope.getCampaings = function() {			
-		$http.get('getCampaingsAction').success(
+	$scope.getCampaigns = function() {		
+		
+
+		$http.get('getCampaignsAction').success(
 				function(data, status, headers, config) {		 
-					$scope.campaings = data;
+					$scope.campaigns = data;
 				
 					//$scope.tableLastTransactions = new NgTableParams({}, { dataset: data});
 					
 				
-					$scope.tableCampaings = new NgTableParams({
+					$scope.tableCampaigns = new NgTableParams({
 				        page: 1,            
 				        count: 10,
 				        filter: $scope.filters,
 				    }, {
-				        total: $scope.campaings.length,
+				        total: $scope.campaigns.length,
 				        counts: [],
 				        getData: function($defer, params) {
 				        	var filteredData = params.filter() ?
-                                    $filter('filter')($scope.campaings, params.filter().myfilter) :
-                                    	$scope.campaings;
+                                    $filter('filter')($scope.campaigns, params.filter().myfilter) :
+                                    	$scope.campaigns;
                                     
 		                    var orderedData = params.sorting() ?
 		                                        $filter('orderBy')(filteredData, params.orderBy()) : 
-		                                        	$scope.campaings;
+		                                        	$scope.campaigns;
 				        	
 				            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
 				        }
@@ -40,8 +42,19 @@ appres.controller('campaingController', function($scope, $filter, $rootScope, $h
 	};
 	
 	
-	$scope.getCampaing = function() {			
-		$http.get('getPubliationsAction').success(
+	$scope.getCampaign = function() {	
+		
+		var data = escape(angular.toJson($scope.campaign));
+		console.log(JSON.stringify(data));
+		
+		$http({
+			method : 'POST',
+			url : 'getPublicationsAction',
+			data : 'campaign=' + data,
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(
 				function(data, status, headers, config) {		 
 					$scope.publications = data;
 				
@@ -69,15 +82,17 @@ appres.controller('campaingController', function($scope, $filter, $rootScope, $h
 					
 		});
 	};
+	
+	
+	$scope.updateCampaign = function(campaign) {
+		$scope.campaign = campaign;
+		
+		//$http.get('saveSessionAction?campaignId='+$scope.campaign.campaignId).success
+		//(function(data, status, headers, config){});
+
+	};
+	
 });
-
-
-
-
-
-
-
-
 
 appres.config(function($stateProvider, $urlRouterProvider) {
     
@@ -88,12 +103,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
         // HOME STATES AND NESTED VIEWS ========================================
         .state('home', {
             url: '/home',
-            templateUrl: 'templates/campaings_user.html'
+            templateUrl: 'templates/campaigns_user.html'
         })
         
-		.state('campaing', {
+		.state('campaign', {
             url: '/campaña',
-            templateUrl: 'templates/campaingDetail_user.html'
+            templateUrl: 'templates/campaignDetail_user.html'
         })
         
 });

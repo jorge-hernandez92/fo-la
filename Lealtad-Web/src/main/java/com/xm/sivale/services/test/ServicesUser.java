@@ -6,18 +6,23 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 
 public class ServicesUser {
 	
-	
+	private static final Logger LOGGER = LoggerFactory.getLogger(ServicesUser.class);
 	
 	public List<Map> getMyClassifications(Integer userId){
 		
+		LOGGER.info("UserId Value = " + userId);
+		
 		List<Map> classifications = new ArrayList<Map>();
 		
-		for (int i = 0; i < 5; i++) {
+		for (int i = 0; i < 5; i++){
 			Map<String,String> classification = new HashMap<String,String>();
 			classification.put("className", "Classification " + i);
 			classification.put("companyName", "company " + i);
@@ -25,32 +30,38 @@ public class ServicesUser {
 			
 			classifications.add(classification);
 		}
-		
 		return classifications;
 		
 	}
 
 	
-	public List<Map> getCampaings(Integer userId , Integer classification){
+	public List<Map> getCampaigns(Integer userId , Integer classification){
 		
-		List<Map> campaings= new ArrayList<Map>();
+		LOGGER.info("UserId = " + userId + "     "+ "classificationId = " + classification);
+		
+		List<Map> campaigns= new ArrayList<Map>();
+		Date date = new Date(115,11,1,0,0,0);
 		
 		for (int i = 0; i < 100; i++) {
-			Map<String,String> campaing = new HashMap<String,String>();
-			campaing.put("campaingName", "campaing Name " + i);
-			campaing.put("classification", "classification " + i);
-			campaing.put("startDate", "1/11/2015");
-			campaing.put("endDate", "1/12/2015");
+			Map campaign = new HashMap();
+			
+			campaign.put("campaignId", "" + i);
+			campaign.put("campaignName", "campaign Name "+i);
+			campaign.put("classification", "classification "+i);
+			campaign.put("startDate", date);
+			campaign.put("endDate", date);
 			
 			
-			campaings.add(campaing);
+			campaigns.add(campaign);
 		}
 		
-		return campaings;
+		return campaigns;
 		
 	}
 		
-	public List<TPublication> getPubliations(Integer UserId, Integer CampaingId){
+	public List<TPublication> getPubliations(Integer UserId, Integer CampaignId){
+		
+		LOGGER.info("UserId = " + UserId + "     "+ "CampaignId = " + CampaignId);
 		
 		List<TPublication> publications= new ArrayList<TPublication>();
 		
@@ -73,6 +84,8 @@ public class ServicesUser {
 	}
 	
 	public Map showPublication(Integer UserId, Integer PublicationId){
+		
+		LOGGER.info("UserId = " + UserId + "     "+ "PublicationId = " + PublicationId);
 		
 		Map map = new HashMap<>();
 		

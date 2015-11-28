@@ -21,28 +21,30 @@
 	</div>
 
 	<div class="panel-body">
-		<div data-ng-controller="getCampaings" ng-cloak>
-			<table ng-table="tableCampaings" class="table">
-				<tr ng-repeat="campaings in $data">
+		<div data-ng-controller="getCampaigns" ng-cloak>
+			<table ng-table="tableCampaigns" class="table">
+				<tr ng-repeat="campaign in $data">
 
 					<td title="'Nombre de Campaña'" header-class="'text-left'"
-						sortable="'campaingName'">
+						sortable="'campaignName'">
 						<h3 class="top-cero">
-							<span class="label label-default">{{campaings.campaingName}}</span>
+							<span class="label label-default">{{campaign.campaignName}}</span>
 						</h3>
 					</td>
 
 					<td title="'Clasificacion'" header-class="'text-left'"
-						sortable="'classification'">{{campaings.classification}}</td>
+						sortable="'classification'">{{campaign.classification}}</td>
 
 					<td title="'Inicio'" header-class="'text-left'"
-						sortable="'startDate'">{{campaings.startDate}}</td>
+						sortable="'startDate'">{{campaign.startDate}}</td>
 
 					<td title="'Cierre'" header-class="'text-left'"
-						sortable="'endDate'">{{campaings.endDate}}</td>
+						sortable="'endDate'">{{campaign.endDate}}</td>
 					<td>
 						<button type="button" class="btn btn-primary"
-							aria-label="Left Align" ui-sref="campaing">Abrir</button>
+							aria-label="Left Align" 
+							data-ng-click="updateCampaign(campaign)"
+							ui-sref="campaign">Abrir</button>
 					</td>
 
 				</tr>
