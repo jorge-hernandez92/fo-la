@@ -12,32 +12,9 @@ public class Test {
 
 	public static void main(String args []){
 		
+		ServicesUser services = new ServicesUser();
 		
-		Map <String, Object> map = new HashMap<String, Object>();
-		
-		map.put("saludo", "hello world");
-		map.put("saludo", "hola mundo");
-		
-		System.out.println((String)map.get("saludo"));
-		
-		String json = "{\"endDate\":\"2015-12-01T00:00:00\",\"campaignId\":\"0\",\"classification\":\"classification 0\",\"campaignName\":\"campaign Name 0\",\"startDate\":\"2015-12-01T00:00:00\"}";
-		
-		System.out.println(json);
-		
-		StringTokenizer st = new StringTokenizer(json, ",");
-		
-		String jsonCampaign ="";
-		
-		while (st.hasMoreTokens()) {
-	         String aux =  st.nextToken();
-	         if(!aux.startsWith("\"classification\""))
-	        	 jsonCampaign += aux + ",";
-	     }
-		
-		jsonCampaign = jsonCampaign.substring(0, jsonCampaign.length()-1);
-		System.out.println(jsonCampaign);
-		
-//		ServicesUser services = new ServicesUser();
+		System.out.println((String) services.showPublication(0, 0).get("html"));
 //		
 //		List<Map> classifications = services.getMyClassifications((Integer)1);
 //		List<Map> campains = services.getCampaigns((Integer)1, (Integer)1);

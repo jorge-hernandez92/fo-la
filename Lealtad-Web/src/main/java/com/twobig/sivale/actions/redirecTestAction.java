@@ -19,10 +19,9 @@ public class redirecTestAction extends ActionSupport {
 		 return SUCCESS;
 	 }
 	 
-	 @Action(value="homeUser", results=@Result(name="success", location="/secured/home_user.html"))
+	 @Action(value="homeUser", results=@Result(name="success", location="/secured/login.html"))
 	 public String home(){
 		 return SUCCESS;
 	 }
-	 
 	    
 }

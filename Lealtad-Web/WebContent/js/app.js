@@ -1,52 +1,99 @@
+var appres = angular.module('app', [ 'ngTable', 'ui.router' ]);
+appres.controller('campaignController', function($scope, $filter, $rootScope,
+		$http, NgTableParams) {
 
-var appres = angular.module('app', ['ngTable', 'ui.router']); 
-appres.controller('campaignController', function($scope, $filter, $rootScope, $http, NgTableParams){	
-	
 	$scope.filters = {
-            myfilter: ''
-        };
-	
-	$scope.getCampaigns = function() {		
-		
+		myfilter : ''
+	};
 
-		$http.get('getCampaignsAction').success(
-				function(data, status, headers, config) {		 
+	$scope.getCampaigns = function() {
+
+		var data = escape(angular.toJson($scope.classification));
+		console.log(JSON.stringify(data));
+
+		$http({
+			method : 'POST',
+			url : 'getCampaignsAction',
+			data : 'classificationCmp=' + data,
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(
+				function(data, status, headers, config) {
 					$scope.campaigns = data;
-				
-					//$scope.tableLastTransactions = new NgTableParams({}, { dataset: data});
-					
-				
+
 					$scope.tableCampaigns = new NgTableParams({
-				        page: 1,            
-				        count: 10,
-				        filter: $scope.filters,
-				    }, {
-				        total: $scope.campaigns.length,
-				        counts: [],
-				        getData: function($defer, params) {
-				        	var filteredData = params.filter() ?
-                                    $filter('filter')($scope.campaigns, params.filter().myfilter) :
-                                    	$scope.campaigns;
-                                    
-		                    var orderedData = params.sorting() ?
-		                                        $filter('orderBy')(filteredData, params.orderBy()) : 
-		                                        	$scope.campaigns;
-				        	
-				            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-				        }
-				    });
-					
+						page : 1,
+						count : 10,
+						filter : $scope.filters,
+					}, {
+						total : $scope.campaigns.length,
+						counts : [],
+						getData : function($defer, params) {
+							var filteredData = params.filter() ? $filter(
+									'filter')($scope.campaigns,
+									params.filter().myfilter)
+									: $scope.campaigns;
+
+							var orderedData = params.sorting() ? $filter(
+									'orderBy')(filteredData, params.orderBy())
+									: $scope.campaigns;
+
+							$defer.resolve(orderedData.slice(
+									(params.page() - 1) * params.count(),
+									params.page() * params.count()));
+						}
+					});
+
 				}).error(function(data, status, headers, config) {
-					
+
 		});
 	};
-	
-	
-	$scope.getCampaign = function() {	
-		
+
+	$scope.getClassifications = function() {
+
+		$http({
+			method : 'POST',
+			url : 'getMyClassificationsAction',
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(
+				function(data, status, headers, config) {
+					$scope.classifications = data;
+
+					$scope.tableClassifications = new NgTableParams({
+						page : 1,
+						count : 10,
+						filter : $scope.filters,
+					}, {
+						total : $scope.classifications.length,
+						counts : [],
+						getData : function($defer, params) {
+							var filteredData = params.filter() ? $filter(
+									'filter')($scope.classifications,
+									params.filter().myfilter)
+									: $scope.classifications;
+
+							var orderedData = params.sorting() ? $filter(
+									'orderBy')(filteredData, params.orderBy())
+									: $scope.classifications;
+
+							$defer.resolve(orderedData.slice(
+									(params.page() - 1) * params.count(),
+									params.page() * params.count()));
+						}
+					});
+
+				}).error(function(data, status, headers, config) {
+
+		});
+	};
+
+	$scope.getCampaign = function() {
+
 		var data = escape(angular.toJson($scope.campaign));
-		console.log(JSON.stringify(data));
-		
+
 		$http({
 			method : 'POST',
 			url : 'getPublicationsAction',
@@ -55,60 +102,118 @@ appres.controller('campaignController', function($scope, $filter, $rootScope, $h
 				'Content-Type' : 'application/x-www-form-urlencoded'
 			}
 		}).success(
-				function(data, status, headers, config) {		 
+				function(data, status, headers, config) {
 					$scope.publications = data;
-				
+					console.log(JSON.stringify(data));
+
 					$scope.tablePublications = new NgTableParams({
-				        page: 1,            
-				        count: 10,
-				        filter: $scope.filters,
-				    }, {
-				        total: $scope.publications.length,
-				        counts: [],
-				        getData: function($defer, params) {
-				        	var filteredData = params.filter() ?
-                                    $filter('filter')($scope.publications, params.filter().myfilter) :
-                                    	$scope.publications;
-                                    
-		                    var orderedData = params.sorting() ?
-		                                        $filter('orderBy')(filteredData, params.orderBy()) : 
-		                                        	$scope.publications;
-				        	
-				            $defer.resolve(orderedData.slice((params.page() - 1) * params.count(), params.page() * params.count()));
-				        }
-				    });
-					
+						page : 1,
+						count : 10,
+						filter : $scope.filters,
+					}, {
+						total : $scope.publications.length,
+						counts : [],
+						getData : function($defer, params) {
+							var filteredData = params.filter() ? $filter(
+									'filter')($scope.publications,
+									params.filter().myfilter)
+									: $scope.publications;
+
+							var orderedData = params.sorting() ? $filter(
+									'orderBy')(filteredData, params.orderBy())
+									: $scope.publications;
+
+							$defer.resolve(orderedData.slice(
+									(params.page() - 1) * params.count(),
+									params.page() * params.count()));
+						}
+					});
+
 				}).error(function(data, status, headers, config) {
-					
+
 		});
 	};
-	
-	
+
+	$scope.getAttachedFiles = function() {
+
+		var data = escape(angular.toJson($scope.publication));
+
+		$http({
+			method : 'POST',
+			url : 'showPublicationAction',
+			data : 'publication=' + data,
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(
+				function(data, status, headers, config) {
+					$scope.attachedFiles = data.filesList;
+
+					$scope.tableAttachedFiles = new NgTableParams({
+						page : 1,
+						count : 10,
+						filter : $scope.filters,
+					}, {
+						total : $scope.attachedFiles.length,
+						counts : [],
+						getData : function($defer, params) {
+							var filteredData = params.filter() ? $filter(
+									'filter')($scope.attachedFiles,
+									params.filter().myfilter)
+									: $scope.attachedFiles;
+
+							var orderedData = params.sorting() ? $filter(
+									'orderBy')(filteredData, params.orderBy())
+									: $scope.attachedFiles;
+
+							$defer.resolve(orderedData.slice(
+									(params.page() - 1) * params.count(),
+									params.page() * params.count()));
+						}
+					});
+
+					$(".invoicesTh-chart").html(data.html);
+
+				}).error(function(data, status, headers, config) {
+		});
+	};
+
 	$scope.updateCampaign = function(campaign) {
 		$scope.campaign = campaign;
-		
-		//$http.get('saveSessionAction?campaignId='+$scope.campaign.campaignId).success
-		//(function(data, status, headers, config){});
-
 	};
-	
+
+	$scope.updateClassification = function(classification) {
+		$scope.classification = classification;
+	};
+
+	$scope.updatePublication = function(publication) {
+		$scope.publication = publication;
+	};
+
 });
 
 appres.config(function($stateProvider, $urlRouterProvider) {
-    
-    $urlRouterProvider.otherwise('/home');
-    
-    $stateProvider
-        
-        // HOME STATES AND NESTED VIEWS ========================================
-        .state('home', {
-            url: '/home',
-            templateUrl: 'templates/campaigns_user.html'
-        })
-        
-		.state('campaign', {
-            url: '/campaña',
-            templateUrl: 'templates/campaignDetail_user.html'
-        })
-        
+
+	$urlRouterProvider.otherwise('/home');
+	$stateProvider
+
+	.state('home', {
+		url : '/home',
+		templateUrl : 'templates/classification_campaign.html'
+	})
+
+	.state('campaigns', {
+		url : '/campañas',
+		templateUrl : 'templates/campaigns_user.html'
+	})
+
+	.state('campaign', {
+		url : '/campaña',
+		templateUrl : 'templates/campaignDetail_user.html'
+	})
+
+	.state('publication', {
+		url : '/publicacion',
+		templateUrl : 'templates/publication_user.html'
+	})
 });

@@ -35,11 +35,11 @@
 		<session-timeout>10</session-timeout>
 	</session-config>
 	<welcome-file-list>
-		<welcome-file>login.jsp</welcome-file>
+		<welcome-file>secured/login.html</welcome-file>
 	</welcome-file-list>
 	<jsp-config>
 	    <jsp-property-group>
-	        <url-pattern>*.jsp</url-pattern>
+	        <url-pattern>*.html</url-pattern>
 	        <page-encoding>UTF-8</page-encoding>
 	    </jsp-property-group>
 	</jsp-config>

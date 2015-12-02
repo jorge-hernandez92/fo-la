@@ -3,7 +3,6 @@ package com.twobig.sivale.actions;
 import java.io.IOException;
 import java.util.List;
 import java.util.Map;
-import java.util.StringTokenizer;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -36,24 +35,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	private Map publication;
 
-	private String key;
-
-	private String value;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
-		
-		//----------------- This code is only for Test ------------------
-		TUser user = new TUser();
-		user.setUserId(101);
-		
-		CatClassificationCampaign classification = new CatClassificationCampaign();
-		classification.setCatClassificationCampaignsId(202);
-		
-		this.session.put("user", user);
-		this.session.put("classificationCmp", classification);
-		//----------------------------------------------------------------
 	}
 
 	@SuppressWarnings("unchecked")
@@ -61,28 +46,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			"classifications", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getMyClassificationsAction() {
 
-		final HttpServletRequest request = ServletActionContext.getRequest();
+		TUser user = (TUser)session.get("user");
 
-		String userJSON = request.getParameter("user");
-		TUser user;
-
-		if (!userJSON.equals("undefined")) {
-
-			user = new TUser();
-			try {
-				user = new ObjectMapper().readValue(userJSON, TUser.class);
-			} catch (IOException e) {
-				e.printStackTrace();
-				return ERROR;
-			}
-
-			session.put("user", user);
-		} else {
-			user = (TUser) session.get("user");
-
-			if (user == null) {
-				return ERROR;
-			}
+		if (user==null) {
+			return ERROR;
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
@@ -98,8 +65,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
 
-		//
 		String classificationCmpJSON = request.getParameter("classificationCmp");
+		
+		
 		CatClassificationCampaign classificationCmp;
 
 		if (!classificationCmpJSON.equals("undefined")) {
@@ -183,24 +151,24 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		final HttpServletRequest request = ServletActionContext.getRequest();
 
 		String publicationJSON = request.getParameter("publication");
-
-		TPublication publication;
+		
+		TPublication pub;
 
 		if (!publicationJSON.equals("undefined")) {
 
-			publication = new TPublication();
+			pub = new TPublication();
 			try {
-				publication = new ObjectMapper().readValue(publicationJSON, TPublication.class);
+				pub = new ObjectMapper().readValue(publicationJSON, TPublication.class);
 			} catch (IOException e) {
 				e.printStackTrace();
 				return ERROR;
 			}
 
-			session.put("publication", publication);
+			session.put("publication", pub);
 		} else {
-			publication = (TPublication) session.get("publication");
+			pub = (TPublication) session.get("publication");
 
-			if (publication == null) {
+			if (pub == null) {
 				return ERROR;
 			}
 
@@ -212,7 +180,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		this.publication = new ServicesUser().showPublication(user.getUserId(), publication.getPublicationId());
+		this.publication = new ServicesUser().showPublication(user.getUserId(), pub.getPublicationId());
 		return SUCCESS;
 	}
 
@@ -231,21 +199,5 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public Map getPublication() {
 		return publication;
 	}
-
-	public String getKey() {
-		return key;
-	}
-
-	public void setKey(String key) {
-		this.key = key;
-	}
-
-	public String getValue() {
-		return value;
-	}
-
-	public void setValue(String value) {
-		this.value = value;
-	}
-
+	
 }

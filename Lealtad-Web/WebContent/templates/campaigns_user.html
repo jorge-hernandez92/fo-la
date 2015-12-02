@@ -1,9 +1,10 @@
 <div class="navbar">
-		<ol class="breadcrumb breadcrumb-arrow">
-			<li class="active"><span>Inicio</span></li>
-		</ol>
+	<ol class="breadcrumb breadcrumb-arrow">
+		<li><a ui-sref="home">Inicio</a></li>
+		<li class="active"><span>Mis Campañas</span></li>
+	</ol>
 </div>
-	
+
 <div class="panel panel-default table-top-sivale">
 	<!-- Default panel contents -->
 	<div class="panel-heading">
@@ -42,8 +43,7 @@
 						sortable="'endDate'">{{campaign.endDate}}</td>
 					<td>
 						<button type="button" class="btn btn-primary"
-							aria-label="Left Align" 
-							data-ng-click="updateCampaign(campaign)"
+							aria-label="Left Align" data-ng-click="updateCampaign(campaign)"
 							ui-sref="campaign">Abrir</button>
 					</td>
 
