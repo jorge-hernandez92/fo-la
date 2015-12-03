@@ -31,6 +31,7 @@ public class TCampaign  implements java.io.Serializable {
      private Date startDate;
      private Date endDate;
      private String campaignName;
+     private String description;
 
     public TCampaign() {
     }
@@ -40,12 +41,13 @@ public class TCampaign  implements java.io.Serializable {
         this.campaignId = campaignId;
         this.TCompanies = TCompanies;
     }
-    public TCampaign(int campaignId, TCompany TCompanies, Date startDate, Date endDate, String campaignName) {
+    public TCampaign(int campaignId, TCompany TCompanies, Date startDate, Date endDate, String campaignName, String description) {
        this.campaignId = campaignId;
        this.TCompanies = TCompanies;
        this.startDate = startDate;
        this.endDate = endDate;
        this.campaignName = campaignName;
+       this.description = description;
     }
    
      @Id 
@@ -99,6 +101,17 @@ public class TCampaign  implements java.io.Serializable {
     public void setCampaignName(String campaignName) {
         this.campaignName = campaignName;
     }
+
+    
+    @Column(name="description", length=100)
+    public String getDescription() {
+        return this.description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
 
 }
 

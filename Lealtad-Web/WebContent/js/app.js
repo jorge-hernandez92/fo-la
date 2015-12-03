@@ -177,6 +177,30 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 				}).error(function(data, status, headers, config) {
 		});
 	};
+	
+	$scope.updateSession = function() {			
+		$http.get('updateSessionAction').success(
+				function(data, status, headers, config) {					 
+					
+					$scope.user = data.user;
+					$scope.classification = data.classificationCmp;
+					$scope.campaign = data.campaign;
+					$scope.publication = data.publication;
+					
+					console.log(JSON.stringify(data));
+					
+				}).error(function(data, status, headers, config) {
+		});
+	};
+	
+	$scope.logout = function() {		
+		console.log('into logout function js');
+		$http.get('logout').success(
+				function(data, status, headers, config) {					 
+					
+				}).error(function(data, status, headers, config) {
+		});
+	};
 
 	$scope.updateCampaign = function(campaign) {
 		$scope.campaign = campaign;

@@ -40,7 +40,16 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "updateSessionAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"session", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String updateSessionAction() {
 
+		return SUCCESS;
+
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Action(value = "getMyClassificationsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"classifications", "excludeNullProperties", "true", "noCache", "true" }) )
@@ -199,5 +208,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public Map getPublication() {
 		return publication;
 	}
+
+	public Map<String, Object> getSession() {
+		return session;
+	}
+	
 	
 }

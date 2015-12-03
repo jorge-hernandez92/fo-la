@@ -79,7 +79,7 @@ public class ServicesUser {
 			publication.setPublicationId(i);
 			publication.setName("Publication Name " + i);
 			publication.setPublishedDate(date);
-			publication.setDataFilePage("Description "+i);
+			publication.setDescription("Description "+i);
 			
 			publications.add(publication);
 		}

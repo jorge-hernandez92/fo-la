@@ -22,7 +22,7 @@
 </head>
 
 <body class="back-sivale" ng-app="app" data-ng-controller="campaignController">
-	<nav class="navbar navbar-inverse navbar-fixed-top back-sivale">
+	<nav class="navbar navbar-inverse navbar-fixed-top back-sivale" data-ng-controller="updateSession">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<img src="img/logo-header.png" ui-sref="#">
@@ -30,8 +30,8 @@
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a class="sivale-bar"
-						href="http://getbootstrap.com/examples/dashboard/#">Usuario</a></li>
-					<li><a href="http://getbootstrap.com/examples/dashboard/#">Salir</a></li>
+						href="http://getbootstrap.com/examples/dashboard/#">{{user.firstName}}</a></li>
+					<li><a href="logout">Salir</a></li>
 				</ul>
 			</div>
 		</div>

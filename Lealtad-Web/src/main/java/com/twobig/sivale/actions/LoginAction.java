@@ -1,5 +1,6 @@
 package com.twobig.sivale.actions;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,8 +37,6 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		
 		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
 
-		System.out.println(username+"  "+password);
-		
 		if (username.equals("") || password.equals(""))
 			return ERROR;
 		else{
@@ -48,12 +47,19 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	        
 	        if (user != null){
 	        	session.put("user", user);
-	        	System.out.println(user.getFullName());
-	    		return SUCCESS;
+	        	return SUCCESS;
 	        }
 	        
 	        return ERROR;
 		}
+		
+	}
+
+	@Action(value="logout", results = @Result(name="success", location="/secured/login.html"))
+	public String logout() {
+		
+		session.clear();
+		return SUCCESS;		
 		
 	}
 

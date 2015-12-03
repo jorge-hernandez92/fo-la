@@ -35,6 +35,7 @@ public class TPublication  implements java.io.Serializable {
      private String dataFilePath;
      private String dataFilePage;
      private byte[] dataFileBlob;
+     private String description;
 
     public TPublication() {
     }
@@ -44,7 +45,7 @@ public class TPublication  implements java.io.Serializable {
         this.publicationId = publicationId;
         this.TCampaigns = TCampaigns;
     }
-    public TPublication(int publicationId, TCampaign TCampaigns, Date publishedDate, String name, String templateFilePath, byte[] templateFileBlob, String dataFilePath, String dataFilePage, byte[] dataFileBlob) {
+    public TPublication(int publicationId, TCampaign TCampaigns, Date publishedDate, String name, String templateFilePath, byte[] templateFileBlob, String dataFilePath, String dataFilePage, byte[] dataFileBlob, String description) {
        this.publicationId = publicationId;
        this.TCampaigns = TCampaigns;
        this.publishedDate = publishedDate;
@@ -54,6 +55,7 @@ public class TPublication  implements java.io.Serializable {
        this.dataFilePath = dataFilePath;
        this.dataFilePage = dataFilePage;
        this.dataFileBlob = dataFileBlob;
+       this.description = description;
     }
    
      @Id 
@@ -89,7 +91,7 @@ public class TPublication  implements java.io.Serializable {
     }
 
     
-    @Column(name="name", length=45)
+    @Column(name="name", length=100)
     public String getName() {
         return this.name;
     }
@@ -148,6 +150,15 @@ public class TPublication  implements java.io.Serializable {
         this.dataFileBlob = dataFileBlob;
     }
 
+    
+    @Column(name="description", length=100)
+    public String getDescription() {
+        return this.description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }
 
