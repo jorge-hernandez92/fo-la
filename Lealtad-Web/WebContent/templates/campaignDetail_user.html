@@ -1,62 +1,59 @@
-<div class="navbar">
-	<ol class="breadcrumb breadcrumb-arrow">
-		<li><a ui-sref="home">Inicio</a></li>
-		<li><a ui-sref="campaigns">Mis Campañas</a></li>
-		<li class="active"><span>Campaña</span></li>
-	</ol>
+<div class="container panel breadcrumb_sivale">
+	<div class="navbar">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li><a ui-sref="home">Inicio</a></li>
+			<li><a ui-sref="campaigns">Mis Campañas</a></li>
+			<li class="active"><span>Campaña</span></li>
+		</ol>
+	</div>
 </div>
 
-<div class="panel panel-default table-top-sivale">
-	<!-- Default panel contents -->
-	<div class="panel-heading">
-		<div class="container-fluid">
-			<div class="navbar-header">{{campaign.campaignName}}</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">Duración
-					{{campaign.startDate}} al {{campaign.endDate}}
-				</ul>
+<div class="panel-body ">
+	<div class="container body-top-sivale">
+		<div class="panel panel-default table-top-sivale">
+			<div class="panel-heading">
+				<div class="container-fluid">
+					<div class="navbar-header">{{campaign.campaignName}}</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">Duración
+							{{campaign.startDate}} al {{campaign.endDate}}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="input-group">
+				<div class="input-group-addon">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</div>
+				<input class="form-control" type="text"
+					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
+			</div>
+
+			<div class="panel-body">
+				<div data-ng-controller="getCampaign" ng-cloak>
+					<table ng-table="tablePublications" class="table">
+						<tr ng-repeat="publication in $data">
+
+							<td title="'Publicacion'" header-class="'text-left'"
+								sortable="'name'">{{publication.name}}</td>
+
+							<td title="'Fecha de Publicacion'" header-class="'text-left'"
+								sortable="'publishedDate'">{{publication.publishedDate}}</td>
+
+							<td title="'Descripción'" header-class="'text-left'"
+								sortable="'dataFilePage'">{{publication.description}}</td>
+							<td>
+								<button type="button" class="btn btn-primary"
+									aria-label="Left Align"
+									data-ng-click="updatePublication(publication)"
+									ui-sref="publication">Abrir</button>
+							</td>
+
+						</tr>
+					</table>
+				</div>
 			</div>
 		</div>
 	</div>
-
-
-
-	<div class="input-group">
-		<div class="input-group-addon">
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		</div>
-		<input class="form-control" type="text"
-			data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
-	</div>
-
-
-	<div class="panel-body">
-		<div data-ng-controller="getCampaign" ng-cloak>
-			<table ng-table="tablePublications" class="table">
-				<tr ng-repeat="publication in $data">
-
-					<td title="'Publicacion'" header-class="'text-left'"
-						sortable="'name'">
-						<h3 class="top-cero">
-							<span class="label label-default">{{publication.name}}</span>
-						</h3>
-					</td>
-
-					<td title="'Fecha de Publicacion'" header-class="'text-left'"
-						sortable="'publishedDate'">{{publication.publishedDate}}</td>
-
-					<td title="'Descripción'" header-class="'text-left'"
-						sortable="'dataFilePage'">{{publication.description}}</td>
-					<td>
-						<button type="button" class="btn btn-primary"
-							aria-label="Left Align"
-							data-ng-click="updatePublication(publication)"
-							ui-sref="publication">Abrir</button>
-					</td>
-
-				</tr>
-			</table>
-		</div>
-	</div>
-
 </div>

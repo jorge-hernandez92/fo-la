@@ -50,42 +50,15 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		});
 	};
 
+				
 	$scope.getClassifications = function() {
 
-		$http({
-			method : 'POST',
-			url : 'getMyClassificationsAction',
-			headers : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
-			}
-		}).success(
-				function(data, status, headers, config) {
-					$scope.classifications = data;
+		$http.get('getMyClassificationsAction').success(
+			function(data, status, headers, config) {
+				
+				$scope.classifications = data;
 
-					$scope.tableClassifications = new NgTableParams({
-						page : 1,
-						count : 10,
-						filter : $scope.filters,
-					}, {
-						total : $scope.classifications.length,
-						counts : [],
-						getData : function($defer, params) {
-							var filteredData = params.filter() ? $filter(
-									'filter')($scope.classifications,
-									params.filter().myfilter)
-									: $scope.classifications;
-
-							var orderedData = params.sorting() ? $filter(
-									'orderBy')(filteredData, params.orderBy())
-									: $scope.classifications;
-
-							$defer.resolve(orderedData.slice(
-									(params.page() - 1) * params.count(),
-									params.page() * params.count()));
-						}
-					});
-
-				}).error(function(data, status, headers, config) {
+			}).error(function(data, status, headers, config) {
 
 		});
 	};
@@ -223,7 +196,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 
 	.state('home', {
 		url : '/home',
-		templateUrl : 'templates/classification_campaign.html'
+		templateUrl : 'templates/classCampaign.html'
 	})
 
 	.state('campaigns', {

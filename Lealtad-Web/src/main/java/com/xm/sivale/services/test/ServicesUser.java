@@ -3,6 +3,9 @@ package com.xm.sivale.services.test;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.net.URI;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -12,6 +15,8 @@ import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.twobig.sivale.bd.to.CatClassificationCampaign;
+import com.twobig.sivale.bd.to.CatView;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
@@ -20,21 +25,35 @@ public class ServicesUser {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServicesUser.class);
 	
-	public List<Map> getMyClassifications(Integer userId){
+	public List<CatClassificationCampaign> getMyClassifications(Integer userId){
 		
 		LOGGER.info("UserId Value = " + userId);
 		
-		List<Map> classifications = new ArrayList<Map>();
+		ArrayList<String> logos = new ArrayList<String>();
+		
+		logos.add("Audi_logo.PNG");
+		logos.add("Ford_logo.png");
+		logos.add("Lincoln_logo.png");
+		logos.add("Logo_Google.png");
+		logos.add("sivale_logo.png");
+		
+		List<CatClassificationCampaign> classifications = new ArrayList<CatClassificationCampaign>();
 		
 		for (int i = 0; i < 5; i++){
-			Map<String,String> classification = new HashMap<String,String>();
-			classification.put("className", "Classification " + i);
-			classification.put("companyName", "company " + i);
-			classification.put("description", "Description ...");
-			classification.put("catClassificationCampaignsId", "" + i);
+			
+			CatClassificationCampaign classification = new CatClassificationCampaign();
+			classification.setClassName("Classification " + i);
+			classification.setDescription("Description ...");
+			classification.setCatClassificationCampaignsId(i);
+			
+			CatView catView = new CatView();
+			
+			catView.setLogos(logos.get(i));
+			classification.setCatViews(catView);
 			
 			classifications.add(classification);
 		}
+		
 		return classifications;
 		
 	}

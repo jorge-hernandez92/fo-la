@@ -1,54 +1,56 @@
-<div class="navbar">
-	<ol class="breadcrumb breadcrumb-arrow">
-		<li><a ui-sref="home">Inicio</a></li>
-		<li><a ui-sref="campaigns">Mis Campañas</a></li>
-		<li><a ui-sref="campaign">Campaña</a></li>
-		<li class="active"><span>Publicación</span></li>
-	</ol>
+<div class="container panel breadcrumb_sivale">
+	<div class="navbar">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li><a ui-sref="home">Inicio</a></li>
+			<li><a ui-sref="campaigns">Mis Campañas</a></li>
+			<li><a ui-sref="campaign">Campaña</a></li>
+			<li class="active"><span>Publicación</span></li>
+		</ol>
+	</div>
 </div>
 
+<div class="panel-body ">
+	<div class="container body-top-sivale">
+		<div class="panel panel-default table-top-sivale">
+			<div class="panel-heading">
+				<div class="container-fluid">
+					<div class="navbar-header">{{campaign.campaignName}}</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">
 
-
-
-<div class="panel panel-default table-top-sivale">
-	<div class="panel-heading">
-		<div class="container-fluid">
-			<div class="navbar-header">{{campaign.campaignName}}</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					
-				</ul>
-			</div>
-		</div>
-	</div>
-	<div class="panel-body">
-		<div class="row">
-			<div>
-
-				<div class="col-md-3">
-					<div class="panel panel-default table-top-sivale">
-						<div class="panel-heading">
-							<div class="container-fluid">Archivos</div>
-						</div>
-						<div class="panel-body" data-ng-controller="getAttachedFiles">
-
-							<table ng-table="tableAttachedFiles" class="table">
-								<tr ng-repeat="file in $data">
-
-									<td header-class="'text-left'">{{file.fileName}}</td>
-
-								</tr>
-							</table>
-						</div>
+						</ul>
 					</div>
 				</div>
+			</div>
 
-				<div class="col-md-9">
-					<div class="panel panel-default table-top-sivale">
-						<div class="panel-heading">
-							<div class="container-fluid">{{publication.name}}</div>
+			<div class="panel-body">
+				<div class="row">
+					<div>
+						<div class="col-md-3">
+							<div class="panel panel-default table-top-sivale">
+								<div class="panel-heading">
+									<div class="container-fluid">Archivos</div>
+								</div>
+								<div class="panel-body" data-ng-controller="getAttachedFiles">
+
+									<table ng-table="tableAttachedFiles" class="table">
+										<tr ng-repeat="file in $data">
+
+											<td header-class="'text-left'">{{file.fileName}}</td>
+										</tr>
+									</table>
+								</div>
+							</div>
 						</div>
-						<div class="panel-body invoicesTh-chart"></div>
+
+						<div class="col-md-9">
+							<div class="panel panel-default table-top-sivale">
+								<div class="panel-heading">
+									<div class="container-fluid">{{publication.name}}</div>
+								</div>
+								<div class="panel-body invoicesTh-chart"></div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>

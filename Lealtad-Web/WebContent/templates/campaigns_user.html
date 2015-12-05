@@ -1,55 +1,56 @@
-<div class="navbar">
-	<ol class="breadcrumb breadcrumb-arrow">
-		<li><a ui-sref="home">Inicio</a></li>
-		<li class="active"><span>Mis Campañas</span></li>
-	</ol>
+<div class="container panel breadcrumb_sivale">
+	<div class="navbar">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li><a ui-sref="home">Inicio</a></li>
+			<li class="active"><span>Mis Campañas</span></li>
+		</ol>
+	</div>
 </div>
 
-<div class="panel panel-default table-top-sivale">
-	<!-- Default panel contents -->
-	<div class="panel-heading">
-		<div class="container-fluid">
-			<div class="navbar-header">{{classification.className}}</div>
+<div class="panel-body ">
+	<div class="container body-top-sivale">
+		<div class="panel panel-default table-top-sivale">
+			<div class="panel-heading">
+				<div class="container-fluid">
+					<div class="navbar-header">{{classification.className}}</div>
+				</div>
+			</div>
+
+			<div class="input-group">
+				<div class="input-group-addon">
+					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+				</div>
+				<input class="form-control" type="text"
+					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
+			</div>
+
+			<div class="panel-body">
+				<div data-ng-controller="getCampaigns" ng-cloak>
+					<table ng-table="tableCampaigns" class="table">
+						<tr ng-repeat="campaign in $data">
+
+							<td title="'Nombre de Campaña'" header-class="'text-left'"
+								sortable="'campaignName'">{{campaign.campaignName}}
+							</td>
+
+							<td title="'Clasificacion'" header-class="'text-left'"
+								sortable="'classification'">{{campaign.classification}}</td>
+
+							<td title="'Inicio'" header-class="'text-left'"
+								sortable="'startDate'">{{campaign.startDate}}</td>
+
+							<td title="'Cierre'" header-class="'text-left'"
+								sortable="'endDate'">{{campaign.endDate}}</td>
+							<td>
+								<button type="button" class="btn btn-primary"
+									aria-label="Left Align"
+									data-ng-click="updateCampaign(campaign)" ui-sref="campaign">Abrir</button>
+							</td>
+
+						</tr>
+					</table>
+				</div>
+			</div>
 		</div>
 	</div>
-
-	<div class="input-group">
-		<div class="input-group-addon">
-			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-		</div>
-		<input class="form-control" type="text"
-			data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
-	</div>
-
-	<div class="panel-body">
-		<div data-ng-controller="getCampaigns" ng-cloak>
-			<table ng-table="tableCampaigns" class="table">
-				<tr ng-repeat="campaign in $data">
-
-					<td title="'Nombre de Campaña'" header-class="'text-left'"
-						sortable="'campaignName'">
-						<h3 class="top-cero">
-							<span class="label label-default">{{campaign.campaignName}}</span>
-						</h3>
-					</td>
-
-					<td title="'Clasificacion'" header-class="'text-left'"
-						sortable="'classification'">{{campaign.classification}}</td>
-
-					<td title="'Inicio'" header-class="'text-left'"
-						sortable="'startDate'">{{campaign.startDate}}</td>
-
-					<td title="'Cierre'" header-class="'text-left'"
-						sortable="'endDate'">{{campaign.endDate}}</td>
-					<td>
-						<button type="button" class="btn btn-primary"
-							aria-label="Left Align" data-ng-click="updateCampaign(campaign)"
-							ui-sref="campaign">Abrir</button>
-					</td>
-
-				</tr>
-			</table>
-		</div>
-	</div>
-
 </div>

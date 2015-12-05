@@ -27,7 +27,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
 
-	private List<Map> classifications;
+	private List<CatClassificationCampaign> classifications;
 
 	private List<Map> campaigns;
 
@@ -193,7 +193,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 
-	public List<Map> getClassifications() {
+	public List<CatClassificationCampaign> getClassifications() {
 		return classifications;
 	}
 
