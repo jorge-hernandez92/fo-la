@@ -1,38 +1,58 @@
-<div class="container panel breadcrumb_sivale">
-	<div class="navbar">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<!-- <div class="container panel breadcrumb_sivale"> -->
+<!-- 	<div class=" navbar"> -->
+<!-- 		<ol class="breadcrumb breadcrumb-arrow"> -->
+<!-- 			<li class="active"><span>Inicio</span></li> -->
+<!-- 		</ol> -->
+<!-- 	</div> -->
+<!-- </div> -->
+
+
+<div class="panel-body ">
+	<div class=" navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
 			<li class="active"><span>Inicio</span></li>
 		</ol>
 	</div>
-</div>
 
-<div class="panel-body ">
-	<div class="container body-top-sivale">
+	<div class="container">
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
-					<div class="navbar-header">Mis clasificaciones de campaña</div>
+					<div class="navbar-header">Mis clasificaciones de campaÃ±a</div>
 				</div>
 			</div>
 
 			<div class="panel-body">
+
 				<div class="row" data-ng-controller="getClassifications" ng-cloak>
 					<div class="col-sm-6 col-md-4"
 						ng-repeat="classification in classifications">
 						<div class="thumbnail">
-							<div class="thumbnail2 div-sivale">
+							<div class="thumbnail2 div-sivale portfolio-box">
 								<div class="thumbnail2_wrapper">
-									<img src="{{classification.catViews.logos}}">
+									<a href="#"
+										data-ng-click="updateClassification(classification)"
+										ui-sref="campaigns"> <img
+										src="{{classification.catViews.logos}}" class="img-responsive"
+										alt="">
+										<div class="portfolio-box-caption">
+											<div class="portfolio-box-caption-content">
+												<div class="project-name">{{classification.description}}</div>
+											</div>
+										</div>
+									</a>
 								</div>
 							</div>
 							<div class="caption">
-								<h3>{{classification.className}}</h3>
-								<p>{{classification.description}}</p>
-								<p>
-									<a href="#" class="btn btn-primary" role="button"
-										data-ng-click="updateClassification(classification)"
-										ui-sref="campaigns">Abrir</a>
-								</p>
+								<h4>{{classification.className}}</h4>
 							</div>
 						</div>
 					</div>

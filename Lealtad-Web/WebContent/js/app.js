@@ -1,7 +1,8 @@
 var appres = angular.module('app', [ 'ngTable', 'ui.router' ]);
 appres.controller('campaignController', function($scope, $filter, $rootScope,
 		$http, NgTableParams) {
-
+	
+	
 	$scope.filters = {
 		myfilter : ''
 	};

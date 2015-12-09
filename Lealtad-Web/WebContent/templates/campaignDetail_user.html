@@ -1,21 +1,26 @@
-<div class="container panel breadcrumb_sivale">
-	<div class="navbar">
-		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Inicio</a></li>
-			<li><a ui-sref="campaigns">Mis Campañas</a></li>
-			<li class="active"><span>Campaña</span></li>
-		</ol>
-	</div>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <div class="panel-body ">
-	<div class="container body-top-sivale">
+	<div class="navbar container">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li><a ui-sref="home">Inicio</a></li>
+			<li><a ui-sref="campaigns">Mis CampaÃ±as</a></li>
+			<li class="active"><span>CampaÃ±a</span></li>
+		</ol>
+	</div>
+	<div class="container">
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
 					<div class="navbar-header">{{campaign.campaignName}}</div>
 					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav navbar-right">Duración
+						<ul class="nav navbar-nav navbar-right">DuraciÃ³n
 							{{campaign.startDate}} al {{campaign.endDate}}
 						</ul>
 					</div>
@@ -27,7 +32,7 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</div>
 				<input class="form-control" type="text"
-					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
+					data-ng-model="filters.myfilter" placeholder="Buscar CampaÃ±a" />
 			</div>
 
 			<div class="panel-body">
@@ -41,15 +46,11 @@
 							<td title="'Fecha de Publicacion'" header-class="'text-left'"
 								sortable="'publishedDate'">{{publication.publishedDate}}</td>
 
-							<td title="'Descripción'" header-class="'text-left'"
+							<td title="'DescripciÃ³n'" header-class="'text-left'"
 								sortable="'dataFilePage'">{{publication.description}}</td>
-							<td>
-								<button type="button" class="btn btn-primary"
-									aria-label="Left Align"
-									data-ng-click="updatePublication(publication)"
-									ui-sref="publication">Abrir</button>
-							</td>
-
+							<td><a href="#"
+								data-ng-click="updatePublication(publication)"
+								ui-sref="publication"> Ver</a>
 						</tr>
 					</table>
 				</div>

@@ -9,40 +9,131 @@
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/sivale.css" rel="stylesheet">
+
 <link rel="stylesheet" href="css/ng-table.min.css">
 
+<!-- Header -->
+<link href="css/main.css" rel="stylesheet">
+<link href="css/sivale.css" rel="stylesheet">
+
 <!-- JS (load angular, ui-router, and our custom js file) -->
-    <script src="js/angular.min.js"></script>
-    <script src="js/angular-ui-router.min.js"></script>
-    <script src="js/ng-table.min.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/jquery-1.10.2.js"></script>
+<script src="js/angular.min.js"></script>
+<script src="js/angular-ui-router.min.js"></script>
+<script src="js/ng-table.min.js"></script>
+<script src="js/app.js"></script>
+<script src="js/jquery-1.10.2.js"></script>
 
 </head>
 
-<body class="back-sivale" ng-app="app" data-ng-controller="campaignController">
-	<nav class="navbar navbar-inverse navbar-fixed-top back-sivale" data-ng-controller="updateSession">
-		<div class="container-fluid nav-margin">
-			<div class="navbar-header">
-				<div class="div-fit-img">
-					<img src="img/logo-ford.png" ui-sref="#">
+<body class="back-sivale" ng-app="app"
+	data-ng-controller="campaignController">
+
+
+	<header id="header" data-ng-controller="updateSession">
+		<div class="header_top">
+			<div class="container width100">
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="contactinfo"></div>
+					</div>
+					<div class="col-sm-6">
+						<div class="shop-menu pull-right">
+							<div class="div-fit-img2">
+								<img src="img/logo-header.png" ui-sref="#">
+							</div>
+						</div>
+
+					</div>
 				</div>
 			</div>
-			<div id="navbar" class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a class="sivale-bar"
-						href="http://getbootstrap.com/examples/dashboard/#">{{user.firstName}}</a></li>
-					<li><a href="logout">Salir</a></li>
-				</ul>
-			</div>
-			
 		</div>
-	</nav>
 
-	<div class="container margin-table">
-		<div ui-view></div>
+		<div class="header-middle">
+			<!--header-middle-->
+			<div class="container width100">
+				<div class="row">
+					<div class="col-sm-4">
+						<div class="logo pull-left">
+							<div class="row">
+
+								<div class="col-md-2">
+									<div id="o-wrapper">
+										<a id="c-button--slide-left" href="#" class="toggle"
+											role="button" title="Navigation" data-toggle="tooltip"
+											data-placement="left"><i class="ion-navicon"></i></a>
+									</div>
+								</div>
+								
+								<div class="col-md-10">
+									<div class="div-fit-img">
+										<img src={{classification.catViews.logos}} ui-sref="#">
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<div class="col-sm-8">
+						<div class="shop-menu pull-right">
+							<ul class="nav navbar-nav">
+
+								<li></span><a href="#"><span class="glyphicon glyphicon-user">
+											{{user.firstName}} </a></li>
+								<li></span><a href="logout"><span
+										class="glyphicon glyphicon-log-out"> Salir</a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</header>
+
+
+	<div class="row">
+
+		<div class="col-md-10">
+			<div ui-view></div>
+		</div>
+		<div class="col-md-2">
+			<img src="img/banner_sivale.gif">
+		</div>
+
+		<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
+			<button class="c-menu__close">← Close Menu</button>
+			<ul class="c-menu__items">
+				<li class="c-menu__item"><a href="#" class="c-menu__link">Movimientos</a></li>
+			</ul>
+		</nav>
+
+		<div id="c-mask" class="c-mask"></div>
+
 	</div>
+
+
+
+
+	<!-- menus script -->
+	<script src="js/menu.js"></script>
+	<script>
+		/**
+		 * Slide left instantiation and action.
+		 */
+		var slideLeft = new Menu({
+			wrapper : '#o-wrapper',
+			type : 'slide-left',
+			menuOpenerClass : '.c-button',
+			maskId : '#c-mask'
+		});
+
+		var slideLeftBtn = document.querySelector('#c-button--slide-left');
+
+		slideLeftBtn.addEventListener('click', function(e) {
+			e.preventDefault;
+			slideLeft.open();
+		});
+	</script>
 
 </body>
 </html>

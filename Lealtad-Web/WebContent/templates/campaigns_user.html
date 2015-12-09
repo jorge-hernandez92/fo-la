@@ -1,14 +1,19 @@
-<div class="container panel breadcrumb_sivale">
-	<div class="navbar">
-		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Inicio</a></li>
-			<li class="active"><span>Mis Campañas</span></li>
-		</ol>
-	</div>
-</div>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
 
 <div class="panel-body ">
-	<div class="container body-top-sivale">
+	<div class="navbar container">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li><a ui-sref="home">Inicio</a></li>
+			<li class="active"><span>Mis CampaÃ±as</span></li>
+		</ol>
+	</div>
+	<div class="container">
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
@@ -21,7 +26,7 @@
 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 				</div>
 				<input class="form-control" type="text"
-					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
+					data-ng-model="filters.myfilter" placeholder="Buscar CampaÃ±a" />
 			</div>
 
 			<div class="panel-body">
@@ -29,9 +34,8 @@
 					<table ng-table="tableCampaigns" class="table">
 						<tr ng-repeat="campaign in $data">
 
-							<td title="'Nombre de Campaña'" header-class="'text-left'"
-								sortable="'campaignName'">{{campaign.campaignName}}
-							</td>
+							<td title="'Nombre de CampaÃ±a'" header-class="'text-left'"
+								sortable="'campaignName'">{{campaign.campaignName}}</td>
 
 							<td title="'Clasificacion'" header-class="'text-left'"
 								sortable="'classification'">{{campaign.classification}}</td>
@@ -41,11 +45,8 @@
 
 							<td title="'Cierre'" header-class="'text-left'"
 								sortable="'endDate'">{{campaign.endDate}}</td>
-							<td>
-								<button type="button" class="btn btn-primary"
-									aria-label="Left Align"
-									data-ng-click="updateCampaign(campaign)" ui-sref="campaign">Abrir</button>
-							</td>
+							<td><a href="#" data-ng-click="updateCampaign(campaign)"
+								ui-sref="campaign"> Ver</a></td>
 
 						</tr>
 					</table>

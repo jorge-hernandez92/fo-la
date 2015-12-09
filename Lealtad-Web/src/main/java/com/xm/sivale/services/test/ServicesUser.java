@@ -30,12 +30,19 @@ public class ServicesUser {
 		LOGGER.info("UserId Value = " + userId);
 		
 		ArrayList<String> logos = new ArrayList<String>();
+		ArrayList<String> style = new ArrayList<String>();
 		
 		logos.add("Audi_logo.PNG");
 		logos.add("Ford_logo.png");
 		logos.add("Lincoln_logo.png");
 		logos.add("Logo_Google.png");
 		logos.add("sivale_logo.png");
+		
+		style.add("sivale.css");
+		style.add("sivale2.css");
+		style.add("sivale.css");
+		style.add("sivale2.css");
+		style.add("sivale.css");
 		
 		List<CatClassificationCampaign> classifications = new ArrayList<CatClassificationCampaign>();
 		
@@ -49,6 +56,8 @@ public class ServicesUser {
 			CatView catView = new CatView();
 			
 			catView.setLogos(logos.get(i));
+			catView.setColors(style.get(i));
+			
 			classification.setCatViews(catView);
 			
 			classifications.add(classification);
