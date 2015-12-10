@@ -21,7 +21,7 @@
 					<div class="navbar-header">{{campaign.campaignName}}</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">Duración
-							{{campaign.startDate}} al {{campaign.endDate}}
+							{{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
 						</ul>
 					</div>
 				</div>
@@ -44,7 +44,7 @@
 								sortable="'name'">{{publication.name}}</td>
 
 							<td title="'Fecha de Publicacion'" header-class="'text-left'"
-								sortable="'publishedDate'">{{publication.publishedDate}}</td>
+								sortable="'publishedDate'">{{formatDate(publication.publishedDate)}}</td>
 
 							<td title="'Descripción'" header-class="'text-left'"
 								sortable="'dataFilePage'">{{publication.description}}</td>

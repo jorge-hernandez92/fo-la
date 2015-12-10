@@ -8,9 +8,6 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	$scope.filters = {
 		myfilter : ''
 	};
-
-//	$(".invoicesTh-chart").html(data.html);
-	
 	
 	$scope.getCampaigns = function() {
 
@@ -201,6 +198,20 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		$scope.publication = publication;
 	};
 
+	$scope.formatDate = function(date) {
+//		var f_date = new Date(date);
+//		return f_date;
+		var d = new Date(date || Date.now()),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [month, day, year].join(' / ');
+	};
+	
 });
 
 appres.config(function($stateProvider, $urlRouterProvider) {

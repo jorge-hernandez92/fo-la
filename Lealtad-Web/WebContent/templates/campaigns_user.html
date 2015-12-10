@@ -41,10 +41,10 @@
 								sortable="'classification'">{{campaign.classification}}</td>
 
 							<td title="'Inicio'" header-class="'text-left'"
-								sortable="'startDate'">{{campaign.startDate}}</td>
-
+								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td>
+							
 							<td title="'Cierre'" header-class="'text-left'"
-								sortable="'endDate'">{{campaign.endDate}}</td>
+								sortable="'endDate'">{{formatDate(campaign.endDate)}}</td>
 							<td><a href="#" data-ng-click="updateCampaign(campaign)"
 								ui-sref="campaign"> Ver</a></td>
 
