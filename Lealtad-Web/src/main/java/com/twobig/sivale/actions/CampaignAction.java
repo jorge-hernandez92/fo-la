@@ -45,7 +45,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	@Action(value = "updateSessionAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"session", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String updateSessionAction() {
-
+		
 		return SUCCESS;
 
 	}
@@ -56,7 +56,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public String getMyClassificationsAction() {
 
 		TUser user = (TUser)session.get("user");
-
+		
 		if (user==null) {
 			return ERROR;
 		}

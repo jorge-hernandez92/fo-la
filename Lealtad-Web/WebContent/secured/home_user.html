@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html lang="es">
-<head>
+<html lang="es" ng-app="app"
+	data-ng-controller="campaignController">
+<head ng-cloak>
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,9 +13,9 @@
 
 <link rel="stylesheet" href="css/ng-table.min.css">
 
-<!-- Header -->
+<!-- <!-- Header -->
 <link href="css/main.css" rel="stylesheet">
-<link href="css/sivale.css" rel="stylesheet">
+<link ng-href="css/{{css}}" rel="stylesheet">
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
 <script src="js/angular.min.js"></script>
@@ -25,8 +26,7 @@
 
 </head>
 
-<body class="back-sivale" ng-app="app"
-	data-ng-controller="campaignController">
+<body class="back-sivale">
 
 
 	<header id="header" data-ng-controller="updateSession">
@@ -66,7 +66,7 @@
 								
 								<div class="col-md-10">
 									<div class="div-fit-img">
-										<img src={{classification.catViews.logos}} ui-sref="#">
+										<img src={{logo}} ui-sref="#" ng-if="logo">
 									</div>
 								</div>
 							</div>

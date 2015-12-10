@@ -15,7 +15,7 @@
 <!-- </div> -->
 
 
-<div class="panel-body ">
+<div class="panel-body back-sivale">
 	<div class=" navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
 			<li class="active"><span>Inicio</span></li>
@@ -30,29 +30,29 @@
 				</div>
 			</div>
 
-			<div class="panel-body">
+			<div class="panel-body back-sivale">
 
 				<div class="row" data-ng-controller="getClassifications" ng-cloak>
-					<div class="col-sm-6 col-md-4"
-						ng-repeat="classification in classifications">
+					<div class="col-sm-6 col-md-4 back-sivale"
+						ng-repeat="class in classifications">
 						<div class="thumbnail">
 							<div class="thumbnail2 div-sivale portfolio-box">
 								<div class="thumbnail2_wrapper">
 									<a href="#"
-										data-ng-click="updateClassification(classification)"
+										data-ng-click="updateClassification(class)"
 										ui-sref="campaigns"> <img
-										src="{{classification.catViews.logos}}" class="img-responsive"
+										src="{{class.catViews.logos}}" class="img-responsive"
 										alt="">
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">
-												<div class="project-name">{{classification.description}}</div>
+												<div class="project-name">{{class.description}}</div>
 											</div>
 										</div>
 									</a>
 								</div>
 							</div>
 							<div class="caption">
-								<h4>{{classification.className}}</h4>
+								<h4>{{class.className}}</h4>
 							</div>
 						</div>
 					</div>

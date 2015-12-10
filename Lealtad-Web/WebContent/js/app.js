@@ -1,12 +1,17 @@
 var appres = angular.module('app', [ 'ngTable', 'ui.router' ]);
 appres.controller('campaignController', function($scope, $filter, $rootScope,
 		$http, NgTableParams) {
-	
+
+	$scope.css = 'sivale.css';
+	$scope.logo = '';
 	
 	$scope.filters = {
 		myfilter : ''
 	};
 
+//	$(".invoicesTh-chart").html(data.html);
+	
+	
 	$scope.getCampaigns = function() {
 
 		var data = escape(angular.toJson($scope.classification));
@@ -58,7 +63,9 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			function(data, status, headers, config) {
 				
 				$scope.classifications = data;
-
+				$scope.css = 'sivale.css';
+				$scope.logo = '';
+				
 			}).error(function(data, status, headers, config) {
 
 		});
@@ -146,7 +153,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 						}
 					});
 
-					$(".invoicesTh-chart").html(data.html);
+					$(".publication-html").html(data.html);
 
 				}).error(function(data, status, headers, config) {
 		});
@@ -161,6 +168,10 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					$scope.campaign = data.campaign;
 					$scope.publication = data.publication;
 					
+					if($scope.classification){
+						$scope.css = $scope.classification.catViews.colors;
+						$scope.logo = $scope.classification.catViews.logos;
+					}
 					console.log(JSON.stringify(data));
 					
 				}).error(function(data, status, headers, config) {
@@ -182,6 +193,8 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 
 	$scope.updateClassification = function(classification) {
 		$scope.classification = classification;
+		$scope.css = $scope.classification.catViews.colors;
+		$scope.logo = $scope.classification.catViews.logos;
 	};
 
 	$scope.updatePublication = function(publication) {

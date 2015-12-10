@@ -13,7 +13,7 @@
 			<li class="active"><span>Mis Campañas</span></li>
 		</ol>
 	</div>
-	<div class="container">
+	<div class="container back-sivale">
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
@@ -29,7 +29,7 @@
 					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
 			</div>
 
-			<div class="panel-body">
+			<div class="panel-body back-sivale">
 				<div data-ng-controller="getCampaigns" ng-cloak>
 					<table ng-table="tableCampaigns" class="table">
 						<tr ng-repeat="campaign in $data">
