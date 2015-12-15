@@ -32,21 +32,19 @@ public class ServicesUser {
 		ArrayList<String> logos = new ArrayList<String>();
 		ArrayList<String> style = new ArrayList<String>();
 		
-		logos.add("Audi_logo.PNG");
-		logos.add("Ford_logo.png");
-		logos.add("Lincoln_logo.png");
-		logos.add("Logo_Google.png");
-		logos.add("sivale_logo.png");
+		logos.add("Ford");
+		logos.add("FordCredit");
+		logos.add("Lincoln");
 		
+		style.add("ford.css");
+		style.add("ford_credit.css");
+		style.add("lincoln.css");
 		style.add("sivale.css");
-		style.add("sivale2.css");
-		style.add("sivale.css");
-		style.add("sivale2.css");
 		style.add("sivale.css");
 		
 		List<CatClassificationCampaign> classifications = new ArrayList<CatClassificationCampaign>();
 		
-		for (int i = 0; i < 5; i++){
+		for (int i = 0; i < 3; i++){
 			
 			CatClassificationCampaign classification = new CatClassificationCampaign();
 			classification.setClassName("Classification " + i);

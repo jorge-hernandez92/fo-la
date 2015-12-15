@@ -1,12 +1,20 @@
+// ------ themes ----------
+var CSS_DEFAULT		= 'sivale.css';
+var LOGO_DEFAULT	= '';
+
+
+//------ Filter ----------
+var FILTER_INIT	= '';
+
 var appres = angular.module('app', [ 'ngTable', 'ui.router' ]);
 appres.controller('campaignController', function($scope, $filter, $rootScope,
 		$http, NgTableParams) {
 
-	$scope.css = 'sivale.css';
-	$scope.logo = '';
+	$scope.css  = CSS_DEFAULT;
+	$scope.logo = LOGO_DEFAULT;
 	
 	$scope.filters = {
-		myfilter : ''
+		myfilter : FILTER_INIT
 	};
 	
 	$scope.getCampaigns = function() {
@@ -26,29 +34,36 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					$scope.campaigns = data;
 
 					$scope.tableCampaigns = new NgTableParams({
-						page : 1,
-						count : 10,
-						filter : $scope.filters,
+						count : 10
 					}, {
-						total : $scope.campaigns.length,
 						counts : [],
-						getData : function($defer, params) {
-							var filteredData = params.filter() ? $filter(
-									'filter')($scope.campaigns,
-									params.filter().myfilter)
-									: $scope.campaigns;
-
-							var orderedData = params.sorting() ? $filter(
-									'orderBy')(filteredData, params.orderBy())
-									: $scope.campaigns;
-
-							$defer.resolve(orderedData.slice(
-									(params.page() - 1) * params.count(),
-									params.page() * params.count()));
-						}
+					    dataset: data
 					});
-
-				}).error(function(data, status, headers, config) {
+					
+//					$scope.tableCampaigns = new NgTableParams({
+//						page : 1,
+//						count : 10,
+//						filter : $scope.filters,
+//					}, {
+//						total : $scope.campaigns.length,
+//						counts : [],
+//						getData : function($defer, params) {
+//							var filteredData = params.filter() ? $filter(
+//									'filter')($scope.campaigns,
+//									params.filter().myfilter)
+//									: $scope.campaigns;
+//
+//							var orderedData = params.sorting() ? $filter(
+//									'orderBy')(filteredData, params.orderBy())
+//									: $scope.campaigns;
+//
+//							$defer.resolve(orderedData.slice(
+//									(params.page() - 1) * params.count(),
+//									params.page() * params.count()));
+//						}
+//					});
+//
+//				}).error(function(data, status, headers, config) {
 
 		});
 	};
@@ -60,9 +75,9 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			function(data, status, headers, config) {
 				
 				$scope.classifications = data;
-				$scope.css = 'sivale.css';
-				$scope.logo = '';
-				
+				$scope.css = CSS_DEFAULT;
+				$scope.logo = LOGO_DEFAULT;
+
 			}).error(function(data, status, headers, config) {
 
 		});
@@ -167,7 +182,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					
 					if($scope.classification){
 						$scope.css = $scope.classification.catViews.colors;
-						$scope.logo = $scope.classification.catViews.logos;
+						$scope.logo = 'img/company_logo/' + $scope.classification.catViews.logos + '/header.png';
 					}
 					console.log(JSON.stringify(data));
 					
@@ -176,7 +191,6 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	};
 	
 	$scope.logout = function() {		
-		console.log('into logout function js');
 		$http.get('logout').success(
 				function(data, status, headers, config) {					 
 					
@@ -191,7 +205,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	$scope.updateClassification = function(classification) {
 		$scope.classification = classification;
 		$scope.css = $scope.classification.catViews.colors;
-		$scope.logo = $scope.classification.catViews.logos;
+		$scope.logo = 'img/company_logo/' + $scope.classification.catViews.logos + '/header.png';
 	};
 
 	$scope.updatePublication = function(publication) {
@@ -199,8 +213,6 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	};
 
 	$scope.formatDate = function(date) {
-//		var f_date = new Date(date);
-//		return f_date;
 		var d = new Date(date || Date.now()),
         month = '' + (d.getMonth() + 1),
         day = '' + d.getDate(),
