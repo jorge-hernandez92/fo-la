@@ -103,7 +103,7 @@ public class TCampaign  implements java.io.Serializable {
     }
 
     
-    @Column(name="description", length=100)
+    @Column(name="description", length=150)
     public String getDescription() {
         return this.description;
     }
