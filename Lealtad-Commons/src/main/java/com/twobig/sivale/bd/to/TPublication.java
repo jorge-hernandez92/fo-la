@@ -1,5 +1,4 @@
-package com.twobig.sivale.bd.to;
-// Generated 20/11/2015 02:09:49 PM by Hibernate Tools 4.3.1
+package com.twobig.sivale.bd.to;// Generated 14/12/2015 01:25:30 PM by Hibernate Tools 4.3.1
 
 
 import java.util.Date;
@@ -27,6 +26,7 @@ public class TPublication  implements java.io.Serializable {
 
 
      private int publicationId;
+     private CatPublicationType catPublicationType;
      private TCampaign TCampaigns;
      private Date publishedDate;
      private String name;
@@ -41,12 +41,14 @@ public class TPublication  implements java.io.Serializable {
     }
 
 	
-    public TPublication(int publicationId, TCampaign TCampaigns) {
+    public TPublication(int publicationId, CatPublicationType catPublicationType, TCampaign TCampaigns) {
         this.publicationId = publicationId;
+        this.catPublicationType = catPublicationType;
         this.TCampaigns = TCampaigns;
     }
-    public TPublication(int publicationId, TCampaign TCampaigns, Date publishedDate, String name, String templateFilePath, byte[] templateFileBlob, String dataFilePath, String dataFilePage, byte[] dataFileBlob, String description) {
+    public TPublication(int publicationId, CatPublicationType catPublicationType, TCampaign TCampaigns, Date publishedDate, String name, String templateFilePath, byte[] templateFileBlob, String dataFilePath, String dataFilePage, byte[] dataFileBlob, String description) {
        this.publicationId = publicationId;
+       this.catPublicationType = catPublicationType;
        this.TCampaigns = TCampaigns;
        this.publishedDate = publishedDate;
        this.name = name;
@@ -71,6 +73,16 @@ public class TPublication  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="fk_publication_type", nullable=false)
+    public CatPublicationType getCatPublicationType() {
+        return this.catPublicationType;
+    }
+    
+    public void setCatPublicationType(CatPublicationType catPublicationType) {
+        this.catPublicationType = catPublicationType;
+    }
+
+@ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="fk_campaign", nullable=false)
     public TCampaign getTCampaigns() {
         return this.TCampaigns;
@@ -91,7 +103,7 @@ public class TPublication  implements java.io.Serializable {
     }
 
     
-    @Column(name="name", length=100)
+    @Column(name="name", length=45)
     public String getName() {
         return this.name;
     }
@@ -151,7 +163,7 @@ public class TPublication  implements java.io.Serializable {
     }
 
     
-    @Column(name="description", length=100)
+    @Column(name="description", length=150)
     public String getDescription() {
         return this.description;
     }
@@ -161,5 +173,3 @@ public class TPublication  implements java.io.Serializable {
     }
 
 }
-
-

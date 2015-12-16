@@ -58,7 +58,7 @@ public class TCompany  implements java.io.Serializable {
     }
 
     
-    @Column(name="description", length=45)
+    @Column(name="description", length=150)
     public String getDescription() {
         return this.description;
     }
