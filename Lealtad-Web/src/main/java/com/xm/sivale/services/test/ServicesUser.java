@@ -21,6 +21,8 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
 
+import ws.sivale.com.mx.messages.types.TypeTransaccion;
+
 public class ServicesUser {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServicesUser.class);
@@ -163,11 +165,78 @@ public class ServicesUser {
 			user.setLastName2("lastName2");
 			user.setFullName(user.getFirstName() + " " + user.getLastName1() + " " + user.getLastName2());
 			user.setEmail("user@latbc.com.mx");
-			user.setTjCardNumber(userName);
+			user.setTjCardNumber("100022030909378");
 		}
 		
 		return user;
 		
+	}
+	
+	public List<TypeTransaccion> getLastTransactions(){
+		
+		List<TypeTransaccion> lastTransactions = new ArrayList<TypeTransaccion>();
+		TypeTransaccion lastTransaction;
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-230));
+		lastTransaction.setAcceptorName("Comercial Mexicana S.A. de C.V.");
+		lastTransactions.add(lastTransaction);
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-433));
+		lastTransaction.setAcceptorName("OXXO S.A. de C.V.");
+		lastTransactions.add(lastTransaction);
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-610));
+		lastTransaction.setAcceptorName("Farmacia Guadalajara");
+		lastTransactions.add(lastTransaction);		
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-433));
+		lastTransaction.setAcceptorName("OXXO S.A. de C.V.");
+		lastTransactions.add(lastTransaction);
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-610));
+		lastTransaction.setAcceptorName("Farmacia Guadalajara");
+		lastTransactions.add(lastTransaction);		
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-433));
+		lastTransaction.setAcceptorName("OXXO S.A. de C.V.");
+		lastTransactions.add(lastTransaction);
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-610));
+		lastTransaction.setAcceptorName("Farmacia Guadalajara");
+		lastTransactions.add(lastTransaction);		
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-433));
+		lastTransaction.setAcceptorName("OXXO S.A. de C.V.");
+		lastTransactions.add(lastTransaction);
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-610));
+		lastTransaction.setAcceptorName("Farmacia Guadalajara");
+		lastTransactions.add(lastTransaction);		
+		
+		lastTransaction = new TypeTransaccion();
+		lastTransaction.setTransactionDate ("20151029 72236");
+		lastTransaction.setAmount(new Double(-433));
+		lastTransaction.setAcceptorName("OXXO S.A. de C.V.");
+		lastTransactions.add(lastTransaction);
+		
+		return lastTransactions;
 	}
 
 }

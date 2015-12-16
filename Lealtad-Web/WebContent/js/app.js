@@ -224,6 +224,41 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
     return [month, day, year].join(' / ');
 	};
 	
+	$scope.convertToPositive = function(amount){
+		if(amount==undefined)
+			return 0;
+		if(amount<0)
+			return amount*-1;
+		return amount;
+	};
+	
+	$scope.getLastTransactionByCard = function() {			
+		$http.get('getLastTransactionByCardAction').success(
+				function(data, status, headers, config) {		 
+					$scope.lastTransactions = data;
+					for ( var index in data) {
+						var dateFormatTransaction = moment(data[index].transactionDate, "YYYYMMDD HHmmss");
+						$scope.lastTransactions[index].transactionDate = dateFormatTransaction.format("DD/MM/YYYY hh:mm a");						
+					}
+					$scope.tableLastTransactions = new NgTableParams({            
+				        count: 10
+				    }, {
+				        counts: [],
+				        dataset: $scope.lastTransactions
+				    });
+					
+				}).error(function(data, status, headers, config) {
+		});
+	};
+	
+	$scope.getBalance = function() {			
+		$http.get('getBalanceAction').success(
+				function(data, status, headers, config) {					 
+					$scope.balance = (data);  					
+				}).error(function(data, status, headers, config) {
+		});
+	};
+	
 });
 
 appres.config(function($stateProvider, $urlRouterProvider) {
@@ -249,5 +284,10 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	.state('publication', {
 		url : '/publicacion',
 		templateUrl : 'templates/publication_user.html'
+	})
+	
+	.state('transactions', {
+		url : '/transacciones',
+		templateUrl : 'templates/homeTh.html'
 	})
 });

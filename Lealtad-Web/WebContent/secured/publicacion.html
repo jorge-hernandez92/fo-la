@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<title>Login</title>
+
+<!-- Bootstrap -->
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/sivale.css" rel="stylesheet">
+
+<script src="../js/angular.min.js"></script>
+
+</head>
+<body>
+
+	<div class="text-right">
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="top-cero">
+					<span class="label label-default">Tipo de Publicación</span>
+				</h3>
+			</div>
+			<div class="col-md-8">
+				<select class="form-control">
+					<option>Teaser</option>
+					<option>Avance</option>
+					<option>Cierre</option>
+					<option>Premiación</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="top-cero">
+					<span class="label label-default">Documento html</span>
+				</h3>
+			</div>
+			<div class="input-group col-md-8">
+				<input type="text" class="form-control" readonly=""> <span
+					class="input-group-btn"> <span
+					class="btn btn-primary btn-file"> Browse… <input type="file"
+						multiple="">
+				</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="top-cero">
+					<span class="label label-default"></span>
+				</h3>
+			</div>
+			<div class="input-group col-md-8">
+				<input type="text" class="form-control" readonly=""> <span
+					class="input-group-btn"> <span
+					class="btn btn-primary btn-file"> Browse… <input type="file"
+						multiple="">
+				</span>
+				</span>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="top-cero">
+					<span class="label label-default">Documentación anexa</span>
+				</h3>
+			</div>
+			<div class="col-md-8">
+				<div class="row">
+					<div class="input-group col-md-10">
+						<input type="text" class="form-control" readonly=""> <span
+							class="input-group-btn"> <span
+							class="btn btn-primary btn-file"> Browse… <input
+								type="file" multiple="">
+						</span>
+						</span>
+					</div>
+					<div class="col-md-2">
+						<label class="checkbox span4"> <input type="checkbox"
+							value="all" id="allstates" name="all" />Archivo Público
+						</label>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="row">
+			<div class="col-md-4">
+				<h3 class="top-cero">
+					<span class="label label-default">Descripción</span>
+				</h3>
+			</div>
+			<div class="input-group col-md-8">
+				<textarea class="form-control" rows="3"></textarea>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<div class="row">
+		<div class="col-md-4"></div>
+
+		<div class="col-md-8 text-left">
+
+			<button type="button" class="btn btn-success">Publicar</button>
+			<button type="button" class="btn btn-danger left-35">
+				Cancelar</button>
+
+		</div>
+	</div>
+
+</body>
+</html>
