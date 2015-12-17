@@ -20,6 +20,8 @@ public class TCompany  implements java.io.Serializable {
      private int idCompany;
      private String name;
      private String description;
+     
+     public static final String FIELD_COMPANY_ID = "companyId";
 
     public TCompany() {
     }
