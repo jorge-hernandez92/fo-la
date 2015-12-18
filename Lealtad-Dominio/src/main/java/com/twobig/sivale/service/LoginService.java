@@ -24,3 +24,7 @@ public interface LoginService {
 	 */
 	public TUserLogin validateUserWeb(UserBean user);
 }
+
+
+
+
