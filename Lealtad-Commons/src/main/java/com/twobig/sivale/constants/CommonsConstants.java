@@ -66,6 +66,7 @@ public class CommonsConstants {
 	public static final String DEFAULT_EMPTY_STRING = "";
 	public static final String DEFAULT_TIP_AMOUNT = "0";
 
+	public static final String USER_INVALID_MESSAGE = "El usuario no tiene asociado ningun número de tarjeta";
 	public static final String SUCCESS_MSG_REST_RESPONSE = "success";
 	public static final String ERROR_MSG_REST_RESPONSE = "error";
 	public static final String EMPTY_JSON_MSG_REST_RESPONSE = "{}";
@@ -121,13 +122,14 @@ public class CommonsConstants {
 	public static final String RFC_CLIENT  = "Descripción";
 	public static final String USER_ID  = "Nombre de Usuario";
 	public static final String CARD_NUMBER  = "Número de Tarjeta";
-	public static final String USER_NAME  = "Nombre de persona";
+	public static final String USER_NAME  = "Nombre de Persona";
 	public static final String BUDGET= "0";
 	public static final String REPORT= "1";
 	public static final String DEFAULT_COMPANY_ID = "-1";
 	
 	public static final String SUCCESS_RESPONSE_STATUS = "SUCCESS";
 	public static final String ERROR_RESPONSE_STATUS = "ERROR";
+	public static final String TICKET_EXISTS = "TICKET_EXISTS";
 	
 	public static final int DATE_LENGTH_AM = 14;
 	public static final String DATE_FORMAT_TRX_AM = "yyyyMMdd Hmmss";
@@ -173,11 +175,7 @@ public class CommonsConstants {
 	/**
 	 * CAT PROFILE
 	 */
-	public static final int CAT_PROFILE_SUPERVISOR = 2;
-	
-	
-	
-	
+	public static final int CAT_PROFILE_SUPERVISOR = 2;	
 	
 	/**
 	 * CONSTANTS

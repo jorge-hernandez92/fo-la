@@ -26,15 +26,18 @@ public class TUser  implements java.io.Serializable {
 
 
      private Integer userId;
-     private CatProfile catProfiles;
-     private TCompany TCompanies;
+     private int catProfile;
+ 	 private int company;
      private String userLogin;
      private String password;
      private String email;
-     private String fullName;
-     private String firstName;
-     private String lastName1;
+     
+     private String fullName;   
+     private String firstName; 
+     private String lastName1; 
      private String lastName2;
+     
+     
      private String tjCardNumber;
      private String tjAccountNumber;
      private String tjEmployer;
@@ -44,36 +47,22 @@ public class TUser  implements java.io.Serializable {
      private String tjReference;
      private String tjAccountStatus;
      private String tjCardStatus;
+     
+     
+ 	public static final String FIELD_USER_ID = "userId";
+ 	public static final String FIELD_USER_FIRST_NAME = "firstName";
+ 	public static final String FIELD_USER_CARD_NUMBER = "tjCardNumber";
+ 	public static final String FIELD_USER_USER = "userLogin";
+ 	public static final String FIELD_USER_PASS = "password";
+ 	public static final String FIELD_USER_COMPANY = "tCompany";
+ 	public static final String FIELD_USER_CAT_PROFILE = "catProfile";
+ 	public static final String FIELD_USER_ACCOUNT_NUMBER = "accountNumber";
 
     public TUser() {
     }
+    
 
 	
-    public TUser(CatProfile catProfiles, TCompany TCompanies, String userLogin) {
-        this.catProfiles = catProfiles;
-        this.TCompanies = TCompanies;
-        this.userLogin = userLogin;
-    }
-    public TUser(CatProfile catProfiles, TCompany TCompanies, String userLogin, String password, String email, String fullName, String firstName, String lastName1, String lastName2, String tjCardNumber, String tjAccountNumber, String tjEmployer, String tjOrigin, String tjCardType, String tjProduct, String tjReference, String tjAccountStatus, String tjCardStatus) {
-       this.catProfiles = catProfiles;
-       this.TCompanies = TCompanies;
-       this.userLogin = userLogin;
-       this.password = password;
-       this.email = email;
-       this.fullName = fullName;
-       this.firstName = firstName;
-       this.lastName1 = lastName1;
-       this.lastName2 = lastName2;
-       this.tjCardNumber = tjCardNumber;
-       this.tjAccountNumber = tjAccountNumber;
-       this.tjEmployer = tjEmployer;
-       this.tjOrigin = tjOrigin;
-       this.tjCardType = tjCardType;
-       this.tjProduct = tjProduct;
-       this.tjReference = tjReference;
-       this.tjAccountStatus = tjAccountStatus;
-       this.tjCardStatus = tjCardStatus;
-    }
    
      @Id @GeneratedValue(strategy=IDENTITY)
 
@@ -85,26 +74,6 @@ public class TUser  implements java.io.Serializable {
     
     public void setUserId(Integer userId) {
         this.userId = userId;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="fk_profile", nullable=false)
-    public CatProfile getCatProfiles() {
-        return this.catProfiles;
-    }
-    
-    public void setCatProfiles(CatProfile catProfiles) {
-        this.catProfiles = catProfiles;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="fk_company", nullable=false)
-    public TCompany getTCompanies() {
-        return this.TCompanies;
-    }
-    
-    public void setTCompanies(TCompany TCompanies) {
-        this.TCompanies = TCompanies;
     }
 
     
@@ -268,6 +237,23 @@ public class TUser  implements java.io.Serializable {
     }
 
 
+    @Column(name = "fk_profile", nullable = false)
+    public int getCatProfile() {
+      return this.catProfile;
+    }
+
+    public void setCatProfile(int catProfile) {
+      this.catProfile = catProfile;
+    }
+
+    @Column(name = "fk_company", nullable = false)
+    public int getCompany() {
+      return this.company;
+    }
+
+    public void setCompany(int company) {
+      this.company = company;
+    }
 }
 
 

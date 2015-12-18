@@ -20,6 +20,8 @@ public class CatProfile  implements java.io.Serializable {
      private int profileId;
      private String profile;
      private String comments;
+     
+     public static final String PROFILE_FIELD_CAT_PROFILE_ID = "profileId";
 
     public CatProfile() {
     }
