@@ -5,57 +5,22 @@
 }
 
 .panel-green {
-    border-color: #5cb85c;
+    border-color: #df8d2e;
 }
 
 .panel-green > .panel-heading {
-    border-color: #5cb85c;
+	height: 100px;
+    border-color: #df8d2e;
     color: #fff;
-    background-color: #5cb85c;
+    background-color: #df8d2e;
 }
 
 .panel-green > a {
-    color: #5cb85c;
+    color: #df8d2e;
 }
 
 .panel-green > a:hover {
     color: #3d8b3d;
-}
-
-.panel-red {
-    border-color: #d9534f;
-}
-
-.panel-red > .panel-heading {
-    border-color: #EF4A84;
-    color: #fff;
-    background-color: #EF4A84;
-}
-
-.panel-red > a {
-    color: #d9534f;
-}
-
-.panel-red > a:hover {
-    color: #b52b27;
-}
-
-.panel-yellow {
-    border-color: #f0ad4e;
-}
-
-.panel-yellow > .panel-heading {
-    border-color: #f0ad4e;
-    color: #fff;
-    background-color: #f0ad4e;
-}
-
-.panel-yellow > a {
-    color: #f0ad4e;
-}
-
-.panel-yellow > a:hover {
-    color: #df8a13;
 }
 
 .page-header {
@@ -64,81 +29,6 @@
 	border-bottom: 1px solid #eee; 
 	color: #F78D1D;  	
 }
-
-.panel-title {
-    color: inherit;    
-    font-weight: bold;
-}
-
-.table {
-font-size: 14px 
-}
-
-.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th {    
-    vertical-align: middle;
-
-}
-
-.text-warning {
-    color: #e10000;
-}
-
-
-/* css for userBudgetModal */
-
-       .blueTotal {
-        color:  #1874CD;
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-       .greenTotal {
-        color:  #00AA00;
-        font-size: 20px;
-        font-weight: bold;
-      }
-      .gray{
-      	color:  #757575;
-        font-size: 15px;
-        font-weight: bold;
-      }
-      
-      .grayRejected{
-      	color:  #757575;
-        font-size: 15px;
-        font-weight: bold;
-        text-decoration: line-through;
-      }
-      
-      .blue {
-        color:  #1874CD;
-        font-size: 15px;
-        font-weight: bold;        
-      }
-      
-      .red {
-	    color: #CD3700;
-	    font-size: 15px;
-	    font-weight: bold;
-	    text-decoration: line-through;
-	  }
-
-       .green {
-        color:  #00AA00;
-        font-size: 15px;  
-        font-weight: bold;      
-      }
-      
-      .head4 {
-        font-size: 20px;
-        font-weight: bold;
-      }
-
-       .userName {
-        font-size: 15px;
-      }
-
-/* start css for home page */
 
 .col-lg-3-user-email {
     width: 35%;

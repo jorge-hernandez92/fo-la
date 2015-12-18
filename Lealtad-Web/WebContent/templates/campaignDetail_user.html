@@ -26,19 +26,22 @@
 				</div>
 			</div>
 
-			<div class="input-group">
-				<div class="input-group-addon">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</div>
-				<input class="form-control" type="text"
-					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
-			</div>
+<!-- 			<div class="input-group"> -->
+<!-- 				<div class="input-group-addon"> -->
+<!-- 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+<!-- 				</div> -->
+<!-- 				<input class="form-control" type="text" -->
+<!-- 					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" /> -->
+<!-- 			</div> -->
 
 			<div class="panel-body back-sivale">
 				<div data-ng-controller="getCampaign" ng-cloak>
 					<table ng-table="tablePublications" class="table">
 						<tr ng-repeat="publication in $data">
-
+							
+							<td title="'Tipo'" header-class="'text-left'"
+								sortable="'name'"><span class="label label-default">{{publication.catPublicationType.name}}</span></td>
+							
 							<td title="'Publicacion'" header-class="'text-left'"
 								sortable="'name'">{{publication.name}}</td>
 

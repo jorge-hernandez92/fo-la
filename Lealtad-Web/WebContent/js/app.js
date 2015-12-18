@@ -6,15 +6,22 @@ var LOGO_DEFAULT	= '';
 //------ Filter ----------
 var FILTER_INIT	= '';
 
-var appres = angular.module('app', [ 'ngTable', 'ui.router' ]);
-appres.controller('campaignController', function($scope, $filter, $rootScope,
-		$http, NgTableParams) {
 
+
+var appres = angular.module('app', [ 'ngTable', 'ui.router', 'ngMessages', 'daterangepicker' ]);
+appres.controller('campaignController', function($scope, $filter, $rootScope,
+		$http, NgTableParams) { 
+	    
 	$scope.css  = CSS_DEFAULT;
 	$scope.logo = LOGO_DEFAULT;
 	
 	$scope.filters = {
 		myfilter : FILTER_INIT
+	};
+	
+	$scope.date = {
+			startDate: moment().subtract(1, "days"),
+			endDate: moment()
 	};
 	
 	$scope.getCampaigns = function() {
@@ -32,7 +39,8 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		}).success(
 				function(data, status, headers, config) {
 					$scope.campaigns = data;
-
+					console.log(JSON.stringify(data));
+					
 					$scope.tableCampaigns = new NgTableParams({
 						count : 10
 					}, {
@@ -291,3 +299,5 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/homeTh.html'
 	})
 });
+
+angular.bootstrap(document, ['app']);

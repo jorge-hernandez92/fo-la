@@ -85,6 +85,8 @@
 
 .label-default {
     background-color: #2D96CD;
+    margin-left: 1px;
+    margin-right: 1px
 }
 
 .top-cero{
@@ -644,4 +646,61 @@ a {
     -webkit-transition: border-color ease-in-out .15s, -webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+
+
+/* Custom Colored Panels */
+
+.huge {
+    font-size: 25px;
+}
+
+.panel-green {
+    border-color: #2D96CD;
+}
+
+.panel-green > .panel-heading {
+	height: 100px;
+    border-color: #2D96CD;
+    color: #fff;
+    background-color: #2D96CD;
+}
+
+.panel-green > a {
+    color: #2D96CD;
+}
+
+.panel-green > a:hover {
+    color: #3d8b3d;
+}
+
+.page-header {
+	padding-bottom: 9px;
+	margin: 0 0 20px;
+	border-bottom: 1px solid #eee; 
+	color: #F78D1D;  	
+}
+
+.col-lg-3-user-email {
+    width: 35%;
+}
+
+.col-lg-3-balance {
+    width: 30%;
+}
+
+.font-size-email{
+	font-size: 20px;
+}
+
+.font-title-item{
+	font-weight: bold;
+}
+
+.font-alert-balance{	
+    font-size: 17px;
+    color: #FFF;
+}
+.info-balance{
+    margin: 0 30px 10px;
 }

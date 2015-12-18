@@ -17,30 +17,16 @@
 
 		<form class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
-			
-				<div class='input-group date' id='datetimepicker1'>
-					<input type='text' class="form-control" style="width: 140px;" placeholder="Fecha Inicial" />
-					<span class="input-group-addon"> <span
-						class="glyphicon glyphicon-calendar"></span>
-					</span>
-				</div>
 
-				<div class='input-group date' id='datetimepicker2'>
-					<input type='text' class="form-control" style="width: 140px;" placeholder="Fecha Final" />
-					<span class="input-group-addon"> <span
-						class="glyphicon glyphicon-calendar"></span>
-					</span>
-				</div>
+
+                    <input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
+                
 
 				<input type="text" class="form-control" placeholder="Programa">
 				<input type="text" class="form-control" placeholder="Subprograma">
 				<button class="btn btn-primary">Buscar</button>
-				
-				<script type="text/javascript">
-					$(function() {
-						$('#datetimepicker1').datetimepicker();
-					});
-				</script>
+
+
 			</div>
 
 		</form>
@@ -63,16 +49,19 @@
 			<!-- 			</div> -->
 
 			<div class="panel-body back-sivale">
-				<div data-ng-controller="getCampaigns" ng-cloak>
+				<div data-ng-controller="getCampaigns" ng-cloak class="table-responsive">
 					<table ng-table="tableCampaigns" class="table" show-filter="true">
 						<tr ng-repeat="campaign in $data">
-
 
 							<td title="'Nombre de Campaña'" filter="{campaignName: 'text'}"
 								sortable="'campaignName'">{{campaign.campaignName}}</td>
 
 							<td title="'Clasificación'" filter="{classification: 'text'}"
-								sortable="'classification'">{{campaign.classification}}</td>
+								sortable="'classification'">
+									<span class="label label-default" ng-repeat="class in campaign.classification"
+									>{{class}}</span>
+
+							</td>
 
 							<td title="'Inicio'" filter="{startDate: 'text'}"
 								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td>
@@ -82,26 +71,11 @@
 
 							<td><a href="#" data-ng-click="updateCampaign(campaign)"
 								ui-sref="campaign"> Ver</a></td>
-
-
-							<!-- 							<td title="'Nombre de Campaña'" header-class="'text-left'" -->
-							<!-- 								sortable="'campaignName'">{{campaign.campaignName}}</td> -->
-
-							<!-- 							<td title="'Clasificacion'" header-class="'text-left'" -->
-							<!-- 								sortable="'classification'">{{campaign.classification}}</td> -->
-
-							<!-- 							<td title="'Inicio'" header-class="'text-left'" -->
-							<!-- 								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td> -->
-
-							<!-- 							<td title="'Cierre'" header-class="'text-left'" -->
-							<!-- 								sortable="'endDate'">{{formatDate(campaign.endDate)}}</td> -->
-							<!-- 							<td><a href="#" data-ng-click="updateCampaign(campaign)" -->
-							<!-- 								ui-sref="campaign"> Ver</a></td> -->
-
 						</tr>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </div>

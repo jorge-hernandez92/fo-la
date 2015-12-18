@@ -16,10 +16,13 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
+import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.CatView;
 import com.twobig.sivale.bd.to.TAttachedFile;
+import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.CampaignDetailBean;
 
 import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
@@ -68,28 +71,31 @@ public class ServicesUser {
 	}
 
 	
-	public List<Map> getCampaigns(Integer userId , Integer classification){
+	public List<CampaignDetailBean> getCampaigns(Integer userId , Integer classification){
 		
-		LOGGER.info("UserId = " + userId + "     "+ "classificationId = " + classification);
-		
-		List<Map> campaigns= new ArrayList<Map>();
+		List<CampaignDetailBean> campaigns= new ArrayList<CampaignDetailBean>();
 		Date date = new Date(115,11,1,0,0,0);
 		
+		List<String> classifications = new ArrayList<String>();
+		
+		classifications.add("Compañia");
+		classifications.add("Programa");
+		classifications.add("Subprograma");
+		classifications.add("Unidad de negocio");
+		
 		for (int i = 0; i < 100; i++) {
-			Map campaign = new HashMap();
+			CampaignDetailBean campaign = new CampaignDetailBean();
 			
-			campaign.put("campaignId", "" + i);
-			campaign.put("campaignName", "campaign Name "+i);
-			campaign.put("classification", "classification "+i);
-			campaign.put("startDate", date);
-			campaign.put("endDate", date);
-			
+			campaign.setCampaignId(i);
+			campaign.setCampaignName("campaign Name "+i);
+			campaign.setStartDate(date);
+			campaign.setEndDate(date);
+			campaign.setClassification(classifications);
 			
 			campaigns.add(campaign);
 		}
 		
 		return campaigns;
-		
 	}
 		
 	public List<TPublication> getPubliations(Integer UserId, Integer CampaignId){
@@ -103,11 +109,14 @@ public class ServicesUser {
 			TPublication publication = new TPublication();
 			
 			Date date = new Date(115,11,1,0,0,0);
+			CatPublicationType catPublicationType = new CatPublicationType();
+			catPublicationType.setName("Teaser");
 			
 			publication.setPublicationId(i);
 			publication.setName("Publication Name " + i);
 			publication.setPublishedDate(date);
 			publication.setDescription("Description "+i);
+			publication.setCatPublicationType(catPublicationType);
 			
 			publications.add(publication);
 		}

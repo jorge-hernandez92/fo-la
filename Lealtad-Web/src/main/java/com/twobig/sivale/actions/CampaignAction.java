@@ -19,6 +19,7 @@ import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.CampaignDetailBean;
 import com.xm.sivale.services.test.ServicesUser;
 
 @ParentPackage(value = "json-default")
@@ -29,11 +30,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	private List<CatClassificationCampaign> classifications;
 
-	private List<Map> campaigns;
+	private List<CampaignDetailBean> campaigns;
 
 	private List<TPublication> publications;
 
-	private Map publication;
+	private Map<String, Object> publication;
 
 
 	@Override
@@ -197,7 +198,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return classifications;
 	}
 
-	public List<Map> getCampaigns() {
+	public List<CampaignDetailBean> getCampaigns() {
 		return campaigns;
 	}
 
@@ -205,7 +206,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return publications;
 	}
 
-	public Map getPublication() {
+	public Map<String, Object> getPublication() {
 		return publication;
 	}
 
