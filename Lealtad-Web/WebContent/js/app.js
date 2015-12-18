@@ -19,11 +19,11 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		myfilter : FILTER_INIT
 	};
 	
-	$scope.date = {
-			startDate: moment().subtract(1, "days"),
+	$rootScope.date = {
+			startDate: moment(),
 			endDate: moment()
 	};
-	
+    
 	$scope.getCampaigns = function() {
 
 		var data = escape(angular.toJson($scope.classification));
@@ -265,6 +265,10 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					$scope.balance = (data);  					
 				}).error(function(data, status, headers, config) {
 		});
+	};
+	
+	$scope.find = function() {			
+		alert($scope.date.startDate);
 	};
 	
 });
