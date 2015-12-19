@@ -24,6 +24,10 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class CatClassificationCampaign  implements java.io.Serializable {
 
 
+  /**
+	 * 
+	 */
+  private static final long serialVersionUID = 4703036863978770613L;
   private int catClassificationCampaignsId;
   private CatClassificationCampaign catClassificationCampaigns;
   private CatView catViews;
@@ -31,27 +35,14 @@ public class CatClassificationCampaign  implements java.io.Serializable {
   private String className;
   private String description;
   private int level;
+  
+  public static final String FIELD_CAT_CLASSIFICATION_ID = "catClassificationCampaignsId";
 
+  
  public CatClassificationCampaign() {
  }
 
-	
- public CatClassificationCampaign(int catClassificationCampaignsId, TCompany TCompanies, String className) {
-     this.catClassificationCampaignsId = catClassificationCampaignsId;
-     this.TCompanies = TCompanies;
-     this.className = className;
-     this.level = level;
- }
- public CatClassificationCampaign(int catClassificationCampaignsId, CatClassificationCampaign catClassificationCampaigns, CatView catViews, TCompany TCompanies, String className, String description) {
-    this.catClassificationCampaignsId = catClassificationCampaignsId;
-    this.catClassificationCampaigns = catClassificationCampaigns;
-    this.catViews = catViews;
-    this.TCompanies = TCompanies;
-    this.className = className;
-    this.description = description;
-    this.level = level;
- }
-
+ 
   @Id 
 
  

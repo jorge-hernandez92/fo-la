@@ -20,7 +20,11 @@ import javax.persistence.Table;
 public class CatClassificationUser  implements java.io.Serializable {
 
 
-     private int catClassificationUsersId;
+     /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8079574288888629006L;
+	private int catClassificationUsersId;
      private CatClassificationUser catClassificationUsers;
      private CatView catViews;
      private TCompany TCompanies;

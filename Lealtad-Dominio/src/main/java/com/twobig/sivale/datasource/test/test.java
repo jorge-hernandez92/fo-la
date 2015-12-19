@@ -55,16 +55,17 @@ public class test {
 		CatClassificationCampaignService cccs = 
 				(CatClassificationCampaignService) context.getBean("catClassificationCampaignServiceImpl");
 		
-		List<Integer> campaignsByUser = new ArrayList<Integer>();
+		cccs.getCatClassificationCampaignByClassificationId(7);
 		
-		List<RealUsersCampaigns> listA = cccs.getRealUsersCampaignsByUserId(7);  
-		
-		for(RealUsersCampaigns listA2: listA){
-			campaignsByUser.add(listA2.getCampaignId());
-		}
-		
-		System.out.println(campaignsByUser);
-		System.out.println(cccs.getRelCampaignsClassificationByCampaign((ArrayList<Integer>) campaignsByUser));
+//		List<Integer> campaignsByUser = new ArrayList<Integer>();
+//		
+//		List<RealUsersCampaigns> listA = cccs.getRealUsersCampaignsByUserId(7);  
+//		
+//		for(RealUsersCampaigns listA2: listA){
+//			campaignsByUser.add(listA2.getCampaignId());
+//		}
+//		
+//		System.out.println(cccs.getRelCampaignsClassificationByCampaign((ArrayList<Integer>) campaignsByUser));
 		
 	}
 

@@ -23,27 +23,29 @@ public class RealCampaignsClassification implements Serializable {
 	public static final String FIELD_REL_CAMPAIGN_ID 	   = "campaignId";
 
 	@Id
-	@Column(name = "campaign_id", unique = true, nullable = false)
-	private int classificationId;
+	@Column(name = "classification_id", unique = true, nullable = false)
+	private Integer classificationId;
 
 	@Id
-	@Column(name = "user_id", unique = true, nullable = false)
-	private int campaignId;
+	@Column(name = "campaign_id", unique = true, nullable = false)
+	private Integer campaignId;
 
-	public int getClassificationId() {
+	public Integer getClassificationId() {
 		return classificationId;
 	}
 
-	public void setClassificationId(int classificationId) {
+	public void setClassificationId(Integer classificationId) {
 		this.classificationId = classificationId;
 	}
 
-	public int getCampaignId() {
+	public Integer getCampaignId() {
 		return campaignId;
 	}
 
-	public void setCampaignId(int campaignId) {
+	public void setCampaignId(Integer campaignId) {
 		this.campaignId = campaignId;
 	}
+	
+	
 
 }

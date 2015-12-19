@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.stereotype.Repository;
 
 import com.twobig.sivale.bd.to.RealCampaignsClassification;
 import com.twobig.sivale.dao.RealCampaignsClassificationDAO;
 
+
+@Repository
 public class RealCampaignsClassificationDAOImpl extends
 GenericDAOImpl<RealCampaignsClassification, Long> implements RealCampaignsClassificationDAO {
 	
@@ -24,12 +28,12 @@ GenericDAOImpl<RealCampaignsClassification, Long> implements RealCampaignsClassi
 		DetachedCriteria criteria = DetachedCriteria
 				.forClass(RealCampaignsClassification.class);
 		
-		for(int i = 0; i < campaignId.size(); i++){
-			criteria.add(Restrictions.eq(
-					RealCampaignsClassification.FIELD_REL_CAMPAIGN_ID, campaignId.get(i)));
-		}
+		criteria.add(Restrictions.in(RealCampaignsClassification.FIELD_REL_CAMPAIGN_ID, campaignId));
 		
-
+		
+		//criteria.setProjection(Projections.distinct(Projections.property("campaignId")));
+		
+		
 		return getListByCriteria(criteria);
 	}
 

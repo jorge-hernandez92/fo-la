@@ -3,6 +3,7 @@ package com.twobig.sivale.service;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealCampaignsClassification;
 import com.twobig.sivale.bd.to.RealUsersCampaigns;
 
@@ -23,5 +24,7 @@ public interface CatClassificationCampaignService {
 	public List<RealUsersCampaigns> getRealUsersCampaignsByUserId(int userId);
 	
 	public List<RealCampaignsClassification> getRelCampaignsClassificationByCampaign(ArrayList<Integer> campaignsByUser);
+	
+	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId);
 	
 }
