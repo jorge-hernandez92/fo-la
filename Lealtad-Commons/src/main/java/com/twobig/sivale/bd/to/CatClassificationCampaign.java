@@ -37,6 +37,7 @@ public class CatClassificationCampaign  implements java.io.Serializable {
   private int level;
   
   public static final String FIELD_CAT_CLASSIFICATION_ID = "catClassificationCampaignsId";
+  public static final String FIELD_CAT_CLASSIFICATION_LEVEL = "level";
 
   
  public CatClassificationCampaign() {
@@ -114,4 +115,14 @@ public class CatClassificationCampaign  implements java.io.Serializable {
  public void setLevel(int level) {
      this.level = level;
  }
+
+
+@Override
+public String toString() {
+	return "CatClassificationCampaign [catClassificationCampaignsId=" + catClassificationCampaignsId
+			+  ", className=" + className + ", description=" + description + ", level=" + level + "]";
+}
+ 
+ 
+ 
 }

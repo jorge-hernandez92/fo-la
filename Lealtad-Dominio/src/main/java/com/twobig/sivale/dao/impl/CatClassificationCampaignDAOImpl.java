@@ -31,4 +31,18 @@ GenericDAOImpl<CatClassificationCampaign, Long> implements CatClassificationCamp
 		return getListByCriteria(criteria);
 	}
 
+
+	@Override
+	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(
+			List<Integer> classificationId, int level) {
+
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(CatClassificationCampaign.class);
+		
+		criteria.add(Restrictions.in(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_ID, classificationId));
+		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_LEVEL, level));
+		
+		return getListByCriteria(criteria);
+	}
+
 }

@@ -48,10 +48,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId) {
-		
-		
-		
-		List<RealUsersCampaigns> listA = getRealUsersCampaignsByUserId(7);  
+		List<RealUsersCampaigns> listA = getRealUsersCampaignsByUserId(userId);  
 		
 		List<Integer> campaignsByUser = new ArrayList<Integer>();
 		
@@ -66,7 +63,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	
 		for(int i = 0; i < classificationByUser.size(); i++){
 			classificationByUserInt.add(classificationByUser.get(i).getClassificationId());
-			System.out.println(classificationByUserInt.get(i));
+			//System.out.println(classificationByUserInt.get(i));
 		}
 		
 		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
@@ -74,19 +71,33 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 		classificationByUserInt.clear();
 		classificationByUserInt.addAll(linkedHashSet);
 		
-		System.out.println();
-		
-		for(int i = 0; i < classificationByUserInt.size(); i++){
-			System.out.print(" "+classificationByUserInt.get(i));
-		}
-		
-		
-		
-		System.out.println(catClassificationCampaignDAO.getCatClassificationCampaignByClassificationId(classificationByUserInt));
-		
-		return null;
+		return catClassificationCampaignDAO.getCatClassificationCampaignByClassificationId(classificationByUserInt);
 	}
 	
+	@Override
+	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId, int level) {
+		List<RealUsersCampaigns> listA = getRealUsersCampaignsByUserId(userId);  
+		
+		List<Integer> campaignsByUser = new ArrayList<Integer>();
+		
+		for(RealUsersCampaigns listA2: listA){
+			campaignsByUser.add(listA2.getCampaignId());
+		}
+		
+		List<RealCampaignsClassification> classificationByUser = getRelCampaignsClassificationByCampaign( (ArrayList<Integer>) campaignsByUser);
+		
+		
+		List<Integer> classificationByUserInt = new ArrayList<Integer>();
 	
-
+		for(int i = 0; i < classificationByUser.size(); i++){
+			classificationByUserInt.add(classificationByUser.get(i).getClassificationId());
+		}
+		
+		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
+		linkedHashSet.addAll(classificationByUserInt);
+		classificationByUserInt.clear();
+		classificationByUserInt.addAll(linkedHashSet);
+		
+		return catClassificationCampaignDAO.getCatClassificationCampaignByClassificationId(classificationByUserInt, level);
+	}
 }

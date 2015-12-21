@@ -27,4 +27,6 @@ public interface CatClassificationCampaignService {
 	
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId);
 	
+	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId, int level);
+	
 }

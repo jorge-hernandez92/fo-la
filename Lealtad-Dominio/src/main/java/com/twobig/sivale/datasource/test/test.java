@@ -6,6 +6,7 @@ import java.util.Map;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.CatProfile;
 import com.twobig.sivale.bd.to.RealUsersCampaigns;
 import com.twobig.sivale.beans.TUserLogin;
@@ -55,17 +56,12 @@ public class test {
 		CatClassificationCampaignService cccs = 
 				(CatClassificationCampaignService) context.getBean("catClassificationCampaignServiceImpl");
 		
-		cccs.getCatClassificationCampaignByClassificationId(7);
+		List<CatClassificationCampaign> clasificaciones = cccs.getCatClassificationCampaignByClassificationId(7,1);
 		
-//		List<Integer> campaignsByUser = new ArrayList<Integer>();
-//		
-//		List<RealUsersCampaigns> listA = cccs.getRealUsersCampaignsByUserId(7);  
-//		
-//		for(RealUsersCampaigns listA2: listA){
-//			campaignsByUser.add(listA2.getCampaignId());
-//		}
-//		
-//		System.out.println(cccs.getRelCampaignsClassificationByCampaign((ArrayList<Integer>) campaignsByUser));
+		
+		for (int i = 0; i < clasificaciones.size(); i++){
+			 System.out.println(clasificaciones.get(i));
+		}
 		
 	}
 
@@ -75,7 +71,10 @@ public class test {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 			     "classpath:/application-context.xml");
 		
+		//SERVICIO DE LOGIN PARA ADMINISTRADOR
 		login(context);
+		
+		//SERVICIO DE CLASIFICACIONES 
 		clasificaciones(context);
 		
 	}

@@ -8,4 +8,6 @@ public interface CatClassificationCampaignDAO {
 	
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(List<Integer> classificationId);
 	
+	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(List<Integer> classificationId, int level);
+	
 }
