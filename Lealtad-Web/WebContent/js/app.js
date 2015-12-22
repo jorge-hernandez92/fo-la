@@ -85,6 +85,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 				$scope.classifications = data;
 				$scope.css = CSS_DEFAULT;
 				$scope.logo = LOGO_DEFAULT;
+				$scope.classification = '';
 
 			}).error(function(data, status, headers, config) {
 
