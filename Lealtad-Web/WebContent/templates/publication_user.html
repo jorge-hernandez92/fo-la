@@ -40,7 +40,12 @@
 									<table ng-table="tableAttachedFiles" class="table">
 										<tr ng-repeat="file in $data">
 
-											<td header-class="'text-left'">{{file.fileName}}</td>
+											<td header-class="'text-left'">
+												<a href="#"
+												data-ng-click="getFile(file)"
+												>{{file.fileName}}</a>
+											</td>
+	
 										</tr>
 									</table>
 								</div>
