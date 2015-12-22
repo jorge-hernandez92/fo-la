@@ -7,5 +7,4 @@ public class PathConstants {
 	 */
 	public static final String ATTACHED_DIRECTORY = "../eclipseApps/Lealtad-Web/attachedFiles/";
 
-	
 }
