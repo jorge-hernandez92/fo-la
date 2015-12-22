@@ -36,29 +36,8 @@ public class TPublication  implements java.io.Serializable {
      private String dataFilePage;
      private byte[] dataFileBlob;
      private String description;
-
-    public TPublication() {
-    }
-
-	
-    public TPublication(int publicationId, CatPublicationType catPublicationType, TCampaign TCampaigns) {
-        this.publicationId = publicationId;
-        this.catPublicationType = catPublicationType;
-        this.TCampaigns = TCampaigns;
-    }
-    public TPublication(int publicationId, CatPublicationType catPublicationType, TCampaign TCampaigns, Date publishedDate, String name, String templateFilePath, byte[] templateFileBlob, String dataFilePath, String dataFilePage, byte[] dataFileBlob, String description) {
-       this.publicationId = publicationId;
-       this.catPublicationType = catPublicationType;
-       this.TCampaigns = TCampaigns;
-       this.publishedDate = publishedDate;
-       this.name = name;
-       this.templateFilePath = templateFilePath;
-       this.templateFileBlob = templateFileBlob;
-       this.dataFilePath = dataFilePath;
-       this.dataFilePage = dataFilePage;
-       this.dataFileBlob = dataFileBlob;
-       this.description = description;
-    }
+     
+     public static final String FIELD_PUBLICATION_ID = "publicationId";
    
      @Id 
 
@@ -72,7 +51,7 @@ public class TPublication  implements java.io.Serializable {
         this.publicationId = publicationId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="fk_publication_type", nullable=false)
     public CatPublicationType getCatPublicationType() {
         return this.catPublicationType;
@@ -82,7 +61,7 @@ public class TPublication  implements java.io.Serializable {
         this.catPublicationType = catPublicationType;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
+@ManyToOne(fetch=FetchType.EAGER)
     @JoinColumn(name="fk_campaign", nullable=false)
     public TCampaign getTCampaigns() {
         return this.TCampaigns;
@@ -171,5 +150,14 @@ public class TPublication  implements java.io.Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+
+	@Override
+	public String toString() {
+		return "TPublication [publicationId=" + publicationId + ", publishedDate=" + publishedDate + ", name=" + name
+				+ ", description=" + description + "]";
+	}
+    
+    
+    
 
 }

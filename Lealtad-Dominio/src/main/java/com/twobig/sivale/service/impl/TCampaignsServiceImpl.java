@@ -28,7 +28,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 
 
 	@Override
-	public List<TCampaign> getCampaignByUserIdAndCampaignId(int userId, int campaignId) {
+	public List<TCampaign> getCampaignByUserIdAndClassificationCampaignsId(int userId, int campaignId) {
 		
 		List<RealUsersCampaigns> listA = realUsersCampaignsDAO.getRealUsersCampaignsByUserId(userId);  
 		

@@ -12,6 +12,7 @@ import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.LoginService;
 import com.twobig.sivale.service.TCampaignsService;
+import com.twobig.sivale.service.TPublicationService;
 
 
 public class test {
@@ -68,14 +69,21 @@ public class test {
 		TCampaignsService cccs = 
 				(TCampaignsService) context.getBean("TCampaignsServiceImpl");
 		
-		List<TCampaign> clasificaciones = 
-				cccs.getCampaignByUserIdAndCampaignId(7, 1);
+		List<TCampaign> clasificaciones = cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 1); 
+				//cccs.getCampaignByUserIdAndCampaignId(7, 1);
 		
 		
 		for (int i = 0; i < clasificaciones.size(); i++){
 			 System.out.println(clasificaciones.get(i).toString());
 		}
-				
+	}
+	
+	public static void publicaciones(ClassPathXmlApplicationContext context){
+		TPublicationService cccs = 
+		(TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		cccs.getTPublicationByUserIdAndCampaignId(7, 1);
+		
 	}
 			
 	public static void main(String[] args) {
@@ -84,16 +92,17 @@ public class test {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 			     "classpath:/application-context.xml");
 		
-		//SERVICIO DE LOGIN PARA ADMINISTRADOR
-		login(context);
+//		//SERVICIO DE LOGIN PARA ADMINISTRADOR
+//		login(context);
+//		
+//		//SERVICIO DE CLASIFICACIONES 
+//		clasificaciones(context);
+//		
+//		//SERVICIO DE CAMPAÑAS
+//		campañas(context);
 		
-		//SERVICIO DE CLASIFICACIONES 
-		clasificaciones(context);
-		
-		//SERVICIO DE CAMPAÑAS
-		campañas(context);
-		
-		//SERVICIO DE PUBLICACIONES 
+		//SERVICIO DE PUBLICACIONES
+		publicaciones(context);
 		
 	}
 }

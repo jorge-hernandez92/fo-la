@@ -24,18 +24,8 @@ public class CatPublicationType  implements java.io.Serializable {
 
  public CatPublicationType() {
  }
-
-	
- public CatPublicationType(int publicationTypeId, String name) {
-     this.publicationTypeId = publicationTypeId;
-     this.name = name;
- }
- public CatPublicationType(int publicationTypeId, String name, String description) {
-    this.publicationTypeId = publicationTypeId;
-    this.name = name;
-    this.description = description;
- }
-
+ 
+ 
   @Id 
 
  
@@ -67,5 +57,14 @@ public class CatPublicationType  implements java.io.Serializable {
  public void setDescription(String description) {
      this.description = description;
  }
+
+
+@Override
+public String toString() {
+	return "CatPublicationType [publicationTypeId=" + publicationTypeId + ", name=" + name + ", description="
+			+ description + "]";
+}
+ 
+ 
 
 }

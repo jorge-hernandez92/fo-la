@@ -6,5 +6,5 @@ import com.twobig.sivale.bd.to.TCampaign;
 
 public interface TCampaignsService {
 	
-	public List<TCampaign> getCampaignByUserIdAndCampaignId(int userId,int campaignId);
+	public List<TCampaign> getCampaignByUserIdAndClassificationCampaignsId(int userId,int classificationCampaignsId);
 }
