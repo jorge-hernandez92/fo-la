@@ -1,11 +1,10 @@
 package com.twobig.sivale.service.impl;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.RealCampaignsClassification;
 import com.twobig.sivale.bd.to.RealUsersCampaigns;
@@ -14,6 +13,7 @@ import com.twobig.sivale.dao.RealCampaignsClassificationDAO;
 import com.twobig.sivale.dao.RealUsersCampaignsDAO;
 import com.twobig.sivale.service.TCampaignsService;
 
+@Service
 public class TCampaignsServiceImpl implements TCampaignsService {
 	
 	@Autowired
@@ -40,9 +40,11 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignIdAndClassificationCampaignsId((ArrayList<Integer>) campaignsByUser, campaignId);
 		
-		
+		System.out.println("");
 		for(int i = 0; i < classificationByUser.size(); i++){
-			System.out.println(classificationByUser.get(i));
+			System.out.println("");
+			System.out.print(classificationByUser.get(i).getClassificationId()+"  ");
+			System.out.print(classificationByUser.get(i).getCampaignId());
 		}
 		
 //		List<Integer> classificationByUserInt = new ArrayList<Integer>();

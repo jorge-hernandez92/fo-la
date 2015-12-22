@@ -1,5 +1,4 @@
 package com.twobig.sivale.datasource.test;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,12 +6,12 @@ import java.util.Map;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
-import com.twobig.sivale.bd.to.CatProfile;
-import com.twobig.sivale.bd.to.RealUsersCampaigns;
+import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.beans.TUserLogin;
 import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.LoginService;
+import com.twobig.sivale.service.TCampaignsService;
 
 
 public class test {
@@ -64,7 +63,21 @@ public class test {
 		}
 		
 	}
-
+	
+	public static void campañas(ClassPathXmlApplicationContext context){
+		TCampaignsService cccs = 
+				(TCampaignsService) context.getBean("TCampaignsServiceImpl");
+		
+		//List<TCampaign> clasificaciones = 
+				cccs.getCampaignByUserIdAndCampaignId(7, 1);
+		
+		
+//		for (int i = 0; i < clasificaciones.size(); i++){
+//			 System.out.println(clasificaciones.get(i));
+//		}
+				
+	}
+			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
@@ -75,9 +88,10 @@ public class test {
 		//login(context);
 		
 		//SERVICIO DE CLASIFICACIONES 
-		clasificaciones(context);
+		//clasificaciones(context);
 		
 		//SERVICIO DE CAMPAÑAS
+		campañas(context);
 		
 		
 	}
