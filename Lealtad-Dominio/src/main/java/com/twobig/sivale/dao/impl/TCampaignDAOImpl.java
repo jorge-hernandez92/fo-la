@@ -23,7 +23,7 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long>
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(TCampaign.class);
 		
-		criteria.add(Restrictions.in(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_ID, campaignId));
+		criteria.add(Restrictions.in(TCampaign.FIELD_COMPANY_ID, campaignId));
 		
 		return getListByCriteria(criteria);
 	}

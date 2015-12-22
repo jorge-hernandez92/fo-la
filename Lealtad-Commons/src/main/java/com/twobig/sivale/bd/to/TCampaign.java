@@ -27,13 +27,12 @@ public class TCampaign  implements java.io.Serializable {
 
 
      private int campaignId;
-     private TCompany TCompanies;
      private Date startDate;
      private Date endDate;
      private String campaignName;
      private String description;
      
-     public static final String FIELD_COMPANY_ID = "idCompany";
+     public static final String FIELD_COMPANY_ID = "campaignId";
 
     
      @Id 
@@ -46,16 +45,6 @@ public class TCampaign  implements java.io.Serializable {
     
     public void setCampaignId(int campaignId) {
         this.campaignId = campaignId;
-    }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="fk_company", nullable=false)
-    public TCompany getTCompanies() {
-        return this.TCompanies;
-    }
-    
-    public void setTCompanies(TCompany TCompanies) {
-        this.TCompanies = TCompanies;
     }
 
     @Temporal(TemporalType.TIMESTAMP)
@@ -97,7 +86,12 @@ public class TCampaign  implements java.io.Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-    
+
+	@Override
+	public String toString() {
+		return "TCampaign [campaignId=" + campaignId + ", startDate=" + startDate + ", endDate=" + endDate
+				+ ", campaignName=" + campaignName + ", description=" + description + "]";
+	}
 }
 
 

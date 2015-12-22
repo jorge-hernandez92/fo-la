@@ -68,13 +68,13 @@ public class test {
 		TCampaignsService cccs = 
 				(TCampaignsService) context.getBean("TCampaignsServiceImpl");
 		
-		//List<TCampaign> clasificaciones = 
+		List<TCampaign> clasificaciones = 
 				cccs.getCampaignByUserIdAndCampaignId(7, 1);
 		
 		
-//		for (int i = 0; i < clasificaciones.size(); i++){
-//			 System.out.println(clasificaciones.get(i));
-//		}
+		for (int i = 0; i < clasificaciones.size(); i++){
+			 System.out.println(clasificaciones.get(i).toString());
+		}
 				
 	}
 			
@@ -85,14 +85,15 @@ public class test {
 			     "classpath:/application-context.xml");
 		
 		//SERVICIO DE LOGIN PARA ADMINISTRADOR
-		//login(context);
+		login(context);
 		
 		//SERVICIO DE CLASIFICACIONES 
-		//clasificaciones(context);
+		clasificaciones(context);
 		
 		//SERVICIO DE CAMPAÑAS
 		campañas(context);
 		
+		//SERVICIO DE PUBLICACIONES 
 		
 	}
 }

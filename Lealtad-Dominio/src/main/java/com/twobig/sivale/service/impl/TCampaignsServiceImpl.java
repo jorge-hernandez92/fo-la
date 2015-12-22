@@ -11,6 +11,7 @@ import com.twobig.sivale.bd.to.RealUsersCampaigns;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.dao.RealCampaignsClassificationDAO;
 import com.twobig.sivale.dao.RealUsersCampaignsDAO;
+import com.twobig.sivale.dao.TCampaignDAO;
 import com.twobig.sivale.service.TCampaignsService;
 
 @Service
@@ -21,6 +22,9 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 	
 	@Autowired
 	public RealCampaignsClassificationDAO realCampaignsClassificationDAO;
+	
+	@Autowired
+	public TCampaignDAO tCampaignDAO;
 
 
 	@Override
@@ -34,33 +38,19 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			campaignsByUser.add(listA2.getCampaignId());
 		}
 		
-		//List<RealCampaignsClassification> classificationByUser = getRelCampaignsClassificationByCampaign( (ArrayList<Integer>) campaignsByUser);
+		List<RealCampaignsClassification> classificationByUser = 
+				realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignIdAndClassificationCampaignsId(
+						(ArrayList<Integer>) campaignsByUser, campaignId);		
 		
-		//List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignId((ArrayList<Integer>) campaignsByUser);
-		
-		List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignIdAndClassificationCampaignsId((ArrayList<Integer>) campaignsByUser, campaignId);
-		
-		System.out.println("");
+		List<Integer> tCampaignByCampaignId = new ArrayList<Integer>();
+	
 		for(int i = 0; i < classificationByUser.size(); i++){
-			System.out.println("");
-			System.out.print(classificationByUser.get(i).getClassificationId()+"  ");
-			System.out.print(classificationByUser.get(i).getCampaignId());
+			tCampaignByCampaignId.add(classificationByUser.get(i).getCampaignId());
 		}
 		
-//		List<Integer> classificationByUserInt = new ArrayList<Integer>();
-//	
-//		for(int i = 0; i < classificationByUser.size(); i++){
-//			classificationByUserInt.add(classificationByUser.get(i).getClassificationId());
-//			//System.out.println(classificationByUserInt.get(i));
-//		}
-//		
-//		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
-//		linkedHashSet.addAll(classificationByUserInt);
-//		classificationByUserInt.clear();
-//		classificationByUserInt.addAll(linkedHashSet);
 		
-		//return catClassificationCampaignDAO.getCatClassificationCampaignByClassificationId(classificationByUserInt);
-		return null;
+		List<TCampaign> tCampaign = tCampaignDAO.getTCampaignByCampaignId(tCampaignByCampaignId);
+		return tCampaign;
 	}
 
 }

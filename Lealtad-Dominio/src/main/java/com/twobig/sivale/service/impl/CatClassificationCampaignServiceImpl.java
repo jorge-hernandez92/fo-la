@@ -36,19 +36,11 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	private final static Logger LOGGER = LoggerFactory
 			.getLogger(CatClassificationCampaignServiceImpl.class);
 
-	@Override
-	public List<RealUsersCampaigns> getRealUsersCampaignsByUserId(int userId) {
-		return realUsersCampaignsDAO.getRealUsersCampaignsByUserId(userId);
-	}
-
-	@Override
-	public List<RealCampaignsClassification> getRelCampaignsClassificationByCampaign(ArrayList<Integer> campaignsByUser) {
-		return realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignId(campaignsByUser);
-	}
 	
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId) {
-		List<RealUsersCampaigns> listA = getRealUsersCampaignsByUserId(userId);  
+		
+		List<RealUsersCampaigns> listA = realUsersCampaignsDAO.getRealUsersCampaignsByUserId(userId);
 		
 		List<Integer> campaignsByUser = new ArrayList<Integer>();
 		
@@ -56,14 +48,12 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			campaignsByUser.add(listA2.getCampaignId());
 		}
 		
-		List<RealCampaignsClassification> classificationByUser = getRelCampaignsClassificationByCampaign( (ArrayList<Integer>) campaignsByUser);
-		
+		List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignId((ArrayList<Integer>) campaignsByUser);
 		
 		List<Integer> classificationByUserInt = new ArrayList<Integer>();
 	
 		for(int i = 0; i < classificationByUser.size(); i++){
 			classificationByUserInt.add(classificationByUser.get(i).getClassificationId());
-			//System.out.println(classificationByUserInt.get(i));
 		}
 		
 		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
@@ -76,7 +66,8 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId, int level) {
-		List<RealUsersCampaigns> listA = getRealUsersCampaignsByUserId(userId);  
+	
+		List<RealUsersCampaigns> listA = realUsersCampaignsDAO.getRealUsersCampaignsByUserId(userId);
 		
 		List<Integer> campaignsByUser = new ArrayList<Integer>();
 		
@@ -84,7 +75,8 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			campaignsByUser.add(listA2.getCampaignId());
 		}
 		
-		List<RealCampaignsClassification> classificationByUser = getRelCampaignsClassificationByCampaign( (ArrayList<Integer>) campaignsByUser);
+		
+		List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignId((ArrayList<Integer>)campaignsByUser);
 		
 		
 		List<Integer> classificationByUserInt = new ArrayList<Integer>();

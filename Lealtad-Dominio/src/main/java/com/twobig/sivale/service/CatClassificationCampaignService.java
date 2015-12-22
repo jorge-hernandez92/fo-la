@@ -21,10 +21,6 @@ public interface CatClassificationCampaignService {
 	 * @return list of RealUsersCampaigns
 	 */
 	
-	public List<RealUsersCampaigns> getRealUsersCampaignsByUserId(int userId);
-	
-	public List<RealCampaignsClassification> getRelCampaignsClassificationByCampaign(ArrayList<Integer> campaignsByUser);
-	
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId);
 	
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId, int level);
