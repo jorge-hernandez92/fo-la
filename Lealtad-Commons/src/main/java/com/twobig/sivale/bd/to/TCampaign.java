@@ -32,24 +32,10 @@ public class TCampaign  implements java.io.Serializable {
      private Date endDate;
      private String campaignName;
      private String description;
+     
+     public static final String FIELD_COMPANY_ID = "idCompany";
 
-    public TCampaign() {
-    }
-
-	
-    public TCampaign(int campaignId, TCompany TCompanies) {
-        this.campaignId = campaignId;
-        this.TCompanies = TCompanies;
-    }
-    public TCampaign(int campaignId, TCompany TCompanies, Date startDate, Date endDate, String campaignName, String description) {
-       this.campaignId = campaignId;
-       this.TCompanies = TCompanies;
-       this.startDate = startDate;
-       this.endDate = endDate;
-       this.campaignName = campaignName;
-       this.description = description;
-    }
-   
+    
      @Id 
 
     
@@ -111,8 +97,7 @@ public class TCampaign  implements java.io.Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
-
+    
 }
 
 

@@ -23,7 +23,6 @@ GenericDAOImpl<RealCampaignsClassification, Long> implements RealCampaignsClassi
 
 	@Override
 	public List<RealCampaignsClassification> getRealCampaignsClassificationByCampaignId(ArrayList<Integer> campaignId) {
-		// TODO Auto-generated method stub
 		
 		DetachedCriteria criteria = DetachedCriteria
 				.forClass(RealCampaignsClassification.class);
@@ -36,5 +35,20 @@ GenericDAOImpl<RealCampaignsClassification, Long> implements RealCampaignsClassi
 		
 		return getListByCriteria(criteria);
 	}
+
+	@Override
+	public List<RealCampaignsClassification> getRealCampaignsClassificationByCampaignIdAndClassificationCampaignsId(
+			ArrayList<Integer> campaignId, int classificationCampaignsId) {
+		
+		
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(RealCampaignsClassification.class);
+		
+		criteria.add(Restrictions.in(RealCampaignsClassification.FIELD_REL_CAMPAIGN_ID, campaignId));
+		criteria.add(Restrictions.eq(RealCampaignsClassification.FIELD_REL_CLASSIFICATION_ID, classificationCampaignsId));		
+		return getListByCriteria(criteria);
+	}
+	
+	
 
 }

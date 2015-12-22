@@ -35,14 +35,14 @@ public class test {
     	
 		if ((tUserLogin = loginService.validateUserWeb(userBean)) != null) {			 						
 						
-			userDetails.put("email", tUserLogin.getEmail());
-			userDetails.put("functionalities", tUserLogin.getFunctionalities());
-			userDetails.put("userId", tUserLogin.getUserId());
-			userDetails.put("rfcClient", tUserLogin.gettCompanies().getDescription());
-			userDetails.put("clientName", tUserLogin.gettCompanies().getName());
-			userDetails.put("userName", tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
-			userDetails.put("cardNumber", tUserLogin.getTjCardNumber());
-			userDetails.put("clientId", tUserLogin.gettCompanies().getIdCompany());	
+			userDetails.put("email", 			tUserLogin.getEmail());
+			userDetails.put("functionalities", 	tUserLogin.getFunctionalities());
+			userDetails.put("userId", 			tUserLogin.getUserId());
+			userDetails.put("rfcClient", 		tUserLogin.gettCompanies().getDescription());
+			userDetails.put("clientName", 		tUserLogin.gettCompanies().getName());
+			userDetails.put("userName", 		tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
+			userDetails.put("cardNumber", 		tUserLogin.getTjCardNumber());
+			userDetails.put("clientId", 		tUserLogin.gettCompanies().getIdCompany());	
 			System.out.println(userDetails.toString());
 			
 		} else {
@@ -72,10 +72,13 @@ public class test {
 			     "classpath:/application-context.xml");
 		
 		//SERVICIO DE LOGIN PARA ADMINISTRADOR
-		login(context);
+		//login(context);
 		
 		//SERVICIO DE CLASIFICACIONES 
 		clasificaciones(context);
+		
+		//SERVICIO DE CAMPAÑAS
+		
 		
 	}
 }
