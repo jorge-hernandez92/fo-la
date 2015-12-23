@@ -579,7 +579,7 @@
 }
 
 .shop-menu ul li a {
-  background: #fff;
+  background: #F0F0E9;
   color: #8c8c8c;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -595,7 +595,7 @@
 
 .shop-menu ul li a:hover {
 	color:#df8d2e;
-	background:#fff;
+	background:#F0F0E9;
 }
 
 
