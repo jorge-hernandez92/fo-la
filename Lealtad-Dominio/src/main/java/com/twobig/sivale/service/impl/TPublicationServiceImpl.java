@@ -34,12 +34,7 @@ public class TPublicationServiceImpl implements TPublicationService{
 		
 		List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignsByUser);
 		
-		for(int i = 0; i < publicaciones.size();i++){
-			System.out.println(publicaciones.get(i).toString()+" ");
-			System.out.print(publicaciones.get(i).getCatPublicationType());
-		}
-		
-		return null;
+		return publicaciones;
 	}
 
 }

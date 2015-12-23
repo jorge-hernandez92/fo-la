@@ -7,6 +7,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.TUserLogin;
 import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
@@ -82,7 +83,12 @@ public class test {
 		TPublicationService cccs = 
 		(TPublicationService) context.getBean("TPublicationServiceImpl");
 		
-		cccs.getTPublicationByUserIdAndCampaignId(7, 1);
+		List<TPublication> publicaciones = cccs.getTPublicationByUserIdAndCampaignId(7, 1);
+		
+		for (int i = 0; i < publicaciones.size(); i++) {
+			System.out.println(publicaciones.get(i).toString() + " ");
+			System.out.print(publicaciones.get(i).getCatPublicationType());
+		}
 		
 	}
 			
@@ -100,9 +106,11 @@ public class test {
 //		
 //		//SERVICIO DE CAMPAÑAS
 //		campañas(context);
+//		
+//		//SERVICIO DE PUBLICACIONES
+//		publicaciones(context);
 		
-		//SERVICIO DE PUBLICACIONES
-		publicaciones(context);
+		
 		
 	}
 }

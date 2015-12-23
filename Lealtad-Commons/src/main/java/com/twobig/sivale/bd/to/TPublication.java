@@ -156,8 +156,4 @@ public class TPublication  implements java.io.Serializable {
 		return "TPublication [publicationId=" + publicationId + ", publishedDate=" + publishedDate + ", name=" + name
 				+ ", description=" + description + "]";
 	}
-    
-    
-    
-
 }
