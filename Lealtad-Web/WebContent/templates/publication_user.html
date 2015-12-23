@@ -9,10 +9,9 @@
 <div class="panel-body back-sivale">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Inicio</a></li>
 			<li><a ui-sref="campaigns">Mis Campañas</a></li>
-			<li><a ui-sref="campaign">Campaña</a></li>
-			<li class="active"><span>Publicación</span></li>
+			<li><a ui-sref="campaign">Publicaciones</a></li>
+			<li class="active"><span>{{publication.name}}</span></li>
 		</ol>
 	</div>
 	<div class="container">
@@ -31,7 +30,7 @@
 			<div class="panel-body back-sivale">
 				<div class="row">
 					<div>
-						<div class="col-md-3">
+						<div class="col-md-2">
 							<div class="panel panel-default table-top-sivale">
 								<div class="panel-heading">
 									<div class="container-fluid">Archivos</div>
@@ -41,17 +40,22 @@
 									<table ng-table="tableAttachedFiles" class="table">
 										<tr ng-repeat="file in $data">
 
-											<td header-class="'text-left'">{{file.fileName}}</td>
+											<td header-class="'text-left'">
+												<a href="#"
+												data-ng-click="getFile(file)"
+												>{{file.fileName}}</a>
+											</td>
+	
 										</tr>
 									</table>
 								</div>
 							</div>
 						</div>
 
-						<div class="col-md-9">
+						<div class="col-md-10">
 							<div class="panel panel-default table-top-sivale">
 								<div class="panel-heading">
-									<div class="container-fluid">{{publication.name}}</div>
+									<div class="container-fluid"><span class="label label-default">{{publication.catPublicationType.name}}</span> {{publication.name}}</div>
 								</div>
 								<div class="panel-body back-sivale publication-html"></div>
 							</div>

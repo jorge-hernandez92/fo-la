@@ -71,6 +71,7 @@
       e.preventDefault();
       this.close();
     }.bind(this));
+    
   };
 
   // Menu.prototype._disableBodyScroll = function() {

@@ -9,10 +9,29 @@
 <div class="panel-body ">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Inicio</a></li>
 			<li class="active"><span>Mis Campañas</span></li>
 		</ol>
 	</div>
+
+	<div class="navbar container">
+
+		<form class="navbar-form navbar-left padding-cero" role="search">
+			<div class="form-group">
+
+
+                <input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
+                
+
+				<input type="text" class="form-control" placeholder="Programa">
+				<input type="text" class="form-control" placeholder="Subprograma">
+				<button class="btn btn-primary" ng-click="find()">Buscar</button>
+
+
+			</div>
+
+		</form>
+	</div>
+
 	<div class="container back-sivale">
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
@@ -21,37 +40,42 @@
 				</div>
 			</div>
 
-			<div class="input-group">
-				<div class="input-group-addon">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</div>
-				<input class="form-control" type="text"
-					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
-			</div>
+			<!-- 			<div class="input-group"> -->
+			<!-- 				<div class="input-group-addon"> -->
+			<!-- 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+			<!-- 				</div> -->
+			<!-- 				<input class="form-control" type="text" -->
+			<!-- 					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" /> -->
+			<!-- 			</div> -->
 
 			<div class="panel-body back-sivale">
-				<div data-ng-controller="getCampaigns" ng-cloak>
-					<table ng-table="tableCampaigns" class="table">
+				<div data-ng-controller="getCampaigns" ng-cloak class="table-responsive">
+					<table ng-table="tableCampaigns" class="table" show-filter="true">
 						<tr ng-repeat="campaign in $data">
 
-							<td title="'Nombre de Campaña'" header-class="'text-left'"
+							<td title="'Nombre de Campaña'" filter="{campaignName: 'text'}"
 								sortable="'campaignName'">{{campaign.campaignName}}</td>
 
-							<td title="'Clasificacion'" header-class="'text-left'"
-								sortable="'classification'">{{campaign.classification}}</td>
+							<td title="'Clasificación'" filter="{classification: 'text'}"
+								sortable="'classification'">
+									<span class="label label-default" ng-repeat="class in campaign.classification"
+									>{{class}}</span>
 
-							<td title="'Inicio'" header-class="'text-left'"
-								sortable="'startDate'">{{campaign.startDate}}</td>
+							</td>
 
-							<td title="'Cierre'" header-class="'text-left'"
-								sortable="'endDate'">{{campaign.endDate}}</td>
+							<td title="'Inicio'" filter="{startDate: 'text'}"
+								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td>
+
+							<td title="'Cierre'" filter="{endDate: 'text'}"
+								sortable="'endDate'">{{formatDate(campaign.endDate)}}</td>
+
 							<td><a href="#" data-ng-click="updateCampaign(campaign)"
 								ui-sref="campaign"> Ver</a></td>
-
 						</tr>
 					</table>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 </div>

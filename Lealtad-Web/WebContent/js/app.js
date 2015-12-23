@@ -1,16 +1,28 @@
-var appres = angular.module('app', [ 'ngTable', 'ui.router' ]);
-appres.controller('campaignController', function($scope, $filter, $rootScope,
-		$http, NgTableParams) {
+// ------ themes ----------
+var CSS_DEFAULT		= 'sivale.css';
+var LOGO_DEFAULT	= '';
 
-	$scope.css = 'sivale.css';
-	$scope.logo = '';
+
+//------ Filter ----------
+var FILTER_INIT	= '';
+
+
+
+var appres = angular.module('app', [ 'ngTable', 'ui.router', 'ngMessages', 'daterangepicker' ]);
+appres.controller('campaignController', function($scope, $filter, $rootScope,
+		$http, NgTableParams) { 
+	    
+	$scope.css  = CSS_DEFAULT;
+	$scope.logo = LOGO_DEFAULT;
 	
 	$scope.filters = {
-		myfilter : ''
+		myfilter : FILTER_INIT
 	};
-
-//	$(".invoicesTh-chart").html(data.html);
 	
+	$rootScope.date = {
+			startDate: moment(),
+			endDate: moment()
+	};
 	
 	$scope.getCampaigns = function() {
 
@@ -27,45 +39,65 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		}).success(
 				function(data, status, headers, config) {
 					$scope.campaigns = data;
-
+					console.log(JSON.stringify(data));
+					
 					$scope.tableCampaigns = new NgTableParams({
-						page : 1,
-						count : 10,
-						filter : $scope.filters,
+						count : 10
 					}, {
-						total : $scope.campaigns.length,
 						counts : [],
-						getData : function($defer, params) {
-							var filteredData = params.filter() ? $filter(
-									'filter')($scope.campaigns,
-									params.filter().myfilter)
-									: $scope.campaigns;
-
-							var orderedData = params.sorting() ? $filter(
-									'orderBy')(filteredData, params.orderBy())
-									: $scope.campaigns;
-
-							$defer.resolve(orderedData.slice(
-									(params.page() - 1) * params.count(),
-									params.page() * params.count()));
-						}
+					    dataset: data
 					});
-
-				}).error(function(data, status, headers, config) {
+					
+//					$scope.tableCampaigns = new NgTableParams({
+//						page : 1,
+//						count : 10,
+//						filter : $scope.filters,
+//					}, {
+//						total : $scope.campaigns.length,
+//						counts : [],
+//						getData : function($defer, params) {
+//							var filteredData = params.filter() ? $filter(
+//									'filter')($scope.campaigns,
+//									params.filter().myfilter)
+//									: $scope.campaigns;
+//
+//							var orderedData = params.sorting() ? $filter(
+//									'orderBy')(filteredData, params.orderBy())
+//									: $scope.campaigns;
+//
+//							$defer.resolve(orderedData.slice(
+//									(params.page() - 1) * params.count(),
+//									params.page() * params.count()));
+//						}
+//					});
+//
+//				}).error(function(data, status, headers, config) {
 
 		});
 	};
 
+
+	$scope.getFile = function(file) {
+		$http.get('getFileAction?fileName='+file.fileName+'.'+file.fileExtension).success(
+				function(data, status, headers, config) {
+
+					$scope.downloadFile(file.fileName+'.'+file.fileExtension, data)
 				
+				}).error(function(data, status, headers, config) {
+					
+			});
+	};
+	
 	$scope.getClassifications = function() {
 
 		$http.get('getMyClassificationsAction').success(
 			function(data, status, headers, config) {
 				
 				$scope.classifications = data;
-				$scope.css = 'sivale.css';
-				$scope.logo = '';
-				
+				$scope.css = CSS_DEFAULT;
+				$scope.logo = LOGO_DEFAULT;
+				$scope.classification = '';
+
 			}).error(function(data, status, headers, config) {
 
 		});
@@ -170,7 +202,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					
 					if($scope.classification){
 						$scope.css = $scope.classification.catViews.colors;
-						$scope.logo = $scope.classification.catViews.logos;
+						$scope.logo = 'img/company_logo/' + $scope.classification.catViews.logos + '/header.png';
 					}
 					console.log(JSON.stringify(data));
 					
@@ -179,9 +211,8 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	};
 	
 	$scope.logout = function() {		
-		console.log('into logout function js');
 		$http.get('logout').success(
-				function(data, status, headers, config) {					 
+				function(data, status, headers, config) {	
 					
 				}).error(function(data, status, headers, config) {
 		});
@@ -194,13 +225,162 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	$scope.updateClassification = function(classification) {
 		$scope.classification = classification;
 		$scope.css = $scope.classification.catViews.colors;
-		$scope.logo = $scope.classification.catViews.logos;
+		$scope.logo = 'img/company_logo/' + $scope.classification.catViews.logos + '/header.png';
 	};
 
 	$scope.updatePublication = function(publication) {
 		$scope.publication = publication;
 	};
 
+	$scope.formatDate = function(date) {
+		var d = new Date(date || Date.now()),
+        month = '' + (d.getMonth() + 1),
+        day = '' + d.getDate(),
+        year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [month, day, year].join(' / ');
+	};
+	
+	$scope.convertToPositive = function(amount){
+		if(amount==undefined)
+			return 0;
+		if(amount<0)
+			return amount*-1;
+		return amount;
+	};
+	
+	$scope.getLastTransactionByCard = function() {			
+		$http.get('getLastTransactionByCardAction').success(
+				function(data, status, headers, config) {		 
+					$scope.lastTransactions = data;
+					for ( var index in data) {
+						var dateFormatTransaction = moment(data[index].transactionDate, "YYYYMMDD HHmmss");
+						$scope.lastTransactions[index].transactionDate = dateFormatTransaction.format("DD/MM/YYYY hh:mm a");						
+					}
+					$scope.tableLastTransactions = new NgTableParams({            
+				        count: 10
+				    }, {
+				        counts: [],
+				        dataset: $scope.lastTransactions
+				    });
+					
+				}).error(function(data, status, headers, config) {
+		});
+	};
+	
+	$scope.getBalance = function() {			
+		$http.get('getBalanceAction').success(
+				function(data, status, headers, config) {					 
+					$scope.balance = (data);  					
+				}).error(function(data, status, headers, config) {
+		});
+	};
+	
+	$scope.find = function() {			
+		alert($scope.date.startDate);
+	};
+	
+	
+	$scope.downloadFile = function(name,file) {
+
+        var octetStreamMime = 'application/octet-stream';
+        var success = false;         
+        var filename = name;
+        var contentType =  octetStreamMime;              
+        
+       var fileDownload = new Uint8Array(file);
+        try
+        {
+            // Try using msSaveBlob if supported
+            console.log("Trying saveBlob method ...");
+            var blob = new Blob([fileDownload], { type: contentType });
+            if(navigator.msSaveBlob)
+                navigator.msSaveBlob(blob, filename);
+            else {
+                // Try using other saveBlob implementations, if available
+                var saveBlob = navigator.webkitSaveBlob || navigator.mozSaveBlob || navigator.saveBlob;
+                if(saveBlob === undefined) throw "Not supported";
+                saveBlob(blob, filename);
+            }
+            console.log("saveBlob succeeded");
+            success = true;
+        } catch(ex)
+        {
+            console.log("saveBlob method failed with the following exception:");
+            console.log(ex);
+        }
+
+        if(!success)
+        {
+            // Get the blob url creator
+            var urlCreator = window.URL || window.webkitURL || window.mozURL || window.msURL;
+            if(urlCreator)
+            {
+                // Try to use a download link
+                var link = document.createElement('a');
+                if('download' in link)
+                {
+                    // Try to simulate a click
+                    try
+                    {
+                        // Prepare a blob URL
+                        console.log("Trying download link method with simulated click ...");
+                        var blob = new Blob([fileDownload], { type: contentType });
+                                                
+                        
+                        var url = urlCreator.createObjectURL(blob);
+                        link.setAttribute('href', url);
+
+                        // Set the download attribute (Supported in Chrome 14+ / Firefox 20+)
+                        link.setAttribute("download", filename);
+
+                        // Simulate clicking the download link
+                        var event = document.createEvent('MouseEvents');
+                        event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+                        link.dispatchEvent(event);
+                        console.log("Download link method with simulated click succeeded");
+                        success = true;
+
+                    } catch(ex) {
+                        console.log("Download link method with simulated click failed with the following exception:");
+                        console.log(ex);
+                    }
+                }
+
+                if(!success)
+                {
+                    // Fallback to window.location method
+                    try
+                    {
+                        // Prepare a blob URL
+                        // Use application/octet-stream when using window.location to force download
+                        console.log("Trying download link method with window.location ...");
+                        var blob = new Blob([fileDownload], { type: octetStreamMime });
+                        var url = urlCreator.createObjectURL(blob);
+                        window.location = url;
+                        console.log("Download link method with window.location succeeded");
+                        success = true;
+                    } catch(ex) {
+                        console.log("Download link method with window.location failed with the following exception:");
+                        console.log(ex);
+                    }
+                }
+            }
+        }
+
+        if(!success)
+        {
+            // Fallback to window.open method
+            console.log("No methods worked for saving the arraybuffer, using last resort window.open");
+            window.open(httpPath, '_blank', '');
+        }    
+};
+
+
+	
 });
 
 appres.config(function($stateProvider, $urlRouterProvider) {
@@ -227,4 +407,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/publicacion',
 		templateUrl : 'templates/publication_user.html'
 	})
+	
+	.state('transactions', {
+		url : '/transacciones',
+		templateUrl : 'templates/homeTh.html'
+	})
 });
+
+angular.bootstrap(document, ['app']);

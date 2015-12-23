@@ -9,9 +9,8 @@
 <div class="panel-body back-sivale">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Inicio</a></li>
 			<li><a ui-sref="campaigns">Mis Campañas</a></li>
-			<li class="active"><span>Campaña</span></li>
+			<li class="active"><span>Publicaciones</span></li>
 		</ol>
 	</div>
 	<div class="container">
@@ -21,30 +20,33 @@
 					<div class="navbar-header">{{campaign.campaignName}}</div>
 					<div id="navbar" class="navbar-collapse collapse">
 						<ul class="nav navbar-nav navbar-right">Duración
-							{{campaign.startDate}} al {{campaign.endDate}}
+							{{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
 						</ul>
 					</div>
 				</div>
 			</div>
 
-			<div class="input-group">
-				<div class="input-group-addon">
-					<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-				</div>
-				<input class="form-control" type="text"
-					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" />
-			</div>
+<!-- 			<div class="input-group"> -->
+<!-- 				<div class="input-group-addon"> -->
+<!-- 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+<!-- 				</div> -->
+<!-- 				<input class="form-control" type="text" -->
+<!-- 					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" /> -->
+<!-- 			</div> -->
 
 			<div class="panel-body back-sivale">
 				<div data-ng-controller="getCampaign" ng-cloak>
 					<table ng-table="tablePublications" class="table">
 						<tr ng-repeat="publication in $data">
-
+							
+							<td title="'Tipo'" header-class="'text-left'"
+								sortable="'name'"><span class="label label-default">{{publication.catPublicationType.name}}</span></td>
+							
 							<td title="'Publicacion'" header-class="'text-left'"
 								sortable="'name'">{{publication.name}}</td>
 
 							<td title="'Fecha de Publicacion'" header-class="'text-left'"
-								sortable="'publishedDate'">{{publication.publishedDate}}</td>
+								sortable="'publishedDate'">{{formatDate(publication.publishedDate)}}</td>
 
 							<td title="'Descripción'" header-class="'text-left'"
 								sortable="'dataFilePage'">{{publication.description}}</td>

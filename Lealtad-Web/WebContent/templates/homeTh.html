@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<div class="panel-body back-sivale">
+ 
+	<div class="container">
+	<div class="row">
+
+		<div class="col-lg-3-user-email col-md-6">
+			<div class="panel panel-green">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<img class="manImg" src="img/home/usuario.png"></img>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="font-title-item">Nombre de Usuario</div>
+							<div id="quickfit-user"
+								title="${sessionScope.userDetails.userName}"
+								class="huge font-size-email">{{user.fullName}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="col-lg-3-balance col-md-6">
+			<div class="panel panel-green">
+				<div class="panel-heading" data-ng-controller="getBalance">
+					<div class="row">
+						<div class="col-xs-3">
+							<img class="manImg" src="img/home/monto.png"></img>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="font-title-item">Saldo Actual</div>
+							<div class="huge">&#36;{{(balance | number:2) || '0.00'}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+
+		<div class="col-lg-3-user-email col-md-6">
+			<div class="panel panel-green">
+				<div class="panel-heading">
+					<div class="row">
+						<div class="col-xs-3">
+							<img class="manImg" src="img/home/correo.png"></img>
+						</div>
+						<div class="col-xs-9 text-right">
+							<div class="font-title-item">Correo Electrónico</div>
+							<div id="quickfit-email"
+								title="${sessionScope.userDetails.email}"
+								class="huge font-size-email">{{user.email}}</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+
+	</div>
+	</div>
+	
+	<div class="container" ng-cloak>
+			<div class="panel panel-default table-top-sivale">
+				<div class="panel-heading">Últimas Transacciones</div>
+
+				<div class="panel-body back-sivale">
+					<div data-ng-controller="getLastTransactionByCard" ng-cloak>
+						<table data-ng-table="tableLastTransactions"
+							class="table table-striped table-responsive table-hover">
+							<tr data-ng-repeat="lastTransaction in $data">
+
+								<td data-title="'Fecha'">{{lastTransaction.transactionDate}}</td>
+
+								<td data-title="'Establecimiento'">
+									{{lastTransaction.acceptorName}}</td>
+
+								<td data-title="'Monto'">&#36;
+									{{convertToPositive(lastTransaction.amount) | number:2}}</td>
+
+							</tr>
+						</table>
+					</div>
+				</div>
+
+			</div>
+		</div>
+</div>
