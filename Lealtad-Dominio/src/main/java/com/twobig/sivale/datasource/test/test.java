@@ -14,6 +14,7 @@ import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.LoginService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
+import com.twobig.sivale.service.ViewPublicationService;
 
 
 public class test {
@@ -91,6 +92,13 @@ public class test {
 		}
 		
 	}
+	
+	public static void mostrarPublicaciones(ClassPathXmlApplicationContext context){
+		ViewPublicationService cccs = 
+				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
+		
+		cccs.showPublication(7, 1);
+	}
 			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -110,6 +118,14 @@ public class test {
 //		//SERVICIO DE PUBLICACIONES
 //		publicaciones(context);
 		
+		//SERVICIO MOSTRAR PUBLICACIONES
+		mostrarPublicaciones(context);
+		
+//		HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
+//		String data = "{\"BONO 1\":\" $-   \",\"ID STARS GERENTE\":\"000983868\",\"CONCATENADO\":\"M1188SLSMGR\",\"BONO TOTAL\":\" $-   \",\"Ajustado\":\"38 \",\"APELLIDO\":\"GALEANA SOBERANIS\",\"Abs\":\"29%\",\"NOMBRE GERENTE\":\"MICAELA\",\"x\":\"29.00%\",\"BID\":\"M1188\",\"CVP\":\"0\",\"Original\":\"38 \",\"BONO 2\":\" $-   \",\"Razón Social\":\"Acapulco, S.A.\",\"Volumen\":\"11 \"}";
+//		String html = htmlParser.getHTML("src/test/resources/template.html", data);
+//		//assertNotNull("html Null",html);
+//		System.out.println(data);
 		
 		
 	}
