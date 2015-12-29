@@ -20,6 +20,7 @@ import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.SearchCampaignBean;
 import com.xm.sivale.services.test.ServicesUser;
 
 @ParentPackage(value = "json-default")
@@ -31,6 +32,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<CatClassificationCampaign> classifications;
 
 	private List<CampaignDetailBean> campaigns;
+	
+	private List<CampaignDetailBean> searchCampaigns;
 
 	private List<TPublication> publications;
 
@@ -112,6 +115,44 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Action(value = "searchCampaignsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"searchCampaigns", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String searchCampaignsAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String searchCampaignJSON = request.getParameter("searchCampaign");
+		
+		
+		SearchCampaignBean searchCampaign;
+
+		if (!searchCampaignJSON.equals("undefined")) {
+
+			searchCampaign = new SearchCampaignBean();
+			try {
+				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
+						SearchCampaignBean.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+		} else {
+			return ERROR;
+		}
+
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+
+		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
+		searchCampaigns = new ServicesUser().searchCampaigns();
+		return SUCCESS;
+
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Action(value = "getPublicationsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"publications", "excludeNullProperties", "true", "noCache", "true" }) )
@@ -212,6 +253,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> getSession() {
 		return session;
+	}
+
+	public List<CampaignDetailBean> getSearchCampaigns() {
+		return searchCampaigns;
 	}
 	
 	

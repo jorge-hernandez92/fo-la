@@ -2,24 +2,28 @@
 var CSS_DEFAULT		= 'sivale.css';
 var LOGO_DEFAULT	= '';
 
+var STRING_DEFAULT	= '';
 
-//------ Filter ----------
-var FILTER_INIT	= '';
+var appres = angular.module('app', ['ngMessages', 'daterangepicker','ngTable', 'ui.router']);
 
+appres.run(function($rootScope) {
+	$rootScope.search = {
+			campaignName: STRING_DEFAULT,
+			classification: STRING_DEFAULT
+	};
+	
+	$rootScope.classif = {
+		classification2: STRING_DEFAULT
+	};
+})			
 
-
-var appres = angular.module('app', [ 'ngTable', 'ui.router', 'ngMessages', 'daterangepicker' ]);
 appres.controller('campaignController', function($scope, $filter, $rootScope,
 		$http, NgTableParams) { 
 	    
 	$scope.css  = CSS_DEFAULT;
 	$scope.logo = LOGO_DEFAULT;
 	
-	$scope.filters = {
-		myfilter : FILTER_INIT
-	};
-	
-	$rootScope.date = {
+	$scope.date = {
 			startDate: moment(),
 			endDate: moment()
 	};
@@ -70,8 +74,8 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 //									params.page() * params.count()));
 //						}
 //					});
-//
-//				}).error(function(data, status, headers, config) {
+
+				}).error(function(data, status, headers, config) {
 
 		});
 	};
@@ -96,7 +100,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 				$scope.classifications = data;
 				$scope.css = CSS_DEFAULT;
 				$scope.logo = LOGO_DEFAULT;
-				$scope.classification = '';
+				$scope.classification = STRING_DEFAULT;
 
 			}).error(function(data, status, headers, config) {
 
@@ -279,8 +283,46 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		});
 	};
 	
-	$scope.find = function() {			
-		alert($scope.date.startDate);
+	$scope.searchCampaigns = function(date) {
+	    
+		var searchCampaign = {
+				campaignName : $rootScope.search.campaignName,
+				classificationName1 : $rootScope.search.classification,
+				classificationName2 : $rootScope.classif.classification2,
+				startDate : date.startDate,
+				endDate : date.endDate
+		};
+		
+		$rootScope.search.campaignName = STRING_DEFAULT;
+		$rootScope.search.classification = STRING_DEFAULT;
+		$rootScope.classif.classification2 = STRING_DEFAULT;
+		
+		var data = escape(angular.toJson(searchCampaign));
+		console.log(JSON.stringify(searchCampaign));
+
+		$http({
+			method : 'POST',
+			url : 'searchCampaignsAction',
+			data : 'searchCampaign=' + data,
+			headers : {
+				'Content-Type' : 'application/x-www-form-urlencoded'
+			}
+		}).success(
+				function(data, status, headers, config) {
+					
+					console.log('data: '+JSON.stringify(data));
+					
+					$scope.campaigns = data;
+					$scope.tableCampaigns = new NgTableParams({
+						count : 10
+					}, {
+						counts : [],
+					    dataset: data
+					});
+					
+				}).error(function(data, status, headers, config) {
+
+		});
 	};
 	
 	
