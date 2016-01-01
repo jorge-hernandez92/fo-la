@@ -31,6 +31,7 @@ public class TCampaign  implements java.io.Serializable {
      private Date endDate;
      private String campaignName;
      private String description;
+     private int classificationId;
      
      public static final String FIELD_COMPANY_ID = "campaignId";
 
@@ -46,14 +47,14 @@ public class TCampaign  implements java.io.Serializable {
     public void setCampaignId(int campaignId) {
         this.campaignId = campaignId;
     }
-
+    
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name="start_date", length=19)
     public Date getStartDate() {
         return this.startDate;
     }
-    
-    public void setStartDate(Date startDate) {
+
+	public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
@@ -86,11 +87,21 @@ public class TCampaign  implements java.io.Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    @Column(name="fk_cat_classification", unique=false, nullable=false)
+    public int getClassificationId() {
+		return classificationId;
+	}
+
+	public void setClassificationId(int classificationId) {
+		this.classificationId = classificationId;
+	}
 
 	@Override
 	public String toString() {
 		return "TCampaign [campaignId=" + campaignId + ", startDate=" + startDate + ", endDate=" + endDate
-				+ ", campaignName=" + campaignName + ", description=" + description + "]";
+				+ ", campaignName=" + campaignName + ", description=" + description + ", classificationId="
+				+ classificationId + "]";
 	}
 }
 

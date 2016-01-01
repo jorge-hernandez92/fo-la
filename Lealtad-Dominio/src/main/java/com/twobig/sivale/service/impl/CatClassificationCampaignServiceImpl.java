@@ -11,85 +11,76 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
-import com.twobig.sivale.bd.to.RealCampaignsClassification;
-import com.twobig.sivale.bd.to.RealUsersCampaigns;
+import com.twobig.sivale.bd.to.RealUserCampaign;
+import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
-import com.twobig.sivale.dao.RealCampaignsClassificationDAO;
-import com.twobig.sivale.dao.RealUsersCampaignsDAO;
+import com.twobig.sivale.dao.RealUserCampaignDAO;
+import com.twobig.sivale.dao.TCampaignDAO;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 
 @Service
-public class CatClassificationCampaignServiceImpl implements CatClassificationCampaignService{
-	
+public class CatClassificationCampaignServiceImpl implements CatClassificationCampaignService {
+
 	@Autowired
-	public RealUsersCampaignsDAO realUsersCampaignsDAO;
-	
-	@Autowired
-	public RealCampaignsClassificationDAO realCampaignsClassificationDAO;
-	
+	public RealUserCampaignDAO realUsersCampaignsDAO;
+
 	@Autowired
 	public CatClassificationCampaignDAO catClassificationCampaignDAO;
-	
+
+	@Autowired
+	public TCampaignDAO tCampaignDAO;
+
 	/**
 	 * Variable to register the logs.
 	 */
-	private final static Logger LOGGER = LoggerFactory
-			.getLogger(CatClassificationCampaignServiceImpl.class);
+	private final static Logger LOGGER = LoggerFactory.getLogger(CatClassificationCampaignServiceImpl.class);
 
-	
 	@Override
-	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId) {
-		
-		List<RealUsersCampaigns> listA = realUsersCampaignsDAO.getRealUsersCampaignsByUserId(userId);
-		
+	public List<CatClassificationCampaign> getCatClassificationCampaignByUserId(int userId) {
+
+		List<RealUserCampaign> listA = realUsersCampaignsDAO.getRealUserCampaignByUserId(userId);
+
 		List<Integer> campaignsByUser = new ArrayList<Integer>();
-		
-		for(RealUsersCampaigns listA2: listA){
+
+		for (RealUserCampaign listA2 : listA) {
 			campaignsByUser.add(listA2.getCampaignId());
 		}
-		
-		List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignId((ArrayList<Integer>) campaignsByUser);
-		
-		List<Integer> classificationByUserInt = new ArrayList<Integer>();
-	
-		for(int i = 0; i < classificationByUser.size(); i++){
-			classificationByUserInt.add(classificationByUser.get(i).getClassificationId());
+
+		List<TCampaign> tCampaign = tCampaignDAO.getTCampaignByCampaignId(campaignsByUser);
+
+		List<Integer> classificationId = new ArrayList<Integer>();
+
+		for (TCampaign tCampaign2 : tCampaign) {
+
+			classificationId.add(tCampaign2.getClassificationId());
+
 		}
-		
+
 		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
-		linkedHashSet.addAll(classificationByUserInt);
-		classificationByUserInt.clear();
-		classificationByUserInt.addAll(linkedHashSet);
-		
-		return catClassificationCampaignDAO.getCatClassificationCampaignByClassificationId(classificationByUserInt);
-	}
-	
-	@Override
-	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(int userId, int level) {
-	
-		List<RealUsersCampaigns> listA = realUsersCampaignsDAO.getRealUsersCampaignsByUserId(userId);
-		
-		List<Integer> campaignsByUser = new ArrayList<Integer>();
-		
-		for(RealUsersCampaigns listA2: listA){
-			campaignsByUser.add(listA2.getCampaignId());
+
+		linkedHashSet.addAll(classificationId);
+
+		classificationId.clear();
+
+		classificationId.addAll(linkedHashSet);
+
+		List<CatClassificationCampaign> catClassificationCampaig = catClassificationCampaignDAO
+				.getCatClassificationCampaignByClassificationId(classificationId);
+
+		List<CatClassificationCampaign> catClassificationCampaigParents = new ArrayList<CatClassificationCampaign>();
+
+		for (CatClassificationCampaign catClassificationCampaign : catClassificationCampaig) {
+
+			while (catClassificationCampaign.getLevel() > 0) {
+
+				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
+
+				catClassificationCampaign = catClassificationCampaignDAO
+						.getCatClassificationCampaignByParentId(parentId);
+			}
+			catClassificationCampaigParents.add(catClassificationCampaign);
 		}
-		
-		
-		List<RealCampaignsClassification> classificationByUser = realCampaignsClassificationDAO.getRealCampaignsClassificationByCampaignId((ArrayList<Integer>)campaignsByUser);
-		
-		
-		List<Integer> classificationByUserInt = new ArrayList<Integer>();
-	
-		for(int i = 0; i < classificationByUser.size(); i++){
-			classificationByUserInt.add(classificationByUser.get(i).getClassificationId());
-		}
-		
-		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
-		linkedHashSet.addAll(classificationByUserInt);
-		classificationByUserInt.clear();
-		classificationByUserInt.addAll(linkedHashSet);
-		
-		return catClassificationCampaignDAO.getCatClassificationCampaignByClassificationId(classificationByUserInt, level);
+
+		return catClassificationCampaigParents;
 	}
 }

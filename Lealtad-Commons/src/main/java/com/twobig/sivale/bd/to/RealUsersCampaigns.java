@@ -48,6 +48,4 @@ public class RealUsersCampaigns implements Serializable{
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
-	
-
 }

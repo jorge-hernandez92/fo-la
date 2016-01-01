@@ -44,5 +44,27 @@ GenericDAOImpl<CatClassificationCampaign, Long> implements CatClassificationCamp
 		
 		return getListByCriteria(criteria);
 	}
+	
+
+	@Override
+	public CatClassificationCampaign getCatClassificationCampaignByParentId(int parentId) {
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(CatClassificationCampaign.class);
+		
+		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_ID, parentId));
+		
+		return getTByCriteria(criteria);
+	}
+
+
+	@Override
+	public CatClassificationCampaign getCatClassificationCampaignById(int id) {
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(CatClassificationCampaign.class);
+		
+		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_ID, id));
+		
+		return getTByCriteria(criteria);
+	}
 
 }

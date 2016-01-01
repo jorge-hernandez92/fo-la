@@ -23,29 +23,16 @@ public class TAttachedFile  implements java.io.Serializable {
 
 
      private Integer attachedFileId;
-     private TPublication TPublications;
+     private Integer tPublicationId;
      private Boolean isPublic;
      private String fileName;
      private String filePath;
      private String fileExtension;
      private byte[] fileBlob;
-
-    public TAttachedFile() {
-    }
-
-	
-    public TAttachedFile(TPublication TPublications) {
-        this.TPublications = TPublications;
-    }
-    public TAttachedFile(TPublication TPublications, Boolean isPublic, String fileName, String filePath, String fileExtension, byte[] fileBlob) {
-       this.TPublications = TPublications;
-       this.isPublic = isPublic;
-       this.fileName = fileName;
-       this.filePath = filePath;
-       this.fileExtension = fileExtension;
-       this.fileBlob = fileBlob;
-    }
-   
+     
+     public static final String FIELD_TPUBLICATION_ID = "tPublicationId";
+     
+     
      @Id @GeneratedValue(strategy=IDENTITY)
 
     
@@ -57,19 +44,19 @@ public class TAttachedFile  implements java.io.Serializable {
     public void setAttachedFileId(Integer attachedFileId) {
         this.attachedFileId = attachedFileId;
     }
-
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="fk_publication", nullable=false)
-    public TPublication getTPublications() {
-        return this.TPublications;
-    }
     
-    public void setTPublications(TPublication TPublications) {
-        this.TPublications = TPublications;
-    }
-
     
-    @Column(name="is_public")
+    @Column(name="fk_publication")
+    public Integer gettPublicationId() {
+		return tPublicationId;
+	}
+
+	public void settPublicationId(Integer tPublicationId) {
+		this.tPublicationId = tPublicationId;
+	}
+	
+
+	@Column(name="is_public")
     public Boolean getIsPublic() {
         return this.isPublic;
     }

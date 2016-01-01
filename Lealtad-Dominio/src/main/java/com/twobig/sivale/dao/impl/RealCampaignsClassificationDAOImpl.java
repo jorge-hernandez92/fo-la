@@ -29,10 +29,6 @@ GenericDAOImpl<RealCampaignsClassification, Long> implements RealCampaignsClassi
 		
 		criteria.add(Restrictions.in(RealCampaignsClassification.FIELD_REL_CAMPAIGN_ID, campaignId));
 		
-		
-		//criteria.setProjection(Projections.distinct(Projections.property("campaignId")));
-		
-		
 		return getListByCriteria(criteria);
 	}
 
@@ -46,6 +42,16 @@ GenericDAOImpl<RealCampaignsClassification, Long> implements RealCampaignsClassi
 		
 		criteria.add(Restrictions.in(RealCampaignsClassification.FIELD_REL_CAMPAIGN_ID, campaignId));
 		criteria.add(Restrictions.eq(RealCampaignsClassification.FIELD_REL_CLASSIFICATION_ID, classificationCampaignsId));		
+		return getListByCriteria(criteria);
+	}
+
+	@Override
+	public List<RealCampaignsClassification> getRealCampaignsClassificationByCampaignId(int campaignId) {
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(RealCampaignsClassification.class);
+		
+		criteria.add(Restrictions.eq(RealCampaignsClassification.FIELD_REL_CAMPAIGN_ID, campaignId));
+		
 		return getListByCriteria(criteria);
 	}
 	

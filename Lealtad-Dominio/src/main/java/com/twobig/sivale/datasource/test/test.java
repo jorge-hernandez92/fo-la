@@ -8,6 +8,8 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
+import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.TUserLogin;
 import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
@@ -58,47 +60,49 @@ public class test {
 		CatClassificationCampaignService cccs = 
 				(CatClassificationCampaignService) context.getBean("catClassificationCampaignServiceImpl");
 		
-		List<CatClassificationCampaign> clasificaciones = cccs.getCatClassificationCampaignByClassificationId(7,1);
+		List<CatClassificationCampaign> clasificaciones = cccs.getCatClassificationCampaignByUserId(7);
 		
-		
-		for (int i = 0; i < clasificaciones.size(); i++){
-			 System.out.println(clasificaciones.get(i));
+		for (CatClassificationCampaign catClassificationCampaign : clasificaciones) {
+			System.out.println(catClassificationCampaign.toString());
 		}
 		
 	}
 	
 	public static void campañas(ClassPathXmlApplicationContext context){
-		TCampaignsService cccs = 
-				(TCampaignsService) context.getBean("TCampaignsServiceImpl");
+		TCampaignsService cccs = (TCampaignsService) context.getBean("TCampaignsServiceImpl");
+		List<CampaignDetailBean> campaignDetailBeanList =  
+				cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 7);
 		
-		List<TCampaign> clasificaciones = cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 1); 
-				//cccs.getCampaignByUserIdAndCampaignId(7, 1);
-		
-		
-		for (int i = 0; i < clasificaciones.size(); i++){
-			 System.out.println(clasificaciones.get(i).toString());
+		for (CampaignDetailBean campaignDetailBean2 : campaignDetailBeanList) {
+			System.out.println(campaignDetailBean2.toString());
 		}
 	}
 	
-	public static void publicaciones(ClassPathXmlApplicationContext context){
-		TPublicationService cccs = 
-		(TPublicationService) context.getBean("TPublicationServiceImpl");
-		
-		List<TPublication> publicaciones = cccs.getTPublicationByUserIdAndCampaignId(7, 1);
-		
-		for (int i = 0; i < publicaciones.size(); i++) {
-			System.out.println(publicaciones.get(i).toString() + " ");
-			System.out.print(publicaciones.get(i).getCatPublicationType());
-		}
-		
-	}
-	
-	public static void mostrarPublicaciones(ClassPathXmlApplicationContext context){
-		ViewPublicationService cccs = 
-				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
-		
-		cccs.showPublication(7, 1);
-	}
+//	
+//	public static void publicaciones(ClassPathXmlApplicationContext context){
+//		TPublicationService cccs = 
+//		(TPublicationService) context.getBean("TPublicationServiceImpl");
+//		
+//		List<TPublication> publicaciones = cccs.getTPublicationByUserIdAndCampaignId(7, 1);
+//		
+//		for (int i = 0; i < publicaciones.size(); i++) {
+//			System.out.println(publicaciones.get(i).toString() + " ");
+//			System.out.print(publicaciones.get(i).getCatPublicationType());
+//		}
+//		
+//	}
+//	
+//	public static void mostrarPublicaciones(ClassPathXmlApplicationContext context){
+//		ViewPublicationService cccs = 
+//				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
+//		
+//		PublicationBean publicationBean = cccs.showPublication(7, 1);
+//		
+//		if(publicationBean != null){
+//			System.out.println(publicationBean.getListFiles());
+//			System.out.println(publicationBean.getHtml());
+//		}
+//	}
 			
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
@@ -108,18 +112,21 @@ public class test {
 		
 //		//SERVICIO DE LOGIN PARA ADMINISTRADOR
 //		login(context);
-//		
+
+		
 //		//SERVICIO DE CLASIFICACIONES 
 //		clasificaciones(context);
-//		
-//		//SERVICIO DE CAMPAÑAS
-//		campañas(context);
-//		
+		
+				
+		//SERVICIO DE CAMPAÑAS
+		campañas(context);
+		
+		
 //		//SERVICIO DE PUBLICACIONES
 //		publicaciones(context);
-		
-		//SERVICIO MOSTRAR PUBLICACIONES
-		mostrarPublicaciones(context);
+//		
+//		//SERVICIO MOSTRAR PUBLICACIONES
+//		mostrarPublicaciones(context);
 		
 //		HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
 //		String data = "{\"BONO 1\":\" $-   \",\"ID STARS GERENTE\":\"000983868\",\"CONCATENADO\":\"M1188SLSMGR\",\"BONO TOTAL\":\" $-   \",\"Ajustado\":\"38 \",\"APELLIDO\":\"GALEANA SOBERANIS\",\"Abs\":\"29%\",\"NOMBRE GERENTE\":\"MICAELA\",\"x\":\"29.00%\",\"BID\":\"M1188\",\"CVP\":\"0\",\"Original\":\"38 \",\"BONO 2\":\" $-   \",\"Razón Social\":\"Acapulco, S.A.\",\"Volumen\":\"11 \"}";

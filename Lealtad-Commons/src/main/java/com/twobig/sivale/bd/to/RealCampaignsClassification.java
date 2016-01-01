@@ -45,6 +45,11 @@ public class RealCampaignsClassification implements Serializable {
 	public void setCampaignId(Integer campaignId) {
 		this.campaignId = campaignId;
 	}
+
+	@Override
+	public String toString() {
+		return "RealCampaignsClassification [classificationId=" + classificationId + ", campaignId=" + campaignId + "]";
+	}
 	
 	
 
