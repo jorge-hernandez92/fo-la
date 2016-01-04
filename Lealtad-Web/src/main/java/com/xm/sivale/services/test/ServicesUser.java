@@ -76,28 +76,183 @@ public class ServicesUser {
 		List<CampaignDetailBean> campaigns= new ArrayList<CampaignDetailBean>();
 		Date date = new Date(115,11,1,0,0,0);
 		
-		List<String> classifications = new ArrayList<String>();
+		List<String> classifications;
+		CampaignDetailBean campaign;
 		
-		classifications.add("Compañia");
-		classifications.add("Programa");
-		classifications.add("Subprograma");
-		classifications.add("Unidad de negocio");
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa A");
+		classifications.add("Subprograma A");
+		classifications.add("Unidad A");
 		
-		for (int i = 0; i < 100; i++) {
-			CampaignDetailBean campaign = new CampaignDetailBean();
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(0);
+		campaign.setCampaignName("campaign Name A");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
 			
-			campaign.setCampaignId(i);
-			campaign.setCampaignName("campaign Name "+i);
-			campaign.setStartDate(date);
-			campaign.setEndDate(date);
-			campaign.setClassification(classifications);
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa A");
+		classifications.add("Subprograma B");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(1);
+		campaign.setCampaignName("campaign Name B");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
 			
-			campaigns.add(campaign);
-		}
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa B");
+		classifications.add("Subprograma C");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(2);
+		campaign.setCampaignName("campaign Name C");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa B");
+		classifications.add("Subprograma D");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(3);
+		campaign.setCampaignName("campaign Name D");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa C");
+		classifications.add("Subprograma E");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(4);
+		campaign.setCampaignName("campaign Name E");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
 		
 		return campaigns;
 	}
+	
+	
+	public List<CampaignDetailBean> searchCampaigns(){
 		
+		List<CampaignDetailBean> campaigns= new ArrayList<CampaignDetailBean>();
+		Date date = new Date(115,11,1,0,0,0);
+		
+		List<String> classifications;
+		CampaignDetailBean campaign;
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia X");
+		classifications.add("Programa A");
+		classifications.add("Subprograma A");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(0);
+		campaign.setCampaignName("campaign Name A");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia X");
+		classifications.add("Programa A");
+		classifications.add("Subprograma B");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(1);
+		campaign.setCampaignName("campaign Name B");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia X");
+		classifications.add("Programa B");
+		classifications.add("Subprograma C");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(2);
+		campaign.setCampaignName("campaign Name C");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia X");
+		classifications.add("Programa B");
+		classifications.add("Subprograma D");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(3);
+		campaign.setCampaignName("campaign Name D");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia X");
+		classifications.add("Programa C");
+		classifications.add("Subprograma E");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailBean();
+		campaign.setCampaignId(4);
+		campaign.setCampaignName("campaign Name E");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+			
+		campaigns.add(campaign);
+		
+		return campaigns;
+	}
+
+
 	public List<TPublication> getPubliations(Integer UserId, Integer CampaignId){
 		
 		LOGGER.info("UserId = " + UserId + "     "+ "CampaignId = " + CampaignId);
