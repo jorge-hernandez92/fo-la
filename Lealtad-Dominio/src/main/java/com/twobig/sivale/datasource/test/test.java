@@ -6,7 +6,7 @@ import java.util.Map;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
-import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.PublicationBean;
@@ -78,61 +78,59 @@ public class test {
 		}
 	}
 	
-//	
-//	public static void publicaciones(ClassPathXmlApplicationContext context){
-//		TPublicationService cccs = 
-//		(TPublicationService) context.getBean("TPublicationServiceImpl");
-//		
-//		List<TPublication> publicaciones = cccs.getTPublicationByUserIdAndCampaignId(7, 1);
-//		
-//		for (int i = 0; i < publicaciones.size(); i++) {
-//			System.out.println(publicaciones.get(i).toString() + " ");
-//			System.out.print(publicaciones.get(i).getCatPublicationType());
-//		}
-//		
-//	}
-//	
-//	public static void mostrarPublicaciones(ClassPathXmlApplicationContext context){
-//		ViewPublicationService cccs = 
-//				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
-//		
-//		PublicationBean publicationBean = cccs.showPublication(7, 1);
-//		
-//		if(publicationBean != null){
-//			System.out.println(publicationBean.getListFiles());
-//			System.out.println(publicationBean.getHtml());
-//		}
-//	}
+	public static void publicaciones(ClassPathXmlApplicationContext context){
+		TPublicationService cccs = 
+		(TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		List<TPublication> publicaciones = cccs.getTPublicationByUserIdAndCampaignId(7, 1);
+		
+		for (int i = 0; i < publicaciones.size(); i++) {
+			System.out.println(publicaciones.get(i).toString() + " ");
+			System.out.print(publicaciones.get(i).getCatPublicationType());
+		}
+	}
+	
+	public static void mostrarPublicaciones(ClassPathXmlApplicationContext context){
+		
+		ViewPublicationService cccs = 
+				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
+		
+		PublicationBean publicationBean = cccs.showPublication(7, 1);
+		
+		if(publicationBean != null){
+			
+			for (TAttachedFile files : publicationBean.getListFiles()) {
+				System.out.println(files.toString());
+			}
+			
+			System.out.println(publicationBean.getHtml());
+		}
+	}
 			
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 			     "classpath:/application-context.xml");
 		
 //		//SERVICIO DE LOGIN PARA ADMINISTRADOR
 //		login(context);
-
-		
+//
+//		
 //		//SERVICIO DE CLASIFICACIONES 
 //		clasificaciones(context);
-		
-				
-		//SERVICIO DE CAMPAÑAS
-		campañas(context);
-		
-		
+//		
+//				
+//		//SERVICIO DE CAMPAÑAS
+//		campañas(context);
+//		
+//		
 //		//SERVICIO DE PUBLICACIONES
 //		publicaciones(context);
+//		
 //		
 //		//SERVICIO MOSTRAR PUBLICACIONES
 //		mostrarPublicaciones(context);
 		
-//		HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
-//		String data = "{\"BONO 1\":\" $-   \",\"ID STARS GERENTE\":\"000983868\",\"CONCATENADO\":\"M1188SLSMGR\",\"BONO TOTAL\":\" $-   \",\"Ajustado\":\"38 \",\"APELLIDO\":\"GALEANA SOBERANIS\",\"Abs\":\"29%\",\"NOMBRE GERENTE\":\"MICAELA\",\"x\":\"29.00%\",\"BID\":\"M1188\",\"CVP\":\"0\",\"Original\":\"38 \",\"BONO 2\":\" $-   \",\"Razón Social\":\"Acapulco, S.A.\",\"Volumen\":\"11 \"}";
-//		String html = htmlParser.getHTML("src/test/resources/template.html", data);
-//		//assertNotNull("html Null",html);
-//		System.out.println(data);
 		
 		
 	}

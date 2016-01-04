@@ -4,12 +4,12 @@ package com.twobig.sivale.bd.to;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
+
+import java.util.Arrays;
+
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 /**
@@ -105,7 +105,12 @@ public class TAttachedFile  implements java.io.Serializable {
         this.fileBlob = fileBlob;
     }
 
-
+	@Override
+	public String toString() {
+		return "TAttachedFile [attachedFileId=" + attachedFileId + ", tPublicationId=" + tPublicationId + ", isPublic="
+				+ isPublic + ", fileName=" + fileName + ", filePath=" + filePath + ", fileExtension=" + fileExtension
+				+ ", fileBlob=" + Arrays.toString(fileBlob) + "]";
+	}   
 }
 
 
