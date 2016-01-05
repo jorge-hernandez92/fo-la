@@ -1,4 +1,5 @@
 package com.twobig.sivale.datasource.test;
+import java.sql.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,9 +11,11 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.PublicationBean;
+import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.beans.TUserLogin;
 import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
+import com.twobig.sivale.service.FilterCampaignService;
 import com.twobig.sivale.service.LoginService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
@@ -107,6 +110,17 @@ public class test {
 		}
 	}
 			
+	public static void filterCampaigns(ClassPathXmlApplicationContext context){
+		FilterCampaignService cccs = 
+				(FilterCampaignService) context.getBean("FilterCampaignServiceImpl");
+		
+		SearchCampaignBean searchCampaignBean = new SearchCampaignBean();
+		searchCampaignBean.setClassificationParentId(7);		
+		
+		cccs.FilterCampaign(7, searchCampaignBean);
+		
+	}
+	
 	public static void main(String[] args) {
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
@@ -131,6 +145,8 @@ public class test {
 //		//SERVICIO MOSTRAR PUBLICACIONES
 //		mostrarPublicaciones(context);
 		
+		//SERVICIO DE FILTRARCAMPAÑAS
+		filterCampaigns(context);
 		
 		
 	}

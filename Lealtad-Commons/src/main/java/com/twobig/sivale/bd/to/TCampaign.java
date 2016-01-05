@@ -33,9 +33,11 @@ public class TCampaign  implements java.io.Serializable {
      private String description;
      private int classificationId;
      
-     public static final String FIELD_COMPANY_ID = "campaignId";
-
-    
+     public static final String FIELD_COMPAIGN_ID   = "campaignId";
+     public static final String FIELD_COMPAIGN_NAME = "campaignName";
+     public static final String FIELD_START_DATE    = "startDate";
+     public static final String FIELD_END_DATE      = "endDate";
+     
      @Id 
 
     
