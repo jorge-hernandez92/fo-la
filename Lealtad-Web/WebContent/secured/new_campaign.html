@@ -54,7 +54,7 @@
 			<div class="col-md-5">
 				<select class="form-control"
 					ng-options="option.name for option in selectCompany.availableOptions track by option.id"
-					ng-model="selectCompany.selectedOption" ng-change="show()">
+					ng-model="selectCompany.selectedOption" ng-change="changeCompany()">
 				</select>
 			</div>
 		</div>

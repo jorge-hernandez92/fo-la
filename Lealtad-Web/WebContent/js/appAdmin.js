@@ -38,31 +38,55 @@ appres.controller('campaignAdminController', function($scope, $filter, $rootScop
 			name : ''
 	};
 	
+	$scope.changeCompany = function(){
+		$scope.selectProgram.availableOptions =	[ {id: '1', name: 'Ninguno'}, 
+		                                       	  {id: '2', name: 'Programa 1'},
+		                                       	  {id: '3', name: 'Programa 2'} ,
+		                                       	  {id: '4', name: 'Programa 3'} ,
+		                                       	  {id: '5', name: 'Añadir nuevo'} 
+												];
+	}
+
 	$scope.changeProgram = function(){
-		
-		
-		if( $scope.selectProgram.selectedOption.name = 'Añadir nuevo' ){
+		if( $scope.selectProgram.selectedOption.name == 'Añadir nuevo' ){
 			
 			$scope.newProgram.name = '';
 			
-			$scope.selectSubProgram.availableOptions = 	[ {id: '-2', name: 'Ninguno'}, 
-			                                           	  {id: '-1', name: 'Añadir nuevo'} ];
-			$scope.selectSubProgram.selectedOption = {id: '-2', name: 'Ninguno'};
+			$scope.selectSubProgram.availableOptions = 	[ {id: '1', name: 'Ninguno'}, 
+			                                           	  {id: '5', name: 'Añadir nuevo'} ];
+			$scope.selectSubProgram.selectedOption = {id: '1', name: 'Ninguno'};
 		
-			$scope.selectBusinessUnit.availableOptions = [ {id: '-2', name: 'Ninguno'},
-			                                               {id: '-1', name: 'Añadir nuevo'} ];
-			$scope.selectBusinessUnit.selectedOption = {id: '-2', name: 'Ninguno'};
+			$scope.selectBusinessUnit.availableOptions = [ {id: '1', name: 'Ninguno'},
+			                                               {id: '5', name: 'Añadir nuevo'} ];
+			$scope.selectBusinessUnit.selectedOption = {id: '1', name: 'Ninguno'};
 		}
+		else{
+			$scope.selectSubProgram.availableOptions =	[ {id: '1', name: 'Ninguno'}, 
+			                                          	  {id: '2', name: 'Subprograma 1'},
+			                                          	  {id: '3', name: 'Subprograma 2'} ,
+			                                          	  {id: '4', name: 'Subprograma 3'} ,
+			                                          	  {id: '5', name: 'Añadir nuevo'} 
+			                                          	];
+		}
+		
 	}
 	
 	$scope.changeSubProgram = function(){
 		
-		if( $scope.selectSubProgram.selectedOption.name = 'Añadir nuevo' ){
+		if( $scope.selectSubProgram.selectedOption.name == 'Añadir nuevo' ){
 			$scope.newSubProgram.name = '';
 			
-			$scope.selectBusinessUnit.availableOptions = [ {id: '-2', name: 'Ninguno'},
-			                                               {id: '-1', name: 'Añadir nuevo'} ];
-			$scope.selectBusinessUnit.selectedOption = {id: '-2', name: 'Ninguno'};
+			$scope.selectBusinessUnit.availableOptions = [ {id: '1', name: 'Ninguno'},
+			                                               {id: '5', name: 'Añadir nuevo'} ];
+			$scope.selectBusinessUnit.selectedOption = {id: '1', name: 'Ninguno'};
+		}
+		else{
+			$scope.selectBusinessUnit.availableOptions = [ 	{id: '1', name: 'Ninguno'}, 
+			                                          	  	{id: '2', name: 'Unidad de negocio 1'},
+			                                          	  	{id: '3', name: 'Unidad de negocio 2'} ,
+			                                          	  	{id: '4', name: 'Unidad de negocio 3'} ,
+			                                          	  	{id: '5', name: 'Añadir nuevo'} 
+			                                          	 ];
 		}
 	}
 	
@@ -117,7 +141,7 @@ appres.controller('campaignAdminController', function($scope, $filter, $rootScop
 	
 	$scope.isEnabledSubProgram = function(){
 		if($scope.selectProgram.selectedOption != ''){
-			if($scope.selectProgram.selectedOption.name == 'Añadir nuevo' && $scope.newProgram.name == '')
+			if(($scope.selectProgram.selectedOption.name == 'Añadir nuevo' || $scope.selectProgram.selectedOption.name == 'Ninguno') && $scope.newProgram.name == '')
 				return false;
 			return true;
 		}
@@ -142,7 +166,7 @@ appres.controller('campaignAdminController', function($scope, $filter, $rootScop
 	
 	$scope.isEnabledBusinessUnit = function(){
 		if($scope.selectSubProgram.selectedOption != ''){
-			if($scope.selectSubProgram.selectedOption.name == 'Añadir nuevo' && $scope.newSubProgram.name == '')
+			if(($scope.selectSubProgram.selectedOption.name == 'Añadir nuevo' || $scope.selectSubProgram.selectedOption.name == 'Ninguno') && $scope.newSubProgram.name == '')
 				return false;
 			return true;
 		}
