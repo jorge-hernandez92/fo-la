@@ -1,5 +1,7 @@
 package com.twobig.sivale.datasource.test;
-import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -110,15 +112,45 @@ public class test {
 		}
 	}
 			
-	public static void filterCampaigns(ClassPathXmlApplicationContext context){
-		FilterCampaignService cccs = 
-				(FilterCampaignService) context.getBean("FilterCampaignServiceImpl");
-		
+	public static void filterCampaigns(ClassPathXmlApplicationContext context) {
+
+		FilterCampaignService cccs = (FilterCampaignService) context.getBean("filterCampaignServiceImpl");
+
 		SearchCampaignBean searchCampaignBean = new SearchCampaignBean();
-		searchCampaignBean.setClassificationParentId(7);		
+
+		String pattern = "yyyy-MM-dd";
+
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		try {
+			Date startDate = format.parse("2015-12-01");
+			Date endDate = format.parse("2016-01-01");
+			
+//			Date startDate = format.parse("2015-09-01 00:00:00");
+//			Date endDate = format.parse("2015-10-01 00:00:00");
+			
+//			Date startDate = format.parse("2015-09-01 00:00:00");
+//			Date endDate = format.parse("2015-10-01 00:00:00");
+			
+			//2015-09-01
+			//2015-09-30
+
+			searchCampaignBean.setClassificationParentId(7);
+			searchCampaignBean.setCampaignName("cam");
+			searchCampaignBean.setStartDate(startDate);
+			searchCampaignBean.setEndDate(endDate);
+			searchCampaignBean.setClassificationName1("clase5");
+			searchCampaignBean.setClassificationName2("clase2");
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		List<CampaignDetailBean> listCampaignDetailBean =  cccs.FilterCampaign(7, searchCampaignBean);
 		
-		cccs.FilterCampaign(7, searchCampaignBean);
-		
+		for (CampaignDetailBean campaignDetailBean : listCampaignDetailBean) {
+			System.out.println(campaignDetailBean.toString());
+		}
+
 	}
 	
 	public static void main(String[] args) {
@@ -145,9 +177,9 @@ public class test {
 //		//SERVICIO MOSTRAR PUBLICACIONES
 //		mostrarPublicaciones(context);
 		
+		
 		//SERVICIO DE FILTRARCAMPAÑAS
 		filterCampaigns(context);
-		
 		
 	}
 }

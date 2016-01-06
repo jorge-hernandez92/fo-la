@@ -5,10 +5,7 @@ package com.twobig.sivale.bd.to;
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -23,6 +20,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @Table(name="t_campaigns"
     ,catalog="lealtad_schema"
 )
+
 public class TCampaign  implements java.io.Serializable {
 
 
@@ -50,7 +48,7 @@ public class TCampaign  implements java.io.Serializable {
         this.campaignId = campaignId;
     }
     
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name="start_date", length=19)
     public Date getStartDate() {
         return this.startDate;
@@ -60,7 +58,7 @@ public class TCampaign  implements java.io.Serializable {
         this.startDate = startDate;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @Temporal(TemporalType.DATE)
     @Column(name="end_date", length=19)
     public Date getEndDate() {
         return this.endDate;

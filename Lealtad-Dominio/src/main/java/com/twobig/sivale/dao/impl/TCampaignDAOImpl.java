@@ -44,11 +44,11 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long> implements
 		if(startDate != null || endDate != null){
 			
 			criteria.add(Restrictions.ge(TCampaign.FIELD_START_DATE, startDate));
-			
+
 			criteria.add(Restrictions.le(TCampaign.FIELD_END_DATE, endDate));
+			
 		}
 		
-		// TODO Auto-generated method stub
-		return null;
+		return getListByCriteria(criteria);
 	}
 }

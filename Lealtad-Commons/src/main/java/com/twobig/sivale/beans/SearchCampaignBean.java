@@ -4,17 +4,14 @@ import java.util.Date;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
-import com.twobig.sivale.bd.to.TCampaign;
-
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SearchCampaignBean{
 
-	private int classificationParentId;
+	private Integer classificationParentId;
 	
 	private String classificationName1;
 	private String classificationName2;
-	
-	
+
 	private String campaignName;
 	private Date startDate;
     private Date endDate;
@@ -25,10 +22,10 @@ public class SearchCampaignBean{
 	}
 
 	public void setCampaignName(String campaignName) {
-		this.campaignName = campaignName;
+		this.campaignName = "%"+campaignName+"%";
 	}
 
-	public int getClassificationParentId() {
+	public Integer getClassificationParentId() {
 		return classificationParentId;
 	}
 
