@@ -3,6 +3,15 @@
 	background-size:cover; 
 } 
 
+.margin-top10{
+	margin-top: 10px;
+}
+
+.span-header {
+    margin-top: 10px;
+    color: #000;
+}
+
 .margin-table{
 	margin-top:70px;
 }

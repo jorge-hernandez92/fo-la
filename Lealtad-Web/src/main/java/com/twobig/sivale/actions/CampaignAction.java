@@ -19,6 +19,7 @@ import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
 import com.xm.sivale.services.test.ServicesUser;
@@ -32,6 +33,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<CatClassificationCampaign> classifications;
 
 	private List<CampaignDetailBean> campaigns;
+	
+	private List<CampaignDetailAdminBean> campaignsAdmin;
 	
 	private List<CampaignDetailBean> searchCampaigns;
 
@@ -115,6 +118,23 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Action(value = "getCampaignsAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"campaignsAdmin", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getCampaignsAdminAction() {
+
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+
+		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
+		campaignsAdmin = new ServicesUser().getCampaignsAdmin();
+		
+		return SUCCESS;
+
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Action(value = "searchCampaignsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"searchCampaigns", "excludeNullProperties", "true", "noCache", "true" }) )
@@ -257,6 +277,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	public List<CampaignDetailBean> getSearchCampaigns() {
 		return searchCampaigns;
+	}
+
+	public List<CampaignDetailAdminBean> getCampaignsAdmin() {
+		return campaignsAdmin;
 	}
 	
 	

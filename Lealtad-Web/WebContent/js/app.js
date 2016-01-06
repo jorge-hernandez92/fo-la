@@ -15,10 +15,11 @@ appres.run(function($rootScope) {
 	$rootScope.classif = {
 		classification2: STRING_DEFAULT
 	};
+	
 })			
 
 appres.controller('campaignController', function($scope, $filter, $rootScope,
-		$http, NgTableParams) { 
+		$http, NgTableParams, $state) { 
 	    
 	$scope.css  = CSS_DEFAULT;
 	$scope.logo = LOGO_DEFAULT;
@@ -27,6 +28,8 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			startDate: moment(),
 			endDate: moment()
 	};
+	
+	$scope.companyMenu = true;
 	
 	$scope.getCampaigns = function() {
 
@@ -93,7 +96,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	};
 	
 	$scope.getClassifications = function() {
-
+		
 		$http.get('getMyClassificationsAction').success(
 			function(data, status, headers, config) {
 				
@@ -101,10 +104,18 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 				$scope.css = CSS_DEFAULT;
 				$scope.logo = LOGO_DEFAULT;
 				$scope.classification = STRING_DEFAULT;
-
+				$scope.companyMenu = true;
+				
+				if(data.length == 1){
+					$scope.updateClassification($scope.classifications[0]);
+					$scope.companyMenu = false;
+					$state.go('transactions');
+				}
+				
 			}).error(function(data, status, headers, config) {
 
 		});
+		
 	};
 
 	$scope.getCampaign = function() {
@@ -281,6 +292,16 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					$scope.balance = (data);  					
 				}).error(function(data, status, headers, config) {
 		});
+	};
+	
+	$scope.isAdmin = function() {			
+		
+		console.log('User catProfile : ' + $scope.user.catProfile );
+		if ($scope.user.catProfile == 0){
+			return true;
+		}
+		return false;
+		
 	};
 	
 	$scope.searchCampaigns = function(date) {

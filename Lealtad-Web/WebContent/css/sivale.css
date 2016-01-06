@@ -1,6 +1,15 @@
 .back-image{  
     background-image:url('../img/bg_content_clientes.jpg'); 
 	background-size:cover; 
+}
+
+.margin-top10{
+	margin-top: 10px;
+}
+
+.span-header {
+    margin-top: 10px;
+    color: #8c8c8c;
 } 
 
 .margin-table{

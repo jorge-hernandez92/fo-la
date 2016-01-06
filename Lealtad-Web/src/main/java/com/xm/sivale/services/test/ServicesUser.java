@@ -1,11 +1,5 @@
 package com.xm.sivale.services.test;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.net.URI;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -19,9 +13,9 @@ import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.CatView;
 import com.twobig.sivale.bd.to.TAttachedFile;
-import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 
 import ws.sivale.com.mx.messages.types.TypeTransaccion;
@@ -29,6 +23,39 @@ import ws.sivale.com.mx.messages.types.TypeTransaccion;
 public class ServicesUser {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(ServicesUser.class);
+	
+	
+	//Agregar a excel
+	public List<CatClassificationCampaign> getClassificationsAdmin(Integer userId){
+		return getMyClassifications(userId);
+	}
+	
+	public List<CatClassificationCampaign> getChilds(Integer ClassId){
+		
+		List<CatClassificationCampaign> childs = new ArrayList<CatClassificationCampaign>();
+		
+		CatClassificationCampaign classif = new CatClassificationCampaign();
+		classif.setClassName("classification 1");
+		classif.setCatClassificationCampaignsId(0);
+		
+		childs.add(classif);
+		
+		classif = new CatClassificationCampaign();
+		classif.setClassName("classification 2");
+		classif.setCatClassificationCampaignsId(1);
+		
+		childs.add(classif);
+		
+		classif = new CatClassificationCampaign();
+		classif.setClassName("classification 3");
+		classif.setCatClassificationCampaignsId(2);
+		
+		childs.add(classif);
+		
+		return childs;
+		
+	}
+	
 	
 	public List<CatClassificationCampaign> getMyClassifications(Integer userId){
 		
@@ -319,6 +346,18 @@ public class ServicesUser {
 		
 		if(userName.equals("latbcuser") && password.equals("111")){
 			user = new TUser();
+			user.setCatProfile(1);
+			user.setUserId(100);
+			user.setFirstName("userName");
+			user.setLastName1("lastName1");
+			user.setLastName2("lastName2");
+			user.setFullName(user.getFirstName() + " " + user.getLastName1() + " " + user.getLastName2());
+			user.setEmail("user@latbc.com.mx");
+			user.setTjCardNumber("100022030909378");
+		}
+		else if(userName.equals("latbcadmin") && password.equals("111")){
+			user = new TUser();
+			user.setCatProfile(0);
 			user.setUserId(100);
 			user.setFirstName("userName");
 			user.setLastName1("lastName1");
@@ -399,4 +438,109 @@ public class ServicesUser {
 		return lastTransactions;
 	}
 
+public List<CampaignDetailAdminBean> getCampaignsAdmin(){
+		
+		List<CampaignDetailAdminBean> campaigns= new ArrayList<CampaignDetailAdminBean>();
+		Date date = new Date(115,11,1,0,0,0);
+		
+		List<String> classifications;
+		CampaignDetailAdminBean campaign;
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa A");
+		classifications.add("Subprograma A");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailAdminBean();
+		campaign.setCampaignId(0);
+		campaign.setCampaignName("campaign Name A");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+		campaign.setStatus("Activa");
+		campaign.setTotalWon("$ 0.00");
+		campaign.setTotalScattered("$ 0.00");
+		
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa A");
+		classifications.add("Subprograma B");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailAdminBean();
+		campaign.setCampaignId(1);
+		campaign.setCampaignName("campaign Name B");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+		campaign.setStatus("Activa");
+		campaign.setTotalWon("$ 0.00");
+		campaign.setTotalScattered("$ 0.00");
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa B");
+		classifications.add("Subprograma C");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailAdminBean();
+		campaign.setCampaignId(2);
+		campaign.setCampaignName("campaign Name C");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+		campaign.setStatus("Activa");
+		campaign.setTotalWon("$ 0.00");
+		campaign.setTotalScattered("$ 0.00");
+		
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa B");
+		classifications.add("Subprograma D");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailAdminBean();
+		campaign.setCampaignId(3);
+		campaign.setCampaignName("campaign Name D");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+		campaign.setStatus("Activa");
+		campaign.setTotalWon("$ 0.00");
+		campaign.setTotalScattered("$ 0.00");
+			
+		campaigns.add(campaign);
+		
+		
+		classifications = new ArrayList<String>();
+		classifications.add("Compañia A");
+		classifications.add("Programa C");
+		classifications.add("Subprograma E");
+		classifications.add("Unidad A");
+		
+		campaign = new CampaignDetailAdminBean();
+		campaign.setCampaignId(4);
+		campaign.setCampaignName("campaign Name E");
+		campaign.setStartDate(date);
+		campaign.setEndDate(date);
+		campaign.setClassification(classifications);
+		campaign.setStatus("Activa");
+		campaign.setTotalWon("$ 0.00");
+		campaign.setTotalScattered("$ 0.00");
+		
+		campaigns.add(campaign);
+		
+		return campaigns;
+	}
 }

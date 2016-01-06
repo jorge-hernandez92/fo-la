@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<div class="panel-body back-sivale">
+	<div class="navbar container">
+		<ol class="breadcrumb breadcrumb-arrow">
+			<li><a ui-sref="home">Campañas Recientes</a></li>
+			<li class="active"><span>Publicaciones</span></li>
+		</ol>
+	</div>
+	<div class="container">
+		<div class="panel panel-default table-top-sivale">
+			<div class="panel-heading">
+				<div class="container-fluid">
+					<div class="navbar-header">{{campaign.campaignName}}</div>
+					<div id="navbar" class="navbar-collapse collapse">
+						<ul class="nav navbar-nav navbar-right">Duración
+							{{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
+						</ul>
+					</div>
+				</div>
+			</div>
+
+			<div class="panel-body back-sivale">
+				<div data-ng-controller="getCampaign" ng-cloak>
+					<table ng-table="tablePublications" class="table">
+						<tr ng-repeat="publication in $data">
+							
+							<td title="'Tipo'" header-class="'text-left'"
+								sortable="'name'"><span class="label label-default">{{publication.catPublicationType.name}}</span></td>
+							
+							<td title="'Publicacion'" header-class="'text-left'"
+								sortable="'name'">{{publication.name}}</td>
+
+							<td title="'Fecha de Publicacion'" header-class="'text-left'"
+								sortable="'publishedDate'">{{formatDate(publication.publishedDate)}}</td>
+
+							<td><a href="#"
+								data-ng-click="updatePublication(publication)"
+								ui-sref="publication">Visualizar</a>
+								
+							<td><a href="#"
+								data-ng-click="updatePublication(publication)"
+								ui-sref="publication">Editar</a>
+							
+							<td><a href="#"
+								data-ng-click="updatePublication(publication)"
+								ui-sref="publication">Activar</a>
+								
+						</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

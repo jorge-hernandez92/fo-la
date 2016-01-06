@@ -35,7 +35,6 @@
 
 <body class="back-sivale">
 
-
 	<header id="header" data-ng-controller="updateSession">
 		<div class="header_top">
 			<div class="container width100">
@@ -55,9 +54,13 @@
 <!-- 						</div> -->
 						<div class="shop-menu pull-right">
 							<ul class="nav navbar-nav">
-
-								<li></span><a href="#"><span class="glyphicon glyphicon-user">
+								
+								<li></span><span class="glyphicon glyphicon-credit-card span-header">
+											{{user.tjCardNumber}} </a></li>
+											
+								<li></span><span class="glyphicon glyphicon-user span-header">
 											{{user.firstName}} </a></li>
+								
 								<li></span><a href="logout"><span
 										class="glyphicon glyphicon-log-out"> Salir</a></li>
 							</ul>
@@ -123,7 +126,7 @@
 			<ul class="c-menu__items">
 				<li class="c-menu__item"><a ui-sref="transactions" class="c-menu__link">Movimientos</a></li>
 				<li class="c-menu__item" ng-if="classification"><a ui-sref="campaigns" class="c-menu__link">Campañas</a></li>
-				<li class="c-menu__item"><a ui-sref="home" class="c-menu__link">Compañias</a></li>
+				<li class="c-menu__item" ng-if="companyMenu"><a ui-sref="home" class="c-menu__link">Compañias</a></li>
 			</ul>
 		</nav>
 
