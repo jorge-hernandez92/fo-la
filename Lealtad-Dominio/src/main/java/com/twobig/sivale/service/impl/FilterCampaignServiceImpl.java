@@ -100,7 +100,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 					if (listClassificationString.contains(searchCampaignBean.getClassificationName1().trim())
 							&& listClassificationString.contains(searchCampaignBean.getClassificationName2().trim())) {
 						
-						campaignDetailBean.setClassificationName(listClassificationString);
+						campaignDetailBean.setClassification(listClassificationString);
 						
 						campaignDetailBean.setCatClassificationCampaign(listClassificationC);
 						
@@ -109,7 +109,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 				} else if (searchCampaignBean.getClassificationName1() != null) {
 					if (listClassificationString.contains(searchCampaignBean.getClassificationName1().trim())) {
 						
-						campaignDetailBean.setClassificationName(listClassificationString);
+						campaignDetailBean.setClassification(listClassificationString);
 						
 						campaignDetailBean.setCatClassificationCampaign(listClassificationC);
 						
@@ -118,7 +118,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 				} else if (searchCampaignBean.getClassificationName2() != null) {
 					if (listClassificationString.contains(searchCampaignBean.getClassificationName2().trim())) {
 						
-						campaignDetailBean.setClassificationName(listClassificationString);
+						campaignDetailBean.setClassification(listClassificationString);
 						
 						campaignDetailBean.setCatClassificationCampaign(listClassificationC);
 						
@@ -126,7 +126,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 					}
 				} else {
 					
-					campaignDetailBean.setClassificationName(listClassificationString);
+					campaignDetailBean.setClassification(listClassificationString);
 					
 					campaignDetailBean.setCatClassificationCampaign(listClassificationC);
 					

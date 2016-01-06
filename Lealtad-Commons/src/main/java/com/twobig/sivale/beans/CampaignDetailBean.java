@@ -10,16 +10,16 @@ import com.twobig.sivale.bd.to.TCampaign;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CampaignDetailBean extends TCampaign {
 	
-	private List<String> classificationName;
+	private List<String> classification;
 	
 	private List<CatClassificationCampaign> catClassificationCampaign;
 
-	public List<String> getClassificationName() {
-		return classificationName;
+	public List<String> getClassification() {
+		return classification;
 	}
 
-	public void setClassificationName(List<String> classificationName) {
-		this.classificationName = classificationName;
+	public void setClassification(List<String> classification) {
+		this.classification = classification;
 	}
 
 	public List<CatClassificationCampaign> getCatClassificationCampaign() {
