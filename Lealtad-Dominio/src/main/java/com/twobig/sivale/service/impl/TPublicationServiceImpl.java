@@ -38,5 +38,13 @@ public class TPublicationServiceImpl implements TPublicationService{
 		
 		return publicaciones;
 	}
+	
+	@Override
+	 public List<TPublication> getTPublicationCampaignId(int campaignId) {
+	  
+	  List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignId);
+	  
+	  return publicaciones;
+	 }
 
 }

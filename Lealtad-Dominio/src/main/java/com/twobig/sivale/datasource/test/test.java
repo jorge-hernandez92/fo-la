@@ -163,7 +163,7 @@ public class test {
 //
 //		
 //		//SERVICIO DE CLASIFICACIONES 
-//		clasificaciones(context);
+		clasificaciones(context);
 //		
 //				
 //		//SERVICIO DE CAMPAÑAS

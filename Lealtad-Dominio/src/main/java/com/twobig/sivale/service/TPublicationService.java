@@ -7,5 +7,7 @@ import com.twobig.sivale.bd.to.TPublication;
 public interface TPublicationService {
 	
 	public List<TPublication> getTPublicationByUserIdAndCampaignId(int userId,int campaignId);
+	
+	public List<TPublication> getTPublicationCampaignId(int campaignId);
 
 }

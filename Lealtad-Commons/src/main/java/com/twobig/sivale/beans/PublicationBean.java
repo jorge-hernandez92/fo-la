@@ -4,6 +4,9 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 
 import java.util.List;
 
+import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PublicationBean {
 	
 	private List<TAttachedFile> listFiles;

@@ -4,21 +4,26 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.convention.annotation.Namespace;
-import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TUser;
-import com.xm.sivale.services.test.ServicesUser;
+import com.twobig.sivale.hd.to.UserBean;
+import com.twobig.sivale.service.LoginService;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
 public class LoginAction extends ActionSupport implements SessionAware {
 
+	@Autowired
+	LoginService loginService;
+	
 	private Map<String, Object> session;
 
 	private String username;
@@ -41,10 +46,15 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			return ERROR;
 		else{
 			
-			ServicesUser services = new ServicesUser();
+			//ServicesUser services = new ServicesUser();
+			//user = services.getUser(username, password);
 			
-			user = services.getUser(username, password);
-	        
+			UserBean userBean = new UserBean();
+			userBean.setPass(password);
+			userBean.setUser(username);
+			
+			user = (TUser) loginService.validateUserWeb(userBean);
+			
 	        if (user != null){
 	        	session.put("user", user);
 	        	

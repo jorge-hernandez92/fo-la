@@ -13,34 +13,51 @@ import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
+import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
+import com.twobig.sivale.service.CatClassificationCampaignService;
+import com.twobig.sivale.service.FilterCampaignService;
+import com.twobig.sivale.service.TCampaignsService;
+import com.twobig.sivale.service.TPublicationService;
+import com.twobig.sivale.service.ViewPublicationService;
 import com.xm.sivale.services.test.ServicesUser;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
 public class CampaignAction extends ActionSupport implements SessionAware {
 
+	@Autowired
+	CatClassificationCampaignService classificationCampaignService;
+	
+	@Autowired
+	TCampaignsService campaignService;
+	
+	@Autowired
+	FilterCampaignService filterCampaignService;
+	
+	@Autowired
+	TPublicationService publicationService;
+	
+	@Autowired
+	ViewPublicationService viewPublicationService;
+	
 	private Map<String, Object> session;
-
 	private List<CatClassificationCampaign> classifications;
-
 	private List<CampaignDetailBean> campaigns;
-	
 	private List<CampaignDetailAdminBean> campaignsAdmin;
-	
 	private List<CampaignDetailBean> searchCampaigns;
-
 	private List<TPublication> publications;
-
-	private Map<String, Object> publication;
+	private PublicationBean publication;
 
 
 	@Override
@@ -69,9 +86,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		classifications = new ServicesUser().getMyClassifications(user.getUserId());
+		//classifications = new ServicesUser().getMyClassifications(user.getUserId());
+		
+		classifications = classificationCampaignService.getCatClassificationCampaignByUserId(user.getUserId());
 		return SUCCESS;
-
 	}
 
 	@SuppressWarnings("unchecked")
@@ -112,8 +130,15 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		campaigns = new ServicesUser().getCampaigns(user.getUserId(),
-				classificationCmp.getCatClassificationCampaignsId());
+		//campaigns = new ServicesUser().getCampaigns(user.getUserId(),
+		//		classificationCmp.getCatClassificationCampaignsId());
+		
+		//System.out.println("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
+		campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
+		for (CampaignDetailBean campaignDetailBean2 : campaigns) {
+			System.out.println(campaignDetailBean2.toString());
+			System.out.println(campaignDetailBean2.getClassification());
+		}
 		return SUCCESS;
 
 	}
@@ -153,6 +178,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			try {
 				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
 						SearchCampaignBean.class);
+				
+				System.out.println(searchCampaign.toString());
+				
 			} catch (IOException e) {
 				e.printStackTrace();
 				return ERROR;
@@ -169,6 +197,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
 		searchCampaigns = new ServicesUser().searchCampaigns();
+		
+		//searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
 		return SUCCESS;
 
 	}
@@ -209,7 +239,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		publications = new ServicesUser().getPubliations(user.getUserId(), campaign.getCampaignId());
+		//publications = new ServicesUser().getPubliations(user.getUserId(), campaign.getCampaignId());
+		
+		publications = publicationService.getTPublicationCampaignId(campaign.getCampaignId());
+		
 		return SUCCESS;
 
 	}
@@ -251,7 +284,14 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		this.publication = new ServicesUser().showPublication(user.getUserId(), pub.getPublicationId());
+		//this.publication = new ServicesUser().showPublication(user.getUserId(), pub.getPublicationId());
+		
+		this.publication = viewPublicationService.showPublication(user.getUserId(), pub.getPublicationId());
+		for (TAttachedFile files : publication.getListFiles()) {
+			System.out.println(files.toString());
+		}
+		
+		System.out.println(publication.getHtml());
 		return SUCCESS;
 	}
 
@@ -267,7 +307,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return publications;
 	}
 
-	public Map<String, Object> getPublication() {
+	public PublicationBean getPublication() {
 		return publication;
 	}
 

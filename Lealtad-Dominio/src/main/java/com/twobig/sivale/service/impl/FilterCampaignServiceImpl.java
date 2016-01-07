@@ -79,7 +79,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 
 				listClassificationC.add(catClassificationCampaign);
 				
-				listClassificationString.add(catClassificationCampaign.getClassName());
+				listClassificationString.add(0, catClassificationCampaign.getClassName());
 
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
@@ -89,7 +89,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 
 			listClassificationC.add(catClassificationCampaign);
 			
-			listClassificationString.add(catClassificationCampaign.getClassName());
+			listClassificationString.add(0, catClassificationCampaign.getClassName());
 			
 			if (catClassificationCampaign.getCatClassificationCampaignsId() == searchCampaignBean
 					.getClassificationParentId()) {

@@ -175,7 +175,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			}
 		}).success(
 				function(data, status, headers, config) {
-					$scope.attachedFiles = data.filesList;
+					$scope.attachedFiles = data.listFiles;
 
 					$scope.tableAttachedFiles = new NgTableParams({
 						page : 1,
