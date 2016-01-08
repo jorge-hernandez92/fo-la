@@ -47,7 +47,7 @@ public class CatClassificationCampaign implements java.io.Serializable {
 		this.catClassificationCampaignsId = catClassificationCampaignsId;
 	}
 
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.EAGER)
 	@JoinColumn(name = "fk_view")
 	public CatView getCatViews() {
 		return this.catViews;

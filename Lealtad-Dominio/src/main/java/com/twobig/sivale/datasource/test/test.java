@@ -15,13 +15,17 @@ import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.beans.TUserLogin;
+import com.twobig.sivale.exceptions.TravelsNotFoundException;
 import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.FilterCampaignService;
 import com.twobig.sivale.service.LoginService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
+import com.twobig.sivale.service.TransactionService;
 import com.twobig.sivale.service.ViewPublicationService;
+
+import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
 
 public class test {
@@ -60,6 +64,42 @@ public class test {
 		
 	}
 	
+	public static void loginWebService(ClassPathXmlApplicationContext context){
+		
+		LoginService loginService = (LoginService) context.getBean("loginServiceImpl");
+		
+		String user   = "5273740100060052";
+		//user   = "5452900200030677";
+		//user   = "5349261200148580";
+
+
+		String passwd = "inicial1";
+
+		
+		TUserLogin tUserLogin;
+
+		UserBean userBean = new UserBean();
+		userBean.setUser(user);
+		userBean.setPass(passwd);
+		Map<String, Object> userDetails =  new HashMap<String, Object>();
+    	
+		if ((tUserLogin = loginService.validateUserWeb(userBean)) != null) {			 						
+						
+			userDetails.put("email", 			tUserLogin.getEmail());
+			userDetails.put("functionalities", 	tUserLogin.getFunctionalities());
+			userDetails.put("userId", 			tUserLogin.getUserId());
+			userDetails.put("rfcClient", 		tUserLogin.gettCompanies().getDescription());
+			userDetails.put("clientName", 		tUserLogin.gettCompanies().getName());
+			userDetails.put("userName", 		tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
+			userDetails.put("cardNumber", 		tUserLogin.getTjCardNumber());
+			userDetails.put("clientId", 		tUserLogin.gettCompanies().getIdCompany());	
+			System.out.println(userDetails.toString());
+			
+		} else {
+			System.out.println("Usuario o password incorrectos!");
+		}
+	}
+	
 	public static void clasificaciones(ClassPathXmlApplicationContext context){
 		
 		CatClassificationCampaignService cccs = 
@@ -69,29 +109,32 @@ public class test {
 		
 		for (CatClassificationCampaign catClassificationCampaign : clasificaciones) {
 			System.out.println(catClassificationCampaign.toString());
+			System.out.println(catClassificationCampaign.getCatViews().getLogos());
 		}
 		
 	}
 	
 	public static void campañas(ClassPathXmlApplicationContext context){
+		
 		TCampaignsService cccs = (TCampaignsService) context.getBean("TCampaignsServiceImpl");
 		List<CampaignDetailBean> campaignDetailBeanList =  
-				cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 7);
+				cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 1);
 		
 		for (CampaignDetailBean campaignDetailBean2 : campaignDetailBeanList) {
 			System.out.println(campaignDetailBean2.toString());
+			System.out.println(campaignDetailBean2.getClassification());
 		}
 	}
 	
 	public static void publicaciones(ClassPathXmlApplicationContext context){
+		
 		TPublicationService cccs = 
 		(TPublicationService) context.getBean("TPublicationServiceImpl");
 		
-		List<TPublication> publicaciones = cccs.getTPublicationByUserIdAndCampaignId(7, 1);
+		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1);
 		
-		for (int i = 0; i < publicaciones.size(); i++) {
-			System.out.println(publicaciones.get(i).toString() + " ");
-			System.out.print(publicaciones.get(i).getCatPublicationType());
+		for (TPublication tPublication : publicaciones) {
+			System.out.println(tPublication.toString() + " ");
 		}
 	}
 	
@@ -114,32 +157,33 @@ public class test {
 			
 	public static void filterCampaigns(ClassPathXmlApplicationContext context) {
 
+
 		FilterCampaignService cccs = (FilterCampaignService) context.getBean("filterCampaignServiceImpl");
 
 		SearchCampaignBean searchCampaignBean = new SearchCampaignBean();
 
 		String pattern = "yyyy-MM-dd";
+		
 
 		SimpleDateFormat format = new SimpleDateFormat(pattern);
 		try {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
+			System.out.println(endDate);
 			
 //			Date startDate = format.parse("2015-09-01 00:00:00");
 //			Date endDate = format.parse("2015-10-01 00:00:00");
 			
 //			Date startDate = format.parse("2015-09-01 00:00:00");
 //			Date endDate = format.parse("2015-10-01 00:00:00");
-			
-			//2015-09-01
-			//2015-09-30
 
-			searchCampaignBean.setClassificationParentId(7);
-			searchCampaignBean.setCampaignName("cam");
+			searchCampaignBean.setClassificationParentId(1);
+			searchCampaignBean.setCampaignName("camp");
 			searchCampaignBean.setStartDate(startDate);
 			searchCampaignBean.setEndDate(endDate);
-			searchCampaignBean.setClassificationName1("clase5");
-			searchCampaignBean.setClassificationName2("clase2");
+			System.out.println(searchCampaignBean.toString());
+			searchCampaignBean.setClassificationName1("cLaSe5");
+			searchCampaignBean.setClassificationName2("CLAS");
 			
 		} catch (ParseException e) {
 			e.printStackTrace();
@@ -148,16 +192,48 @@ public class test {
 		List<CampaignDetailBean> listCampaignDetailBean =  cccs.FilterCampaign(7, searchCampaignBean);
 		
 		for (CampaignDetailBean campaignDetailBean : listCampaignDetailBean) {
-			System.out.println(campaignDetailBean.toString());
+			System.out.println(campaignDetailBean);
 		}
 
 	}
 	
+	public static void movimientos(ClassPathXmlApplicationContext context){
+		
+		TransactionService cccs = (TransactionService) context.getBean("transactionServiceImpl");
+		
+		List<TypeTransaccion> transactionsList = cccs.getLastTransactionByCard("5273740100060052");
+		
+		for (TypeTransaccion typeTransaccion : transactionsList) {
+			 System.out.print(typeTransaccion.getNumberCard());
+			 System.out.println(" "+typeTransaccion.getTransactionDate());
+			 
+		}
+		
+		try {
+			
+			Double saldo = cccs.getBalance("5273740100060052");
+			System.out.println("Saldo: "+saldo);
+		} catch (TravelsNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
 	public static void main(String[] args) {
+		
+		//BasicConfigurator.configure();
 		
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 			     "classpath:/application-context.xml");
 		
+		
+//		//SERVICIO DE MOVIMIENTOS Y DE SALDO
+//		movimientos(context);
+//		
+//		//SERVICIO DE LOGIN PARA EL PARTICIPANTE
+//		loginWebService(context);
+//		
+//		
 //		//SERVICIO DE LOGIN PARA ADMINISTRADOR
 //		login(context);
 //
@@ -176,10 +252,11 @@ public class test {
 //		
 //		//SERVICIO MOSTRAR PUBLICACIONES
 //		mostrarPublicaciones(context);
+//		
+//		
+//		//SERVICIO DE FILTRARCAMPAÑAS
+//		filterCampaigns(context);
 		
-		
-		//SERVICIO DE FILTRARCAMPAÑAS
-		filterCampaigns(context);
 		
 	}
 }

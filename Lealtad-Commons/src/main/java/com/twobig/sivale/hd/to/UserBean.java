@@ -4,7 +4,7 @@ public class UserBean {
 
 	private String user;
 	private String pass;
-
+	
 	public String getUser() {
 		return user;
 	}
@@ -20,4 +20,5 @@ public class UserBean {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
+	
 }

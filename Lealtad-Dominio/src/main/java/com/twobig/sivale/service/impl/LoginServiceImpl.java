@@ -53,7 +53,7 @@ public class LoginServiceImpl implements LoginService {
 	/**
 	 * Variable to specify the length of the card number.
 	 */
-	private static int LENGTH_OF_CARD_NUMBER = 160;
+	private static int LENGTH_OF_CARD_NUMBER = 16;
 
 	/**
 	 * Variable to specify the pattern of card number.
@@ -95,11 +95,11 @@ public class LoginServiceImpl implements LoginService {
 		if (isCardHolder(user.getUser())) {
 
 			SivaleServices sivaleServices = new SivaleServices();
+			
 			try {
-
+				
 				if (sivaleServices
 						.validateLogin(user.getUser(), user.getPass())) {
-
 					tUsers = userDAO.getUserByCard(user.getUser());
 				}
 			} catch (SivaleServicesException e) {

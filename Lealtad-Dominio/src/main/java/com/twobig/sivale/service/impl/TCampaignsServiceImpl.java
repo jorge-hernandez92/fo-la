@@ -75,10 +75,14 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			CampaignDetailBean campaignDetailBean = tCampaignToCampaignDetailBean(tCampaign.get(i));
 			
 			List<CatClassificationCampaign> listClassificationC = new ArrayList<CatClassificationCampaign>();
+			
+			List<String> listClassificationString = new ArrayList<String>();
 
 			while (catClassificationCampaign.getLevel() > 0) {
 
 				listClassificationC.add(catClassificationCampaign);
+				listClassificationString.add(0, catClassificationCampaign.getClassName());
+				
 
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
@@ -87,10 +91,12 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			}
 
 			listClassificationC.add(catClassificationCampaign);
+			listClassificationString.add(0, catClassificationCampaign.getClassName());
 
 			if (catClassificationCampaign.getCatClassificationCampaignsId() == classificationCampaignsId) {
 				
 				campaignDetailBean.setCatClassificationCampaign(listClassificationC);
+				campaignDetailBean.setClassification(listClassificationString);
 				
 				listCampaignDetailBean.add(campaignDetailBean);
 			}

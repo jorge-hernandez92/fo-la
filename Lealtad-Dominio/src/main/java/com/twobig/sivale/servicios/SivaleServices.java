@@ -148,7 +148,9 @@ public class SivaleServices {
 	}
 
 	public boolean validateLogin(String user, String pass) throws SivaleServicesException {
+		//System.out.println("En la funcion de validateLogin");
 		try {
+			
 			ServiciosSiValeMxLocator service = new ServiciosSiValeMxLocator();
 			String uri = service.getServiciosSiValeMxTypePortAddress();
 			URL url = new URL(uri);
@@ -157,6 +159,7 @@ public class SivaleServices {
 			wbind.setHeader(getSivaleHeader(uri));
 
 			String encryptedPass = encrypt.encryptData(pass);
+			System.out.println("La contraseña es: "+encryptedPass);
 			LOGGER.info("Authenticating user: " + user);
 			LOGGER.info(encryptedPass);
 

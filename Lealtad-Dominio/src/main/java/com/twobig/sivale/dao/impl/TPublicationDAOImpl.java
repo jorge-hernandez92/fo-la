@@ -31,4 +31,19 @@ GenericDAOImpl<TPublication, Long> implements TPublicationDAO {
 		
 	}
 
+
+	//SE AGREGO ESTE METODO 
+	@Override
+	public List<TPublication> getTCampaignByPublicationId(int campaign) {
+		
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(TPublication.class);
+		
+		criteria.add(Restrictions.eq(TPublication.FIELD_CAMPAIGN_ID, campaign));
+		
+		return getListByCriteria(criteria);
+	}
+	
+	
+
 }

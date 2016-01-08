@@ -35,7 +35,9 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long> implements
 
 		criteria.add(Restrictions.in(TCampaign.FIELD_COMPAIGN_ID, campaignId));
 		
-		if(campaignName != null){
+		if(campaignName != null && !campaignName.isEmpty()){
+			
+			campaignName = "%"+campaignName+"%";
 			
 			criteria.add(Restrictions.like(TCampaign.FIELD_COMPAIGN_NAME, campaignName));
 			
