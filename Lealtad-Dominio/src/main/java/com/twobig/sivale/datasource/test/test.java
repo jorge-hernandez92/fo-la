@@ -182,8 +182,8 @@ public class test {
 			searchCampaignBean.setStartDate(startDate);
 			searchCampaignBean.setEndDate(endDate);
 			System.out.println(searchCampaignBean.toString());
-			searchCampaignBean.setClassificationName1("cLaSe5");
-			searchCampaignBean.setClassificationName2("CLAS");
+			searchCampaignBean.setClassificationName1("");
+			searchCampaignBean.setClassificationName2(" ");
 			
 		} catch (ParseException e) {
 			e.printStackTrace();

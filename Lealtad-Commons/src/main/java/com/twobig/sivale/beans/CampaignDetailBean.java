@@ -30,4 +30,19 @@ public class CampaignDetailBean extends TCampaign {
 		this.catClassificationCampaign = catClassificationCampaign;
 	}
 	
+	public void setTCampaign(TCampaign tCampaign){
+		
+		this.setCampaignId(tCampaign.getCampaignId());
+		
+		this.setCampaignName(tCampaign.getCampaignName());
+		
+		this.setClassificationId(tCampaign.getClassificationId());
+		
+		this.setDescription(tCampaign.getDescription());
+		
+		this.setEndDate(tCampaign.getEndDate());
+		
+		this.setStartDate(tCampaign.getStartDate());
+	}
+	
 }
