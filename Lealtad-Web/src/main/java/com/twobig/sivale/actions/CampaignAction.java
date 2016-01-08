@@ -186,8 +186,6 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 					return ERROR;
 				
 				searchCampaign.setClassificationParentId(classification.getCatClassificationCampaignsId());
-				searchCampaign.setClassificationName1(null);
-				searchCampaign.setClassificationName2(null);
 				System.out.println(searchCampaign.toString());
 				
 			} catch (IOException e) {

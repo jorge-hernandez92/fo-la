@@ -12,10 +12,13 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.constants.CommonsConstants;
+import com.twobig.sivale.exceptions.TravelsNotFoundException;
+import com.twobig.sivale.service.TransactionService;
 import com.xm.sivale.services.test.ServicesUser;
 
 import ws.sivale.com.mx.messages.types.TypeTransaccion;
@@ -32,6 +35,9 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	private String cardNumber;
 	private String userId;
 	
+	@Autowired
+	TransactionService transactionService;
+	
 	private List<TypeTransaccion> lastTransactions;	
 
 	
@@ -45,9 +51,17 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	public String getBalanceAction() {
 		
 		
-		//START HARDCODE
-		balance = 2000;
-		//END HARDCODE
+		//balance = 2000;
+		TUser user =(TUser) session.get("user");
+		cardNumber = user.getTjCardNumber();
+		 
+		try {
+			balance = transactionService.getBalance(cardNumber);
+		} catch (TravelsNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return ERROR;
+		}
 		
 		return SUCCESS;
 	}
@@ -60,16 +74,14 @@ public class HomeAction extends ActionSupport implements SessionAware {
 		 TUser user =(TUser) session.get("user");
 		 cardNumber = user.getTjCardNumber();
 		
-		/*
+		
 		//START SERVICE
 		lastTransactions = transactionService.getLastTransactionByCard(cardNumber);
 		//END SERVICE		 	
-		 * 	 
-		 */
 		
 		
 		//START HARDCODE
-		lastTransactions = new ServicesUser().getLastTransactions();
+		//lastTransactions = new ServicesUser().getLastTransactions();
 		//END HARDCODE
 		 
 		

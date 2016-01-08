@@ -22,14 +22,15 @@
 							<div class="font-title-item">Nombre de Usuario</div>
 							<div id="quickfit-user"
 								title="${sessionScope.userDetails.userName}"
-								class="huge font-size-email">{{user.fullName}}</div>
+								class="huge font-size-email">{{user.firstName}} {{user.lastName1}} {{user.lastName2}}</div>
+								
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-3-balance col-md-6">
+		<div class="col-lg-3-user-email col-md-6">
 			<div class="panel panel-green">
 				<div class="panel-heading" data-ng-controller="getBalance">
 					<div class="row">
@@ -46,23 +47,23 @@
 		</div>
 
 
-		<div class="col-lg-3-user-email col-md-6">
-			<div class="panel panel-green">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-xs-3">
-							<img class="manImg" src="img/home/correo.png"></img>
-						</div>
-						<div class="col-xs-9 text-right">
-							<div class="font-title-item">Correo Electrónico</div>
-							<div id="quickfit-email"
-								title="${sessionScope.userDetails.email}"
-								class="huge font-size-email">{{user.email}}</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+<!-- 		<div class="col-lg-3-user-email col-md-6"> -->
+<!-- 			<div class="panel panel-green"> -->
+<!-- 				<div class="panel-heading"> -->
+<!-- 					<div class="row"> -->
+<!-- 						<div class="col-xs-3"> -->
+<!-- 							<img class="manImg" src="img/home/correo.png"></img> -->
+<!-- 						</div> -->
+<!-- 						<div class="col-xs-9 text-right"> -->
+<!-- 							<div class="font-title-item">Correo Electrónico</div> -->
+<!-- 							<div id="quickfit-email" -->
+<!-- 								title="${sessionScope.userDetails.email}" -->
+<!-- 								class="huge font-size-email">{{user.email}}</div> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
 
 		
 

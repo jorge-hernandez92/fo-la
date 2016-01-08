@@ -27,7 +27,8 @@ public class TPublication  implements java.io.Serializable {
 
      private int publicationId;
      private CatPublicationType catPublicationType;
-     private Integer tCampaignId;
+     private TCampaign TCampaigns;
+	 private Integer tCampaignId;
      private Date publishedDate;
      private String name;
      private String templateFilePath;
@@ -62,7 +63,17 @@ public class TPublication  implements java.io.Serializable {
         this.catPublicationType = catPublicationType;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
+
+	@Column(name="fk_campaign")
+    public Integer gettCampaignId() {
+		return tCampaignId;
+	}
+
+	public void settCampaignId(Integer tCampaignId) {
+		this.tCampaignId = tCampaignId;
+	}    
+	
+	@Temporal(TemporalType.TIMESTAMP)
     @Column(name="published_date", length=19)
     public Date getPublishedDate() {
         return this.publishedDate;
@@ -140,15 +151,6 @@ public class TPublication  implements java.io.Serializable {
     
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    @Column(name="fk_campaign")
-    public Integer gettCampaignId() {
-    	return tCampaignId;
-    }
-
-    public void settCampaignId(Integer tCampaignId) {
-    	this.tCampaignId = tCampaignId;
     }
  
 	@Override

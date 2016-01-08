@@ -15,6 +15,7 @@ import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
 import com.twobig.sivale.service.TCampaignsService;
 
+
 @Service
 public class TCampaignsServiceImpl implements TCampaignsService {
 
@@ -81,9 +82,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			while (catClassificationCampaign.getLevel() > 0) {
 
 				listClassificationC.add(catClassificationCampaign);
-
 				listClassificationString.add(0, catClassificationCampaign.getClassName());
-				
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
 				catClassificationCampaign = catClassificationCampaignDAO
@@ -91,15 +90,12 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			}
 
 			listClassificationC.add(catClassificationCampaign);
-			
 			listClassificationString.add(0, catClassificationCampaign.getClassName());
 
 			if (catClassificationCampaign.getCatClassificationCampaignsId() == classificationCampaignsId) {
 				
 				campaignDetailBean.setCatClassificationCampaign(listClassificationC);
-				
 				campaignDetailBean.setClassification(listClassificationString);
-				
 				listCampaignDetailBean.add(campaignDetailBean);
 			}
 		}

@@ -94,11 +94,11 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 			if (catClassificationCampaign.getCatClassificationCampaignsId() == searchCampaignBean
 					.getClassificationParentId()) {
 
-				if (searchCampaignBean.getClassificationName1() != null
-						&& searchCampaignBean.getClassificationName2() != null) {
+				if (exist(searchCampaignBean.getClassificationName1())
+						&& exist(searchCampaignBean.getClassificationName2()) ) {
 
-					if (listClassificationString.contains(searchCampaignBean.getClassificationName1().trim())
-							&& listClassificationString.contains(searchCampaignBean.getClassificationName2().trim())) {
+					if (contains(listClassificationString, searchCampaignBean.getClassificationName1())
+							&& contains(listClassificationString, searchCampaignBean.getClassificationName2())) {
 						
 						campaignDetailBean.setClassification(listClassificationString);
 						
@@ -106,8 +106,8 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 						
 						listCampaignDetailBean.add(campaignDetailBean);
 					}
-				} else if (searchCampaignBean.getClassificationName1() != null) {
-					if (listClassificationString.contains(searchCampaignBean.getClassificationName1().trim())) {
+				} else if (exist(searchCampaignBean.getClassificationName1())) {
+					if (contains(listClassificationString, searchCampaignBean.getClassificationName1())) {
 						
 						campaignDetailBean.setClassification(listClassificationString);
 						
@@ -115,8 +115,8 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 						
 						listCampaignDetailBean.add(campaignDetailBean);
 					}
-				} else if (searchCampaignBean.getClassificationName2() != null) {
-					if (listClassificationString.contains(searchCampaignBean.getClassificationName2().trim())) {
+				} else if (exist(searchCampaignBean.getClassificationName2())) {
+					if (contains(listClassificationString, searchCampaignBean.getClassificationName2())) {
 						
 						campaignDetailBean.setClassification(listClassificationString);
 						
@@ -136,6 +136,17 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 		}
 		
 		return listCampaignDetailBean;
+	}
+	
+	private Boolean contains(List<String> listString, String cadena){
+		for (String string : listString) 
+			if(string.toLowerCase().indexOf(cadena.trim().toLowerCase()) != -1)
+				return true; 
+		return false;
+	}
+	
+	private Boolean exist(String classificationName){
+		return ( classificationName != null && !classificationName.trim().isEmpty());
 	}
 	
 	private CampaignDetailBean tCampaignToCampaignDetailBean(TCampaign tCampaign){

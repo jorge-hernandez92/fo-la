@@ -22,7 +22,7 @@ public class SearchCampaignBean{
 	}
 
 	public void setCampaignName(String campaignName) {
-		this.campaignName = "%"+campaignName+"%";
+		this.campaignName = campaignName;
 	}
 
 	public Integer getClassificationParentId() {

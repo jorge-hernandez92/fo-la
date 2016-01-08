@@ -16,10 +16,22 @@ public class MisPruebas {
 		lista.add(new String("Cueatro"));
 		lista.add(new String("Cinco"));
 		
-		if(lista.contains(new String("Tress"))){
-			System.out.println("Existe el elemento");
+		
+//		for (String string : lista) {
+//			System.out.println(string.toLowerCase());
+//		}
+//		
+//		for (String string : lista) {
+//			System.out.println(string);
+//		}
+		
+		String cadena = "CINco";
+		
+		for (String string : lista) {
+			if(string.toLowerCase().indexOf(cadena.toLowerCase()) != -1){
+				System.out.println(string);
+			}
 		}
-		else
-			System.out.println("No existe elemento");
+		
 	}
 }

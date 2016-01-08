@@ -22,6 +22,7 @@ public class TPublicationServiceImpl implements TPublicationService{
 	@Autowired
 	public TPublicationDAO tPublicationDAO;
 
+	//QUITAR ESTE METODO 
 	@Override
 	public List<TPublication> getTPublicationByUserIdAndCampaignId(int userId, int campaignId) {
 		

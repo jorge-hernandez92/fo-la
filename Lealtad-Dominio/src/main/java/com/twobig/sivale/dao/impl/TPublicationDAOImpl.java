@@ -31,7 +31,6 @@ GenericDAOImpl<TPublication, Long> implements TPublicationDAO {
 		
 	}
 
-
 	@Override
 	public TPublication getPublicationById(int publicationId) {
 
@@ -42,7 +41,7 @@ GenericDAOImpl<TPublication, Long> implements TPublicationDAO {
 		
 		return getTByCriteria(criteria);
 	}
-
+	
 	@Override
 	 public List<TPublication> getTCampaignByPublicationId(int campaign) {
 	  
