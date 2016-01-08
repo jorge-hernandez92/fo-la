@@ -17,6 +17,7 @@ import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 
 import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
@@ -542,5 +543,37 @@ public List<CampaignDetailAdminBean> getCampaignsAdmin(){
 		campaigns.add(campaign);
 		
 		return campaigns;
+	}
+
+	public List<SelectClassificationCampaignBean> getClassificationsList(){
+		
+		List<SelectClassificationCampaignBean> list = new ArrayList<SelectClassificationCampaignBean>();
+		
+		SelectClassificationCampaignBean item = new SelectClassificationCampaignBean();
+		item.setId(-1);
+		item.setName("Ninguno");
+		list.add(item);
+		
+		item = new SelectClassificationCampaignBean();
+		item.setId(1);
+		item.setName("Opcion 1");
+		list.add(item);
+		
+		item = new SelectClassificationCampaignBean();
+		item.setId(2);
+		item.setName("Opcion 2");
+		list.add(item);
+		
+		item = new SelectClassificationCampaignBean();
+		item.setId(3);
+		item.setName("Opcion 2");
+		list.add(item);
+		
+		item = new SelectClassificationCampaignBean();
+		item.setId(-2);
+		item.setName("Añadir nuevo");
+		list.add(item);
+		
+		return list;
 	}
 }

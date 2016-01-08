@@ -68,7 +68,7 @@
 				</select>
 			</div>
 			<div class="col-md-5" ng-if="isNewProgram()">
-				<input ng-model="newProgram.name" type="text" class="form-control"
+				<input ng-model="newClassificationlevel.program" type="text" class="form-control"
 					placeholder="Nombre" aria-describedby="basic-addon1">
 			</div>
 		</div>
@@ -83,7 +83,7 @@
 				</select>
 			</div>
 			<div class="col-md-5" ng-if="isNewSubProgram()">
-				<input ng-model="newSubProgram.name" type="text"
+				<input ng-model="newClassificationlevel.subProgram" type="text"
 					class="form-control" placeholder="Nombre"
 					aria-describedby="basic-addon1">
 			</div>
@@ -99,12 +99,43 @@
 				</select>
 			</div>
 			<div class="col-md-5" ng-if="isNewBusinessUnit()">
-				<input ng-model="newBusinessUnit.name" type="text"
+				<input ng-model="newClassificationlevel.businessUnit" type="text"
 					class="form-control" placeholder="Nombre"
 					aria-describedby="basic-addon1">
 			</div>
 		</div>
 
+		<div class="row margin-top10" ng-if="isEnabledLevel4()">
+			<div class="col-md-2">Nivel 4</div>
+			<div class="col-md-5">
+				<select class="form-control"
+					ng-options="option.name for option in selectLevel4.availableOptions track by option.id"
+					ng-model="selectLevel4.selectedOption"
+					ng-change="changeLevel4()">
+				</select>
+			</div>
+			<div class="col-md-5" ng-if="isNewLevel4()">
+				<input ng-model="newClassificationlevel.level4" type="text"
+					class="form-control" placeholder="Nombre"
+					aria-describedby="basic-addon1">
+			</div>
+		</div>
+		
+		<div class="row margin-top10" ng-if="isEnabledLevel5()">
+			<div class="col-md-2">Nivel 5</div>
+			<div class="col-md-5">
+				<select class="form-control"
+					ng-options="option.name for option in selectLevel5.availableOptions track by option.id"
+					ng-model="selectLevel5.selectedOption"
+					ng-change="changeLevel5()">
+				</select>
+			</div>
+			<div class="col-md-5" ng-if="isNewLevel5()">
+				<input ng-model="newClassificationlevel.level5" type="text"
+					class="form-control" placeholder="Nombre"
+					aria-describedby="basic-addon1">
+			</div>
+		</div>
 	</div>
 
 

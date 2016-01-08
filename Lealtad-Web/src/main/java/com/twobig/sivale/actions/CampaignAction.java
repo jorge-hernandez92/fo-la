@@ -25,6 +25,7 @@ import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.FilterCampaignService;
 import com.twobig.sivale.service.TCampaignsService;
@@ -58,6 +59,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<CampaignDetailBean> searchCampaigns;
 	private List<TPublication> publications;
 	private PublicationBean publication;
+	private List<SelectClassificationCampaignBean> classificationLevel;
 
 
 	@Override
@@ -178,7 +180,14 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			try {
 				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
 						SearchCampaignBean.class);
+				CatClassificationCampaign classification = (CatClassificationCampaign) session.get("classificationCmp");
 				
+				if(classification == null)
+					return ERROR;
+				
+				searchCampaign.setClassificationParentId(classification.getCatClassificationCampaignsId());
+				searchCampaign.setClassificationName1(null);
+				searchCampaign.setClassificationName2(null);
 				System.out.println(searchCampaign.toString());
 				
 			} catch (IOException e) {
@@ -196,9 +205,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		searchCampaigns = new ServicesUser().searchCampaigns();
+		//searchCampaigns = new ServicesUser().searchCampaigns();
 		
-		//searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
+		searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
+		
+		System.out.println(searchCampaigns.toString());
 		return SUCCESS;
 
 	}
@@ -294,6 +305,16 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		System.out.println(publication.getHtml());
 		return SUCCESS;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getClassificationLevelAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"classificationLevel", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getClassificationLevelAction() {
+		
+		classificationLevel = new ServicesUser().getClassificationsList();
+		return SUCCESS;
+
+	}
 
 	public List<CatClassificationCampaign> getClassifications() {
 		return classifications;
@@ -323,5 +344,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return campaignsAdmin;
 	}
 	
+	public List<SelectClassificationCampaignBean> getClassificationLevel() {
+		return classificationLevel;
+	}
 	
 }
