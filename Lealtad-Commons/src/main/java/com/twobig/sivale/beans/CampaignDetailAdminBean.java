@@ -46,4 +46,14 @@ public class CampaignDetailAdminBean extends TCampaign{
 		this.classification = classification;
 	}
 	
+	public void setTCampaign(TCampaign tCampaign) {
+		this.setCampaignId(tCampaign.getCampaignId());
+		this.setCampaignName(tCampaign.getCampaignName());
+		this.setClassificationId(tCampaign.getClassificationId());
+		this.setCompanyId(tCampaign.getCompanyId());
+		this.setDescription(tCampaign.getDescription());
+		this.setEndDate(tCampaign.getEndDate());
+		this.setStartDate(tCampaign.getStartDate());
+	}
+	
 }

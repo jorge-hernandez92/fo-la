@@ -9,10 +9,13 @@ import org.springframework.stereotype.Service;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealUserCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
+import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.TCampaignsService;
 
 
@@ -27,6 +30,9 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 
 	@Autowired
 	public TCampaignDAO tCampaignDAO;
+	
+	@Autowired
+	public UserDAO userDAO;
 
 	@Override
 	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(int userId,
@@ -121,4 +127,27 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		return campaignDetailBean; 	
 	}
+
+	@Override
+	public List<CampaignDetailAdminBean> getCampaingsSuper(Integer userId) {
+		
+		TUser user = userDAO.getUserById(userId);
+		
+		List<TCampaign> listTCampaign = tCampaignDAO.getTCampaignByCompanyId(user.getCompany());
+		
+		
+		List<CampaignDetailAdminBean> listCampaignDetailAdminBean = 
+				new ArrayList<CampaignDetailAdminBean>();
+		
+		for (TCampaign tCampaign : listTCampaign) {
+			CampaignDetailAdminBean aux = new CampaignDetailAdminBean();
+			aux.setTCampaign(tCampaign);
+			listCampaignDetailAdminBean.add(aux);
+		}
+		
+		return listCampaignDetailAdminBean;
+	}
+	
+	
+	
 }

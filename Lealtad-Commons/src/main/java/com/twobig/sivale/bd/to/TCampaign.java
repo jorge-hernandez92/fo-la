@@ -30,11 +30,13 @@ public class TCampaign  implements java.io.Serializable {
      private String campaignName;
      private String description;
      private int classificationId;
+     private Integer companyId;
      
      public static final String FIELD_COMPAIGN_ID   = "campaignId";
      public static final String FIELD_COMPAIGN_NAME = "campaignName";
      public static final String FIELD_START_DATE    = "startDate";
      public static final String FIELD_END_DATE      = "endDate";
+     public static final String FIELD_COMPANY_ID    = "companyId";
      
      @Id 
 
@@ -95,6 +97,16 @@ public class TCampaign  implements java.io.Serializable {
 
 	public void setClassificationId(int classificationId) {
 		this.classificationId = classificationId;
+	}
+	
+	
+	@Column(name="fk_company", unique=false, nullable=false)
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 
 	@Override

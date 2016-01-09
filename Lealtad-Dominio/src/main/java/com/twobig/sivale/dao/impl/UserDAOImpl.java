@@ -193,4 +193,5 @@ public class UserDAOImpl extends GenericDAOImpl<TUser, Long> implements
 
 		return getListStringByCriteria(criteria);
 	}
+
 }
