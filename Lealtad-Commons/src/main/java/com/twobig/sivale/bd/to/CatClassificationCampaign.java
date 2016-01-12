@@ -1,9 +1,12 @@
 package com.twobig.sivale.bd.to;
 //Generated 14/12/2015 12:03:39 PM by Hibernate Tools 4.3.1
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -23,27 +26,27 @@ public class CatClassificationCampaign implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = 4703036863978770613L;
-	private int catClassificationCampaignsId;
+	private Integer catClassificationCampaignsId;
 	private Integer catClassificationCampaignsIdParent;
 	private CatView catViews;
 	private String className;
 	private String description;
-	private int level;
+	private Integer level;
+	private Integer companyId;
 
 	public static final String FIELD_CAT_CLASSIFICATION_ID = "catClassificationCampaignsId";
 	public static final String FIELD_CAT_CLASSIFICATION_LEVEL = "level";
+	public static final String FIELD_CAT_CLASSIFICATION_ID_PARENT = "catClassificationCampaignsIdParent";
+	public static final String FIELD_CAT_COMPANY_ID = "companyId";
 
-	public CatClassificationCampaign() {
-	}
-
-	@Id
+	@Id @GeneratedValue(strategy=IDENTITY)
 
 	@Column(name = "cat_classification_campaigns_id", unique = true, nullable = false)
-	public int getCatClassificationCampaignsId() {
+	public Integer getCatClassificationCampaignsId() {
 		return this.catClassificationCampaignsId;
 	}
 
-	public void setCatClassificationCampaignsId(int catClassificationCampaignsId) {
+	public void setCatClassificationCampaignsId(Integer catClassificationCampaignsId) {
 		this.catClassificationCampaignsId = catClassificationCampaignsId;
 	}
 
@@ -76,11 +79,11 @@ public class CatClassificationCampaign implements java.io.Serializable {
 	}
 
 	@Column(name = "level", nullable = false)
-	public int getLevel() {
+	public Integer getLevel() {
 		return this.level;
 	}
 
-	public void setLevel(int level) {
+	public void setLevel(Integer level) {
 		this.level = level;
 	}
 
@@ -91,6 +94,15 @@ public class CatClassificationCampaign implements java.io.Serializable {
 
 	public void setCatClassificationCampaignsIdParent(Integer catClassificationCampaignsIdParent) {
 		this.catClassificationCampaignsIdParent = catClassificationCampaignsIdParent;
+	}
+	
+	@Column(name = "fk_company", nullable = false)
+	public Integer getCompanyId() {
+		return companyId;
+	}
+
+	public void setCompanyId(Integer companyId) {
+		this.companyId = companyId;
 	}
 
 	@Override

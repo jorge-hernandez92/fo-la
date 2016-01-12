@@ -93,7 +93,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
 				catClassificationCampaign = catClassificationCampaignDAO
-						.getCatClassificationCampaignByParentId(parentId);
+						.getCatClassificationCampaignById(parentId);
 			}
 
 			listClassificationC.add(catClassificationCampaign);
@@ -176,7 +176,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
 				catClassificationCampaign = catClassificationCampaignDAO
-						.getCatClassificationCampaignByParentId(parentId);
+						.getCatClassificationCampaignById(parentId);
 			}
 
 			listClassificationString.add(0, catClassificationCampaign.getClassName());

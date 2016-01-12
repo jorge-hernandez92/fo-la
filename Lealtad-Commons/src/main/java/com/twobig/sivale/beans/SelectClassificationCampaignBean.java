@@ -6,6 +6,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class SelectClassificationCampaignBean {
 
 	private int id; 
+	
 	private String name;
 	
 	public int getId() {
@@ -24,4 +25,9 @@ public class SelectClassificationCampaignBean {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "SelectClassificationCampaignBean [id=" + id + ", name=" + name + "]";
+	}
+	
 }

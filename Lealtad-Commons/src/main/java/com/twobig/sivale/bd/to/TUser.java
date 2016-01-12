@@ -57,12 +57,6 @@ public class TUser  implements java.io.Serializable {
  	public static final String FIELD_USER_COMPANY = "tCompany";
  	public static final String FIELD_USER_CAT_PROFILE = "catProfile";
  	public static final String FIELD_USER_ACCOUNT_NUMBER = "accountNumber";
-
-    public TUser() {
-    }
-    
-
-	
    
      @Id @GeneratedValue(strategy=IDENTITY)
 

@@ -10,8 +10,10 @@ public interface CatClassificationCampaignDAO {
 	
 	public List<CatClassificationCampaign> getCatClassificationCampaignByClassificationId(List<Integer> classificationId, int level);
 	
-	public CatClassificationCampaign getCatClassificationCampaignByParentId(int parentId);
+	public List<CatClassificationCampaign> getListCatClassificationCampaignByParentId(int parentId);
 	
 	public CatClassificationCampaign getCatClassificationCampaignById(int id);
+	
+	public List<CatClassificationCampaign> getListCatClassificationCampaignByCompany(int companyId);
 	
 }

@@ -6,11 +6,14 @@ import java.util.ArrayList;
 import java.util.List;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.PublicationCRUDBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
+import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 
@@ -81,6 +84,28 @@ public class PruebasAdministrador {
 		
 	}
 	
+	public static void getListClassificationChildren(ClassPathXmlApplicationContext context){
+		CatClassificationCampaignService cccs = 
+				(CatClassificationCampaignService) context.getBean("catClassificationCampaignServiceImpl");
+		
+		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(7);
+		
+		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
+			System.out.println(selectClassificationCampaignBean.toString());
+		}
+	}
+	
+	public static void getListClassificationParent(ClassPathXmlApplicationContext context){
+		CatClassificationCampaignService cccs = 
+				(CatClassificationCampaignService) context.getBean("catClassificationCampaignServiceImpl");
+		
+		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationParent(7);
+		
+		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
+			System.out.println(selectClassificationCampaignBean.toString());
+		}
+	}
+	
 	public static void main(String[] args){
 		
 		//BasicConfigurator.configure();
@@ -96,6 +121,14 @@ public class PruebasAdministrador {
 		
 		//SERVICIO DE ACTUALIZAR PUBLICATION
 		//updatePublication(context);
+		
+		//SERVICIO DE OBTENER LISTA DE CLASIFICACIONES HIJAS
+		//getListClassificationChildren(context);
+		
+		//OBTENER LISTA DE CLASIFICACIONES PARENT DE COMPAÑÍA A LA QUE PERTENECE UN USUARIO
+		//getListClassificationParent(context);
+		
+		
 	}
 
 }
