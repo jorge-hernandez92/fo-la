@@ -170,6 +170,12 @@ public class test {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
 			System.out.println(endDate);
+			
+//			Date startDate = format.parse("2015-09-01 00:00:00");
+//			Date endDate = format.parse("2015-10-01 00:00:00");
+			
+//			Date startDate = format.parse("2015-09-01 00:00:00");
+//			Date endDate = format.parse("2015-10-01 00:00:00");
 
 			searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
@@ -208,6 +214,7 @@ public class test {
 			Double saldo = cccs.getBalance("5273740100060052");
 			System.out.println("Saldo: "+saldo);
 		} catch (TravelsNotFoundException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
@@ -232,7 +239,7 @@ public class test {
 //
 //		
 //		//SERVICIO DE CLASIFICACIONES 
-//		clasificaciones(context);
+		clasificaciones(context);
 //		
 //				
 //		//SERVICIO DE CAMPAÑAS
@@ -252,5 +259,4 @@ public class test {
 		
 		
 	}
-
 }

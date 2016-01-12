@@ -52,65 +52,41 @@ appres
 
 						var data = escape(angular.toJson($scope.campaign));
 
-						$http(
-								{
+						$http({
 									method : 'POST',
 									url : 'getPublicationsAction',
 									data : 'campaign=' + data,
-									headers : {
-										'Content-Type' : 'application/x-www-form-urlencoded'
-									}
+									headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
 								})
 								.success(
 										function(data, status, headers, config) {
 											$scope.publications = data;
 											console.log(JSON.stringify(data));
 
-											$scope.tablePublications = new NgTableParams(
-													{
-														page : 1,
-														count : 10,
-														filter : $scope.filters,
-													},
-													{
-														total : $scope.publications.length,
-														counts : [],
-														getData : function(
-																$defer, params) {
-															var filteredData = params
-																	.filter() ? $filter(
-																	'filter')
-																	(
-																			$scope.publications,
-																			params
-																					.filter().myfilter)
-																	: $scope.publications;
+											$scope.tablePublications = new NgTableParams({
+												page : 1,
+												count : 10,
+												filter : $scope.filters,
+											}, {
+												total : $scope.publications.length,
+												counts : [],
+												getData : function($defer, params) {
+													var filteredData = params.filter() ? $filter(
+															'filter')($scope.publications,
+															params.filter().myfilter)
+															: $scope.publications;
 
-															var orderedData = params
-																	.sorting() ? $filter(
-																	'orderBy')
-																	(
-																			filteredData,
-																			params
-																					.orderBy())
-																	: $scope.publications;
+													var orderedData = params.sorting() ? $filter(
+															'orderBy')(filteredData, params.orderBy())
+															: $scope.publications;
 
-															$defer
-																	.resolve(orderedData
-																			.slice(
-																					(params
-																							.page() - 1)
-																							* params
-																									.count(),
-																					params
-																							.page()
-																							* params
-																									.count()));
-														}
-													});
+													$defer.resolve(orderedData.slice(
+															(params.page() - 1) * params.count(),
+															params.page() * params.count()));
+												}
+											});
 
-										})
-								.error(function(data, status, headers, config) {
+										}).error(function(data, status, headers, config) {
 
 								});
 					};
@@ -165,6 +141,7 @@ appres
 						level5 : ''
 					};
 
+					$scope.campaignName = '';
 					
 					$scope.getClassCompanyList = function() {
 						
@@ -490,6 +467,61 @@ appres
 						selectedOption : ''
 					};
 
+					$scope.newCampaignForm = function(date){
+						var campaignForm = {
+								campaignName : $scope.campaignName,
+								startDate : date.startDate,
+								endDate : date.endDate,
+								classificationList : []
+						};
+						
+						campaignForm.classificationList.push($scope.selectCompany.selectedOption);		
+				
+						if($scope.selectProgram.selectedOption.id != '-2')
+							campaignForm.classificationList.push($scope.selectProgram.selectedOption);
+						else {
+							campaignForm.classificationList.push({ id : '-2', name : $scope.newClassificationlevel.program });
+						}
+						
+						if($scope.selectSubProgram.selectedOption.id != '-2')
+							campaignForm.classificationList.push($scope.selectSubProgram.selectedOption);
+						else {
+							campaignForm.classificationList.push({ id : '-2', name : $scope.newClassificationlevel.subProgram });
+						}
+						if($scope.selectBusinessUnit.selectedOption.id != '-2')
+							campaignForm.classificationList.push($scope.selectBusinessUnit.selectedOption);
+						else {
+							campaignForm.classificationList.push({ id : '-2', name : $scope.newClassificationlevel.businessUnit });
+						}
+						if($scope.selectLevel4.selectedOption.id != '-2')
+							campaignForm.classificationList.push($scope.selectLevel4.selectedOption);
+						else {
+							campaignForm.classificationList.push({ id : '-2', name : $scope.newClassificationlevel.level4 });
+						}
+						if($scope.selectLevel5.selectedOption.id != '-2')
+							campaignForm.classificationList.push($scope.selectLevel5.selectedOption);
+						else {
+							campaignForm.classificationList.push({ id : '-2', name : $scope.newClassificationlevel.level5 });
+						}
+						
+						var data = escape(angular.toJson(campaignForm));
+						console.log(JSON.stringify(data));
+						
+						$http({
+							method : 'POST',
+							url : 'addCampaignAction',
+							data : 'formNewCampaign=' + data,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded'
+							}
+						}).success(
+								function(data, status, headers, config) {
+									
+								}).error(function(data, status, headers, config) {
+
+						});
+						
+					};
 /*********************************************************************************
 =============================== New Campaign End =================================
 *********************************************************************************/

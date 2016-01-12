@@ -4,7 +4,8 @@ var LOGO_DEFAULT	= '';
 
 var STRING_DEFAULT	= '';
 
-var appres = angular.module('app', ['ngMessages', 'daterangepicker','ngTable', 'ui.router']);
+
+var appres = angular.module('app', ['ngMessages', 'daterangepicker','ngTable', 'ui.router', 'angular-carousel']);
 
 appres.run(function($rootScope) {
 	$rootScope.search = {
@@ -19,8 +20,10 @@ appres.run(function($rootScope) {
 })			
 
 appres.controller('campaignController', function($scope, $filter, $rootScope,
-		$http, NgTableParams, $state) { 
+		$http, NgTableParams, $state, Carousel) { 
 	    
+	$scope.Carousel = Carousel;
+	
 	$scope.css  = CSS_DEFAULT;
 	$scope.logo = LOGO_DEFAULT;
 	
@@ -29,7 +32,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			endDate: moment()
 	};
 	
-	$scope.companyMenu = true;
+	$scope.menuCampaign = false;
 	
 	$scope.getCampaigns = function() {
 
@@ -54,29 +57,6 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 						counts : [],
 					    dataset: data
 					});
-					
-//					$scope.tableCampaigns = new NgTableParams({
-//						page : 1,
-//						count : 10,
-//						filter : $scope.filters,
-//					}, {
-//						total : $scope.campaigns.length,
-//						counts : [],
-//						getData : function($defer, params) {
-//							var filteredData = params.filter() ? $filter(
-//									'filter')($scope.campaigns,
-//									params.filter().myfilter)
-//									: $scope.campaigns;
-//
-//							var orderedData = params.sorting() ? $filter(
-//									'orderBy')(filteredData, params.orderBy())
-//									: $scope.campaigns;
-//
-//							$defer.resolve(orderedData.slice(
-//									(params.page() - 1) * params.count(),
-//									params.page() * params.count()));
-//						}
-//					});
 
 				}).error(function(data, status, headers, config) {
 
@@ -101,10 +81,10 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			function(data, status, headers, config) {
 				
 				$scope.classifications = data;
-				$scope.css = CSS_DEFAULT;
-				$scope.logo = LOGO_DEFAULT;
-				$scope.classification = STRING_DEFAULT;
-				$scope.companyMenu = true;
+//				$scope.css = CSS_DEFAULT;
+//				$scope.logo = LOGO_DEFAULT;
+//				$scope.classification = STRING_DEFAULT;
+//				$scope.companyMenu = true;
 				
 				if(data.length == 1){
 					$scope.updateClassification($scope.classifications[0]);
@@ -218,6 +198,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 					if($scope.classification){
 						$scope.css = $scope.classification.catViews.colors;
 						$scope.logo = 'img/company_logo/' + $scope.classification.catViews.logos + '/header.png';
+						$scope.menuCampaign = true;
 					}
 					console.log(JSON.stringify(data));
 					
@@ -238,6 +219,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	};
 
 	$scope.updateClassification = function(classification) {
+		$scope.menuCampaign = true;
 		$scope.classification = classification;
 		$scope.css = $scope.classification.catViews.colors;
 		$scope.logo = 'img/company_logo/' + $scope.classification.catViews.logos + '/header.png';
@@ -267,7 +249,10 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		return amount;
 	};
 	
-	$scope.getLastTransactionByCard = function() {			
+	$scope.getLastTransactionByCard = function() {
+		
+		$scope.cleanTeme();
+		
 		$http.get('getLastTransactionByCardAction').success(
 				function(data, status, headers, config) {		 
 					$scope.lastTransactions = data;
@@ -346,6 +331,11 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		});
 	};
 	
+	$scope.cleanTeme = function(){
+		$scope.css = CSS_DEFAULT;
+		$scope.logo = LOGO_DEFAULT;
+		$scope.menuCampaign = false;
+	};
 	
 	$scope.downloadFile = function(name,file) {
 
@@ -453,7 +443,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 
 	.state('home', {
 		url : '/home',
-		templateUrl : 'templates/classCampaign.html'
+		templateUrl : 'templates/homeTh2.html'
 	})
 
 	.state('campaigns', {
