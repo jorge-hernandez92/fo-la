@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
 import com.twobig.sivale.bd.to.TAttachedFile;
@@ -27,4 +28,15 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 		return getListByCriteria(criteria);
 	}
 
+	@Override
+	public void insertTAttachedFile(TAttachedFile tAttachedFile) throws DataIntegrityViolationException {
+		this.saveWithConstraints(tAttachedFile);
+	}
+
+	@Override
+	public void updateTAttachedFile(TAttachedFile tAttachedFile) {
+		this.actualizar(tAttachedFile);
+	}
+	
+	
 }

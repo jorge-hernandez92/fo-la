@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
 import com.twobig.sivale.bd.to.TPublication;
@@ -52,4 +53,19 @@ GenericDAOImpl<TPublication, Long> implements TPublicationDAO {
 	  
 	  return getListByCriteria(criteria);
 	 }
+
+
+	@Override
+	public void insertPublication(TPublication tPublication) 
+			throws DataIntegrityViolationException {
+		this.saveWithConstraints(tPublication);
+	}
+
+	@Override
+	public void updatePublication(TPublication tPublication) {
+		this.actualizar(tPublication);
+	}
+	
+	
+	
 }

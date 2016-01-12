@@ -1,5 +1,6 @@
 package com.twobig.sivale.service.impl;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,10 +10,13 @@ import org.springframework.stereotype.Service;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealUserCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
+import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.TCampaignsService;
 
 
@@ -27,6 +31,9 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 
 	@Autowired
 	public TCampaignDAO tCampaignDAO;
+	
+	@Autowired
+	public UserDAO userDAO;
 
 	@Override
 	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(int userId,
@@ -121,4 +128,77 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		return campaignDetailBean; 	
 	}
+
+	@Override
+	public List<CampaignDetailAdminBean> getCampaingsSuper(Integer userId) {
+		
+		TUser user = userDAO.getUserById(userId);
+		
+		List<TCampaign> listTCampaign = tCampaignDAO.getTCampaignByCompanyId(user.getCompany());
+		
+		List<Integer> classificationId = new ArrayList<Integer>();
+		
+		for (TCampaign tCampaign : listTCampaign) {
+			
+			classificationId.add(tCampaign.getClassificationId());
+			
+		}
+		
+		List<CatClassificationCampaign> catClassificationCampaig =
+				new ArrayList<CatClassificationCampaign>();
+		
+		for (Integer integer : classificationId) {
+			
+			catClassificationCampaig.add(
+					catClassificationCampaignDAO.getCatClassificationCampaignById(integer));
+			
+		}
+		
+		List<CampaignDetailAdminBean> listCampaignDetailAdminBean = 
+				new ArrayList<CampaignDetailAdminBean>();
+		
+		for (int i = 0; i < catClassificationCampaig.size(); i++) {
+
+			CatClassificationCampaign catClassificationCampaign = catClassificationCampaig.get(i);
+
+			CampaignDetailAdminBean campaignDetailAdminBean = new CampaignDetailAdminBean();
+			campaignDetailAdminBean.setTCampaign(listTCampaign.get(i));
+			campaignDetailAdminBean.setTotalWon("$ 0.00");
+			campaignDetailAdminBean.setTotalScattered("$ 0.00");
+			campaignDetailAdminBean.setStatus(calculateStatus(listTCampaign.get(i).getStartDate(),
+					listTCampaign.get(i).getEndDate()));
+
+			List<String> listClassificationString = new ArrayList<String>();
+
+			while (catClassificationCampaign.getLevel() > 0) {
+
+				listClassificationString.add(0, catClassificationCampaign.getClassName());
+				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
+
+				catClassificationCampaign = catClassificationCampaignDAO
+						.getCatClassificationCampaignByParentId(parentId);
+			}
+
+			listClassificationString.add(0, catClassificationCampaign.getClassName());
+			campaignDetailAdminBean.setClassification(listClassificationString);
+			listCampaignDetailAdminBean.add(campaignDetailAdminBean);
+		}
+		
+		return listCampaignDetailAdminBean; 
+	}
+	
+	private String calculateStatus(Date start, Date end){
+		
+		Date fechaActal = new Date();
+		
+		if(start == fechaActal || end == fechaActal){
+			return "activa";
+		}
+		else if(start.before(fechaActal) && end.after(fechaActal)){
+			return "activa";
+		}
+		else
+			return "inactiva";
+	}
+	
 }

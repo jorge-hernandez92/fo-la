@@ -53,4 +53,17 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long> implements
 		
 		return getListByCriteria(criteria);
 	}
+
+	@Override
+	public List<TCampaign> getTCampaignByCompanyId(Integer companyId) {
+	
+		DetachedCriteria criteria = DetachedCriteria.forClass(TCampaign.class);
+
+		criteria.add(Restrictions.eq(TCampaign.FIELD_COMPANY_ID, companyId));
+
+		return getListByCriteria(criteria);
+	}
+	
+	
+	
 }

@@ -54,4 +54,5 @@ public interface UserDAO {
 	public void updatePassword(Integer userId, String password);
 
 	public List<String> getAllAccountNumberByCompanies(List<Integer> companyList);
+	
 }
