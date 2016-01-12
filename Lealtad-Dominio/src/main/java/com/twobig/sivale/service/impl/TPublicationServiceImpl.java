@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import com.twobig.sivale.bd.to.RealUserCampaign;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
-import com.twobig.sivale.beans.PublicationInsertBean;
+import com.twobig.sivale.beans.PublicationCRUDBean;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TAttachedFileDAO;
 import com.twobig.sivale.dao.TPublicationDAO;
@@ -55,7 +55,7 @@ public class TPublicationServiceImpl implements TPublicationService{
 	 }
 
 	@Override
-	public String addPublication(PublicationInsertBean publicationInsertBean) {
+	public String addPublication(PublicationCRUDBean publicationInsertBean) {
 		
 		String status = "";
 		
@@ -88,7 +88,7 @@ public class TPublicationServiceImpl implements TPublicationService{
 		return status;
 	}
 
-	public String updatePublication(PublicationInsertBean publicationInsertBean){
+	public String updatePublication(PublicationCRUDBean publicationInsertBean){
 		
 		String status = "";
 		

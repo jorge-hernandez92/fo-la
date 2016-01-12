@@ -10,7 +10,7 @@ import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
-import com.twobig.sivale.beans.PublicationInsertBean;
+import com.twobig.sivale.beans.PublicationCRUDBean;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 
@@ -29,7 +29,7 @@ public class PruebasAdministrador {
 	}
 	
 	public static void insertPublicacion(ClassPathXmlApplicationContext context){
-		PublicationInsertBean pib = new PublicationInsertBean();
+		PublicationCRUDBean pib = new PublicationCRUDBean();
 		TPublication publication = new TPublication();
 		publication.settCampaignId(1);
 		publication.setName("PRUEBA INSERCCION 1");
@@ -54,7 +54,7 @@ public class PruebasAdministrador {
 		
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
 		
-		PublicationInsertBean pib = new PublicationInsertBean();
+		PublicationCRUDBean pib = new PublicationCRUDBean();
 		TPublication publication = new TPublication();
 		publication.setPublicationId(20);
 		publication.settCampaignId(1);

@@ -3,7 +3,7 @@ package com.twobig.sivale.service;
 import java.util.List;
 
 import com.twobig.sivale.bd.to.TPublication;
-import com.twobig.sivale.beans.PublicationInsertBean;
+import com.twobig.sivale.beans.PublicationCRUDBean;
 
 public interface TPublicationService {
 	
@@ -12,8 +12,8 @@ public interface TPublicationService {
 	
 	public List<TPublication> getTPublicationCampaignId(int campaignId);
 	
-	public String addPublication(PublicationInsertBean publicationInsertBean);
+	public String addPublication(PublicationCRUDBean publicationInsertBean);
 	
-	public String updatePublication(PublicationInsertBean publicationInsertBean);
+	public String updatePublication(PublicationCRUDBean publicationInsertBean);
 
 }

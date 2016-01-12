@@ -5,7 +5,7 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 
 import java.util.List;
 
-public class PublicationInsertBean {
+public class PublicationCRUDBean {
 	
 	private TPublication publication;
 	
