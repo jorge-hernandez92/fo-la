@@ -220,11 +220,11 @@ public class test {
 			     "classpath:/application-context.xml");
 		
 		
-//		//SERVICIO DE MOVIMIENTOS Y DE SALDO
-//		movimientos(context);
-//		
-//		//SERVICIO DE LOGIN PARA EL PARTICIPANTE
-//		loginWebService(context);
+		//SERVICIO DE MOVIMIENTOS Y DE SALDO
+		movimientos(context);
+		
+		//SERVICIO DE LOGIN PARA EL PARTICIPANTE
+		loginWebService(context);
 //		
 //		
 //		//SERVICIO DE LOGIN PARA ADMINISTRADOR

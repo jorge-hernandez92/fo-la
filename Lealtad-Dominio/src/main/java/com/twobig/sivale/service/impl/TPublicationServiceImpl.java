@@ -7,8 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.RealUserCampaign;
+import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
+import com.twobig.sivale.beans.PublicationInsertBean;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
+import com.twobig.sivale.dao.TAttachedFileDAO;
 import com.twobig.sivale.dao.TPublicationDAO;
 import com.twobig.sivale.service.TPublicationService;
 
@@ -21,6 +24,9 @@ public class TPublicationServiceImpl implements TPublicationService{
 	
 	@Autowired
 	public TPublicationDAO tPublicationDAO;
+	
+	@Autowired
+	public TAttachedFileDAO tAttachedFileDAO; 
 
 	//QUITAR ESTE METODO 
 	@Override
@@ -41,11 +47,71 @@ public class TPublicationServiceImpl implements TPublicationService{
 	}
 	
 	@Override
-	 public List<TPublication> getTPublicationCampaignId(int campaignId) {
+	public List<TPublication> getTPublicationCampaignId(int campaignId) {
 	  
 	  List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignId);
 	  
 	  return publicaciones;
 	 }
 
+	@Override
+	public String addPublication(PublicationInsertBean publicationInsertBean) {
+		
+		String status = "";
+		
+		tPublicationDAO.insertPublication(publicationInsertBean.getPublication());
+		
+		
+		if(publicationInsertBean.getPublication().getPublicationId() != 0){
+			status += " . Se insertó: "+publicationInsertBean.getPublication().toString(); 
+		}
+		else{
+			status += " . No se insertó: "+publicationInsertBean.getPublication().toString();
+		}
+		
+		Integer publicationId = publicationInsertBean.getPublication().getPublicationId();
+		
+		
+		for (TAttachedFile attachedFile : publicationInsertBean.getAttachedFiles()) {
+			
+			attachedFile.settPublicationId(publicationId);
+			tAttachedFileDAO.insertTAttachedFile(attachedFile);
+			
+			if(attachedFile.getAttachedFileId() != 0){
+				status += "\n . Se insertó: "+attachedFile.toString();
+			}
+			else{
+				status += "\n . No se insertó: "+attachedFile.toString();
+			}
+		}
+		
+		return status;
+	}
+
+	public String updatePublication(PublicationInsertBean publicationInsertBean){
+		
+		String status = "";
+		
+		if(publicationInsertBean.getPublication().getPublicationId() != 0){
+			tPublicationDAO.updatePublication(publicationInsertBean.getPublication());
+			status += " . Se actualizó: "+publicationInsertBean.getPublication().toString();
+		}
+		else{
+			status += " . No se actualizó: "+publicationInsertBean.getPublication().toString();
+		}
+		
+
+		for (TAttachedFile attachedFile : publicationInsertBean.getAttachedFiles()) {
+			
+			if(attachedFile.getAttachedFileId() != 0){
+				tAttachedFileDAO.updateTAttachedFile(attachedFile);
+				status += "\n . Se actualizó: "+attachedFile.toString();
+			}
+			else{
+				status += "\n . No se actualizó: "+attachedFile.toString();
+			}
+		}
+
+		return status;
+	}
 }

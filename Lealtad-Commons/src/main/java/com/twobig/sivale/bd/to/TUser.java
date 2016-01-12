@@ -254,6 +254,13 @@ public class TUser  implements java.io.Serializable {
     public void setCompany(int company) {
       this.company = company;
     }
+
+	@Override
+	public String toString() {
+		return "TUser [userId=" + userId + ", catProfile=" + catProfile + ", company=" + company + ", userLogin="
+				+ userLogin + ", password=" + password + ", firstName=" + firstName + ", lastName1=" + lastName1
+				+ ", lastName2=" + lastName2 + ", tjCardNumber=" + tjCardNumber + "]";
+	}
 }
 
 

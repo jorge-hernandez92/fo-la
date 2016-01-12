@@ -1,10 +1,13 @@
 package com.twobig.sivale.bd.to;// Generated 14/12/2015 01:25:30 PM by Hibernate Tools 4.3.1
 
 
+import static javax.persistence.GenerationType.IDENTITY;
+
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -27,7 +30,6 @@ public class TPublication  implements java.io.Serializable {
 
      private int publicationId;
      private CatPublicationType catPublicationType;
-     private TCampaign TCampaigns;
 	 private Integer tCampaignId;
      private Date publishedDate;
      private String name;
@@ -41,8 +43,7 @@ public class TPublication  implements java.io.Serializable {
      public static final String FIELD_PUBLICATION_ID = "publicationId";
      public static final String FIELD_CAMPAIGN_ID = "tCampaignId";
      
-     @Id 
-
+     @Id @GeneratedValue(strategy=IDENTITY)
     
     @Column(name="publication_id", unique=true, nullable=false)
     public int getPublicationId() {

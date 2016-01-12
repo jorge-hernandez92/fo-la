@@ -9,9 +9,9 @@ import com.twobig.sivale.bd.to.TCampaign;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CampaignDetailAdminBean extends TCampaign{
 
-	private String status;
-	private String totalWon;
-	private String totalScattered;
+	private String status; //activa o inactiva dependiendo de la fecha
+	private String totalWon; // no implementar solo poner $ 0.00
+	private String totalScattered; // no implementar solo $ 0.00
 	private List<String> classification;
 	
 	public String getStatus() {
@@ -48,12 +48,20 @@ public class CampaignDetailAdminBean extends TCampaign{
 	
 	public void setTCampaign(TCampaign tCampaign) {
 		this.setCampaignId(tCampaign.getCampaignId());
-		this.setCampaignName(tCampaign.getCampaignName());
-		this.setClassificationId(tCampaign.getClassificationId());
 		this.setCompanyId(tCampaign.getCompanyId());
-		this.setDescription(tCampaign.getDescription());
-		this.setEndDate(tCampaign.getEndDate());
 		this.setStartDate(tCampaign.getStartDate());
+		this.setEndDate(tCampaign.getEndDate());
+		this.setCampaignName(tCampaign.getCampaignName());
+		this.setDescription(tCampaign.getDescription());
+		this.setClassificationId(tCampaign.getClassificationId());
 	}
+
+	@Override
+	public String toString() {
+		return "CampaignDetailAdminBean [status=" + status + ", totalWon=" + totalWon + ", totalScattered="
+				+ totalScattered + ", classification=" + classification + "]";
+	}
+	
+	
 	
 }

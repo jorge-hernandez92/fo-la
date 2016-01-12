@@ -1,5 +1,6 @@
 package com.twobig.sivale.service.impl;
 
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -135,19 +136,69 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		List<TCampaign> listTCampaign = tCampaignDAO.getTCampaignByCompanyId(user.getCompany());
 		
+		List<Integer> classificationId = new ArrayList<Integer>();
+		
+		for (TCampaign tCampaign : listTCampaign) {
+			
+			classificationId.add(tCampaign.getClassificationId());
+			
+		}
+		
+		List<CatClassificationCampaign> catClassificationCampaig =
+				new ArrayList<CatClassificationCampaign>();
+		
+		for (Integer integer : classificationId) {
+			
+			catClassificationCampaig.add(
+					catClassificationCampaignDAO.getCatClassificationCampaignById(integer));
+			
+		}
 		
 		List<CampaignDetailAdminBean> listCampaignDetailAdminBean = 
 				new ArrayList<CampaignDetailAdminBean>();
 		
-		for (TCampaign tCampaign : listTCampaign) {
-			CampaignDetailAdminBean aux = new CampaignDetailAdminBean();
-			aux.setTCampaign(tCampaign);
-			listCampaignDetailAdminBean.add(aux);
+		for (int i = 0; i < catClassificationCampaig.size(); i++) {
+
+			CatClassificationCampaign catClassificationCampaign = catClassificationCampaig.get(i);
+
+			CampaignDetailAdminBean campaignDetailAdminBean = new CampaignDetailAdminBean();
+			campaignDetailAdminBean.setTCampaign(listTCampaign.get(i));
+			campaignDetailAdminBean.setTotalWon("$ 0.00");
+			campaignDetailAdminBean.setTotalScattered("$ 0.00");
+			campaignDetailAdminBean.setStatus(calculateStatus(listTCampaign.get(i).getStartDate(),
+					listTCampaign.get(i).getEndDate()));
+
+			List<String> listClassificationString = new ArrayList<String>();
+
+			while (catClassificationCampaign.getLevel() > 0) {
+
+				listClassificationString.add(0, catClassificationCampaign.getClassName());
+				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
+
+				catClassificationCampaign = catClassificationCampaignDAO
+						.getCatClassificationCampaignByParentId(parentId);
+			}
+
+			listClassificationString.add(0, catClassificationCampaign.getClassName());
+			campaignDetailAdminBean.setClassification(listClassificationString);
+			listCampaignDetailAdminBean.add(campaignDetailAdminBean);
 		}
 		
-		return listCampaignDetailAdminBean;
+		return listCampaignDetailAdminBean; 
 	}
 	
-	
+	private String calculateStatus(Date start, Date end){
+		
+		Date fechaActal = new Date();
+		
+		if(start == fechaActal || end == fechaActal){
+			return "activa";
+		}
+		else if(start.before(fechaActal) && end.after(fechaActal)){
+			return "activa";
+		}
+		else
+			return "inactiva";
+	}
 	
 }
