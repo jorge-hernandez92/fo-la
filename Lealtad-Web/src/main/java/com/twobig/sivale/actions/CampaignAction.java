@@ -23,6 +23,7 @@ import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
@@ -310,6 +311,41 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public String getClassificationLevelAction() {
 		
 		classificationLevel = new ServicesUser().getClassificationsList();
+		return SUCCESS;
+
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "addCampaignAction")
+	public String addCampaignAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String classificationCmpJSON = request.getParameter("formNewCampaign");
+		
+		
+		FormNewCampaignBean formNewCampaign;
+
+		if (!classificationCmpJSON.equals("undefined")) {
+
+			formNewCampaign = new FormNewCampaignBean();
+			try {
+				formNewCampaign = new ObjectMapper().readValue(classificationCmpJSON,
+						FormNewCampaignBean.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+		} else {
+			
+			return ERROR;
+			
+		}
+
+		System.out.println(formNewCampaign.toString());
+		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
+			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
 		return SUCCESS;
 
 	}

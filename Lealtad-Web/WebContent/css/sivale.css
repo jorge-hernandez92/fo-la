@@ -247,10 +247,9 @@
 
 
 .div-sivale{
-	height: 250px;
+	height: 55px;
 	margin: auto;
     width: 90%;
-    padding: 10px;
 }
 
 .thumbnail2 {
@@ -268,6 +267,17 @@
     width:100%;
 }
 
+.div-fit{
+	height: 60px;
+}
+
+.div-fit > a > img {
+	 height:100%;
+}
+
+.div-fit{
+	height: 60px;
+}
 
 .div-fit-img{
 	height: 62px;
@@ -275,7 +285,8 @@
 }
 
 .div-fit-img2{
-	height: 40px;
+	height: 60px;
+    margin-top: 15px;
 }
 
 .div-fit-img  > img {
@@ -560,7 +571,7 @@
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+/*   background: none repeat scroll 0 0 #F0F0E9; */
 }
 
 .header-middle .container .row {
@@ -588,7 +599,7 @@
 }
 
 .shop-menu ul li a {
-  background: #F0F0E9;
+/*   background: #F0F0E9; */
   color: #8c8c8c;
   font-family: 'Roboto', sans-serif;
   font-size: 14px;
@@ -604,7 +615,7 @@
 
 .shop-menu ul li a:hover {
 	color:#df8d2e;
-	background:#F0F0E9;
+/* 	background:#F0F0E9; */
 }
 
 
@@ -712,4 +723,44 @@ a {
 }
 .info-balance{
     margin: 0 30px 10px;
+}
+
+
+
+
+/* carrusel */
+
+button {
+    font-size: 16px;
+    border-radius: 3px;
+    border: none;
+    background: #333;
+    padding: 5px 10px;
+    color: #eee;
+}
+
+button.demo-nav {
+    margin-top: 20px;
+}
+
+.ng-carousel slide {
+/*     background-color: #999; */
+    text-align: center;
+    /* font-size: 148px; */
+    /* line-height: 300px; */
+}
+
+.ng-carousel slide:nth-child(odd) {
+/*   background-color: #aaa; */
+  color: #ccc;
+}
+
+.ng-carousel {
+    display: block;
+    width: 100%;
+    height: 65px;
+    width: 400px;
+    white-space: nowrap;
+    position: relative;
+    overflow: hidden;
 }
