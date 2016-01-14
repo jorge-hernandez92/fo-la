@@ -667,11 +667,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaignDetail_admin.html'
 	})
 
-	.state('publication', {
-		url : '/publicacion',
-		templateUrl : 'templates/publication_user.html'
-	})
-
 	.state('newCampaign', {
 		url : '/nueva_campaña',
 		templateUrl : 'templates/newCampaign_admin.html'

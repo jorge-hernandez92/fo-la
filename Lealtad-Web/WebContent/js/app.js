@@ -1,5 +1,5 @@
 // ------ themes ----------
-var CSS_DEFAULT		= 'sivale.css';
+var CSS_DEFAULT		= 'default.css';
 var LOGO_DEFAULT	= '';
 
 var STRING_DEFAULT	= '';
