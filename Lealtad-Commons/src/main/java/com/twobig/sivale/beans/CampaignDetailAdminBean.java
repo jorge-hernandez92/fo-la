@@ -4,15 +4,21 @@ import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
+import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class CampaignDetailAdminBean extends TCampaign{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2924487941388949430L;
 	private String status; //activa o inactiva dependiendo de la fecha
 	private String totalWon; // no implementar solo poner $ 0.00
 	private String totalScattered; // no implementar solo $ 0.00
 	private List<String> classification;
+	private List<CatClassificationCampaign> catClassificationCampaign;
 	
 	public String getStatus() {
 		return status;
@@ -54,6 +60,15 @@ public class CampaignDetailAdminBean extends TCampaign{
 		this.setCampaignName(tCampaign.getCampaignName());
 		this.setDescription(tCampaign.getDescription());
 		this.setClassificationId(tCampaign.getClassificationId());
+	}
+
+	
+	public List<CatClassificationCampaign> getCatClassificationCampaign() {
+		return catClassificationCampaign;
+	}
+
+	public void setCatClassificationCampaign(List<CatClassificationCampaign> catClassificationCampaign) {
+		this.catClassificationCampaign = catClassificationCampaign;
 	}
 
 	@Override

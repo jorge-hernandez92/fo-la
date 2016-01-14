@@ -57,7 +57,10 @@ public class TPublicationServiceImpl implements TPublicationService {
 	public String addPublication(PublicationCRUDBean publicationInsertBean) {
 
 		String status = "";
+
 		publicationInsertBean.getPublication().setPublishedDate(new Date());
+		
+		System.out.println(publicationInsertBean.getPublication().getPublishedDate());
 		
 		tPublicationDAO.insertPublication(publicationInsertBean.getPublication());
 
@@ -80,7 +83,6 @@ public class TPublicationServiceImpl implements TPublicationService {
 				status += "\n . No se insertó: " + attachedFile.toString();
 			}
 		}
-
 		return status;
 	}
 
