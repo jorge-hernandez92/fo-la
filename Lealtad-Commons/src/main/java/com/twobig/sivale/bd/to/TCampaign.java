@@ -24,12 +24,12 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 public class TCampaign  implements java.io.Serializable {
 
 
-     private int campaignId;
+     private Integer campaignId;
      private Date startDate;
      private Date endDate;
      private String campaignName;
      private String description;
-     private int classificationId;
+     private Integer classificationId;
      private Integer companyId;
      
      public static final String FIELD_COMPAIGN_ID   = "campaignId";
@@ -42,11 +42,11 @@ public class TCampaign  implements java.io.Serializable {
 
     
     @Column(name="campaign_id", unique=true, nullable=false)
-    public int getCampaignId() {
+    public Integer getCampaignId() {
         return this.campaignId;
     }
     
-    public void setCampaignId(int campaignId) {
+    public void setCampaignId(Integer campaignId) {
         this.campaignId = campaignId;
     }
     
@@ -91,11 +91,11 @@ public class TCampaign  implements java.io.Serializable {
     }
     
     @Column(name="fk_cat_classification", unique=false, nullable=false)
-    public int getClassificationId() {
+    public Integer getClassificationId() {
 		return classificationId;
 	}
 
-	public void setClassificationId(int classificationId) {
+	public void setClassificationId(Integer classificationId) {
 		this.classificationId = classificationId;
 	}
 	

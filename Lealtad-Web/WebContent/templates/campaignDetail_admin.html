@@ -22,6 +22,9 @@
 						<ul class="nav navbar-nav navbar-right">Duración
 							{{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
 						</ul>
+						<button type="button" class="btn btn-default" ui-sref="updateCampaign">
+  							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+						</button>
 					</div>
 				</div>
 			</div>
@@ -55,6 +58,9 @@
 						</tr>
 					</table>
 				</div>
+				<button type="button" class="btn btn-default" ui-sref="newPublication">
+  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">Añadir Publicacion</span>
+				</button>
 			</div>
 		</div>
 	</div>
