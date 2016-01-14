@@ -47,13 +47,13 @@ GenericDAOImpl<CatClassificationCampaign, Long> implements CatClassificationCamp
 	
 
 	@Override
-	public CatClassificationCampaign getCatClassificationCampaignByParentId(int parentId) {
+	public List<CatClassificationCampaign> getListCatClassificationCampaignByParentId(int parentId) {
 		DetachedCriteria criteria = DetachedCriteria
 				.forClass(CatClassificationCampaign.class);
 		
-		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_ID, parentId));
+		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_ID_PARENT, parentId));
 		
-		return getTByCriteria(criteria);
+		return getListByCriteria(criteria);
 	}
 
 
@@ -67,4 +67,23 @@ GenericDAOImpl<CatClassificationCampaign, Long> implements CatClassificationCamp
 		return getTByCriteria(criteria);
 	}
 
+
+	@Override
+	public List<CatClassificationCampaign> getListCatClassificationCampaignByCompany(int companyId) {
+		DetachedCriteria criteria = DetachedCriteria
+				.forClass(CatClassificationCampaign.class);
+		
+		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_COMPANY_ID, companyId));
+		
+		criteria.add(Restrictions.eq(CatClassificationCampaign.FIELD_CAT_CLASSIFICATION_LEVEL, 0));
+		
+		return getListByCriteria(criteria);
+		
+	}
+
+	
+	@Override
+	public void insertCatClassificationCampaign(CatClassificationCampaign catClassificationCampaign) {
+		this.saveWithConstraints(catClassificationCampaign);
+	}
 }

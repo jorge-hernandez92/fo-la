@@ -21,8 +21,8 @@ import javax.persistence.Table;
 )
 public class TAttachedFile  implements java.io.Serializable {
 
-
-     private Integer attachedFileId;
+	private static final long serialVersionUID = -2458367360511518602L;
+	private Integer attachedFileId;
      private Integer tPublicationId;
      private Boolean isPublic;
      private String fileName;

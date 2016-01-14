@@ -13,9 +13,12 @@ import org.springframework.stereotype.Service;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealUserCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
+import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 
 @Service
@@ -29,6 +32,9 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 
 	@Autowired
 	public TCampaignDAO tCampaignDAO;
+	
+	@Autowired
+	public UserDAO userDAO;
 
 	/**
 	 * Variable to register the logs.
@@ -76,11 +82,51 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
 				catClassificationCampaign = catClassificationCampaignDAO
-						.getCatClassificationCampaignByParentId(parentId);
+						.getCatClassificationCampaignById(parentId);
 			}
 			catClassificationCampaigParents.add(catClassificationCampaign);
 		}
 
 		return catClassificationCampaigParents;
 	}
+
+	@Override
+	public List<SelectClassificationCampaignBean> getListClassificationChildren(int idParent) {
+		
+		List<CatClassificationCampaign> catClassificationCampaig = 
+				catClassificationCampaignDAO.getListCatClassificationCampaignByParentId(idParent);
+		 
+		List<SelectClassificationCampaignBean> lsccb = new ArrayList<SelectClassificationCampaignBean>(); 
+		for (CatClassificationCampaign catClassificationCampaign : catClassificationCampaig) {
+			SelectClassificationCampaignBean sccb = new SelectClassificationCampaignBean();
+			sccb.setId(catClassificationCampaign.getCatClassificationCampaignsId());
+			sccb.setName(catClassificationCampaign.getClassName());
+			lsccb.add(sccb);
+			System.out.println(catClassificationCampaign.toString());
+		}
+		
+		return lsccb;
+	}
+
+	@Override
+	public List<SelectClassificationCampaignBean> getListClassificationParent(int userId) {
+		
+		TUser user = userDAO.getUserById(userId);
+		
+		List<CatClassificationCampaign> listClassification = 
+				catClassificationCampaignDAO.getListCatClassificationCampaignByCompany(user.getCompany());
+		
+		List<SelectClassificationCampaignBean> lsccb = new ArrayList<SelectClassificationCampaignBean>(); 
+		for (CatClassificationCampaign catClassificationCampaign : listClassification) {
+			SelectClassificationCampaignBean sccb = new SelectClassificationCampaignBean();
+			sccb.setId(catClassificationCampaign.getCatClassificationCampaignsId());
+			sccb.setName(catClassificationCampaign.getClassName());
+			lsccb.add(sccb);
+			System.out.println(catClassificationCampaign.toString());
+		}
+		
+		return lsccb;
+	}
+	
+	
 }

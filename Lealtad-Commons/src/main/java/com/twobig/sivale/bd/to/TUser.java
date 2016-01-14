@@ -4,12 +4,9 @@ package com.twobig.sivale.bd.to;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -24,8 +21,8 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 )
 public class TUser  implements java.io.Serializable {
 
-
-     private Integer userId;
+	private static final long serialVersionUID = 491334447509871158L;
+	private Integer userId;
      private int catProfile;
  	 private int company;
      private String userLogin;
@@ -57,12 +54,6 @@ public class TUser  implements java.io.Serializable {
  	public static final String FIELD_USER_COMPANY = "tCompany";
  	public static final String FIELD_USER_CAT_PROFILE = "catProfile";
  	public static final String FIELD_USER_ACCOUNT_NUMBER = "accountNumber";
-
-    public TUser() {
-    }
-    
-
-	
    
      @Id @GeneratedValue(strategy=IDENTITY)
 

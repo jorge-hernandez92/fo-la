@@ -5,14 +5,15 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SelectClassificationCampaignBean {
 
-	private int id; 
+	private Integer id; 
+	
 	private String name;
 	
-	public int getId() {
+	public Integer getId() {
 		return id;
 	}
 	
-	public void setId(int id) {
+	public void setId(Integer id) {
 		this.id = id;
 	}
 	
@@ -24,4 +25,9 @@ public class SelectClassificationCampaignBean {
 		this.name = name;
 	}
 
+	@Override
+	public String toString() {
+		return "SelectClassificationCampaignBean [id=" + id + ", name=" + name + "]";
+	}
+	
 }

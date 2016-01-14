@@ -84,7 +84,7 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
 				catClassificationCampaign = catClassificationCampaignDAO
-						.getCatClassificationCampaignByParentId(parentId);
+						.getCatClassificationCampaignById(parentId);
 			}
 
 			listClassificationC.add(catClassificationCampaign);

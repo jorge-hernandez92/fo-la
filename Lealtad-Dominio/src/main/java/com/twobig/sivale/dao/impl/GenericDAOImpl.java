@@ -34,6 +34,7 @@ public class GenericDAOImpl<T, ID extends Serializable> extends
 			getHibernateTemplate().save(vo);
 	}
 
+
 	public void actualizar(T vo) {
 		if (checkNull(vo))
 			getHibernateTemplate().update(vo);

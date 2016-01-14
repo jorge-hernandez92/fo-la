@@ -63,7 +63,20 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long> implements
 
 		return getListByCriteria(criteria);
 	}
-	
-	
+
+	@Override
+	public void insertTCampaign(TCampaign tCampaign) {
+		this.guardar(tCampaign);
+	}
+
+	@Override
+	public void updateTCampaign(TCampaign tCampaign) {
+		this.actualizar(tCampaign);
+	}
+
+	@Override
+	public void deleteTCampaign(TCampaign tCampaign) {
+		this.borrar(tCampaign);
+	}
 	
 }
