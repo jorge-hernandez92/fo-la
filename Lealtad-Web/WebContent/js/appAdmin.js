@@ -274,7 +274,12 @@ $scope.ticketUpload = function() {
 					};
 					
 					$scope.getSelectClassList = function() {
-						$http.get('getClassificationLevelAction').success(
+						if($scope.select == COMPANY_SELECT)
+							var action = 'getClassificationLevelAction?classificationId=-1';
+						else
+							var action = 'getClassificationLevelAction?classificationId='+$scope.selectCampaign.items[$scope.select-1].selectedOption.id;
+						
+						$http.get(action).success(
 								function(data, status, headers, config) {
 
 									switch ($scope.select) {
@@ -357,6 +362,7 @@ $scope.ticketUpload = function() {
 						$scope.getClassProgramList();
 						
 						$scope.selectCampaign.items[1].selectedOption =	$scope.getSelectNone();
+						$scope.select == COMPANY_SELECT
 						$scope.selectCampaign.items[2].selectedOption =	$scope.getSelectNone();
 						$scope.selectCampaign.items[3].selectedOption =	$scope.getSelectNone();
 						$scope.selectCampaign.items[4].selectedOption =	$scope.getSelectNone();
@@ -511,8 +517,8 @@ $scope.ticketUpload = function() {
 						
 						var campaignForm = {
 								campaignName : $scope.campaign.campaignName,
-								startDate : new Date("October 13, 2014 11:13:00"),
-								endDate : new Date("October 13, 2014 11:13:00"),
+								startDate : $scope.campaign.startDate,
+								endDate : $scope.campaign.endDate,
 								classificationList : []
 						};
 						
@@ -527,19 +533,41 @@ $scope.ticketUpload = function() {
 						$scope.date.startDate = campaignForm.startDate;
 						$scope.date.endDate = campaignForm.endDate;
 						
-						$scope.selectCampaign.items[0].availableOptions = $scope.getHardCodeSelect();
-						$scope.selectCampaign.items[1].availableOptions = $scope.getHardCodeSelect();
-						$scope.selectCampaign.items[2].availableOptions = $scope.getHardCodeSelect();
-						$scope.selectCampaign.items[3].availableOptions = $scope.getHardCodeSelect();
-						$scope.selectCampaign.items[4].availableOptions = $scope.getHardCodeSelect();
-						$scope.selectCampaign.items[5].availableOptions = $scope.getHardCodeSelect();
+							$scope.select = COMPANY_SELECT;
+							$scope.getSelectClassList();
+							for (i = 0; i < $scope.selectCampaign.items[0].availableOptions.length; i++) {
+								
+							}
+							
+							$scope.selectCampaign.items[0].selectedOption.id = $scope.campaign.campaignId;
+							
+							$scope.select = PROGRAM_SELECT;
+							$scope.getSelectClassList();
 						
-						$scope.selectCampaign.items[0].selectedOption = campaignForm.classificationList[0];
-						$scope.selectCampaign.items[1].selectedOption = campaignForm.classificationList[1];
-						$scope.selectCampaign.items[2].selectedOption = campaignForm.classificationList[2];
-						$scope.selectCampaign.items[3].selectedOption	= campaignForm.classificationList[3];
-						$scope.selectCampaign.items[4].selectedOption = campaignForm.classificationList[4];
-						$scope.selectCampaign.items[5].selectedOption	= campaignForm.classificationList[5];
+							$scope.select = SUBPROGRAM_SELECT;
+							$scope.getSelectClassList();
+						
+							$scope.select = BUSINESSUNIT_SELECT;
+							$scope.getSelectClassList();
+						
+							$scope.select = LEVEL4_SELECT;
+							$scope.getSelectClassList();
+						
+							
+						
+						//$scope.selectCampaign.items[0].availableOptions = $scope.getHardCodeSelect();
+						//$scope.selectCampaign.items[1].availableOptions = $scope.getHardCodeSelect();
+						//$scope.selectCampaign.items[2].availableOptions = $scope.getHardCodeSelect();
+						//$scope.selectCampaign.items[3].availableOptions = $scope.getHardCodeSelect();
+						//$scope.selectCampaign.items[4].availableOptions = $scope.getHardCodeSelect();
+						//$scope.selectCampaign.items[5].availableOptions = $scope.getHardCodeSelect();
+						
+						//$scope.selectCampaign.items[0].selectedOption = campaignForm.classificationList[0];
+						//$scope.selectCampaign.items[1].selectedOption = campaignForm.classificationList[1];
+						//$scope.selectCampaign.items[2].selectedOption = campaignForm.classificationList[2];
+						//$scope.selectCampaign.items[3].selectedOption	= campaignForm.classificationList[3];
+						//$scope.selectCampaign.items[4].selectedOption = campaignForm.classificationList[4];
+						//$scope.selectCampaign.items[5].selectedOption	= campaignForm.classificationList[5];
 						
 					};
 					

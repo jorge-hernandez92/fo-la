@@ -58,6 +58,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	@Autowired
 	ViewPublicationService viewPublicationService;
 	
+	@Autowired
+	CatClassificationCampaignService classificationService;
+	
 	private Map<String, Object> session;
 	private List<CatClassificationCampaign> classifications;
 	private List<CampaignDetailBean> campaigns;
@@ -67,6 +70,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private PublicationBean publication;
 	private List<SelectClassificationCampaignBean> classificationLevel;
 	private Integer campaignId;
+	private Integer classificationId;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -162,7 +166,13 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
-		campaignsAdmin = new ServicesUser().getCampaignsAdmin();
+		//campaignsAdmin = new ServicesUser().getCampaignsAdmin();
+
+		campaignsAdmin = campaignService.getCampaingsSuper(user.getUserId());
+
+		for (CampaignDetailAdminBean campaignDetailAdminBean : campaignsAdmin) {
+			System.out.println(campaignDetailAdminBean.toString());
+		}
 		
 		return SUCCESS;
 
@@ -313,9 +323,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "deleteCampaignAction")
-	public String getFileAction() {
+	public String deleteCampaignAction() {
 
 		System.out.println("**** " + campaignId + " ****");
+		campaignService.deleteCampaign(campaignId);
 		return SUCCESS;
 
 	}
@@ -326,10 +337,32 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			"classificationLevel", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getClassificationLevelAction() {
 		
-		classificationLevel = new ServicesUser().getClassificationsList();
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+		
+		if(classificationId < 0)
+			classificationLevel = classificationService.getListClassificationParent(user.getUserId());
+		else{
+			classificationLevel = classificationService.getListClassificationChildren(classificationId);
+			
+			SelectClassificationCampaignBean first = new SelectClassificationCampaignBean();
+			SelectClassificationCampaignBean last  = new SelectClassificationCampaignBean();
+			
+			first.setId(-1);
+			first.setName("Ninguno");
+			
+			last.setId(-2);
+			last.setName("Añadir nuevo");
+			
+			classificationLevel.add(0, first);
+			classificationLevel.add(last);
+		}
 		return SUCCESS;
 
 	}
+
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "addCampaignAction")
@@ -359,9 +392,19 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			
 		}
 
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+		
+		formNewCampaign.setCompanyId(user.getCompany());
+		
 		System.out.println(formNewCampaign.toString());
 		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
 			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+		
+		campaignService.insertCampaign(formNewCampaign);
+		
 		return SUCCESS;
 
 	}
@@ -394,13 +437,14 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			
 		}
 
-		System.out.println(formNewCampaign.toString());
-		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
-			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+		//System.out.println(formNewCampaign.toString());
+		//for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
+		//	System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+		campaignService.updateCampaign(formNewCampaign);
+		
 		return SUCCESS;
 
 	}
-	
 	
 
 	
@@ -443,5 +487,14 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public List<SelectClassificationCampaignBean> getClassificationLevel() {
 		return classificationLevel;
 	}
+
+	public Integer getClassificationId() {
+		return classificationId;
+	}
+
+	public void setClassificationId(Integer classificationId) {
+		this.classificationId = classificationId;
+	}
+	
 	
 }
