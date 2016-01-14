@@ -17,5 +17,7 @@ public interface TPublicationDAO {
 	public void insertPublication(TPublication tPublication) throws DataIntegrityViolationException;
 	
 	public void updatePublication(TPublication tPublication);
+	
+	public void deletePublication(TPublication tPublication);
 
 }

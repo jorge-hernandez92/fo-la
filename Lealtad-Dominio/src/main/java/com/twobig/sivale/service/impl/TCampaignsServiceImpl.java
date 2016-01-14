@@ -13,6 +13,8 @@ import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.FormNewCampaignBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
@@ -200,5 +202,76 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		else
 			return "inactiva";
 	}
+
+	@Override
+	public String insertCampaign(FormNewCampaignBean formNewCampaignBean) {
+		
+		TCampaign tCampaign = formNewCampaignBean.getTCampaign();
+		
+		Integer classificationId = insertClassificationCampaign(formNewCampaignBean);
+				
+		tCampaign.setClassificationId(classificationId);
+
+		tCampaignDAO.insertTCampaign(tCampaign);
+		
+		System.out.println(tCampaign.toString());
+		
+		return null;
+	}
+
+	@Override
+	public String updateCampaign(FormNewCampaignBean formNewCampaignBean) {
+		
+		TCampaign tCampaign = formNewCampaignBean.getTCampaign();
+		
+		Integer classificationId = insertClassificationCampaign(formNewCampaignBean);
+				
+		tCampaign.setClassificationId(classificationId);
+		
+		tCampaignDAO.updateTCampaign(tCampaign);
+		
+		System.out.println(tCampaign.toString());
+		
+		return null;
+	}
 	
+	private Integer insertClassificationCampaign(FormNewCampaignBean formNewCampaignBean) {
+		
+		TCampaign tCampaign = formNewCampaignBean.getTCampaign();
+		
+		List <SelectClassificationCampaignBean> classificationList = 
+				formNewCampaignBean.getClassificationList();
+		
+		Integer classificationId = classificationList.get(0).getId(); 
+		
+		for (SelectClassificationCampaignBean selectClassificationCampaignBean : classificationList) {
+			if(selectClassificationCampaignBean.getId() > 0 ){
+				classificationId = selectClassificationCampaignBean.getId(); 
+			}
+			else if(selectClassificationCampaignBean.getId() == -1){
+				break;
+			}
+			else
+				if(selectClassificationCampaignBean.getId() == -2){
+					CatClassificationCampaign ccc = new CatClassificationCampaign();
+					ccc.setClassName(selectClassificationCampaignBean.getName());
+					ccc.setCompanyId(tCampaign.getCompanyId());
+					ccc.setLevel(classificationList.indexOf(selectClassificationCampaignBean));
+					ccc.setCatClassificationCampaignsIdParent(classificationId);
+					catClassificationCampaignDAO.insertCatClassificationCampaign(ccc);
+					classificationId = ccc.getCatClassificationCampaignsId();
+				}
+		}
+		return classificationId;
+	}
+
+	@Override
+	public String deleteCampaign(Integer campaignId) {
+		TCampaign tCampaign = new TCampaign();
+		tCampaign.setCampaignId(17);
+		tCampaign.setCampaignId(campaignId);
+		tCampaignDAO.deleteTCampaign(tCampaign);
+		return null;
+	}
+
 }

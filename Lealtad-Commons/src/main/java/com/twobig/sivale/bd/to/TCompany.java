@@ -17,7 +17,8 @@ import javax.persistence.Table;
 public class TCompany  implements java.io.Serializable {
 
 
-     private int idCompany;
+	private static final long serialVersionUID = 1080654178835557638L;
+	private int idCompany;
      private String name;
      private String description;
      

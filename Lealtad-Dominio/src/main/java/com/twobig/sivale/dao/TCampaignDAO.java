@@ -15,4 +15,10 @@ public interface TCampaignDAO {
 	
 	public List<TCampaign> getTCampaignByCompanyId(Integer companyId);
 	
+	public void insertTCampaign(TCampaign tCampaign);
+	
+	public void updateTCampaign(TCampaign tCampaign);
+	
+	public void deleteTCampaign(TCampaign tCampaign);
+	
 }

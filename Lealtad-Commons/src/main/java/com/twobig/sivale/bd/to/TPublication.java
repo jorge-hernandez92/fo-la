@@ -27,8 +27,8 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 )
 public class TPublication  implements java.io.Serializable {
 
-
-     private int publicationId;
+	private static final long serialVersionUID = -1260077479616668004L;
+	private int publicationId;
      private CatPublicationType catPublicationType;
 	 private Integer tCampaignId;
      private Date publishedDate;
@@ -55,7 +55,7 @@ public class TPublication  implements java.io.Serializable {
     }
 
 @ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="fk_publication_type", nullable=false)
+    @JoinColumn(name="fk_publication_type")
     public CatPublicationType getCatPublicationType() {
         return this.catPublicationType;
     }

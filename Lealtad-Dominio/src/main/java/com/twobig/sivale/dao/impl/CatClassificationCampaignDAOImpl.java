@@ -80,4 +80,10 @@ GenericDAOImpl<CatClassificationCampaign, Long> implements CatClassificationCamp
 		return getListByCriteria(criteria);
 		
 	}
+
+	
+	@Override
+	public void insertCatClassificationCampaign(CatClassificationCampaign catClassificationCampaign) {
+		this.saveWithConstraints(catClassificationCampaign);
+	}
 }

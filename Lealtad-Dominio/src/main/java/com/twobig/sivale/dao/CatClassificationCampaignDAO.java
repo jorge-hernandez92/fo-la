@@ -16,4 +16,6 @@ public interface CatClassificationCampaignDAO {
 	
 	public List<CatClassificationCampaign> getListCatClassificationCampaignByCompany(int companyId);
 	
+	public void insertCatClassificationCampaign(CatClassificationCampaign catClassificationCampaign);
+	
 }
