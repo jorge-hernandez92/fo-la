@@ -177,7 +177,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			while (catClassificationCampaign.getLevel() > 0) {
 
 				listClassificationString.add(0, catClassificationCampaign.getClassName());
-				ccc.add(catClassificationCampaign);
+				ccc.add(0, catClassificationCampaign);
 				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
 
 				catClassificationCampaign = catClassificationCampaignDAO
@@ -185,7 +185,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			}
 
 			listClassificationString.add(0, catClassificationCampaign.getClassName());
-			ccc.add(catClassificationCampaign);
+			ccc.add(0, catClassificationCampaign);
 			campaignDetailAdminBean.setClassification(listClassificationString);
 			campaignDetailAdminBean.setCatClassificationCampaign(ccc);
 			listCampaignDetailAdminBean.add(campaignDetailAdminBean);

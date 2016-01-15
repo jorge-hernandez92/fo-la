@@ -1,15 +1,12 @@
 package com.twobig.sivale.actions;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.IOUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -31,13 +28,12 @@ import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
-import com.twobig.sivale.constants.PathConstants;
+import com.twobig.sivale.beans.UpdateCampaignBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.FilterCampaignService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.service.ViewPublicationService;
-import com.xm.sivale.services.test.ServicesUser;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
@@ -71,6 +67,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<SelectClassificationCampaignBean> classificationLevel;
 	private Integer campaignId;
 	private Integer classificationId;
+	private List<UpdateCampaignBean> selectCampaign;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -437,17 +434,92 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			
 		}
 
-		//System.out.println(formNewCampaign.toString());
-		//for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
-		//	System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+		
+		formNewCampaign.setCompanyId(user.getCompany());
+		
+		System.out.println(formNewCampaign.toString());
+		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
+			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
 		campaignService.updateCampaign(formNewCampaign);
 		
 		return SUCCESS;
 
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getCampaignUpdateAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"selectCampaign", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getCampaignUpdateAction(){
+		
+		final HttpServletRequest request = ServletActionContext.getRequest();
 
+		String classificationCmpJSON = request.getParameter("campaignDetail");
+		
+		CampaignDetailAdminBean campaignDetail;
+
+		if (!classificationCmpJSON.equals("undefined")) {
+
+			campaignDetail = new CampaignDetailAdminBean();
+			try {
+				campaignDetail = new ObjectMapper().readValue(classificationCmpJSON,
+						CampaignDetailAdminBean.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+		} else {
+			return ERROR;			
+		}
+		
+		TUser user = (TUser)session.get("user");
+		
+		if (user==null) {
+			return ERROR;
+		}
+
+		selectCampaign = new ArrayList<UpdateCampaignBean>();
+		
+		
+		classificationLevel = classificationService.getListClassificationParent(user.getUserId());
+		
+		UpdateCampaignBean updateCampaignBean = new UpdateCampaignBean();
+		updateCampaignBean.setAvailableOptions(classificationLevel);
+		updateCampaignBean.setSelectedOption(this.getSelectedOption(classificationLevel, campaignDetail.getCatClassificationCampaign().get(0).getCatClassificationCampaignsId()));
+		
+		selectCampaign.add(updateCampaignBean);
+		
+		
+		
+		for(int i=0 ; i<campaignDetail.getCatClassificationCampaign().size() - 1 ; i++ ){
+			Integer classId = campaignDetail.getCatClassificationCampaign().get(i).getCatClassificationCampaignsId();
+			classificationLevel = classificationService.getListClassificationChildren(classId);
+			
+			updateCampaignBean = new UpdateCampaignBean();
+			updateCampaignBean.setAvailableOptions(classificationLevel);
+			updateCampaignBean.setSelectedOption(this.getSelectedOption(classificationLevel, campaignDetail.getCatClassificationCampaign().get(i+1).getCatClassificationCampaignsId()));
+			
+			selectCampaign.add(updateCampaignBean);
+		}
+		
+		System.out.println(selectCampaign.toString());
+		
+		return SUCCESS;
+	}
 	
+	public SelectClassificationCampaignBean getSelectedOption(List<SelectClassificationCampaignBean> listOption, Integer selectedId){
+		
+		for(SelectClassificationCampaignBean option: listOption){
+			if(option.getId().equals(selectedId))
+				return option;
+		}
+		
+		return null;
+	}
 	public Integer getCampaignId() {
 		return campaignId;
 	}
@@ -495,6 +567,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public void setClassificationId(Integer classificationId) {
 		this.classificationId = classificationId;
 	}
-	
+
+	public List<UpdateCampaignBean> getSelectCampaign() {
+		return selectCampaign;
+	}
 	
 }

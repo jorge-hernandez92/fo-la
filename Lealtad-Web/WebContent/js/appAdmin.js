@@ -370,6 +370,7 @@ $scope.ticketUpload = function() {
 
 					};
 
+					
 					$scope.changeProgram = function() {
 						$scope.selectCampaign.items[1].className = '';
 						$scope.selectCampaign.items[2].className = '';
@@ -513,74 +514,49 @@ $scope.ticketUpload = function() {
 					                          				}
 					                        };
 
-					$scope.getCampaignForm = function(){
+					$scope.cleanSelect = function(){
+						$scope.form.campaignName = '';
+						$scope.date.startDate = moment();
+						$scope.date.endDate = moment();
 						
-						var campaignForm = {
-								campaignName : $scope.campaign.campaignName,
-								startDate : $scope.campaign.startDate,
-								endDate : $scope.campaign.endDate,
-								classificationList : []
-						};
-						
-						$scope.form.campaignName = campaignForm.campaignName;
-						campaignForm.classificationList = [ { id : '1', name : 'seleccion Company', className : '' },
-						                                    { id : '2', name : 'seleccion Programa', className : '' },
-						                                    { id : '3', name : 'seleccion SubPrograma', className : '' },
-						                                    { id : '4', name : 'seleccion Unidad de negocio', className : '' },
-						                                    { id : '5', name : 'seleccion nivel 4', className : '' },
-						                                    { id : '6', name : 'seleccion nivel 5', className : '' }];
-						
-						$scope.date.startDate = campaignForm.startDate;
-						$scope.date.endDate = campaignForm.endDate;
-						
-							$scope.select = COMPANY_SELECT;
-							$scope.getSelectClassList();
-							for (i = 0; i < $scope.selectCampaign.items[0].availableOptions.length; i++) {
-								
-							}
-							
-							$scope.selectCampaign.items[0].selectedOption.id = $scope.campaign.campaignId;
-							
-							$scope.select = PROGRAM_SELECT;
-							$scope.getSelectClassList();
-						
-							$scope.select = SUBPROGRAM_SELECT;
-							$scope.getSelectClassList();
-						
-							$scope.select = BUSINESSUNIT_SELECT;
-							$scope.getSelectClassList();
-						
-							$scope.select = LEVEL4_SELECT;
-							$scope.getSelectClassList();
-						
-							
-						
-						//$scope.selectCampaign.items[0].availableOptions = $scope.getHardCodeSelect();
-						//$scope.selectCampaign.items[1].availableOptions = $scope.getHardCodeSelect();
-						//$scope.selectCampaign.items[2].availableOptions = $scope.getHardCodeSelect();
-						//$scope.selectCampaign.items[3].availableOptions = $scope.getHardCodeSelect();
-						//$scope.selectCampaign.items[4].availableOptions = $scope.getHardCodeSelect();
-						//$scope.selectCampaign.items[5].availableOptions = $scope.getHardCodeSelect();
-						
-						//$scope.selectCampaign.items[0].selectedOption = campaignForm.classificationList[0];
-						//$scope.selectCampaign.items[1].selectedOption = campaignForm.classificationList[1];
-						//$scope.selectCampaign.items[2].selectedOption = campaignForm.classificationList[2];
-						//$scope.selectCampaign.items[3].selectedOption	= campaignForm.classificationList[3];
-						//$scope.selectCampaign.items[4].selectedOption = campaignForm.classificationList[4];
-						//$scope.selectCampaign.items[5].selectedOption	= campaignForm.classificationList[5];
-						
+						$scope.selectCampaign.items[0].selectedOption = '';
+						for(i = 1 ; i < $scope.selectCampaign.items.length; i++){
+							$scope.selectCampaign.items[i].availableOptions =	$scope.getBasicSelect();
+							$scope.selectCampaign.items[i].selectedOption =	$scope.getSelectNone();
+						}
 					};
 					
-					$scope.getHardCodeSelect  = function() {
-						var data =  [	{ id : '-1', name : 'Ninguno' },
-						             	{ id : '1', name : 'seleccion Company' },
-	                                    { id : '2', name : 'seleccion Programa' },
-	                                    { id : '3', name : 'seleccion SubPrograma' },
-	                                    { id : '4', name : 'seleccion Unidad de negocio' },
-	                                    { id : '5', name : 'seleccion nivel 4' },
-	                                    { id : '6', name : 'seleccion nivel 5' },
-                                    	{ id : '-2', name : 'Añadir nuevo' } ];
-						return data;
+					$scope.getCampaignForm = function(){
+						
+						var data = escape(angular.toJson($scope.campaign));
+
+						$http({
+								method : 'POST',
+								url : 'getCampaignUpdateAction',
+								data : 'campaignDetail=' + data,
+								headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
+							  }).success(function(data, status, headers, config) {
+								  console.log(JSON.stringify(data));
+								  
+								  $scope.form.campaignName = $scope.campaign.campaignName;
+								  $scope.date.startDate = $scope.campaign.startDate;
+								  $scope.date.endDate = $scope.campaign.endDate;
+								  
+								  for (i=0 ; i<$scope.selectCampaign.items.length; i++){
+									  if(i < data.length){
+										  $scope.selectCampaign.items[i].availableOptions	= data[i].availableOptions;
+										  $scope.selectCampaign.items[i].selectedOption		= data[i].selectedOption;
+									  }
+									  else{
+										  $scope.selectCampaign.items[i].availableOptions = $scope.getBasicSelect();
+										  $scope.selectCampaign.items[i].selectedOption =	$scope.getSelectNone();
+									  }
+								  }
+								  								  
+							  }).error(function(data, status, headers, config) {
+								  
+							  });
+												
 					};
 					
 					$scope.newCampaignForm = function(date){
@@ -657,10 +633,11 @@ $scope.ticketUpload = function() {
 						}).success(
 								function(data, status, headers, config) {
 									//TODO
-									$state.go('campaign');
+									$state.go('home');
 								}).error(function(data, status, headers, config) {
 									//TODO
-									$state.go('campaign');
+									$state.go('home');
+									
 						});
 						
 					};
