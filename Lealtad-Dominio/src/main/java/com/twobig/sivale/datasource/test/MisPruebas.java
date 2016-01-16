@@ -32,9 +32,9 @@ public class MisPruebas {
 //			}
 //		}
 		
-		Date fechaActual = new Date();
-		
-		System.out.println(fechaActual);
-		
+//		Date fechaActual = new Date();
+//		
+//		System.out.println(fechaActual);
+
 	}
 }

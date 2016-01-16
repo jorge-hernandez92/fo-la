@@ -7,18 +7,18 @@ import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
-import com.twobig.sivale.bd.to.TUserDate;
+import com.twobig.sivale.bd.to.TUserData;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.dao.TAttachedFileDAO;
 import com.twobig.sivale.dao.TPublicationDAO;
-import com.twobig.sivale.dao.TUserDateDAO;
+import com.twobig.sivale.dao.TUserDataDAO;
 import com.twobig.sivale.service.ViewPublicationService;
 
 @Service
 public class ViewPublicationServiceImpl implements ViewPublicationService {
 	
 	@Autowired
-	public TUserDateDAO tUserDateDAO;
+	public TUserDataDAO tUserDateDAO;
 
 	@Autowired
 	public TAttachedFileDAO tAttachedFile;
@@ -29,7 +29,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	@Override
 	public PublicationBean showPublication(int userId, int publicationId) {
 		
-		List<TUserDate>  tUserDate = tUserDateDAO.getTUserDateByPublicationIdAndUserId(userId, publicationId);
+		List<TUserData>  tUserDate = tUserDateDAO.getTUserDataByPublicationIdAndUserId(userId, publicationId);
 		TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
 		PublicationBean publication = new PublicationBean();
 

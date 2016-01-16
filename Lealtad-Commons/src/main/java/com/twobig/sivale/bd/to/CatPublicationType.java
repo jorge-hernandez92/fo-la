@@ -15,11 +15,9 @@ import com.google.common.base.MoreObjects;
 @Table(name = "cat_publications_type", catalog = "lealtad_schema")
 public class CatPublicationType implements java.io.Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = -4176586590786951285L;
-	private int publicationTypeId;
+	private Integer publicationTypeId;
 	private String name;
 	private String description;
 

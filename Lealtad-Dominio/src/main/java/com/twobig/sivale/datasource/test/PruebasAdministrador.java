@@ -31,14 +31,20 @@ public class PruebasAdministrador {
 	}
 
 	public static void insertPublicacion(ClassPathXmlApplicationContext context) {
-		PublicationCRUDBean pib = new PublicationCRUDBean();
+		
 		TPublication publication = new TPublication();
 		publication.settCampaignId(1);
 		publication.setName("PRUEBA INSERCCION 1");
+		publication.setDataFilePath("src/test/resources/FORD.xlsx");
+		
 		CatPublicationType cpt = new CatPublicationType();
 		cpt.setPublicationTypeId(1);
+		
 		publication.setCatPublicationType(cpt);
+		
+		PublicationCRUDBean pib = new PublicationCRUDBean();
 		pib.setPublication(publication);
+		
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
 
 		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
@@ -83,10 +89,11 @@ public class PruebasAdministrador {
 	}
 
 	public static void getListClassificationChildren(ClassPathXmlApplicationContext context) {
+		
 		CatClassificationCampaignService cccs = (CatClassificationCampaignService) context
 				.getBean("catClassificationCampaignServiceImpl");
 
-		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(7);
+		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(30);
 
 		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
 			System.out.println(selectClassificationCampaignBean.toString());
@@ -162,11 +169,16 @@ public class PruebasAdministrador {
 		cccs.deletePublication(18);
 	}
 
-	public static void deleteCampaign(ClassPathXmlApplicationContext context){
+	public static void deleteCampaign(ClassPathXmlApplicationContext context) {
 		TCampaignsService cccs = (TCampaignsService) context.getBean("TCampaignsServiceImpl");
 		cccs.deleteCampaign(17);
 	}
-	
+
+	public static void getPublicationType(ClassPathXmlApplicationContext context){
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		System.out.println(cccs.getPublicationType());
+	}
+		
 	public static void main(String[] args) {
 
 		// BasicConfigurator.configure();
@@ -174,17 +186,17 @@ public class PruebasAdministrador {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:/application-context.xml");
 
-		// SERVICIO DE OBTENER CAMPAÑAS
-		// getCampaingsSuper(context);
+		 //SERVICIO DE OBTENER CAMPAÑAS
+		//getCampaingsSuper(context);
 
 		// SERVICIO DE INSERTAR PUBLICACIONES
-		// insertPublicacion(context);
+		 insertPublicacion(context);
 
 		// SERVICIO DE ACTUALIZAR PUBLICATION
 		// updatePublication(context);
 
 		// SERVICIO DE OBTENER LISTA DE CLASIFICACIONES HIJAS
-		// getListClassificationChildren(context);
+		//getListClassificationChildren(context);
 
 		// OBTENER LISTA DE CLASIFICACIONES PARENT DE COMPAÑÍA A LA QUE
 		// PERTENECE UN USUARIO
@@ -199,10 +211,14 @@ public class PruebasAdministrador {
 		// updateCampaign(context);
 
 		// ELIMINAR PUBLICACION
-		//deletePublication(context);
-		
+		// deletePublication(context);
+
 		// ELIMINAR CAMPAÑA
-		//deleteCampaign(context);
+		// deleteCampaign(context);
+		
+		//OBTENER TIPO DE PUBLICACIONES
+		//getPublicationType(context);
+		
 	}
 
 }

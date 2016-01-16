@@ -55,4 +55,5 @@ public interface UserDAO {
 
 	public List<String> getAllAccountNumberByCompanies(List<Integer> companyList);
 	
+	public List<TUser> getListUserByAccountNumber(List<String> accountNumber);
 }
