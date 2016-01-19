@@ -62,9 +62,11 @@ public class TPublicationServiceImpl implements TPublicationService {
 	}
 
 	@Override
-	public List<TPublication> getTPublicationCampaignId(int campaignId) {
+	public List<TPublication> getTPublicationCampaignId(int campaignId, int profile) {
 
-		List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignId);
+		List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignId, profile);
+		
+		
 
 		return publicaciones;
 	}
@@ -103,16 +105,11 @@ public class TPublicationServiceImpl implements TPublicationService {
 		return status;
 	}
 	
+	@Override
 	public String updatePublication(PublicationCRUDBean publicationInsertBean) {
 
-		String status = "";
-
-		if (publicationInsertBean.getPublication().getPublicationId() != 0) {
-			tPublicationDAO.updatePublication(publicationInsertBean.getPublication());
-			status += " . Se actualizó: " + publicationInsertBean.getPublication().toString();
-		} else {
-			status += " . No se actualizó: " + publicationInsertBean.getPublication().toString();
-		}
+		String status = updatePublicationOnly(publicationInsertBean.getPublication());
+		
 
 		for (TAttachedFile attachedFile : publicationInsertBean.getAttachedFiles()) {
 
@@ -125,6 +122,20 @@ public class TPublicationServiceImpl implements TPublicationService {
 		}
 
 		return status;
+	}
+	
+	private String updatePublicationOnly(TPublication publication){
+		
+		String status = "";
+
+		if (publication.getPublicationId() != 0) {
+			tPublicationDAO.updatePublication(publication);
+			status += " . Se actualizó: " + publication.toString();
+		} else {
+			status += " . No se actualizó: " + publication.toString();
+		}
+		
+		return status; 
 	}
 
 	@Override
@@ -140,8 +151,20 @@ public class TPublicationServiceImpl implements TPublicationService {
 		
 		return publicationTypeDAO.getAllCatPublicationType();
 	}
+	
+	@Override
+	public void updateExcel(TPublication publication) {
+		deleteDataExcel(publication.getPublicationId());
+		loadDataExcel(publication);
+	}
 
-	private void loadDataExcel(TPublication publication) {
+	private void deleteDataExcel(int publicationId){
+		TUserData tUserData = new TUserData();
+		tUserData.setPublicationId(publicationId);
+		tUserDataDAO.deleteTUserData(tUserData);
+	}
+	
+ 	private void loadDataExcel(TPublication publication) {
 		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
 		ExcelBean excelBean = excelservice.getExcelData(publication.getDataFilePath(), "Hoja2");
@@ -169,4 +192,25 @@ public class TPublicationServiceImpl implements TPublicationService {
 			tUserDataDAO.insertTUserData(tUserData);
 		}
 	}
+
+	@Override
+	public void changeStatusPublication(TPublication publication) {
+		updatePublicationOnly(publication);
+	}
+
+	@Override
+	public void insertListAttachedFiles(List<TAttachedFile> listAttachedFile) {
+		for (TAttachedFile tAttachedFile : listAttachedFile) {
+			tAttachedFileDAO.insertTAttachedFile(tAttachedFile);
+		}
+	}
+
+	@Override
+	public void deleteListAttachedFiles(List<TAttachedFile> listAttachedFile) {
+		for (TAttachedFile tAttachedFile : listAttachedFile) {
+			tAttachedFileDAO.deleteTAttachedFile(tAttachedFile);
+		}
+	} 	
+
+	
 }

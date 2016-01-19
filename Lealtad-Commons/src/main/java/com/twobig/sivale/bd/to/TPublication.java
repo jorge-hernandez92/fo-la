@@ -1,6 +1,5 @@
 package com.twobig.sivale.bd.to;// Generated 14/12/2015 01:25:30 PM by Hibernate Tools 4.3.1
 
-
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Date;
@@ -22,138 +21,140 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name="t_publications"
-    ,catalog="lealtad_schema"
-)
-public class TPublication  implements java.io.Serializable {
+@Table(name = "t_publications", catalog = "lealtad_schema")
+public class TPublication implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1260077479616668004L;
 	private int publicationId;
-     private CatPublicationType catPublicationType;
-	 private Integer tCampaignId;
-     private Date publishedDate;
-     private String name;
-     private String templateFilePath;
-     private byte[] templateFileBlob;
-     private String dataFilePath;
-     private String dataFilePage;
-     private byte[] dataFileBlob;
-     private String description;
-     
-     public static final String FIELD_PUBLICATION_ID = "publicationId";
-     public static final String FIELD_CAMPAIGN_ID = "tCampaignId";
-     
-     @Id @GeneratedValue(strategy=IDENTITY)
-    
-    @Column(name="publication_id", unique=true, nullable=false)
-    public int getPublicationId() {
-        return this.publicationId;
-    }
-    
-    public void setPublicationId(int publicationId) {
-        this.publicationId = publicationId;
-    }
+	private CatPublicationType catPublicationType;
+	private Integer tCampaignId;
+	private Date publishedDate;
+	private String name;
+	private String templateFilePath;
+	private byte[] templateFileBlob;
+	private String dataFilePath;
+	private String dataFilePage;
+	private byte[] dataFileBlob;
+	private String description;
+	private Boolean isEnable;
 
-@ManyToOne(fetch=FetchType.EAGER)
-    @JoinColumn(name="fk_publication_type")
-    public CatPublicationType getCatPublicationType() {
-        return this.catPublicationType;
-    }
-    
-    public void setCatPublicationType(CatPublicationType catPublicationType) {
-        this.catPublicationType = catPublicationType;
-    }
+	public static final String FIELD_PUBLICATION_ID = "publicationId";
+	public static final String FIELD_CAMPAIGN_ID = "tCampaignId";
+	public static final String FIELD_IS_ENABLE = "isEnable";
 
+	@Id
+	@GeneratedValue(strategy = IDENTITY)
 
-	@Column(name="fk_campaign")
-    public Integer gettCampaignId() {
+	@Column(name = "publication_id", unique = true, nullable = false)
+	public int getPublicationId() {
+		return this.publicationId;
+	}
+
+	public void setPublicationId(int publicationId) {
+		this.publicationId = publicationId;
+	}
+
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_publication_type")
+	public CatPublicationType getCatPublicationType() {
+		return this.catPublicationType;
+	}
+
+	public void setCatPublicationType(CatPublicationType catPublicationType) {
+		this.catPublicationType = catPublicationType;
+	}
+
+	@Column(name = "fk_campaign")
+	public Integer gettCampaignId() {
 		return tCampaignId;
 	}
 
 	public void settCampaignId(Integer tCampaignId) {
 		this.tCampaignId = tCampaignId;
-	}    
-	
+	}
+
 	@Temporal(TemporalType.TIMESTAMP)
-    @Column(name="published_date", length=19)
-    public Date getPublishedDate() {
-        return this.publishedDate;
-    }
-    
-    public void setPublishedDate(Date publishedDate) {
-        this.publishedDate = publishedDate;
-    }
+	@Column(name = "published_date", length = 19)
+	public Date getPublishedDate() {
+		return this.publishedDate;
+	}
 
-    
-    @Column(name="name", length=45)
-    public String getName() {
-        return this.name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
-    }
+	public void setPublishedDate(Date publishedDate) {
+		this.publishedDate = publishedDate;
+	}
 
-    
-    @Column(name="template_file_path", length=45)
-    public String getTemplateFilePath() {
-        return this.templateFilePath;
-    }
-    
-    public void setTemplateFilePath(String templateFilePath) {
-        this.templateFilePath = templateFilePath;
-    }
+	@Column(name = "name", length = 45)
+	public String getName() {
+		return this.name;
+	}
 
-    
-    @Column(name="template_file_blob")
-    public byte[] getTemplateFileBlob() {
-        return this.templateFileBlob;
-    }
-    
-    public void setTemplateFileBlob(byte[] templateFileBlob) {
-        this.templateFileBlob = templateFileBlob;
-    }
+	public void setName(String name) {
+		this.name = name;
+	}
 
-    
-    @Column(name="data_file_path", length=45)
-    public String getDataFilePath() {
-        return this.dataFilePath;
-    }
-    
-    public void setDataFilePath(String dataFilePath) {
-        this.dataFilePath = dataFilePath;
-    }
+	@Column(name = "template_file_path", length = 45)
+	public String getTemplateFilePath() {
+		return this.templateFilePath;
+	}
 
-    
-    @Column(name="data_file_page", length=45)
-    public String getDataFilePage() {
-        return this.dataFilePage;
-    }
-    
-    public void setDataFilePage(String dataFilePage) {
-        this.dataFilePage = dataFilePage;
-    }
+	public void setTemplateFilePath(String templateFilePath) {
+		this.templateFilePath = templateFilePath;
+	}
 
-    
-    @Column(name="data_file_blob")
-    public byte[] getDataFileBlob() {
-        return this.dataFileBlob;
-    }
-    
-    public void setDataFileBlob(byte[] dataFileBlob) {
-        this.dataFileBlob = dataFileBlob;
-    }
+	@Column(name = "template_file_blob")
+	public byte[] getTemplateFileBlob() {
+		return this.templateFileBlob;
+	}
 
-    
-    @Column(name="description", length=150)
-    public String getDescription() {
-        return this.description;
-    }
-    
-    public void setDescription(String description) {
-        this.description = description;
-    }
- 
+	public void setTemplateFileBlob(byte[] templateFileBlob) {
+		this.templateFileBlob = templateFileBlob;
+	}
+
+	@Column(name = "data_file_path", length = 45)
+	public String getDataFilePath() {
+		return this.dataFilePath;
+	}
+
+	public void setDataFilePath(String dataFilePath) {
+		this.dataFilePath = dataFilePath;
+	}
+
+	@Column(name = "data_file_page", length = 45)
+	public String getDataFilePage() {
+		return this.dataFilePage;
+	}
+
+	public void setDataFilePage(String dataFilePage) {
+		this.dataFilePage = dataFilePage;
+	}
+
+	@Column(name = "data_file_blob")
+	public byte[] getDataFileBlob() {
+		return this.dataFileBlob;
+	}
+
+	public void setDataFileBlob(byte[] dataFileBlob) {
+		this.dataFileBlob = dataFileBlob;
+	}
+
+	@Column(name = "description", length = 150)
+	public String getDescription() {
+		return this.description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	@Column(name = "is_enable")
+	public Boolean getIsEnable() {
+		return isEnable;
+	}
+
+	public void setIsEnable(Boolean isEnable) {
+		this.isEnable = isEnable;
+	}
+
 	@Override
 	public String toString() {
 		return "TPublication [publicationId=" + publicationId + ", publishedDate=" + publishedDate + ", name=" + name

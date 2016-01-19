@@ -4,6 +4,6 @@ import com.twobig.sivale.beans.PublicationBean;
 
 public interface ViewPublicationService {
 	
-	public PublicationBean showPublication(int userId, int publicationId);
+	public PublicationBean showPublication(int userId, int publicationId, int profile);
 
 }

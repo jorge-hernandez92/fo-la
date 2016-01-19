@@ -3,6 +3,7 @@ package com.twobig.sivale.service;
 import java.util.List;
 
 import com.twobig.sivale.bd.to.CatPublicationType;
+import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.PublicationCRUDBean;
 
@@ -11,7 +12,7 @@ public interface TPublicationService {
 	
 	public List<TPublication> getTPublicationByUserIdAndCampaignId(int userId, int campaignId);
 
-	public List<TPublication> getTPublicationCampaignId(int campaignId);
+	public List<TPublication> getTPublicationCampaignId(int campaignId, int profile);
 
 	public String addPublication(PublicationCRUDBean publicationInsertBean);
 
@@ -20,5 +21,12 @@ public interface TPublicationService {
 	public String deletePublication(Integer publicationId);
 	
 	public List<CatPublicationType> getPublicationType();
-
+	
+	public void updateExcel(TPublication publication);
+	
+	public void changeStatusPublication(TPublication publication);
+	
+	public void insertListAttachedFiles(List<TAttachedFile> listAttachedFile);
+	
+	public void deleteListAttachedFiles(List<TAttachedFile> listAttachedFile);
 }

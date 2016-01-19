@@ -175,7 +175,8 @@ public class CommonsConstants {
 	/**
 	 * CAT PROFILE
 	 */
-	public static final int CAT_PROFILE_SUPERVISOR = 2;	
+	public static final int CAT_PROFILE_SUPERVISOR = 2;
+	public static final int CAT_PROFILE_ADMIN = 0;                        
 	
 	/**
 	 * CONSTANTS

@@ -11,4 +11,5 @@ public interface TUserDataDAO {
 	
 	public void insertTUserData(TUserData tUserData);
 	
+	public void deleteTUserData(TUserData tUserData);
 }

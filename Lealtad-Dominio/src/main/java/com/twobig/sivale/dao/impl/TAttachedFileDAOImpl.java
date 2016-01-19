@@ -37,6 +37,11 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 	public void updateTAttachedFile(TAttachedFile tAttachedFile) {
 		this.actualizar(tAttachedFile);
 	}
+
+	@Override
+	public void deleteTAttachedFile(TAttachedFile tAttachedFile) {
+		this.borrar(tAttachedFile);
+	}
 	
 	
 }

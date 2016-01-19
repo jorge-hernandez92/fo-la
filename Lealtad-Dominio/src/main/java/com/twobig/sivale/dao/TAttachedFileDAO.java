@@ -13,5 +13,6 @@ public interface TAttachedFileDAO {
 	public void insertTAttachedFile(TAttachedFile tAttachedFile) throws DataIntegrityViolationException;
 	
 	public void updateTAttachedFile(TAttachedFile tAttachedFile);
-
+	
+	public void deleteTAttachedFile(TAttachedFile tAttachedFile);
 }

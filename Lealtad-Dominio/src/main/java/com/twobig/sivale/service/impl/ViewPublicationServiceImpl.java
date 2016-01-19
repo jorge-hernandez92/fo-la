@@ -27,7 +27,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	public TPublicationDAO tpublicationDAO;
 
 	@Override
-	public PublicationBean showPublication(int userId, int publicationId) {
+	public PublicationBean showPublication(int userId, int publicationId, int profile) {
 		
 		List<TUserData>  tUserDate = tUserDateDAO.getTUserDataByPublicationIdAndUserId(userId, publicationId);
 		TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
@@ -45,11 +45,15 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 
 			List<TAttachedFile> files = tAttachedFile.getTAttachedFileByPublicationId(publicationId);
 			publication.setListFiles(files);
+			
+			//PARA EL PARTICIPANTE SOLO TRAER LOS QUE ESTAN PUBLICOS (ARCHIVOS ADJUNTOS)
+			
 
 		} else {
 			System.out.println("lista vacia");
 			return null;
 		}
+		
 		return publication;
 	}
 }

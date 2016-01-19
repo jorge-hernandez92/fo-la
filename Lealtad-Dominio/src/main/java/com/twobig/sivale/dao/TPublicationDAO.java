@@ -12,7 +12,7 @@ public interface TPublicationDAO {
 
 	public TPublication getPublicationById(int publicationId);
 	
-	public List<TPublication> getTCampaignByPublicationId(int campaign);
+	public List<TPublication> getTCampaignByPublicationId(int campaign, int profile);
 	
 	public void insertPublication(TPublication tPublication) throws DataIntegrityViolationException;
 	

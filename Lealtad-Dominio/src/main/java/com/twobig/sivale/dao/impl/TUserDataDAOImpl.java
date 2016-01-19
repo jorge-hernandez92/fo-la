@@ -2,6 +2,8 @@ package com.twobig.sivale.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
+import org.hibernate.classic.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
@@ -33,4 +35,18 @@ implements TUserDataDAO {
 		this.saveWithConstraints(tUserData);
 	}
 
+	@Override
+	public void deleteTUserData(TUserData tUserData) {
+		
+		Session session =  this.getSessionFactory().openSession();
+				
+		Query query = session.createQuery("delete TUserData  where publicationId = :publicationId");
+		query.setParameter("publicationId", tUserData.getPublicationId());
+		 
+		int result = query.executeUpdate();
+		 
+		if (result > 0) {
+		    System.out.println("t_user_data was removed");
+		}
+	}
 }
