@@ -9,6 +9,7 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUserData;
 import com.twobig.sivale.beans.PublicationBean;
+import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.dao.TAttachedFileDAO;
 import com.twobig.sivale.dao.TPublicationDAO;
 import com.twobig.sivale.dao.TUserDataDAO;
@@ -44,9 +45,18 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			publication.setHtml(html);
 
 			List<TAttachedFile> files = tAttachedFile.getTAttachedFileByPublicationId(publicationId);
-			publication.setListFiles(files);
+			
 			
 			//PARA EL PARTICIPANTE SOLO TRAER LOS QUE ESTAN PUBLICOS (ARCHIVOS ADJUNTOS)
+			if ( CommonsConstants.CAT_PROFILE_ADMIN != profile ){
+				for (TAttachedFile tAttachedFile : files) {
+					if ( !tAttachedFile.getIsPublic()  ){
+						files.remove(tAttachedFile);
+					}
+				}
+			}
+			
+			publication.setListFiles(files);
 			
 
 		} else {
