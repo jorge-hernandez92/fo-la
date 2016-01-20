@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.dao.TPublicationDAO;
+import com.twobig.sivale.constants.CommonsConstants;
 
 @Repository
 public class TPublicationDAOImpl extends GenericDAOImpl<TPublication, Long> implements TPublicationDAO {
@@ -39,13 +40,27 @@ public class TPublicationDAOImpl extends GenericDAOImpl<TPublication, Long> impl
 	}
 
 	@Override
-	public List<TPublication> getTCampaignByPublicationId(int campaign) {
+	public List<TPublication> getTCampaignByPublicationId(int campaign, int profile) {
+		
+		if(CommonsConstants.CAT_PROFILE_ADMIN == profile){
+			
+			DetachedCriteria criteria = DetachedCriteria.forClass(TPublication.class);
 
-		DetachedCriteria criteria = DetachedCriteria.forClass(TPublication.class);
+			criteria.add(Restrictions.eq(TPublication.FIELD_CAMPAIGN_ID, campaign));
 
-		criteria.add(Restrictions.eq(TPublication.FIELD_CAMPAIGN_ID, campaign));
+			return getListByCriteria(criteria);
+		}
+		else{
+			DetachedCriteria criteria = DetachedCriteria.forClass(TPublication.class);
 
-		return getListByCriteria(criteria);
+			criteria.add(Restrictions.eq(TPublication.FIELD_CAMPAIGN_ID, campaign));
+			
+			criteria.add(Restrictions.eq(TPublication.FIELD_IS_ENABLE, true));
+
+			return getListByCriteria(criteria);
+		}
+		
+		
 	}
 
 	@Override

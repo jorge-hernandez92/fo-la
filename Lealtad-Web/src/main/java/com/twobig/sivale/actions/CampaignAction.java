@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
+import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
@@ -68,6 +69,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private Integer campaignId;
 	private Integer classificationId;
 	private List<UpdateCampaignBean> selectCampaign;
+	private List<SelectClassificationCampaignBean> selectPublicationTypes;
 
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -263,7 +265,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
 		//publications = new ServicesUser().getPubliations(user.getUserId(), campaign.getCampaignId());
 		
-		publications = publicationService.getTPublicationCampaignId(campaign.getCampaignId());
+		publications = publicationService.getTPublicationCampaignId(campaign.getCampaignId(), user.getCatProfile());
 		
 		return SUCCESS;
 
@@ -308,7 +310,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
 		//this.publication = new ServicesUser().showPublication(user.getUserId(), pub.getPublicationId());
 		
-		this.publication = viewPublicationService.showPublication(user.getUserId(), pub.getPublicationId());
+		this.publication = viewPublicationService.showPublication(user.getUserId(), pub.getPublicationId(), user.getCatProfile());
 		for (TAttachedFile files : publication.getListFiles()) {
 			System.out.println(files.toString());
 		}
@@ -360,6 +362,33 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Action(value = "getPublicationTypesAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"selectPublicationTypes", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getPublicationTypesAction() {
+		
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+		
+		List<CatPublicationType> publicationTypes = publicationService.getPublicationType();
+		if(publicationTypes!=null){
+			selectPublicationTypes = new ArrayList<SelectClassificationCampaignBean>();
+			
+			for(CatPublicationType pType : publicationTypes){
+				SelectClassificationCampaignBean select = new SelectClassificationCampaignBean();
+				select.setId(pType.getPublicationTypeId());
+				select.setName(pType.getName());
+				
+				selectPublicationTypes.add(select);
+			}
+			
+			return SUCCESS;
+		}
+		
+		return ERROR;
+	}
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "addCampaignAction")
@@ -511,18 +540,19 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 	
-	@Action(value = "uploadFileAction")
-	public String uploadAction(){
-		
-		final HttpServletRequest request = ServletActionContext.getRequest();
-
-		String fileJSON = request.getParameter("file");
-		
-		System.out.println(fileJSON);
-		
-		return SUCCESS;
-		
-	}
+	
+//	@Action(value = "uploadFileAction")
+//	public String uploadAction(){
+//		
+//		final HttpServletRequest request = ServletActionContext.getRequest();
+//
+//		String fileJSON = request.getParameter("file");
+//		
+//		System.out.println(fileJSON);
+//		
+//		return SUCCESS;
+//		
+//	}
 	
 	
 	public SelectClassificationCampaignBean getSelectedOption(List<SelectClassificationCampaignBean> listOption, Integer selectedId){
@@ -584,6 +614,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	public List<UpdateCampaignBean> getSelectCampaign() {
 		return selectCampaign;
+	}
+
+	public List<SelectClassificationCampaignBean> getSelectPublicationTypes() {
+		return selectPublicationTypes;
 	}
 	
 }

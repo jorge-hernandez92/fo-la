@@ -131,7 +131,7 @@ public class test {
 		TPublicationService cccs = 
 		(TPublicationService) context.getBean("TPublicationServiceImpl");
 		
-		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1);
+		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1, 1);
 		
 		for (TPublication tPublication : publicaciones) {
 			System.out.println(tPublication.toString() + " ");
@@ -143,7 +143,7 @@ public class test {
 		ViewPublicationService cccs = 
 				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
 		
-		PublicationBean publicationBean = cccs.showPublication(7, 1);
+		PublicationBean publicationBean = cccs.showPublication(7, 1, 1);
 		
 		if(publicationBean != null){
 			

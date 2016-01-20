@@ -48,7 +48,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					  
 					$scope.addRow = function() {
 					    
-					$scope.rows.push($scope.counter + 2);
+						$scope.rows.push($scope.counter + 2);
 						$scope.counter++;
 					}
 					  
@@ -176,182 +176,120 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 /************************************************************************
 ============================== Upload File Start ========================
 ************************************************************************/
-					function UInt8ArrayToString(uInt8Array)
-					{
-					    var s= "";
-					    for(var i= number = 0; i < uInt8Array.byteLength; i++)
-					    {
-					        if( i > 0 )
-					            s += ",";
-					        s += uInt8Array[i];
-					    }    
-					    return s;
-					}
-
+//					function UInt8ArrayToString(uInt8Array)
+//					{
+//					    var s= "";
+//					    for(var i= number = 0; i < uInt8Array.byteLength; i++)
+//					    {
+//					        if( i > 0 )
+//					            s += ",";
+//					        s += uInt8Array[i];
+//					    }    
+//					    return s;
+//					}
+//
+//					
+//					$scope.excelUpload = function() {
+//
+//						$scope.data = 'none';
+//
+//						var f = document.getElementById('file-xlsx').files[0], r = new FileReader();
+//						var sizeFile = document.getElementById('file-xlsx').files[0].size;
+//						var fileInput = $('.upload-file');
+//						var maxSize = fileInput.data('max-size');
+//						var nameFile = document.getElementById('file-xlsx').files[0].name;
+//						
+//						r.onloadend = function(e) {
+//							var binary = "";
+//							var fileBytes = new Uint8Array(e.target.result);
+//							
+//							var fileBytesStr = UInt8ArrayToString(fileBytes);
+//							if(sizeFile>=maxSize){
+//								alert('el tamaño del archivo sobrepasa el limite permitido: '+(maxSize/1024)+'KB');
+//								return;
+//							}
+//							var length = fileBytes.byteLength;
+//
+//							for (var i = 0; i < length; i++) {
+//								binary += String.fromCharCode(fileBytes[i]);
+//							}
+//
+//							$scope.data = (binary).toString();
+//							$scope.byte = 0;
+//							$scope.fb = fileBytes;
+//
+//							var b64encoded = btoa(String.fromCharCode.apply(
+//									null, fileBytes));
+//							 
+//							// CREAR JSON
+//							$rootScope.excelData = {
+//								file : fileBytesStr,
+//								fileName: nameFile
+//							};
+//
+//							console.log("DATA: "+JSON.stringify($rootScope.excelData));
+//							var jsonData = escape(angular
+//									.toJson($rootScope.excelData));
+//							
+//						}
+//
+//						r.readAsArrayBuffer(f);
+//					};
+//					
+//					$scope.htmlUpload = function() {
+//
+//						$scope.data = 'none';
+//
+//						var f = document.getElementById('file-html').files[0], r = new FileReader();
+//						var sizeFile = document.getElementById('file-html').files[0].size;
+//						var fileInput = $('.upload-file');
+//						var maxSize = fileInput.data('max-size');
+//						var nameFile = document.getElementById('file-html').files[0].name;
+//						
+//						r.onloadend = function(e) {
+//							var binary = "";
+//							var fileBytes = new Uint8Array(e.target.result);
+//							
+//							var fileBytesStr = UInt8ArrayToString(fileBytes);
+//							if(sizeFile>=maxSize){
+//								alert('el tamaño del archivo sobrepasa el limite permitido: '+(maxSize/1024)+'KB');
+//								return;
+//							}
+//							var length = fileBytes.byteLength;
+//
+//							for (var i = 0; i < length; i++) {
+//								binary += String.fromCharCode(fileBytes[i]);
+//							}
+//
+//							$scope.data = (binary).toString();
+//							$scope.byte = 0;
+//							$scope.fb = fileBytes;
+//
+//							var b64encoded = btoa(String.fromCharCode.apply(
+//									null, fileBytes));
+//							 
+//							// CREAR JSON
+//							$rootScope.htmlData = {
+//								file : fileBytesStr,
+//								fileName: nameFile
+//							};
+//
+//							console.log("DATA: "+JSON.stringify($rootScope.htmlData));
+//							var jsonData = escape(angular
+//									.toJson($rootScope.htmlData));
+//							
+//						}
+//
+//						r.readAsArrayBuffer(f);
+//					};
 					
-					$scope.excelUpload = function() {
-
-						$scope.data = 'none';
-
-						var f = document.getElementById('file-xlsx').files[0], r = new FileReader();
-						var sizeFile = document.getElementById('file-xlsx').files[0].size;
-						var fileInput = $('.upload-file');
-						var maxSize = fileInput.data('max-size');
-						var nameFile = document.getElementById('file-xlsx').files[0].name;
-						
-						r.onloadend = function(e) {
-							var binary = "";
-							var fileBytes = new Uint8Array(e.target.result);
-							
-							var fileBytesStr = UInt8ArrayToString(fileBytes);
-							if(sizeFile>=maxSize){
-								alert('el tamaño del archivo sobrepasa el limite permitido: '+(maxSize/1024)+'KB');
-								return;
-							}
-							var length = fileBytes.byteLength;
-
-							for (var i = 0; i < length; i++) {
-								binary += String.fromCharCode(fileBytes[i]);
-							}
-
-							$scope.data = (binary).toString();
-							$scope.byte = 0;
-							$scope.fb = fileBytes;
-
-							var b64encoded = btoa(String.fromCharCode.apply(
-									null, fileBytes));
-							 
-							// CREAR JSON
-							$rootScope.excelData = {
-								file : fileBytesStr,
-								fileName: nameFile
-							};
-
-							console.log("DATA: "+JSON.stringify($rootScope.excelData));
-							var jsonData = escape(angular
-									.toJson($rootScope.excelData));
-							
-						}
-
-						r.readAsArrayBuffer(f);
-					};
 					
-					$scope.htmlUpload = function() {
-
-						$scope.data = 'none';
-
-						var f = document.getElementById('file-html').files[0], r = new FileReader();
-						var sizeFile = document.getElementById('file-html').files[0].size;
-						var fileInput = $('.upload-file');
-						var maxSize = fileInput.data('max-size');
-						var nameFile = document.getElementById('file-html').files[0].name;
-						
-						r.onloadend = function(e) {
-							var binary = "";
-							var fileBytes = new Uint8Array(e.target.result);
-							
-							var fileBytesStr = UInt8ArrayToString(fileBytes);
-							if(sizeFile>=maxSize){
-								alert('el tamaño del archivo sobrepasa el limite permitido: '+(maxSize/1024)+'KB');
-								return;
-							}
-							var length = fileBytes.byteLength;
-
-							for (var i = 0; i < length; i++) {
-								binary += String.fromCharCode(fileBytes[i]);
-							}
-
-							$scope.data = (binary).toString();
-							$scope.byte = 0;
-							$scope.fb = fileBytes;
-
-							var b64encoded = btoa(String.fromCharCode.apply(
-									null, fileBytes));
-							 
-							// CREAR JSON
-							$rootScope.htmlData = {
-								file : fileBytesStr,
-								fileName: nameFile
-							};
-
-							console.log("DATA: "+JSON.stringify($rootScope.htmlData));
-							var jsonData = escape(angular
-									.toJson($rootScope.htmlData));
-							
-						}
-
-						r.readAsArrayBuffer(f);
-					};
+//$scope.ticketUpload = function() {
+//
+//	$scope.excelUpload();
+//	$scope.htmlUpload();	
+//};
 					
-					
-$scope.ticketUpload = function() {
-
-	$scope.excelUpload();
-	$scope.htmlUpload();
-	
-
-// 		$http(
-// 				{
-// 					method : 'POST',
-// 					url : 'uploadTicketAction',
-// 					data : 'ticket=' + jsonData,
-// 					headers : {
-// 						'Content-Type' : 'application/x-www-form-urlencoded'
-// 					}
-// 				}).success(
-// 				function(data, status, headers, config) {
-// 					$scope.items = data;					
-// 					$scope.ticket.date = '';
-// 					$scope.ticket.amount = '';
-// 					$scope.ticket.tip = '';
-// 					$scope.ticket.commerce = '';
-// 					$scope.ticket.rfc = '';
-// 					comment : $scope.ticket.comment = '';					
-// //					$scope.downloadFile(data.pdfFileName, data.ticketPhoto);
-					
-// 					if(data != null && data == RESULT_SUCCESS){
-// 				        var messageTemplate = '<span>El ticket: '+$rootScope.myData.fileName+' ha sido asociado correctamente.</span>';		        
-// 				        notify({
-// 				            messageTemplate: messageTemplate,
-// 				            classes: "alert-success",
-// 				            position: $scope.position,
-// 				            duration: 10000
-// 				        }); 
-// 					}
-// 					else if (data != null && data == TICKET_EXISTS) {
-// 						var messageTemplate = '<span>No se pudo realizar la vinculación del ticket: '+$rootScope.myData.fileName+
-// 						', ya que este archivo se encuentra ligado a otro ticket. </span>';
-// 				        notify({
-// 				            messageTemplate: messageTemplate,
-// 				            classes: "alert-warning",
-// 				            position: $scope.position,
-// 				            duration: 15000
-// 				        });		
-// 					}
-// 					else{
-// 						var messageTemplate = '<span>No se pudo asociar el ticket: '+$rootScope.myData.fileName+'.</span>';		        
-// 				        notify({
-// 				            messageTemplate: messageTemplate,
-// 				            classes: "alert-danger",
-// 				            position: $scope.position,
-// 				            duration: 10000
-// 				        });						
-// 						}
-
-// 					$scope.refreshTransactionsTable($scope.screen);
-					
-// 				}).error(
-// 				function(data, status, headers, config) {
-// 			        var messageTemplate = '<span>Error en conexión con el servidor.</span>';		        
-// 			        notify({
-// 			            messageTemplate: messageTemplate,
-// 			            classes: "alert-warning",
-// 			            position: $scope.position,
-// 			            duration: 10000
-// 			        }); 
-// 				});
-		
-};
 /************************************************************************
 ================================ Upload File End ========================
 ************************************************************************/
@@ -364,6 +302,19 @@ $scope.ticketUpload = function() {
 					$scope.select = 0;
 					$scope.form = {
 							campaignName : ''
+					};
+					
+					$scope.getPublicationTypes = function() {
+						
+						$http.get('getPublicationTypesAction').success(
+								function(data, status, headers, config) {
+
+									$scope.selectPublicationType.availableOptions = data;
+						
+								}).error(
+								function(data, status, headers, config) {
+									
+								});
 					};
 					
 					$scope.getSelectClassList = function() {
@@ -582,6 +533,11 @@ $scope.ticketUpload = function() {
 							$scope.selectCampaign.items[i].selectedOption = '';
 							$scope.selectCampaign.items[i].availableOptions = '';
 						}
+					};
+					
+					$scope.selectPublicationType = {
+							availableOptions : '',
+							selectedOption : ''
 					};
 					
 					$scope.selectCampaign = { items : [{availableOptions : '', selectedOption : '', className : ''},

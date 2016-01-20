@@ -47,12 +47,10 @@
 
 					<div class="row margin-top10">
 						<div class="col-md-4">Tipo de Publicación</div>
-						<div class="col-md-8">
-							<select class="form-control">
-								<option>Teaser</option>
-								<option>Avance</option>
-								<option>Cierre</option>
-								<option>Premiación</option>
+						<div class="col-md-8" data-ng-controller="getPublicationTypes">
+							<select class="form-control" name="selected"
+								ng-options="option.name for option in selectPublicationType.availableOptions track by option.id"
+								ng-model="selectPublicationType.selectedOption">
 							</select>
 						</div>
 					</div>

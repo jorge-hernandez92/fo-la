@@ -31,15 +31,22 @@ public class PruebasAdministrador {
 	}
 
 	public static void insertPublicacion(ClassPathXmlApplicationContext context) {
-		PublicationCRUDBean pib = new PublicationCRUDBean();
-		TPublication publication = new TPublication();
-		publication.settCampaignId(1);
-		publication.setName("PRUEBA INSERCCION 1");
+		
 		CatPublicationType cpt = new CatPublicationType();
 		cpt.setPublicationTypeId(1);
+		
+		TPublication publication = new TPublication();
+		publication.setPublicationId(19);
+		publication.settCampaignId(1);
+		publication.setName("PRUEBA INSERCCION 5");
+		publication.setDataFilePath("src/test/resources/FORD.xlsx");
 		publication.setCatPublicationType(cpt);
+		publication.setIsEnable(true);
+		
+		PublicationCRUDBean pib = new PublicationCRUDBean();
 		pib.setPublication(publication);
-		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		
 
 		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
 
@@ -49,6 +56,7 @@ public class PruebasAdministrador {
 
 		pib.setAttachedFiles(attachedFiles);
 
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
 		System.out.println(cccs.addPublication(pib));
 	}
 
@@ -57,6 +65,8 @@ public class PruebasAdministrador {
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
 
 		PublicationCRUDBean pib = new PublicationCRUDBean();
+		
+		
 		TPublication publication = new TPublication();
 		publication.setPublicationId(20);
 		publication.settCampaignId(1);
@@ -83,10 +93,11 @@ public class PruebasAdministrador {
 	}
 
 	public static void getListClassificationChildren(ClassPathXmlApplicationContext context) {
+		
 		CatClassificationCampaignService cccs = (CatClassificationCampaignService) context
 				.getBean("catClassificationCampaignServiceImpl");
 
-		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(7);
+		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(30);
 
 		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
 			System.out.println(selectClassificationCampaignBean.toString());
@@ -162,9 +173,95 @@ public class PruebasAdministrador {
 		cccs.deletePublication(18);
 	}
 
-	public static void deleteCampaign(ClassPathXmlApplicationContext context){
+	public static void deleteCampaign(ClassPathXmlApplicationContext context) {
 		TCampaignsService cccs = (TCampaignsService) context.getBean("TCampaignsServiceImpl");
 		cccs.deleteCampaign(17);
+	}
+
+	public static void getPublicationType(ClassPathXmlApplicationContext context){
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		System.out.println(cccs.getPublicationType());
+	}
+	
+	public static void updateExcel(ClassPathXmlApplicationContext context){
+		
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		CatPublicationType cpt = new CatPublicationType();
+		cpt.setPublicationTypeId(1);
+		
+		TPublication publication = new TPublication();
+		publication.setPublicationId(19);
+		publication.settCampaignId(1);
+		publication.setName("PRUEBA INSERCCION 1");
+		publication.setDataFilePath("src/test/resources/FORD.xlsx");
+		publication.setCatPublicationType(cpt);
+		
+		
+		cccs.updateExcel(publication);
+	}
+	
+	public static void changeStatusPublication(ClassPathXmlApplicationContext context){
+		
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		TPublication publication = new TPublication();
+		publication.setPublicationId(19);
+		publication.settCampaignId(1);
+		publication.setName("PRUEBA ACTUALIZACION 11");
+		CatPublicationType cpt = new CatPublicationType();
+		cpt.setPublicationTypeId(1);
+		publication.setCatPublicationType(cpt);
+		publication.setIsEnable(true);
+		
+		cccs.changeStatusPublication(publication);
+		
+	}
+	
+	public static void insertListAttachedFiles(ClassPathXmlApplicationContext context){
+		
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		List<TAttachedFile> listAttachedFile = new ArrayList<TAttachedFile>();
+		
+		for (int i = 0; i < 5; i++) {
+			TAttachedFile attachedFile = new TAttachedFile();
+			attachedFile.settPublicationId(19);
+			attachedFile.setFileName("PRUEBA DE INSERCCION (insertListAttached)");
+			listAttachedFile.add(attachedFile);
+		}
+		
+		cccs.insertListAttachedFiles(listAttachedFile);
+		
+	}
+	
+	public static void deleteListAttachedFiles(ClassPathXmlApplicationContext context){
+		
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		
+		List<TAttachedFile> listAttachedFile = new ArrayList<TAttachedFile>();
+		
+		for (int i = 0; i < 5; i++) {
+			TAttachedFile attachedFile = new TAttachedFile();
+			attachedFile.setAttachedFileId(24+i);
+			attachedFile.settPublicationId(19);
+			attachedFile.setFileName("PRUEBA DE INSERCCION (insertListAttached)");
+			listAttachedFile.add(attachedFile);
+		}
+		
+		cccs.deleteListAttachedFiles(listAttachedFile);
+	}
+	
+	public static void getPublication(ClassPathXmlApplicationContext context){
+
+		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+
+		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1, 0);
+
+		for (TPublication tPublication : publicaciones) {
+			System.out.println(tPublication.toString() + " ");
+		}
+		
 	}
 	
 	public static void main(String[] args) {
@@ -174,17 +271,17 @@ public class PruebasAdministrador {
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:/application-context.xml");
 
-		// SERVICIO DE OBTENER CAMPAÑAS
-		// getCampaingsSuper(context);
+		 //SERVICIO DE OBTENER CAMPAÑAS
+		//getCampaingsSuper(context);
 
 		// SERVICIO DE INSERTAR PUBLICACIONES
-		// insertPublicacion(context);
+		insertPublicacion(context);
 
 		// SERVICIO DE ACTUALIZAR PUBLICATION
-		// updatePublication(context);
+		//updatePublication(context);
 
 		// SERVICIO DE OBTENER LISTA DE CLASIFICACIONES HIJAS
-		// getListClassificationChildren(context);
+		//getListClassificationChildren(context);
 
 		// OBTENER LISTA DE CLASIFICACIONES PARENT DE COMPAÑÍA A LA QUE
 		// PERTENECE UN USUARIO
@@ -199,10 +296,29 @@ public class PruebasAdministrador {
 		// updateCampaign(context);
 
 		// ELIMINAR PUBLICACION
-		//deletePublication(context);
-		
+		// deletePublication(context);
+
 		// ELIMINAR CAMPAÑA
-		//deleteCampaign(context);
+		// deleteCampaign(context);
+		
+		//OBTENER TIPO DE PUBLICACIONES
+		//getPublicationType(context);
+		
+		//SERVICIO PARA ACTUALIZAR LA TABLA USER_DATA EN CASO 
+		// DE HABER MODIFICADO EL ARCHIVO EXCEL
+		//updateExcel(context);
+		
+		//SERVICIO PARA CAMBIAR EL STATUS DE UNA PUBLICACION
+		//changeStatusPublication(context);
+		
+		//SERVCIO PARA INSERTAR UNA LISTA DE ARCHIVOS ADJUNTOS
+		//insertListAttachedFiles(context);
+		
+		//SERVICIO PARA ELIMINAR UNA LISTA DE ARCHIVOS ADJUNTOS
+		//deleteListAttachedFiles(context);
+		
+		//SERVICIO PARA OBTENER PUBLICACIONES PARA ADMINISTRADOR
+		//getPublication(context);
 	}
 
 }
