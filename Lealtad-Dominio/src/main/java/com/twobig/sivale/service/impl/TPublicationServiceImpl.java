@@ -98,8 +98,6 @@ public class TPublicationServiceImpl implements TPublicationService {
 				}
 			}
 			
-			loadDataExcel(publicationInsertBean.getPublication());
-			
 			return ""+publicationInsertBean.getPublication().getPublicationId(); 
 			
 		} else {
@@ -156,15 +154,24 @@ public class TPublicationServiceImpl implements TPublicationService {
 	}
 	
 	@Override
-	public void updateExcel(TPublication publication) {
+	public void updateExcel(TPublication publication, String path) {
 		deleteDataExcel(publication.getPublicationId());
-		loadDataExcel(publication);
+		loadDataExcel(publication.getPublicationId(), path);
 	}
 
 	private void deleteDataExcel(int publicationId){
 		TUserData tUserData = new TUserData();
 		tUserData.setPublicationId(publicationId);
 		tUserDataDAO.deleteTUserData(tUserData);
+	}
+	
+	
+	@Override
+	public void loadDataExcel(int publicationId, String path){
+		TPublication publication = new TPublication();
+		publication.setPublicationId(publicationId);
+		publication.setDataFilePath(path);
+		loadDataExcel(publication);
 	}
 	
  	private void loadDataExcel(TPublication publication) {
