@@ -81,28 +81,31 @@ public class TPublicationServiceImpl implements TPublicationService {
 		tPublicationDAO.insertPublication(publicationInsertBean.getPublication());
 
 		if (publicationInsertBean.getPublication().getPublicationId() != 0) {
+			
 			status += " . Se insertó: " + publicationInsertBean.getPublication().toString();
+			
+			Integer publicationId = publicationInsertBean.getPublication().getPublicationId();
+
+			for (TAttachedFile attachedFile : publicationInsertBean.getAttachedFiles()) {
+
+				attachedFile.settPublicationId(publicationId);
+				tAttachedFileDAO.insertTAttachedFile(attachedFile);
+
+				if (attachedFile.getAttachedFileId() != 0) {
+					status += "\n . Se insertó: " + attachedFile.toString();
+				} else {
+					status += "\n . No se insertó: " + attachedFile.toString();
+				}
+			}
+			
+			loadDataExcel(publicationInsertBean.getPublication());
+			
+			return ""+publicationInsertBean.getPublication().getPublicationId(); 
+			
 		} else {
 			status += " . No se insertó: " + publicationInsertBean.getPublication().toString();
+			return status; 
 		}
-
-		Integer publicationId = publicationInsertBean.getPublication().getPublicationId();
-
-		for (TAttachedFile attachedFile : publicationInsertBean.getAttachedFiles()) {
-
-			attachedFile.settPublicationId(publicationId);
-			tAttachedFileDAO.insertTAttachedFile(attachedFile);
-
-			if (attachedFile.getAttachedFileId() != 0) {
-				status += "\n . Se insertó: " + attachedFile.toString();
-			} else {
-				status += "\n . No se insertó: " + attachedFile.toString();
-			}
-		}
-		
-		loadDataExcel(publicationInsertBean.getPublication());
-		
-		return status;
 	}
 	
 	@Override

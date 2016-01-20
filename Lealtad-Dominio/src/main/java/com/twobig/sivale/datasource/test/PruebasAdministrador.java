@@ -36,10 +36,12 @@ public class PruebasAdministrador {
 		cpt.setPublicationTypeId(1);
 		
 		TPublication publication = new TPublication();
+		publication.setPublicationId(19);
 		publication.settCampaignId(1);
-		publication.setName("PRUEBA INSERCCION 1");
+		publication.setName("PRUEBA INSERCCION 5");
 		publication.setDataFilePath("src/test/resources/FORD.xlsx");
 		publication.setCatPublicationType(cpt);
+		publication.setIsEnable(true);
 		
 		PublicationCRUDBean pib = new PublicationCRUDBean();
 		pib.setPublication(publication);
@@ -273,10 +275,10 @@ public class PruebasAdministrador {
 		//getCampaingsSuper(context);
 
 		// SERVICIO DE INSERTAR PUBLICACIONES
-		//insertPublicacion(context);
+		insertPublicacion(context);
 
 		// SERVICIO DE ACTUALIZAR PUBLICATION
-		// updatePublication(context);
+		//updatePublication(context);
 
 		// SERVICIO DE OBTENER LISTA DE CLASIFICACIONES HIJAS
 		//getListClassificationChildren(context);
