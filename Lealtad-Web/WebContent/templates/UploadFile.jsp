@@ -1,10 +1,23 @@
-<!DOCTYPE html>
-<html lang="es">
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+<%@ taglib uri="/struts-tags"  prefix="s"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
+<link ng-href="css/sivale.css" rel="stylesheet">
+<title>Upload File Page</title>
 </head>
+<body>
+<!-- <h3>Select File to Upload</h3> -->
+<!-- "input-control -->
+<%-- <s:form action="UploadFile" method="post" enctype="multipart/form-data"> --%>
+<%-- <s:file label="File" name="file" cssClass="file"></s:file> --%>
+<%-- <s:submit value="Upload" cssClass="file"></s:submit> --%>
+<%-- </s:form> --%>
+
+
+
 <div class="panel-body back-sivale">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
@@ -22,12 +35,13 @@
 			</div>
 			<div class="panel-body back-sivale">
 
+		<form action="UploadFile" method="post" enctype="multipart/form-data">
 				<div class="text-right">
 
 					<div class="row margin-top10">
 						<div class="col-md-4">Nombre de Publiccion</div>
 						<div class="col-md-8">
-							<input type="text" class="form-control">
+							<input type="text" class="form-control" name="publication">
 						</div>
 					</div>
 
@@ -46,38 +60,31 @@
 					<div class="row margin-top10">
 						<div class="col-md-4">Documento html</div>
 						<div class="col-md-8">
-							<input id="file-html" type="file"
-								class="file" name="file-html[]" data-show-preview="false"
-								data-show-upload="false" data-show-remove="false" uploader-model="files.html">
+							<input type="file" name="file" class="test">
 						</div>
 					</div>
 
 					<div class="row margin-top10">
 						<div class="col-md-4">Documento</div>
 						<div class="col-md-8">
-							<input id="file-xlsx" type="file"
-								class="file" name="file-xlsx[]" data-show-preview="false"
-								data-show-upload="false" data-show-remove="false" uploader-model="files.excel">
+							<input type="file" name="file" class="test">
 						</div>
 					</div>
 
 					<div class="row margin-top10">
 						<div class="col-md-4">Descripción</div>
 						<div class="col-md-8">
-							<textarea class="form-control" rows="3"></textarea>
+							<textarea class="form-control" rows="3" name="description"></textarea>
 						</div>
 					</div>
 
 					<div class="row margin-top10">
 						<div class="col-md-4">Documentación anexa</div>
 						<div class="col-md-8">
-							<input type="file" class="file" data-show-preview="false"
-								data-show-upload="false" data-show-remove="false">
-							<!-- <div class="col-md-2">
-						<label class="checkbox span4"> <input type="checkbox"
-							value="all" id="allstates" name="all" />Archivo Público
-						</label>
-					</div> -->
+							<button type="button" class="btn btn-primary left-35" ng-click="addRow()">Añadir Archivo</button>
+							<div class="col-md-8" ng-repeat="rowContent in rows">
+								<input type="file" name="file" id="filestyle-{{rowContent}}">
+							</div>
 						</div>
 					</div>
 				</div>
@@ -88,28 +95,25 @@
 
 					<div class="col-md-8 text-left">
 
-						<button type="button" class="btn btn-success"
-							ng-click="uploadFile()">Publicar</button>
-						<button type="button" class="btn btn-danger left-35">
-							Cancelar</button>
+						<button type="submit" class="btn btn-success">Publicar</button>
+						<button type="button" class="btn btn-danger left-35">Cancelar</button>
 
 					</div>
 				</div>
 
-				<script>
-					$('#file-xlsx').fileinput({
-						language : 'es',
-						uploadUrl : '#',
-						allowedFileExtensions : [ 'xlsx' ],
-					});
-					$('#file-html').fileinput({
-						language : 'es',
-						uploadUrl : '#',
-						allowedFileExtensions : [ 'html' ],
-					});
-				</script>
+				<script type="text/javascript">
+			
 
+			// nultiple initialize
+			$('.test').filestyle({
+				buttonName : 'btn-primary'
+			});
+		</script>
+</form>
 			</div>
+			
 		</div>
 	</div>
 </div>
+</body>
+</html>

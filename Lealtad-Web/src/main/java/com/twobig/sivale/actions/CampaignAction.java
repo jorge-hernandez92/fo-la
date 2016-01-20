@@ -511,6 +511,20 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 	}
 	
+	@Action(value = "uploadFileAction")
+	public String uploadAction(){
+		
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String fileJSON = request.getParameter("file");
+		
+		System.out.println(fileJSON);
+		
+		return SUCCESS;
+		
+	}
+	
+	
 	public SelectClassificationCampaignBean getSelectedOption(List<SelectClassificationCampaignBean> listOption, Integer selectedId){
 		
 		for(SelectClassificationCampaignBean option: listOption){
