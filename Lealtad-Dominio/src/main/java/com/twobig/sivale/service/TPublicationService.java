@@ -22,11 +22,13 @@ public interface TPublicationService {
 	
 	public List<CatPublicationType> getPublicationType();
 	
-	public void updateExcel(TPublication publication);
+	public void updateExcel(TPublication publication, String path);
 	
 	public void changeStatusPublication(TPublication publication);
 	
 	public void insertListAttachedFiles(List<TAttachedFile> listAttachedFile);
 	
 	public void deleteListAttachedFiles(List<TAttachedFile> listAttachedFile);
+	
+	public void loadDataExcel(int publicationId, String path);
 }

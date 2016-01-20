@@ -45,8 +45,6 @@ public class PruebasAdministrador {
 		
 		PublicationCRUDBean pib = new PublicationCRUDBean();
 		pib.setPublication(publication);
-		
-		
 
 		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
 
@@ -198,7 +196,7 @@ public class PruebasAdministrador {
 		publication.setCatPublicationType(cpt);
 		
 		
-		cccs.updateExcel(publication);
+		cccs.updateExcel(publication,"src/test/resources/FORD.xlsx");
 	}
 	
 	public static void changeStatusPublication(ClassPathXmlApplicationContext context){
