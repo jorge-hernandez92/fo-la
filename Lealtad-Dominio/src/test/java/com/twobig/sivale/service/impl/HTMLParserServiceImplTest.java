@@ -14,4 +14,13 @@ public class HTMLParserServiceImplTest {
 		assertNotNull("html Null", html);
 		System.out.println(html);
 	}
+	
+	@Test
+	public void getHTML_Null() {
+		HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
+		String data = null;
+		String html = htmlParser.getHTML("src/test/resources/template.html", data);
+		assertNotNull("html Null", html);
+		System.out.println(html);
+	}
 }

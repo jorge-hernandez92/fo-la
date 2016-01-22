@@ -44,7 +44,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			url : 'getCampaignsAction',
 			data : 'classificationCmp=' + data,
 			headers : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
+				'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
 		}).success(
 				function(data, status, headers, config) {
@@ -107,7 +107,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			url : 'getPublicationsAction',
 			data : 'campaign=' + data,
 			headers : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
+				'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
 		}).success(
 				function(data, status, headers, config) {
@@ -151,33 +151,17 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			url : 'showPublicationAction',
 			data : 'publication=' + data,
 			headers : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
+				'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
 		}).success(
 				function(data, status, headers, config) {
 					$scope.attachedFiles = data.listFiles;
 
 					$scope.tableAttachedFiles = new NgTableParams({
-						page : 1,
-						count : 10,
-						filter : $scope.filters,
+						count : 10
 					}, {
-						total : $scope.attachedFiles.length,
 						counts : [],
-						getData : function($defer, params) {
-							var filteredData = params.filter() ? $filter(
-									'filter')($scope.attachedFiles,
-									params.filter().myfilter)
-									: $scope.attachedFiles;
-
-							var orderedData = params.sorting() ? $filter(
-									'orderBy')(filteredData, params.orderBy())
-									: $scope.attachedFiles;
-
-							$defer.resolve(orderedData.slice(
-									(params.page() - 1) * params.count(),
-									params.page() * params.count()));
-						}
+					    dataset: $scope.attachedFiles
 					});
 
 					$(".publication-html").html(data.html);
@@ -311,7 +295,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			url : 'searchCampaignsAction',
 			data : 'searchCampaign=' + data,
 			headers : {
-				'Content-Type' : 'application/x-www-form-urlencoded'
+				'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 			}
 		}).success(
 				function(data, status, headers, config) {

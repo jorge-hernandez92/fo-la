@@ -51,15 +51,15 @@
 								data-ng-click="updatePublication(publication)"
 								ui-sref="publication">Editar</a>
 							
-							<td><a href="#"
-								data-ng-click="updatePublication(publication)"
-								ui-sref="publication">Activar</a>
+							<td><input ng-model="publication.isEnable"
+								name="{{publication.publicationId}}" type="checkbox"
+								toggle-btn on-type="warning">
 								
 						</tr>
 					</table>
 				</div>
-				<button type="button" class="btn btn-default" ui-sref="newPublication">
-  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true">Añadir Publicacion</span>
+				<button type="button" class="btn btn-primary" ui-sref="newPublication">
+  							<span class="glyphicon glyphicon-plus-sign"> Añadir Publicacion</span>
 				</button>
 			</div>
 		</div>

@@ -3,18 +3,16 @@ package com.twobig.sivale.actions;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
+import java.util.StringTokenizer;
 
-import javax.servlet.ServletContext;
-
+import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.util.ServletContextAware;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -23,16 +21,17 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.beans.PublicationCRUDBean;
+import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.utils.FilesUtil;
 
 @Namespace("/")
-public class UploadFileAction extends ActionSupport implements ServletContextAware, SessionAware{
+public class UploadFileAction extends ActionSupport implements SessionAware{
 
 	private static final long serialVersionUID = -4748500436762141116L;
 
 	@Autowired
-	private TPublicationService publiationService;
+	private TPublicationService publicationService;
 	
 	
 	private Map<String, Object> session;
@@ -49,12 +48,10 @@ public class UploadFileAction extends ActionSupport implements ServletContextAwa
 	)
 	public String uploadAction(){
 		
-		System.out.println("Publicacion : "+this.getPublication());
-		System.out.println("Descripcion : "+this.getDescription());
-		System.out.println("Seleccion   : "+this.getSelected());
-		
-		System.out.println("No of files="+getFile().length);
-		System.out.println("File Names are:"+Arrays.toString(getFileFileName()));
+		System.out.println("*/*/*/*/*/*/*/**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ ");
+		System.out.println("Tamaño de boleanos: " + this.getFilechecked().length);
+		for(int i = 0 ; i<filechecked.length ; i++)
+			System.out.println("boolean["+i+"] : " + filechecked[i]);
 		
 		if(getFile().length >= 2){
 			
@@ -72,33 +69,61 @@ public class UploadFileAction extends ActionSupport implements ServletContextAwa
 			publication.settCampaignId(campaign.getCampaignId());
 			publication.setName(this.publication);
 			publication.setDescription(this.description);
-			publication.setDataFilePath(this.getFile()[0].getName());
-			publication.setTemplateFilePath(this.getFile()[1].getName());
+			publication.setDataFilePath(this.getFileFileName()[1]);
+			publication.setTemplateFilePath(this.getFileFileName()[0]);
 			publication.setIsEnable(false);
 			
 			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
 			publicationBean.setPublication(publication);
 			
 			List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
-			for (int i = 0; i < 5; i++) {
-				attachedFiles.add(new TAttachedFile());
+			for (int i = 2; i < this.getFile().length; i++) {
+				TAttachedFile attachedFile = new TAttachedFile();
+				
+				if(this.getFilechecked()[i-2].equals("Privado"))
+					attachedFile.setIsPublic(false);
+				else attachedFile.setIsPublic(true);
+				
+				StringTokenizer tokens = new StringTokenizer(this.getFileFileName()[i],".");
+				
+				if(tokens.hasMoreTokens())
+					attachedFile.setFileName(tokens.nextToken());
+				
+				if(tokens.hasMoreTokens())
+					attachedFile.setFileExtension(tokens.nextToken());
+				
+				attachedFiles.add(attachedFile);
 			}
 
 			publicationBean.setAttachedFiles(attachedFiles);
 			
+			String id = publicationService.addPublication(publicationBean);
+			
+			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + id;
+			
+			if(NumberUtils.isDigits(id)){
+				
+				for(int i=0; i < getFile().length; i++){
+					//System.out.println("File Name is:"+getFileFileName()[i]);
+					//System.out.println("File ContentType is:"+getFileContentType()[i]);
+					
+					try {
+						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
+					} catch (IOException e) {
+						e.printStackTrace();
+						return INPUT;
+					}
+				}
+				//System.out.println("File path excel: " + directory+File.separator+getFileFileName()[1]);
+				publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[1]);
+				
+				return SUCCESS;
+				
+			}
+			else return ERROR;
 		}
 		
-//		for(int i=0; i < getFile().length; i++){
-//		System.out.println("File Name is:"+getFileFileName()[i]);
-//		System.out.println("File ContentType is:"+getFileContentType()[i]);
-//		System.out.println("Files Directory is:"+filesPath);
-//		try {
-//			FilesUtil.saveFile(getFile()[i], getFileFileName()[i], context.getRealPath("") + File.separator + filesPath);
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//			return INPUT;
-//		}
-//		}
+
 		return ERROR;
 		
 	}
@@ -106,7 +131,7 @@ public class UploadFileAction extends ActionSupport implements ServletContextAwa
 	private File[] file;
 	private String[] fileContentType;
 	private String[] fileFileName;
-	private String filesPath;
+	private String[] filechecked;
 	private String publication;
 	private String description;
 	private int selected;
@@ -119,10 +144,6 @@ public class UploadFileAction extends ActionSupport implements ServletContextAwa
 	 * private List<String> fileContentType = new ArrayList<String>();
 	 * private List<String> fileFileName = new ArrayList<String>();
 	 */
-	
-	
-	private ServletContext context;
-
 
 	public File[] getFile() {
 		return file;
@@ -148,10 +169,6 @@ public class UploadFileAction extends ActionSupport implements ServletContextAwa
 		this.fileFileName = fileFileName;
 	}
 
-	public void setFilesPath(String filesPath) {
-		this.filesPath = filesPath;
-	}
-
 	public String getPublication() {
 		return publication;
 	}
@@ -175,10 +192,14 @@ public class UploadFileAction extends ActionSupport implements ServletContextAwa
 	public void setSelected(int selected) {
 		this.selected = selected;
 	}
+	
 
-	@Override
-	public void setServletContext(ServletContext ctx) {
-		this.context=ctx;
+	public String[] getFilechecked() {
+		return filechecked;
+	}
+
+	public void setFilechecked(String[] filechecked) {
+		this.filechecked = filechecked;
 	}
 
 	@Override

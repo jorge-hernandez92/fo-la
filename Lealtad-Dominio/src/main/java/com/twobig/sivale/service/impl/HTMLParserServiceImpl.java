@@ -21,6 +21,11 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 	@Override
 	public String getHTML(String htmlPath, String data) {
 
+		if(data == null){
+			String file = this.fileToString(htmlPath);
+			return file;
+		}
+		
 		HashMap<String, Object> map;
 		try {
 			map = (HashMap<String, Object>) toMap(new JSONObject(data));

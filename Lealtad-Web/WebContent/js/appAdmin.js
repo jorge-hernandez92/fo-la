@@ -13,7 +13,7 @@ var LEVEL4_SELECT		= 4;
 var LEVEL5_SELECT		= 5;
 
 var appres = angular.module('app', [ 'ngMessages', 'daterangepicker',
-		'ngTable', 'ui.router' ])
+		'ngTable', 'ui.router', 'ng-toggle.btn' ])
 
 appres.run(function($rootScope) {
 	$rootScope.search = {
@@ -48,8 +48,12 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					  
 					$scope.addRow = function() {
 					    
-						$scope.rows.push($scope.counter + 2);
+						$scope.rows.push( {index : $scope.counter + 2, value : false} );
 						$scope.counter++;
+					}
+					
+					$scope.removeRow = function(index){
+					    $scope.rows.splice(index, 1);
 					}
 					  
 					$scope.uploadFile = function()
@@ -64,7 +68,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							method : 'POST',
 							url : 'uploadFileAction',
 							data : 'file=' + data,
-							headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
+							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
 							  
 						  }).error(function(data, status, headers, config) {
@@ -99,7 +103,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 									method : 'POST',
 									url : 'getPublicationsAction',
 									data : 'campaign=' + data,
-									headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
+									headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
 								})
 								.success(
 										function(data, status, headers, config) {
@@ -134,6 +138,34 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								});
 					};
 
+					$scope.getAttachedFiles = function() {
+
+						var data = escape(angular.toJson($scope.publication));
+
+						$http({
+							method : 'POST',
+							url : 'showPublicationAction',
+							data : 'publication=' + data,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+							}
+						}).success(
+								function(data, status, headers, config) {
+									$scope.attachedFiles = data.listFiles;
+
+									$scope.tableAttachedFiles = new NgTableParams({
+										count : 10
+									}, {
+										counts : [],
+									    dataset: $scope.attachedFiles
+									});
+
+									$(".publication-html").html(data.html);
+
+								}).error(function(data, status, headers, config) {
+						});
+					};
+					
 					$scope.updateSession = function() {
 						$http.get('updateSessionAction').success(
 								function(data, status, headers, config) {
@@ -172,127 +204,116 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						return amount;
 					};
 					
+					$scope.getFile = function(file) {
+						$http.get('getFileAction?fileName='+file.fileName+'.'+file.fileExtension).success(
+								function(data, status, headers, config) {
 
-/************************************************************************
-============================== Upload File Start ========================
-************************************************************************/
-//					function UInt8ArrayToString(uInt8Array)
-//					{
-//					    var s= "";
-//					    for(var i= number = 0; i < uInt8Array.byteLength; i++)
-//					    {
-//					        if( i > 0 )
-//					            s += ",";
-//					        s += uInt8Array[i];
-//					    }    
-//					    return s;
-//					}
-//
-//					
-//					$scope.excelUpload = function() {
-//
-//						$scope.data = 'none';
-//
-//						var f = document.getElementById('file-xlsx').files[0], r = new FileReader();
-//						var sizeFile = document.getElementById('file-xlsx').files[0].size;
-//						var fileInput = $('.upload-file');
-//						var maxSize = fileInput.data('max-size');
-//						var nameFile = document.getElementById('file-xlsx').files[0].name;
-//						
-//						r.onloadend = function(e) {
-//							var binary = "";
-//							var fileBytes = new Uint8Array(e.target.result);
-//							
-//							var fileBytesStr = UInt8ArrayToString(fileBytes);
-//							if(sizeFile>=maxSize){
-//								alert('el tamaño del archivo sobrepasa el limite permitido: '+(maxSize/1024)+'KB');
-//								return;
-//							}
-//							var length = fileBytes.byteLength;
-//
-//							for (var i = 0; i < length; i++) {
-//								binary += String.fromCharCode(fileBytes[i]);
-//							}
-//
-//							$scope.data = (binary).toString();
-//							$scope.byte = 0;
-//							$scope.fb = fileBytes;
-//
-//							var b64encoded = btoa(String.fromCharCode.apply(
-//									null, fileBytes));
-//							 
-//							// CREAR JSON
-//							$rootScope.excelData = {
-//								file : fileBytesStr,
-//								fileName: nameFile
-//							};
-//
-//							console.log("DATA: "+JSON.stringify($rootScope.excelData));
-//							var jsonData = escape(angular
-//									.toJson($rootScope.excelData));
-//							
-//						}
-//
-//						r.readAsArrayBuffer(f);
-//					};
-//					
-//					$scope.htmlUpload = function() {
-//
-//						$scope.data = 'none';
-//
-//						var f = document.getElementById('file-html').files[0], r = new FileReader();
-//						var sizeFile = document.getElementById('file-html').files[0].size;
-//						var fileInput = $('.upload-file');
-//						var maxSize = fileInput.data('max-size');
-//						var nameFile = document.getElementById('file-html').files[0].name;
-//						
-//						r.onloadend = function(e) {
-//							var binary = "";
-//							var fileBytes = new Uint8Array(e.target.result);
-//							
-//							var fileBytesStr = UInt8ArrayToString(fileBytes);
-//							if(sizeFile>=maxSize){
-//								alert('el tamaño del archivo sobrepasa el limite permitido: '+(maxSize/1024)+'KB');
-//								return;
-//							}
-//							var length = fileBytes.byteLength;
-//
-//							for (var i = 0; i < length; i++) {
-//								binary += String.fromCharCode(fileBytes[i]);
-//							}
-//
-//							$scope.data = (binary).toString();
-//							$scope.byte = 0;
-//							$scope.fb = fileBytes;
-//
-//							var b64encoded = btoa(String.fromCharCode.apply(
-//									null, fileBytes));
-//							 
-//							// CREAR JSON
-//							$rootScope.htmlData = {
-//								file : fileBytesStr,
-//								fileName: nameFile
-//							};
-//
-//							console.log("DATA: "+JSON.stringify($rootScope.htmlData));
-//							var jsonData = escape(angular
-//									.toJson($rootScope.htmlData));
-//							
-//						}
-//
-//						r.readAsArrayBuffer(f);
-//					};
+									$scope.downloadFile(file.fileName+'.'+file.fileExtension, data)
+								
+								}).error(function(data, status, headers, config) {
+									
+							});
+					};
 					
+					$scope.updatePublication = function(publication) {
+						$scope.publication = publication;
+					};
+
 					
-//$scope.ticketUpload = function() {
-//
-//	$scope.excelUpload();
-//	$scope.htmlUpload();	
-//};
-					
-/************************************************************************
-================================ Upload File End ========================
-************************************************************************/
+					$scope.downloadFile = function(name,file) {
+
+				        var octetStreamMime = 'application/octet-stream';
+				        var success = false;         
+				        var filename = name;
+				        var contentType =  octetStreamMime;              
+				        
+				       var fileDownload = new Uint8Array(file);
+				        try
+				        {
+				            // Try using msSaveBlob if supported
+				            console.log("Trying saveBlob method ...");
+				            var blob = new Blob([fileDownload], { type: contentType });
+				            if(navigator.msSaveBlob)
+				                navigator.msSaveBlob(blob, filename);
+				            else {
+				                // Try using other saveBlob implementations, if available
+				                var saveBlob = navigator.webkitSaveBlob || navigator.mozSaveBlob || navigator.saveBlob;
+				                if(saveBlob === undefined) throw "Not supported";
+				                saveBlob(blob, filename);
+				            }
+				            console.log("saveBlob succeeded");
+				            success = true;
+				        } catch(ex)
+				        {
+				            console.log("saveBlob method failed with the following exception:");
+				            console.log(ex);
+				        }
+
+				        if(!success)
+				        {
+				            // Get the blob url creator
+				            var urlCreator = window.URL || window.webkitURL || window.mozURL || window.msURL;
+				            if(urlCreator)
+				            {
+				                // Try to use a download link
+				                var link = document.createElement('a');
+				                if('download' in link)
+				                {
+				                    // Try to simulate a click
+				                    try
+				                    {
+				                        // Prepare a blob URL
+				                        console.log("Trying download link method with simulated click ...");
+				                        var blob = new Blob([fileDownload], { type: contentType });
+				                                                
+				                        
+				                        var url = urlCreator.createObjectURL(blob);
+				                        link.setAttribute('href', url);
+
+				                        // Set the download attribute (Supported in Chrome 14+ / Firefox 20+)
+				                        link.setAttribute("download", filename);
+
+				                        // Simulate clicking the download link
+				                        var event = document.createEvent('MouseEvents');
+				                        event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+				                        link.dispatchEvent(event);
+				                        console.log("Download link method with simulated click succeeded");
+				                        success = true;
+
+				                    } catch(ex) {
+				                        console.log("Download link method with simulated click failed with the following exception:");
+				                        console.log(ex);
+				                    }
+				                }
+
+				                if(!success)
+				                {
+				                    // Fallback to window.location method
+				                    try
+				                    {
+				                        // Prepare a blob URL
+				                        // Use application/octet-stream when using window.location to force download
+				                        console.log("Trying download link method with window.location ...");
+				                        var blob = new Blob([fileDownload], { type: octetStreamMime });
+				                        var url = urlCreator.createObjectURL(blob);
+				                        window.location = url;
+				                        console.log("Download link method with window.location succeeded");
+				                        success = true;
+				                    } catch(ex) {
+				                        console.log("Download link method with window.location failed with the following exception:");
+				                        console.log(ex);
+				                    }
+				                }
+				            }
+				        }
+
+				        if(!success)
+				        {
+				            // Fallback to window.open method
+				            console.log("No methods worked for saving the arraybuffer, using last resort window.open");
+				            window.open(httpPath, '_blank', '');
+				        }    
+				};
 
 
 /************************************************************************
@@ -583,7 +604,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								method : 'POST',
 								url : 'getCampaignUpdateAction',
 								data : 'campaignDetail=' + data,
-								headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
+								headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
 							  }).success(function(data, status, headers, config) {
 								  console.log(JSON.stringify(data));
 								  
@@ -635,7 +656,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							url : 'addCampaignAction',
 							data : 'formNewCampaign=' + data,
 							headers : {
-								'Content-Type' : 'application/x-www-form-urlencoded'
+								'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
 						}).success(
 								function(data, status, headers, config) {
@@ -677,7 +698,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							url : 'updateCampaignAction',
 							data : 'formNewCampaign=' + data,
 							headers : {
-								'Content-Type' : 'application/x-www-form-urlencoded'
+								'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
 						}).success(
 								function(data, status, headers, config) {
@@ -733,7 +754,7 @@ appres.service('upload', ['$http', '$q', function ($http, $q)
 			method : 'POST',
 			url : 'UploadFileAction',
 			data : 'file=' + data,
-			headers : { 'Content-Type' : 'application/x-www-form-urlencoded' }
+			headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
 		  }).success(function(data, status, headers, config) {
 			  
 		  }).error(function(data, status, headers, config) {
@@ -771,6 +792,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	.state('newPublication', {
 		url : '/nueva_publicacion',
 		templateUrl : 'templates/UploadFile.jsp'
+	})
+	
+	.state('publication', {
+		url : '/publicacion',
+		templateUrl : 'templates/publication_admin.html'
 	})
 	
 })

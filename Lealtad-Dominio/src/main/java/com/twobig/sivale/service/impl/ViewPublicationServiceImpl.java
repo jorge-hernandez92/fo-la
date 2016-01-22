@@ -1,5 +1,6 @@
 package com.twobig.sivale.service.impl;
 
+import java.io.File;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUserData;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.constants.CommonsConstants;
+import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.dao.TAttachedFileDAO;
 import com.twobig.sivale.dao.TPublicationDAO;
 import com.twobig.sivale.dao.TUserDataDAO;
@@ -34,13 +36,20 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 		TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
 		PublicationBean publication = new PublicationBean();
 
-		if (tUserDate.size() != 0) {
+		if (tUserDate.size() != 0 || profile == 0 ) {
 
-			String data = tUserDate.get(0).getData();
-
+			String data = null;
+			
+			if(tUserDate.size() != 0)
+				data = tUserDate.get(0).getData();
+			
 			HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
-
-			String html = htmlParser.getHTML(tpublication.getTemplateFilePath(), data);
+			
+			String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
+					+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
+			System.out.println("htmlPath : " + htmlPath);
+			
+			String html = htmlParser.getHTML(htmlPath, data);
 
 			publication.setHtml(html);
 
@@ -48,13 +57,12 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			
 			
 			//PARA EL PARTICIPANTE SOLO TRAER LOS QUE ESTAN PUBLICOS (ARCHIVOS ADJUNTOS)
-			if ( CommonsConstants.CAT_PROFILE_ADMIN != profile ){
-				for (TAttachedFile tAttachedFile : files) {
-					if ( !tAttachedFile.getIsPublic()  ){
-						files.remove(tAttachedFile);
-					}
-				}
-			}
+			for (int i = 0 ; i < files.size() ; i++){
+			     if ( !files.get(i).getIsPublic()  ){
+			      files.remove(files.get(i));
+			      i--;
+			     }
+			    }
 			
 			publication.setListFiles(files);
 			

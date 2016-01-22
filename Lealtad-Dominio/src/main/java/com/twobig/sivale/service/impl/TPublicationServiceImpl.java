@@ -177,7 +177,7 @@ public class TPublicationServiceImpl implements TPublicationService {
  	private void loadDataExcel(TPublication publication) {
 		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
-		ExcelBean excelBean = excelservice.getExcelData(publication.getDataFilePath(), "Hoja2");
+		ExcelBean excelBean = excelservice.getExcelData(publication.getDataFilePath(),"Hoja2");
 		List<ExcelDataUserBean> dataList = excelservice.getFormatList(excelBean, "ID STARS GERENTE");
 		
 		List<String> listAccountNumber = new ArrayList<String>();

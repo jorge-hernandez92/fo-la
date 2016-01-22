@@ -311,9 +311,13 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		//this.publication = new ServicesUser().showPublication(user.getUserId(), pub.getPublicationId());
 		
 		this.publication = viewPublicationService.showPublication(user.getUserId(), pub.getPublicationId(), user.getCatProfile());
-		for (TAttachedFile files : publication.getListFiles()) {
-			System.out.println(files.toString());
-		}
+		
+		if(publication.getListFiles()!=null)
+			if(publication.getListFiles().size() == 0)
+				publication.setListFiles(null);
+			//for (TAttachedFile files : publication.getListFiles()) {
+			//	System.out.println(files.toString());
+			//}
 		
 		System.out.println(publication.getHtml());
 		return SUCCESS;

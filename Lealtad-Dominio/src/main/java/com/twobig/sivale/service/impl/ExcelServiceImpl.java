@@ -57,9 +57,9 @@ public class ExcelServiceImpl implements ExcelService {
 
 						header.add(cell.getStringCellValue());
 
-					} else
+					} else if(colum < header.size()){
 						map.put(header.get(colum), cell.getStringCellValue());
-
+					} else System.out.println("------------- fila : " + count + "-------------");
 					colum++;
 				}
 
