@@ -35,12 +35,16 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	
 	
 	private Map<String, Object> session;
+	private File[] file;
+	private String[] fileContentType;
+	private String[] fileFileName;
+	private String[] filechecked;
+	private String publication;
+	private String description;
+	private int selected;
 	
 	
 	@Action(value = "UploadFile",
-			results={
-					@Result(name="success",location="/UploadFileSuccess.jsp"),
-			        @Result(name="input",location="/UploadFile.jsp")},
 	        interceptorRefs={
 			        @InterceptorRef(params={"maximumSize","104857600"}, value="fileUpload"),
 			        @InterceptorRef("defaultStack"),
@@ -111,7 +115,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
 					} catch (IOException e) {
 						e.printStackTrace();
-						return INPUT;
+						return ERROR;
 					}
 				}
 				//System.out.println("File path excel: " + directory+File.separator+getFileFileName()[1]);
@@ -128,22 +132,104 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 		
 	}
 	
-	private File[] file;
-	private String[] fileContentType;
-	private String[] fileFileName;
-	private String[] filechecked;
-	private String publication;
-	private String description;
-	private int selected;
-	
-	
-	/**
-	 * We could use List also for files variable references and declare them as:
-	 * 
-	 * private List<File> file = new ArrayList<File>();
-	 * private List<String> fileContentType = new ArrayList<String>();
-	 * private List<String> fileFileName = new ArrayList<String>();
-	 */
+	@Action(value = "UpdatePublicationAction",
+	        interceptorRefs={
+			        @InterceptorRef(params={"maximumSize","104857600"}, value="fileUpload"),
+			        @InterceptorRef("defaultStack"),
+			        @InterceptorRef("validation")}
+	)
+	public String updatePublicationAction(){
+		
+		System.out.println("*/*/*/*/*/*/*/**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ ");
+		System.out.println("Tamaño de boleanos: " + this.getFilechecked().length);
+		System.out.println("Tamaño de archivos: " + this.getFile().length);
+		for(int i = 0 ; i<filechecked.length ; i++)
+			System.out.println("boolean["+i+"] : " + filechecked[i]);
+		
+		if(getFile()!=null && getFile().length > 0){
+			
+			TCampaign campaign = (TCampaign) session.get("campaign");
+
+			TPublication publication = (TPublication) session.get("publication");
+
+			if (publication == null) {
+				return ERROR;
+			}
+			
+			publication.getCatPublicationType().setPublicationTypeId(selected);
+			publication.setName(this.publication);
+			publication.setDescription(this.description);
+			
+			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
+			publicationBean.setPublication(publication);
+			
+			List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
+			for (int i = 0; i < this.getFile().length; i++) {
+				TAttachedFile attachedFile = new TAttachedFile();
+				
+				attachedFile.settPublicationId(publication.getPublicationId());
+				
+				if(this.getFilechecked()[i].equals("Privado"))
+					attachedFile.setIsPublic(false);
+				else attachedFile.setIsPublic(true);
+				
+				StringTokenizer tokens = new StringTokenizer(this.getFileFileName()[i],".");
+				
+				if(tokens.hasMoreTokens())
+					attachedFile.setFileName(tokens.nextToken());
+				
+				if(tokens.hasMoreTokens())
+					attachedFile.setFileExtension(tokens.nextToken());
+				
+				attachedFiles.add(attachedFile);
+			}
+
+			publicationBean.setAttachedFiles(attachedFiles);
+			
+			String id = publicationService.updatePublication(publicationBean);
+			
+			
+			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();
+			
+			
+				
+				for(int i=0; i < getFile().length; i++){
+					//System.out.println("File Name is:"+getFileFileName()[i]);
+					//System.out.println("File ContentType is:"+getFileContentType()[i]);
+					
+					try {
+						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
+					} catch (IOException e) {
+						e.printStackTrace();
+						return ERROR;
+					}
+				}
+				publicationService.insertListAttachedFiles(attachedFiles);
+				
+				return SUCCESS;
+				
+			
+		}
+		else{
+			TPublication publication = (TPublication) session.get("publication");
+
+			if (publication == null) {
+				return ERROR;
+			}
+			
+			publication.getCatPublicationType().setPublicationTypeId(selected);
+			publication.setName(this.publication);
+			publication.setDescription(this.description);
+			
+			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
+			publicationBean.setPublication(publication);
+			
+			publicationService.updatePublication(publicationBean);
+			
+			return SUCCESS;
+		}
+		
+	}
 
 	public File[] getFile() {
 		return file;

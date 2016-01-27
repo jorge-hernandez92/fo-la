@@ -6,7 +6,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 <link ng-href="css/sivale.css" rel="stylesheet">
-<title>Upload File Page</title>
 </head>
 <body>
 

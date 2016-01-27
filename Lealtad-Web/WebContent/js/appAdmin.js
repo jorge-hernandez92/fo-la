@@ -45,6 +45,28 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.rows = [];
 					  
 					$scope.counter = 0;
+					
+					$scope.attachedFileTemp = '';
+					
+					$scope.updateAttachedFile = function(attachedfile, index) {
+						$scope.attachedFileTemp = attachedfile;
+						$scope.attachedFileTemp.index = index;
+					}
+					
+					$scope.changeAttachedFileStatus = function(attachedfile, index) {
+					  
+						$scope.updateAttachedFile(attachedfile, index);
+						
+						if($scope.attachedFileTemp.isPublic)
+							$scope.attachedFileTemp.isPublic = false;
+						else
+							$scope.attachedFileTemp.isPublic = true;
+						
+					    $('#modalChangeAttachedFile').modal({
+					        show: true
+					    });
+					    
+					 }
 					  
 					$scope.addRow = function() {
 					    
@@ -55,7 +77,45 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.removeRow = function(index){
 					    $scope.rows.splice(index, 1);
 					}
-					  
+					
+					$scope.removeAttachedFile = function(index){
+					    $scope.updateAttachedFiles.splice(index, 1);
+					}
+					
+					$scope.deleteAttacherFile = function() {
+						
+						var data = escape(angular.toJson($scope.attachedFileTemp));
+						
+						$http({
+							method : 'POST',
+							url : 'deleteAttachedFileAction',
+							data : 'attachedFile=' + data,
+							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
+						  }).success(function(data, status, headers, config) {
+							  
+						  }).error(function(data, status, headers, config) {
+							  
+						  });
+						
+					};
+					
+					$scope.updateAttacherFile = function() {
+						
+						var data = escape(angular.toJson($scope.attachedFileTemp));
+						
+						$http({
+							method : 'POST',
+							url : 'updateAttachedFileAction',
+							data : 'attachedFile=' + data,
+							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
+						  }).success(function(data, status, headers, config) {
+							  
+						  }).error(function(data, status, headers, config) {
+							  
+						  });
+						
+					};
+					
 					$scope.uploadFile = function()
 					{
 						var file = $rootScope.files.html;
@@ -161,6 +221,37 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 									});
 
 									$(".publication-html").html(data.html);
+
+								}).error(function(data, status, headers, config) {
+						});
+					};
+					
+					$scope.getAttachedFilesByPublication = function() {
+
+						var data = escape(angular.toJson($scope.publication));
+
+						$http({
+							method : 'POST',
+							url : 'showPublicationAction',
+							data : 'publication=' + data,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+							}
+						}).success(
+								function(data, status, headers, config) {
+									
+									$scope.updateAttachedFiles = data.listFiles;
+									
+									var options =  [{ id : '1', name : 'Privado' },
+			                                    	{ id : '2', name : 'Público' } ];
+									
+									for (i = 0 ; i < $scope.updateAttachedFiles.length; i++){
+										$scope.updateAttachedFiles[i].options = options;
+										if ($scope.updateAttachedFiles[i].isPublic)
+											$scope.updateAttachedFiles[i].selected = { id : '2', name : 'Público' };
+										else
+											$scope.updateAttachedFiles[i].selected = { id : '1', name : 'Privado' };
+									}
 
 								}).error(function(data, status, headers, config) {
 						});
@@ -331,6 +422,29 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								function(data, status, headers, config) {
 
 									$scope.selectPublicationType.availableOptions = data;
+						
+								}).error(
+								function(data, status, headers, config) {
+									
+								});
+					};
+					
+					$scope.getPublicationTypesUpdate = function() {
+						
+						$http.get('getPublicationTypesAction').success(
+								function(data, status, headers, config) {
+
+									$scope.selectPublicationType.availableOptions = data;
+									var index = 0;
+									
+									for(i = 0; index < $scope.selectPublicationType.availableOptions.length; i++){
+										if($scope.selectPublicationType.availableOptions[i].name == $scope.publication.catPublicationType.name){
+											index = i;
+											break;
+										}
+									}
+									
+									$scope.selectPublicationType.selectedOption = $scope.selectPublicationType.availableOptions[index];
 						
 								}).error(
 								function(data, status, headers, config) {
@@ -799,4 +913,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/publication_admin.html'
 	})
 	
+	.state('updatePublication', {
+		url : '/editar_publicacion',
+		templateUrl : 'templates/updatePublication.jsp'
+	})
 })

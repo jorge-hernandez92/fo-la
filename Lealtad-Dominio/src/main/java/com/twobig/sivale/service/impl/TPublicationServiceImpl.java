@@ -16,6 +16,7 @@ import com.twobig.sivale.bd.to.TUserData;
 import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.ExcelDataUserBean;
 import com.twobig.sivale.beans.PublicationCRUDBean;
+import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.dao.CatPublicationTypeDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TAttachedFileDAO;
@@ -111,17 +112,6 @@ public class TPublicationServiceImpl implements TPublicationService {
 
 		String status = updatePublicationOnly(publicationInsertBean.getPublication());
 		
-
-		for (TAttachedFile attachedFile : publicationInsertBean.getAttachedFiles()) {
-
-			if (attachedFile.getAttachedFileId() != 0) {
-				tAttachedFileDAO.updateTAttachedFile(attachedFile);
-				status += "\n . Se actualizó: " + attachedFile.toString();
-			} else {
-				status += "\n . No se actualizó: " + attachedFile.toString();
-			}
-		}
-
 		return status;
 	}
 	
@@ -131,9 +121,9 @@ public class TPublicationServiceImpl implements TPublicationService {
 
 		if (publication.getPublicationId() != 0) {
 			tPublicationDAO.updatePublication(publication);
-			status += " . Se actualizó: " + publication.toString();
+			status = "SUCCESS";
 		} else {
-			status += " . No se actualizó: " + publication.toString();
+			status = "ERROR";
 		}
 		
 		return status; 
@@ -177,8 +167,8 @@ public class TPublicationServiceImpl implements TPublicationService {
  	private void loadDataExcel(TPublication publication) {
 		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
-		ExcelBean excelBean = excelservice.getExcelData(publication.getDataFilePath(),"Hoja2");
-		List<ExcelDataUserBean> dataList = excelservice.getFormatList(excelBean, "ID STARS GERENTE");
+		ExcelBean excelBean = excelservice.getExcelData(publication.getDataFilePath());
+		List<ExcelDataUserBean> dataList = excelservice.getFormatList(excelBean, CommonsConstants.COLUMN_ID_EXCEL);
 		
 		List<String> listAccountNumber = new ArrayList<String>();
 		
@@ -222,5 +212,10 @@ public class TPublicationServiceImpl implements TPublicationService {
 		}
 	} 	
 
-	
+	@Override
+	public void updateListAttachedFiles(List<TAttachedFile> listAttachedFile) {
+		for (TAttachedFile tAttachedFile : listAttachedFile) {
+			tAttachedFileDAO.updateTAttachedFile(tAttachedFile);
+		}
+	}
 }

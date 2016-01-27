@@ -183,6 +183,8 @@ public class CommonsConstants {
 	 */
 	//public static final Integer NEW_BUDGET_STATUS = 9;
 	
+	public static final String COLUMN_ID_EXCEL = "ID STARS GERENTE";
+	
 	public static final String UNDEFINED_VALUE = "undefined";
 	
 	public static final Integer PLATFORM_ADMIN_COMPANY_ID = -1;
