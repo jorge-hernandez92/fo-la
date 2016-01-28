@@ -2,6 +2,7 @@ package com.twobig.sivale.actions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -9,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
+import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +21,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.service.TPublicationService;
 
+@ParentPackage(value = "json-default")
+@Namespace("/")
 public class AttachedFilesAction extends ActionSupport implements SessionAware {
 
 	@Autowired
@@ -24,8 +30,22 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 	
 	private Map<String, Object> session;
 	
+	private Map<String, String> message;
+
+	public static final String CODE = "code";
+	public static final String MESSAGE = "message";
+	
+	public static final String SUCCESS_CODE = "001";
+	public static final String ERROR_CODE 	= "002";
+	
+	public static final String ERROR_DELETE_ATTACHEDFILE 	= "Se produjo un error al eliminar el archivo";
+	public static final String ERROR_UPDATE_ATTACHEDFILE	= "Se produjo un error al actualizar el archivo";
+	public static final String SUCCESS_DELETE_ATTACHEDFILE 	= "Archivo eliminado correctamente";
+	public static final String SUCCESS_UPDATE_ATTACHEDFILE 	= "Archivo actualizado correctamente";
+	
 	@SuppressWarnings("unchecked")
-	@Action(value = "updateAttachedFileAction")
+	@Action(value = "updateAttachedFileAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String updateAttachedFileAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
@@ -43,11 +63,12 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 						TAttachedFile.class);
 			} catch (IOException e) {
 				e.printStackTrace();
+				setMessage(ERROR_CODE, ERROR_UPDATE_ATTACHEDFILE);
 				return ERROR;
 			}
 
 		} else {
-			
+			setMessage(ERROR_CODE, ERROR_UPDATE_ATTACHEDFILE);
 			return ERROR;
 			
 		}
@@ -57,13 +78,15 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 		
 		publicationService.updateListAttachedFiles(list);
 		
+		setMessage(SUCCESS_CODE, SUCCESS_UPDATE_ATTACHEDFILE);
 		return SUCCESS;
 
 	}
 	
 	
 	@SuppressWarnings("unchecked")
-	@Action(value = "deleteAttachedFileAction")
+	@Action(value = "deleteAttachedFileAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String deleteAttachedFileAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
@@ -81,11 +104,12 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 						TAttachedFile.class);
 			} catch (IOException e) {
 				e.printStackTrace();
+				setMessage(ERROR_CODE, ERROR_DELETE_ATTACHEDFILE);
 				return ERROR;
 			}
 
 		} else {
-			
+			setMessage(ERROR_CODE, ERROR_DELETE_ATTACHEDFILE);
 			return ERROR;
 			
 		}
@@ -95,8 +119,15 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 		
 		publicationService.deleteListAttachedFiles(list);
 		
+		setMessage(SUCCESS_CODE, SUCCESS_DELETE_ATTACHEDFILE);
 		return SUCCESS;
 
+	}
+	
+	public void setMessage(String code, String message){
+		this.message = new HashMap <String, String>();
+		this.message.put(CODE, code);
+		this.message.put(MESSAGE, message);
 	}
 	
 	@Override
@@ -104,4 +135,10 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
+
+	public Map<String, String> getMessage() {
+		return message;
+	}
+
+	
 }

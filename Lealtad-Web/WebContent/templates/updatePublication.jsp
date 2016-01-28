@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
-<link ng-href="css/sivale.css" rel="stylesheet">
 </head>
 <body>
 
@@ -102,7 +101,7 @@
 											<div class="col-md-8">
 												{{attachedFile.fileName}}.{{attachedFile.fileExtension}}</div>
 											<div class="col-md-3">
-												<select class="form-control" name="selected"
+												<select class="form-control"
 													ng-options="option.name for option in attachedFile.options track by option.id"
 													ng-model="attachedFile.selected"
 													data-toggle="modal" ng-change="changeAttachedFileStatus(attachedFile, $index)">
@@ -125,9 +124,12 @@
 							<tr>
 								<td>
 								<div class="row margin-top10">
-									<div class="col-md-4 text-right">Documentación anexa</div>
+									<div class="col-md-4 text-right"></div>
 									<div class="col-md-8">
 										<div class="row col-md-12 text-right padding-cero">
+<!-- 											<button type="button" class="btn btn-primary" ui-sref="newCampaign" ng-click="cleanSelect()"> -->
+<%--   												<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Añadir Campaña --%>
+<!-- 											</button> -->
 											<button type="button" class="btn btn-primary left-35"
 												ng-click="addRow()">Añadir Archivo</button>
 										</div>
@@ -162,7 +164,7 @@
 
 							<div class="col-md-8 text-left">
 
-								<button type="submit" class="btn btn-success" form="updatePublicationGral">Publicar</button>
+								<button type="submit" class="btn btn-success" form="updatePublicationGral">Actualizar</button>
 								<button type="button" class="btn btn-danger left-35"
 									ui-sref="campaign">Cancelar</button>
 
@@ -178,9 +180,10 @@
 				</div>
 				</form>
 			</div>
-			<jsp:include page="modals/uploadTemplateModal.jsp" />
-			<jsp:include page="modals/uploadDataModal.jsp" />
 		</div>
 	</div>
+	
+		<jsp:include page="modals/uploadTemplateModal.jsp" />
+		<jsp:include page="modals/uploadDataModal.jsp" />
 </body>
 </html>

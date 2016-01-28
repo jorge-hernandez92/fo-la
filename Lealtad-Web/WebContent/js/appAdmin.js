@@ -12,8 +12,11 @@ var BUSINESSUNIT_SELECT	= 3;
 var LEVEL4_SELECT		= 4;
 var LEVEL5_SELECT		= 5;
 
+var SUCCESS_CODE = "001";
+var ERROR_CODE 	= "002";
+
 var appres = angular.module('app', [ 'ngMessages', 'daterangepicker',
-		'ngTable', 'ui.router', 'ng-toggle.btn' ])
+		'ngTable', 'ui.router', 'ng-toggle.btn', 'cgNotify' ])
 
 appres.run(function($rootScope) {
 	$rootScope.search = {
@@ -32,8 +35,8 @@ appres.run(function($rootScope) {
 	
 })
 
-appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$rootScope', '$http', 'NgTableParams', '$state', 
-		function($scope, upload, $filter, $rootScope, $http, NgTableParams, $state) {
+appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$rootScope', '$http', 'NgTableParams', '$state', 'notify',
+		function($scope, upload, $filter, $rootScope, $http, NgTableParams, $state, notify) {
 				    
 					$scope.date = {
 						startDate : moment(),
@@ -51,6 +54,24 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.updateAttachedFile = function(attachedfile, index) {
 						$scope.attachedFileTemp = attachedfile;
 						$scope.attachedFileTemp.index = index;
+					}
+					
+					$scope.updateStatusPublication = function(publication){
+						
+						publication.isEnable = !publication.isEnable;
+						
+						var data = escape(angular.toJson(publication));
+						
+						$http({
+							method : 'POST',
+							url : 'updateStatusPublicationAction',
+							data : 'publication=' + data,
+							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
+						  }).success(function(data, status, headers, config) {
+							  $scope.showNotify(data);
+						  }).error(function(data, status, headers, config) {
+						  });
+						
 					}
 					
 					$scope.changeAttachedFileStatus = function(attachedfile, index) {
@@ -92,7 +113,10 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							data : 'attachedFile=' + data,
 							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
-							  
+							  if(data.code = SUCCESS_CODE){
+								  $scope.removeAttachedFile($scope.attachedFileTemp.index);
+							  }
+							  $scope.showNotify(data);
 						  }).error(function(data, status, headers, config) {
 							  
 						  });
@@ -109,7 +133,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							data : 'attachedFile=' + data,
 							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
-							  
+							  $scope.showNotify(data);
 						  }).error(function(data, status, headers, config) {
 							  
 						  });
@@ -774,11 +798,9 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							}
 						}).success(
 								function(data, status, headers, config) {
-									//TODO
+									$scope.showNotify(data);
 									$state.go('home');
 								}).error(function(data, status, headers, config) {
-									//TODO
-									$state.go('home');
 						});
 						
 					};
@@ -816,11 +838,9 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							}
 						}).success(
 								function(data, status, headers, config) {
-									//TODO
+									$scope.showNotify(data);
 									$state.go('home');
 								}).error(function(data, status, headers, config) {
-									//TODO
-									$state.go('home');
 									
 						});
 						
@@ -829,10 +849,32 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.deleteCampaign = function() {
 						$http.get('deleteCampaignAction?campaignId='+$scope.campaign.campaignId).success(
 								function(data, status, headers, config) {
+									$scope.showNotify(data);
 									$state.go('home');
 								}).error(function(data, status, headers, config) {
-									$state.go('home');
 							});
+					};
+					
+					$scope.showNotify = function(data){
+						
+						if (data.code == SUCCESS_CODE){
+							var messageTemplate = '<span>' + data.message +'</span>';
+							notify({
+					            messageTemplate: messageTemplate,
+					            classes: "alert-success",
+					            position: 'center',
+					            duration: 10000
+					        });
+						}
+						else if(data.code == ERROR_CODE){
+							var messageTemplate = '<span>' + data.message +'</span>';
+							notify({
+					            messageTemplate: messageTemplate,
+					            classes: "alert-danger",
+					            position: 'center',
+					            duration: 10000
+					        });
+						}
 					};
 /*********************************************************************************
 =============================== New Campaign End =================================

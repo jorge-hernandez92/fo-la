@@ -2,6 +2,7 @@ package com.twobig.sivale.actions;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +71,21 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private Integer classificationId;
 	private List<UpdateCampaignBean> selectCampaign;
 	private List<SelectClassificationCampaignBean> selectPublicationTypes;
+	private Map<String, String> message;
 
+	public static final String CODE = "code";
+	public static final String MESSAGE = "message";
+	
+	public static final String SUCCESS_CODE = "001";
+	public static final String ERROR_CODE 	= "002";
+	
+	public static final String ERROR_CREATE_CAMPAIGN 	= "Se produjo un error al Crear la campaña";
+	public static final String ERROR_UPDATE_CAMPAIGN 	= "Se produjo un error al actualizar la campaña";
+	public static final String SUCCESS_CRATE_CAMPAIGN 	= "Campaña creada correctamente";
+	public static final String SUCCESS_DELETE_CAMPAIGN 	= "Campaña eliminada correctamente";
+	public static final String SUCCESS_UPDATE_CAMPAIGN 	= "Campaña actualizada correctamente";
+	
+	
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -325,11 +340,13 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	
 	
 	@SuppressWarnings("unchecked")
-	@Action(value = "deleteCampaignAction")
+	@Action(value = "deleteCampaignAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String deleteCampaignAction() {
 
 		System.out.println("**** " + campaignId + " ****");
 		campaignService.deleteCampaign(campaignId);
+		setMessage(SUCCESS_CODE, SUCCESS_DELETE_CAMPAIGN);
 		return SUCCESS;
 
 	}
@@ -395,13 +412,13 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Action(value = "addCampaignAction")
+	@Action(value = "addCampaignAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String addCampaignAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
 
 		String classificationCmpJSON = request.getParameter("formNewCampaign");
-		
 		
 		FormNewCampaignBean formNewCampaign;
 
@@ -413,17 +430,20 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 						FormNewCampaignBean.class);
 			} catch (IOException e) {
 				e.printStackTrace();
+				
+				setMessage(this.ERROR_CODE, this.ERROR_CREATE_CAMPAIGN);
 				return ERROR;
 			}
 
 		} else {
-			
+			setMessage(this.ERROR_CODE, this.ERROR_CREATE_CAMPAIGN);
 			return ERROR;
 			
 		}
 
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
+			setMessage(this.ERROR_CODE, this.ERROR_CREATE_CAMPAIGN);
 			return ERROR;
 		}
 		
@@ -435,12 +455,14 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		campaignService.insertCampaign(formNewCampaign);
 		
+		setMessage(this.SUCCESS_CODE, this.SUCCESS_CRATE_CAMPAIGN);
 		return SUCCESS;
 
 	}
 	
 	@SuppressWarnings("unchecked")
-	@Action(value = "updateCampaignAction")
+	@Action(value = "updateCampaignAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String updateCampaignAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
@@ -458,17 +480,19 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 						FormNewCampaignBean.class);
 			} catch (IOException e) {
 				e.printStackTrace();
+				setMessage(ERROR_CODE, ERROR_UPDATE_CAMPAIGN);
 				return ERROR;
 			}
 
 		} else {
-			
+			setMessage(ERROR_CODE, ERROR_UPDATE_CAMPAIGN);
 			return ERROR;
 			
 		}
 
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
+			setMessage(ERROR_CODE, ERROR_UPDATE_CAMPAIGN);
 			return ERROR;
 		}
 		
@@ -479,6 +503,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
 		campaignService.updateCampaign(formNewCampaign);
 		
+		setMessage(SUCCESS_CODE, SUCCESS_UPDATE_CAMPAIGN);
 		return SUCCESS;
 
 	}
@@ -558,6 +583,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 //		
 //	}
 	
+	public void setMessage(String code, String message){
+		this.message = new HashMap <String, String>();
+		this.message.put(CODE, code);
+		this.message.put(MESSAGE, message);
+	}
 	
 	public SelectClassificationCampaignBean getSelectedOption(List<SelectClassificationCampaignBean> listOption, Integer selectedId){
 		
@@ -623,5 +653,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public List<SelectClassificationCampaignBean> getSelectPublicationTypes() {
 		return selectPublicationTypes;
 	}
-	
+
+	public Map<String, String> getMessage() {
+		return message;
+	}
+
 }

@@ -19,7 +19,7 @@
 			<div class="form-group">
 
                 <input type="text" class="form-control" placeholder="Compañia" ng-model="classif.company">
-				<input type="text" class="form-control" placeholder="Unidad de Negocio" ng-model="classif.businessUnit">
+				<input type="text" class="form-control" placeholder="Clasificación" ng-model="classif.businessUnit">
 				<input type="text" class="form-control" placeholder="Nombre" ng-model="search.campaignName">
 				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
 				<button class="btn btn-primary" ng-click="searchCampaigns(date)">Buscar</button>
@@ -35,15 +35,15 @@
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
-					<div class="navbar-header">
-						<button type="button" class="btn btn-default" ui-sref="newCampaign" ng-click="cleanSelect()">
-  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>
+					<div class="navbar-header navbar-right">
+						<button type="button" class="btn btn-primary " ui-sref="newCampaign" ng-click="cleanSelect()">
+  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Añadir Campaña
 						</button>
 					</div>
 				</div>
 			</div>
 
-			<div class="panel-body back-sivale">
+			<div class="panel-body back-sivale padding-cero">
 				<div data-ng-controller="getCampaignsAdmin" ng-cloak class="table-responsive">
 					<table ng-table="tableCampaigns" class="table">
 						<tr ng-repeat="campaign in $data | filter:search:strict">
@@ -52,7 +52,7 @@
 								sortable="'campaignName'">{{campaign.campaignName}}</td>
 
 							<td title="'Clasificación'"
-								sortable="'classification'">
+								sortable="'classification'" class="col-md-2">
 									<span class="label label-default" ng-repeat="class in campaign.classification"
 									>{{class}}</span>
 

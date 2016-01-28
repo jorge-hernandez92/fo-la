@@ -6,19 +6,26 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
+import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.ExcelBean;
+import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.PublicationCRUDBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.ExcelService;
@@ -43,7 +50,9 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 	private String[] fileFileName;
 
 	
-	@Action(value = "UploadHtmlAction", interceptorRefs = {
+	@Action(value = "UploadHtmlAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
+			@Result(name = ERROR, location = "/secured/home_admin.html")},
+			interceptorRefs = {
 			@InterceptorRef(params = { "maximumSize", "104857600" }, value = "fileUpload"),
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
 	public String uploadHtmlAction() {
@@ -91,7 +100,9 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 	}
 	
-	@Action(value = "UploadExcelAction", interceptorRefs = {
+	@Action(value = "UploadExcelAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
+			@Result(name = ERROR, location = "/secured/home_admin.html")}, 
+			interceptorRefs = {
 			@InterceptorRef(params = { "maximumSize", "104857600" }, value = "fileUpload"),
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
 	public String uploadExcelAction() {

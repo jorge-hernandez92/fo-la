@@ -105,11 +105,11 @@
 }
 
 .toggle-switch.onwarning input:not(:disabled):checked + .toggle-knob, .toggle-switch.offwarning input:not(:checked) + .toggle-knob {
-    background: rgba(255, 152, 0, 0.5);;
+    background: rgba(27, 57, 78, 0.5);;
 }
 
 .toggle-switch.onwarning input:checked + .toggle-knob:before, .toggle-switch.offwarning input:not(:checked) + .toggle-knob:before {
-    background: #FF9800;
+    background: #1B394E;
 }
 
 .toggle-switch.ondanger input:not(:disabled):checked + .toggle-knob, .toggle-switch.offdanger input:not(:checked) + .toggle-knob {

@@ -1,0 +1,132 @@
+.caz{
+	color: #002f6c;
+}
+
+.black{
+	font-weight: bold;
+}
+
+.gris{
+	color: gray;
+}
+
+.white{
+	color: white;
+}
+
+.sec1{
+	width: 360px;
+    font-size: 20px;
+    font-weight: lighter;
+    text-align: right;
+    position: relative;
+    left: 230px !important;
+}
+
+.sec2{
+	font-size: 35px;
+	text-align: right;
+	width: 450px;
+	text-align: right;
+    position: relative;
+    left: 140px !important;
+	margin: 0px;
+}
+
+.sec3{
+    position: relative;
+    left: 230px !important;
+	font-size: 14px;
+}
+
+.sc1{
+	font-size: 28px;
+}
+
+.sc2, .sc5{
+	margin-left: 55px;
+}
+
+.sc3{
+	margin-left: 104px;
+}
+
+.sc4{
+	margin-left:67px;
+}
+
+.sc6{
+	width: 110px;
+    margin-left: 26px;
+}
+
+.ps{
+	display: inline-block;
+    position: relative;
+    margin-left: 102px;
+    top: -16px;
+}
+
+.image{
+	width: 600px;
+	position: absolute;
+	z-index: 0;
+}
+
+.cwhite{
+	background: rgba(255,255,255,0.7);
+	padding: 1px 0px;
+}
+
+.back{
+	background: url('./phone4.jpg') 0 0 no-repeat ;
+	background-size: 600px 700px;
+	width: 600px;
+	height: 800px;
+	padding-top: 1px;
+}
+
+.white{
+	text-align: right;
+	margin-right: 15px !important;
+	font-size: 15px;
+	margin-top: 47px;
+}
+
+.bts{
+    margin-left: 180px;
+	position: absolute;
+}
+
+.bar{
+    margin-left: 430px;
+	position: absolute;
+}
+
+.bts, .bar{
+	margin-top: 20px;
+	width: 175px;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.up{
+	position: absolute;
+	width: 140px;
+	bottom: 135px;
+	margin-left: 10px;
+}
+
+.ford{
+	bottom: 140px;
+	margin-left: 220px;
+	width: 80px;
+	position: absolute;
+}
+
+.ford1{
+	margin-left: 20px;
+	margin-top: 10px;
+	position: absolute;
+	width: 180px;
+}

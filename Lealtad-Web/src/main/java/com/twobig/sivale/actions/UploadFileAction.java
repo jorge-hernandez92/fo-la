@@ -3,16 +3,22 @@ package com.twobig.sivale.actions;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.apache.commons.lang3.math.NumberUtils;
+import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
+import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,11 +26,15 @@ import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
+import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.PublicationCRUDBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.utils.FilesUtil;
 
+@ParentPackage(value = "json-default")
 @Namespace("/")
 public class UploadFileAction extends ActionSupport implements SessionAware{
 
@@ -42,9 +52,22 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	private String publication;
 	private String description;
 	private int selected;
+	private Map<String, String> message;
+
+	public static final String CODE = "code";
+	public static final String MESSAGE = "message";
 	
+	public static final String SUCCESS_CODE = "001";
+	public static final String ERROR_CODE 	= "002";
 	
-	@Action(value = "UploadFile",
+	public static final String ERROR_CREATE_PUBLICATION 	= "Se produjo un error al Crear la publicación";
+	public static final String ERROR_UPDATE_PUBLICATION 	= "Se produjo un error al Actualizar la publicación";
+	public static final String SUCCESS_CREATE_PUBLICATION 	= "Publicación creada correctamente";
+	public static final String SUCCESS_DELETE_PUBLICATION 	= "Publicación eliminada correctamente";
+	public static final String SUCCESS_UPDATE_PUBLICATION 	= "Publicación actualizada correctamente";
+	
+	@Action(value = "UploadFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
+			@Result(name = ERROR, location = "/secured/home_admin.html")},
 	        interceptorRefs={
 			        @InterceptorRef(params={"maximumSize","104857600"}, value="fileUpload"),
 			        @InterceptorRef("defaultStack"),
@@ -52,16 +75,17 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	)
 	public String uploadAction(){
 		
-		System.out.println("*/*/*/*/*/*/*/**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ ");
-		System.out.println("Tamaño de boleanos: " + this.getFilechecked().length);
-		for(int i = 0 ; i<filechecked.length ; i++)
-			System.out.println("boolean["+i+"] : " + filechecked[i]);
+		//System.out.println("*/*/*/*/*/*/*/**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ ");
+		//System.out.println("Tamaño de boleanos: " + this.getFilechecked().length);
+		//for(int i = 0 ; i<filechecked.length ; i++)
+		//	System.out.println("boolean["+i+"] : " + filechecked[i]);
 		
 		if(getFile().length >= 2){
 			
 			TCampaign campaign = (TCampaign) session.get("campaign");
 
 			if (campaign == null) {
+				setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 				return ERROR;
 			}
 			
@@ -115,36 +139,74 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
 					} catch (IOException e) {
 						e.printStackTrace();
+						setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 						return ERROR;
 					}
 				}
 				//System.out.println("File path excel: " + directory+File.separator+getFileFileName()[1]);
 				publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[1]);
 				
+				setMessage(SUCCESS_CODE, SUCCESS_CREATE_PUBLICATION);
 				return SUCCESS;
 				
 			}
-			else return ERROR;
+			setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
+			return ERROR;
 		}
 		
-
+		setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 		return ERROR;
 		
 	}
 	
-	@Action(value = "UpdatePublicationAction",
+	@SuppressWarnings("unchecked")
+	@Action(value = "updateStatusPublicationAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String updateStatusPublicationAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String publicationJSON = request.getParameter("publication");
+		
+		
+		TPublication publication;
+
+		if (!publicationJSON.equals("undefined")) {
+
+			publication = new TPublication();
+			try {
+				publication = new ObjectMapper().readValue(publicationJSON,
+						TPublication.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+				setMessage(ERROR_CODE, ERROR_UPDATE_PUBLICATION);
+				return ERROR;
+			}
+
+		} else {
+			setMessage(ERROR_CODE, ERROR_UPDATE_PUBLICATION);
+			return ERROR;
+			
+		}
+		
+		PublicationCRUDBean publicationBean = new PublicationCRUDBean();
+		publicationBean.setPublication(publication);
+		
+		publicationService.updatePublication(publicationBean);
+		
+		setMessage(SUCCESS_CODE, SUCCESS_UPDATE_PUBLICATION);
+		return SUCCESS;
+
+	}
+	
+	@Action(value = "UpdatePublicationAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
+			@Result(name = ERROR, location = "/secured/home_admin.html")},
 	        interceptorRefs={
 			        @InterceptorRef(params={"maximumSize","104857600"}, value="fileUpload"),
 			        @InterceptorRef("defaultStack"),
 			        @InterceptorRef("validation")}
 	)
 	public String updatePublicationAction(){
-		
-		System.out.println("*/*/*/*/*/*/*/**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ ");
-		System.out.println("Tamaño de boleanos: " + this.getFilechecked().length);
-		System.out.println("Tamaño de archivos: " + this.getFile().length);
-		for(int i = 0 ; i<filechecked.length ; i++)
-			System.out.println("boolean["+i+"] : " + filechecked[i]);
 		
 		if(getFile()!=null && getFile().length > 0){
 			
@@ -194,8 +256,6 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			
 				
 				for(int i=0; i < getFile().length; i++){
-					//System.out.println("File Name is:"+getFileFileName()[i]);
-					//System.out.println("File ContentType is:"+getFileContentType()[i]);
 					
 					try {
 						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
@@ -229,6 +289,12 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			return SUCCESS;
 		}
 		
+	}
+	
+	public void setMessage(String code, String message){
+		this.message = new HashMap <String, String>();
+		this.message.put(CODE, code);
+		this.message.put(MESSAGE, message);
 	}
 
 	public File[] getFile() {
@@ -286,6 +352,10 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 
 	public void setFilechecked(String[] filechecked) {
 		this.filechecked = filechecked;
+	}
+
+	public Map<String, String> getMessage() {
+		return message;
 	}
 
 	@Override

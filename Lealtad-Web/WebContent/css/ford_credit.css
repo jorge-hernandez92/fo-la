@@ -7,6 +7,10 @@
 	margin-top: 10px;
 }
 
+.margin-bottom10{
+	margin-bottom: 10px;
+}
+
 .span-header {
     margin-top: 10px;
     color: #1B394E;
@@ -571,7 +575,7 @@
 **************************/
 
 .header_top {
-  background: none repeat scroll 0 0 #F0F0E9;
+/*   background: none repeat scroll 0 0 #F0F0E9; */
 }
 
 .header-middle .container .row {
@@ -763,4 +767,19 @@ button.demo-nav {
     white-space: nowrap;
     position: relative;
     overflow: hidden;
+}
+
+.containerBanner {
+    /* padding-right: 15px; */
+    /* padding-left: 15px; */
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.padding15 {
+	padding-right: 15px;
+}
+
+.white {
+    color: white;
 }

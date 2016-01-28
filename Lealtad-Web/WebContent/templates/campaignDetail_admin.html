@@ -16,16 +16,16 @@
 	<div class="container">
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
-				<div class="container-fluid">
+				<div class="row">
+				<div class="col-md-4">
 					<div class="navbar-header">{{campaign.campaignName}}</div>
-					<div id="navbar" class="navbar-collapse collapse">
-						<ul class="nav navbar-nav navbar-right">Duración
-							{{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
-						</ul>
-						<button type="button" class="btn btn-default" ui-sref="updateCampaign">
-  							<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-						</button>
-					</div>
+				</div>
+				<div class="col-md-4">
+					<a href="#" ui-sref="updateCampaign" class="white">Editar Campaña</a>
+				</div>
+				<div class="col-md-4">
+					Duración {{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
+				</div>
 				</div>
 			</div>
 
@@ -52,15 +52,17 @@
 								ui-sref="updatePublication">Editar</a>
 							
 							<td><input ng-model="publication.isEnable"
-								name="{{publication.publicationId}}" type="checkbox"
+								name="{{publication.publicationId}}" type="checkbox" ng-change="updateStatusPublication(publication)"
 								toggle-btn on-type="warning">
 								
 						</tr>
 					</table>
 				</div>
+				<div class="navbar-right padding15">
 				<button type="button" class="btn btn-primary" ui-sref="newPublication">
-  							<span class="glyphicon glyphicon-plus-sign"> Añadir Publicacion</span>
+  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Añadir Publicacion
 				</button>
+				</div>
 			</div>
 		</div>
 	</div>

@@ -775,3 +775,11 @@ button.demo-nav {
     margin-right: auto;
     margin-left: auto;
 }
+
+.padding15 {
+	padding-right: 15px;
+}
+
+.white {
+    color: white;
+}
