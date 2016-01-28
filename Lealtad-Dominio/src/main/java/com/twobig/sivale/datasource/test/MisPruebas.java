@@ -35,6 +35,17 @@ public class MisPruebas {
 //		Date fechaActual = new Date();
 //		
 //		System.out.println(fechaActual);
+		
+		String car = null;
+		
+		
+		if(car == null){
+			System.out.println(car);
+		}
+		
+		
+		
+		
 
 	}
 }

@@ -78,5 +78,31 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long> implements
 	public void deleteTCampaign(TCampaign tCampaign) {
 		this.borrar(tCampaign);
 	}
+
+	@Override
+	public List<TCampaign> getTCampaignByCompanyIdCampaignNameAndDate(int companyId, String campaignName,
+			Date startDate, Date endDate) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(TCampaign.class);
+		
+		criteria.add(Restrictions.eq(TCampaign.FIELD_COMPANY_ID, companyId));
+		
+		if(campaignName != null && !campaignName.isEmpty()){
+			
+			campaignName = "%"+campaignName+"%";
+			
+			criteria.add(Restrictions.like(TCampaign.FIELD_COMPAIGN_NAME, campaignName));
+			
+		}
+		
+		if(startDate != null || endDate != null){
+			
+			criteria.add(Restrictions.ge(TCampaign.FIELD_START_DATE, startDate));
+
+			criteria.add(Restrictions.le(TCampaign.FIELD_END_DATE, endDate));
+			
+		}
+		
+		return getListByCriteria(criteria);
+	}
 	
 }

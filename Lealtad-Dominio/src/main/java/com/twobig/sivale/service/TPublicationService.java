@@ -30,5 +30,7 @@ public interface TPublicationService {
 	
 	public void deleteListAttachedFiles(List<TAttachedFile> listAttachedFile);
 	
+	public void updateListAttachedFiles(List<TAttachedFile> listAttachedFile);
+	
 	public void loadDataExcel(int publicationId, String path);
 }

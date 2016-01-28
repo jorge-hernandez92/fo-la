@@ -13,6 +13,9 @@ public interface TCampaignDAO {
 	public List<TCampaign> getTCampaignByCampaignIdCampaignNameAndDate(
 			List<Integer> campaignId, String campaignName, Date startDate, Date endDate);
 	
+	public List<TCampaign> getTCampaignByCompanyIdCampaignNameAndDate(
+			int companyId, String campaignName, Date startDate, Date endDate);
+	
 	public List<TCampaign> getTCampaignByCompanyId(Integer companyId);
 	
 	public void insertTCampaign(TCampaign tCampaign);

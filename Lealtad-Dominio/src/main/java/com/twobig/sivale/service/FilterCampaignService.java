@@ -9,4 +9,5 @@ public interface FilterCampaignService {
 	
 	public List<CampaignDetailBean> FilterCampaign(int userId, SearchCampaignBean searchCampaignBean);
 	
+	public List<CampaignDetailBean> FilterCampaignAdmin(int companyId, SearchCampaignBean searchCampaignBean);
 }
