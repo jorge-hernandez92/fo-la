@@ -119,7 +119,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 					
 					if(tokensList.size() == 2){
 						attachedFile.setFileName(tokensList.get(0));
-						attachedFile.setFileExtension(tokensList.get(0));
+						attachedFile.setFileExtension(tokensList.get(1));
 					}
 					else{
 						String fileName = "";
@@ -266,7 +266,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 					
 					if(tokensList.size() == 2){
 						attachedFile.setFileName(tokensList.get(0));
-						attachedFile.setFileExtension(tokensList.get(0));
+						attachedFile.setFileExtension(tokensList.get(1));
 					}
 					else{
 						String fileName = "";
