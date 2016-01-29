@@ -224,9 +224,9 @@ public class FilterCampaignServiceImpl implements FilterCampaignService {
 
 			listClassificationString.add(0, catClassificationCampaign.getClassName());
 
-			if (searchCampaignBean.getCampaña() != null && !searchCampaignBean.getCampaña().isEmpty()) {
+			if (searchCampaignBean.getCompany() != null && !searchCampaignBean.getCompany().isEmpty()) {
 				if (catClassificationCampaign.getClassName().toLowerCase()
-						.indexOf(searchCampaignBean.getCampaña().trim().toLowerCase()) != -1) {
+						.indexOf(searchCampaignBean.getCompany().trim().toLowerCase()) != -1) {
 
 					addIfExist(searchCampaignBean, listClassificationString, listClassificationC,
 							campaignDetailAdminBean, listCampaignDetailAdminBean);

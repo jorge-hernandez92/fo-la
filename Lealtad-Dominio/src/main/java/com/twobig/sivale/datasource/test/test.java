@@ -208,7 +208,7 @@ public class test {
 
 			//searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
-			searchCampaignBean.setCampaña("fordt");
+			searchCampaignBean.setCompany("fordt");
 			//searchCampaignBean.setStartDate(startDate);
 			//searchCampaignBean.setEndDate(endDate);
 			System.out.println(searchCampaignBean.toString());

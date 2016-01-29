@@ -53,6 +53,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	private String description;
 	private int selected;
 	private Map<String, String> message;
+	private Integer publicationId;
 
 	public static final String CODE = "code";
 	public static final String MESSAGE = "message";
@@ -74,11 +75,6 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			        @InterceptorRef("validation")}
 	)
 	public String uploadAction(){
-		
-		//System.out.println("*/*/*/*/*/*/*/**/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/ ");
-		//System.out.println("Tamaño de boleanos: " + this.getFilechecked().length);
-		//for(int i = 0 ; i<filechecked.length ; i++)
-		//	System.out.println("boolean["+i+"] : " + filechecked[i]);
 		
 		if(getFile().length >= 2){
 			
@@ -291,6 +287,17 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Action(value = "deletePublicationAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"message", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String deletePublicationAction() {
+
+		publicationService.deletePublication(publicationId);
+		setMessage(SUCCESS_CODE, SUCCESS_DELETE_PUBLICATION);
+		return SUCCESS;
+
+	}
+	
 	public void setMessage(String code, String message){
 		this.message = new HashMap <String, String>();
 		this.message.put(CODE, code);
@@ -356,6 +363,14 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 
 	public Map<String, String> getMessage() {
 		return message;
+	}
+
+	public Integer getPublicationId() {
+		return publicationId;
+	}
+
+	public void setPublicationId(Integer publicationId) {
+		this.publicationId = publicationId;
 	}
 
 	@Override

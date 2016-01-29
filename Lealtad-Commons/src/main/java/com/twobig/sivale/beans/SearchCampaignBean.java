@@ -17,7 +17,7 @@ public class SearchCampaignBean{
     private Date endDate;
     
     //class_name of cat_classification_campaigns
-    private String campaña; 
+    private String company; 
 	
     
 	public String getCampaignName() {
@@ -68,12 +68,12 @@ public class SearchCampaignBean{
 		this.endDate = endDate;
 	}
 
-	public String getCampaña() {
-		return campaña;
+	public String getCompany() {
+		return company;
 	}
 
-	public void setCampaña(String campaña) {
-		this.campaña = campaña;
+	public void setCompany(String company) {
+		this.company = company;
 	}
 
 	@Override

@@ -64,6 +64,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<CampaignDetailBean> campaigns;
 	private List<CampaignDetailAdminBean> campaignsAdmin;
 	private List<CampaignDetailBean> searchCampaigns;
+	private List<CampaignDetailAdminBean> searchCampaignsAdmin;
 	private List<TPublication> publications;
 	private PublicationBean publication;
 	private List<SelectClassificationCampaignBean> classificationLevel;
@@ -244,7 +245,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "searchCampaignsAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
-			"searchCampaigns", "excludeNullProperties", "true", "noCache", "true" }) )
+			"searchCampaignsAdmin", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String searchCampaignsAdminAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
@@ -260,12 +261,6 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			try {
 				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
 						SearchCampaignBean.class);
-				CatClassificationCampaign classification = (CatClassificationCampaign) session.get("classificationCmp");
-				
-				if(classification == null)
-					return ERROR;
-				
-				searchCampaign.setClassificationParentId(classification.getCatClassificationCampaignsId());
 				System.out.println(searchCampaign.toString());
 				
 			} catch (IOException e) {
@@ -285,9 +280,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
 		//searchCampaigns = new ServicesUser().searchCampaigns();
 		
-		searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
+		searchCampaignsAdmin = filterCampaignService.FilterCampaignAdmin(user.getCompany(), searchCampaign);
 		
-		System.out.println(searchCampaigns.toString());
 		return SUCCESS;
 
 	}
@@ -678,6 +672,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	public List<CampaignDetailBean> getSearchCampaigns() {
 		return searchCampaigns;
+	}
+
+	public List<CampaignDetailAdminBean> getSearchCampaignsAdmin() {
+		return searchCampaignsAdmin;
 	}
 
 	public List<CampaignDetailAdminBean> getCampaignsAdmin() {

@@ -64,7 +64,7 @@
 								ng-change="changeProgram()">
 							</select>
 						</div>
-						<div class="col-md-5" ng-if="isNewProgram()">
+						<div class="col-md-5" ng-if="selectCampaign.isNewClass(selectCampaign.items[1])">
 							<input ng-model="selectCampaign.items[1].className" type="text"
 								class="form-control" placeholder="Nombre"
 								aria-describedby="basic-addon1">
@@ -81,7 +81,7 @@
 								ng-change="changeSubProgram()">
 							</select>
 						</div>
-						<div class="col-md-5" ng-if="isNewSubProgram()">
+						<div class="col-md-5" ng-if="selectCampaign.isNewClass(selectCampaign.items[2])">
 							<input ng-model="selectCampaign.items[2].className" type="text"
 								class="form-control" placeholder="Nombre"
 								aria-describedby="basic-addon1">
@@ -98,7 +98,7 @@
 								ng-change="changeBusinessUnit()">
 							</select>
 						</div>
-						<div class="col-md-5" ng-if="isNewBusinessUnit()">
+						<div class="col-md-5" ng-if="selectCampaign.isNewClass(selectCampaign.items[3])">
 							<input ng-model="selectCampaign.items[3].className" type="text"
 								class="form-control" placeholder="Nombre"
 								aria-describedby="basic-addon1">
@@ -115,7 +115,7 @@
 								ng-change="changeLevel4()">
 							</select>
 						</div>
-						<div class="col-md-5" ng-if="isNewLevel4()">
+						<div class="col-md-5" ng-if="selectCampaign.isNewClass(selectCampaign.items[4])">
 							<input ng-model="selectCampaign.items[4].className" type="text"
 								class="form-control" placeholder="Nombre"
 								aria-describedby="basic-addon1">
@@ -132,7 +132,7 @@
 								ng-change="changeLevel5()">
 							</select>
 						</div>
-						<div class="col-md-5" ng-if="isNewLevel5()">
+						<div class="col-md-5" ng-if="selectCampaign.isNewClass(selectCampaign.items[5])">
 							<input ng-model="selectCampaign.items[5].className" type="text"
 								class="form-control" placeholder="Nombre"
 								aria-describedby="basic-addon1">

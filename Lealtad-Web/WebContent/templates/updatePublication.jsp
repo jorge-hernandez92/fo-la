@@ -166,7 +166,7 @@
 
 								<button type="submit" class="btn btn-primary" form="updatePublicationGral">Actualizar</button>
 								<button type="button" class="btn btn-primary left-35"
-									ui-sref="campaign">Cancelar</button>
+									ng-click="deletePublication()">Eliminar</button>
 
 							</div>
 						</div>

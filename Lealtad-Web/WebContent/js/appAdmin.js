@@ -435,7 +435,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					var searchCampaign = {
 							campaignName : $rootScope.search.campaignName,
 							classificationName1 : $rootScope.search.classification,
-							classificationName2 : $rootScope.classif.company,
+							company : $rootScope.classif.company,
 							startDate : date.startDate,
 							endDate : date.endDate
 					};
@@ -449,7 +449,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 
 					$http({
 						method : 'POST',
-						url : 'searchCampaignsAction',
+						url : 'searchCampaignsAdminAction',
 						data : 'searchCampaign=' + data,
 						headers : {
 							'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -892,6 +892,15 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								function(data, status, headers, config) {
 									$scope.showNotify(data);
 									$state.go('home');
+								}).error(function(data, status, headers, config) {
+							});
+					};
+					
+					$scope.deletePublication = function() {
+						$http.get('deletePublicationAction?publicationId='+$scope.publication.publicationId).success(
+								function(data, status, headers, config) {
+									$scope.showNotify(data);
+									$state.go('campaign');
 								}).error(function(data, status, headers, config) {
 							});
 					};
