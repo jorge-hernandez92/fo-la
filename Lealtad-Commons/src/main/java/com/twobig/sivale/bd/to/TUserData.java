@@ -45,6 +45,7 @@ public class TUserData implements Serializable {
 		return userId;
 	}
 
+	
 	public void setUserId(int userId) {
 		this.userId = userId;
 	}
