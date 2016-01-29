@@ -49,14 +49,14 @@
 							<div class="row margin-top10">
 								<div class="col-md-4">Documento html</div>
 								<div class="col-md-8">
-									<input type="file" name="file" class="test">
+									<input type="file" name="file" class="test" accept=".html">
 								</div>
 							</div>
 
 							<div class="row margin-top10">
-								<div class="col-md-4">Documento</div>
+								<div class="col-md-4">Documento excel</div>
 								<div class="col-md-8">
-									<input type="file" name="file" class="test">
+									<input type="file" name="file" class="test" accept=".xlsx">
 								</div>
 							</div>
 

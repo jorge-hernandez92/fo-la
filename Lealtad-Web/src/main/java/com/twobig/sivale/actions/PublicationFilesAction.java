@@ -80,6 +80,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				e.printStackTrace();
 				return ERROR;
 			}
+			String htmlFileName = publication.getTemplateFilePath();
 			
 			publication.setTemplateFilePath(this.getFileFileName()[0]);
 			
@@ -91,7 +92,20 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 			String status =  publicationService.updatePublication(publicationBean);
 
-			if( status.equals("SUCCES")){
+			if( status.equals("SUCCESS")){
+				
+				try{
+					
+					String pathfile = directory + File.separator + htmlFileName;
+					System.out.println("**** archivo adjunto: "+ pathfile);
+					File file = new File(pathfile);
+					if(file.delete())
+					System.out.println("**** Se eliminó HTML");
+				
+				}catch(Exception e){
+					System.out.println("Error al eliminar HTML");
+				}
+				
 				return SUCCESS;
 			}
 		}
@@ -129,6 +143,18 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 			} catch (IOException e) {
 				e.printStackTrace();
 				return ERROR;
+			}
+			
+			try{
+				
+				String pathfile = directory + File.separator + publication.getDataFilePath();
+				System.out.println("**** archivo adjunto: "+ pathfile);
+				File file = new File(pathfile);
+				if(file.delete())
+				System.out.println("**** Se eliminó Excel");
+			
+			}catch(Exception e){
+				System.out.println("Error al eliminar Excel");
 			}
 			
 			publication.setDataFilePath(this.getFileFileName()[0]);

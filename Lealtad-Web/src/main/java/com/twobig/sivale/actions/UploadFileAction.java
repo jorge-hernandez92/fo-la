@@ -110,11 +110,35 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 				
 				StringTokenizer tokens = new StringTokenizer(this.getFileFileName()[i],".");
 				
-				if(tokens.hasMoreTokens())
-					attachedFile.setFileName(tokens.nextToken());
+				ArrayList<String> tokensList = new ArrayList<String>();
+				while(tokens.hasMoreTokens()){
+					tokensList.add(tokens.nextToken());
+				}
 				
-				if(tokens.hasMoreTokens())
-					attachedFile.setFileExtension(tokens.nextToken());
+				if (tokensList.size() >= 2){
+					
+					if(tokensList.size() == 2){
+						attachedFile.setFileName(tokensList.get(0));
+						attachedFile.setFileExtension(tokensList.get(0));
+					}
+					else{
+						String fileName = "";
+						for(int j=0; j < tokensList.size()-1; j++){
+							if(j == tokensList.size()-2)
+								fileName += tokensList.get(j);
+							else
+								fileName += tokensList.get(j) + ".";
+						}
+						String extension = tokensList.get(tokensList.size()-1);
+						
+						attachedFile.setFileName(fileName);
+						attachedFile.setFileExtension(extension);
+					}
+					
+				}
+				else{
+					return ERROR;
+				}
 				
 				attachedFiles.add(attachedFile);
 			}
@@ -233,18 +257,42 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 				
 				StringTokenizer tokens = new StringTokenizer(this.getFileFileName()[i],".");
 				
-				if(tokens.hasMoreTokens())
-					attachedFile.setFileName(tokens.nextToken());
+				ArrayList<String> tokensList = new ArrayList<String>();
+				while(tokens.hasMoreTokens()){
+					tokensList.add(tokens.nextToken());
+				}
 				
-				if(tokens.hasMoreTokens())
-					attachedFile.setFileExtension(tokens.nextToken());
+				if (tokensList.size() >= 2){
+					
+					if(tokensList.size() == 2){
+						attachedFile.setFileName(tokensList.get(0));
+						attachedFile.setFileExtension(tokensList.get(0));
+					}
+					else{
+						String fileName = "";
+						for(int j=0; j < tokensList.size()-1; j++){
+							if(j == tokensList.size()-2)
+								fileName += tokensList.get(j);
+							else
+								fileName += tokensList.get(j) + ".";
+						}
+						String extension = tokensList.get(tokensList.size()-1);
+						
+						attachedFile.setFileName(fileName);
+						attachedFile.setFileExtension(extension);
+					}
+					
+				}
+				else{
+					return ERROR;
+				}
 				
 				attachedFiles.add(attachedFile);
 			}
 
 			publicationBean.setAttachedFiles(attachedFiles);
 			
-			String id = publicationService.updatePublication(publicationBean);
+			//String id = publicationService.updatePublication(publicationBean);
 			
 			
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();

@@ -1,5 +1,6 @@
 package com.twobig.sivale.actions;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -19,6 +20,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
+import com.twobig.sivale.bd.to.TPublication;
+import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TPublicationService;
 
 @ParentPackage(value = "json-default")
@@ -117,7 +120,25 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 		List<TAttachedFile> list = new ArrayList<TAttachedFile>();
 		list.add(attachedFile);
 		
+		
 		publicationService.deleteListAttachedFiles(list);
+		
+		try{
+			TPublication pub = (TPublication) session.get("publication");
+
+			if (pub != null) {
+				
+				String directory = PathConstants.ATTACHED_DIRECTORY + pub.gettCampaignId() + File.separator + pub.getPublicationId();
+				String pathfile = directory + File.separator + attachedFile.getFileName() + "." + attachedFile.getFileExtension();
+				System.out.println("**** archivo adjunto a eliminar: "+ pathfile);
+				File file = new File(pathfile);
+				if(file.delete())
+				System.out.println("**** Se eliminó archivo adjunto");
+			}
+			
+		}catch(Exception e){
+			System.out.println("Error al eliminar archivo adjunto");
+		}
 		
 		setMessage(SUCCESS_CODE, SUCCESS_DELETE_ATTACHEDFILE);
 		return SUCCESS;
