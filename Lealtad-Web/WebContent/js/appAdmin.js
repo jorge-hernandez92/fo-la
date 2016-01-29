@@ -25,7 +25,7 @@ appres.run(function($rootScope) {
 	};
 
 	$rootScope.classif = {
-		classification2 : STRING_DEFAULT
+		company : STRING_DEFAULT
 	};
 
 	$rootScope.files = {
@@ -430,6 +430,47 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 				        }    
 				};
 
+				$scope.searchCampaigns = function(date) {
+				    
+					var searchCampaign = {
+							campaignName : $rootScope.search.campaignName,
+							classificationName1 : $rootScope.search.classification,
+							classificationName2 : $rootScope.classif.company,
+							startDate : date.startDate,
+							endDate : date.endDate
+					};
+					
+					$rootScope.search.campaignName = STRING_DEFAULT;
+					$rootScope.search.classification = STRING_DEFAULT;
+					$rootScope.classif.company = STRING_DEFAULT;
+					
+					var data = escape(angular.toJson(searchCampaign));
+					console.log(JSON.stringify(searchCampaign));
+
+					$http({
+						method : 'POST',
+						url : 'searchCampaignsAction',
+						data : 'searchCampaign=' + data,
+						headers : {
+							'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+					}).success(
+							function(data, status, headers, config) {
+								
+								console.log('data: '+JSON.stringify(data));
+								
+								$scope.campaigns = data;
+								$scope.tableCampaigns = new NgTableParams({
+									count : 10
+								}, {
+									counts : [],
+								    dataset: data
+								});
+								
+							}).error(function(data, status, headers, config) {
+
+					});
+				};
 
 /************************************************************************
 ================================ New Campaign Start =====================
@@ -861,7 +902,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							var messageTemplate = '<span>' + data.message +'</span>';
 							notify({
 					            messageTemplate: messageTemplate,
-					            classes: "alert-success",
+					            classes: "alert-danger",
 					            position: 'center',
 					            duration: 10000
 					        });

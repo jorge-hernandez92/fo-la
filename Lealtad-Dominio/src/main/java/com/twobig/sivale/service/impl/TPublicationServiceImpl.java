@@ -154,7 +154,7 @@ public class TPublicationServiceImpl implements TPublicationService {
 		tUserData.setPublicationId(publicationId);
 		tUserDataDAO.deleteTUserData(tUserData);
 	}
-	
+
 	
 	@Override
 	public void loadDataExcel(int publicationId, String path){
@@ -210,12 +210,12 @@ public class TPublicationServiceImpl implements TPublicationService {
 		for (TAttachedFile tAttachedFile : listAttachedFile) {
 			tAttachedFileDAO.deleteTAttachedFile(tAttachedFile);
 		}
-	} 	
+	}
 
 	@Override
 	public void updateListAttachedFiles(List<TAttachedFile> listAttachedFile) {
 		for (TAttachedFile tAttachedFile : listAttachedFile) {
 			tAttachedFileDAO.updateTAttachedFile(tAttachedFile);
 		}
-	}
+	} 	
 }

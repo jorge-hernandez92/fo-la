@@ -36,26 +36,29 @@ public class PruebasAdministrador {
 		cpt.setPublicationTypeId(1);
 		
 		TPublication publication = new TPublication();
-		publication.setPublicationId(19);
 		publication.settCampaignId(1);
-		publication.setName("PRUEBA INSERCCION 5");
-		publication.setDataFilePath("src/test/resources/FORD.xlsx");
+		publication.setName("PRUEBA INSERCCION ÑÑÑÑÑÑÑ");
 		publication.setCatPublicationType(cpt);
 		publication.setIsEnable(true);
 		
-		PublicationCRUDBean pib = new PublicationCRUDBean();
-		pib.setPublication(publication);
+		
 
 		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
-
 		for (int i = 0; i < 5; i++) {
 			attachedFiles.add(new TAttachedFile());
 		}
 
+		PublicationCRUDBean pib = new PublicationCRUDBean();
+		pib.setPublication(publication);
 		pib.setAttachedFiles(attachedFiles);
-
+		
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
 		System.out.println(cccs.addPublication(pib));
+
+		//PRUEBAS PARA EL EXCEL 
+		//TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
+		//cccs.loadDataExcel(21, "src/test/resources/FORD.xlsx");
+		
 	}
 
 	public static void updatePublication(ClassPathXmlApplicationContext context) {
@@ -273,7 +276,7 @@ public class PruebasAdministrador {
 		//getCampaingsSuper(context);
 
 		// SERVICIO DE INSERTAR PUBLICACIONES
-		insertPublicacion(context);
+		//insertPublicacion(context);
 
 		// SERVICIO DE ACTUALIZAR PUBLICATION
 		//updatePublication(context);
@@ -317,6 +320,7 @@ public class PruebasAdministrador {
 		
 		//SERVICIO PARA OBTENER PUBLICACIONES PARA ADMINISTRADOR
 		//getPublication(context);
+	
 	}
 
 }

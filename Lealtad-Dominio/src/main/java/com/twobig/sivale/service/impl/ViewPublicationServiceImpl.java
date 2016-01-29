@@ -53,17 +53,19 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 
 			publication.setHtml(html);
 
+			//SEPARAR OBTENER ARCHIVOS ADJUNTOS EN UN NUEVO SERVICIO 
+			
 			List<TAttachedFile> files = tAttachedFile.getTAttachedFileByPublicationId(publicationId);
 			
 			
 			//PARA EL PARTICIPANTE SOLO TRAER LOS QUE ESTAN PUBLICOS (ARCHIVOS ADJUNTOS)
 			if ( CommonsConstants.CAT_PROFILE_ADMIN != profile ){
-			for (int i = 0 ; i < files.size() ; i++){
-			     if ( !files.get(i).getIsPublic()  ){
-			      files.remove(files.get(i));
-			      i--;
-			     }
-			    }
+				for (int i = 0 ; i < files.size() ; i++){
+					if ( !files.get(i).getIsPublic()  ){
+						files.remove(files.get(i));
+						i--;
+					}
+				}
 			}
 			
 			publication.setListFiles(files);

@@ -243,6 +243,56 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	}
 	
 	@SuppressWarnings("unchecked")
+	@Action(value = "searchCampaignsAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"searchCampaigns", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String searchCampaignsAdminAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String searchCampaignJSON = request.getParameter("searchCampaign");
+		
+		
+		SearchCampaignBean searchCampaign;
+
+		if (!searchCampaignJSON.equals("undefined")) {
+
+			searchCampaign = new SearchCampaignBean();
+			try {
+				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
+						SearchCampaignBean.class);
+				CatClassificationCampaign classification = (CatClassificationCampaign) session.get("classificationCmp");
+				
+				if(classification == null)
+					return ERROR;
+				
+				searchCampaign.setClassificationParentId(classification.getCatClassificationCampaignsId());
+				System.out.println(searchCampaign.toString());
+				
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+		} else {
+			return ERROR;
+		}
+
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+
+		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
+		//searchCampaigns = new ServicesUser().searchCampaigns();
+		
+		searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
+		
+		System.out.println(searchCampaigns.toString());
+		return SUCCESS;
+
+	}
+	
+	@SuppressWarnings("unchecked")
 	@Action(value = "getPublicationsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"publications", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getPubliationsAction() {

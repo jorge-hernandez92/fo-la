@@ -30,7 +30,7 @@
 						<div class="text-right">
 
 							<div class="row margin-top10">
-								<div class="col-md-4">Nombre de Publiccion</div>
+								<div class="col-md-4">Nombre de Publicación</div>
 								<div class="col-md-8">
 									<input type="text" class="form-control" name="publication">
 								</div>
@@ -86,7 +86,7 @@
 												</select>
 											</div>
 											<div class="col-md-1">
-												<button type="button" class="btn btn-danger" data-ng-click="removeRow($index)">
+												<button type="button" class="btn btn-primary" data-ng-click="removeRow($index)">
   													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 												</button>
 											</div>
@@ -100,8 +100,8 @@
 
 							<div class="col-md-8 text-left">
 
-								<button type="submit" class="btn btn-success">Publicar</button>
-								<button type="button" class="btn btn-danger left-35" ui-sref="campaign">Cancelar</button>
+								<button type="submit" class="btn btn-primary">Publicar</button>
+								<button type="button" class="btn btn-primary left-35" ui-sref="campaign">Cancelar</button>
 
 							</div>
 						</div>

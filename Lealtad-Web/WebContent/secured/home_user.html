@@ -55,19 +55,19 @@
 									</div>
 								</div>
 
-								<div class="col-md-10" ng-if="logo">
+								<div class="col-md-10" ng-if="!companyMenu">
 									<div class="div-fit-img">
 										<img src={{logo}} ui-sref="#" ng-if="logo">
 									</div>
 								</div>
-								<div class="col-md-10" class="container" ng-if="!logo">
+								<div class="col-md-10" class="container" ng-if="companyMenu">
 									<div class="row">
 										<div ng-carousel ng-carousel-name="example-carousel2"
 											ng-carousel-watch="classifications">
 											<slidecontainer> <slide
 												ng-repeat="class in classifications">
 											<div class="div-fit">
-												<a href="#" data-ng-click="updateClassification(class)"
+												<a href="#" data-ng-click="selectClassification(class)"
 													ui-sref="campaigns"> <img
 													src="img/company_logo/{{class.catViews.logos}}/header.png">
 
@@ -159,7 +159,8 @@
 			<div ui-view></div>
 		</div>
 		<div class="col-md-2">
-			<img src="img/banner_sivale.gif">
+<!-- 			<img src="img/banner_sivale.gif"> -->
+			<img src="img/banner_ford.jpg">
 		</div>
 
 		<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
@@ -168,7 +169,7 @@
 				<li class="c-menu__item"><a ui-sref="home"
 					class="c-menu__link">Movimientos</a></li>
 				<li class="c-menu__item" ng-if="classification"><a
-					ui-sref="campaigns" class="c-menu__link" ng-if="menuCampaign">Ventas</a></li>
+					ui-sref="campaigns" class="c-menu__link" ng-if="menuCampaign && !companyMenu">Campañas</a></li>
 <!-- 				<li class="c-menu__item" ng-if="companyMenu"><a ui-sref="home" -->
 <!-- 					class="c-menu__link">Compañias</a></li> -->
 			</ul>

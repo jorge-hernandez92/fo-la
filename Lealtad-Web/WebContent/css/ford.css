@@ -288,9 +288,14 @@
     width: 500px;
 }
 
-.div-fit-img2{
-	height: 60px;
-    margin-top: 15px;
+.div-fit-img2 {
+    height: 60px;
+    margin-bottom: 5px;
+    margin-top: 5px;
+}
+
+.back-gray {
+    background: #F0F0E9;
 }
 
 .div-fit-img  > img {

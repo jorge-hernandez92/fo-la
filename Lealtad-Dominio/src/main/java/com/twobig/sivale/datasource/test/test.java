@@ -170,12 +170,6 @@ public class test {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
 			System.out.println(endDate);
-			
-//			Date startDate = format.parse("2015-09-01 00:00:00");
-//			Date endDate = format.parse("2015-10-01 00:00:00");
-			
-//			Date startDate = format.parse("2015-09-01 00:00:00");
-//			Date endDate = format.parse("2015-10-01 00:00:00");
 
 			searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
@@ -197,6 +191,40 @@ public class test {
 
 	}
 	
+	public static void filterCampaignsAdmin(ClassPathXmlApplicationContext context){
+		FilterCampaignService cccs = (FilterCampaignService) context.getBean("filterCampaignServiceImpl");
+
+		SearchCampaignBean searchCampaignBean = new SearchCampaignBean();
+
+		String pattern = "yyyy-MM-dd";
+		
+
+		SimpleDateFormat format = new SimpleDateFormat(pattern);
+		try {
+			Date startDate = format.parse("2015-12-01");
+			Date endDate = format.parse("2016-01-01");
+			System.out.println(endDate);
+
+			//searchCampaignBean.setClassificationParentId(1);
+			searchCampaignBean.setCampaignName("camp");
+			//searchCampaignBean.setStartDate(startDate);
+			//searchCampaignBean.setEndDate(endDate);
+			System.out.println(searchCampaignBean.toString());
+			searchCampaignBean.setClassificationName1("cLaSe");
+			searchCampaignBean.setClassificationName2("");
+			
+		} catch (ParseException e) {
+			e.printStackTrace();
+		}
+
+		List<CampaignDetailBean> listCampaignDetailBean =  cccs.FilterCampaignAdmin(1, searchCampaignBean);
+		
+		for (CampaignDetailBean campaignDetailBean : listCampaignDetailBean) {
+			System.out.println(campaignDetailBean);
+		}
+	}
+	
+
 	public static void movimientos(ClassPathXmlApplicationContext context){
 		
 		TransactionService cccs = (TransactionService) context.getBean("transactionServiceImpl");
@@ -228,10 +256,10 @@ public class test {
 		
 		
 		//SERVICIO DE MOVIMIENTOS Y DE SALDO
-		movimientos(context);
+		//movimientos(context);
 		
 		//SERVICIO DE LOGIN PARA EL PARTICIPANTE
-		loginWebService(context);
+		//loginWebService(context);
 //		
 //		
 //		//SERVICIO DE LOGIN PARA ADMINISTRADOR
@@ -239,7 +267,7 @@ public class test {
 //
 //		
 //		//SERVICIO DE CLASIFICACIONES 
-		clasificaciones(context);
+//		clasificaciones(context);
 //		
 //				
 //		//SERVICIO DE CAMPAÑAS
@@ -257,6 +285,7 @@ public class test {
 //		//SERVICIO DE FILTRARCAMPAÑAS
 //		filterCampaigns(context);
 		
+		filterCampaignsAdmin(context);
 		
 	}
 }

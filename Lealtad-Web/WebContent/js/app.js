@@ -33,6 +33,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	};
 	
 	$scope.menuCampaign = false;
+	$scope.companyMenu = false;
 	
 	$scope.getCampaigns = function() {
 
@@ -89,8 +90,8 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 				if(data.length == 1){
 					$scope.updateClassification($scope.classifications[0]);
 					$scope.companyMenu = false;
-					$state.go('transactions');
 				}
+				else $scope.companyMenu = true;
 				
 			}).error(function(data, status, headers, config) {
 
@@ -98,6 +99,12 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		
 	};
 
+
+	$scope.selectClassification = function(classification) {
+		$scope.companyMenu = false;
+		$scope.updateClassification(classification);
+	};
+	
 	$scope.getCampaign = function() {
 
 		var data = escape(angular.toJson($scope.campaign));

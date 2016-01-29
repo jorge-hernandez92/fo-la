@@ -31,7 +31,7 @@
 							<tr>
 								<td>
 								<div class="row margin-top10">
-									<div class="col-md-4 text-right">Nombre de Publiccion</div>
+									<div class="col-md-4 text-right">Nombre de Publicación</div>
 									<div class="col-md-8">
 										<input type="text" class="form-control" name="publication"
 											ng-model="publication.name">
@@ -56,7 +56,7 @@
 											<div class="col-md-8">{{publication.templateFilePath}}</div>
 											<div class="col-md-4">
 												<button type="button" class="btn btn-primary left-35"
-													data-toggle="modal" data-target="#modalUploadTemplate">Remplazar
+													data-toggle="modal" data-target="#modalUploadTemplate">Reemplazar
 													Archivo</button>
 											</div>
 										</div>
@@ -71,7 +71,7 @@
 											<div class="col-md-8">{{publication.dataFilePath}}</div>
 											<div class="col-md-4">
 												<button type="button" class="btn btn-primary left-35"
-													data-toggle="modal" data-target="#modalUploadData">Remplazar
+													data-toggle="modal" data-target="#modalUploadData">Reemplazar
 													Archivo</button>
 											</div>
 										</div>
@@ -108,7 +108,7 @@
 												</select>
 											</div>
 											<div class="col-md-1">
-												<button type="button" class="btn btn-danger" ng-click="updateAttachedFile(attachedFile, $index)"
+												<button type="button" class="btn btn-primary" ng-click="updateAttachedFile(attachedFile, $index)"
 												data-toggle="modal" data-target="#modalDeleteAttachedFile">
 <!-- 													data-ng-click="removeAttachedFile($index)"> -->
 													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
@@ -147,7 +147,7 @@
 												</select>
 											</div>
 											<div class="col-md-1">
-												<button type="button" class="btn btn-danger"
+												<button type="button" class="btn btn-primary"
 													data-ng-click="removeRow($index)">
 													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
 												</button>
@@ -164,8 +164,8 @@
 
 							<div class="col-md-8 text-left">
 
-								<button type="submit" class="btn btn-success" form="updatePublicationGral">Actualizar</button>
-								<button type="button" class="btn btn-danger left-35"
+								<button type="submit" class="btn btn-primary" form="updatePublicationGral">Actualizar</button>
+								<button type="button" class="btn btn-primary left-35"
 									ui-sref="campaign">Cancelar</button>
 
 							</div>
