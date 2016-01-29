@@ -11,6 +11,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
+import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
@@ -207,6 +208,7 @@ public class test {
 
 			//searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
+			searchCampaignBean.setCampaña("fordt");
 			//searchCampaignBean.setStartDate(startDate);
 			//searchCampaignBean.setEndDate(endDate);
 			System.out.println(searchCampaignBean.toString());
@@ -217,9 +219,9 @@ public class test {
 			e.printStackTrace();
 		}
 
-		List<CampaignDetailBean> listCampaignDetailBean =  cccs.FilterCampaignAdmin(1, searchCampaignBean);
+		List<CampaignDetailAdminBean> listCampaignDetailBean =  cccs.FilterCampaignAdmin(1, searchCampaignBean);
 		
-		for (CampaignDetailBean campaignDetailBean : listCampaignDetailBean) {
+		for (CampaignDetailAdminBean campaignDetailBean : listCampaignDetailBean) {
 			System.out.println(campaignDetailBean);
 		}
 	}
