@@ -261,7 +261,7 @@ public class test {
 		//movimientos(context);
 		
 		//SERVICIO DE LOGIN PARA EL PARTICIPANTE
-		//loginWebService(context);
+		loginWebService(context);
 //		
 //		
 //		//SERVICIO DE LOGIN PARA ADMINISTRADOR
@@ -287,7 +287,7 @@ public class test {
 //		//SERVICIO DE FILTRARCAMPAÑAS
 //		filterCampaigns(context);
 		
-		filterCampaignsAdmin(context);
+		//filterCampaignsAdmin(context);
 		
 	}
 }
