@@ -25,7 +25,7 @@
 						<div class="col-md-2">Nombre</div>
 						<div class="col-md-5">
 							<input type="text" class="form-control" placeholder="Nombre"
-								aria-describedby="basic-addon1" ng-model="form.campaignName">
+								aria-describedby="basic-addon1" ng-model="form.campaignName" required>
 						</div>
 					</div>
 
@@ -45,7 +45,7 @@
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[0].availableOptions track by option.id"
 								ng-model="selectCampaign.items[0].selectedOption"
-								ng-change="changeCompany()">
+								ng-change="changeCompany()" required>
 							</select>
 						</div>
 					</div>
@@ -142,7 +142,10 @@
 					<div class="col-md-5 text-left">
 
 						<button type="button" class="btn btn-primary"
-							ng-click="updateCampaignForm(date)">Actualizar Campaña</button>
+							ng-click="updateCampaignForm(date)"
+							ng-disabled="!form.campaignName">
+							Actualizar Campaña
+						</button>
 						<button type="button" class="btn btn-primary left-35"
 							ng-click="deleteCampaign()">Eliminar</button>
 

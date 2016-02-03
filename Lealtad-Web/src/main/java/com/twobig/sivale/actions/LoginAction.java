@@ -14,6 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.LoginService;
 
@@ -29,6 +30,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private String username;
 	private String password;
 	private TUser user;
+	private String error = null;
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -42,8 +44,36 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		
 		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
 
-		if (username.equals("") || password.equals(""))
+		if ( username == null || password == null || username.equals("") || password.equals("")){
+			TUser user = (TUser)session.get("user");
+		
+			if (user!=null) {
+				UserBean userBean = new UserBean();
+				userBean.setPass(user.getPassword());
+				
+				if(user.getCatProfile()== CommonsConstants.CAT_PROFILE_ADMIN)
+					userBean.setUser(user.getUserLogin());
+				else
+					userBean.setUser(user.getTjCardNumber());
+				
+				user = (TUser) loginService.validateUserWeb(userBean);
+				
+		        if (user != null){
+		        	session.put("user", user);
+		        	
+		        	if(user.getCatProfile() == CommonsConstants.CAT_PROFILE_ADMIN){
+		        		return "admin";
+		        	}
+		        	return "user";
+		        }
+		        
+		        error = "Usuario o password incorrectos!";
+		        
+		        return ERROR;
+			}
+			
 			return ERROR;
+		}
 		else{
 			
 			//ServicesUser services = new ServicesUser();
@@ -63,6 +93,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	        	}
 	        	return "user";
 	        }
+	        
+	        error = "Usuario o password incorrectos!";
 	        
 	        return ERROR;
 		}
@@ -100,6 +132,21 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public void setUser(TUser user) {
 		this.user = user;
 	}
+
+	/**
+	 * @return the error
+	 */
+	public String getError() {
+		return error;
+	}
+
+	/**
+	 * @param error the error to set
+	 */
+	public void setError(String error) {
+		this.error = error;
+	}
+	
 	
 	
 }
