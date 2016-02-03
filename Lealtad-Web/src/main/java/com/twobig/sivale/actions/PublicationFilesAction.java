@@ -50,8 +50,8 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 	private String[] fileFileName;
 
 	
-	@Action(value = "UploadHtmlAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
-			@Result(name = ERROR, location = "/secured/home_admin.html")},
+	@Action(value = "UploadHtmlAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
+			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
 			interceptorRefs = {
 			@InterceptorRef(params = { "maximumSize", "104857600" }, value = "fileUpload"),
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
@@ -114,8 +114,8 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 	}
 	
-	@Action(value = "UploadExcelAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
-			@Result(name = ERROR, location = "/secured/home_admin.html")}, 
+	@Action(value = "UploadExcelAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
+			@Result(name = ERROR, location = "/secured/home_admin.jsp")}, 
 			interceptorRefs = {
 			@InterceptorRef(params = { "maximumSize", "104857600" }, value = "fileUpload"),
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })

@@ -9,17 +9,17 @@ import com.opensymphony.xwork2.ActionSupport;
 public class redirecTestAction extends ActionSupport {
 
 
-	@Action(value="campaignParticipante", results=@Result(name="success", location="/secured/campaña_participante.html"))
+	@Action(value="campaignParticipante", results=@Result(name="success", location="/secured/campaña_participante.jsp"))
 	 public String getCampaign(){
 		 return SUCCESS;
 	 }
 	
-	 @Action(value="campaignsList", results=@Result(name="success", location="/secured/campañas_participante.html"))
+	 @Action(value="campaignsList", results=@Result(name="success", location="/secured/campañas_participante.jsp"))
 	 public String getCampaigns(){
 		 return SUCCESS;
 	 }
 	 
-	 @Action(value="homeUser", results=@Result(name="success", location="/secured/login.html"))
+	 @Action(value="homeUser", results=@Result(name="success", location="/secured/login.jsp"))
 	 public String home(){
 		 return SUCCESS;
 	 }

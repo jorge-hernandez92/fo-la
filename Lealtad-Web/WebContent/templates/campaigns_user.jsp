@@ -1,15 +1,10 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <div class="panel-body ">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
-			<li class="active"><span>Campañas Recientes</span></li>
+			<li class="active"><span>Campañas</span></li>
 		</ol>
 	</div>
 	
@@ -18,9 +13,9 @@
 		<div class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
 
-                <input type="text" class="form-control" placeholder="Compañía" ng-model="classif.company">
-				<input type="text" class="form-control" placeholder="Clasificación" ng-model="search.classification">
-				<input type="text" class="form-control" placeholder="Nombre" ng-model="search.campaignName">
+                <input type="text" class="form-control" placeholder="Campaña" ng-model="search.campaignName">
+				<input type="text" class="form-control" placeholder="Programa" ng-model="search.classification">
+				<input type="text" class="form-control" placeholder="Subprograma" ng-model="classif.classification2">
 				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
 				<button class="btn btn-primary" ng-click="searchCampaigns(date)">Buscar</button>
 
@@ -35,16 +30,20 @@
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
-					<div class="navbar-header navbar-right">
-						<button type="button" class="btn btn-primary " ui-sref="newCampaign" ng-click="cleanSelect()">
-  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Añadir Campaña
-						</button>
-					</div>
+					<div class="navbar-header">{{classification.className}}</div>
 				</div>
 			</div>
 
-			<div class="panel-body back-sivale padding-cero">
-				<div data-ng-controller="getCampaignsAdmin" ng-cloak class="table-responsive">
+			<!-- 			<div class="input-group"> -->
+			<!-- 				<div class="input-group-addon"> -->
+			<!-- 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
+			<!-- 				</div> -->
+			<!-- 				<input class="form-control" type="text" -->
+			<!-- 					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" /> -->
+			<!-- 			</div> -->
+
+			<div class="panel-body back-sivale">
+				<div data-ng-controller="getCampaigns" ng-cloak class="table-responsive">
 					<table ng-table="tableCampaigns" class="table">
 						<tr ng-repeat="campaign in $data | filter:search:strict">
 
@@ -52,26 +51,17 @@
 								sortable="'campaignName'">{{campaign.campaignName}}</td>
 
 							<td title="'Clasificación'"
-								sortable="'classification'" class="col-md-2">
+								sortable="'classification'">
 									<span class="label label-default" ng-repeat="class in campaign.classification"
 									>{{class}}</span>
 
 							</td>
 
-							<td title="'Fecha Inicio'"
+							<td title="'Inicio'"
 								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td>
 
-							<td title="'Fecha Final'"
+							<td title="'Cierre'"
 								sortable="'endDate'">{{formatDate(campaign.endDate)}}</td>
-								
-							<td title="'Status'" 
-								sortable="'status'">{{campaign.status}}</td>
-							
-							<td title="'Total Ganado'" 
-								sortable="'totalWon'">{{campaign.totalWon}}</td>
-								
-							<td title="'Total Dispersado'" 
-								sortable="'totalScattered'">{{campaign.totalScattered}}</td>
 
 							<td><a href="#" data-ng-click="updateCampaign(campaign)"
 								ui-sref="campaign"> Ver</a></td>

@@ -16,6 +16,10 @@
 	<listener>
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
+
+
+
+
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -23,6 +27,7 @@
 			<param-name>actionPackages</param-name>
 			<param-value>com.twobig.sivale.actions</param-value>
 		</init-param>
+
 	</filter>
 	<filter-mapping>
 		<filter-name>struts2</filter-name>
@@ -35,11 +40,11 @@
 		<session-timeout>10</session-timeout>
 	</session-config>
 	<welcome-file-list>
-		<welcome-file>secured/login.html</welcome-file>
+		<welcome-file>secured/login.jsp</welcome-file>
 	</welcome-file-list>
 	<jsp-config>
 	    <jsp-property-group>
-	        <url-pattern>*.html</url-pattern>
+	        <url-pattern>*.jsp</url-pattern>
 	        <page-encoding>UTF-8</page-encoding>
 	    </jsp-property-group>
 	</jsp-config>

@@ -1,13 +1,8 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 	<!-- MODAL CONFIRMACION DE APROBACION/RECHAZO DE BUDGETS -->
-	<div class="modal fade" id="modalDeleteAttachedFile" tabindex="-1" role="dialog"
+	<div class="modal fade" id="modalChangeAttachedFile" tabindex="-1" role="dialog"
 		aria-labelledby="mySmallModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -18,21 +13,26 @@
 					</button>
 					
 					<h4 class="modal-title">
-						Confirmación de eliminacion
+						Confirmación
 					</h4>
 				</div>
 				
 				<div class="modal-body">
 					<div class="row margin-top10">
-						¿ Desea eliminar el archivo adjunto {{attachedFileTemp.fileName}}.{{attachedFileTemp.fileExtension}} ?
+						<div ng-if="attachedFileTemp.isPublic">
+							¿ Desea cambiar el archivo {{attachedFileTemp.fileName}}.{{attachedFileTemp.fileExtension}} como púlico ?
+						</div>
+						<div ng-if="!attachedFileTemp.isPublic">
+							¿ Desea cambiar el archivo {{attachedFileTemp.fileName}}.{{attachedFileTemp.fileExtension}} como privado ?
+						</div>
 					</div>				
 				</div>
 				
 				<div class="modal-footer">
 					<p class="text-center">
-						<button  type="button" class="btn btn-success" ng-click="deleteAttacherFile()"
+						<button  type="button" class="btn btn-success" ng-click="updateAttacherFile()" 
 						data-dismiss="modal">
-								Eliminar
+								Cambiar
 						</button>
 					</p>
 				</div>

@@ -35,9 +35,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
-	@Action(value="login", results = { @Result(name="user", location="/secured/home_user.html"),
-			@Result(name="admin", location="/secured/home_admin.html"),
-			@Result(name = ERROR, location = "/secured/login.html")})
+	@Action(value="login", results = { @Result(name="user", location="/secured/home_user.jsp"),
+			@Result(name="admin", location="/secured/home_admin.jsp"),
+			@Result(name = ERROR, location = "/secured/login.jsp")})
 	public String login() {
 		
 		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
@@ -69,7 +69,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		
 	}
 
-	@Action(value="logout", results = @Result(name="success", location="/secured/login.html"))
+	@Action(value="logout", results = @Result(name="success", location="/secured/login.jsp"))
 	public String logout() {
 		
 		session.clear();

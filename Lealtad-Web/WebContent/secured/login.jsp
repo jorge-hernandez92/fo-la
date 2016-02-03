@@ -1,9 +1,8 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Login</title>
 
 <!-- Bootstrap -->
@@ -17,7 +16,7 @@
 	<div class="container">
 		<form class="form-signin back-sivale" method="post" action="login">
 			<img src="img/logo-login.png"> <label for="inputEmail"
-				class="sr-only">Usuario</label> <input type="text"
+				class="sr-only">Usuario o Tarjeta</label> <input type="text"
 				id="inputUserName" class="form-control" placeholder="Id Usuario"
 				required="" autofocus="" name="username"> <label
 				for="inputPassword" class="sr-only">Password</label> <input

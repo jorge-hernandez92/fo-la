@@ -1,12 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- <script src="js/jquery-1.10.2.js"></script> -->
-<!-- <script src="js/tree.js"></script> -->
-</head>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <!-- <div class="container panel breadcrumb_sivale"> -->
 <!-- 	<div class=" navbar"> -->

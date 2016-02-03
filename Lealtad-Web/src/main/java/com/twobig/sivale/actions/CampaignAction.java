@@ -1,6 +1,7 @@
 package com.twobig.sivale.actions;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -461,11 +462,12 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public String addCampaignAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
-
+		
 		String classificationCmpJSON = request.getParameter("formNewCampaign");
+		System.out.println("*********** " + classificationCmpJSON + "******************");
 		
 		FormNewCampaignBean formNewCampaign;
-
+		
 		if (!classificationCmpJSON.equals("undefined")) {
 
 			formNewCampaign = new FormNewCampaignBean();
@@ -496,6 +498,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		System.out.println(formNewCampaign.toString());
 		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
 			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+		
+		System.out.println("*********** " + formNewCampaign.getCampaignName() + "******************");
 		
 		campaignService.insertCampaign(formNewCampaign);
 		

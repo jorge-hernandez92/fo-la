@@ -434,27 +434,27 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 
 	.state('home', {
 		url : '/home',
-		templateUrl : 'templates/homeTh2.html'
+		templateUrl : 'templates/homeTh2.jsp'
 	})
 
 	.state('campaigns', {
 		url : '/campañas',
-		templateUrl : 'templates/campaigns_user.html'
+		templateUrl : 'templates/campaigns_user.jsp'
 	})
 
 	.state('campaign', {
 		url : '/campaña',
-		templateUrl : 'templates/campaignDetail_user.html'
+		templateUrl : 'templates/campaignDetail_user.jsp'
 	})
 
 	.state('publication', {
 		url : '/publicacion',
-		templateUrl : 'templates/publication_user.html'
+		templateUrl : 'templates/publication_user.jsp'
 	})
 	
 	.state('transactions', {
 		url : '/transacciones',
-		templateUrl : 'templates/homeTh.html'
+		templateUrl : 'templates/homeTh.jsp'
 	})
 });
 

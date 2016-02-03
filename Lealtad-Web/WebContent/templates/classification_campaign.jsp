@@ -1,3 +1,5 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <div class="navbar">
 	<ol class="breadcrumb breadcrumb-arrow">
 		<li class="active"><span>Inicio</span></li>
@@ -8,7 +10,7 @@
 	<!-- Default panel contents -->
 	<div class="panel-heading">
 		<div class="container-fluid">
-			<div class="navbar-header">Mis clasificaciones de campaña</div>
+			<div class="navbar-header">Mis clasificaciones de campaÃ±a</div>
 		</div>
 	</div>
 
@@ -17,7 +19,7 @@
 			<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
 		</div>
 		<input class="form-control" type="text"
-			data-ng-model="filters.myfilter" placeholder="Buscar Clasificación" />
+			data-ng-model="filters.myfilter" placeholder="Buscar ClasificaciÃ³n" />
 	</div>
 
 	<div class="panel-body">
@@ -25,13 +27,13 @@
 			<table ng-table="tableClassifications" class="table">
 				<tr ng-repeat="classification in $data">
 
-					<td title="'Nombre de Compañia'" header-class="'text-left'"
+					<td title="'Nombre de CompaÃ±ia'" header-class="'text-left'"
 						sortable="'companyName'">{{classification.companyName}}</td>
 
 					<td title="'Nombre de Clasificacion'" header-class="'text-left'"
 						sortable="'className'">{{classification.className}}</td>
 
-					<td title="'Descripción'" header-class="'text-left'"
+					<td title="'DescripciÃ³n'" header-class="'text-left'"
 						sortable="'description'">{{classification.description}}</td>
 
 					<td>

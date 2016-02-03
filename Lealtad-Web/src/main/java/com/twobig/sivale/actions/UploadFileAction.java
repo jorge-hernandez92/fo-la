@@ -67,8 +67,8 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	public static final String SUCCESS_DELETE_PUBLICATION 	= "Publicación eliminada correctamente";
 	public static final String SUCCESS_UPDATE_PUBLICATION 	= "Publicación actualizada correctamente";
 	
-	@Action(value = "UploadFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
-			@Result(name = ERROR, location = "/secured/home_admin.html")},
+	@Action(value = "UploadFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
+			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
 	        interceptorRefs={
 			        @InterceptorRef(params={"maximumSize","104857600"}, value="fileUpload"),
 			        @InterceptorRef("defaultStack"),
@@ -219,8 +219,8 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 
 	}
 	
-	@Action(value = "UpdatePublicationAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.html"),
-			@Result(name = ERROR, location = "/secured/home_admin.html")},
+	@Action(value = "UpdatePublicationAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
+			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
 	        interceptorRefs={
 			        @InterceptorRef(params={"maximumSize","104857600"}, value="fileUpload"),
 			        @InterceptorRef("defaultStack"),

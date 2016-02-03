@@ -116,8 +116,8 @@
 											</div>
 										</div>
 									</div>
-									<jsp:include page="modals/deleteAttachedFileConfirm.html"/>
-									<jsp:include page="modals/changeAttachedFileConfirme.html"/>
+									<jsp:include page="modals/deleteAttachedFileConfirm.jsp"/>
+									<jsp:include page="modals/changeAttachedFileConfirme.jsp"/>
 								</div>
 								</td>
 							</tr>

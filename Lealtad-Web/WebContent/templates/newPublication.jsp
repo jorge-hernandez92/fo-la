@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+
 <div class="panel-body back-sivale">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
@@ -75,7 +71,7 @@
 								data-show-upload="false" data-show-remove="false">
 							<!-- <div class="col-md-2">
 						<label class="checkbox span4"> <input type="checkbox"
-							value="all" id="allstates" name="all" />Archivo Público
+							value="all" id="allstates" name="all" />Archivo PÃºblico
 						</label>
 					</div> -->
 						</div>

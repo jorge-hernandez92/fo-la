@@ -1,11 +1,10 @@
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 <!DOCTYPE html>
 <html lang="es" ng-app="app" data-ng-controller="campaignController">
 <head ng-cloak>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-<title>Inicio</title>
+
+<title>Lealtad-Incentivos</title>
 
 <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -164,14 +163,14 @@
 		</div>
 
 		<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
-			<button class="c-menu__close">← Close Menu</button>
+			<button class="c-menu__close"> Cerrar Menú</button>
 			<ul class="c-menu__items">
 				<li class="c-menu__item"><a ui-sref="home"
 					class="c-menu__link">Movimientos</a></li>
 				<li class="c-menu__item" ng-if="classification"><a
 					ui-sref="campaigns" class="c-menu__link" ng-if="menuCampaign && !companyMenu">Campañas</a></li>
 <!-- 				<li class="c-menu__item" ng-if="companyMenu"><a ui-sref="home" -->
-<!-- 					class="c-menu__link">Compañias</a></li> -->
+<!-- 					class="c-menu__link">Compañías</a></li> -->
 			</ul>
 		</nav>
 
@@ -219,7 +218,7 @@
 						<!-- 						</div> -->
 						<div class="shop-menu pull-right">
 							<p>
-								</br> Sí Vale México, S.A. de CV. </br> Av. Paseo de la Reforma No. 284,
+								</br> Sí­ Vale México, S.A. de CV. </br> Av. Paseo de la Reforma No. 284,
 								Piso 23. Col. Juárez, </br> Del. Cuauhtémoc, C.P. 06600, México, D.F.
 							</p>
 						</div>

@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-</head>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
 
 <div class="panel-body back-sivale">
  
@@ -55,7 +50,7 @@
 <!-- 							<img class="manImg" src="img/home/correo.png"></img> -->
 <!-- 						</div> -->
 <!-- 						<div class="col-xs-9 text-right"> -->
-<!-- 							<div class="font-title-item">Correo Electrónico</div> -->
+<!-- 							<div class="font-title-item">Correo ElectrÃ³nico</div> -->
 <!-- 							<div id="quickfit-email" -->
 <!-- 								title="${sessionScope.userDetails.email}" -->
 <!-- 								class="huge font-size-email">{{user.email}}</div> -->
