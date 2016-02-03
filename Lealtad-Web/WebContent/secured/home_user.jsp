@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="es" ng-app="app" data-ng-controller="campaignController">
+<html ng-app="app" data-ng-controller="campaignController">
 <head ng-cloak>
 
 <title>Lealtad-Incentivos</title>

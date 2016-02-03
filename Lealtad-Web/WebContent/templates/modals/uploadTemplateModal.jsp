@@ -29,14 +29,14 @@
 					<div class="row margin-top10">
 						<div class="col-md-4">Documento html</div>
 						<div class="col-md-8">
-							<input type="file" name="file" class="test" accept=".html">
+							<input type="file" name="file" class="test" accept=".html" required>
 						</div>
 					</div>				
 				</div>
 				
 				<div class="modal-footer">
 					<p class="text-center">
-						<button  type="submit" class="btn btn-success" form="updateTemplate">
+						<button  type="submit" class="btn btn-primary" form="updateTemplate">
 								Cambiar
 						</button>	
 					</p>

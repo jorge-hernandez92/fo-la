@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="es" ng-app="app"
+<html ng-app="app"
 	data-ng-controller="campaignAdminController">
-<head ng-cloak>
+<head>
 
 <title>Lealtad-Incentivos</title>
 
@@ -21,7 +21,7 @@
 <script src="js/jquery-2.1.4.min.js"></script>
 <script src="js/fileinput.js" type="text/javascript"></script>
 <script src="js/fileinput_locale_es.js" type="text/javascript"></script>
-<script src="js/angular.min.js"></script>
+<script src="js/angular.js"></script>
 <script src="js/angular-ui-router.min.js"></script>
 <script src="js/ng-table.min.js"></script>
 <script src="js/appAdmin.js"></script>

@@ -58,10 +58,10 @@
 							</td>
 
 							<td title="'Inicio'"
-								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td>
+								sortable="'startDate'">{{campaign.startDate | date:'dd/MM/yyyy'}}</td>
 
 							<td title="'Cierre'"
-								sortable="'endDate'">{{formatDate(campaign.endDate)}}</td>
+								sortable="'endDate'">{{campaign.endDate | date:'dd/MM/yyyy'}}</td>
 
 							<td><a href="#" data-ng-click="updateCampaign(campaign)"
 								ui-sref="campaign"> Ver</a></td>

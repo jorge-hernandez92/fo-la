@@ -54,10 +54,10 @@
 							</td>
 
 							<td title="'Fecha Inicio'"
-								sortable="'startDate'">{{formatDate(campaign.startDate)}}</td>
+								sortable="'startDate'">{{campaign.startDate | date:'dd/MM/yyyy'}}</td>
 
 							<td title="'Fecha Final'"
-								sortable="'endDate'">{{formatDate(campaign.endDate)}}</td>
+								sortable="'endDate'">{{campaign.endDate | date:'dd/MM/yyyy'}}</td>
 								
 							<td title="'Status'" 
 								sortable="'status'">{{campaign.status}}</td>

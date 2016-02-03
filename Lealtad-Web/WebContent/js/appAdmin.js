@@ -66,7 +66,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							method : 'POST',
 							url : 'updateStatusPublicationAction',
 							data : 'publication=' + data,
-							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+							headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
 							  $scope.showNotify(data);
 						  }).error(function(data, status, headers, config) {
@@ -111,7 +111,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							method : 'POST',
 							url : 'deleteAttachedFileAction',
 							data : 'attachedFile=' + data,
-							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+							headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
 							  if(data.code = SUCCESS_CODE){
 								  $scope.removeAttachedFile($scope.attachedFileTemp.index);
@@ -131,7 +131,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							method : 'POST',
 							url : 'updateAttachedFileAction',
 							data : 'attachedFile=' + data,
-							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+							headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
 							  $scope.showNotify(data);
 						  }).error(function(data, status, headers, config) {
@@ -152,7 +152,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							method : 'POST',
 							url : 'uploadFileAction',
 							data : 'file=' + data,
-							headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+							headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 						  }).success(function(data, status, headers, config) {
 							  
 						  }).error(function(data, status, headers, config) {
@@ -187,7 +187,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 									method : 'POST',
 									url : 'getPublicationsAction',
 									data : 'campaign=' + data,
-									headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 								})
 								.success(
 										function(data, status, headers, config) {
@@ -231,7 +231,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							url : 'showPublicationAction',
 							data : 'publication=' + data,
 							headers : {
-								'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8'
+								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
 						}).success(
 								function(data, status, headers, config) {
@@ -259,7 +259,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							url : 'showPublicationAction',
 							data : 'publication=' + data,
 							headers : {
-								'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8'
+								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
 						}).success(
 								function(data, status, headers, config) {
@@ -452,7 +452,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						url : 'searchCampaignsAdminAction',
 						data : 'searchCampaign=' + data,
 						headers : {
-							'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8'
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 						}
 					}).success(
 							function(data, status, headers, config) {
@@ -486,8 +486,10 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						$http.get('getPublicationTypesAction').success(
 								function(data, status, headers, config) {
 
-									$scope.selectPublicationType.availableOptions = data;
-						
+									if(data.length > 0){
+										$scope.selectPublicationType.availableOptions = data;
+										$scope.selectPublicationType.selectedOption = data[0];
+									}
 								}).error(
 								function(data, status, headers, config) {
 									
@@ -783,7 +785,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								method : 'POST',
 								url : 'getCampaignUpdateAction',
 								data : 'campaignDetail=' + data,
-								headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+								headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 							  }).success(function(data, status, headers, config) {
 								  console.log(JSON.stringify(data));
 								  
@@ -835,7 +837,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							url : 'addCampaignAction',
 							data : 'formNewCampaign=' + data,
 							headers : {
-								'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8'
+								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
 						}).success(
 								function(data, status, headers, config) {
@@ -875,7 +877,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							url : 'updateCampaignAction',
 							data : 'formNewCampaign=' + data,
 							headers : {
-								'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8'
+								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
 						}).success(
 								function(data, status, headers, config) {
@@ -960,7 +962,7 @@ appres.service('upload', ['$http', '$q', function ($http, $q)
 			method : 'POST',
 			url : 'UploadFileAction',
 			data : 'file=' + data,
-			headers : { 'Content-Type' : 'application/x-www-form-urlencoded; charset=utf-8' }
+			headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 		  }).success(function(data, status, headers, config) {
 			  
 		  }).error(function(data, status, headers, config) {
