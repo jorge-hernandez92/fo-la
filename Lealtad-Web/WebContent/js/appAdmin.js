@@ -60,7 +60,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						
 						publication.isEnable = !publication.isEnable;
 						
-						var data = escape(angular.toJson(publication));
+						var data = angular.toJson(publication);
 						
 						$http({
 							method : 'POST',
@@ -105,7 +105,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.deleteAttacherFile = function() {
 						
-						var data = escape(angular.toJson($scope.attachedFileTemp));
+						var data = angular.toJson($scope.attachedFileTemp);
 						
 						$http({
 							method : 'POST',
@@ -125,7 +125,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.updateAttacherFile = function() {
 						
-						var data = escape(angular.toJson($scope.attachedFileTemp));
+						var data = angular.toJson($scope.attachedFileTemp);
 						
 						$http({
 							method : 'POST',
@@ -146,7 +146,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						console.log(file);
 						
 						
-						var data = escape(angular.toJson($rootScope.files.html));
+						var data = angular.toJson($rootScope.files.html);
 						
 						$http({
 							method : 'POST',
@@ -181,7 +181,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 
 					$scope.getCampaign = function() {
 
-						var data = escape(angular.toJson($scope.campaign));
+						var data = angular.toJson($scope.campaign);
 
 						$http({
 									method : 'POST',
@@ -224,7 +224,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 
 					$scope.getAttachedFiles = function() {
 
-						var data = escape(angular.toJson($scope.publication));
+						var data = angular.toJson($scope.publication);
 
 						$http({
 							method : 'POST',
@@ -252,7 +252,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.getAttachedFilesByPublication = function() {
 
-						var data = escape(angular.toJson($scope.publication));
+						var data = angular.toJson($scope.publication);
 
 						$http({
 							method : 'POST',
@@ -444,7 +444,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$rootScope.search.classification = STRING_DEFAULT;
 					$rootScope.classif.company = STRING_DEFAULT;
 					
-					var data = escape(angular.toJson(searchCampaign));
+					var data = angular.toJson(searchCampaign);
 					console.log(JSON.stringify(searchCampaign));
 
 					$http({
@@ -779,7 +779,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.getCampaignForm = function(){
 						
-						var data = escape(angular.toJson($scope.campaign));
+						var data = angular.toJson($scope.campaign);
 
 						$http({
 								method : 'POST',
@@ -829,8 +829,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							}
 						}
 						
-						var data = escape(angular.toJson(campaignForm));
-						console.log(JSON.stringify(data));
+						var data =angular.toJson(campaignForm);
 						
 						$http({
 							method : 'POST',
@@ -869,7 +868,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							}
 						}
 						
-						var data = escape(angular.toJson(campaignForm));
+						var data = angular.toJson(campaignForm);
 						console.log(JSON.stringify(data));
 						
 						$http({
@@ -956,7 +955,7 @@ appres.service('upload', ['$http', '$q', function ($http, $q)
 		//var formData = new FormData();
 		//formData.append('file', file);
 		
-		var data = escape(angular.toJson(file));
+		var data = angular.toJson(file);
 		
 		$http({
 			method : 'POST',

@@ -37,7 +37,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	
 	$scope.getCampaigns = function() {
 
-		var data = escape(angular.toJson($scope.classification));
+		var data = angular.toJson($scope.classification);
 		console.log(JSON.stringify(data));
 
 		$http({
@@ -107,7 +107,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 	
 	$scope.getCampaign = function() {
 
-		var data = escape(angular.toJson($scope.campaign));
+		var data = angular.toJson($scope.campaign);
 
 		$http({
 			method : 'POST',
@@ -151,7 +151,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 
 	$scope.getAttachedFiles = function() {
 
-		var data = escape(angular.toJson($scope.publication));
+		var data = angular.toJson($scope.publication);
 
 		$http({
 			method : 'POST',
@@ -294,7 +294,7 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 		$rootScope.search.classification = STRING_DEFAULT;
 		$rootScope.classif.classification2 = STRING_DEFAULT;
 		
-		var data = escape(angular.toJson(searchCampaign));
+		var data = angular.toJson(searchCampaign);
 		console.log(JSON.stringify(searchCampaign));
 
 		$http({
