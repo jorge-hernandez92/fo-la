@@ -34,7 +34,7 @@
 									<div class="col-md-4 text-right">Nombre de Publicación</div>
 									<div class="col-md-8">
 										<input type="text" class="form-control" name="publication"
-											ng-model="publication.name">
+											ng-model="publication.name" required>
 									</div>
 								</div>
 
@@ -83,7 +83,7 @@
 									<div class="col-md-4 text-right">Descripción</div>
 									<div class="col-md-8">
 										<textarea class="form-control" rows="3" name="description"
-											ng-model="publication.description"></textarea>
+											ng-model="publication.description" required></textarea>
 									</div>
 								</div>
 

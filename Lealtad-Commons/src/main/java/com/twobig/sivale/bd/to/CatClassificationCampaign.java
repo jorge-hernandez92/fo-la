@@ -105,6 +105,40 @@ public class CatClassificationCampaign implements java.io.Serializable {
 		this.companyId = companyId;
 	}
 
+	
+	
+	/* (non-Javadoc)
+	 * @see java.lang.Object#hashCode()
+	 */
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result
+				+ ((catClassificationCampaignsId == null) ? 0 : catClassificationCampaignsId.hashCode());
+		return result;
+	}
+
+	/* (non-Javadoc)
+	 * @see java.lang.Object#equals(java.lang.Object)
+	 */
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CatClassificationCampaign other = (CatClassificationCampaign) obj;
+		if (catClassificationCampaignsId == null) {
+			if (other.catClassificationCampaignsId != null)
+				return false;
+		} else if (!catClassificationCampaignsId.equals(other.catClassificationCampaignsId))
+			return false;
+		return true;
+	}
+
 	@Override
 	public String toString() {
 		return "CatClassificationCampaign [catClassificationCampaignsId=" + catClassificationCampaignsId

@@ -1,6 +1,7 @@
 package com.twobig.sivale.service.impl;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
@@ -87,6 +88,14 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			catClassificationCampaigParents.add(catClassificationCampaign);
 		}
 
+		Set<CatClassificationCampaign> linkedHashSet2 = new HashSet<CatClassificationCampaign>();
+
+		linkedHashSet2.addAll(catClassificationCampaigParents);
+
+		catClassificationCampaigParents.clear();
+
+		catClassificationCampaigParents.addAll(linkedHashSet2);
+		  
 		return catClassificationCampaigParents;
 	}
 

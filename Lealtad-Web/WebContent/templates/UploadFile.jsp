@@ -32,14 +32,14 @@
 							<div class="row margin-top10">
 								<div class="col-md-4">Nombre de Publicación</div>
 								<div class="col-md-8">
-									<input type="text" class="form-control" name="publication">
+									<input type="text" class="form-control" name="publication" required>
 								</div>
 							</div>
 
 							<div class="row margin-top10">
 								<div class="col-md-4">Tipo de Publicación</div>
 								<div class="col-md-8" data-ng-controller="getPublicationTypes">
-									<select class="form-control" name="selected"
+									<select required class="form-control" name="selected"
 										ng-options="option.name for option in selectPublicationType.availableOptions track by option.id"
 										ng-model="selectPublicationType.selectedOption">
 									</select>
@@ -49,21 +49,21 @@
 							<div class="row margin-top10">
 								<div class="col-md-4">Documento html</div>
 								<div class="col-md-8">
-									<input type="file" name="file" class="test" accept=".html">
+									<input type="file" name="file" class="test" accept=".html" required>
 								</div>
 							</div>
 
 							<div class="row margin-top10">
 								<div class="col-md-4">Documento excel</div>
 								<div class="col-md-8">
-									<input type="file" name="file" class="test" accept=".xlsx">
+									<input type="file" name="file" class="test" accept=".xlsx" required>
 								</div>
 							</div>
 
 							<div class="row margin-top10">
 								<div class="col-md-4">Descripción</div>
 								<div class="col-md-8">
-									<textarea class="form-control" rows="3" name="description"></textarea>
+									<textarea class="form-control" rows="3" name="description" required></textarea>
 								</div>
 							</div>
 

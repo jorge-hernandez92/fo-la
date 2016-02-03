@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 <!DOCTYPE html>
-<html lang="es" ng-app="app" data-ng-controller="campaignController">
+<html ng-app="app" data-ng-controller="campaignController">
 <head ng-cloak>
 
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta name="viewport"  content="width=device-width, initial-scale=1">
+    
 <title>Lealtad-Incentivos</title>
 
 <!-- Bootstrap -->

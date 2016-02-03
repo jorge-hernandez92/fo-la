@@ -20,7 +20,7 @@
 					<a href="#" ui-sref="updateCampaign" class="white">Editar Campaña</a>
 				</div>
 				<div class="col-md-4">
-					Duración {{formatDate(campaign.startDate)}} al {{formatDate(campaign.endDate)}}
+					Duración {{campaign.startDate | date:'dd/MM/yyyy'}} al {{campaign.endDate | date:'dd/MM/yyyy'}}
 				</div>
 				</div>
 			</div>
@@ -37,7 +37,7 @@
 								sortable="'name'">{{publication.name}}</td>
 
 							<td title="'Fecha de Publicación'" header-class="'text-left'"
-								sortable="'publishedDate'">{{formatDate(publication.publishedDate)}}</td>
+								sortable="'publishedDate'">{{publication.publishedDate | date:'dd/MM/yyyy'}}</td>
 
 							<td><a href="#"
 								data-ng-click="updatePublication(publication)"

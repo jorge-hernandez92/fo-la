@@ -25,7 +25,7 @@
 				
 				<div class="modal-footer">
 					<p class="text-center">
-						<button  type="button" class="btn btn-success" ng-click="deleteAttacherFile()"
+						<button  type="button" class="btn btn-primary" ng-click="deleteAttacherFile()"
 						data-dismiss="modal">
 								Eliminar
 						</button>

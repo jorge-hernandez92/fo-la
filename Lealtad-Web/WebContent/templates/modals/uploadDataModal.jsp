@@ -29,14 +29,14 @@
 					<div class="row margin-top10">
 						<div class="col-md-4">Documento excel</div>
 						<div class="col-md-8">
-							<input type="file" name="file" class="test" accept=".xlsx">
+							<input type="file" name="file" class="test" accept=".xlsx" required>
 						</div>
 					</div>				
 				</div>
 				
 				<div class="modal-footer">
 					<p class="text-center">
-						<button  type="submit" class="btn btn-success" form="updateExcel">
+						<button  type="submit" class="btn btn-primary" form="updateExcel">
 								Cambiar
 						</button>	
 					</p>
