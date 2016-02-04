@@ -47,9 +47,11 @@
 								data-ng-click="updatePublication(publication)"
 								ui-sref="updatePublication">Editar</a>
 							
-							<td><input ng-model="publication.isEnable"
+							<td title="'Activar'" header-class="'text-left'">
+								<input ng-model="publication.isEnable"
 								name="{{publication.publicationId}}" type="checkbox" ng-change="updateStatusPublication(publication)"
 								toggle-btn on-type="warning">
+								
 								
 						</tr>
 					</table>

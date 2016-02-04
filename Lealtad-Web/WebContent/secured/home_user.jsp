@@ -169,7 +169,7 @@
 			<button class="c-menu__close"> Cerrar Menú</button>
 			<ul class="c-menu__items">
 				<li class="c-menu__item"><a ui-sref="home"
-					class="c-menu__link">Movimientos</a></li>
+					class="c-menu__link">Inicio</a></li>
 				<li class="c-menu__item" ng-if="classification"><a
 					ui-sref="campaigns" class="c-menu__link" ng-if="menuCampaign && !companyMenu">Campañas</a></li>
 <!-- 				<li class="c-menu__item" ng-if="companyMenu"><a ui-sref="home" -->
