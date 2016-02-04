@@ -1,7 +1,8 @@
 package com.twobig.sivale.service.impl;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -109,6 +110,8 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			}
 		}
 
+		Collections.reverse(listCampaignDetailBean);
+		
 		return listCampaignDetailBean;
 	}
 	
@@ -190,6 +193,8 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			campaignDetailAdminBean.setCatClassificationCampaign(ccc);
 			listCampaignDetailAdminBean.add(campaignDetailAdminBean);
 		}
+		
+		Collections.reverse(listCampaignDetailAdminBean);
 		
 		return listCampaignDetailAdminBean; 
 	}

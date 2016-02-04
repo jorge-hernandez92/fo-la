@@ -57,75 +57,11 @@
 									</div>
 								</div>
 
-								<div class="col-md-10" ng-if="!companyMenu">
-									<div class="div-fit-img">
+								<div class="col-md-10">
+									<div class="div-fit-img" ng-if="!companyMenu">
 										<img src={{logo}} ui-sref="#" ng-if="logo">
 									</div>
-								</div>
-								<div class="col-md-10" class="container" ng-if="companyMenu">
-									<div class="row">
-										<div ng-carousel ng-carousel-name="example-carousel2"
-											ng-carousel-watch="classifications">
-											<slidecontainer> <slide
-												ng-repeat="class in classifications">
-											<div class="div-fit">
-												<a href="#" data-ng-click="selectClassification(class)"
-													ui-sref="campaigns"> <img
-													src="img/company_logo/{{class.catViews.logos}}/header.png">
-
-												</a>
-											</div>
-											</slide> </slidecontainer>
-											<div class="carousel-arrow carousel-arrow-left">
-											<a class="left carousel-control" href="#" data-slide="prev"
-												ng-click="Carousel.get('example-carousel2').previous()">
-    											<span class="icon-prev"></span>
-  											</a>
-  											</div>
-  											<div class="carousel-arrow carousel-arrow-right">
-  											<a class="right carousel-control" href="#" data-slide="next"
-												ng-click="Carousel.get('example-carousel2').next()">
-    											<span class="icon-next"></span>
-  											</a>
-  											</div>
-										</div>
-										<!-- 										<div ng-carousel ng-carousel-name="example-carousel2"> -->
-										<!-- 											<slidecontainer>  -->
-										<!-- 												<slide ng-repeat="class in classifications"> -->
-										<!-- 													<a href="#"> <img -->
-										<!-- 														src="img/company_ogo/{{class.catViews.logos}}/header.png"> -->
-
-										<!-- 													</a> -->
-										<!-- 												</slide>  -->
-										<!-- 											</slidecontainer> -->
-										<!-- 											<div class="carousel-arrow carousel-arrow-left"> -->
-										<!-- 												<button class="demo-nav" -->
-										<!-- 													ng-click="Carousel.get('example-carousel2').previous()">back</button> -->
-										<!-- 											</div> -->
-										<!-- 											<div class="carousel-arrow carousel-arrow-right"> -->
-										<!-- 												<button class="demo-nav" -->
-										<!-- 													ng-click="Carousel.get('example-carousel2').next()">forth</button> -->
-										<!-- 											</div> -->
-										<!-- 										</div> -->
-										<!-- 										<div class="col-sm-6 col-md-4 back-sivale" -->
-										<!-- 											ng-repeat="class in classifications"> -->
-										<!-- 											<div class="thumbnail"> -->
-										<!-- 												<div class="thumbnail2 div-sivale portfolio-box"> -->
-										<!-- 													<div class="thumbnail2_wrapper"> -->
-										<!-- 														<a href="#" data-ng-click="updateClassification(class)" -->
-										<!-- 															ui-sref="transactions"> <img -->
-										<!-- 															src="img/company_logo/{{class.catViews.logos}}/header.png" -->
-										<!-- 															class="img-responsive" alt=""> -->
-										<!-- 															<div class="portfolio-box-caption"> -->
-										<!-- 																<div class="portfolio-box-caption-content"> -->
-										<!-- 																	<div class="project-name">{{class.className}}</div> -->
-										<!-- 																</div> -->
-										<!-- 															</div> -->
-										<!-- 														</a> -->
-										<!-- 													</div> -->
-										<!-- 												</div> -->
-										<!-- 											</div> -->
-										<!-- 										</div> -->
+									<div class="div-fit-img" ng-if="companyMenu">
 									</div>
 								</div>
 							</div>
@@ -168,12 +104,8 @@
 		<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
 			<button class="c-menu__close"> Cerrar Menú</button>
 			<ul class="c-menu__items">
-				<li class="c-menu__item"><a ui-sref="home"
-					class="c-menu__link">Inicio</a></li>
-				<li class="c-menu__item" ng-if="classification"><a
-					ui-sref="campaigns" class="c-menu__link" ng-if="menuCampaign && !companyMenu">Campañas</a></li>
-<!-- 				<li class="c-menu__item" ng-if="companyMenu"><a ui-sref="home" -->
-<!-- 					class="c-menu__link">Compañías</a></li> -->
+				<li class="c-menu__item"><a href="#" ng-click="goToHome()" class="c-menu__link">Inicio</a></li>
+				<li class="c-menu__item"><a href="#" ng-click="goToCampaigs()" class="c-menu__link">Campañas</a></li>
 			</ul>
 		</nav>
 
