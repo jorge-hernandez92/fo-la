@@ -57,6 +57,8 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
 	public String uploadHtmlAction() {
 
+		boolean delete = true;
+		
 		System.out.println("Upload html files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
@@ -72,6 +74,9 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				return ERROR;
 			}
 			
+			if(publication.getTemplateFilePath().equals(getFileFileName()[0]))
+				delete = false;
+				
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();
 
 			try {
@@ -92,7 +97,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 			String status =  publicationService.updatePublication(publicationBean);
 
-			if( status.equals("SUCCESS")){
+			if( status.equals("SUCCESS") && delete){
 				
 				try{
 					
@@ -121,6 +126,8 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
 	public String uploadExcelAction() {
 
+		boolean delete = true;
+		
 		System.out.println("Upload excel files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
@@ -136,6 +143,9 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				return ERROR;
 			}
 			
+			if(publication.getDataFilePath().equals(getFileFileName()[0]))
+				delete = false;
+			
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();
 
 			try {
@@ -145,16 +155,18 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				return ERROR;
 			}
 			
-			try{
-				
-				String pathfile = directory + File.separator + publication.getDataFilePath();
-				System.out.println("**** archivo adjunto: "+ pathfile);
-				File file = new File(pathfile);
-				if(file.delete())
-				System.out.println("**** Se eliminó Excel");
-			
-			}catch(Exception e){
-				System.out.println("Error al eliminar Excel");
+			if (delete) {
+				try {
+
+					String pathfile = directory + File.separator + publication.getDataFilePath();
+					System.out.println("**** archivo adjunto: " + pathfile);
+					File file = new File(pathfile);
+					if (file.delete())
+						System.out.println("**** Se eliminó Excel");
+
+				} catch (Exception e) {
+					System.out.println("Error al eliminar Excel");
+				}
 			}
 			
 			publication.setDataFilePath(this.getFileFileName()[0]);
