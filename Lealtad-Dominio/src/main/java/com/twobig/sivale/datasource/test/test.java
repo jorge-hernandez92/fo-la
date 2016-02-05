@@ -171,6 +171,8 @@ public class test {
 			
 			System.out.println(publicationBean.getHtml());
 		}
+		else
+			System.out.println("No existe la informacion solicitada");
 	}
 			
 	public static void filterCampaigns(ClassPathXmlApplicationContext context) {

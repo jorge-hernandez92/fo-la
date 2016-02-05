@@ -89,51 +89,56 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 		Integer userId = userDAO.getUserIdByCard(cardNumber);
 		
 		
-		
-		List<TUserData>  tUserDate = tUserDateDAO.getTUserDataByPublicationIdAndUserId(userId, publicationId);
-		TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
-		PublicationBean publication = new PublicationBean();
+		if(userId != null){
+			List<TUserData>  tUserDate = tUserDateDAO.getTUserDataByPublicationIdAndUserId(userId, publicationId);
+			
+			TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
+			PublicationBean publication = new PublicationBean();
 
-		if (tUserDate.size() != 0 || profile == 0 ) {
+			if (tUserDate.size() != 0 ) {
 
-			String data = null;
-			
-			if(tUserDate.size() != 0)
-				data = tUserDate.get(0).getData();
-			
-			HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
-			
-			String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
-					+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
-			System.out.println("htmlPath : " + htmlPath);
-			
-			String html = htmlParser.getHTML(htmlPath, data);
+				String data = null;
+				
+				if(tUserDate.size() != 0)
+					data = tUserDate.get(0).getData();
+				
+				HTMLParserServiceImpl htmlParser = new HTMLParserServiceImpl();
+				
+				String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
+						+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
+				System.out.println("htmlPath : " + htmlPath);
+				
+				String html = htmlParser.getHTML(htmlPath, data);
 
-			publication.setHtml(html);
+				publication.setHtml(html);
 
-			//SEPARAR OBTENER ARCHIVOS ADJUNTOS EN UN NUEVO SERVICIO 
-			
-			List<TAttachedFile> files = tAttachedFile.getTAttachedFileByPublicationId(publicationId);
-			
-			
-			//PARA EL PARTICIPANTE SOLO TRAER LOS QUE ESTAN PUBLICOS (ARCHIVOS ADJUNTOS)
-			if ( CommonsConstants.CAT_PROFILE_ADMIN != profile ){
-				for (int i = 0 ; i < files.size() ; i++){
-					if ( !files.get(i).getIsPublic()  ){
-						files.remove(files.get(i));
-						i--;
+				//SEPARAR OBTENER ARCHIVOS ADJUNTOS EN UN NUEVO SERVICIO 
+				
+				List<TAttachedFile> files = tAttachedFile.getTAttachedFileByPublicationId(publicationId);
+				
+				
+				//PARA EL PARTICIPANTE SOLO TRAER LOS QUE ESTAN PUBLICOS (ARCHIVOS ADJUNTOS)
+				if ( CommonsConstants.CAT_PROFILE_ADMIN != profile ){
+					for (int i = 0 ; i < files.size() ; i++){
+						if ( !files.get(i).getIsPublic()  ){
+							files.remove(files.get(i));
+							i--;
+						}
 					}
 				}
+				
+				publication.setListFiles(files);
+				return publication;
+				
+			} else {
+				System.out.println("lista vacia");
+				return null;
 			}
-			
-			publication.setListFiles(files);
-			
 
-		} else {
-			System.out.println("lista vacia");
-			return null;
+		}
+		else{
+			return null; 
 		}
 		
-		return publication;
 	}
 }
