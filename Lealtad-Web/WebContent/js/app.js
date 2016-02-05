@@ -32,6 +32,22 @@ appres.controller('campaignController', function($scope, $filter, $rootScope,
 			endDate: moment()
 	};
 	
+	$scope.goToHome = function() {
+		$scope.getClassifications();
+		$state.go('home');
+	}
+	
+	$scope.goToCampaigs = function() {
+		
+		if($scope.menuCampaign && !$scope.companyMenu){
+			$state.go('campaigns');
+		}
+		else {
+			$scope.getClassifications();
+			$state.go('home');
+		}
+	}
+	
 	$scope.menuCampaign = false;
 	$scope.companyMenu = false;
 	

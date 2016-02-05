@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
-<div class="panel-body back-sivale">
+<div class="panel-body back-sivale" ng-controller="triggerModal">
+	<jsp:include page="modals/viewPublication.jsp" />
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
 			<li><a ui-sref="home">Campañas Recientes</a></li>
@@ -30,7 +31,7 @@
 								<div class="panel-heading">
 									<div class="container-fluid">Archivos</div>
 								</div>
-								<div class="back-sivale" data-ng-controller="getAttachedFiles">
+								<div class="back-sivale">
 
 									<table ng-table="tableAttachedFiles" class="table">
 										<tr ng-repeat="file in $data">

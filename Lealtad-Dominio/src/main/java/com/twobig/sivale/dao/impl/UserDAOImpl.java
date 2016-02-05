@@ -202,4 +202,20 @@ public class UserDAOImpl extends GenericDAOImpl<TUser, Long> implements
 		return getListByCriteria(criteria);
 	}
 
+	@Override
+	public Integer getUserIdByAccountNumber(String accountNumber) {
+		// TODO Auto-generated method stub
+		DetachedCriteria criteria = DetachedCriteria.forClass(TUser.class);
+
+		criteria.add(Restrictions.eq(TUser.FIELD_USER_ACCOUNT_NUMBER, accountNumber));
+
+		TUser user = getTByCriteria(criteria);
+
+		if (user != null) {
+			return user.getUserId();
+		}
+
+		return null;
+	}
+
 }

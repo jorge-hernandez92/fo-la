@@ -155,6 +155,25 @@ public class test {
 			System.out.println(publicationBean.getHtml());
 		}
 	}
+	
+	public static void mostrarPublicacionesByCardNumber(ClassPathXmlApplicationContext context){
+		
+		ViewPublicationService cccs = 
+				(ViewPublicationService) context.getBean("viewPublicationServiceImpl");
+		
+		PublicationBean publicationBean = cccs.showPublicationByCardNumber("5273740100060052", 31, 0);
+		
+		if(publicationBean != null){
+			
+			for (TAttachedFile files : publicationBean.getListFiles()) {
+				System.out.println(files.toString());
+			}
+			
+			System.out.println(publicationBean.getHtml());
+		}
+		else
+			System.out.println("No existe la informacion solicitada");
+	}
 			
 	public static void filterCampaigns(ClassPathXmlApplicationContext context) {
 
@@ -226,7 +245,6 @@ public class test {
 		}
 	}
 	
-
 	public static void movimientos(ClassPathXmlApplicationContext context){
 		
 		TransactionService cccs = (TransactionService) context.getBean("transactionServiceImpl");
@@ -287,7 +305,9 @@ public class test {
 //		//SERVICIO DE FILTRARCAMPAÑAS
 //		filterCampaigns(context);
 		
-		filterCampaignsAdmin(context);
+//		filterCampaignsAdmin(context);
+		
+		mostrarPublicacionesByCardNumber(context);
 		
 	}
 }

@@ -44,7 +44,10 @@
 						<tr ng-repeat="campaign in $data | filter:search:strict">
 
 							<td title="'Nombre de Campaña'" 
-								sortable="'campaignName'">{{campaign.campaignName}}</td>
+								sortable="'campaignName'">
+								<a href="#" data-ng-click="updateCampaign(campaign)"
+								ui-sref="campaign"> {{campaign.campaignName}}</a>
+								</td>
 
 							<td title="'Clasificación'"
 								sortable="'classification'" class="col-md-2">
@@ -68,8 +71,6 @@
 							<td title="'Total Dispersado'" 
 								sortable="'totalScattered'">{{campaign.totalScattered}}</td>
 
-							<td><a href="#" data-ng-click="updateCampaign(campaign)"
-								ui-sref="campaign"> Ver</a></td>
 						</tr>
 					</table>
 				</div>

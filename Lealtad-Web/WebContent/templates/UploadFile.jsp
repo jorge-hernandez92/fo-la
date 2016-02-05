@@ -100,7 +100,7 @@
 
 							<div class="col-md-8 text-left">
 
-								<button type="submit" class="btn btn-primary">Publicar</button>
+								<button type="submit" class="btn btn-primary">Guardar</button>
 								<button type="button" class="btn btn-primary left-35" ui-sref="campaign">Cancelar</button>
 
 							</div>

@@ -1,7 +1,6 @@
 package com.twobig.sivale.actions;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -21,7 +20,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.CatPublicationType;
-import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
@@ -32,6 +30,7 @@ import com.twobig.sivale.beans.PublicationBean;
 import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.beans.UpdateCampaignBean;
+import com.twobig.sivale.beans.ViewPublicationBean;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.FilterCampaignService;
 import com.twobig.sivale.service.TCampaignsService;
@@ -71,6 +70,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<SelectClassificationCampaignBean> classificationLevel;
 	private Integer campaignId;
 	private Integer classificationId;
+	private String cardNumber;
 	private List<UpdateCampaignBean> selectCampaign;
 	private List<SelectClassificationCampaignBean> selectPublicationTypes;
 	private Map<String, String> message;
@@ -331,6 +331,46 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 	}
 
+	@SuppressWarnings("unchecked")
+	@Action(value = "showPublicationAsTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"publication", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String showPublicationAsTHAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String publicationJSON = request.getParameter("publication");
+		
+		ViewPublicationBean pub;
+
+		if (!publicationJSON.equals("undefined")) {
+
+			pub = new ViewPublicationBean();
+			try {
+				pub = new ObjectMapper().readValue(publicationJSON, ViewPublicationBean.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+			session.put("publication", pub.getPublication());
+		} else {
+			return ERROR;
+		}
+
+		this.publication = viewPublicationService.showPublicationByCardNumber(pub.getAcoundNumber(), pub.getPublicationId(), 1);
+		
+		if(this.publication.getListFiles()!=null)
+			if(this.publication.getListFiles().size() == 0)
+				this.publication.setListFiles(null);
+			//for (TAttachedFile files : publication.getListFiles()) {
+			//	System.out.println(files.toString());
+			//}
+		
+		System.out.println(this.publication.getHtml());
+		return SUCCESS;
+	}
+	
+	
 	@SuppressWarnings("unchecked")
 	@Action(value = "showPublicationAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"publication", "excludeNullProperties", "true", "noCache", "true" }) )
@@ -709,5 +749,15 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public Map<String, String> getMessage() {
 		return message;
 	}
+
+	public String getCardNumber() {
+		return cardNumber;
+	}
+
+	public void setCardNumber(String cardNumber) {
+		this.cardNumber = cardNumber;
+	}
+	
+	
 
 }

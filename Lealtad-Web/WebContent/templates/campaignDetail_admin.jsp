@@ -39,17 +39,18 @@
 							<td title="'Fecha de Publicación'" header-class="'text-left'"
 								sortable="'publishedDate'">{{publication.publishedDate | date:'dd/MM/yyyy'}}</td>
 
-							<td><a href="#"
-								data-ng-click="updatePublication(publication)"
-								ui-sref="publication">Visualizar</a>
+							<td><a href="#" ui-sref="publication" data-ng-click="updatePublication(publication)"
+							>Visualizar</a>
 								
 							<td><a href="#"
 								data-ng-click="updatePublication(publication)"
 								ui-sref="updatePublication">Editar</a>
 							
-							<td><input ng-model="publication.isEnable"
+							<td title="'Activar'" header-class="'text-left'">
+								<input ng-model="publication.isEnable"
 								name="{{publication.publicationId}}" type="checkbox" ng-change="updateStatusPublication(publication)"
 								toggle-btn on-type="warning">
+								
 								
 						</tr>
 					</table>
