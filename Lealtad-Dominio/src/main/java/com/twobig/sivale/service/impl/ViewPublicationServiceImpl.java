@@ -86,7 +86,9 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	@Override
 	public PublicationBean showPublicationByCardNumber(String cardNumber, int publicationId, int profile) {
 		
-		Integer userId = userDAO.getUserIdByCard(cardNumber);
+		//Integer userId = userDAO.getUserIdByCard(cardNumber);
+		Integer userId = userDAO.getUserIdByAccountNumber(cardNumber);
+		
 		
 		
 		if(userId != null){

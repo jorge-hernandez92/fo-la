@@ -39,9 +39,8 @@
 							<td title="'Fecha de Publicación'" header-class="'text-left'"
 								sortable="'publishedDate'">{{publication.publishedDate | date:'dd/MM/yyyy'}}</td>
 
-							<td><a href="#"
-								data-ng-click="updatePublication(publication)"
-								ui-sref="publication">Visualizar</a>
+							<td><a href="#" ui-sref="publication" data-ng-click="updatePublication(publication)"
+							>Visualizar</a>
 								
 							<td><a href="#"
 								data-ng-click="updatePublication(publication)"

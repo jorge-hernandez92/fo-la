@@ -51,6 +51,13 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.attachedFileTemp = '';
 					
+					$scope.selectPublicationView = {
+							availableOptions : [{ id : '1', name : 'Tarjetahabiente' },
+			                                    { id : '2', name : 'Etiquetas' } ],
+							selectedOption : { id : '1', name : 'Tarjetahabiente' },
+							cardNumber : ''
+					};
+					
 					$scope.updateAttachedFile = function(attachedfile, index) {
 						$scope.attachedFileTemp = attachedfile;
 						$scope.attachedFileTemp.index = index;
@@ -222,18 +229,33 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								});
 					};
 
-					$scope.getAttachedFiles = function() {
-
+					$scope.triggerModal = function(){
+						$("#modalViewPublication").modal();
+					} 
+					
+					$scope.viewPublication = function(){
+						if($scope.selectPublicationView.selectedOption.id == 1){
+							$scope.showPublicationAsTH($scope.selectPublicationView.cardNumber);
+						}
+						else{
+							$scope.showPublication();
+						}
+					}
+					
+					$scope.showPublicationAsTH = function(cardNumber) {
+						$scope.publication.acoundNumber = cardNumber;
+						
 						var data = angular.toJson($scope.publication);
 
 						$http({
 							method : 'POST',
-							url : 'showPublicationAction',
+							url : 'showPublicationAsTHAction',
 							data : 'publication=' + data,
 							headers : {
 								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
 							}
-						}).success(
+						})
+						.success(
 								function(data, status, headers, config) {
 									$scope.attachedFiles = data.listFiles;
 
@@ -245,7 +267,36 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 									});
 
 									$(".publication-html").html(data.html);
+//									$state.go('publication');
+								}).error(function(data, status, headers, config) {
+						});
+					};
+					
+					$scope.showPublication = function() {
 
+						var data = angular.toJson($scope.publication);
+
+						$http({
+							method : 'POST',
+							url : 'showPublicationAction',
+							data : 'publication=' + data,
+							headers : {
+								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+							}
+						})
+						.success(
+								function(data, status, headers, config) {
+									$scope.attachedFiles = data.listFiles;
+
+									$scope.tableAttachedFiles = new NgTableParams({
+										count : 10
+									}, {
+										counts : [],
+									    dataset: $scope.attachedFiles
+									});
+
+									$(".publication-html").html(data.html);
+//									$state.go('publication');
 								}).error(function(data, status, headers, config) {
 						});
 					};
