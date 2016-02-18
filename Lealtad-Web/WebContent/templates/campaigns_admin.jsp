@@ -12,10 +12,8 @@
 
 		<div class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
-
-                <input type="text" class="form-control" placeholder="Compañía" ng-model="classif.company">
-				<input type="text" class="form-control" placeholder="Clasificación" ng-model="search.classification">
 				<input type="text" class="form-control" placeholder="Nombre" ng-model="search.campaignName">
+				<input type="text" class="form-control" placeholder="Clasificación" ng-model="search.classification">
 				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
 				<button class="btn btn-primary" ng-click="searchCampaigns(date)">Buscar</button>
 
@@ -64,12 +62,6 @@
 								
 							<td title="'Status'" 
 								sortable="'status'">{{campaign.status}}</td>
-							
-							<td title="'Total Ganado'" 
-								sortable="'totalWon'">{{campaign.totalWon}}</td>
-								
-							<td title="'Total Dispersado'" 
-								sortable="'totalScattered'">{{campaign.totalScattered}}</td>
 
 						</tr>
 					</table>
