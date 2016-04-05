@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "rel_profile_functionality", catalog = "lealtad_schema")
+@Table(name = "rel_profile_functionality", catalog = "lealtaddb")
 public class RelProfileFunctionality implements Serializable {
 
 	/**
@@ -35,7 +35,7 @@ public class RelProfileFunctionality implements Serializable {
 
 	public int getCatProfile() {
 		return catProfile;
-	}                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        
+	}
 
 	public void setCatProfile(int catProfile) {
 		this.catProfile = catProfile;

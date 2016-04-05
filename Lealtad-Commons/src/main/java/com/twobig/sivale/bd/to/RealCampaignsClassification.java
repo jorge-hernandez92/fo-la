@@ -11,16 +11,16 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "rel_campaigns_classification", catalog = "lealtad_schema")
+@Table(name = "rel_campaigns_classification", catalog = "lealtaddb")
 public class RealCampaignsClassification implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -2386087662923117818L;
-	
+
 	public static final String FIELD_REL_CLASSIFICATION_ID = "classificationId";
-	public static final String FIELD_REL_CAMPAIGN_ID 	   = "campaignId";
+	public static final String FIELD_REL_CAMPAIGN_ID = "campaignId";
 
 	@Id
 	@Column(name = "classification_id", unique = true, nullable = false)

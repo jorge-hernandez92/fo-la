@@ -16,7 +16,6 @@ import javax.persistence.Table;
 @Table(name = "cat_publication_user")
 public class CatPublicationUser implements java.io.Serializable {
 
-	
 	private static final long serialVersionUID = 1066749819972430137L;
 	private TPublication TPublications;
 	private TUser TUsers;

@@ -5,15 +5,15 @@ import java.io.Serializable;
 import javax.persistence.Column;
 import javax.persistence.Id;
 
-public class RelCampaignsClassification implements Serializable{
+public class RelCampaignsClassification implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = -977568590942007295L;
-	
+
 	public static final String FIELD_REL_USER_CAMPAIGN_CLASSIFICATION_ID = "classificationId";
-	public static final String FIELD_REL_USER_CAMPAIGN_ID 		 		 = "campaignId";
+	public static final String FIELD_REL_USER_CAMPAIGN_ID = "campaignId";
 
 	@Id
 	@Column(name = "classification_id", unique = true, nullable = false)
@@ -39,5 +39,4 @@ public class RelCampaignsClassification implements Serializable{
 		this.campaignId = campaignId;
 	}
 
-	
 }

@@ -1,15 +1,15 @@
 package com.twobig.sivale.bd.to;
 //Generated 14/12/2015 12:03:39 PM by Hibernate Tools 4.3.1
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -19,7 +19,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "cat_classification_campaigns", catalog = "lealtad_schema")
+@Table(name = "cat_classification_campaigns", catalog = "lealtaddb")
 public class CatClassificationCampaign implements java.io.Serializable {
 
 	/**
@@ -39,9 +39,10 @@ public class CatClassificationCampaign implements java.io.Serializable {
 	public static final String FIELD_CAT_CLASSIFICATION_ID_PARENT = "catClassificationCampaignsIdParent";
 	public static final String FIELD_CAT_COMPANY_ID = "companyId";
 
-	@Id @GeneratedValue(strategy=IDENTITY)
-
-	@Column(name = "cat_classification_campaigns_id", unique = true, nullable = false)
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cat_classification_campaigns_i")
+	@SequenceGenerator(name = "cat_classification_campaigns_i", sequenceName = "CLASSIFICATION_CAMPAIGNS_SEQ", initialValue = 0, allocationSize = 0)
+	@Column(name = "cat_classification_campaigns_i", unique = true, nullable = false)
 	public Integer getCatClassificationCampaignsId() {
 		return this.catClassificationCampaignsId;
 	}
@@ -78,7 +79,7 @@ public class CatClassificationCampaign implements java.io.Serializable {
 		this.description = description;
 	}
 
-	@Column(name = "level", nullable = false)
+	@Column(name = "level_ccc", nullable = false)
 	public Integer getLevel() {
 		return this.level;
 	}
@@ -95,7 +96,7 @@ public class CatClassificationCampaign implements java.io.Serializable {
 	public void setCatClassificationCampaignsIdParent(Integer catClassificationCampaignsIdParent) {
 		this.catClassificationCampaignsIdParent = catClassificationCampaignsIdParent;
 	}
-	
+
 	@Column(name = "fk_company", nullable = false)
 	public Integer getCompanyId() {
 		return companyId;
@@ -105,9 +106,9 @@ public class CatClassificationCampaign implements java.io.Serializable {
 		this.companyId = companyId;
 	}
 
-	
-	
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#hashCode()
 	 */
 	@Override
@@ -119,7 +120,9 @@ public class CatClassificationCampaign implements java.io.Serializable {
 		return result;
 	}
 
-	/* (non-Javadoc)
+	/*
+	 * (non-Javadoc)
+	 * 
 	 * @see java.lang.Object#equals(java.lang.Object)
 	 */
 	@Override

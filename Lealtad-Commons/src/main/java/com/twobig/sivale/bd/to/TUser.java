@@ -4,8 +4,11 @@ package com.twobig.sivale.bd.to;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import static javax.persistence.GenerationType.IDENTITY;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -15,7 +18,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_users", catalog = "lealtad_schema")
+@Table(name = "t_users", catalog = "lealtaddb")
 public class TUser implements java.io.Serializable {
 
 	private static final long serialVersionUID = 491334447509871158L;
@@ -51,8 +54,8 @@ public class TUser implements java.io.Serializable {
 	public static final String FIELD_USER_ACCOUNT_NUMBER = "tjAccountNumber";
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id")
+	@SequenceGenerator(name = "user_id", sequenceName = "USER_SEQ", initialValue = 0, allocationSize = 0)
 	@Column(name = "user_id", unique = true, nullable = false)
 	public Integer getUserId() {
 		return this.userId;

@@ -15,16 +15,15 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "rel_user_campaign", catalog = "lealtad_schema")
+@Table(name = "rel_user_campaign", catalog = "lealtaddb")
 public class RealUserCampaign implements Serializable {
 
 	private static final long serialVersionUID = 3404510238899467496L;
-	
-	public static final String FIELD_REL_USER_COMPAIGN_ID = "campaignId";
-	public static final String FIELD_REL_USER_ID 		  = "userId";
 
-	
-	private int campaignId;	
+	public static final String FIELD_REL_USER_COMPAIGN_ID = "campaignId";
+	public static final String FIELD_REL_USER_ID = "userId";
+
+	private int campaignId;
 	private int userId;
 
 	@Id

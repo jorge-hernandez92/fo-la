@@ -1,13 +1,13 @@
 package com.twobig.sivale.bd.to;
 // Generated 20/11/2015 02:09:49 PM by Hibernate Tools 4.3.1
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -20,7 +20,7 @@ import com.google.common.base.MoreObjects;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_campaigns", catalog = "lealtad_schema")
+@Table(name = "t_campaigns", catalog = "lealtaddb")
 
 public class TCampaign implements java.io.Serializable {
 
@@ -41,8 +41,8 @@ public class TCampaign implements java.io.Serializable {
 	public static final String FIELD_COMPANY_ID = "companyId";
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "campaign_id")
+	@SequenceGenerator(name = "campaign_id", sequenceName = "CAMPAIGN_SEQ", initialValue = 0, allocationSize = 0)
 	@Column(name = "campaign_id", unique = true, nullable = false)
 	public Integer getCampaignId() {
 		return this.campaignId;

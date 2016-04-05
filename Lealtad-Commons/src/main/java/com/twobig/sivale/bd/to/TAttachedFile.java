@@ -1,15 +1,17 @@
 package com.twobig.sivale.bd.to;
 // Generated 20/11/2015 02:09:49 PM by Hibernate Tools 4.3.1
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+
 import static javax.persistence.GenerationType.IDENTITY;
 
 import java.util.Arrays;
 
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -19,101 +21,90 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name="t_attached_files"
-    ,catalog="lealtad_schema"
-)
-public class TAttachedFile  implements java.io.Serializable {
+@Table(name = "t_attached_files", catalog = "lealtaddb")
+public class TAttachedFile implements java.io.Serializable {
 
 	private static final long serialVersionUID = -2458367360511518602L;
 	private Integer attachedFileId;
-     private Integer tPublicationId;
-     private Boolean isPublic;
-     private String fileName;
-     private String filePath;
-     private String fileExtension;
-     private byte[] fileBlob;
-     
-     public static final String FIELD_TPUBLICATION_ID = "tPublicationId";
-     
-     
-     @Id @GeneratedValue(strategy=IDENTITY)
+	private Integer tPublicationId;
+	private Boolean isPublic;
+	private String fileName;
+	private String filePath;
+	private String fileExtension;
+	private byte[] fileBlob;
 
-    
-    @Column(name="attached_file_id", unique=true, nullable=false)
-    public Integer getAttachedFileId() {
-        return this.attachedFileId;
-    }
-    
-    public void setAttachedFileId(Integer attachedFileId) {
-        this.attachedFileId = attachedFileId;
-    }
-    
-    
-    @Column(name="fk_publication")
-    public Integer gettPublicationId() {
+	public static final String FIELD_TPUBLICATION_ID = "tPublicationId";
+
+	@Id
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attached_file_id")
+	@SequenceGenerator(name = "attached_file_id", sequenceName = "ATTACHED_FILE_SEQ", initialValue = 0, allocationSize = 0)
+	@Column(name = "attached_file_id", unique = true, nullable = false)
+	public Integer getAttachedFileId() {
+		return this.attachedFileId;
+	}
+
+	public void setAttachedFileId(Integer attachedFileId) {
+		this.attachedFileId = attachedFileId;
+	}
+
+	@Column(name = "fk_publication")
+	public Integer gettPublicationId() {
 		return tPublicationId;
 	}
 
 	public void settPublicationId(Integer tPublicationId) {
 		this.tPublicationId = tPublicationId;
 	}
-	
 
-	@Column(name="is_public")
-    public Boolean getIsPublic() {
-        return this.isPublic;
-    }
-    
-    public void setIsPublic(Boolean isPublic) {
-        this.isPublic = isPublic;
-    }
+	@Column(name = "is_public")
+	public Boolean getIsPublic() {
+		return this.isPublic;
+	}
 
-    
-    @Column(name="file_name", length=45)
-    public String getFileName() {
-        return this.fileName;
-    }
-    
-    public void setFileName(String fileName) {
-        this.fileName = fileName;
-    }
+	public void setIsPublic(Boolean isPublic) {
+		this.isPublic = isPublic;
+	}
 
-    
-    @Column(name="file_path", length=45)
-    public String getFilePath() {
-        return this.filePath;
-    }
-    
-    public void setFilePath(String filePath) {
-        this.filePath = filePath;
-    }
+	@Column(name = "file_name", length = 45)
+	public String getFileName() {
+		return this.fileName;
+	}
 
-    
-    @Column(name="file_extension", length=45)
-    public String getFileExtension() {
-        return this.fileExtension;
-    }
-    
-    public void setFileExtension(String fileExtension) {
-        this.fileExtension = fileExtension;
-    }
+	public void setFileName(String fileName) {
+		this.fileName = fileName;
+	}
 
-    
-    @Column(name="file_blob")
-    public byte[] getFileBlob() {
-        return this.fileBlob;
-    }
-    
-    public void setFileBlob(byte[] fileBlob) {
-        this.fileBlob = fileBlob;
-    }
+	@Column(name = "file_path", length = 45)
+	public String getFilePath() {
+		return this.filePath;
+	}
+
+	public void setFilePath(String filePath) {
+		this.filePath = filePath;
+	}
+
+	@Column(name = "file_extension", length = 45)
+	public String getFileExtension() {
+		return this.fileExtension;
+	}
+
+	public void setFileExtension(String fileExtension) {
+		this.fileExtension = fileExtension;
+	}
+
+	@Column(name = "file_blob")
+	public byte[] getFileBlob() {
+		return this.fileBlob;
+	}
+
+	public void setFileBlob(byte[] fileBlob) {
+		this.fileBlob = fileBlob;
+	}
 
 	@Override
 	public String toString() {
 		return "TAttachedFile [attachedFileId=" + attachedFileId + ", tPublicationId=" + tPublicationId + ", isPublic="
 				+ isPublic + ", fileName=" + fileName + ", filePath=" + filePath + ", fileExtension=" + fileExtension
 				+ ", fileBlob=" + Arrays.toString(fileBlob) + "]";
-	}   
+	}
 }
-
-

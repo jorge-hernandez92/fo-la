@@ -7,9 +7,11 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -21,7 +23,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_publications", catalog = "lealtad_schema")
+@Table(name = "t_publications", catalog = "lealtaddb")
 public class TPublication implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1260077479616668004L;
@@ -43,8 +45,8 @@ public class TPublication implements java.io.Serializable {
 	public static final String FIELD_IS_ENABLE = "isEnable";
 
 	@Id
-	@GeneratedValue(strategy = IDENTITY)
-
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "publication_id")
+	@SequenceGenerator(name = "publication_id", sequenceName = "PUBLICATION_SEQ", initialValue = 0, allocationSize = 0)
 	@Column(name = "publication_id", unique = true, nullable = false)
 	public int getPublicationId() {
 		return this.publicationId;
