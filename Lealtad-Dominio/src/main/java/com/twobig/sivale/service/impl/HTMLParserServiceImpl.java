@@ -1,6 +1,7 @@
 package com.twobig.sivale.service.impl;
 
 import java.io.BufferedReader;
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -52,17 +53,36 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 
 	private String fileToString(String path) {
 		String file = "";
-		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-
+//		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
+//
+//			String sCurrentLine;
+//
+//			while ((sCurrentLine = br.readLine()) != null) {
+//				file += sCurrentLine;
+//			}
+//
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+		
+		FileReader fileReader;
+		try {
+			fileReader = new FileReader(path);
+			BufferedReader br = new BufferedReader(fileReader);
+			
 			String sCurrentLine;
 
 			while ((sCurrentLine = br.readLine()) != null) {
 				file += sCurrentLine;
 			}
-
+			
+			
+		} catch (FileNotFoundException e1) {
+			e1.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		return file;
 	}
 

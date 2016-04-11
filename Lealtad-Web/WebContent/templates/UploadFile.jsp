@@ -25,7 +25,7 @@
 				</div>
 				<div class="panel-body back-sivale">
 
-					<form action="UploadFile" method="post"
+					<form id="newPublication" action="UploadFile" method="post"
 						enctype="multipart/form-data">
 						<div class="text-right">
 
@@ -100,7 +100,7 @@
 
 							<div class="col-md-8 text-left">
 
-								<button type="submit" class="btn btn-primary">Guardar</button>
+								<button type="submit" class="btn btn-primary" form="newPublication">Guardar</button>
 								<button type="button" class="btn btn-primary left-35" ui-sref="campaign">Cancelar</button>
 
 							</div>

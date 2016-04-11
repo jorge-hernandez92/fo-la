@@ -172,8 +172,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	}
 
 	@SuppressWarnings("unchecked")
-	@Action(value = "getCampaignsAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
-			"campaignsAdmin", "excludeNullProperties", "true", "noCache", "true" }) )
+	@Action(value = "getCampaignsAdminAction", results = { @Result(name = SUCCESS, type = "json", params = { "root",
+			"campaignsAdmin", "excludeNullProperties", "true", "noCache", "true" }), @Result(name = ERROR, location = "/error.jsp") })
 	public String getCampaignsAdminAction() {
 
 		TUser user = (TUser) session.get("user");
