@@ -103,10 +103,32 @@
 
 		<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
 			<button class="c-menu__close"> Cerrar Menú</button>
-			<ul class="c-menu__items">
+			<ul class="c-menu__items" ng-controller="getClassifications" ng-cloak>
 				<li class="c-menu__item"><a href="#" ng-click="goToHome()" class="c-menu__link">Inicio</a></li>
 				<li class="c-menu__item"><a href="#" ng-click="goToCampaigs()" class="c-menu__link">Campañas</a></li>
+				<li ng-repeat="class in classifications" class="c-menu__item ">
+						<div >
+							<div class="thumbnail2 div-sivaleMenu portfolio-box">
+								<div class="thumbnail2_wrapper">
+									<a href="#"
+										data-ng-click="selectClassification(class)"
+										ui-sref="campaigns"> <img
+										src="img/company_logo/{{class.catViews.logos}}/logo.png" class="img-responsive"
+										alt="">
+										<div class="portfolio-box-caption">
+											<div class="portfolio-box-caption-content">
+												<div class="project-name">{{class.className}}</div>
+											</div>
+										</div>
+									</a>
+								</div>
+							</div>
+						</div>
+				</li>
 			</ul>
+			
+			
+			
 		</nav>
 
 		<div id="c-mask" class="c-mask"></div>

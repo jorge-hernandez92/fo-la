@@ -23,6 +23,9 @@
 										ui-sref="campaigns"> <img
 										src="img/company_logo/{{class.catViews.logos}}/logo.png" class="img-responsive"
 										alt="">
+										
+										
+										
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">
 												<div class="project-name">{{class.className}}</div>

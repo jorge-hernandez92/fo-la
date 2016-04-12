@@ -1,9 +1,11 @@
 package com.twobig.sivale.service.impl;
 
 import java.io.BufferedReader;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
@@ -34,15 +36,19 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 			List<String> tokens = getKeys(map);
 
 			String file = this.fileToString(htmlPath);
+			
+			System.out.println("Archivo HTML A MESCLAR:    "+file);
 
 			for (int i = 0; i < tokens.size(); i++) {
 
 				String value = (String) map.get(tokens.get(i));
 
-				if (value != null)
+				if (value != null){
 					file = file.replace(HTMLParserConstants.TAG_PREFIX + tokens.get(i) + HTMLParserConstants.TAG_SUFFIX,
 							value);
+				}
 			}
+			System.out.println(file);
 			return file;
 
 		} catch (JSONException e) {
@@ -53,22 +59,9 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 
 	private String fileToString(String path) {
 		String file = "";
-//		try (BufferedReader br = new BufferedReader(new FileReader(path))) {
-//
-//			String sCurrentLine;
-//
-//			while ((sCurrentLine = br.readLine()) != null) {
-//				file += sCurrentLine;
-//			}
-//
-//		} catch (IOException e) {
-//			e.printStackTrace();
-//		}
 		
-		FileReader fileReader;
 		try {
-			fileReader = new FileReader(path);
-			BufferedReader br = new BufferedReader(fileReader);
+			BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(path), "utf-8"));
 			
 			String sCurrentLine;
 

@@ -9,8 +9,6 @@ import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
-import org.codehaus.jackson.map.ObjectMapper;
-import org.codehaus.jackson.type.TypeReference;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -18,7 +16,6 @@ import org.junit.Test;
 
 import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.ExcelDataUserBean;
-import com.google.common.base.MoreObjects;
 
 public class ExcelServiceImplTest {
 
