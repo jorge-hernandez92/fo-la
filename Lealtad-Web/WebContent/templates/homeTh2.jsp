@@ -1,16 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
-<div class="panel-body back-sivale">
+<div>
  
  	<div class="container" ng-if="companyMenu">
-		<div class="panel panel-default table-top-sivale">
-			<div class="panel-heading">
-				<div class="container-fluid">
-					<div class="navbar-header">Selección de compañía</div>
-				</div>
-			</div>				
-							
+		<div class="panel ">							
 			<div class="panel-body back-sivale">
 				<div class="row" data-ng-controller="getClassifications" ng-cloak>
 					<div class="col-sm-6 col-md-4 back-sivale"
@@ -23,9 +17,6 @@
 										ui-sref="campaigns"> <img
 										src="img/company_logo/{{class.catViews.logos}}/logo.png" class="img-responsive"
 										alt="">
-										
-										
-										
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">
 												<div class="project-name">{{class.className}}</div>
@@ -41,48 +32,62 @@
 		</div>
 	</div>
 	
-	<div class="container">
+	<div class=" font-color-text">
 	<div class="row">
 
-		<div class="col-lg-6-user-email col-md-6">
-			<div class="panel panel-green">
-				<div class="panel-heading">
-					<div class="row">
-						<div class="col-xs-3">
-							<img class="manImg" src="img/home/usuario.png"></img>
-						</div>
-						<div class="col-xs-9 text-right">
-							<div class="font-title-item">Nombre de Usuario</div>
-							<div id="quickfit-user"
-								title="${sessionScope.userDetails.userName}"
-								class="huge font-size-email">{{user.firstName}} {{user.lastName1}} {{user.lastName2}}</div>
-								
+		<div class="col-lg-6-user-email col-md-7">
+			<div >
+				<div >
+						<div class="row">
+
+							<div class="col-xs-6 col-sm-4"></div>
+
+							<div class="col-xs-6 col-sm-1">
+								<i class="fa fa-user fa-5x" aria-hidden="true"></i>
+							</div>
+
+							<div class="col-xs-6 col-sm-5">
+
+								<div class="font-title-item">Nombre de Usuario</div>
+								<div id="quickfit-user"
+									title="${sessionScope.userDetails.userName}" class="huge">{{user.firstName}}
+									{{user.lastName1}} {{user.lastName2}}</div>
+							</div>
+
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 
-		<div class="col-lg-6-user-email col-md-6">
-			<div class="panel panel-green">
-				<div class="panel-heading" data-ng-controller="getBalance">
-					<div class="row">
-						<div class="col-xs-3">
-							<img class="manImg" src="img/home/monto.png"></img>
-						</div>
-						<div class="col-xs-9 text-right">
-							<div class="font-title-item">Saldo Actual</div>
-							<div class="huge">&#36;{{(balance | number:2) || '0.00'}}</div>
+		<div class="col-lg-6-user-email col-md-5">
+			<div >
+				<div  data-ng-controller="getBalance">
+						<div class="row">
+
+							<div class="col-xs-6 col-sm-1"></div>
+
+							<div class="col-xs-6 col-sm-1">
+								<i class="fa fa-usd fa-5x" aria-hidden="true"></i>
+							</div>
+
+							<div class="col-xs-6 col-sm-7">
+
+								<div class="font-title-item">Saldo Actual</div>
+								<div class="huge">&#36;{{(balance | number:2) || '0.00'}}</div>
+
+							</div>
+
+							<div class="col-xs-6 col-sm-1"></div>
+
 						</div>
 					</div>
-				</div>
 			</div>
 		</div>
 
 	</div>
 	</div>
 	
-	<div class="container" ng-cloak>
+	<div class="container font-color-text" ng-cloak>
 			<div class="panel panel-default table-top-sivale">
 				<div class="panel-heading">Últimas Transacciones</div>
 

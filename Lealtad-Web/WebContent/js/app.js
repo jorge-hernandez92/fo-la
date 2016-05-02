@@ -530,7 +530,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 
 	.state('home', {
 		url : '/home',
-		templateUrl : 'templates/homeTh2.jsp'
+		templateUrl : 'templates/homeTh2.jsp',
+		controller:	function () {
+            $('html, body').animate({
+                scrollTop: $("#init").offset().top
+            });
+        }
 	})
 
 	.state('campaigns', {

@@ -1,6 +1,20 @@
-.back-image{  
-    background-image:url('../img/bg_content_clientes.jpg'); 
-	background-size:cover; 
+/* .back-image{   */
+/*     background-image:url('../img/bg_content_clientes.jpg');  */
+/* 	background-size:cover;  */
+/* } */
+
+
+#bg {
+	background-image: url(../img/dynamic_background/5.jpg);
+	background-size: 100% auto;
+	/* 	transition: all 2s ease-in-out; */
+	/* 	transition-duration: 4s; */
+	/* z-index: 1; */
+	/* transition: opacity 3s; */
+	-webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
 }
 
 .margin-top10{

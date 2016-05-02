@@ -35,7 +35,7 @@
 }
 
 .panel-default>.panel-heading {
-    background-color: #A7A9AC;
+    background-color: #67AEE4;
     border-color: #ddd;
 	color: #fff;
 }
@@ -54,6 +54,11 @@
 .panel-verde{
 	background-color: #5cb85c;
 	color: #fff;
+}
+
+.panel-gris{
+	background-color: #D0D0D0;
+	color: #000;
 }
 
 .navbar-inverse .navbar-nav>li>a:hover {
@@ -692,9 +697,9 @@ a {
 
 .panel-green > .panel-heading {
 	height: 100px;
-    border-color: #6B6C6F;
-    color: #fff;
-    background-color: #6B6C6F;
+	/* border-color: #6B6C6F; */
+	color: #8C8C8C;
+	/* background-color: #6B6C6F; */
 }
 
 .panel-green > a {
@@ -725,7 +730,8 @@ a {
 }
 
 .font-title-item{
-	font-weight: bold;
+/* 	font-weight: bold; */
+	font-size: 20px;
 }
 
 .font-alert-balance{	

@@ -5,8 +5,8 @@
 <head ng-cloak>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport"  content="width=device-width, initial-scale=1">
-    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
 <title>Lealtad-Incentivos</title>
 
 <!-- Bootstrap -->
@@ -14,7 +14,10 @@
 <link rel="stylesheet" href="css/daterangepicker.min.css">
 <link rel="stylesheet" href="css/ng-table.min.css">
 <link rel="stylesheet" href="css/angular-carousel.css">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/sb-admin-2.css">
 <link ng-href="css/{{css}}" rel="stylesheet">
+<!-- links provicinales  -->
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
 <script src="js/angular.min.js"></script>
@@ -31,158 +34,225 @@
 <!-- endbower -->
 
 <script src="js/angular-daterangepicker.min.js"></script>
-
 <script src="js/hammer.min.js"></script>
 <script src="js/angular-carousel.js"></script>
 
+<!-- links provicinales  -->
+<script src="js/jquery.easing.min.js"></script>
+<script src="js/grayscale.js"></script>
+<script src="js/dynamic-background-home.js"></script>
+
 </head>
 
-<body class="back-sivale">
+<body class="sivale" id="init" >
 
-	<header id="header" data-ng-controller="updateSession">
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" data-ng-controller="updateSession">
+            <div class="navbar-header" data-ng-controller="getClassifications" ng-cloak>
+			<a class="navbar-brand"> 
+			<img alt="Brand" src="img/ford-elite.png">
+			</a>
+		</div>
+            <!-- /.navbar-header -->
+
+            <ul class="nav navbar-nav navbar-right">            
+				<li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                        <i class="fa fa-bars"></i>  Menu  <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Inicio </a>
+                        </li>
+                        <li><a href="#"><i class="fa fa-list" aria-hidden="true"></i> Campañas </a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a >
+                        <i class="fa fa-credit-card"></i>
+                        <span class="span-header">{{user.tjCardNumber}}</span>
+                    </a>
+                </li>
+                <li >
+                    <a >
+                        <i class="fa fa-user fa-fw" ></i>
+                        <span class="span-header">{{user.firstName}}</span>
+                    </a>
+                </li>
+                <li >
+                    <a href="logout">
+                        <i class="fa fa-sign-out"></i>
+                         Salir
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        
+    <!-- Full Width Image Header -->
+    <header  class="header-image">
+        <div class="headline">
+            <div class="container">
+                <h1><font color="white">Elige el programa de Incentivos</font></h1>
+                
+            </div>
+        </div>
+		<a href="#transaction" class="btn btn-circle page-scroll"> 
+			<i class="fa fa-angle-double-down animated"></i>
+		</a>
+	</header>
 
 
-		<div class="header-middle">
-			<div class="container width100">
-				<div class="row">
-					<div class="col-sm-8">
-						<div class="logo pull-left">
-							<div class="row" data-ng-controller="getClassifications" ng-cloak>
+    <!-- Transaction Section -->
+	<section id="transaction">
+	
+			<div ui-view></div>
+		
+	</section>
 
-								<div class="col-md-2">
-									<div id="o-wrapper">
-										<a id="c-button--slide-left" href="#" class="toggle"
-											role="button" title="Navigation" data-toggle="tooltip"
-											data-placement="left"><i class="ion-navicon"></i></a>
-									</div>
-								</div>
-
-								<div class="col-md-10">
-									<div class="div-fit-img" ng-if="!companyMenu">
-										<img src={{logo}} ui-sref="#" ng-if="logo">
-									</div>
-									<div class="div-fit-img" ng-if="companyMenu">
-									</div>
-								</div>
+	<!-- Infp Section -->
+	<section id="transaction2">
+		<div class="container  font-color-text">
+		
+			<div class="row">
+				
+				<div class="col-xs-6 col-md-2"></div>
+				<div class="col-xs-6 col-md-8">
+					<div class="panel panel-gris">
+						<div class="panel-heading">
+							<div class="text-center">
+								<h2>¿DUDAS SOBRE EL PROGRAMA DE
+								INCENTIVOS?</h2>
 							</div>
-						</div>
-
-					</div>
-					<div class="col-sm-4">
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav margin-top10">
-
-								<li></span><span
-									class="glyphicon glyphicon-credit-card span-header">
-										{{user.tjCardNumber}} </a></li>
-
-								<li></span><span class="glyphicon glyphicon-user span-header">
-										{{user.firstName}} </a></li>
-
-								<li></span><a href="logout"><span
-										class="glyphicon glyphicon-log-out"> Salir</a></li>
-							</ul>
 						</div>
 					</div>
 				</div>
+				<div class="col-xs-6 col-md-2"></div>
+				
 			</div>
-		</div>
-	</header>
 
-	<!-- 	<div class="daterangepicker dropdown-menu show-calendar opensright" style="top: 130px; left: 89.5px; right: auto; display: none;"><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini active" type="text" name="daterangepicker_start" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Dec 2015</th><th></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">29</td><td class="off available" data-title="r0c1">30</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="available" data-title="r2c3">16</td><td class="today available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="active start-date available" data-title="r3c2">22</td><td class="in-range available" data-title="r3c3">23</td><td class="in-range available" data-title="r3c4">24</td><td class="in-range available" data-title="r3c5">25</td><td class="weekend in-range available" data-title="r3c6">26</td></tr><tr><td class="weekend in-range available" data-title="r4c0">27</td><td class="in-range available" data-title="r4c1">28</td><td class="in-range available" data-title="r4c2">29</td><td class="in-range available" data-title="r4c3">30</td><td class="in-range available" data-title="r4c4">31</td><td class="off in-range available" data-title="r4c5">1</td><td class="weekend off in-range available" data-title="r4c6">2</td></tr><tr><td class="weekend off in-range available" data-title="r5c0">3</td><td class="off in-range available" data-title="r5c1">4</td><td class="off in-range available" data-title="r5c2">5</td><td class="off in-range available" data-title="r5c3">6</td><td class="off in-range available" data-title="r5c4">7</td><td class="off in-range available" data-title="r5c5">8</td><td class="weekend off in-range available" data-title="r5c6">9</td></tr></tbody></table></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_end" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Jan 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off in-range available" data-title="r0c0">27</td><td class="off in-range available" data-title="r0c1">28</td><td class="off in-range available" data-title="r0c2">29</td><td class="off in-range available" data-title="r0c3">30</td><td class="off in-range available" data-title="r0c4">31</td><td class="in-range available" data-title="r0c5">1</td><td class="weekend in-range available" data-title="r0c6">2</td></tr><tr><td class="weekend in-range available" data-title="r1c0">3</td><td class="in-range available" data-title="r1c1">4</td><td class="in-range available" data-title="r1c2">5</td><td class="in-range available" data-title="r1c3">6</td><td class="in-range available" data-title="r1c4">7</td><td class="in-range available" data-title="r1c5">8</td><td class="weekend in-range available" data-title="r1c6">9</td></tr><tr><td class="weekend in-range available" data-title="r2c0">10</td><td class="in-range available" data-title="r2c1">11</td><td class="in-range available" data-title="r2c2">12</td><td class="in-range available" data-title="r2c3">13</td><td class="in-range available" data-title="r2c4">14</td><td class="in-range available" data-title="r2c5">15</td><td class="weekend in-range available" data-title="r2c6">16</td></tr><tr><td class="weekend in-range available" data-title="r3c0">17</td><td class="in-range available" data-title="r3c1">18</td><td class="in-range available" data-title="r3c2">19</td><td class="in-range available" data-title="r3c3">20</td><td class="in-range available" data-title="r3c4">21</td><td class="in-range available" data-title="r3c5">22</td><td class="weekend in-range available" data-title="r3c6">23</td></tr><tr><td class="weekend in-range available" data-title="r4c0">24</td><td class="in-range available" data-title="r4c1">25</td><td class="in-range available" data-title="r4c2">26</td><td class="in-range available" data-title="r4c3">27</td><td class="active end-date in-range available" data-title="r4c4">28</td><td class="available" data-title="r4c5">29</td><td class="weekend available" data-title="r4c6">30</td></tr><tr><td class="weekend available" data-title="r5c0">31</td><td class="off available" data-title="r5c1">1</td><td class="off available" data-title="r5c2">2</td><td class="off available" data-title="r5c3">3</td><td class="off available" data-title="r5c4">4</td><td class="off available" data-title="r5c5">5</td><td class="weekend off available" data-title="r5c6">6</td></tr></tbody></table></div></div><div class="ranges"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button" ng-click="find()">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div><div class="daterangepicker dropdown-menu show-calendar opensright" style="top: 206px; left: 89.5px; right: auto; display: none;"><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini active" type="text" name="daterangepicker_start" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Aug 2015</th><th></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">26</td><td class="off available" data-title="r0c1">27</td><td class="off available" data-title="r0c2">28</td><td class="off available" data-title="r0c3">29</td><td class="off available" data-title="r0c4">30</td><td class="off available" data-title="r0c5">31</td><td class="weekend available" data-title="r0c6">1</td></tr><tr><td class="weekend available" data-title="r1c0">2</td><td class="available" data-title="r1c1">3</td><td class="available" data-title="r1c2">4</td><td class="available" data-title="r1c3">5</td><td class="available" data-title="r1c4">6</td><td class="available" data-title="r1c5">7</td><td class="weekend available" data-title="r1c6">8</td></tr><tr><td class="weekend available" data-title="r2c0">9</td><td class="available" data-title="r2c1">10</td><td class="available" data-title="r2c2">11</td><td class="available" data-title="r2c3">12</td><td class="available" data-title="r2c4">13</td><td class="available" data-title="r2c5">14</td><td class="weekend available" data-title="r2c6">15</td></tr><tr><td class="weekend available" data-title="r3c0">16</td><td class="available" data-title="r3c1">17</td><td class="available" data-title="r3c2">18</td><td class="available" data-title="r3c3">19</td><td class="available" data-title="r3c4">20</td><td class="available" data-title="r3c5">21</td><td class="weekend available" data-title="r3c6">22</td></tr><tr><td class="weekend available" data-title="r4c0">23</td><td class="available" data-title="r4c1">24</td><td class="active start-date active end-date available" data-title="r4c2">25</td><td class="off disabled" data-title="r4c3">26</td><td class="off disabled" data-title="r4c4">27</td><td class="off disabled" data-title="r4c5">28</td><td class="weekend off disabled" data-title="r4c6">29</td></tr><tr><td class="weekend off disabled" data-title="r5c0">30</td><td class="off disabled" data-title="r5c1">31</td><td class="off off disabled" data-title="r5c2">1</td><td class="off off disabled" data-title="r5c3">2</td><td class="off off disabled" data-title="r5c4">3</td><td class="off off disabled" data-title="r5c5">4</td><td class="weekend off off disabled" data-title="r5c6">5</td></tr></tbody></table></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_end" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Sep 2015</th><th></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off off disabled" data-title="r0c0">30</td><td class="off off disabled" data-title="r0c1">31</td><td class="off disabled" data-title="r0c2">1</td><td class="off disabled" data-title="r0c3">2</td><td class="off disabled" data-title="r0c4">3</td><td class="off disabled" data-title="r0c5">4</td><td class="weekend off disabled" data-title="r0c6">5</td></tr><tr><td class="weekend off disabled" data-title="r1c0">6</td><td class="off disabled" data-title="r1c1">7</td><td class="off disabled" data-title="r1c2">8</td><td class="off disabled" data-title="r1c3">9</td><td class="off disabled" data-title="r1c4">10</td><td class="off disabled" data-title="r1c5">11</td><td class="weekend off disabled" data-title="r1c6">12</td></tr><tr><td class="weekend off disabled" data-title="r2c0">13</td><td class="off disabled" data-title="r2c1">14</td><td class="off disabled" data-title="r2c2">15</td><td class="off disabled" data-title="r2c3">16</td><td class="off disabled" data-title="r2c4">17</td><td class="off disabled" data-title="r2c5">18</td><td class="weekend off disabled" data-title="r2c6">19</td></tr><tr><td class="weekend off disabled" data-title="r3c0">20</td><td class="off disabled" data-title="r3c1">21</td><td class="off disabled" data-title="r3c2">22</td><td class="off disabled" data-title="r3c3">23</td><td class="off disabled" data-title="r3c4">24</td><td class="off disabled" data-title="r3c5">25</td><td class="weekend off disabled" data-title="r3c6">26</td></tr><tr><td class="weekend off disabled" data-title="r4c0">27</td><td class="off disabled" data-title="r4c1">28</td><td class="off disabled" data-title="r4c2">29</td><td class="off disabled" data-title="r4c3">30</td><td class="off off disabled" data-title="r4c4">1</td><td class="off off disabled" data-title="r4c5">2</td><td class="weekend off off disabled" data-title="r4c6">3</td></tr><tr><td class="weekend off off disabled" data-title="r5c0">4</td><td class="off off disabled" data-title="r5c1">5</td><td class="off off disabled" data-title="r5c2">6</td><td class="off off disabled" data-title="r5c3">7</td><td class="off off disabled" data-title="r5c4">8</td><td class="off off disabled" data-title="r5c5">9</td><td class="weekend off off disabled" data-title="r5c6">10</td></tr></tbody></table></div></div><div class="ranges"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div></div><div class="daterangepicker dropdown-menu show-calendar opensright"><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_start" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_end" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"></div></div><div class="ranges"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" disabled="disabled" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Clear</button></div></div></div><div class="daterangepicker dropdown-menu show-calendar opensright"><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_start" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_end" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"></div></div><div class="ranges"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" disabled="disabled" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Clear</button></div></div></div><div class="daterangepicker dropdown-menu single opensright"><div class="calendar left single" style="display: block;"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_start" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time" style="display: none;"></i></div></div><div class="calendar-table"></div></div><div class="calendar right" style="display: none;"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_end" value="" style="display: none;"><i class="fa fa-calendar glyphicon glyphicon-calendar" style="display: none;"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time" style="display: none;"></i></div></div><div class="calendar-table"></div></div><div class="ranges" style="display: none;"><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" disabled="disabled" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Clear</button></div></div></div><div class="daterangepicker dropdown-menu opensright show-calendar" style="top: 292px; left: 89.5px; right: auto; display: none;"><div class="ranges"><ul><li>Last 7 Days</li><li>Last 30 Days</li><li class="active">Custom range</li></ul><div class="range_inputs"><button class="applyBtn btn btn-sm btn-success" type="button">Apply</button> <button class="cancelBtn btn btn-sm btn-default" type="button">Cancel</button></div></div><div class="calendar left"><div class="daterangepicker_input"><input class="input-mini active" type="text" name="daterangepicker_start" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th class="prev available"><i class="fa fa-chevron-left glyphicon glyphicon-chevron-left"></i></th><th colspan="5" class="month">Dec 2015</th><th></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">29</td><td class="off available" data-title="r0c1">30</td><td class="available" data-title="r0c2">1</td><td class="available" data-title="r0c3">2</td><td class="available" data-title="r0c4">3</td><td class="available" data-title="r0c5">4</td><td class="weekend available" data-title="r0c6">5</td></tr><tr><td class="weekend available" data-title="r1c0">6</td><td class="available" data-title="r1c1">7</td><td class="available" data-title="r1c2">8</td><td class="available" data-title="r1c3">9</td><td class="available" data-title="r1c4">10</td><td class="available" data-title="r1c5">11</td><td class="weekend available" data-title="r1c6">12</td></tr><tr><td class="weekend available" data-title="r2c0">13</td><td class="available" data-title="r2c1">14</td><td class="available" data-title="r2c2">15</td><td class="active start-date available" data-title="r2c3">16</td><td class="today active end-date in-range available" data-title="r2c4">17</td><td class="available" data-title="r2c5">18</td><td class="weekend available" data-title="r2c6">19</td></tr><tr><td class="weekend available" data-title="r3c0">20</td><td class="available" data-title="r3c1">21</td><td class="available" data-title="r3c2">22</td><td class="available" data-title="r3c3">23</td><td class="available" data-title="r3c4">24</td><td class="available" data-title="r3c5">25</td><td class="weekend available" data-title="r3c6">26</td></tr><tr><td class="weekend available" data-title="r4c0">27</td><td class="available" data-title="r4c1">28</td><td class="available" data-title="r4c2">29</td><td class="available" data-title="r4c3">30</td><td class="available" data-title="r4c4">31</td><td class="off available" data-title="r4c5">1</td><td class="weekend off available" data-title="r4c6">2</td></tr><tr><td class="weekend off available" data-title="r5c0">3</td><td class="off available" data-title="r5c1">4</td><td class="off available" data-title="r5c2">5</td><td class="off available" data-title="r5c3">6</td><td class="off available" data-title="r5c4">7</td><td class="off available" data-title="r5c5">8</td><td class="weekend off available" data-title="r5c6">9</td></tr></tbody></table></div></div><div class="calendar right"><div class="daterangepicker_input"><input class="input-mini" type="text" name="daterangepicker_end" value=""><i class="fa fa-calendar glyphicon glyphicon-calendar"></i><div class="calendar-time" style="display: none;"><div></div><i class="fa fa-clock-o glyphicon glyphicon-time"></i></div></div><div class="calendar-table"><table class="table-condensed"><thead><tr><th></th><th colspan="5" class="month">Jan 2016</th><th class="next available"><i class="fa fa-chevron-right glyphicon glyphicon-chevron-right"></i></th></tr><tr><th>Su</th><th>Mo</th><th>Tu</th><th>We</th><th>Th</th><th>Fr</th><th>Sa</th></tr></thead><tbody><tr><td class="weekend off available" data-title="r0c0">27</td><td class="off available" data-title="r0c1">28</td><td class="off available" data-title="r0c2">29</td><td class="off available" data-title="r0c3">30</td><td class="off available" data-title="r0c4">31</td><td class="available" data-title="r0c5">1</td><td class="weekend available" data-title="r0c6">2</td></tr><tr><td class="weekend available" data-title="r1c0">3</td><td class="available" data-title="r1c1">4</td><td class="available" data-title="r1c2">5</td><td class="available" data-title="r1c3">6</td><td class="available" data-title="r1c4">7</td><td class="available" data-title="r1c5">8</td><td class="weekend available" data-title="r1c6">9</td></tr><tr><td class="weekend available" data-title="r2c0">10</td><td class="available" data-title="r2c1">11</td><td class="available" data-title="r2c2">12</td><td class="available" data-title="r2c3">13</td><td class="available" data-title="r2c4">14</td><td class="available" data-title="r2c5">15</td><td class="weekend available" data-title="r2c6">16</td></tr><tr><td class="weekend available" data-title="r3c0">17</td><td class="available" data-title="r3c1">18</td><td class="available" data-title="r3c2">19</td><td class="available" data-title="r3c3">20</td><td class="available" data-title="r3c4">21</td><td class="available" data-title="r3c5">22</td><td class="weekend available" data-title="r3c6">23</td></tr><tr><td class="weekend available" data-title="r4c0">24</td><td class="available" data-title="r4c1">25</td><td class="available" data-title="r4c2">26</td><td class="available" data-title="r4c3">27</td><td class="available" data-title="r4c4">28</td><td class="available" data-title="r4c5">29</td><td class="weekend available" data-title="r4c6">30</td></tr><tr><td class="weekend available" data-title="r5c0">31</td><td class="off available" data-title="r5c1">1</td><td class="off available" data-title="r5c2">2</td><td class="off available" data-title="r5c3">3</td><td class="off available" data-title="r5c4">4</td><td class="off available" data-title="r5c5">5</td><td class="weekend off available" data-title="r5c6">6</td></tr></tbody></table></div></div></div> -->
+			<div class="row">
 
-	<div class="row">
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3>
+							<font color="black"> Llámanos </font><br> 01 (55) 5814 9396<br> de 9 a 18 hrs.,
+							lunes a viernes
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
 
-		<div class="col-md-10">
-			<div ui-view></div>
-		</div>
-		<div class="col-md-2">
-<!-- 			<img src="img/banner_sivale.gif"> -->
-			<img src="img/banner_ford.jpg">
-		</div>
+			</div>
 
-		<nav id="c-menu--slide-left" class="c-menu c-menu--slide-left">
-			<button class="c-menu__close"> Cerrar Menú</button>
-			<ul class="c-menu__items" ng-controller="getClassifications" ng-cloak>
-				<li class="c-menu__item"><a href="#" ng-click="goToHome()" class="c-menu__link">Inicio</a></li>
-				<li class="c-menu__item"><a href="#" ng-click="goToCampaigs()" class="c-menu__link">Campañas</a></li>
-				<li ng-repeat="class in classifications" class="c-menu__item ">
-						<div >
-							<div class="thumbnail2 div-sivaleMenu portfolio-box">
-								<div class="thumbnail2_wrapper">
-									<a href="#"
-										data-ng-click="selectClassification(class)"
-										ui-sref="campaigns"> <img
-										src="img/company_logo/{{class.catViews.logos}}/logo.png" class="img-responsive"
-										alt="">
-										<div class="portfolio-box-caption">
-											<div class="portfolio-box-caption-content">
-												<div class="project-name">{{class.className}}</div>
-											</div>
-										</div>
-									</a>
-								</div>
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3>
+							<font color="black"> O escríbenos </font><br> atnincentivos@sivale.com.mx
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-xs-6 col-md-2"></div>
+				<div class="col-xs-6 col-md-8">
+					<div class="panel panel-gris">
+						<div class="panel-heading">
+							<div class="text-center">
+								<h2>¿DUDAS SOBRE LAS TARJETAS SIVALE?</h2>
+								
 							</div>
 						</div>
-				</li>
-			</ul>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2"></div>
+				
+			</div>
+			
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3><font color="black">Llama al servicio integral
+							<br> para tarjetabientes</font><br> 
+							01 (55) 5814 9396 <br> cualquier dia de la semana <br> 24 horas al dia
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
+			
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3>
+							<font color="black"> O escribenos </font><br> sita@sivale.com.mx
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
 			
 			
+			<div class="row">
+
+				<div class="col-xs-6 col-md-4"></div>
+				<div class="col-xs-6 col-md-4">
+					<div class="text-center">
+						<img src="img/t-lealtad.png" alt="..." class="img-rounded">
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-4"></div>
+
+			</div>
 			
-		</nav>
+			<br><br>
+			
 
-		<div id="c-mask" class="c-mask"></div>
+		</div>
+	</section>
 
-	</div>
-
-	<!-- menus script -->
-	<script src="js/menu.js"></script>
-	<script>
-		/**
-		 * Slide left instantiation and action.
-		 */
-		var slideLeft = new Menu({
-			wrapper : '#o-wrapper',
-			type : 'slide-left',
-			menuOpenerClass : '.c-button',
-			maskId : '#c-mask'
-		});
-
-		var slideLeftBtn = document.querySelector('#c-button--slide-left');
-
-		slideLeftBtn.addEventListener('click', function(e) {
-			e.preventDefault;
-			slideLeft.open();
-		});
-	</script>
-
-	<footer>
-		<div class="header_top">
-			<div class="container width100">
-				<div class="row">
-					<div class="col-sm-6">
+		<footer>
+		<div id="imginthefooter" class="header_top">
+			<div class="container width100" >
+				<div class="row" >
+					<div class="col-sm-3"></div>
+					
+					<div class="col-sm-2">
 						<div class="contactinfo">
 							<div class="div-fit-img2">
-								<img src="img/logo-header.png" ui-sref="#">
+							<br>
+								<img src="img/logo-header.png">
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-6">
-						<!-- 						<div class="shop-menu pull-right"> -->
-						<!-- 							<div class="div-fit-img2"> -->
-						<!-- 								<img src="img/logo-header.png" ui-sref="#"> -->
-						<!-- 							</div> -->
-						<!-- 						</div> -->
-						<div class="shop-menu pull-right">
+					<div class="col-sm-4">
 							<p>
-								</br> Sí­ Vale México, S.A. de CV. </br> Av. Paseo de la Reforma No. 284,
-								Piso 23. Col. Juárez, </br> Del. Cuauhtémoc, C.P. 06600, México, D.F.
-							</p>
-						</div>
+								<font color="white">
+									</br> Sí­ Vale México, S.A. de CV. </br> Av. Paseo de la Reforma No. 284,
+									Piso 23. Col. Juárez, </br> Del. Cuauhtémoc, C.P. 06600, México, D.F.
+									</br></br> SíVale 2016 
+								</font>
+							</p>						
 					</div>
+					<div class="col-sm-3"></div>
 				</div>
 			</div>
 		</div>
 	</footer>
+
 </body>
 </html>
+
