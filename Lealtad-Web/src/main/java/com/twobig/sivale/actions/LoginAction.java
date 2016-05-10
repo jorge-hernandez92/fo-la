@@ -40,6 +40,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	@Action(value="login", results = { @Result(name="user", location="/secured/home_user.jsp"),
 			@Result(name="admin", location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/login.jsp")})
+	
 	public String login() {
 		
 		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();

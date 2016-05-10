@@ -17,8 +17,7 @@
 							<div class="font-title-item">Nombre de Usuario</div>
 							<div id="quickfit-user"
 								title="${sessionScope.userDetails.userName}"
-								class="huge font-size-email">{{user.firstName}} {{user.lastName1}} {{user.lastName2}}</div>
-								
+								class="huge font-size-email">{{user.firstName}} {{user.lastName1}} {{user.lastName2}}</div>	
 						</div>
 					</div>
 				</div>

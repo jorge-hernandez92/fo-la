@@ -18,6 +18,13 @@
 <link rel="stylesheet" href="css/sb-admin-2.css">
 <link ng-href="css/{{css}}" rel="stylesheet">
 <!-- links provicinales  -->
+<link rel="stylesheet" href="css/sticky-footer.css">
+
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/demo.css" /> -->
+<link rel="stylesheet" type="text/css" href="css/set2.css" />
+
+
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
 <script src="js/angular.min.js"></script>
@@ -39,213 +46,79 @@
 
 <!-- links provicinales  -->
 <script src="js/jquery.easing.min.js"></script>
-<script src="js/grayscale.js"></script>
+<!-- <script src="js/grayscale.js"></script> -->
 <script src="js/dynamic-background-home.js"></script>
 
 </head>
 
-<body class="sivale" id="init" >
+<body class="sivale image-th" id="init">
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-default navbar-static-top" data-ng-controller="updateSession">
-            <div class="navbar-header" data-ng-controller="getClassifications" ng-cloak>
-			<a class="navbar-brand"> 
-			<img alt="Brand" src="img/ford-elite.png">
+	<!-- Navigation -->
+	<nav class="navbar navbar-default navbar-static-top"
+		data-ng-controller="updateSession">
+		<div class="navbar-header" data-ng-controller="getClassifications"
+			ng-cloak>
+			<a class="navbar-brand"> <img id="brandIm" alt="Brand"
+				src="img/ford-elite.png">
 			</a>
 		</div>
-            <!-- /.navbar-header -->
-
-            <ul class="nav navbar-nav navbar-right">            
-				<li class="dropdown">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                        <i class="fa fa-bars"></i>  Menu  <i class="fa fa-caret-down"></i>
-                    </a>
-                    <ul class="dropdown-menu dropdown-user">
-                        <li><a href="#"><i class="fa fa-home" aria-hidden="true"></i> Inicio </a>
-                        </li>
-                        <li><a href="#"><i class="fa fa-list" aria-hidden="true"></i> Campañas </a>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <a >
-                        <i class="fa fa-credit-card"></i>
-                        <span class="span-header">{{user.tjCardNumber}}</span>
-                    </a>
-                </li>
-                <li >
-                    <a >
-                        <i class="fa fa-user fa-fw" ></i>
-                        <span class="span-header">{{user.firstName}}</span>
-                    </a>
-                </li>
-                <li >
-                    <a href="logout">
-                        <i class="fa fa-sign-out"></i>
-                         Salir
-                    </a>
-                </li>
-            </ul>
-        </nav>
-        
-    <!-- Full Width Image Header -->
-    <header  class="header-image">
-        <div class="headline">
-            <div class="container">
-                <h1><font color="white">Elige el programa de Incentivos</font></h1>
-                
-            </div>
-        </div>
-		<a href="#transaction" class="btn btn-circle page-scroll"> 
-			<i class="fa fa-angle-double-down animated"></i>
-		</a>
-	</header>
-
-
-    <!-- Transaction Section -->
-	<section id="transaction">
-	
-			<div ui-view></div>
+		<!-- /.navbar-header -->
 		
-	</section>
+		<ul class="nav navbar-nav">
 
-	<!-- Infp Section -->
-	<section id="transaction2">
-		<div class="container  font-color-text">
-		
-			<div class="row">
-				
-				<div class="col-xs-6 col-md-2"></div>
-				<div class="col-xs-6 col-md-8">
-					<div class="panel panel-gris">
-						<div class="panel-heading">
-							<div class="text-center">
-								<h2>¿DUDAS SOBRE EL PROGRAMA DE
-								INCENTIVOS?</h2>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-2"></div>
-				
-			</div>
+			<li class="dropdown" id="menuTH" ><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
+					<i class="fa fa-caret-down"></i>
+			</a>
+				<ul class="dropdown-menu dropdown-user">
+					<li><a href="#" ng-click="goToHome()"><i class="fa fa-home" aria-hidden="true"></i>
+							Inicio </a></li>
+							
+					<li id="li-separator" role="separator" class="divider"></li>
 
-			<div class="row">
-
-				<div class="col-xs-6 col-md-3"></div>
-				<div class="col-xs-6 col-md-6">
-					<div class="text-center">
-						<h3>
-							<font color="black"> Llámanos </font><br> 01 (55) 5814 9396<br> de 9 a 18 hrs.,
-							lunes a viernes
-						</h3>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3"></div>
-
-			</div>
-
-			<div class="row">
-
-				<div class="col-xs-6 col-md-3"></div>
-				<div class="col-xs-6 col-md-6">
-					<div class="text-center">
-						<h3>
-							<font color="black"> O escríbenos </font><br> atnincentivos@sivale.com.mx
-						</h3>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3"></div>
-
-			</div>
-			
-			<div class="row">
-				
-				<div class="col-xs-6 col-md-2"></div>
-				<div class="col-xs-6 col-md-8">
-					<div class="panel panel-gris">
-						<div class="panel-heading">
-							<div class="text-center">
-								<h2>¿DUDAS SOBRE LAS TARJETAS SIVALE?</h2>
-								
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-2"></div>
-				
-			</div>
-			
-			<div class="row">
-
-				<div class="col-xs-6 col-md-3"></div>
-				<div class="col-xs-6 col-md-6">
-					<div class="text-center">
-						<h3><font color="black">Llama al servicio integral
-							<br> para tarjetabientes</font><br> 
-							01 (55) 5814 9396 <br> cualquier dia de la semana <br> 24 horas al dia
-						</h3>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3"></div>
-
-			</div>
-			
-			<div class="row">
-
-				<div class="col-xs-6 col-md-3"></div>
-				<div class="col-xs-6 col-md-6">
-					<div class="text-center">
-						<h3>
-							<font color="black"> O escribenos </font><br> sita@sivale.com.mx
-						</h3>
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-3"></div>
-
-			</div>
-			
-			
-			<div class="row">
-
-				<div class="col-xs-6 col-md-4"></div>
-				<div class="col-xs-6 col-md-4">
-					<div class="text-center">
-						<img src="img/t-lealtad.png" alt="..." class="img-rounded">
-					</div>
-				</div>
-				<div class="col-xs-6 col-md-4"></div>
-
-			</div>
-			
-			<br><br>
-			
-
-		</div>
-	</section>
-
-		<footer>
-		<div id="imginthefooter" class="header_top">
-			<div class="container width100" >
-				<div class="row" >
-					<div class="col-sm-3"></div>
+					<li id="li-campaigns"><a ui-sref="campaigns">Campañas</a></li>
 					
+					<li id="li-campaign"><a ui-sref="campaign">Publicaciones</a></li>
+
+				</ul></li>
+
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li><a> <i class="fa fa-credit-card"></i> <span
+					class="span-header">{{user.tjCardNumber}}</span>
+			</a></li>
+			<li><a> <i class="fa fa-user fa-fw"></i> <span
+					class="span-header">{{user.firstName}}</span>
+			</a></li>
+			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
+			</a></li>
+		</ul>
+	</nav>
+
+	<div ui-view></div>
+
+
+	<footer class="footer">
+		<div id="imginthefooter" class="header_top">
+			<div class="container width100">
+				<div class="row">
+					<div class="col-sm-3"></div>
+
 					<div class="col-sm-2">
 						<div class="contactinfo">
 							<div class="div-fit-img2">
-							<br>
-								<img src="img/logo-header.png">
+								<br> <img src="img/logo-login2.png">
 							</div>
 						</div>
 					</div>
 					<div class="col-sm-4">
-							<p>
-								<font color="white">
-									</br> Sí­ Vale México, S.A. de CV. </br> Av. Paseo de la Reforma No. 284,
-									Piso 23. Col. Juárez, </br> Del. Cuauhtémoc, C.P. 06600, México, D.F.
-									</br></br> SíVale 2016 
-								</font>
-							</p>						
+						<p>
+							<font color="white"> </br> Sí­ Vale México, S.A. de CV. </br> Av.
+								Paseo de la Reforma No. 284, Piso 23. Col. Juárez, </br> Del.
+								Cuauhtémoc, C.P. 06600, México, D.F. </br> </br> SíVale 2016
+							</font>
+						</p>
 					</div>
 					<div class="col-sm-3"></div>
 				</div>

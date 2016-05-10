@@ -52,10 +52,32 @@ appres
 
 					$scope.menuCampaign = false;
 					$scope.companyMenu = false;
+					 
+					
+					//funcion para colocar imagen en estado de campañas 
+					$scope.getIndex = function(){
+						
+						
+						if($scope.index >= 5){
+							$scope.index = 1; 
+						}
+						else{
+							$scope.index++;
+						}
+						
+						return $scope.index;  
+					}
 
 					$scope.getCampaigns = function() {
+						
+						//variable para colocar imagen de estado de campañas
+						$scope.index = 1;
+						
+						
+						console.log("La clasificacion es: "+$scope.classification);
 
 						var data = angular.toJson($scope.classification);
+//						$scope.updateClassification($scope.classification);
 						console.log(JSON.stringify(data));
 
 						$http(
@@ -69,6 +91,7 @@ appres
 								}).success(
 								function(data, status, headers, config) {
 									$scope.campaigns = data;
+									
 									console.log(JSON.stringify(data));
 
 									$scope.tableCampaigns = new NgTableParams({
@@ -77,6 +100,7 @@ appres
 										counts : [],
 										dataset : data
 									});
+									$scope.updateClassification($scope.classification);
 
 								}).error(
 								function(data, status, headers, config) {
@@ -107,17 +131,14 @@ appres
 										function(data, status, headers, config) {
 
 											$scope.classifications = data;
-											// $scope.css = CSS_DEFAULT;
-											// $scope.logo = LOGO_DEFAULT;
-											// $scope.classification =
-											// STRING_DEFAULT;
-											// $scope.companyMenu = true;
 
 											if (data.length == 1) {
 												$scope
 														.updateClassification($scope.classifications[0]);
 												$scope.companyMenu = false;
 											} else
+//												$scope
+//												.updateClassification($scope.classifications[0]);
 												$scope.companyMenu = true;
 
 										})
@@ -134,6 +155,9 @@ appres
 					};
 
 					$scope.getCampaign = function() {
+						
+						//variable para colocar imagen de estado de campañas
+						$scope.index = 1;
 
 						var data = angular.toJson($scope.campaign);
 
@@ -279,6 +303,10 @@ appres
 						$scope.logo = 'img/company_logo/'
 								+ $scope.classification.catViews.logos
 								+ '/header.png';
+						
+						$scope.logo2 = 'img/company_logo/'
+							+ $scope.classification.catViews.logos
+							+ '/logo.png';
 					};
 
 					$scope.updatePublication = function(publication) {
@@ -531,32 +559,133 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	.state('home', {
 		url : '/home',
 		templateUrl : 'templates/homeTh2.jsp',
-		controller:	function () {
-            $('html, body').animate({
-                scrollTop: $("#init").offset().top
-            });
-        }
+		controller:	
+ 			function() {
+
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+
+			$('a.page-scroll').bind('click', function(event) {
+				console.log("den scr");
+				var $anchor = $(this);
+				$('html, body').stop().animate({
+					scrollTop : $($anchor.attr('href')).offset().top
+				}, 1500, 'easeInOutExpo');
+				event.preventDefault();
+			});
+			
+			$('#brandIm').show();
+			
+			$('body').removeClass('image-th');
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#777" );
+			
+			$('#menuTH').hide();
+			
+			$('body').removeClass('image-th-p');
+			
+			
+		}
 	})
 
 	.state('campaigns', {
-		url : '/campañas',
-		templateUrl : 'templates/campaigns_user.jsp'
+		url : '/campaigns',
+		templateUrl : 'templates/campaigns_user.jsp',
+		controller:	
+ 			function() {
+
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#brandIm').hide();
+			
+			$('body').addClass('image-th');
+			
+			$('body').removeClass('image-th-p');
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH').show();
+			
+			$('#li-separator').hide();
+			
+			$('#li-campaigns').hide();
+			
+			$('#li-campaign').hide();
+			
+			
+		}
 	})
 
 	.state('campaign', {
-		url : '/campaña',
-		templateUrl : 'templates/campaignDetail_user.jsp'
+		url : '/campaign',
+		templateUrl : 'templates/campaignDetail_user.jsp',
+		controller:	
+ 			function() {
+
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#brandIm').hide();
+			
+			$('body').addClass('image-th');
+			
+			$('body').removeClass('image-th-p');
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH').show();
+			
+			$('#li-separator').show();
+			
+			$('#li-campaigns').show();
+			
+			$('#li-campaign').hide();
+		}
 	})
 
 	.state('publication', {
 		url : '/publicacion',
-		templateUrl : 'templates/publication_user.jsp'
+		templateUrl : 'templates/publication_user.jsp',
+		controller:	
+ 			function() {
+
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#brandIm').hide();
+			
+			$('body').addClass('image-th');
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH').show();
+			
+			$('body').addClass('image-th-p');
+			
+			$('#li-separator').show();
+			
+			$('#li-campaigns').show();
+			
+			$('#li-campaign').show();
+		}
 	})
 
-	.state('transactions', {
-		url : '/transacciones',
-		templateUrl : 'templates/homeTh.jsp'
-	})
+//	.state('transactions', {
+//		url : '/transacciones',
+//		templateUrl : 'templates/homeTh.jsp',
+//		controller:	
+// 			function() {
+//
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
+//		}
+//	})
 });
 
 angular.bootstrap(document, [ 'app' ]);

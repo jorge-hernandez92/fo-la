@@ -2,17 +2,33 @@
 	pageEncoding="utf-8"%>
 
 <div class="panel-body ">
-	<div class="navbar container">
-		<ol class="breadcrumb breadcrumb-arrow">
-			<li class="active"><span>Campañas</span></li>
-		</ol>
-	</div>
+
+	<div class="row">
 	
+		<div class="col-sm-6 col-md-4"></div>
+	
+		<div class="col-sm-6 col-md-4" ng-cloak>
+			<div class="thumbnail" style="background-color: inherit; border: 0px;">>
+				<img src="{{logo2}}" alt="...">
+				<div class="caption">
+				</div>
+			</div>
+		</div>
+		
+		<div class="col-sm-6 col-md-4"></div>
+		
+	</div>
+
+	<div class="container">
+		<h1 class="text-center">
+			<font color="white">Conoce las Campañas</font>
+		</h1>
+	</div>
+
 	<div class="navbar container">
 
 		<div class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
-
                 <input type="text" class="form-control" placeholder="Campaña" ng-model="search.campaignName">
 				<input type="text" class="form-control" placeholder="Programa" ng-model="search.classification">
 				<input type="text" class="form-control" placeholder="Subprograma" ng-model="classif.classification2">
@@ -26,50 +42,29 @@
 		
 	</div>
 
-	<div class="container back-sivale">
-		<div class="panel panel-default table-top-sivale">
-			<div class="panel-heading">
-				<div class="container-fluid">
-					<div class="navbar-header">{{classification.className}}</div>
-				</div>
-			</div>
 
-			<!-- 			<div class="input-group"> -->
-			<!-- 				<div class="input-group-addon"> -->
-			<!-- 					<span class="glyphicon glyphicon-search" aria-hidden="true"></span> -->
-			<!-- 				</div> -->
-			<!-- 				<input class="form-control" type="text" -->
-			<!-- 					data-ng-model="filters.myfilter" placeholder="Buscar Campaña" /> -->
-			<!-- 			</div> -->
-
-			<div class="panel-body back-sivale">
-				<div data-ng-controller="getCampaigns" ng-cloak class="table-responsive">
-					<table ng-table="tableCampaigns" class="table">
-						<tr ng-repeat="campaign in $data | filter:search:strict">
-
-							<td title="'Nombre de Campaña'" 
-								sortable="'campaignName'">{{campaign.campaignName}}</td>
-
-							<td title="'Clasificación'"
-								sortable="'classification'">
-									<span class="label label-default" ng-repeat="class in campaign.classification"
-									>{{class}}</span>
-
-							</td>
-
-							<td title="'Inicio'"
-								sortable="'startDate'">{{campaign.startDate | date:'dd/MM/yyyy'}}</td>
-
-							<td title="'Cierre'"
-								sortable="'endDate'">{{campaign.endDate | date:'dd/MM/yyyy'}}</td>
-
-							<td><a href="#" data-ng-click="updateCampaign(campaign)"
-								ui-sref="campaign"> Ver</a></td>
-						</tr>
-					</table>
+	<div class="container" data-ng-controller="getCampaigns" ng-cloak>
+		<div class="row">
+			<div class="col-sm-6 col-md-3"
+				ng-repeat="campaign in campaigns | filter:search:strict "
+				style="padding-right: 0px; padding-left: 0px;">
+				<div class="grid" data-toggle="tooltip" data-placement="left"
+					title="{{campaign.classification}}">
+					<figure class="effect-ming">
+						<img src="img/img_camp/{{getIndex()}}cam.jpg" alt="" />
+						<figcaption>
+							<h5>{{campaign.campaignName}}</h5>
+							<p>{{campaign.classification[0]}}</p>
+							<p>{{campaign.startDate | date:'dd/MM/yyyy'}} -
+								{{campaign.endDate | date:'dd/MM/yyyy'}}</p>
+							<a href="#" data-ng-click="updateCampaign(campaign)"
+								ui-sref="campaign">View more</a>
+						</figcaption>
+					</figure>
 				</div>
 			</div>
 		</div>
 	</div>
-	
+
+
 </div>

@@ -89,7 +89,7 @@
 		<div class="container">
 			<h3>Programa administrado por</h3>
 			<div class="form-group">
-				<img src="img/logo-login.png">
+				<img src="img/logo-login2.png">
 			</div>
 
 		</div>

@@ -1,9 +1,24 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 
+<header class="header-image">
+	<div class="headline">
+		<div class="container">
+			<h1>
+				<font color="white">Elige el programa de Incentivos</font>
+			</h1>
+
+		</div>
+	</div>
+	<a href="#transaction" class="btn btn-circle page-scroll"> <i
+		class="fa fa-angle-double-down animated"></i>
+	</a>
+</header>
+
+<section id="transaction">
 <div>
- 
- 	<div class="container" ng-if="companyMenu">
+
+ 	<div class="container">
 		<div class="panel ">							
 			<div class="panel-body back-sivale">
 				<div class="row" data-ng-controller="getClassifications" ng-cloak>
@@ -113,3 +128,119 @@
 			</div>
 		</div>
 </div>
+<!-- </section> -->
+
+<!-- Infp Section -->
+<!-- 	<section id="transaction2"> -->
+		<div class="container  font-color-text">
+		
+			<div class="row">
+				
+				<div class="col-xs-6 col-md-2"></div>
+				<div class="col-xs-6 col-md-8">
+					<div class="panel panel-gris">
+						<div class="panel-heading">
+							<div class="text-center">
+								<h2>¿DUDAS SOBRE EL PROGRAMA DE
+								INCENTIVOS?</h2>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2"></div>
+				
+			</div>
+
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3>
+							<font color="black"> Llámanos </font><br> 01 (55) 5814 9396<br> de 9 a 18 hrs.,
+							lunes a viernes
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
+
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3>
+							<font color="black"> O escríbenos </font><br> atnincentivos@sivale.com.mx
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
+			
+			<div class="row">
+				
+				<div class="col-xs-6 col-md-2"></div>
+				<div class="col-xs-6 col-md-8">
+					<div class="panel panel-gris">
+						<div class="panel-heading">
+							<div class="text-center">
+								<h2>¿DUDAS SOBRE LAS TARJETAS SIVALE?</h2>
+								
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-2"></div>
+				
+			</div>
+			
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3><font color="black">Llama al servicio integral
+							<br> para tarjetabientes</font><br> 
+							01 (55) 5814 9396 <br> cualquier dia de la semana <br> 24 horas al dia
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
+			
+			<div class="row">
+
+				<div class="col-xs-6 col-md-3"></div>
+				<div class="col-xs-6 col-md-6">
+					<div class="text-center">
+						<h3>
+							<font color="black"> O escribenos </font><br> sita@sivale.com.mx
+						</h3>
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-3"></div>
+
+			</div>
+			
+			
+			<div class="row">
+
+				<div class="col-xs-6 col-md-4"></div>
+				<div class="col-xs-6 col-md-4">
+					<div class="text-center">
+						<img src="img/t-lealtad.png" alt="..." class="img-rounded">
+					</div>
+				</div>
+				<div class="col-xs-6 col-md-4"></div>
+
+			</div>
+			
+			<br><br>
+			
+
+		</div>
+	</section>

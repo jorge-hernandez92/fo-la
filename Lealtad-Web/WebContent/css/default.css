@@ -1,7 +1,7 @@
-.back-image{  
-    background-image:url('../img/bg_content_clientes.jpg'); 
-	background-size:cover; 
-}
+/* .back-image{   */
+/*     background-image:url('../img/bg_content_clientes.jpg');  */
+/* 	background-size:cover;  */
+/* } */
 
 .margin-top10{
 	margin-top: 10px;
@@ -10,7 +10,12 @@
 .span-header {
     margin-top: 10px;
     color: #A7A9AC;
-} 
+}
+
+.span-header2 {
+    margin-top: 10px;
+    color: #A7A9AC;
+}  
 
 .margin-table{
 	margin-top:70px;
@@ -262,6 +267,7 @@
     margin: auto;
     width: 98%;
 }
+
 
 .thumbnail2 {
     display:table;
