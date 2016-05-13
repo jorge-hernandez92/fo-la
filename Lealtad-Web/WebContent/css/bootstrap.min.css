@@ -5440,8 +5440,8 @@ a.badge:focus, a.badge:hover {
 		padding-bottom: 48px
 	}
 	.container .jumbotron, .container-fluid .jumbotron {
-		padding-right: 60px;
-		padding-left: 60px
+		padding-right: 20px;
+		padding-left: 20px
 	}
 	.jumbotron .h1, .jumbotron h1 {
 		font-size: 63px
