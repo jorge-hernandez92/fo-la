@@ -240,6 +240,14 @@ appres
 								.success(
 										function(data, status, headers, config) {
 											$scope.attachedFiles = data.listFiles;
+											
+											$scope.imageOfPublication = data.image;
+											
+											if(data.image != null){
+												$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });     			
+											}
+											
+											$('body').addClass('image-th-p');
 
 											$scope.tableAttachedFiles = new NgTableParams(
 													{
@@ -579,12 +587,19 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').removeClass('image-th');
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#777" );
-			
-			$('#menuTH').hide();
-			
 			$('body').removeClass('image-th-p');
 			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#777" );
+			
+			$('#menuTH').show();
+			
+			$('#li-separator').hide();
+			
+			$('#li-campaigns').hide();
+			
+			$('#li-campaign').hide();
+			
+			$('body').css({ "background-image": "" });
 			
 		}
 	})
@@ -601,9 +616,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#brandIm').hide();
 			
-			$('body').addClass('image-th');
-			
 			$('body').removeClass('image-th-p');
+			
+			$('body').addClass('image-th');
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
@@ -615,6 +630,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#li-campaign').hide();
 			
+			$('body').css({ "background-image": "" });
 			
 		}
 	})
@@ -631,9 +647,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#brandIm').hide();
 			
-			$('body').addClass('image-th');
-			
 			$('body').removeClass('image-th-p');
+			
+			$('body').addClass('image-th');
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
@@ -644,6 +660,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#li-campaigns').show();
 			
 			$('#li-campaign').hide();
+			
+			$('body').css({ "background-image": "" });
+			
 		}
 	})
 
@@ -659,19 +678,16 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#brandIm').hide();
 			
-			$('body').addClass('image-th');
-			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#menuTH').show();
-			
-			$('body').addClass('image-th-p');
 			
 			$('#li-separator').show();
 			
 			$('#li-campaigns').show();
 			
 			$('#li-campaign').show();
+			
 		}
 	})
 

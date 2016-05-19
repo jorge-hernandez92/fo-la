@@ -1,6 +1,7 @@
 package com.twobig.sivale.service.impl;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,7 @@ import com.twobig.sivale.dao.TPublicationDAO;
 import com.twobig.sivale.dao.TUserDataDAO;
 import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.ViewPublicationService;
+import com.twobig.sivale.utils.ImageUtils;
 
 @Service
 public class ViewPublicationServiceImpl implements ViewPublicationService {
@@ -56,6 +58,32 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			String html = htmlParser.getHTML(htmlPath, data);
 
 			publication.setHtml(html);
+			
+			
+			
+			
+			if (tpublication.getImagePath() != null) {
+				
+				// path for get image of publication to set in html background
+				String imagePathPublication = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId()
+						+ File.separator + tpublication.getPublicationId() + File.separator
+						+ tpublication.getImagePath();
+
+				ImageUtils imageUtils = new ImageUtils();
+
+				try {
+					String image65 = imageUtils.imageToBase64(imagePathPublication);
+					publication.setImage("data:image/png;base64,"+image65);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				
+			} else {
+				// SET A DEFAULT IMAGE
+			}
+			
+
 
 			//SEPARAR OBTENER ARCHIVOS ADJUNTOS EN UN NUEVO SERVICIO 
 			

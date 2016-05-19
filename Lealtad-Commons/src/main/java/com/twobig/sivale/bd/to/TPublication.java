@@ -1,7 +1,5 @@
 package com.twobig.sivale.bd.to;// Generated 14/12/2015 01:25:30 PM by Hibernate Tools 4.3.1
 
-import static javax.persistence.GenerationType.IDENTITY;
-
 import java.util.Date;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -33,12 +31,11 @@ public class TPublication implements java.io.Serializable {
 	private Date publishedDate;
 	private String name;
 	private String templateFilePath;
-	private byte[] templateFileBlob;
 	private String dataFilePath;
 	private String dataFilePage;
-	private byte[] dataFileBlob;
 	private String description;
 	private Boolean isEnable;
+	private String imagePath;
 
 	public static final String FIELD_PUBLICATION_ID = "publicationId";
 	public static final String FIELD_CAMPAIGN_ID = "tCampaignId";
@@ -103,15 +100,6 @@ public class TPublication implements java.io.Serializable {
 		this.templateFilePath = templateFilePath;
 	}
 
-	@Column(name = "template_file_blob")
-	public byte[] getTemplateFileBlob() {
-		return this.templateFileBlob;
-	}
-
-	public void setTemplateFileBlob(byte[] templateFileBlob) {
-		this.templateFileBlob = templateFileBlob;
-	}
-
 	@Column(name = "data_file_path", length = 45)
 	public String getDataFilePath() {
 		return this.dataFilePath;
@@ -130,15 +118,6 @@ public class TPublication implements java.io.Serializable {
 		this.dataFilePage = dataFilePage;
 	}
 
-	@Column(name = "data_file_blob")
-	public byte[] getDataFileBlob() {
-		return this.dataFileBlob;
-	}
-
-	public void setDataFileBlob(byte[] dataFileBlob) {
-		this.dataFileBlob = dataFileBlob;
-	}
-
 	@Column(name = "description", length = 150)
 	public String getDescription() {
 		return this.description;
@@ -155,6 +134,15 @@ public class TPublication implements java.io.Serializable {
 
 	public void setIsEnable(Boolean isEnable) {
 		this.isEnable = isEnable;
+	}
+
+	@Column(name = "image_file_path", length = 45)
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 
 	@Override

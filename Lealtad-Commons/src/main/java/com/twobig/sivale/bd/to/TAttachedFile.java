@@ -6,10 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-import static javax.persistence.GenerationType.IDENTITY;
-
-import java.util.Arrays;
-
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -31,7 +27,6 @@ public class TAttachedFile implements java.io.Serializable {
 	private String fileName;
 	private String filePath;
 	private String fileExtension;
-	private byte[] fileBlob;
 
 	public static final String FIELD_TPUBLICATION_ID = "tPublicationId";
 
@@ -92,19 +87,10 @@ public class TAttachedFile implements java.io.Serializable {
 		this.fileExtension = fileExtension;
 	}
 
-	@Column(name = "file_blob")
-	public byte[] getFileBlob() {
-		return this.fileBlob;
-	}
-
-	public void setFileBlob(byte[] fileBlob) {
-		this.fileBlob = fileBlob;
-	}
-
 	@Override
 	public String toString() {
 		return "TAttachedFile [attachedFileId=" + attachedFileId + ", tPublicationId=" + tPublicationId + ", isPublic="
 				+ isPublic + ", fileName=" + fileName + ", filePath=" + filePath + ", fileExtension=" + fileExtension
-				+ ", fileBlob=" + Arrays.toString(fileBlob) + "]";
+				+ "]";
 	}
 }

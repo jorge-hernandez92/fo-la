@@ -157,7 +157,7 @@ body {
 }
 
 .headline {
-    padding: 60px 0;
+    padding: 10px 0;
 }
 
 .btn-circle {
@@ -206,6 +206,10 @@ body {
 
 .font-color-text2{
 	color: #000;
+}
+
+.thumbnail {
+	margin-bottom: 10px;
 }
 
 @-webkit-keyframes pulse {    

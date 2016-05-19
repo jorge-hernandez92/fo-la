@@ -56,12 +56,12 @@
 	<!-- Navigation -->
 	<nav class="navbar navbar-default navbar-static-top"
 		data-ng-controller="updateSession">
-		<div class="navbar-header" data-ng-controller="getClassifications"
-			ng-cloak>
-			<a class="navbar-brand"> <img id="brandIm" alt="Brand"
-				src="img/ford-elite.png">
-			</a>
-		</div>
+<!-- 		<div class="navbar-header" data-ng-controller="getClassifications" -->
+<!-- 			ng-cloak> -->
+<!-- 			<a class="navbar-brand"> <img id="brandIm" alt="Brand" -->
+<!-- 				src="img/ford-elite.png"> -->
+<!-- 			</a> -->
+<!-- 		</div> -->
 		<!-- /.navbar-header -->
 		
 		<ul class="nav navbar-nav">

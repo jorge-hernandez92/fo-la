@@ -13,12 +13,11 @@
 
 
 	<div class="container">
-		<div class="panel ">
-			<div class="panel-body back-sivale">
-				<div class="row" data-ng-controller="getClassifications" ng-cloak>
-					<div class="col-sm-6 col-md-4 back-sivale"
-						ng-repeat="class in classifications">
-						<div class="thumbnail center-block">
+		<div class="">
+			<div class=" back-sivale">
+				<div class="rows" data-ng-controller="getClassifications" ng-cloak>
+					<div class="col-sm-6 col-md-4 col-md-offset-4" ng-repeat="class in classifications">
+						<div class="thumbnail" >
 							<div class="thumbnail2 div-sivale portfolio-box">
 								<div class="thumbnail2_wrapper">
 									<a href="#" data-ng-click="selectClassification(class)"
@@ -42,12 +41,14 @@
 
 
 
+
+
 	<a href="#transaction" class="btn btn-circle page-scroll"> <i
 		class="fa fa-angle-double-down animated"></i>
 	</a>
 </header>
 
-<br><br>
+<br>
 
 <section id="transaction">
 	<div>
