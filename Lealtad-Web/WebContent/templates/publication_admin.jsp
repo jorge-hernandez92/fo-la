@@ -53,7 +53,7 @@
 								<div class="panel-heading">
 									<div class="container-fluid"><span class="label label-default">{{publication.catPublicationType.name}}</span> {{publication.name}}</div>
 								</div>
-								<div class="panel-body back-sivale publication-html"></div>
+								<div class="panel-body back-sivale publication-html" style="background-color: rgb(92, 92, 92);"></div>
 							</div>
 						</div>
 					</div>

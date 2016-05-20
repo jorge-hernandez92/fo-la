@@ -6,21 +6,15 @@
 </div>
 
 <div class="container" data-ng-controller="getAttachedFiles">
-		<div class="row" style="font-size: 2em; color: white;">
+		<div class="row" style="color: white;">
 		<div class="col-md-3"></div>
 		<div class="col-md-6">
-
-			<div class="panel panel-default" style="background-color: white;">
-				<div class="panel-heading text-center" style="padding: 0px 0px;">Archivos</div>
-				<div class="panel-body">
-				
-<!-- 				<img alt="Embedded Image" width="300" height="300" src="{{imageOfPublication}}"/>		 -->
-				</div>
+			<div class="list-group" data-ng-controller="getAttachedFiles">
+				<a  class="list-group-item active text-center">Archivos Adjuntos</a>
+					<a  class="list-group-item" 
+					href="#" ng-repeat="file in attachedFiles"  
+					data-ng-click="getFile(file)">{{file.fileName}}</a>				
 			</div>
-
-
-			<br> <br>
-
 		</div>
 
 		<div class="col-md-3">
@@ -28,9 +22,8 @@
 		</div>
 	
 	</div>
-	
-	
-  
   
 </div>
+
+<br><br><br>
 

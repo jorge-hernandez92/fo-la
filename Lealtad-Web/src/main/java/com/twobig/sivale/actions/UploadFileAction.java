@@ -73,7 +73,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	)
 	public String uploadAction(){
 		
-		if(getFile().length >= 2){
+		if(getFile().length >= 3){
 			
 			TCampaign campaign = (TCampaign) session.get("campaign");
 
@@ -92,16 +92,18 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			publication.setDescription(this.description);
 			publication.setDataFilePath(this.getFileFileName()[1]);
 			publication.setTemplateFilePath(this.getFileFileName()[0]);
+			/* Load of publication image */
+			publication.setImagePath(this.getFileFileName()[2]);
 			publication.setIsEnable(false);
 			
 			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
 			publicationBean.setPublication(publication);
 			
 			List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
-			for (int i = 2; i < this.getFile().length; i++) {
+			for (int i = 3; i < this.getFile().length; i++) {
 				TAttachedFile attachedFile = new TAttachedFile();
 				
-				if(this.getFilechecked()[i-2].equals("Privado"))
+				if(this.getFilechecked()[i-3].equals("Privado"))
 					attachedFile.setIsPublic(false);
 				else attachedFile.setIsPublic(true);
 				
@@ -142,15 +144,13 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 
 			publicationBean.setAttachedFiles(attachedFiles);
 			
-			String id = publicationService.addPublication(publicationBean);
+			String id = publicationService.addPublication(publicationBean);			
 			
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + id;
 			
 			if(NumberUtils.isDigits(id)){
 				
 				for(int i=0; i < getFile().length; i++){
-					//System.out.println("File Name is:"+getFileFileName()[i]);
-					//System.out.println("File ContentType is:"+getFileContentType()[i]);
 					
 					try {
 						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
@@ -160,7 +160,6 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 						return ERROR;
 					}
 				}
-				//System.out.println("File path excel: " + directory+File.separator+getFileFileName()[1]);
 				publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[1]);
 				
 				setMessage(SUCCESS_CODE, SUCCESS_CREATE_PUBLICATION);

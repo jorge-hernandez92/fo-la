@@ -46,14 +46,4 @@ public class ImageUtils {
 		
 		return result;
 	}
-	
-//	public static void main (String args[]) throws IOException {
-//		/* Test image to string and string to image start */
-//		
-//		String path = "images/im1.png";
-//		
-//		System.out.println(imageToBase64(path));
-//
-//	}
-
 }

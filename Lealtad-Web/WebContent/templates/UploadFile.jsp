@@ -59,6 +59,13 @@
 									<input type="file" name="file" class="test" accept=".xlsx" required>
 								</div>
 							</div>
+							
+							<div class="row margin-top10">
+								<div class="col-md-4">Imagen de Publicacion</div>
+								<div class="col-md-8">
+									<input type="file" name="file" class="test" accept="image/*" required>
+								</div>
+							</div>
 
 							<div class="row margin-top10">
 								<div class="col-md-4">Descripción</div>
