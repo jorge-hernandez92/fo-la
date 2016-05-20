@@ -193,7 +193,7 @@
 				<div class="panel panel-gris">
 					<div class="panel-heading">
 						<div class="text-center">
-							<h2>¿DUDAS SOBRE LAS TARJETAS SIVALE?</h2>
+							<h2>¿DUDAS SOBRE LAS TARJETAS SÍVALE?</h2>
 
 						</div>
 					</div>
@@ -211,8 +211,8 @@
 					<h3>
 						<font color="black">Llama al servicio integral <br>
 							para tarjetabientes
-						</font><br> 01 (55) 5814 9396 <br> cualquier dia de la semana <br>
-						24 horas al dia
+						</font><br> 01 (55) 5814 9396 <br> cualquier día de la semana <br>
+						24 horas al día
 					</h3>
 				</div>
 			</div>
