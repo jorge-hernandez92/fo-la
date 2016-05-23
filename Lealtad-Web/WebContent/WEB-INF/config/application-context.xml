@@ -15,24 +15,23 @@
 	<context:component-scan base-package="com.twobig.sivale.service.impl" />
 	<context:component-scan base-package="com.twobig.sivale.dao.impl" />
 		
-	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
-		destroy-method="close">
+<!-- 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
+<!-- 		destroy-method="close"> -->
 		
-		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
-		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
-		<property name="user" value="lealtaddb" />
-		<property name="password" value="lealtaddb" />
-		
-<!-- 		<property name="driverClass" value="com.mysql.jdbc.Driver" /> -->
-<!-- 		<property name="jdbcUrl" value="jdbc:mysql://localhost:3306/lealtad_schema" /> -->
-<!-- 		<property name="user" value="lealtad" /> -->
-<!-- 		<property name="password" value="sivale" /> -->		
+<!-- 		<property name="driverClass" value="oracle.jdbc.OracleDriver" /> -->
+<!-- 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
+<!-- 		<property name="user" value="lealtaddb" /> -->
+<!-- 		<property name="password" value="lealtaddb" />	 -->
 
-		<property name="minPoolSize" value="5" />
-		<property name="maxPoolSize" value="30" />
-		<property name="maxStatements" value="10" />
-		<property name="idleConnectionTestPeriod" value="10" />
-		<property name="loginTimeout" value="10" />
+<!-- 		<property name="minPoolSize" value="5" /> -->
+<!-- 		<property name="maxPoolSize" value="30" /> -->
+<!-- 		<property name="maxStatements" value="10" /> -->
+<!-- 		<property name="idleConnectionTestPeriod" value="10" /> -->
+<!-- 		<property name="loginTimeout" value="10" /> -->
+<!-- 	</bean> -->
+
+	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="jdbc/conPUTP3I" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -43,7 +42,6 @@
 		<property name="packagesToScan" value="com.twobig.sivale.bd.to" />
 		<property name="hibernateProperties">
 			<props>
-<!-- 				<prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop> -->
 				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
 				<prop key="hibernate.show_sql">true</prop>
 				<prop key="hibernate.generate_statistics">false</prop>
