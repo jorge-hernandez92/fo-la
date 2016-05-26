@@ -17,7 +17,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_attached_files", catalog = "lealtaddb")
+@Table(name = "t_attached_files", catalog = "bolinf")
 public class TAttachedFile implements java.io.Serializable {
 
 	private static final long serialVersionUID = -2458367360511518602L;

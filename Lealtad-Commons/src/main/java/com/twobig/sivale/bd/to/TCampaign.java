@@ -20,7 +20,7 @@ import com.google.common.base.MoreObjects;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_campaigns", catalog = "lealtaddb")
+@Table(name = "t_campaigns", catalog = "bolinf")
 
 public class TCampaign implements java.io.Serializable {
 

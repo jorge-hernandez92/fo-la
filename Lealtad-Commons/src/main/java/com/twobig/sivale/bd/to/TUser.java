@@ -17,7 +17,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_users", catalog = "lealtaddb")
+@Table(name = "t_users", catalog = "bolinf")
 public class TUser implements java.io.Serializable {
 
 	private static final long serialVersionUID = 491334447509871158L;

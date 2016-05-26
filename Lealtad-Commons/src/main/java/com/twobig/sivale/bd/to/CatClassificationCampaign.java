@@ -19,7 +19,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "cat_classification_campaigns", catalog = "lealtaddb")
+@Table(name = "cat_classification_campaigns", catalog = "bolinf")
 public class CatClassificationCampaign implements java.io.Serializable {
 
 	/**

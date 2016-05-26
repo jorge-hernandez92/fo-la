@@ -11,7 +11,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "rel_campaigns_classification", catalog = "lealtaddb")
+@Table(name = "rel_campaigns_classification", catalog = "bolinf")
 public class RealCampaignsClassification implements Serializable {
 
 	/**

@@ -31,7 +31,8 @@
 <!-- 	</bean> -->
 
 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-		<property name="jndiName" value="jdbc/conPUTP3I" />
+	<!-- <property name="jndiName" value="jdbc/conPUTP3I" /> -->
+		<property name="jndiName" value="jdbc/conPUDP2I" />
 	</bean>
 
 	<bean id="sessionFactory"
@@ -43,7 +44,7 @@
 		<property name="hibernateProperties">
 			<props>
 				<prop key="hibernate.dialect">org.hibernate.dialect.OracleDialect</prop>
-				<prop key="hibernate.show_sql">true</prop>
+				<prop key="hibernate.show_sql">false</prop>
 				<prop key="hibernate.generate_statistics">false</prop>
 				<prop key="hibernate.current_session_context_class">thread</prop>
 				<prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>

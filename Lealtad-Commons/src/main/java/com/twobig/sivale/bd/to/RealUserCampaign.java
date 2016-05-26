@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "rel_user_campaign", catalog = "lealtaddb")
+@Table(name = "rel_user_campaign", catalog = "bolinf")
 public class RealUserCampaign implements Serializable {
 
 	private static final long serialVersionUID = 3404510238899467496L;

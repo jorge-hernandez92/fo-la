@@ -21,7 +21,7 @@ import org.codehaus.jackson.annotate.JsonIgnoreProperties;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Entity
-@Table(name = "t_publications", catalog = "lealtaddb")
+@Table(name = "t_publications", catalog = "bolinf")
 public class TPublication implements java.io.Serializable {
 
 	private static final long serialVersionUID = -1260077479616668004L;

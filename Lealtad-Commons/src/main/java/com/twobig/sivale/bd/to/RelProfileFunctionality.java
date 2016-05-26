@@ -15,7 +15,7 @@ import javax.persistence.Table;
  */
 
 @Entity
-@Table(name = "rel_profile_functionality", catalog = "lealtaddb")
+@Table(name = "rel_profile_functionality", catalog = "bolinf")
 public class RelProfileFunctionality implements Serializable {
 
 	/**
