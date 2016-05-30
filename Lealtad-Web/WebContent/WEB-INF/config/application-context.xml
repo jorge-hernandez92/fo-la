@@ -15,25 +15,24 @@
 	<context:component-scan base-package="com.twobig.sivale.service.impl" />
 	<context:component-scan base-package="com.twobig.sivale.dao.impl" />
 		
-<!-- 	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource" -->
-<!-- 		destroy-method="close"> -->
+	<bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource"
+		destroy-method="close">
 		
-<!-- 		<property name="driverClass" value="oracle.jdbc.OracleDriver" /> -->
-<!-- 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
-<!-- 		<property name="user" value="lealtaddb" /> -->
-<!-- 		<property name="password" value="lealtaddb" />	 -->
+		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
+		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
+		<property name="user" value="bolinf" />
+		<property name="password" value="bolinf" />	
 
-<!-- 		<property name="minPoolSize" value="5" /> -->
-<!-- 		<property name="maxPoolSize" value="30" /> -->
-<!-- 		<property name="maxStatements" value="10" /> -->
-<!-- 		<property name="idleConnectionTestPeriod" value="10" /> -->
-<!-- 		<property name="loginTimeout" value="10" /> -->
-<!-- 	</bean> -->
-
-	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-	<!-- <property name="jndiName" value="jdbc/conPUTP3I" /> -->
-		<property name="jndiName" value="jdbc/conPUDP2I" />
+		<property name="minPoolSize" value="5" />
+		<property name="maxPoolSize" value="30" />
+		<property name="maxStatements" value="10" />
+		<property name="idleConnectionTestPeriod" value="10" />
+		<property name="loginTimeout" value="10" />
 	</bean>
+
+<!-- 	<bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+<!-- 		<property name="jndiName" value="jdbc/conPUDP2I" /> -->
+<!-- 	</bean> -->
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.annotation.AnnotationSessionFactoryBean">

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,7 @@ import com.twobig.sivale.dao.TAttachedFileDAO;
 
 
 @Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> implements TAttachedFileDAO {
 
 	public TAttachedFileDAOImpl() {

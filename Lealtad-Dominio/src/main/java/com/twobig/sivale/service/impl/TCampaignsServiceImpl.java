@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
@@ -24,6 +26,7 @@ import com.twobig.sivale.service.TCampaignsService;
 
 
 @Service
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TCampaignsServiceImpl implements TCampaignsService {
 
 	@Autowired

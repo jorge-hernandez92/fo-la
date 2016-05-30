@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 
@@ -15,6 +17,7 @@ import com.twobig.sivale.servicios.SivaleServicesException;
 import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
 @Service
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TransactionServiceImpl implements TransactionService {
 
 

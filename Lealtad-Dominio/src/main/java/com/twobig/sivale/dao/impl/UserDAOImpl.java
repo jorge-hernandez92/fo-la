@@ -7,6 +7,8 @@ import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Projections;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
@@ -14,6 +16,7 @@ import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.dao.UserDAO;
 
 @Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class UserDAOImpl extends GenericDAOImpl<TUser, Long> implements
 		UserDAO {
 

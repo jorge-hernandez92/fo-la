@@ -6,12 +6,15 @@ import org.hibernate.Query;
 import org.hibernate.classic.Session;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
 import com.twobig.sivale.bd.to.TUserData;
 import com.twobig.sivale.dao.TUserDataDAO;
 
 @Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TUserDataDAOImpl extends GenericDAOImpl<TUserData, Long> 
 implements TUserDataDAO {
 	

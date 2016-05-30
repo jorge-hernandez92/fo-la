@@ -5,7 +5,8 @@
 <head ng-cloak>
 
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+
+
 
 <title>Lealtad-Incentivos</title>
 
@@ -54,19 +55,12 @@
 <body class="sivale image-th" id="init">
 
 	<!-- Navigation -->
-	<nav class="navbar navbar-default navbar-static-top"
+	<nav id="menuTH-A" class="navbar navbar-default navbar-static-top"
 		data-ng-controller="updateSession">
-<!-- 		<div class="navbar-header" data-ng-controller="getClassifications" -->
-<!-- 			ng-cloak> -->
-<!-- 			<a class="navbar-brand"> <img id="brandIm" alt="Brand" -->
-<!-- 				src="img/ford-elite.png"> -->
-<!-- 			</a> -->
-<!-- 		</div> -->
-		<!-- /.navbar-header -->
 		
 		<ul class="nav navbar-nav">
 
-			<li class="dropdown" id="menuTH" ><a class="dropdown-toggle"
+			<li class="dropdown" id="menuTH"><a class="dropdown-toggle"
 				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
 					<i class="fa fa-caret-down"></i>
 			</a>
@@ -97,6 +91,8 @@
 	</nav>
 
 	<div ui-view></div>
+
+	<br><br><br>
 
 
 	<footer class="footer">

@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.stereotype.Repository;
 
@@ -12,6 +14,7 @@ import com.twobig.sivale.dao.TPublicationDAO;
 import com.twobig.sivale.constants.CommonsConstants;
 
 @Repository
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TPublicationDAOImpl extends GenericDAOImpl<TPublication, Long> implements TPublicationDAO {
 
 	public TPublicationDAOImpl() {

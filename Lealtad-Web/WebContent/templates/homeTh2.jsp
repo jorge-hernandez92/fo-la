@@ -2,6 +2,36 @@
 	pageEncoding="utf-8"%>
 
 <header class="header-image">
+
+	<nav class="navbar navbar-default navbar-static-top"
+		data-ng-controller="updateSession">
+		
+		<ul class="nav navbar-nav">
+
+			<li class="dropdown" id="menuTH-Home" ><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
+					<i class="fa fa-caret-down"></i>
+			</a>
+				<ul class="dropdown-menu dropdown-user">
+					<li><a href="#" ng-click="goToHome()"><i class="fa fa-home" aria-hidden="true"></i>
+							Inicio </a></li>
+
+				</ul></li>
+
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li><a> <i class="fa fa-credit-card"></i> <span
+					class="span-header">{{user.tjCardNumber}}</span>
+			</a></li>
+			<li><a> <i class="fa fa-user fa-fw"></i> <span
+					class="span-header">{{user.firstName}}</span>
+			</a></li>
+			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
+			</a></li>
+		</ul>
+	</nav>
+	
 	<div class="headline">
 		<div class="container">
 			<h1>
@@ -16,7 +46,7 @@
 		<div class="">
 			<div class=" back-sivale">
 				<div class="rows" data-ng-controller="getClassifications" ng-cloak>
-					<div class="col-sm-6 col-md-4 col-md-offset-4" ng-repeat="class in classifications">
+					<div class="col-md-4 col-md-offset-4" ng-repeat="class in classifications">
 						<div class="thumbnail" >
 							<div class="thumbnail2 div-sivale portfolio-box">
 								<div class="thumbnail2_wrapper">

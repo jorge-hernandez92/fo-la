@@ -1,8 +1,15 @@
 // ------ themes ----------
 var CSS_DEFAULT = 'default.css';
 var LOGO_DEFAULT = '';
-
 var STRING_DEFAULT = '';
+
+//STATE OF UI ROUTE
+
+var STATE_HOME 		  = 'HOME';
+var STATE_CAMPAIGNS   = 'CAMPAIGNS';   
+var STATE_CAMPAIGN    = 'CAMPAIGN';
+var STATE_PUBLICATION = 'PUBLICATION';
+
 
 var appres = angular.module('app', [ 'ngMessages', 'daterangepicker',
 		'ngTable', 'ui.router', 'angular-carousel' ]);
@@ -25,6 +32,8 @@ appres
 				function($scope, $filter, $rootScope, $http, NgTableParams,
 						$state, Carousel) {
 
+					$scope.currentState = STATE_HOME;
+					
 					$scope.Carousel = Carousel;
 
 					$scope.css = CSS_DEFAULT;
@@ -223,10 +232,15 @@ appres
 
 								});
 					};
+					
+					//$scope.navbarMenu = true; 
 
 					$scope.getAttachedFiles = function() {
 
 						var data = angular.toJson($scope.publication);
+						$scope.loadingPublicationImage = true;
+						$scope.files = false;
+						//$scope.navbarMenu = false;
 
 						$http(
 								{
@@ -243,11 +257,18 @@ appres
 											
 											$scope.imageOfPublication = data.image;
 											
-											if(data.image != null){
-												$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });     			
+											if(data.image != null && $scope.currentState == STATE_PUBLICATION){
+												
+												$('body').addClass('image-th-p');
+												$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });
+												
 											}
 											
-											$('body').addClass('image-th-p');
+											$scope.loadingPublicationImage = false;
+											$scope.files = true;
+											//$scope.navbarMenu = true;
+											
+											
 
 											$scope.tableAttachedFiles = new NgTableParams(
 													{
@@ -568,7 +589,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/home',
 		templateUrl : 'templates/homeTh2.jsp',
 		controller:	
- 			function() {
+ 			function($scope) {
+			
+			$scope.currentState = STATE_HOME;
+			
+			console.log($scope.currentState);
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -589,7 +614,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').removeClass('image-th-p');
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#777" );
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH-A').hide();
 			
 			$('#menuTH').show();
 			
@@ -608,7 +635,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/campaigns',
 		templateUrl : 'templates/campaigns_user.jsp',
 		controller:	
- 			function() {
+ 			function($scope) {
+			
+			$scope.currentState = STATE_CAMPAIGNS;
+			
+			console.log($scope.currentState);
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -621,6 +652,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('body').addClass('image-th');
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH-A').show();
 			
 			$('#menuTH').show();
 			
@@ -639,7 +672,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/campaign',
 		templateUrl : 'templates/campaignDetail_user.jsp',
 		controller:	
- 			function() {
+ 			function($scope) {
+			
+			$scope.currentState = STATE_CAMPAIGN;
+			
+			console.log($scope.currentState);
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -652,6 +689,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('body').addClass('image-th');
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH-A').show();
 			
 			$('#menuTH').show();
 			
@@ -670,7 +709,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/publicacion',
 		templateUrl : 'templates/publication_user.jsp',
 		controller:	
- 			function() {
+ 			function($scope) {
+			
+			$scope.currentState = STATE_PUBLICATION;
+			
+			console.log($scope.currentState);
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -679,6 +722,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#brandIm').hide();
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#menuTH-A').show();
 			
 			$('#menuTH').show();
 			

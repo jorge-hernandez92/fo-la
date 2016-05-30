@@ -9,6 +9,8 @@ import java.util.Set;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
@@ -23,6 +25,7 @@ import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 
 @Service
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class CatClassificationCampaignServiceImpl implements CatClassificationCampaignService {
 
 	@Autowired

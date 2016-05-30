@@ -9,6 +9,8 @@
 			<font color="white">Conoce las Publicaciones</font>
 		</h1>
 	</div>
+	
+	<br><br><br><br>
 
 	<div class="container" >
 		<div class="jumbotron" style="background-color: rgba(220, 220, 220, 0.35);" data-ng-controller="getCampaign" ng-cloak>
