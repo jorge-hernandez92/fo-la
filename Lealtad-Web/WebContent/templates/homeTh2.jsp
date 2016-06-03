@@ -52,7 +52,7 @@
 								<div class="thumbnail2_wrapper">
 									<a href="#" data-ng-click="selectClassification(class)"
 										ui-sref="campaigns"> <img
-										src="img/company_logo/{{class.catViews.logos}}/logo.png"
+										ng-src="img/company_logo/{{class.catViews.logos}}/logo.png"
 										class="img-responsive" alt="">
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">

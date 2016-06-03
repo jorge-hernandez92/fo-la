@@ -345,19 +345,28 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		if (!publicationJSON.equals("undefined")) {
 
 			pub = new ViewPublicationBean();
+			//System.out.println(pub);
+			//System.out.println(publicationJSON);
 			try {
 				pub = new ObjectMapper().readValue(publicationJSON, ViewPublicationBean.class);
+				//System.out.println("detalle de pub: "+pub.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
+				//System.out.println("ERROR ERROR ERROR ERROR ERROR ERROR ");
 				return ERROR;
 			}
 
-			session.put("publication", pub.getPublication());
+			//System.out.println("antes del session");
+			session.put("publication", pub);
+			//System.out.println("despues del session");
 		} else {
+			//System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 			return ERROR;
 		}
 
 		this.publication = viewPublicationService.showPublicationByCardNumber(pub.getAcoundNumber(), pub.getPublicationId(), 1);
+		
+		//System.out.println(publication);
 		
 		if(this.publication.getListFiles()!=null)
 			if(this.publication.getListFiles().size() == 0)

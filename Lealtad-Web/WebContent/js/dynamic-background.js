@@ -11,7 +11,7 @@ $(document).ready(function () {
 		r1 = r2;
 		
 		$('#bg').css({ backgroundImage: "url(img/dynamic_background/" + r1 + ".jpg)" });
-		console.log(r1);
+//		console.log(r1);
     }, 5000);
 
 });

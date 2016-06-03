@@ -3,6 +3,8 @@ package com.twobig.sivale.beans;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 import com.twobig.sivale.bd.to.TPublication;
+import com.google.common.base.Objects;
+import com.google.common.base.MoreObjects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ViewPublicationBean extends TPublication {
@@ -33,4 +35,12 @@ public class ViewPublicationBean extends TPublication {
 		
 		return publication;
 	}
+
+	@Override
+	public String toString() {
+		return MoreObjects.toStringHelper(this).add("super", super.toString()).add("acoundNumber", acoundNumber)
+				.toString();
+	}
+	
+	
 }

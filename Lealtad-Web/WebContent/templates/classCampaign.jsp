@@ -36,7 +36,7 @@
 									<a href="#"
 										data-ng-click="updateClassification(class)"
 										ui-sref="transactions"> <img
-										src="img/company_logo/{{class.catViews.logos}}/logo.png" class="img-responsive"
+										ng-src="img/company_logo/{{class.catViews.logos}}/logo.png" class="img-responsive"
 										alt="">
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">

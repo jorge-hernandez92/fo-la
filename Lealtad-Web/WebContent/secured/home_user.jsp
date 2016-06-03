@@ -20,15 +20,15 @@
 <link ng-href="css/{{css}}" rel="stylesheet">
 <!-- links provicinales  -->
 <link rel="stylesheet" href="css/sticky-footer.css">
-
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-<!-- <link rel="stylesheet" type="text/css" href="css/demo.css" /> -->
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
 
 
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
 <script src="js/angular.min.js"></script>
+
+<!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script> -->
 <script src="js/angular-ui-router.min.js"></script>
 <script src="js/ng-table.min.js"></script>
 <script src="js/app.js"></script>

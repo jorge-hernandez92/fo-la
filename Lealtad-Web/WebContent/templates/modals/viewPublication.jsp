@@ -18,32 +18,35 @@
 				</div>
 				
 				<div class="modal-body">
-					<div class="row margin-top10">
-						<div class="col-md-4">Modo de visualización</div>
-						<div class="col-md-8">
-							<select class="form-control" name="selected"
+				
+				<form class="form-horizontal">
+                    <div class="form-group">
+                        <label class="col-md-4 control-label">Modo de visualización</label>
+                        <div class="col-md-8">
+                            <select class="form-control" name="selected"
 								ng-options="option.name for option in selectPublicationView.availableOptions track by option.id"
 								ng-model="selectPublicationView.selectedOption">
 							</select>
-						</div>
-					</div>
-					<div class="row margin-top10" ng-if="selectPublicationView.selectedOption.id == 1">
-						<div class="col-md-4">Número de cuenta</div>
-						<div class="col-md-8">
-							<input type="text" class="form-control"
-							ng-model="selectPublicationView.cardNumber">
-						</div>
-					</div>		
+                        </div>
+                    </div>
+
+                    <div class="form-group" ng-if="selectPublicationView.selectedOption.id == 1">
+                        <label class="col-md-4 control-label">Número de cuenta</label>
+                        <div class="col-md-8">
+                            <input type="text" required class="form-control" ng-model="selectPublicationView.cardNumber">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-xs-5 col-xs-offset-4">
+                            <button type="submit" class="btn btn-primary" ng-click="viewPublication()" >Visualizar</button>
+                        </div>
+                    </div>
+                </form>
+
 				</div>
 				
-				<div class="modal-footer">
-					<p class="text-center">
-						<button  type="button" class="btn btn-primary" ng-click="viewPublication()" 
-						data-dismiss="modal">
-								Visualizar
-						</button>
-					</p>
-				</div>
 			</div>
 		</div>
 	</div>
+	

@@ -66,6 +66,22 @@
 	color: #000;
 }
 
+.panel-grisT{
+	background-color: rgba(208, 208, 208, 0.80);
+	color: #000;
+}
+
+.panel-infoP{
+	border-color: #FFF;
+	    background-color: #F1F1F1
+}
+
+.panel-infoP>.panel-heading {
+    background-color: #D2D2D2;
+    border-color: #ddd;
+	color: #000;
+}
+
 .navbar-inverse .navbar-nav>li>a:hover {
     color: #6B6C6F;
 }

@@ -54,7 +54,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.selectPublicationView = {
 							availableOptions : [{ id : '1', name : 'Tarjetahabiente' },
 			                                    { id : '2', name : 'Etiquetas' } ],
-							selectedOption : { id : '1', name : 'Tarjetahabiente' },
+							selectedOption : { id : '2', name : 'Etiquetas' },
 							cardNumber : ''
 					};
 					
@@ -173,13 +173,11 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						$http.get('getCampaignsAdminAction').success(
 								function(data, status, headers, config) {
 									$scope.campaigns = data;
-
-									$scope.tableCampaigns = new NgTableParams({
-										count : 10
-									}, {
-										counts : [],
-										dataset : data
-									});
+									
+									var index2;
+									for (index2 = 0; index2 < $scope.campaigns.length; index2++) {
+										$scope.campaigns[index2].indexImage2 = $scope.getIndex(); 
+									}
 
 								}).error(
 								function(data, status, headers, config) {
@@ -230,12 +228,17 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					};
 
 					$scope.triggerModal = function(){
-						$("#modalViewPublication").modal();
-					} 
+						$("#modalViewPublication").modal(
+								{backdrop: 'static', keyboard: false});
+					}
 					
 					$scope.viewPublication = function(){
+						
 						if($scope.selectPublicationView.selectedOption.id == 1){
-							$scope.showPublicationAsTH($scope.selectPublicationView.cardNumber);
+							
+							if($scope.selectPublicationView.cardNumber != null ){
+								$scope.showPublicationAsTH($scope.selectPublicationView.cardNumber);
+							}
 						}
 						else{
 							$scope.showPublication();
@@ -246,6 +249,8 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						$scope.publication.acoundNumber = cardNumber;
 						
 						var data = angular.toJson($scope.publication);
+						$scope.loadingPublicationImage = true;
+						$scope.files = false;
 
 						$http({
 							method : 'POST',
@@ -258,16 +263,26 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						.success(
 								function(data, status, headers, config) {
 									$scope.attachedFiles = data.listFiles;
-
-									$scope.tableAttachedFiles = new NgTableParams({
-										count : 10
-									}, {
-										counts : [],
-									    dataset: $scope.attachedFiles
-									});
+									
+									$scope.imageOfPublication = data.image;
+									
+									
+									if(data.image != null ){
+										
+										$('body').addClass('image-th-p');
+										$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });
+										$("#modalViewPublication").modal('hide');
+										
+									}
+									else{
+										
+									}
+									
+									$scope.loadingPublicationImage = false;
+									$scope.files = true;
 
 									$(".publication-html").html(data.html);
-//									$state.go('publication');
+									//$state.go('publication');
 								}).error(function(data, status, headers, config) {
 						});
 					};
@@ -275,6 +290,8 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.showPublication = function() {
 
 						var data = angular.toJson($scope.publication);
+						$scope.loadingPublicationImage = true;
+						$scope.files = false;
 
 						$http({
 							method : 'POST',
@@ -287,13 +304,24 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						.success(
 								function(data, status, headers, config) {
 									$scope.attachedFiles = data.listFiles;
+									
+									$scope.imageOfPublication = data.image;
+									
+									
+									if(data.image != null ){
+										
+										$('body').addClass('image-th-p');
+										$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });
+										$("#modalViewPublication").modal('hide');
+										
+									}
+									else{
+										
+									}
+									
+									$scope.loadingPublicationImage = false;
+									$scope.files = true;
 
-									$scope.tableAttachedFiles = new NgTableParams({
-										count : 10
-									}, {
-										counts : [],
-									    dataset: $scope.attachedFiles
-									});
 
 									$(".publication-html").html(data.html);
 //									$state.go('publication');
@@ -978,6 +1006,23 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					        });
 						}
 					};
+					
+					
+					var imageCampaignArray = [1,2,3,4,5];
+					
+					//funcion para colocar imagen en estado de campañas
+					
+					$scope.getIndex = function(){
+						
+						var indexImage = imageCampaignArray.pop();
+						
+						if(indexImage == null){
+							imageCampaignArray.push(1,2,3,4,5);
+							indexImage = imageCampaignArray.pop();
+						}
+						
+						return indexImage; 
+					}
 /*********************************************************************************
 =============================== New Campaign End =================================
 *********************************************************************************/
@@ -1029,36 +1074,166 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 
 	.state('home', {
 		url : '/home',
-		templateUrl : 'templates/campaigns_admin.jsp'
+		templateUrl : 'templates/campaigns_admin.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('body').removeClass('image-th-p');
+			
+			$('body').addClass('image-th');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').hide();
+			
+			$('#li-separator').hide();
+			
+		}
 	})
 
 	.state('campaign', {
 		url : '/campaña',
-		templateUrl : 'templates/campaignDetail_admin.jsp'
+		templateUrl : 'templates/campaignDetail_admin.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-th');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+		}
 	})
 
 	.state('newCampaign', {
 		url : '/nueva_campaña',
-		templateUrl : 'templates/newCampaign_admin.jsp'
+		templateUrl : 'templates/newCampaign_admin.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-th');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').hide();
+			
+			$('#li-separator').hide();
+		}
 	})
 	
 	.state('updateCampaign', {
 		url : '/actualizar_campaña',
-		templateUrl : 'templates/updateCampaign_admin.jsp'
+		templateUrl : 'templates/updateCampaign_admin.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-th');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').hide();
+			
+			$('#li-separator').hide();
+		}
 	})
 	
 	.state('newPublication', {
 		url : '/nueva_publicacion',
-		templateUrl : 'templates/UploadFile.jsp'
+		templateUrl : 'templates/UploadFile.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-th');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+		}
 	})
 	
 	.state('publication', {
 		url : '/publicacion',
-		templateUrl : 'templates/publication_admin.jsp'
+		templateUrl : 'templates/publication_admin.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+			
+		}
 	})
 	
 	.state('updatePublication', {
 		url : '/editar_publicacion',
-		templateUrl : 'templates/updatePublication.jsp'
+		templateUrl : 'templates/updatePublication.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-th');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+			
+		}
 	})
 })

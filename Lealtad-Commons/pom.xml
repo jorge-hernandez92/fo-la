@@ -61,12 +61,6 @@
 			<artifactId>cglib</artifactId>
 		</dependency>
 
-		<!-- MySQL database driver -->
-		<dependency>
-			<groupId>mysql</groupId>
-			<artifactId>mysql-connector-java</artifactId>
-		</dependency>
-
 		<!-- Hibernate framework -->
 
 		<dependency>

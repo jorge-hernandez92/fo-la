@@ -2,6 +2,9 @@ package com.twobig.sivale.servicios;
 
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.security.KeyFactory;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
@@ -46,7 +49,13 @@ public class EncryptionSivale {
 			PublicKey publicKey = null;
 	
 			try {
-				reader = new PemReader(new FileReader(getPublicKeyFileLocation()));
+				
+				InputStream inputStream = 
+					      getClass().getClassLoader().getResourceAsStream("sivale_rsa_public.key");
+				
+				Reader readd = new InputStreamReader(inputStream);
+				
+				reader = new PemReader(readd);
 	
 				byte[] pubKey = reader.readPemObject().getContent();
 				X509EncodedKeySpec publicKeySpec = new X509EncodedKeySpec(pubKey);

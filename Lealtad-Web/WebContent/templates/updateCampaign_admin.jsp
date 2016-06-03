@@ -2,15 +2,9 @@
 	pageEncoding="utf-8"%>
 
 <div class="panel-body back-sivale">
-	<div class="navbar container">
-		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Campañas Recientes</a></li>
-			<li><a ui-sref="campaign">Publicaciones</a></li>
-			<li class="active"><span>Actualización de Campañas</span></li>
-		</ol>
-	</div>
+	
 	<div class="container">
-		<div class="panel panel-default table-top-sivale">
+		<div class="panel panel-grisT table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
 					<div class="navbar-header">Datos de Campaña</div>

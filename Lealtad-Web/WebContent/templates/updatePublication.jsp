@@ -17,7 +17,7 @@
 			</ol>
 		</div>
 		<div class="container">
-			<div class="panel panel-default table-top-sivale">
+			<div class="panel panel-grisT table-top-sivale">
 				<div class="panel-heading">
 					<div class="container-fluid">
 						<div class="navbar-header">Datos de Publicación</div>
@@ -185,5 +185,9 @@
 	
 		<jsp:include page="modals/uploadTemplateModal.jsp" />
 		<jsp:include page="modals/uploadDataModal.jsp" />
+		
+		<br>
+		<br>
+		<br>	
 </body>
 </html>

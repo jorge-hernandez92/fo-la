@@ -144,6 +144,28 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 				String html = htmlParser.getHTML(htmlPath, data);
 
 				publication.setHtml(html);
+				
+				
+				if (tpublication.getImagePath() != null) {
+					
+					// path for get image of publication to set in html background
+					String imagePathPublication = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId()
+							+ File.separator + tpublication.getPublicationId() + File.separator
+							+ tpublication.getImagePath();
+
+					ImageUtils imageUtils = new ImageUtils();
+
+					try {
+						String image65 = imageUtils.imageToBase64(imagePathPublication);
+						publication.setImage("data:image/png;base64,"+image65);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				} else {
+					// SET A DEFAULT IMAGE
+				}
 
 				//SEPARAR OBTENER ARCHIVOS ADJUNTOS EN UN NUEVO SERVICIO 
 				
@@ -170,6 +192,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 
 		}
 		else{
+			System.out.println("no exite usuario con la tarjeta: "+cardNumber);
 			return null; 
 		}
 		

@@ -21,7 +21,7 @@
 					<div class="grid" data-toggle="tooltip" data-placement="left"
 						title="{{publication.description}}">
 						<figure class="effect-ming">
-							<img src="img/img_camp/{{getIndex()}}cam.jpg" alt="" />
+							<img ng-src="img/img_camp/{{publication.indexImage2}}cam.jpg" alt="" />
 							<figcaption>
 								<h5>{{publication.name}}</h5>
 								<p>{{publication.catPublicationType.name}}</p>

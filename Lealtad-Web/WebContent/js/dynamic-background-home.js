@@ -12,7 +12,7 @@ $(document).ready(function () {
 		
 		$('.header-image').css({ backgroundImage: "url(img/dynamic_background/" + r1 + "h.jpg)" });
 		
-		console.log(r1);
+		//console.log(r1);
 		
     }, 5000);
 

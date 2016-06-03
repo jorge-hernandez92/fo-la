@@ -52,7 +52,7 @@
 					<div class="grid" data-toggle="tooltip" data-placement="left"
 						title="{{campaign.classification}}">
 						<figure class="effect-ming">
-							<img src="img/img_camp/{{getIndex()}}cam.jpg" alt="" />
+							<img ng-src="img/img_camp/{{campaign.indexImage2}}cam.jpg" alt="" />
 							<figcaption>
 								<h5>{{campaign.campaignName}}</h5>
 								<p>{{campaign.classification[0]}}</p>

@@ -19,6 +19,13 @@
 <link ng-href="css/ford.css" rel="stylesheet">
 <link ng-href="css/ng-toggle-btn.css" rel="stylesheet">
 <link ng-href="css/angular-notify.css" rel="stylesheet">
+<link rel="stylesheet" href="css/font-awesome.min.css">
+<link rel="stylesheet" href="css/sb-admin-2.css">
+<link rel="stylesheet" href="css/default.css">
+<!-- links provicinales  -->
+<link rel="stylesheet" href="css/sticky-footer.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<link rel="stylesheet" type="text/css" href="css/set2.css" />
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
 <script src="js/jquery-2.1.4.min.js"></script>
@@ -45,85 +52,70 @@
 
 </head>
 
-<body class="back-sivale">
 
-	<header id="header" data-ng-controller="updateSession">
-		<div class="header_top">
-			<div class="container width100">
-				<div class="row back-gray">
-					<div class="col-sm-6">
-						<div class="contactinfo">
-							<div class="div-fit-img2">
-<!-- 								<img src="img/logo-header.png" ui-sref="#"> -->
-								<img src="img/company_logo/Ford/header.png" ui-sref="#">
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-6">
+<body class="sivale image-th" id="init">
 
-						<div class="shop-menu pull-right">
-							<ul class="nav navbar-nav margin-top10">
-											
-								<li></span><span class="glyphicon glyphicon-user span-header">
-											{{user.firstName}} </a></li>
-								
-								<li></span><a href="logout"><span
-										class="glyphicon glyphicon-log-out"> Salir</a></li>
-							</ul>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
+	<!-- Navigation -->
+	<nav  class="navbar navbar-default navbar-static-top" data-ng-controller="updateSession">
+		
+		<ul class="nav navbar-nav">
 
-		<div class="header-middle">
+			<li class="dropdown" id="menuTH"><a class="dropdown-toggle"
+				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
+					<i class="fa fa-caret-down"></i>
+			</a>
+				<ul class="dropdown-menu dropdown-user">
+					<li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i>
+							Campañas </a></li>
+							
+					<li id="li-separator" role="separator" class="divider"></li>
+					
+					<li id="li-campaign"><a ui-sref="campaign">Publicaciones</a></li>
+
+				</ul></li>
+
+		</ul>
+
+		<ul class="nav navbar-nav navbar-right">
+			<li><a> <i class="fa fa-user fa-fw"></i> <span
+					class="span-header">{{user.firstName}}</span>
+			</a></li>
+			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
+			</a></li>
+		</ul>
+	</nav>
+	
+	<div ui-view></div>	
+	
+	<footer class="footer">
+		<div id="imginthefooter" class="header_top">
 			<div class="container width100">
 				<div class="row">
-					<div class="col-sm-4">
-						<div class="logo pull-left">
-							<div class="row">
+					<div class="col-sm-3"></div>
 
-								<div class="col-md-2">
-<!-- 									<div id="o-wrapper"> -->
-<!-- 										<a id="c-button--slide-left" href="#" class="toggle" -->
-<!-- 											role="button" title="Navigation" data-toggle="tooltip" -->
-<!-- 											data-placement="left"><i class="ion-navicon"></i></a> -->
-<!-- 									</div> -->
-								</div>
-								
-								<div class="col-md-10">
-<!-- 									<div class="div-fit-img"> -->
-<!-- 										<img src={{logo}} ui-sref="#" ng-if="logo"> -->
-<!-- 									</div> -->
-								</div>
+					<div class="col-sm-2">
+						<div class="contactinfo">
+							<div class="div-fit-img2">
+								<br> <img src="img/logo-login2.png">
 							</div>
 						</div>
-
 					</div>
-					<div class="col-sm-8">
-						<div class="shop-menu pull-right">
-						</div>
+					<div class="col-sm-4">
+						<p>
+							<font color="white"> </br> Sí­ Vale México, S.A. de CV. </br> Av.
+								Paseo de la Reforma No. 284, Piso 23. Col. Juárez, </br> Del.
+								Cuauhtémoc, C.P. 06600, México, D.F. </br> </br> SíVale 2016
+							</font>
+						</p>
 					</div>
+					<div class="col-sm-3"></div>
 				</div>
 			</div>
 		</div>
-	</header>
-
-	<div class="row">
-
-		<div class="col-md-10">
-			<div ui-view></div>
-		</div>
-		<div class="col-md-2">
-			<div class="panel-body back-sivale">
-				<div class="containerBanner">
-<!-- 					<img src="img/banner_sivale.gif"> -->
-					<img src="img/banner_ford.jpg">
-				</div>
-			</div>
-		</div>
-
-	</div>
+	</footer>
 
 </body>
+
+
+
 </html>

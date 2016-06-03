@@ -9,7 +9,7 @@ var STATE_HOME 		  = 'HOME';
 var STATE_CAMPAIGNS   = 'CAMPAIGNS';   
 var STATE_CAMPAIGN    = 'CAMPAIGN';
 var STATE_PUBLICATION = 'PUBLICATION';
-
+var currentState = '';
 
 var appres = angular.module('app', [ 'ngMessages', 'daterangepicker',
 		'ngTable', 'ui.router', 'angular-carousel' ]);
@@ -31,8 +31,6 @@ appres
 				'campaignController',
 				function($scope, $filter, $rootScope, $http, NgTableParams,
 						$state, Carousel) {
-
-					$scope.currentState = STATE_HOME;
 					
 					$scope.Carousel = Carousel;
 
@@ -61,33 +59,27 @@ appres
 
 					$scope.menuCampaign = false;
 					$scope.companyMenu = false;
-					 
 					
-					//funcion para colocar imagen en estado de campañas 
-					$scope.getIndex = function(){
+					var imageCampaignArray = [1,2,3,4,5];
+					
+					//funcion para colocar imagen en estado de campañas
+					
+					$scope.getIndex2 = function(){
 						
+						var indexImage = imageCampaignArray.pop();
 						
-						if($scope.index >= 5){
-							$scope.index = 1; 
+						if(indexImage == null){
+							imageCampaignArray.push(1,2,3,4,5);
+							indexImage = imageCampaignArray.pop();
 						}
-						else{
-							$scope.index++;
-						}
 						
-						return $scope.index;  
+						return indexImage; 
 					}
 
 					$scope.getCampaigns = function() {
 						
-						//variable para colocar imagen de estado de campañas
-						$scope.index = 1;
-						
-						
-						console.log("La clasificacion es: "+$scope.classification);
-
 						var data = angular.toJson($scope.classification);
-//						$scope.updateClassification($scope.classification);
-						console.log(JSON.stringify(data));
+
 
 						$http(
 								{
@@ -101,14 +93,10 @@ appres
 								function(data, status, headers, config) {
 									$scope.campaigns = data;
 									
-									console.log(JSON.stringify(data));
-
-									$scope.tableCampaigns = new NgTableParams({
-										count : 10
-									}, {
-										counts : [],
-										dataset : data
-									});
+									var index2;
+									for (index2 = 0; index2 < $scope.campaigns.length; index2++) {
+										$scope.campaigns[index2].indexImage2 = $scope.getIndex2(); 
+									}
 									$scope.updateClassification($scope.classification);
 
 								}).error(
@@ -164,9 +152,6 @@ appres
 					};
 
 					$scope.getCampaign = function() {
-						
-						//variable para colocar imagen de estado de campañas
-						$scope.index = 1;
 
 						var data = angular.toJson($scope.campaign);
 
@@ -182,65 +167,25 @@ appres
 								.success(
 										function(data, status, headers, config) {
 											$scope.publications = data;
-											console.log(JSON.stringify(data));
-
-											$scope.tablePublications = new NgTableParams(
-													{
-														page : 1,
-														count : 10,
-														filter : $scope.filters,
-													},
-													{
-														total : $scope.publications.length,
-														counts : [],
-														getData : function(
-																$defer, params) {
-															var filteredData = params
-																	.filter() ? $filter(
-																	'filter')
-																	(
-																			$scope.publications,
-																			params
-																					.filter().myfilter)
-																	: $scope.publications;
-
-															var orderedData = params
-																	.sorting() ? $filter(
-																	'orderBy')
-																	(
-																			filteredData,
-																			params
-																					.orderBy())
-																	: $scope.publications;
-
-															$defer
-																	.resolve(orderedData
-																			.slice(
-																					(params
-																							.page() - 1)
-																							* params
-																									.count(),
-																					params
-																							.page()
-																							* params
-																									.count()));
-														}
-													});
+											
+											var index2;
+											for (index2 = 0; index2 < $scope.publications.length; index2++) {
+												$scope.publications[index2].indexImage2 = $scope.getIndex2(); 
+											}
 
 										})
 								.error(function(data, status, headers, config) {
 
 								});
 					};
-					
-					//$scope.navbarMenu = true; 
+					 
 
 					$scope.getAttachedFiles = function() {
 
 						var data = angular.toJson($scope.publication);
+						
 						$scope.loadingPublicationImage = true;
 						$scope.files = false;
-						//$scope.navbarMenu = false;
 
 						$http(
 								{
@@ -257,7 +202,10 @@ appres
 											
 											$scope.imageOfPublication = data.image;
 											
-											if(data.image != null && $scope.currentState == STATE_PUBLICATION){
+											//console.log(STATE_PUBLICATION);
+											console.log(currentState);
+											
+											if(data.image != null && currentState == STATE_PUBLICATION){
 												
 												$('body').addClass('image-th-p');
 												$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });
@@ -266,7 +214,6 @@ appres
 											
 											$scope.loadingPublicationImage = false;
 											$scope.files = true;
-											//$scope.navbarMenu = true;
 											
 											
 
@@ -591,9 +538,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-			$scope.currentState = STATE_HOME;
-			
-			console.log($scope.currentState);
+			currentState = STATE_HOME;
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -637,9 +582,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-			$scope.currentState = STATE_CAMPAIGNS;
-			
-			console.log($scope.currentState);
+			currentState = STATE_CAMPAIGNS;
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -674,9 +617,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-			$scope.currentState = STATE_CAMPAIGN;
-			
-			console.log($scope.currentState);
+			currentState = STATE_CAMPAIGN;
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -711,9 +652,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-			$scope.currentState = STATE_PUBLICATION;
-			
-			console.log($scope.currentState);
+			currentState = STATE_PUBLICATION;
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
@@ -735,18 +674,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 		}
 	})
-
-//	.state('transactions', {
-//		url : '/transacciones',
-//		templateUrl : 'templates/homeTh.jsp',
-//		controller:	
-// 			function() {
-//
-//			$('html, body').animate({
-//				scrollTop : $("#init").offset().top
-//			});
-//		}
-//	})
 });
 
 angular.bootstrap(document, [ 'app' ]);
