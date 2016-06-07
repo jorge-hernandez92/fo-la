@@ -19,49 +19,35 @@
 <link href="css/signin.css" rel="stylesheet">
 <link href="css/sivale.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
+<link href="css/default-fonts.css" rel="stylesheet">
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/dynamic-background.js"></script>
 
 </head>
 <body class="back-image" id="bg">
-	
+
 	<div class="row">
-		<div class="jumbotron " style="opacity: 0;">
-		</div>
+		<div class="col-md-1"></div>
+  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 64px;">BIENVENIDO A LOS PROGRAMAS DE INCENTIVOS.</h2></div>
+ 		<div class="col-md-1"></div>
 	</div>
 	
-	<div class="row">
-		<div class="container">
-			<h2>BIENVENIDO AL PROGRAMA DE INCENTIVOS FORD</h2>
-			<div class="jumbotron" style="opacity: 0;"></div>
-		</div>
-	</div>
+	<br><br><br><br>
+	<br><br><br><br>
+	<br>
 	
 	<div class="row">
-		<div class="jumbotron" style="opacity: 0;">
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="jumbotron" style="opacity: 0;">
-		</div>
-	</div>
-	
-	<div class="row">
-		<div class="jumbotron" style="opacity: 0;">
-		</div>
-	</div>
-	
-	<div class=" col-md-7">
-		<div class="container">
-			<div class="jumbotron">
+		<div class="col-md-4"></div>
+  		<div class="col-md-4">
+  			
+  			<div class="jumbotron">
 
 				<form class="form-signin" method="post" action="login">
 					<s:if test="%{error != null}">
 						<div class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign"
-								aria-hidden="true"></span> <span class="sr-only">Error:</span>
-							<s:property value="error" />
+ 								aria-hidden="true"></span> <span class="sr-only">Error:</span>
+ 							<s:property value="error" />
 						</div>
 					</s:if>
 
@@ -82,17 +68,15 @@
 				</form>
 
 			</div>
-		</div>
+			
+  		</div>
+ 		<div class="col-md-4"></div>
 	</div>
-
-	<div class="col-md-3">
-		<div class="container">
-			<h3>Programa administrado por</h3>
-			<div class="form-group">
-				<img src="img/logo-login2.png">
-			</div>
-
-		</div>
+	
+	<div class="row">
+		<div class="col-md-3"></div>
+  		<div class="col-md-6"><h3 class="text-center" style="font-size: 14px; font-family: GothamBold">Programa administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3></div>
+ 		<div class="col-md-3"></div>
 	</div>
 
 </body>

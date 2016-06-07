@@ -21,7 +21,7 @@
 
 	<div class="container">
 		<h1 class="text-center">
-			<font color="white">Conoce las Campañas</font>
+			<font color="white">Haz clic en la imagen para ver los detalle de la campaña</font>
 		</h1>
 	</div>
 
@@ -43,12 +43,12 @@
 
 	<div class="container" data-ng-controller="getCampaigns" ng-cloak>
 		<div class="jumbotron"
-			style="background-color: rgba(220, 220, 220, 0.35);"
+			style="background-color: rgba(220, 220, 220, 0.20);"
 			data-ng-controller="getCampaign" ng-cloak>
 			<div class="row">
 				<div class="col-sm-6 col-md-3"
 					ng-repeat="campaign in campaigns | filter:search:strict "
-					style="padding-right: 0px; padding-left: 0px;">
+					>
 					<div class="grid" data-toggle="tooltip" data-placement="left"
 						title="{{campaign.classification}}">
 						<figure class="effect-ming">

@@ -31,8 +31,7 @@
 			data-ng-controller="getCampaignsAdmin" ng-cloak>
 			<div class="row">
 				<div class="col-sm-6 col-md-3"
-					ng-repeat="campaign in campaigns | filter:search:strict "
-					style="padding-right: 0px; padding-left: 0px;">
+					ng-repeat="campaign in campaigns | filter:search:strict ">
 					<div class="grid" data-toggle="tooltip" data-placement="left"
 						title="{{campaign.classification}}">
 						<figure class="effect-ming">

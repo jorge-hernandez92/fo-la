@@ -119,6 +119,7 @@ body {
 }
 
 .header-image {
+	min-height: 350px;
     display: block;
     width: 100%;
     text-align: center;

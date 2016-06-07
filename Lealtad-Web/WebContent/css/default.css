@@ -336,18 +336,6 @@
 	min-width: 100%;
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
 .service-box p {
     margin-bottom: 0;
 }
@@ -356,6 +344,7 @@
     position: relative;
     margin: 0px;
     max-width: 650px;
+    
 }
 
 .portfolio-box .portfolio-box-caption {

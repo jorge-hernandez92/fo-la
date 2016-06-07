@@ -44,7 +44,7 @@
 </div>
 </div>
 
-<br><br><br>
+<br>
 
 <!-- <div class="panel-body back-sivale" ng-controller="triggerModal"> -->
 <%-- 	<jsp:include page="modals/viewPublication.jsp" /> --%>

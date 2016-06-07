@@ -34,20 +34,22 @@
 	
 	<div class="headline">
 		<div class="container">
-			<h1>
-				<font color="white">Elige el programa de Incentivos</font>
+			<h1 style="font-family: 'GothamBold';font-size: 30px;">
+				<font color="white">Haz clic sobre el logo para conocer las campañas del programa.</font>
 			</h1>
 
 		</div>
 	</div>
-
-
+	
 	<div class="container">
-		<div class="">
-			<div class=" back-sivale">
-				<div class="rows" data-ng-controller="getClassifications" ng-cloak>
-					<div class="col-md-4 col-md-offset-4" ng-repeat="class in classifications">
-						<div class="thumbnail" >
+				
+		<div class="row" data-ng-controller="getClassifications">
+
+			<div class="col-xs-6 col-md-5"></div>
+			<div class="col-xs-6 col-md-2">
+				<div class="text-center" ng-repeat="class in classifications">
+					
+					<div class="thumbnail" >
 							<div class="thumbnail2 div-sivale portfolio-box">
 								<div class="thumbnail2_wrapper">
 									<a href="#" data-ng-click="selectClassification(class)"
@@ -56,26 +58,30 @@
 										class="img-responsive" alt="">
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">
-												<div class="project-name">{{class.className}}</div>
+												<div class="project-name">Ver Listado</div>
 											</div>
 										</div>
 									</a>
 								</div>
 							</div>
 						</div>
-					</div>
+					
 				</div>
 			</div>
+			<div class="col-xs-6 col-md-5"></div>
+
 		</div>
+		
 	</div>
 
 
+<br><br><br>
 
 
-
-	<a href="#transaction" class="btn btn-circle page-scroll"> <i
-		class="fa fa-angle-double-down animated"></i>
-	</a>
+<!-- 	<a href="#transaction" class="btn btn-circle page-scroll"> <i -->
+<!-- 		class="fa fa-angle-double-down animated"></i> -->
+<!-- 	</a> -->
+	
 </header>
 
 <br>

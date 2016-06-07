@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="css/sticky-footer.css">
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
+<link href="css/default-fonts.css" rel="stylesheet">
 
 
 
@@ -99,24 +100,11 @@
 		<div id="imginthefooter" class="header_top">
 			<div class="container width100">
 				<div class="row">
-					<div class="col-sm-3"></div>
+				
+					<div class="col-md-3"></div>
+  					<div class="col-md-6"><h3 class="text-center" style="font-size: 14px; font-family: GothamBold;color: white;">Programa administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3></div>
+ 					<div class="col-md-3"></div>
 
-					<div class="col-sm-2">
-						<div class="contactinfo">
-							<div class="div-fit-img2">
-								<br> <img src="img/logo-login2.png">
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-4">
-						<p>
-							<font color="white"> </br> Sí­ Vale México, S.A. de CV. </br> Av.
-								Paseo de la Reforma No. 284, Piso 23. Col. Juárez, </br> Del.
-								Cuauhtémoc, C.P. 06600, México, D.F. </br> </br> SíVale 2016
-							</font>
-						</p>
-					</div>
-					<div class="col-sm-3"></div>
 				</div>
 			</div>
 		</div>
