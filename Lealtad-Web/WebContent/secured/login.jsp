@@ -28,7 +28,7 @@
 
 	<div class="row">
 		<div class="col-md-1"></div>
-  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 64px;">BIENVENIDO A LOS PROGRAMAS DE INCENTIVOS.</h2></div>
+  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 64px;">BIENVENIDO A LOS PROGRAMAS DE INCENTIVOS</h2></div>
  		<div class="col-md-1"></div>
 	</div>
 	

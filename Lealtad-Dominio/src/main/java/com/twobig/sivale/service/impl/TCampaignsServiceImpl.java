@@ -197,7 +197,12 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			listCampaignDetailAdminBean.add(campaignDetailAdminBean);
 		}
 		
+		//order by date
+		Collections.sort(listCampaignDetailAdminBean);
+		
 		Collections.reverse(listCampaignDetailAdminBean);
+		
+		
 		
 		return listCampaignDetailAdminBean; 
 	}

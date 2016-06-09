@@ -8,12 +8,21 @@
 			<div class="panel-heading">
 				<div class="row">
 				<div class="col-md-4">
-					<div class="navbar-header">{{campaign.campaignName}}</div>
+					<div class="navbar-header" style="font-family: cursive;font-size: 17px;">{{campaign.campaignName}}</div>
+
 				</div>
-				<div class="col-md-4">
-					<a href="#" ui-sref="updateCampaign" class="white">Editar Campaña</a>
+				<div class="col-md-3">
+					
+					<button type="button" class="btn btn-primary" ui-sref="updateCampaign">
+  							
+  							<i class="fa fa-pencil" aria-hidden="true"></i>
+  							
+  							<span aria-hidden="true"></span>Editar Campaña
+  							
+					</button>
+					
 				</div>
-				<div class="col-md-4">
+				<div class="col-md-5" style="font-family: cursive;font-size: 17px;">
 					Duración {{campaign.startDate | date:'dd/MM/yyyy'}} al {{campaign.endDate | date:'dd/MM/yyyy'}}
 				</div>
 				</div>
@@ -51,7 +60,9 @@
 				</div>
 				<div class="navbar-right padding15">
 				<button type="button" class="btn btn-primary" ui-sref="newPublication">
-  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>Añadir Publicación
+							
+							<i class="fa fa-plus" aria-hidden="true"></i>
+  							<span  aria-hidden="true"></span>Añadir Publicación
 				</button>
 				</div>
 			</div>

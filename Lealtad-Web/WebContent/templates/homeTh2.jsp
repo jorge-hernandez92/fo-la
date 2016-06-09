@@ -4,7 +4,7 @@
 <header class="header-image">
 
 	<nav class="navbar navbar-default navbar-static-top"
-		data-ng-controller="updateSession">
+		data-ng-controller="updateSession" style="font-family: 'GothamBold';">
 		
 		<ul class="nav navbar-nav">
 
@@ -21,11 +21,11 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li><a> <i class="fa fa-credit-card"></i> <span
-					class="span-header">{{user.tjCardNumber}}</span>
+			<li><a> <i class="fa fa-credit-card"></i> 
+					{{user.tjCardNumber}}
 			</a></li>
-			<li><a> <i class="fa fa-user fa-fw"></i> <span
-					class="span-header">{{user.firstName}}</span>
+			<li><a> <i class="fa fa-user fa-fw"></i> 
+					{{user.firstName}}
 			</a></li>
 			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
 			</a></li>
@@ -35,7 +35,7 @@
 	<div class="headline">
 		<div class="container">
 			<h1 style="font-family: 'GothamBold';font-size: 30px;">
-				<font color="white">Haz clic sobre el logo para conocer las campañas del programa.</font>
+				<font color="white">Haz clic sobre el logo para conocer las campañas del programa</font>
 			</h1>
 
 		</div>
@@ -45,8 +45,8 @@
 				
 		<div class="row" data-ng-controller="getClassifications">
 
-			<div class="col-xs-6 col-md-5"></div>
-			<div class="col-xs-6 col-md-2">
+			<div class="col-xs-6 col-md-4"></div>
+			<div class="col-xs-6 col-md-4">
 				<div class="text-center" ng-repeat="class in classifications">
 					
 					<div class="thumbnail" >
@@ -58,7 +58,7 @@
 										class="img-responsive" alt="">
 										<div class="portfolio-box-caption">
 											<div class="portfolio-box-caption-content">
-												<div class="project-name">Ver Listado</div>
+												<div class="project-name">Ver Campañas</div>
 											</div>
 										</div>
 									</a>
@@ -68,7 +68,7 @@
 					
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-5"></div>
+			<div class="col-xs-6 col-md-4"></div>
 
 		</div>
 		

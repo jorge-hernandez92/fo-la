@@ -49,15 +49,15 @@
 <!-- links provicinales  -->
 <script src="js/jquery.easing.min.js"></script>
 <!-- <script src="js/grayscale.js"></script> -->
-<script src="js/dynamic-background-home.js"></script>
+<!-- <script src="js/dynamic-background-home.js"></script> -->
 
 </head>
 
-<body class="sivale image-th" id="init">
+<body class="sivale" id="init">
 
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-static-top"
-		data-ng-controller="updateSession">
+		data-ng-controller="updateSession" style="font-family: 'GothamBold'; font-color: white">
 		
 		<ul class="nav navbar-nav">
 
@@ -80,11 +80,11 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li><a> <i class="fa fa-credit-card"></i> <span
-					class="span-header">{{user.tjCardNumber}}</span>
+			<li><a> <i class="fa fa-credit-card"></i> 
+					{{user.tjCardNumber}}
 			</a></li>
-			<li><a> <i class="fa fa-user fa-fw"></i> <span
-					class="span-header">{{user.firstName}}</span>
+			<li><a> <i class="fa fa-user fa-fw"></i> 
+					{{user.firstName}}
 			</a></li>
 			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
 			</a></li>

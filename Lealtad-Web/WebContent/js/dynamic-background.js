@@ -6,7 +6,7 @@ $(document).ready(function () {
 	var refreshId = setInterval( function() 
     {
 		while(r1 == r2){
-			r2 = Math.floor((Math.random() * 5) + 1);
+			r2 = Math.floor((Math.random() * 2) + 1);
 		}
 		r1 = r2;
 		

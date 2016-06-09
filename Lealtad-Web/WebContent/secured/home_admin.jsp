@@ -26,6 +26,7 @@
 <link rel="stylesheet" href="css/sticky-footer.css">
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
+<link href="css/default-fonts.css" rel="stylesheet">
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
 <script src="js/jquery-2.1.4.min.js"></script>
@@ -50,10 +51,10 @@
 
 </head>
 
-<body class="sivale image-th" id="init">
+<body class="sivale image-Admin" id="init">
 
 	<!-- Navigation -->
-	<nav  class="navbar navbar-default navbar-static-top" data-ng-controller="updateSession">
+	<nav  class="navbar navbar-default navbar-static-top" data-ng-controller="updateSession" style="font-family: 'GothamBold';">
 		
 		<ul class="nav navbar-nav">
 
@@ -74,8 +75,7 @@
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right">
-			<li><a> <i class="fa fa-user fa-fw"></i> <span
-					class="span-header">{{user.firstName}}</span>
+			<li><a> <i class="fa fa-user fa-fw"></i>{{user.firstName}}
 			</a></li>
 			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
 			</a></li>

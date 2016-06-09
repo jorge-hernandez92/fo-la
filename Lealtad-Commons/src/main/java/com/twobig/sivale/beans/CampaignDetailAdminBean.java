@@ -9,7 +9,7 @@ import com.twobig.sivale.bd.to.TCampaign;
 import com.google.common.base.MoreObjects;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CampaignDetailAdminBean extends TCampaign{
+public class CampaignDetailAdminBean extends TCampaign implements Comparable<CampaignDetailAdminBean>{
 
 	/**
 	 * 
@@ -71,7 +71,6 @@ public class CampaignDetailAdminBean extends TCampaign{
 	public void setCatClassificationCampaign(List<CatClassificationCampaign> catClassificationCampaign) {
 		this.catClassificationCampaign = catClassificationCampaign;
 	}
-
 	
 	
 	@Override
@@ -79,6 +78,14 @@ public class CampaignDetailAdminBean extends TCampaign{
 		return MoreObjects.toStringHelper(this).add("super", super.toString()).add("status", status)
 				.add("totalWon", totalWon).add("totalScattered", totalScattered).add("classification", classification)
 				.add("catClassificationCampaign", catClassificationCampaign).toString();
+	}
+
+	//order by date
+	@Override
+	public int compareTo(CampaignDetailAdminBean o) {
+		if (getStartDate() == null || o.getStartDate() == null)
+		      return 0;
+		return getStartDate().compareTo(o.getStartDate());
 	}	
 	
 }

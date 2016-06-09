@@ -13,7 +13,7 @@
 			<div class="panel panel-grisT table-top-sivale">
 				<div class="panel-heading">
 					<div class="container-fluid">
-						<div class="navbar-header">Datos de Publicación</div>
+						<div class="navbar-header" style="font-family: cursive;font-size: 17px;">Datos de Publicación</div>
 					</div>
 				</div>
 				<div class="panel-body back-sivale">
@@ -39,24 +39,25 @@
 								</div>
 							</div>
 
+							
+							<div class="row margin-top10">
+								<div class="col-md-4">Imagen de Publicacion</div>
+								<div class="col-md-8">
+									<input type="file" name="file" class="test" accept="image/*" required>
+								</div>
+							</div>
+							
 							<div class="row margin-top10">
 								<div class="col-md-4">Documento html</div>
 								<div class="col-md-8">
 									<input type="file" name="file" class="test" accept=".html" required>
 								</div>
 							</div>
-
+							
 							<div class="row margin-top10">
 								<div class="col-md-4">Documento excel</div>
 								<div class="col-md-8">
 									<input type="file" name="file" class="test" accept=".xlsx" required>
-								</div>
-							</div>
-							
-							<div class="row margin-top10">
-								<div class="col-md-4">Imagen de Publicacion</div>
-								<div class="col-md-8">
-									<input type="file" name="file" class="test" accept="image/*" required>
 								</div>
 							</div>
 
