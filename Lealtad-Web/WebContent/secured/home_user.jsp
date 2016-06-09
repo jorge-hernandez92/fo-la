@@ -49,7 +49,7 @@
 <!-- links provicinales  -->
 <script src="js/jquery.easing.min.js"></script>
 <!-- <script src="js/grayscale.js"></script> -->
-<!-- <script src="js/dynamic-background-home.js"></script> -->
+<script src="js/dynamic-background-home.js"></script>
 
 </head>
 

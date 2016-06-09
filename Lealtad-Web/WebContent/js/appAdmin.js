@@ -1084,9 +1084,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			//$('body').removeClass('image-th-p');
+			$('body').removeClass('image-th-p');
 			
-			//$('body').addClass('image-th');
+			$('body').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1109,9 +1109,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			//$('#init').removeClass('image-th-p');
+			$('#init').removeClass('image-th-p');
 			
-			//$('#init').addClass('image-th');
+			$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1133,9 +1133,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			//$('#init').removeClass('image-th-p');
+			$('#init').removeClass('image-th-p');
 			
-			//$('#init').addClass('image-th');
+			$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1157,9 +1157,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			//$('#init').removeClass('image-th-p');
+			$('#init').removeClass('image-th-p');
 			
-			//$('#init').addClass('image-th');
+			$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1181,9 +1181,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			//$('#init').removeClass('image-th-p');
+			$('#init').removeClass('image-th-p');
 			
-			//$('#init').addClass('image-th');
+			$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1202,6 +1202,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
+			
+			$('body').addClass('image-Admin');
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
@@ -1224,9 +1226,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			//$('#init').removeClass('image-th-p');
+			$('#init').removeClass('image-th-p');
 			
-			//$('#init').addClass('image-th');
+			$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
