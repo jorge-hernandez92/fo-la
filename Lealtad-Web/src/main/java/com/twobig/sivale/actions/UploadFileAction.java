@@ -90,10 +90,12 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			publication.settCampaignId(campaign.getCampaignId());
 			publication.setName(this.publication);
 			publication.setDescription(this.description);
-			publication.setDataFilePath(this.getFileFileName()[1]);
-			publication.setTemplateFilePath(this.getFileFileName()[0]);
+			/* Load of excel */
+			publication.setDataFilePath(this.getFileFileName()[2]);
+			/* Load of template (HTML)*/
+			publication.setTemplateFilePath(this.getFileFileName()[1]);
 			/* Load of publication image */
-			publication.setImagePath(this.getFileFileName()[2]);
+			publication.setImagePath(this.getFileFileName()[0]);
 			publication.setIsEnable(false);
 			
 			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
@@ -160,7 +162,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 						return ERROR;
 					}
 				}
-				publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[1]);
+				publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[2]);
 				
 				setMessage(SUCCESS_CODE, SUCCESS_CREATE_PUBLICATION);
 				return SUCCESS;

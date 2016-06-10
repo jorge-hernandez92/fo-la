@@ -75,7 +75,6 @@
 	
 	<div class="row">
 		<div class="col-md-3"></div>
-  		<div class="col-md-6"><h3 class="text-center" style="font-size: 14px; font-family: GothamBold">Programa administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3></div>
  		<div class="col-md-3"></div>
 	</div>
 
