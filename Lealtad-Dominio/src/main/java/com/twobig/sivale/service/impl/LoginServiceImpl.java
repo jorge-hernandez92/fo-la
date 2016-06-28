@@ -3,9 +3,12 @@ package com.twobig.sivale.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.CatProfile;
@@ -21,10 +24,6 @@ import com.twobig.sivale.hd.to.UserBean;
 import com.twobig.sivale.service.LoginService;
 import com.twobig.sivale.servicios.SivaleServices;
 import com.twobig.sivale.servicios.SivaleServicesException;
-
-
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
 
 /**
  * This class implements the LoginService interface to validate the users.
@@ -48,11 +47,13 @@ public class LoginServiceImpl implements LoginService {
 
 	@Autowired
 	public RelProfileFunctionalityDAO relProfileFunctionalityDAO;
+	
+	
 
 	/**
 	 * Variable to register the logs.
 	 */
-	private final static Logger LOGGER = LoggerFactory
+	private final static Logger logger = LoggerFactory
 			.getLogger(LoginServiceImpl.class);
 
 	/**
@@ -70,6 +71,8 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public boolean validateUser(UserBean user) {
+		
+		//BasicConfigurator.configure();
 
 		boolean response = false;
 
@@ -81,7 +84,7 @@ public class LoginServiceImpl implements LoginService {
 				response = sivaleServices.validateLogin(user.getUser(),
 						user.getPass());
 			} catch (SivaleServicesException e) {
-				LOGGER.error(e.getMessage(), e);
+				logger.info(e.getMessage(), e);
 			}
 		}
 
@@ -93,6 +96,8 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public TUserLogin validateUserWeb(UserBean user) {
+		
+		//BasicConfigurator.configure();
 
 		TUser tUsers = null;
 		TUserLogin tUserLogin = null;
@@ -108,8 +113,8 @@ public class LoginServiceImpl implements LoginService {
 					tUsers = userDAO.getUserByCard(user.getUser());
 				}
 			} catch (SivaleServicesException e) {
-				System.out.println(e.getMessage());
-				LOGGER.error(e.getMessage(), e);
+				logger.info(e.getMessage());
+				logger.info(e.getMessage(), e);
 			}
 		} else {
 
@@ -125,7 +130,7 @@ public class LoginServiceImpl implements LoginService {
 					.getCompany());
 
 			if (tCompanies == null) {
-				LOGGER.info("There isn't any company associated to this user");
+				logger.info("There isn't any company associated to this user");
 				return null;
 			}
 

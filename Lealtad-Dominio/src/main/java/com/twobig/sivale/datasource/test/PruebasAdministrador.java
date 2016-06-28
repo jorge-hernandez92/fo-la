@@ -1,8 +1,11 @@
 package com.twobig.sivale.datasource.test;
 
-import java.util.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
+
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.twobig.sivale.bd.to.CatPublicationType;
@@ -17,6 +20,9 @@ import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 
 public class PruebasAdministrador {
+	
+	final static Logger logger = Logger.getLogger(PruebasAdministrador.class);
+	
 
 	public static void getCampaingsSuper(ClassPathXmlApplicationContext context) {
 
@@ -25,7 +31,7 @@ public class PruebasAdministrador {
 		List<CampaignDetailAdminBean> listCampaignDetailAdminBean = cccs.getCampaingsSuper(7);
 
 		for (CampaignDetailAdminBean campaignDetailAdminBean : listCampaignDetailAdminBean) {
-			System.out.println(campaignDetailAdminBean.toString());
+			logger.info(campaignDetailAdminBean.toString());
 		}
 
 	}
@@ -53,7 +59,7 @@ public class PruebasAdministrador {
 		pib.setAttachedFiles(attachedFiles);
 		
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
-		System.out.println(cccs.addPublication(pib));
+		logger.info(cccs.addPublication(pib));
 
 		//PRUEBAS PARA EL EXCEL 
 		//TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
@@ -89,7 +95,7 @@ public class PruebasAdministrador {
 
 		pib.setAttachedFiles(attachedFiles);
 
-		System.out.println(cccs.updatePublication(pib));
+		logger.info(cccs.updatePublication(pib));
 
 	}
 
@@ -101,7 +107,7 @@ public class PruebasAdministrador {
 		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(30);
 
 		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
-			System.out.println(selectClassificationCampaignBean.toString());
+			logger.info(selectClassificationCampaignBean.toString());
 		}
 	}
 
@@ -112,7 +118,7 @@ public class PruebasAdministrador {
 		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationParent(7);
 
 		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
-			System.out.println(selectClassificationCampaignBean.toString());
+			logger.info(selectClassificationCampaignBean.toString());
 		}
 	}
 
@@ -181,7 +187,7 @@ public class PruebasAdministrador {
 
 	public static void getPublicationType(ClassPathXmlApplicationContext context){
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
-		System.out.println(cccs.getPublicationType());
+		logger.info(cccs.getPublicationType());
 	}
 	
 	public static void updateExcel(ClassPathXmlApplicationContext context){
@@ -260,14 +266,15 @@ public class PruebasAdministrador {
 		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1, 0);
 
 		for (TPublication tPublication : publicaciones) {
-			System.out.println(tPublication.toString() + " ");
+			logger.info(tPublication.toString() + " ");
 		}
 		
 	}
 	
 	public static void main(String[] args) {
+		//BasicConfigurator.configure();
 
-		// BasicConfigurator.configure();
+		// //BasicConfigurator.configure();
 
 		ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext(
 				"classpath:/application-context.xml");

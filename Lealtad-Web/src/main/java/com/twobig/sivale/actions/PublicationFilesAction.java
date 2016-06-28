@@ -6,26 +6,21 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-import javax.servlet.http.HttpServletRequest;
 
-import org.apache.struts2.ServletActionContext;
+import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
-import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
-import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.ExcelBean;
-import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.PublicationCRUDBean;
-import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.ExcelService;
@@ -48,6 +43,8 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 	private File[] file;
 	private String[] fileContentType;
 	private String[] fileFileName;
+	
+	final static Logger logger = Logger.getLogger(AttachedFilesAction.class);
 
 	
 	@Action(value = "UploadHtmlAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
@@ -59,7 +56,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 		boolean delete = true;
 		
-		System.out.println("Upload html files size = " + getFile().length);
+		logger.info("Upload html files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
 
@@ -102,13 +99,13 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				try{
 					
 					String pathfile = directory + File.separator + htmlFileName;
-					System.out.println("**** archivo adjunto: "+ pathfile);
+					logger.info("**** archivo adjunto: "+ pathfile);
 					File file = new File(pathfile);
 					if(file.delete())
-					System.out.println("**** Se eliminó HTML");
+					logger.info("**** Se eliminó HTML");
 				
 				}catch(Exception e){
-					System.out.println("Error al eliminar HTML");
+					logger.info("Error al eliminar HTML");
 				}
 				
 				return SUCCESS;
@@ -128,7 +125,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 		boolean delete = true;
 		
-		System.out.println("Upload excel files size = " + getFile().length);
+		logger.info("Upload excel files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
 
@@ -159,13 +156,13 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				try {
 
 					String pathfile = directory + File.separator + publication.getDataFilePath();
-					System.out.println("**** archivo adjunto: " + pathfile);
+					logger.info("**** archivo adjunto: " + pathfile);
 					File file = new File(pathfile);
 					if (file.delete())
-						System.out.println("**** Se eliminó Excel");
+						logger.info("**** Se eliminó Excel");
 
 				} catch (Exception e) {
-					System.out.println("Error al eliminar Excel");
+					logger.info("Error al eliminar Excel");
 				}
 			}
 			

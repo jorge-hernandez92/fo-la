@@ -2,11 +2,11 @@ package com.twobig.sivale.actions;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -19,7 +19,6 @@ import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.exceptions.TravelsNotFoundException;
 import com.twobig.sivale.service.TransactionService;
-import com.xm.sivale.services.test.ServicesUser;
 
 import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
@@ -34,6 +33,8 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	private double averageBalance;
 	private String cardNumber;
 	private String userId;
+	
+	final static Logger logger = Logger.getLogger(HomeAction.class);
 	
 	@Autowired
 	TransactionService transactionService;
@@ -95,7 +96,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 					dateFormat = new SimpleDateFormat(CommonsConstants.DATE_FORMAT_TRX_PM);
 				
 				Date dateTemp = dateFormat.parse(tr.getTransactionDate());
-				System.out.println("Dates: "+dateFormatResult.format(dateTemp));
+				logger.info("Dates: "+dateFormatResult.format(dateTemp));
 				tr.setTransactionDate(dateFormatResult.format(dateTemp));
 			}
 		} catch (ParseException e) {

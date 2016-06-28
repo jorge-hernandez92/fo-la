@@ -7,10 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import com.twobig.sivale.beans.ExcelBean;
-import com.twobig.sivale.beans.ExcelDataUserBean;
-import com.twobig.sivale.service.ExcelService;
-
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -20,12 +18,20 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.twobig.sivale.beans.ExcelBean;
+import com.twobig.sivale.beans.ExcelDataUserBean;
+import com.twobig.sivale.service.ExcelService;
+
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ExcelServiceImpl implements ExcelService {
+	
+	final static Logger logger = Logger.getLogger(ExcelServiceImpl.class);
 
 	@Override
 	public ExcelBean getExcelData(String path, String sheetName) {
+		
+		//BasicConfigurator.configure();
 
 		List<String> header = new ArrayList<String>();
 		List<HashMap<String, String>> rows = new ArrayList<HashMap<String, String>>();
@@ -64,7 +70,7 @@ public class ExcelServiceImpl implements ExcelService {
 
 					} else if(colum < header.size()){
 						map.put(header.get(colum), cell.getStringCellValue());
-					} else System.out.println("------------- fila : " + count + "-------------");
+					} else logger.info("------------- fila : " + count + "-------------");
 					colum++;
 				}
 

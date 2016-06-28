@@ -10,13 +10,9 @@ import java.util.Properties;
 import javax.xml.soap.SOAPException;
 
 import org.apache.axis.message.SOAPHeaderElement;
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import ws.sivale.com.mx.messages.response.ResponseError;
-import ws.sivale.com.mx.messages.response.sivalemx.ResponseMensaje;
-import ws.sivale.com.mx.messages.response.tarjeta.ResponseSaldo;
-import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
 import com.twobig.sivale.servicios.sivalemx.ServiciosSiValeMxLocator;
 import com.twobig.sivale.servicios.sivalemx.ServiciosSiValeMxTypePortBindingStub;
@@ -24,9 +20,14 @@ import com.twobig.sivale.servicios.tarjeta.ServiciosTarjetaLocator;
 import com.twobig.sivale.servicios.tarjeta.ServiciosTarjetaTypePortBindingStub;
 import com.twobig.sivale.utils.PropUtils;
 
+import ws.sivale.com.mx.messages.response.ResponseError;
+import ws.sivale.com.mx.messages.response.sivalemx.ResponseMensaje;
+import ws.sivale.com.mx.messages.response.tarjeta.ResponseSaldo;
+import ws.sivale.com.mx.messages.types.TypeTransaccion;
+
 public class SivaleServices {
 
-	private static Logger LOGGER = LoggerFactory.getLogger(SivaleServices.class);
+	private static Logger logger = LoggerFactory.getLogger(SivaleServices.class);
 	private static Properties props;
 	private static String serviciosSiValeMxAddress;
 	private static String serviciosTarjetaAddress;
@@ -35,16 +36,6 @@ public class SivaleServices {
 	private static String appPetitioner;
 
 	EncryptionSivale encrypt = new EncryptionSivale();
-
-	// public static void main(String[] args) throws SivaleServicesException {
-	// SivaleServices services = new SivaleServices();
-	// boolean isLogged = services.validateLogin("5273740100000314",
-	// "M0tz1LOBKUh3YK4ocepdg+SApHWIOjMrMDHQJMfNDkMhZ9hqiI6kAjzaAapPWcC+3M/4lRo6+lHs9PbKN43ThtiV3pVd1OjC+L46Z8zsgc9O/WTkK7niyNibOgIARySElKPXvxb4jN6MGKisvuts1DhoXaiZib8fMB3o4ixpLIE=");
-	// double balance = services.getBalance("5273740100000249");
-	//
-	// System.out.println(isLogged);
-	// System.out.println(balance);
-	// }
 
 	static {
 		props = PropUtils.getProperties();
@@ -72,10 +63,10 @@ public class SivaleServices {
 			Integer errCodigo = responseError.getCodigo();
 			String errMensaje = responseError.getMensaje();
 
-			LOGGER.debug("mensaje " + mensaje);
-			LOGGER.debug("saldo " + saldo);
-			LOGGER.debug("Err: " + errCodigo);
-			LOGGER.debug("Err: " + errMensaje);
+			logger.debug("mensaje " + mensaje);
+			logger.debug("saldo " + saldo);
+			logger.debug("Err: " + errCodigo);
+			logger.debug("Err: " + errMensaje);
 
 			if (errCodigo == 0) {
 				return saldo;
@@ -118,9 +109,9 @@ public class SivaleServices {
 
 			TypeTransaccion[] typeTransactions = response.getTransacciones();
 
-			LOGGER.debug("mensaje " + mensaje);
-			LOGGER.debug("Err: " + errCodigo);
-			LOGGER.debug("Err: " + errMensaje);
+			logger.debug("mensaje " + mensaje);
+			logger.debug("Err: " + errCodigo);
+			logger.debug("Err: " + errMensaje);
 
 			if (errCodigo == 0) {
 
@@ -148,7 +139,10 @@ public class SivaleServices {
 	}
 
 	public boolean validateLogin(String user, String pass) throws SivaleServicesException {
-		//System.out.println("En la funcion de validateLogin");
+		
+		//BasicConfigurator.configure();
+		
+		//logger.info("En la funcion de validateLogin");
 		try {
 			
 			ServiciosSiValeMxLocator service = new ServiciosSiValeMxLocator();
@@ -159,9 +153,9 @@ public class SivaleServices {
 			wbind.setHeader(getSivaleHeader(uri));
 
 			String encryptedPass = encrypt.encryptData(pass);
-			System.out.println("La contraseña es: "+encryptedPass);
-			LOGGER.info("Authenticating user: " + user);
-			LOGGER.info(encryptedPass);
+			logger.info("La contraseña es: "+encryptedPass);
+			logger.info("Authenticating user: " + user);
+			logger.info(encryptedPass);
 
 			ws.sivale.com.mx.messages.request.sivalemx.RequestBase req = new ws.sivale.com.mx.messages.request.sivalemx.RequestBase(
 					user, encryptedPass);
@@ -171,9 +165,9 @@ public class SivaleServices {
 			Integer errCodigo = responseError.getCodigo();
 			String errMensaje = responseError.getMensaje();
 
-			LOGGER.debug(mensaje);
-			LOGGER.debug("Err:" + errCodigo);
-			LOGGER.debug("Err:" + errMensaje);
+			logger.debug(mensaje);
+			logger.debug("Err:" + errCodigo);
+			logger.debug("Err:" + errMensaje);
 
 			if (errCodigo == 0 && "valido".equals(mensaje)) {
 				return true;

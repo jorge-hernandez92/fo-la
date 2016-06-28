@@ -4,6 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -37,9 +39,13 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	
 	@Autowired
 	public UserDAO userDAO;
+	
+	final static Logger logger = Logger.getLogger(ViewPublicationServiceImpl.class);
 
 	@Override
 	public PublicationBean showPublication(int userId, int publicationId, int profile) {
+		
+		//BasicConfigurator.configure();
 		
 		List<TUserData>  tUserDate = tUserDateDAO.getTUserDataByPublicationIdAndUserId(userId, publicationId);
 		TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
@@ -56,7 +62,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			
 			String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
 					+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
-			System.out.println("htmlPath : " + htmlPath);
+			logger.info("htmlPath : " + htmlPath);
 			
 			String html = htmlParser.getHTML(htmlPath, data);
 
@@ -107,7 +113,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			
 
 		} else {
-			System.out.println("lista vacia");
+			logger.info("lista vacia");
 			return null;
 		}
 		
@@ -116,6 +122,8 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 
 	@Override
 	public PublicationBean showPublicationByCardNumber(String cardNumber, int publicationId, int profile) {
+		
+		//BasicConfigurator.configure();
 		
 		//Integer userId = userDAO.getUserIdByCard(cardNumber);
 		Integer userId = userDAO.getUserIdByAccountNumber(cardNumber);
@@ -139,7 +147,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 				
 				String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
 						+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
-				System.out.println("htmlPath : " + htmlPath);
+				logger.info("htmlPath : " + htmlPath);
 				
 				String html = htmlParser.getHTML(htmlPath, data);
 
@@ -186,13 +194,13 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 				return publication;
 				
 			} else {
-				System.out.println("lista vacia");
+				logger.info("lista vacia");
 				return null;
 			}
 
 		}
 		else{
-			System.out.println("no exite usuario con la tarjeta: "+cardNumber);
+			logger.info("no exite usuario con la tarjeta: "+cardNumber);
 			return null; 
 		}
 		

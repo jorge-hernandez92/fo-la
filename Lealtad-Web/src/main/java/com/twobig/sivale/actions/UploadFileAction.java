@@ -1,5 +1,6 @@
 package com.twobig.sivale.actions;
 
+import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,8 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -64,6 +67,8 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	public static final String SUCCESS_DELETE_PUBLICATION 	= "Publicación eliminada correctamente";
 	public static final String SUCCESS_UPDATE_PUBLICATION 	= "Publicación actualizada correctamente";
 	
+	
+	
 	@Action(value = "UploadFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
 	        interceptorRefs={
@@ -71,110 +76,179 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			        @InterceptorRef("defaultStack"),
 			        @InterceptorRef("validation")}
 	)
-public String uploadAction(){
+	public String uploadAction(){
 		
-		if(getFile().length >= 3){
-			
-			TCampaign campaign = (TCampaign) session.get("campaign");
+		TCampaign campaign = (TCampaign) session.get("campaign");
+		TPublication publication; 
 
-			if (campaign == null) {
-				setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
-				return ERROR;
-			}
-			
-			CatPublicationType publicationTypet = new CatPublicationType();
-			publicationTypet.setPublicationTypeId(selected);
-			
-			TPublication publication = new TPublication();
-			publication.setCatPublicationType(publicationTypet);
-			publication.settCampaignId(campaign.getCampaignId());
-			publication.setName(this.publication);
-			publication.setDescription(this.description);
-			/* Load of excel */
-			publication.setDataFilePath(this.getFileFileName()[2]);
-			/* Load of template (HTML)*/
-			publication.setTemplateFilePath(this.getFileFileName()[1]);
-			/* Load of publication image */
-			publication.setImagePath(this.getFileFileName()[0]);
-			publication.setIsEnable(false);
-			
-			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
-			publicationBean.setPublication(publication);
-			
-			List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
-			for (int i = 3; i < this.getFile().length; i++) {
-				TAttachedFile attachedFile = new TAttachedFile();
-				
-				if(this.getFilechecked()[i-3].equals("Privado"))
-					attachedFile.setIsPublic(false);
-				else attachedFile.setIsPublic(true);
-				
-				StringTokenizer tokens = new StringTokenizer(this.getFileFileName()[i],".");
-				
-				ArrayList<String> tokensList = new ArrayList<String>();
-				while(tokens.hasMoreTokens()){
-					tokensList.add(tokens.nextToken());
-				}
-				
-				if (tokensList.size() >= 2){
-					
-					if(tokensList.size() == 2){
-						attachedFile.setFileName(tokensList.get(0));
-						attachedFile.setFileExtension(tokensList.get(1));
-					}
-					else{
-						String fileName = "";
-						for(int j=0; j < tokensList.size()-1; j++){
-							if(j == tokensList.size()-2)
-								fileName += tokensList.get(j);
-							else
-								fileName += tokensList.get(j) + ".";
-						}
-						String extension = tokensList.get(tokensList.size()-1);
-						
-						attachedFile.setFileName(fileName);
-						attachedFile.setFileExtension(extension);
-					}
-					
-				}
-				else{
-					return ERROR;
-				}
-				
-				attachedFiles.add(attachedFile);
-			}
-
-			publicationBean.setAttachedFiles(attachedFiles);
-			
-			String id = publicationService.addPublication(publicationBean);			
-			
-			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + id;
-			
-			if(NumberUtils.isDigits(id)){
-				
-				for(int i=0; i < getFile().length; i++){
-					
-					try {
-						FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
-					} catch (IOException e) {
-						e.printStackTrace();
-						setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
-						return ERROR;
-					}
-				}
-				publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[2]);
-				
-				setMessage(SUCCESS_CODE, SUCCESS_CREATE_PUBLICATION);
-				return SUCCESS;
-				
-			}
+		if (campaign == null) {
 			setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 			return ERROR;
+		}
+		
+		
+		if(getFile().length == 2){
+			publication = loadHtmlExcel(campaign);
+			return loadAtachedFiles(publication,campaign, 2, 1);
+		}
+		else if(getFile().length >= 3){
+			
+			try {
+				Image image = ImageIO.read(getFile()[0]);
+			    if (image == null) {
+			    	publication = loadHtmlExcel(campaign);
+			    	return loadAtachedFiles(publication,campaign, 2, 1);
+			    	
+			    }
+			    else{
+			    	publication = loadImageHtmlExcel(campaign);
+			    	return loadAtachedFiles(publication,campaign, 3, 2);
+			    }
+			} catch(IOException ex) {	
+				
+			}
 		}
 		
 		setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 		return ERROR;
 		
+	}
+	
+	/**
+	 * This method create a publication with all information that is delivering by the user
+	 * @param campaign current campaign of the session
+	 * @return publication with HTML and EXCEL files 
+	 */
+	private TPublication loadHtmlExcel(TCampaign campaign){
+		
+		CatPublicationType publicationTypet = new CatPublicationType();
+		publicationTypet.setPublicationTypeId(selected);
+		
+		TPublication publication = new TPublication();
+		publication.setCatPublicationType(publicationTypet);
+		publication.settCampaignId(campaign.getCampaignId());
+		publication.setName(this.publication);
+		publication.setDescription(this.description);
+		
+		/* Load of excel */
+		publication.setDataFilePath(this.getFileFileName()[1]);
+		
+		/* Load of template (HTML)*/
+		publication.setTemplateFilePath(this.getFileFileName()[0]);
+		
+		publication.setIsEnable(false);
+		
+		return publication; 
+	}
+	
+	/**
+	 * This method create a publication with all information that is delivering by the user
+	 * @param campaign current campaign of the session
+	 * @return publication with IMAGE,  HTML and EXCEL files 
+	 */
+	private TPublication loadImageHtmlExcel(TCampaign campaign){
+		
+		CatPublicationType publicationTypet = new CatPublicationType();
+		publicationTypet.setPublicationTypeId(selected);
+		
+		TPublication publication = new TPublication();
+		publication.setCatPublicationType(publicationTypet);
+		publication.settCampaignId(campaign.getCampaignId());
+		publication.setName(this.publication);
+		publication.setDescription(this.description);
+		/* Load of excel */
+		publication.setDataFilePath(this.getFileFileName()[2]);
+		/* Load of template (HTML)*/
+		publication.setTemplateFilePath(this.getFileFileName()[1]);
+		/* Load of publication image */
+		publication.setImagePath(this.getFileFileName()[0]);
+		publication.setIsEnable(false);
+		
+		return publication; 
+	}
+	
+	/**
+	 * Load all files that is delivering by the user. The files is loaded in the file system. 
+	 * @param publication creates for save all information of a publication  
+	 * @param campaign current campaign of the session
+	 * @param numberFilesPub is the number of files that the user needs for the new publication 
+	 * @param indexExcel is the position of excel file in the array created in the browser
+	 * @return String with the state of files 
+	 */
+	private String loadAtachedFiles(TPublication publication, TCampaign campaign, int numberFilesPub, int indexExcel){
+		
+		PublicationCRUDBean publicationBean = new PublicationCRUDBean();
+		publicationBean.setPublication(publication);
+		
+		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
+		for (int i = numberFilesPub ; i < this.getFile().length; i++) {
+			TAttachedFile attachedFile = new TAttachedFile();
+			
+			if(this.getFilechecked()[i- (numberFilesPub )].equals("Privado"))
+				attachedFile.setIsPublic(false);
+			else attachedFile.setIsPublic(true);
+			
+			StringTokenizer tokens = new StringTokenizer(this.getFileFileName()[i],".");
+			
+			ArrayList<String> tokensList = new ArrayList<String>();
+			while(tokens.hasMoreTokens()){
+				tokensList.add(tokens.nextToken());
+			}
+			
+			if (tokensList.size() >= 2){
+				
+				if(tokensList.size() == 2){
+					attachedFile.setFileName(tokensList.get(0));
+					attachedFile.setFileExtension(tokensList.get(1));
+				}
+				else{
+					String fileName = "";
+					for(int j=0; j < tokensList.size()-1; j++){
+						if(j == tokensList.size()-2)
+							fileName += tokensList.get(j);
+						else
+							fileName += tokensList.get(j) + ".";
+					}
+					String extension = tokensList.get(tokensList.size()-1);
+					
+					attachedFile.setFileName(fileName);
+					attachedFile.setFileExtension(extension);
+				}
+				
+			}
+			else{
+				return ERROR;
+			}
+			
+			attachedFiles.add(attachedFile);
+		}
+
+		publicationBean.setAttachedFiles(attachedFiles);
+		
+		String id = publicationService.addPublication(publicationBean);			
+		
+		String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + id;
+		
+		if(NumberUtils.isDigits(id)){
+			
+			for(int i=0; i < getFile().length; i++){
+				
+				try {
+					FilesUtil.saveFile(getFile()[i], getFileFileName()[i], directory);
+				} catch (IOException e) {
+					e.printStackTrace();
+					setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
+					return ERROR;
+				}
+			}
+			publicationService.loadDataExcel(Integer.valueOf(id), directory+File.separator+getFileFileName()[indexExcel]);
+			
+			setMessage(SUCCESS_CODE, SUCCESS_CREATE_PUBLICATION);
+			return SUCCESS;
+			
+		}
+		setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
+		return ERROR;
 	}
 	
 	@SuppressWarnings("unchecked")

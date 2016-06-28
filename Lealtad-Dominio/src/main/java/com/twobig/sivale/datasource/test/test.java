@@ -6,6 +6,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
@@ -30,6 +32,8 @@ import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
 
 public class test {
+	
+	final static Logger logger = Logger.getLogger(test.class);
 	
 	
 	public static void login(ClassPathXmlApplicationContext context){
@@ -57,10 +61,10 @@ public class test {
 			userDetails.put("userName", 		tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
 			userDetails.put("cardNumber", 		tUserLogin.getTjCardNumber());
 			userDetails.put("clientId", 		tUserLogin.gettCompanies().getIdCompany());	
-			System.out.println(userDetails.toString());
+			logger.info(userDetails.toString());
 			
 		} else {
-			System.out.println("Usuario o password incorrectos!");
+			logger.info("Usuario o password incorrectos!");
 		}
 		
 	}
@@ -94,10 +98,10 @@ public class test {
 			userDetails.put("userName", 		tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
 			userDetails.put("cardNumber", 		tUserLogin.getTjCardNumber());
 			userDetails.put("clientId", 		tUserLogin.gettCompanies().getIdCompany());	
-			System.out.println(userDetails.toString());
+			logger.info(userDetails.toString());
 			
 		} else {
-			System.out.println("Usuario o password incorrectos!");
+			logger.info("Usuario o password incorrectos!");
 		}
 	}
 	
@@ -109,8 +113,8 @@ public class test {
 		List<CatClassificationCampaign> clasificaciones = cccs.getCatClassificationCampaignByUserId(7);
 		
 		for (CatClassificationCampaign catClassificationCampaign : clasificaciones) {
-			System.out.println(catClassificationCampaign.toString());
-			System.out.println(catClassificationCampaign.getCatViews().getLogos());
+			logger.info(catClassificationCampaign.toString());
+			logger.info(catClassificationCampaign.getCatViews().getLogos());
 		}
 		
 	}
@@ -122,8 +126,8 @@ public class test {
 				cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 1);
 		
 		for (CampaignDetailBean campaignDetailBean2 : campaignDetailBeanList) {
-			System.out.println(campaignDetailBean2.toString());
-			System.out.println(campaignDetailBean2.getClassification());
+			logger.info(campaignDetailBean2.toString());
+			logger.info(campaignDetailBean2.getClassification());
 		}
 	}
 	
@@ -135,7 +139,7 @@ public class test {
 		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1, 1);
 		
 		for (TPublication tPublication : publicaciones) {
-			System.out.println(tPublication.toString() + " ");
+			logger.info(tPublication.toString() + " ");
 		}
 	}
 	
@@ -149,10 +153,10 @@ public class test {
 		if(publicationBean != null){
 			
 			for (TAttachedFile files : publicationBean.getListFiles()) {
-				System.out.println(files.toString());
+				logger.info(files.toString());
 			}
 			
-			System.out.println(publicationBean.getHtml());
+			logger.info(publicationBean.getHtml());
 		}
 	}
 	
@@ -166,13 +170,13 @@ public class test {
 		if(publicationBean != null){
 			
 			for (TAttachedFile files : publicationBean.getListFiles()) {
-				System.out.println(files.toString());
+				logger.info(files.toString());
 			}
 			
-			System.out.println(publicationBean.getHtml());
+			logger.info(publicationBean.getHtml());
 		}
 		else
-			System.out.println("No existe la informacion solicitada");
+			logger.info("No existe la informacion solicitada");
 	}
 			
 	public static void filterCampaigns(ClassPathXmlApplicationContext context) {
@@ -189,13 +193,13 @@ public class test {
 		try {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
-			System.out.println(endDate);
+			logger.info(endDate);
 
 			searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
 			searchCampaignBean.setStartDate(startDate);
 			searchCampaignBean.setEndDate(endDate);
-			System.out.println(searchCampaignBean.toString());
+			logger.info(searchCampaignBean.toString());
 			searchCampaignBean.setClassificationName1("cLaSe5");
 			searchCampaignBean.setClassificationName2("CLAS");
 			
@@ -206,7 +210,7 @@ public class test {
 		List<CampaignDetailBean> listCampaignDetailBean =  cccs.FilterCampaign(7, searchCampaignBean);
 		
 		for (CampaignDetailBean campaignDetailBean : listCampaignDetailBean) {
-			System.out.println(campaignDetailBean);
+			logger.info(campaignDetailBean);
 		}
 
 	}
@@ -223,14 +227,14 @@ public class test {
 		try {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
-			System.out.println(endDate);
+			logger.info(endDate);
 
 			//searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
 			searchCampaignBean.setCompany("fordt");
 			//searchCampaignBean.setStartDate(startDate);
 			//searchCampaignBean.setEndDate(endDate);
-			System.out.println(searchCampaignBean.toString());
+			logger.info(searchCampaignBean.toString());
 			searchCampaignBean.setClassificationName1("cLaSe");
 			searchCampaignBean.setClassificationName2("");
 			
@@ -241,7 +245,7 @@ public class test {
 		List<CampaignDetailAdminBean> listCampaignDetailBean =  cccs.FilterCampaignAdmin(1, searchCampaignBean);
 		
 		for (CampaignDetailAdminBean campaignDetailBean : listCampaignDetailBean) {
-			System.out.println(campaignDetailBean);
+			logger.info(campaignDetailBean);
 		}
 	}
 	
@@ -253,14 +257,14 @@ public class test {
 		
 		for (TypeTransaccion typeTransaccion : transactionsList) {
 			 System.out.print(typeTransaccion.getNumberCard());
-			 System.out.println(" "+typeTransaccion.getTransactionDate());
+			 logger.info(" "+typeTransaccion.getTransactionDate());
 			 
 		}
 		
 		try {
 			
 			Double saldo = cccs.getBalance("5273740100060052");
-			System.out.println("Saldo: "+saldo);
+			logger.info("Saldo: "+saldo);
 		} catch (TravelsNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

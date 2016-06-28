@@ -3,7 +3,6 @@ package com.twobig.sivale.service.impl;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -12,6 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -20,9 +21,13 @@ import com.twobig.sivale.constants.HTMLParserConstants;
 import com.twobig.sivale.service.HTMLParserService;
 
 public class HTMLParserServiceImpl implements HTMLParserService {
+	
+	final static Logger logger = Logger.getLogger(HTMLParserServiceImpl.class);
 
 	@Override
 	public String getHTML(String htmlPath, String data) {
+		
+		//BasicConfigurator.configure();
 
 		if(data == null){
 			String file = this.fileToString(htmlPath);
@@ -37,7 +42,7 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 
 			String file = this.fileToString(htmlPath);
 			
-			System.out.println("Archivo HTML A MESCLAR:    "+file);
+			logger.info("Archivo HTML A MESCLAR:    "+file);
 
 			for (int i = 0; i < tokens.size(); i++) {
 
@@ -48,7 +53,7 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 							value);
 				}
 			}
-			System.out.println(file);
+			logger.info(file);
 			return file;
 
 		} catch (JSONException e) {

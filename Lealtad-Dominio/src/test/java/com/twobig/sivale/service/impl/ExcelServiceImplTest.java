@@ -8,6 +8,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.log4j.BasicConfigurator;
 import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
@@ -23,6 +24,9 @@ public class ExcelServiceImplTest {
 
 	@Test
 	public void getDatabySheet() {
+		
+		//BasicConfigurator.configure();
+		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
 		ExcelBean excelBean = excelservice.getExcelData("src/test/resources/FORD.xlsx", "Hoja1");
 		assertNotNull("ExcelBean Null", excelBean);
@@ -58,7 +62,7 @@ public class ExcelServiceImplTest {
 		assertNotNull("DataList Null", dataList);
 
 		for (ExcelDataUserBean dataUser : dataList) {
-			System.out.println("***" + dataUser.getUserId() + "***" + dataUser.getData());
+			logger.info("***" + dataUser.getUserId() + "***" + dataUser.getData());
 		}
 	}
 	
@@ -76,7 +80,7 @@ public class ExcelServiceImplTest {
 //		map.put("Key4", "value");
 		
 		for (String key : map.keySet()) {
-			System.out.println("***" + key + "***");
+			logger.info("***" + key + "***");
 		}
 	}
 

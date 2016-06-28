@@ -11,6 +11,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -25,7 +26,7 @@ public class PropUtils {
 	/**
 	 * Variable to register the logs.
 	 */
-	private static Logger LOGGER = LoggerFactory.getLogger(PropUtils.class);
+	private static Logger logger = LoggerFactory.getLogger(PropUtils.class);
 
 	/**
 	 * Variable that indicate the name of the configuration properties.
@@ -39,6 +40,8 @@ public class PropUtils {
 	 * @return the configuration properties.
 	 */
 	public static Properties getProperties() {
+		
+		//BasicConfigurator.configure();
 
 		Properties props = new Properties();
 		InputStream input = PropUtils.class.getClassLoader()
@@ -46,7 +49,7 @@ public class PropUtils {
 		try {
 			props.load(input);
 		} catch (IOException e) {
-			LOGGER.error(e.getMessage(), e);
+			logger.info(e.getMessage(), e);
 		} finally {
 			close(input);
 		}
@@ -61,6 +64,8 @@ public class PropUtils {
 	 *            Object that can be close.
 	 */
 	private static void close(final Closeable closable) {
+		
+		//BasicConfigurator.configure();
 
 		if (closable == null) {
 			return;
@@ -68,7 +73,7 @@ public class PropUtils {
 		try {
 			closable.close();
 		} catch (IOException e) {
-			LOGGER.error(e.getMessage(), e);
+			logger.info(e.getMessage(), e);
 		}
 	}
 
@@ -86,6 +91,8 @@ public class PropUtils {
 	}
 
 	public static String parseDateString(String dateString) {
+		
+		//BasicConfigurator.configure();
 
 		DateFormat indate = new SimpleDateFormat("M/d/yy");
 		SimpleDateFormat outdate = new SimpleDateFormat("yyyyMMdd");
@@ -95,7 +102,7 @@ public class PropUtils {
 			date = indate.parse(dateString);
 			outputDate = outdate.format(date);
 		} catch (ParseException e) {
-			LOGGER.error("Error parsing the date: " + e.getMessage());
+			logger.info("Error parsing the date: " + e.getMessage());
 		}
 
 		return outputDate;

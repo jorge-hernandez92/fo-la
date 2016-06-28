@@ -25,8 +25,8 @@ public class EncryptionSivale {
 
 //	public static void main(String args[]) throws Throwable {
 //		EncryptionSivale enc = new EncryptionSivale();
-//		// System.out.println(enc.encryptData("V14j3s4pp_2015"));
-//		System.out.println(enc.encryptData("latbc246"));
+//		// logger.info(enc.encryptData("V14j3s4pp_2015"));
+//		logger.info(enc.encryptData("latbc246"));
 //	}
 
 	public String encryptData(String data) throws Throwable {

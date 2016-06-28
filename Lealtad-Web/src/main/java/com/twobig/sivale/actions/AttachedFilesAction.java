@@ -9,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -23,6 +24,9 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TPublicationService;
+import com.twobig.sivale.service.impl.ExcelServiceImplTest;
+
+
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
@@ -45,6 +49,8 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 	public static final String ERROR_UPDATE_ATTACHEDFILE	= "Se produjo un error al actualizar el archivo";
 	public static final String SUCCESS_DELETE_ATTACHEDFILE 	= "Archivo eliminado correctamente";
 	public static final String SUCCESS_UPDATE_ATTACHEDFILE 	= "Archivo actualizado correctamente";
+	
+	final static Logger logger = Logger.getLogger(AttachedFilesAction.class);
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "updateAttachedFileAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
@@ -130,14 +136,14 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 				
 				String directory = PathConstants.ATTACHED_DIRECTORY + pub.gettCampaignId() + File.separator + pub.getPublicationId();
 				String pathfile = directory + File.separator + attachedFile.getFileName() + "." + attachedFile.getFileExtension();
-				System.out.println("**** archivo adjunto a eliminar: "+ pathfile);
+				logger.info("**** archivo adjunto a eliminar: "+ pathfile);
 				File file = new File(pathfile);
 				if(file.delete())
-				System.out.println("**** Se eliminó archivo adjunto");
+				logger.info("**** Se eliminó archivo adjunto");
 			}
 			
 		}catch(Exception e){
-			System.out.println("Error al eliminar archivo adjunto");
+			logger.info("Error al eliminar archivo adjunto");
 		}
 		
 		setMessage(SUCCESS_CODE, SUCCESS_DELETE_ATTACHEDFILE);

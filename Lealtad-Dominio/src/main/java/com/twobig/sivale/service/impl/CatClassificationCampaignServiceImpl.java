@@ -6,6 +6,7 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
+import org.apache.log4j.BasicConfigurator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,7 +44,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	/**
 	 * Variable to register the logs.
 	 */
-	private final static Logger LOGGER = LoggerFactory.getLogger(CatClassificationCampaignServiceImpl.class);
+	private final static Logger logger = LoggerFactory.getLogger(CatClassificationCampaignServiceImpl.class);
 
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByUserId(int userId) {
@@ -105,6 +106,8 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	@Override
 	public List<SelectClassificationCampaignBean> getListClassificationChildren(int idParent) {
 		
+		//BasicConfigurator.configure();
+		
 		List<CatClassificationCampaign> catClassificationCampaig = 
 				catClassificationCampaignDAO.getListCatClassificationCampaignByParentId(idParent);
 		 
@@ -114,7 +117,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			sccb.setId(catClassificationCampaign.getCatClassificationCampaignsId());
 			sccb.setName(catClassificationCampaign.getClassName());
 			lsccb.add(sccb);
-			System.out.println(catClassificationCampaign.toString());
+			logger.info(catClassificationCampaign.toString());
 		}
 		
 		return lsccb;
@@ -122,6 +125,8 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 
 	@Override
 	public List<SelectClassificationCampaignBean> getListClassificationParent(int userId) {
+		
+		//BasicConfigurator.configure();
 		
 		TUser user = userDAO.getUserById(userId);
 		
@@ -134,7 +139,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			sccb.setId(catClassificationCampaign.getCatClassificationCampaignsId());
 			sccb.setName(catClassificationCampaign.getClassName());
 			lsccb.add(sccb);
-			System.out.println(catClassificationCampaign.toString());
+			logger.info(catClassificationCampaign.toString());
 		}
 		
 		return lsccb;

@@ -5,6 +5,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -28,6 +30,8 @@ import com.twobig.sivale.service.TCampaignsService;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TCampaignsServiceImpl implements TCampaignsService {
+	
+	final static Logger logger = Logger.getLogger(TCampaignsServiceImpl.class);
 
 	@Autowired
 	public RealUserCampaignDAO realUsersCampaignsDAO;
@@ -44,6 +48,8 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 	@Override
 	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(int userId,
 			int classificationCampaignsId) {
+		
+		//BasicConfigurator.configure();
 
 		List<RealUserCampaign> listA = realUsersCampaignsDAO.getRealUserCampaignByUserId(userId);
 
@@ -76,7 +82,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		}
 		
 		
-		System.out.println(catClassificationCampaig);
+		logger.info(catClassificationCampaig);
 
 		// LIST FOR CampaignDetailBean
 		List<CampaignDetailBean> listCampaignDetailBean = new ArrayList<CampaignDetailBean>();
@@ -224,6 +230,8 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 	@Override
 	public String insertCampaign(FormNewCampaignBean formNewCampaignBean) {
 		
+		//BasicConfigurator.configure();
+		
 		TCampaign tCampaign = formNewCampaignBean.getTCampaign();
 		
 		Integer classificationId = insertClassificationCampaign(formNewCampaignBean);
@@ -232,13 +240,15 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 
 		tCampaignDAO.insertTCampaign(tCampaign);
 		
-		System.out.println(tCampaign.toString());
+		logger.info(tCampaign.toString());
 		
 		return null;
 	}
 
 	@Override
 	public String updateCampaign(FormNewCampaignBean formNewCampaignBean) {
+		
+		//BasicConfigurator.configure();
 		
 		TCampaign tCampaign = formNewCampaignBean.getTCampaign();
 		
@@ -248,7 +258,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		tCampaignDAO.updateTCampaign(tCampaign);
 		
-		System.out.println(tCampaign.toString());
+		logger.info(tCampaign.toString());
 		
 		return null;
 	}

@@ -5,9 +5,17 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+import org.apache.log4j.BasicConfigurator;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+
 public class FilesUtil {
+	
+	private static Logger logger = LoggerFactory.getLogger(FilesUtil.class);
 
 	public static void saveFile(File file, String fileName, String filesDirectory) throws IOException{
+		//BasicConfigurator.configure();
 		FileInputStream in = null;
         FileOutputStream out = null;
         
@@ -16,8 +24,8 @@ public class FilesUtil {
            dir.mkdirs();
         
         String targetPath =  dir.getPath() + File.separator + fileName;
-        System.out.println("source file path ::"+file.getAbsolutePath());
-        System.out.println("saving file to ::" + targetPath);
+        logger.info("source file path ::"+file.getAbsolutePath());
+        logger.info("saving file to ::" + targetPath);
         File destinationFile = new File ( targetPath);
         try {
             in = new FileInputStream( file );

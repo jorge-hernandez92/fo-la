@@ -15,20 +15,20 @@ public class Test {
 		
 		ServicesUser services = new ServicesUser();
 		
-		//System.out.println((String) services.showPublication(0, 0).get("html"));
+		//logger.info((String) services.showPublication(0, 0).get("html"));
 //		
 //		List<Map> classifications = services.getMyClassifications((Integer)1);
 		List<CampaignDetailBean> campains = services.getCampaigns((Integer)1, (Integer)1);
 //		List<TPublication> publications = services.getPubliations((Integer)1, (Integer)1);
 //		Map publicationDetail = services.showPublication((Integer)1, (Integer)1);
 //		
-//		System.out.println("******************************************************");
-//		System.out.println(classifications.toString());
-		System.out.println("******************************************************");
-		System.out.println(campains.toString());
-//		System.out.println("******************************************************");
-//		System.out.println(publications.toString());
-//		System.out.println("******************************************************");
-//		System.out.println(publicationDetail.toString());
+//		logger.info("******************************************************");
+//		logger.info(classifications.toString());
+//		logger.info("******************************************************");
+//		logger.info(campains.toString());
+//		logger.info("******************************************************");
+//		logger.info(publications.toString());
+//		logger.info("******************************************************");
+//		logger.info(publicationDetail.toString());
 	}
 }

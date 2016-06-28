@@ -23,7 +23,7 @@ import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
 public class ServicesUser {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(ServicesUser.class);
+	private static final Logger logger = LoggerFactory.getLogger(ServicesUser.class);
 	
 	
 	//Agregar a excel
@@ -60,7 +60,7 @@ public class ServicesUser {
 	
 	public List<CatClassificationCampaign> getMyClassifications(Integer userId){
 		
-		LOGGER.info("UserId Value = " + userId);
+		logger.info("UserId Value = " + userId);
 		
 		ArrayList<String> logos = new ArrayList<String>();
 		ArrayList<String> style = new ArrayList<String>();
@@ -283,7 +283,7 @@ public class ServicesUser {
 
 	public List<TPublication> getPubliations(Integer UserId, Integer CampaignId){
 		
-		LOGGER.info("UserId = " + UserId + "     "+ "CampaignId = " + CampaignId);
+		logger.info("UserId = " + UserId + "     "+ "CampaignId = " + CampaignId);
 		
 		List<TPublication> publications= new ArrayList<TPublication>();
 		
@@ -310,7 +310,7 @@ public class ServicesUser {
 	
 	public Map showPublication(Integer UserId, Integer PublicationId){
 		
-		LOGGER.info("UserId = " + UserId + "     "+ "PublicationId = " + PublicationId);
+		logger.info("UserId = " + UserId + "     "+ "PublicationId = " + PublicationId);
 		
 		Map map = new HashMap();
 		

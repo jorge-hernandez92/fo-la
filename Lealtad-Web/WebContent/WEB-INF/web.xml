@@ -5,6 +5,11 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>Lealtad-Web</display-name>
 	
+<!-- 	<context-param> -->
+<!--         <param-name>log4j-config-location</param-name> -->
+<!--         <param-value>WEB-INF/classes/log4j.properties</param-value> -->
+<!--     </context-param> -->
+	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/config/application-context.xml</param-value>
@@ -13,9 +18,13 @@
 		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
 		<param-value>/WEB-INF/config/tiles.xml</param-value>
 	</context-param>
+	
+	
+	
 	<listener>
 		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
 	</listener>
+	
 
 	<filter>
 		<filter-name>struts2</filter-name>

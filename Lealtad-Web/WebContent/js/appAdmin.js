@@ -278,8 +278,18 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 										
 									}
 									
+									$scope.tableAttachedFiles = new NgTableParams(
+											{
+												count : 10
+											},
+											{
+												counts : [],
+												dataset : $scope.attachedFiles
+											});
+									
 									$scope.loadingPublicationImage = false;
 									$scope.files = true;
+									
 
 									$(".publication-html").html(data.html);
 									//$state.go('publication');
@@ -318,6 +328,15 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 									else{
 										
 									}
+									
+									$scope.tableAttachedFiles = new NgTableParams(
+											{
+												count : 10
+											},
+											{
+												counts : [],
+												dataset : $scope.attachedFiles
+											});
 									
 									$scope.loadingPublicationImage = false;
 									$scope.files = true;

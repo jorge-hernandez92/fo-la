@@ -8,6 +8,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -37,9 +38,13 @@ import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.service.ViewPublicationService;
 
+
+
 @ParentPackage(value = "json-default")
 @Namespace("/")
 public class CampaignAction extends ActionSupport implements SessionAware {
+	
+	final static Logger logger = Logger.getLogger(CampaignAction.class);
 
 	@Autowired
 	CatClassificationCampaignService classificationCampaignService;
@@ -161,11 +166,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		//campaigns = new ServicesUser().getCampaigns(user.getUserId(),
 		//		classificationCmp.getCatClassificationCampaignsId());
 		
-		//System.out.println("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
+		//logger.info("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
 		campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
 		for (CampaignDetailBean campaignDetailBean2 : campaigns) {
-			System.out.println(campaignDetailBean2.toString());
-			System.out.println(campaignDetailBean2.getClassification());
+			logger.info(campaignDetailBean2.toString());
+			logger.info(campaignDetailBean2.getClassification());
 		}
 		return SUCCESS;
 
@@ -187,7 +192,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		campaignsAdmin = campaignService.getCampaingsSuper(user.getUserId());
 
 		for (CampaignDetailAdminBean campaignDetailAdminBean : campaignsAdmin) {
-			System.out.println(campaignDetailAdminBean.toString());
+			logger.info(campaignDetailAdminBean.toString());
 		}
 		
 		return SUCCESS;
@@ -218,7 +223,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 					return ERROR;
 				
 				searchCampaign.setClassificationParentId(classification.getCatClassificationCampaignsId());
-				System.out.println(searchCampaign.toString());
+				logger.info(searchCampaign.toString());
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -239,7 +244,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
 		
-		System.out.println(searchCampaigns.toString());
+		logger.info(searchCampaigns.toString());
 		return SUCCESS;
 
 	}
@@ -262,7 +267,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			try {
 				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
 						SearchCampaignBean.class);
-				System.out.println(searchCampaign.toString());
+				logger.info(searchCampaign.toString());
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -345,37 +350,37 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		if (!publicationJSON.equals("undefined")) {
 
 			pub = new ViewPublicationBean();
-			//System.out.println(pub);
-			//System.out.println(publicationJSON);
+			//logger.info(pub);
+			//logger.info(publicationJSON);
 			try {
 				pub = new ObjectMapper().readValue(publicationJSON, ViewPublicationBean.class);
-				//System.out.println("detalle de pub: "+pub.toString());
+				//logger.info("detalle de pub: "+pub.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
-				//System.out.println("ERROR ERROR ERROR ERROR ERROR ERROR ");
+				//logger.info("ERROR ERROR ERROR ERROR ERROR ERROR ");
 				return ERROR;
 			}
 
-			//System.out.println("antes del session");
+			//logger.info("antes del session");
 			session.put("publication", pub);
-			//System.out.println("despues del session");
+			//logger.info("despues del session");
 		} else {
-			//System.out.println("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+			//logger.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 			return ERROR;
 		}
 
 		this.publication = viewPublicationService.showPublicationByCardNumber(pub.getAcoundNumber(), pub.getPublicationId(), 1);
 		
-		//System.out.println(publication);
+		//logger.info(publication);
 		
 		if(this.publication.getListFiles()!=null)
 			if(this.publication.getListFiles().size() == 0)
 				this.publication.setListFiles(null);
 			//for (TAttachedFile files : publication.getListFiles()) {
-			//	System.out.println(files.toString());
+			//	logger.info(files.toString());
 			//}
 		
-		System.out.println(this.publication.getHtml());
+		logger.info(this.publication.getHtml());
 		return SUCCESS;
 	}
 	
@@ -425,10 +430,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			if(publication.getListFiles().size() == 0)
 				publication.setListFiles(null);
 			//for (TAttachedFile files : publication.getListFiles()) {
-			//	System.out.println(files.toString());
+			//	logger.info(files.toString());
 			//}
 		
-		System.out.println(publication.getHtml());
+		logger.info(publication.getHtml());
 		return SUCCESS;
 	}
 	
@@ -438,7 +443,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String deleteCampaignAction() {
 
-		System.out.println("**** " + campaignId + " ****");
+		logger.info("**** " + campaignId + " ****");
 		campaignService.deleteCampaign(campaignId);
 		setMessage(SUCCESS_CODE, SUCCESS_DELETE_CAMPAIGN);
 		return SUCCESS;
@@ -513,7 +518,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		final HttpServletRequest request = ServletActionContext.getRequest();
 		
 		String classificationCmpJSON = request.getParameter("formNewCampaign");
-		System.out.println("*********** " + classificationCmpJSON + "******************");
+		logger.info("*********** " + classificationCmpJSON + "******************");
 		
 		FormNewCampaignBean formNewCampaign;
 		
@@ -544,11 +549,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		formNewCampaign.setCompanyId(user.getCompany());
 		
-		System.out.println(formNewCampaign.toString());
+		logger.info(formNewCampaign.toString());
 		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
-			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+			logger.info("id: " + classif.getId() + "  name: " + classif.getName());
 		
-		System.out.println("*********** " + formNewCampaign.getCampaignName() + "******************");
+		logger.info("*********** " + formNewCampaign.getCampaignName() + "******************");
 		
 		campaignService.insertCampaign(formNewCampaign);
 		
@@ -595,9 +600,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		formNewCampaign.setCompanyId(user.getCompany());
 		
-		System.out.println(formNewCampaign.toString());
+		logger.info(formNewCampaign.toString());
 		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
-			System.out.println("id: " + classif.getId() + "  name: " + classif.getName());
+			logger.info("id: " + classif.getId() + "  name: " + classif.getName());
 		campaignService.updateCampaign(formNewCampaign);
 		
 		setMessage(SUCCESS_CODE, SUCCESS_UPDATE_CAMPAIGN);
@@ -661,7 +666,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			selectCampaign.add(updateCampaignBean);
 		}
 		
-		System.out.println(selectCampaign.toString());
+		logger.info(selectCampaign.toString());
 		
 		return SUCCESS;
 	}
@@ -674,7 +679,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 //
 //		String fileJSON = request.getParameter("file");
 //		
-//		System.out.println(fileJSON);
+//		logger.info(fileJSON);
 //		
 //		return SUCCESS;
 //		

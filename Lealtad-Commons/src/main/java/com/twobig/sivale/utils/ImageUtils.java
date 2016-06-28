@@ -42,8 +42,6 @@ public class ImageUtils {
 		
 		String result = imgstr.replaceAll("[\r\n]+", ""); 
 		
-		System.out.println(result);
-		
 		return result;
 	}
 }
