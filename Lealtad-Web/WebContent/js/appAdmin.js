@@ -17,6 +17,22 @@ var ERROR_CODE 	= "002";
 
 var appres = angular.module('app', [ 'ngMessages', 'daterangepicker',
 		'ngTable', 'ui.router', 'ng-toggle.btn', 'cgNotify' ])
+		
+appres.directive('fileModel', ['$parse', function ($parse) {
+    return {
+        restrict: 'A',
+        link: function(scope, element, attrs) {
+            var model = $parse(attrs.fileModel);
+            var modelSetter = model.assign;
+            
+            element.bind('change', function(){
+                scope.$apply(function(){
+                    modelSetter(scope, element[0].files[0]);
+                });
+            });
+        }
+    };
+}]);
 
 appres.run(function($rootScope) {
 	$rootScope.search = {
@@ -908,40 +924,73 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 												
 					};
 					
+					function UInt8ArrayToString(uInt8Array)
+					{
+					    var s= "";
+					    for(var i= number = 0; i < uInt8Array.byteLength; i++)
+					    {
+					        if( i > 0 )
+					            s += ",";
+					        s += uInt8Array[i];
+					    }    
+					    return s;
+					}
+					
 					$scope.newCampaignForm = function(date){
-						
-						var campaignForm = {
-								campaignName : $scope.form.campaignName,
-								startDate : date.startDate,
-								endDate : date.endDate,
-								classificationList : []
-						};
-						
-						campaignForm.classificationList.push($scope.selectCampaign.items[0].selectedOption);		
-				
-						for (i = 1; i < $scope.selectCampaign.items.length; i++) { 
-							if($scope.selectCampaign.items[i].selectedOption.id != '-2')
-								campaignForm.classificationList.push($scope.selectCampaign.items[i].selectedOption);
-							else {
-								campaignForm.classificationList.push({ id : '-2', name : $scope.selectCampaign.items[i].className });
+												
+				        var file = $scope.form.myFile, r = new FileReader();
+				        console.log('file is ' );
+				        console.dir(file);
+				        
+				        r.onloadend = function(e) {
+				    		var fileBytes = new Uint8Array(e.target.result);
+				    		var fileBytesStr = UInt8ArrayToString(fileBytes);
+				    		
+				    		if(file.size >= 204800){
+				    			alert("El tamaño del archivo sobrepasa el limite permitido: 200KB");
+				    			return; 
+				    		}
+				    		
+				    		var campaignForm = {
+				    				nameFile : file.name, 
+				    				imageFile : fileBytesStr, 
+									campaignName : $scope.form.campaignName,
+									startDate : date.startDate,
+									endDate : date.endDate,
+									classificationList : []
+							};
+				    		
+				    		$scope.form.myFile = null; 
+							
+							campaignForm.classificationList.push($scope.selectCampaign.items[0].selectedOption);		
+					
+							for (i = 1; i < $scope.selectCampaign.items.length; i++) { 
+								if($scope.selectCampaign.items[i].selectedOption.id != '-2')
+									campaignForm.classificationList.push($scope.selectCampaign.items[i].selectedOption);
+								else {
+									campaignForm.classificationList.push({ id : '-2', name : $scope.selectCampaign.items[i].className });
+								}
 							}
+							
+							var data =angular.toJson(campaignForm);
+							
+							$http({
+								method : 'POST',
+								url : 'addCampaignAction',
+								data : 'formNewCampaign=' + data,
+								headers : {
+									'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+								}
+							}).success(
+									function(data, status, headers, config) {
+										$scope.showNotify(data);
+										$state.go('home');
+									}).error(function(data, status, headers, config) {
+							});
+		
 						}
 						
-						var data =angular.toJson(campaignForm);
-						
-						$http({
-							method : 'POST',
-							url : 'addCampaignAction',
-							data : 'formNewCampaign=' + data,
-							headers : {
-								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-							}
-						}).success(
-								function(data, status, headers, config) {
-									$scope.showNotify(data);
-									$state.go('home');
-								}).error(function(data, status, headers, config) {
-						});
+						r.readAsArrayBuffer(file);
 						
 					};
 					
@@ -1141,7 +1190,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 	.state('newCampaign', {
-		url : '/nueva_campaña',
+		url : '/nueva_campana',
 		templateUrl : 'templates/newCampaign_admin.jsp',
 		controller:	
  			function($scope) {

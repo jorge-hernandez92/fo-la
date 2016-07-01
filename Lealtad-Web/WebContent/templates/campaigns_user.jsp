@@ -69,5 +69,74 @@
 	</div>
 	
 	<br><br><br><br>
+	<div class="container" style="width: 1300px;">
+		<ul class="caption-style-4">
+		
+			<li>
+				<img src="img/img_camp/1cam.jpg" alt="">
+				<div class="caption">
+					<div class="blur"></div>
+					<div class="caption-text">
+						<h1>Amazing Caption</h1>
+						<p>Whatever It Is - Always Awesome</p>
+						<p>Whatever It Is - Always Awesome</p>
+					</div>
+				</div>
+			</li>
+			
+			
+			<li>
+				<img src="img/img_camp/2cam.jpg" alt="">
+				<div class="caption">
+					<div class="blur"></div>
+					<div class="caption-text">
+						<h1>Amazing Caption</h1>
+						<p>Whatever It Is - Always Awesome</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<img src="img/img_camp/3cam.jpg" alt="">
+				<div class="caption">
+					<div class="blur"></div>
+					<div class="caption-text">
+						<h1>Amazing Caption</h1>
+						<p>Whatever It Is - Always Awesome</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<img src="img/img_camp/4cam.jpg" alt="">
+				<div class="caption">
+					<div class="blur"></div>
+					<div class="caption-text">
+						<h1>Amazing Caption</h1>
+						<p>Whatever It Is - Always Awesome</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<img src="img/img_camp/5cam.jpg" alt="">
+				<div class="caption">
+					<div class="blur"></div>
+					<div class="caption-text">
+						<h1>Amazing Caption</h1>
+						<p>Whatever It Is - Always Awesome</p>
+					</div>
+				</div>
+			</li>
+			<li>
+				<img src="img/img_camp/2cam.jpg" alt="">
+				<div class="caption">
+					<div class="blur"></div>
+					<div class="caption-text">
+						<h1>Amazing Caption</h1>
+						<p>Whatever It Is - Always Awesome</p>
+					</div>
+				</div>
+			</li>
+		</ul>	
+		
+		</div>
 
 </div>

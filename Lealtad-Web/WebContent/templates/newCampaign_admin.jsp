@@ -136,6 +136,15 @@
 								aria-describedby="basic-addon1">
 						</div>
 					</div>
+					
+					<div class="row margin-top10">
+						<div class="col-md-2">Imagen</div>
+						<div class="col-md-5">
+							<input  type="file" name="file" id="fileNC"  file-model="form.myFile"  required>	
+						</div>
+					</div>											
+					
+					
 				</div>
 
 				<div class="row margin-top10">
@@ -145,7 +154,7 @@
 
 						<button type="button" class="btn btn-primary"
 							ng-click="newCampaignForm(date)"
-							ng-disabled="form.campaignName=='' || selectCampaign.items[0].selectedOption==''">
+							ng-disabled="form.campaignName=='' || selectCampaign.items[0].selectedOption=='' || form.myFile==null">
 							Crear Campaña
 						</button>
 						<button type="button" class="btn btn-primary left-35"

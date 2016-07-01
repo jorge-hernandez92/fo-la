@@ -15,11 +15,14 @@
 <title>Login</title>
 
 <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+<!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"> -->
+<link href="css/bootstrap-intac/bootstrap.min.css" rel="stylesheet">
 <link href="css/signin.css" rel="stylesheet">
 <link href="css/sivale.css" rel="stylesheet">
 <link href="css/login.css" rel="stylesheet">
 <link href="css/default-fonts.css" rel="stylesheet">
+
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/dynamic-background.js"></script>
 

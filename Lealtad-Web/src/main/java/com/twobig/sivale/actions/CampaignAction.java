@@ -555,11 +555,24 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		logger.info("*********** " + formNewCampaign.getCampaignName() + "******************");
 		
+		System.out.println(formNewCampaign.getNameFile());
+		
 		campaignService.insertCampaign(formNewCampaign);
 		
 		setMessage(this.SUCCESS_CODE, this.SUCCESS_CRATE_CAMPAIGN);
 		return SUCCESS;
 
+	}
+	
+	private byte[] stringToBytes(String string) {
+		String [] bytes = string.split(",");
+		final byte[] fileBytes = new byte[bytes.length];		
+		int i=0;
+		for (String byteStr : bytes) {
+			fileBytes[i] = (byte) Integer.parseInt(byteStr);
+			i++;
+		}
+		return fileBytes;		
 	}
 	
 	@SuppressWarnings("unchecked")

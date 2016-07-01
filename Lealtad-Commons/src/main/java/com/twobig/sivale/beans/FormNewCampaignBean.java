@@ -1,5 +1,6 @@
 package com.twobig.sivale.beans;
 
+import java.io.File;
 import java.util.List;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
@@ -13,6 +14,24 @@ public class FormNewCampaignBean extends TCampaign{
 
 	private static final long serialVersionUID = 3601724606818514826L;
 	private List <SelectClassificationCampaignBean> classificationList;
+	private String imageFile; 
+	private String nameFile; 
+
+	public String getNameFile() {
+		return nameFile;
+	}
+
+	public void setNameFile(String nameFile) {
+		this.nameFile = nameFile;
+	}
+
+	public String getImageFile() {	
+		return imageFile;
+	}
+
+	public void setImageFile(String imageFile) {
+		this.imageFile = imageFile;
+	}
 
 	public List<SelectClassificationCampaignBean> getClassificationList() {
 		return classificationList;

@@ -24,6 +24,10 @@
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
 <link href="css/default-fonts.css" rel="stylesheet">
 
+<!-- Nuevo rediseño -->
+
+<link rel="stylesheet" type="text/css" href="css/transition-campaigns.css" />
+
 
 
 <!-- JS (load angular, ui-router, and our custom js file) -->

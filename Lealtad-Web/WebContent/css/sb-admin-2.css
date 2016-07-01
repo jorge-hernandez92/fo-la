@@ -423,6 +423,12 @@ body,
   max-width: none !important;
 }
 
+/* Reset the container */
+.containerCampaign {
+  width: 1300px;
+  max-width: none !important;
+}
+
 /* Demonstrate the grids */
 .col-xs-4 {
   padding-top: 15px;
