@@ -2,6 +2,7 @@ package com.twobig.sivale.service;
 
 import java.util.List;
 
+import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.FormNewCampaignBean;

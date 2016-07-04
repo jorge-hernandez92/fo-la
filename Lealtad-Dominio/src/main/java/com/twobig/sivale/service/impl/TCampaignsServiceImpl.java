@@ -1,5 +1,7 @@
 package com.twobig.sivale.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
@@ -20,11 +22,13 @@ import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
 import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
+import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
 import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.TCampaignsService;
+import com.twobig.sivale.utils.ImageUtils;
 
 
 @Service
@@ -115,6 +119,30 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 				
 				campaignDetailBean.setCatClassificationCampaign(listClassificationC);
 				campaignDetailBean.setClassification(listClassificationString);
+				
+				/* SET IMAGE64 for TCAMPAIGN ICON*/
+				
+				if(campaignDetailBean.getImagePath() != null){ 
+					
+					String pathImageTCampaign = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignDetailBean.getCampaignId() + File.separator + campaignDetailBean.getImagePath();
+					
+					ImageUtils imageUtils = new ImageUtils();
+
+					try {
+						String image64 = imageUtils.imageToBase64(pathImageTCampaign);
+						campaignDetailBean.setImageBase64("data:image/png;base64,"+image64);
+						System.out.println(image64);
+					} catch (IOException e) {
+						// TODO Auto-generated catch block
+						System.out.println("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
+						e.printStackTrace();
+					}
+					
+				}
+				else{
+					System.out.println("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailBean.toString());
+				}
+				
 				listCampaignDetailBean.add(campaignDetailBean);
 			}
 		}
@@ -139,6 +167,8 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		campaignDetailBean.setEndDate(tCampaign.getEndDate());
 		
 		campaignDetailBean.setStartDate(tCampaign.getStartDate());
+		
+		campaignDetailBean.setImagePath(tCampaign.getImagePath());
 		
 		return campaignDetailBean; 	
 	}
@@ -200,6 +230,30 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 			ccc.add(0, catClassificationCampaign);
 			campaignDetailAdminBean.setClassification(listClassificationString);
 			campaignDetailAdminBean.setCatClassificationCampaign(ccc);
+			
+			/* SET IMAGE64 for TCAMPAIGN ICON*/
+			
+			if(campaignDetailAdminBean.getImagePath() != null){ 
+				
+				String pathImageTCampaign = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignDetailAdminBean.getCampaignId() + File.separator + campaignDetailAdminBean.getImagePath();
+				
+				ImageUtils imageUtils = new ImageUtils();
+
+				try {
+					String image64 = imageUtils.imageToBase64(pathImageTCampaign);
+					campaignDetailAdminBean.setImageBase64("data:image/png;base64,"+image64);
+					System.out.println(image64);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
+					e.printStackTrace();
+				}
+				
+			}
+			else{
+				System.out.println("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailAdminBean.toString());
+			}
+			
 			listCampaignDetailAdminBean.add(campaignDetailAdminBean);
 		}
 		
@@ -242,8 +296,10 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		logger.info(tCampaign.toString());
 		
-		return null;
+		return ""+tCampaign.getCampaignId();
 	}
+	
+	
 
 	@Override
 	public String updateCampaign(FormNewCampaignBean formNewCampaignBean) {

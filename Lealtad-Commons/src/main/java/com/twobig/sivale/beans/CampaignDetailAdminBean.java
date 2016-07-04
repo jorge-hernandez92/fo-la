@@ -2,6 +2,7 @@ package com.twobig.sivale.beans;
 
 import java.util.List;
 
+import org.apache.log4j.TTCCLayout;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
@@ -20,6 +21,15 @@ public class CampaignDetailAdminBean extends TCampaign implements Comparable<Cam
 	private String totalScattered; // no implementar solo $ 0.00
 	private List<String> classification;
 	private List<CatClassificationCampaign> catClassificationCampaign;
+	private String imageBase64;
+
+	public String getImageBase64() {
+		return imageBase64;
+	}
+
+	public void setImageBase64(String imageBase64) {
+		this.imageBase64 = imageBase64;
+	}
 	
 	public String getStatus() {
 		return status;
@@ -61,6 +71,7 @@ public class CampaignDetailAdminBean extends TCampaign implements Comparable<Cam
 		this.setCampaignName(tCampaign.getCampaignName());
 		this.setDescription(tCampaign.getDescription());
 		this.setClassificationId(tCampaign.getClassificationId());
+		this.setImagePath(tCampaign.getImagePath());
 	}
 
 	

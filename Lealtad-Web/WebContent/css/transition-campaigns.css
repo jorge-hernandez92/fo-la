@@ -27,6 +27,7 @@
 		padding: 0px;
 		float: left;
 		z-index: 4;
+		max-width: 400px;
 	}
 
 	.caption-style-4 .caption{
@@ -68,5 +69,20 @@
 		width: 400px;
 		height: 300px;
 		text-align: center;
-		top:100px;
+		top:30px;
 	}
+	
+	.btn-campaign {
+	color: #f5f5f5;
+	background-color: rgba(255, 255, 255, 0.01);
+	border-color: #ccc;
+	border-radius: 0px;
+	}
+	
+	
+	.btn-campaign:hover{
+	color: #a2a2a2;
+	background-color: rgba(255, 255, 255, 0.01);
+	border-color: #ccc;
+	}
+	

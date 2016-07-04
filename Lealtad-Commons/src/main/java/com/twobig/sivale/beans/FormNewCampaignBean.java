@@ -51,6 +51,7 @@ public class FormNewCampaignBean extends TCampaign{
 		tCampaign.setDescription(this.getDescription());
 		tCampaign.setEndDate(this.getEndDate());
 		tCampaign.setStartDate(this.getStartDate());
+		tCampaign.setImagePath(this.getNameFile());
 		return tCampaign;
 	}
 

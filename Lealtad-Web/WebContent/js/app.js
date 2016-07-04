@@ -93,6 +93,8 @@ appres
 								function(data, status, headers, config) {
 									$scope.campaigns = data;
 									
+									//console.log($scope.campaigns[0].imageBase64);
+									
 									var index2;
 									for (index2 = 0; index2 < $scope.campaigns.length; index2++) {
 										$scope.campaigns[index2].indexImage2 = $scope.getIndex2(); 
@@ -214,8 +216,6 @@ appres
 											
 											$scope.loadingPublicationImage = false;
 											$scope.files = true;
-											
-											
 
 											$scope.tableAttachedFiles = new NgTableParams(
 													{

@@ -68,9 +68,6 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 
 			publication.setHtml(html);
 			
-			
-			
-			
 			if (tpublication.getImagePath() != null) {
 				
 				// path for get image of publication to set in html background

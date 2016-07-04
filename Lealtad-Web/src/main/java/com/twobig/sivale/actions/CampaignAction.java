@@ -1,5 +1,6 @@
 package com.twobig.sivale.actions;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -8,6 +9,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.io.FileUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -32,6 +34,7 @@ import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.beans.UpdateCampaignBean;
 import com.twobig.sivale.beans.ViewPublicationBean;
+import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.FilterCampaignService;
 import com.twobig.sivale.service.TCampaignsService;
@@ -133,7 +136,6 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		final HttpServletRequest request = ServletActionContext.getRequest();
 
 		String classificationCmpJSON = request.getParameter("classificationCmp");
-		
 		
 		CatClassificationCampaign classificationCmp;
 
@@ -557,11 +559,32 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		System.out.println(formNewCampaign.getNameFile());
 		
-		campaignService.insertCampaign(formNewCampaign);
+		String idTCampaign = campaignService.insertCampaign(formNewCampaign);
+		
+		saveFile(formNewCampaign.getImageFile(), formNewCampaign.getNameFile(), idTCampaign);
 		
 		setMessage(this.SUCCESS_CODE, this.SUCCESS_CRATE_CAMPAIGN);
 		return SUCCESS;
 
+	}
+	
+	private void saveFile(String fileString, String fileName, String idTCampaign){
+		
+		String pathName = PathConstants.ATTACHED_IMAGE_CAMPAIGN + idTCampaign + File.separator + fileName; 
+		
+		byte[] fileBits = stringToBytes(fileString);
+		
+		File file = new File(pathName);
+		
+		try {
+			FileUtils.writeByteArrayToFile(file, fileBits);
+			System.out.println("-.-.-.-.-.-.-: "+file.getAbsolutePath());
+			
+		} catch (IOException e) {
+			System.out.println("NO SE PUDO GUARDAR LA IMAGEN DE LA CAMPAÑA");
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 	
 	private byte[] stringToBytes(String string) {

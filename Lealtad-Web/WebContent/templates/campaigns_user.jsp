@@ -41,102 +41,56 @@
 	</div>
 
 
-	<div class="container" data-ng-controller="getCampaigns" ng-cloak>
-		<div class="jumbotron"
-			style="background-color: rgba(220, 220, 220, 0.20);"
-			data-ng-controller="getCampaign" ng-cloak>
-			<div class="row">
-				<div class="col-sm-6 col-md-3"
-					ng-repeat="campaign in campaigns | filter:search:strict "
-					>
-					<div class="grid" data-toggle="tooltip" data-placement="left"
-						title="{{campaign.classification}}">
-						<figure class="effect-ming">
-							<img ng-src="img/img_camp/{{campaign.indexImage2}}cam.jpg" alt="" />
-							<figcaption>
-								<h5>{{campaign.campaignName}}</h5>
-								<p>{{campaign.classification[0]}}</p>
-								<p>{{campaign.startDate | date:'dd/MM/yyyy'}} -
-									{{campaign.endDate | date:'dd/MM/yyyy'}}</p>
-								<a href="#" data-ng-click="updateCampaign(campaign)"
-									ui-sref="campaign">View more</a>
-							</figcaption>
-						</figure>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+<!-- 	<div class="container" data-ng-controller="getCampaigns" ng-cloak> -->
+<!-- 		<div class="jumbotron" -->
+<!-- 			style="background-color: rgba(220, 220, 220, 0.20);" -->
+<!-- 			data-ng-controller="getCampaign" ng-cloak> -->
+<!-- 			<div class="row"> -->
+<!-- 				<div class="col-sm-6 col-md-3" -->
+<!-- 					ng-repeat="campaign in campaigns | filter:search:strict " -->
+<!-- 					> -->
+<!-- 					<div class="grid" data-toggle="tooltip" data-placement="left" -->
+<!-- 						title="{{campaign.classification}}"> -->
+<!-- 						<figure class="effect-ming"> -->
+<!-- 							<img ng-src="{{campaign.imageBase64}}" alt="" />						 -->
+<!-- <!-- 							<img ng-src="img/img_camp/{{campaign.indexImage2}}cam.jpg" alt="" /> --> -->
+<!-- 							<figcaption> -->
+<!-- 								<h5>{{campaign.campaignName}}</h5> -->
+<!-- 								<p>{{campaign.classification[0]}}</p> -->
+<!-- 								<p>{{campaign.startDate | date:'dd/MM/yyyy'}} - -->
+<!-- 									{{campaign.endDate | date:'dd/MM/yyyy'}}</p> -->
+<!-- 								<a href="#" data-ng-click="updateCampaign(campaign)" -->
+<!-- 									ui-sref="campaign">View more</a> -->
+<!-- 							</figcaption> -->
+<!-- 						</figure> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
-	<br><br><br><br>
-	<div class="container" style="width: 1300px;">
-		<ul class="caption-style-4">
-		
-			<li>
-				<img src="img/img_camp/1cam.jpg" alt="">
-				<div class="caption">
-					<div class="blur"></div>
-					<div class="caption-text">
-						<h1>Amazing Caption</h1>
-						<p>Whatever It Is - Always Awesome</p>
-						<p>Whatever It Is - Always Awesome</p>
-					</div>
-				</div>
-			</li>
+		<div class="container" style="width: 1300px;" data-ng-controller="getCampaigns" ng-cloak>
 			
+			<ul class="caption-style-4" data-ng-controller="getCampaign" ng-cloak>
+				
+				<li ng-repeat="campaign in campaigns | filter:search:strict">
+					<img ng-src="{{campaign.imageBase64}}" alt="">
+					<div class="caption">
+						<div class="blur"></div>
+						<div class="caption-text">
+							<h1>{{campaign.campaignName}}</h1>
+							<p>{{campaign.classification[0]}}</p>
+							<p>{{campaign.startDate | date:'dd/MM/yyyy'}} -
+									{{campaign.endDate | date:'dd/MM/yyyy'}}</p>
+							<br>
+							<button href="#" data-ng-click="updateCampaign(campaign)"
+									ui-sref="campaign" type="button" class="btn btn-campaign">DETALLES</button>
+						</div>
+					</div>
+				</li>
+				
+			</ul>
 			
-			<li>
-				<img src="img/img_camp/2cam.jpg" alt="">
-				<div class="caption">
-					<div class="blur"></div>
-					<div class="caption-text">
-						<h1>Amazing Caption</h1>
-						<p>Whatever It Is - Always Awesome</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<img src="img/img_camp/3cam.jpg" alt="">
-				<div class="caption">
-					<div class="blur"></div>
-					<div class="caption-text">
-						<h1>Amazing Caption</h1>
-						<p>Whatever It Is - Always Awesome</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<img src="img/img_camp/4cam.jpg" alt="">
-				<div class="caption">
-					<div class="blur"></div>
-					<div class="caption-text">
-						<h1>Amazing Caption</h1>
-						<p>Whatever It Is - Always Awesome</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<img src="img/img_camp/5cam.jpg" alt="">
-				<div class="caption">
-					<div class="blur"></div>
-					<div class="caption-text">
-						<h1>Amazing Caption</h1>
-						<p>Whatever It Is - Always Awesome</p>
-					</div>
-				</div>
-			</li>
-			<li>
-				<img src="img/img_camp/2cam.jpg" alt="">
-				<div class="caption">
-					<div class="blur"></div>
-					<div class="caption-text">
-						<h1>Amazing Caption</h1>
-						<p>Whatever It Is - Always Awesome</p>
-					</div>
-				</div>
-			</li>
-		</ul>	
-		
 		</div>
 
 </div>

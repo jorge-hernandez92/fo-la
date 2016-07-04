@@ -33,6 +33,7 @@ public class TCampaign implements java.io.Serializable {
 	private String description;
 	private Integer classificationId;
 	private Integer companyId;
+	private String imagePath;
 
 	public static final String FIELD_COMPAIGN_ID = "campaignId";
 	public static final String FIELD_COMPAIGN_NAME = "campaignName";
@@ -106,6 +107,15 @@ public class TCampaign implements java.io.Serializable {
 
 	public void setCompanyId(Integer companyId) {
 		this.companyId = companyId;
+	}
+
+	@Column(name = "image_file_path", length = 45)
+	public String getImagePath() {
+		return imagePath;
+	}
+
+	public void setImagePath(String imagePath) {
+		this.imagePath = imagePath;
 	}
 
 	@Override
