@@ -82,7 +82,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.updateStatusPublication = function(publication){
 						
 						publication.isEnable = !publication.isEnable;
-						publication.imagePath = null; 
+//						publication.imagePath = null; 
 						
 						var data = angular.toJson(publication);
 						
