@@ -1,5 +1,7 @@
 package com.twobig.sivale.service.impl;
 
+import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -19,6 +21,7 @@ import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.ExcelDataUserBean;
 import com.twobig.sivale.beans.PublicationCRUDBean;
 import com.twobig.sivale.constants.CommonsConstants;
+import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.dao.CatPublicationTypeDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TAttachedFileDAO;
@@ -26,6 +29,7 @@ import com.twobig.sivale.dao.TPublicationDAO;
 import com.twobig.sivale.dao.TUserDataDAO;
 import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.TPublicationService;
+import com.twobig.sivale.utils.ImageUtils;
 
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
@@ -70,6 +74,31 @@ public class TPublicationServiceImpl implements TPublicationService {
 
 		List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignId, profile);
 		
+		for (TPublication tPublication : publicaciones) {
+			if(tPublication.getImagePath() != null){ 
+				
+				String pathImage = PathConstants.ATTACHED_DIRECTORY + campaignId+File.separator+tPublication.getPublicationId() + File.separator + tPublication.getImagePath();
+				
+				ImageUtils imageUtils = new ImageUtils();
+
+				try {
+					String image64 = imageUtils.imageToBase64(pathImage);
+					/*This have to change with a DTO*/
+					tPublication.setImagePath("data:image/png;base64,"+image64);
+					System.out.println(image64);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					System.out.println("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
+					e.printStackTrace();
+				}
+				
+			}
+			else{
+				System.out.println("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+tPublication.toString());
+			}
+		}
+		
+		/* SET IMAGE64 for TCAMPAIGN ICON*/
 		
 
 		return publicaciones;
