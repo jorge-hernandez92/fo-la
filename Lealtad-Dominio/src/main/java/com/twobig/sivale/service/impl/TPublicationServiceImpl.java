@@ -77,6 +77,7 @@ public class TPublicationServiceImpl implements TPublicationService {
 		for (TPublication tPublication : publicaciones) {
 			if(tPublication.getImagePath() != null){ 
 				
+				/* SET IMAGE64 for TCAMPAIGN ICON*/
 				String pathImage = PathConstants.ATTACHED_DIRECTORY + campaignId+File.separator+tPublication.getPublicationId() + File.separator + tPublication.getImagePath();
 				
 				ImageUtils imageUtils = new ImageUtils();
@@ -96,11 +97,15 @@ public class TPublicationServiceImpl implements TPublicationService {
 			else{
 				System.out.println("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+tPublication.toString());
 			}
-		}
+		}	
+		return publicaciones;
+	}
+	
+	@Override
+	public List<TPublication> getTPublicationAdminCampaignId(int campaignId, int profile){
 		
-		/* SET IMAGE64 for TCAMPAIGN ICON*/
+		List<TPublication> publicaciones = tPublicationDAO.getTCampaignByPublicationId(campaignId, profile);
 		
-
 		return publicaciones;
 	}
 
@@ -249,5 +254,10 @@ public class TPublicationServiceImpl implements TPublicationService {
 		for (TAttachedFile tAttachedFile : listAttachedFile) {
 			tAttachedFileDAO.updateTAttachedFile(tAttachedFile);
 		}
-	} 	
+	}
+	
+	@Override
+	public TPublication getPublicationById(Integer idTPublication){
+		return tPublicationDAO.getPublicationById(idTPublication);
+	}
 }

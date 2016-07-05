@@ -11,29 +11,6 @@
 	</div>
 	
 	<br><br>
-
-<!-- 	<div class="container" > -->
-<!-- 		<div class="jumbotron" style="background-color: rgba(220, 220, 220, 0.35);" data-ng-controller="getCampaign" ng-cloak> -->
-<!-- 			<div class="row"> -->
-<!-- 				<div class="col-sm-6 col-md-3" -->
-<!-- 					ng-repeat="publication in publications"> -->
-<!-- 					<div class="grid" data-toggle="tooltip" data-placement="left" -->
-<!-- 						title="{{publication.description}}"> -->
-<!-- 						<figure class="effect-ming"> -->
-<!-- 							<img ng-src="{{publication.imagePath}}" alt="" /> -->
-<!-- 							<figcaption> -->
-<!-- 								<h5>{{publication.name}}</h5> -->
-<!-- 								<h6>{{publication.catPublicationType.name}}</h6> -->
-<!-- 								<p>{{publication.publishedDate | date:'dd/MM/yyyy'}}</p> -->
-<!-- 								<a href="#" data-ng-click="updatePublication(publication)" -->
-<!-- 									ui-sref="publication">View more</a> -->
-<!-- 							</figcaption> -->
-<!-- 						</figure> -->
-<!-- 					</div> -->
-<!-- 				</div> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</div> -->
 	
 		<div class="container" style="width: 1300px;" data-ng-controller="getCampaign" ng-cloak>
 			

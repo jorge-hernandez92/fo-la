@@ -1,6 +1,5 @@
 package com.twobig.sivale.actions;
 
-import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -9,10 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.StringTokenizer;
 
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 
-import org.apache.commons.io.FilenameUtils;
 import org.apache.commons.lang3.math.NumberUtils;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
@@ -85,28 +82,10 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 			return ERROR;
 		}
-		
-		
-		if(getFile().length == 2){
-			publication = loadHtmlExcel(campaign);
-			return loadAtachedFiles(publication,campaign, 2, 1);
-		}
+
 		else if(getFile().length >= 3){
-			
-			try {
-				Image image = ImageIO.read(getFile()[0]);
-			    if (image == null) {
-			    	publication = loadHtmlExcel(campaign);
-			    	return loadAtachedFiles(publication,campaign, 2, 1);
-			    	
-			    }
-			    else{
-			    	publication = loadImageHtmlExcel(campaign);
-			    	return loadAtachedFiles(publication,campaign, 3, 2);
-			    }
-			} catch(IOException ex) {	
-				
-			}
+			publication = loadImageHtmlExcel(campaign);
+	    	return loadAtachedFiles(publication,campaign, 3, 2);
 		}
 		
 		setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
@@ -364,13 +343,8 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 
 			publicationBean.setAttachedFiles(attachedFiles);
 			
-			//String id = publicationService.updatePublication(publicationBean);
-			
-			
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();
 			
-			
-				
 				for(int i=0; i < getFile().length; i++){
 					
 					try {

@@ -33,4 +33,8 @@ public interface TPublicationService {
 	public void updateListAttachedFiles(List<TAttachedFile> listAttachedFile);
 	
 	public void loadDataExcel(int publicationId, String path);
+	
+	TPublication getPublicationById(Integer idTPublication);
+	
+	List<TPublication> getTPublicationAdminCampaignId(int campaignId, int profile);
 }

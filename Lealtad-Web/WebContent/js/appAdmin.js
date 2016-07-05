@@ -82,6 +82,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.updateStatusPublication = function(publication){
 						
 						publication.isEnable = !publication.isEnable;
+						publication.imagePath = null; 
 						
 						var data = angular.toJson(publication);
 						
@@ -206,7 +207,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 
 						$http({
 									method : 'POST',
-									url : 'getPublicationsAction',
+									url : 'getPublicationsAdminAction',
 									data : 'campaign=' + data,
 									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 								})
@@ -1166,7 +1167,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 	.state('campaign', {
-		url : '/campaña',
+		url : '/campaign',
 		templateUrl : 'templates/campaignDetail_admin.jsp',
 		controller:	
  			function($scope) {

@@ -9,13 +9,6 @@
 <body>
 
 	<div class="panel-body back-sivale">
-		<div class="navbar container">
-			<ol class="breadcrumb breadcrumb-arrow">
-				<li><a ui-sref="home">Campañas Recientes</a></li>
-				<li><a ui-sref="campaign">Publicaciones</a></li>
-				<li class="active"><span>Edición de Publicaciones</span></li>
-			</ol>
-		</div>
 		<div class="container">
 			<div class="panel panel-grisT table-top-sivale">
 				<div class="panel-heading">
@@ -48,6 +41,20 @@
 										</select>
 									</div>
 								</div>
+								
+<!-- 								<div class="row margin-top10"> -->
+<!-- 									<div class="col-md-4 text-right">Imagen de Publicación</div> -->
+<!-- 									<div class="col-md-8"> -->
+<!-- 										<div class="row"> -->
+<!-- 											<div class="col-md-8">{{publication.imagePath}}</div> -->
+<!-- 											<div class="col-md-4"> -->
+<!-- 												<button type="button" class="btn btn-primary left-35" -->
+<!-- 													data-toggle="modal" data-target="#modalUploadTemplate">Reemplazar -->
+<!-- 													Archivo</button> -->
+<!-- 											</div> -->
+<!-- 										</div> -->
+<!-- 									</div> -->
+<!-- 								</div> -->
 
 								<div class="row margin-top10">
 									<div class="col-md-4 text-right">Documento html</div>
@@ -60,7 +67,6 @@
 													Archivo</button>
 											</div>
 										</div>
-										<!-- 									<input type="file" name="file" class="test"> -->
 									</div>
 								</div>
 
@@ -75,7 +81,6 @@
 													Archivo</button>
 											</div>
 										</div>
-										<!-- 									<input type="file" name="file" class="test"> -->
 									</div>
 								</div>
 

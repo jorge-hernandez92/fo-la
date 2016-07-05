@@ -337,6 +337,50 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		return SUCCESS;
 
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getPublicationsAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"publications", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getPubliationsAdminAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String campaignJSON = request.getParameter("campaign");
+
+		TCampaign campaign;
+
+		if (!campaignJSON.equals("undefined")) {
+
+			campaign = new TCampaign();
+			try {
+				campaign = new ObjectMapper().readValue(campaignJSON, TCampaign.class);
+			} catch (IOException e) {
+				e.printStackTrace();
+				return ERROR;
+			}
+
+			session.put("campaign", campaign);
+		} else {
+			campaign = (TCampaign) session.get("campaign");
+
+			if (campaign == null) {
+				return ERROR;
+			}
+		}
+
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+
+		// IMPORTANT -- ONLY TEST PURPOSES -- SHOULD BE DISABLED IN PRODUCTION
+		//publications = new ServicesUser().getPubliations(user.getUserId(), campaign.getCampaignId());
+		
+		publications = publicationService.getTPublicationAdminCampaignId(campaign.getCampaignId(), user.getCatProfile());
+		
+		return SUCCESS;
+
+	}
 
 	@SuppressWarnings("unchecked")
 	@Action(value = "showPublicationAsTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
@@ -557,7 +601,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		logger.info("*********** " + formNewCampaign.getCampaignName() + "******************");
 		
-		System.out.println(formNewCampaign.getNameFile());
+		System.out.println(formNewCampaign.toString());
 		
 		String idTCampaign = campaignService.insertCampaign(formNewCampaign);
 		
