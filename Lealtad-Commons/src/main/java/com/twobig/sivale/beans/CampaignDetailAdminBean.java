@@ -2,7 +2,6 @@ package com.twobig.sivale.beans;
 
 import java.util.List;
 
-import org.apache.log4j.TTCCLayout;
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;

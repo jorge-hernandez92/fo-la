@@ -1,3 +1,0 @@
-
-Archivo readme por paquete.
- 

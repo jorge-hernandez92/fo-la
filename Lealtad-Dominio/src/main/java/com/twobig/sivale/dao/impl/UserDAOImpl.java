@@ -182,7 +182,7 @@ public class UserDAOImpl extends GenericDAOImpl<TUser, Long> implements
 		query.setParameter(TUser.FIELD_USER_PASS, password);
 		query.setParameter(TUser.FIELD_USER_ID, userId);
 
-		int result = query.executeUpdate();
+		query.executeUpdate();
 	}
 
 	@Override

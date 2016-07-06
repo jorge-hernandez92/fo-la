@@ -6,9 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.log4j.BasicConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -44,7 +43,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	/**
 	 * Variable to register the logs.
 	 */
-	private final static Logger logger = LoggerFactory.getLogger(CatClassificationCampaignServiceImpl.class);
+	private static final Logger logger = LogManager.getLogger(CatClassificationCampaignServiceImpl.class);
 
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByUserId(int userId) {
@@ -106,8 +105,6 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	@Override
 	public List<SelectClassificationCampaignBean> getListClassificationChildren(int idParent) {
 		
-		//BasicConfigurator.configure();
-		
 		List<CatClassificationCampaign> catClassificationCampaig = 
 				catClassificationCampaignDAO.getListCatClassificationCampaignByParentId(idParent);
 		 
@@ -125,8 +122,6 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 
 	@Override
 	public List<SelectClassificationCampaignBean> getListClassificationParent(int userId) {
-		
-		//BasicConfigurator.configure();
 		
 		TUser user = userDAO.getUserById(userId);
 		

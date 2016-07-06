@@ -10,9 +10,8 @@ import java.util.Properties;
 import javax.xml.soap.SOAPException;
 
 import org.apache.axis.message.SOAPHeaderElement;
-import org.apache.log4j.BasicConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+//import org.slf4j.Logger;
+//import org.slf4j.LoggerFactory;
 
 import com.twobig.sivale.servicios.sivalemx.ServiciosSiValeMxLocator;
 import com.twobig.sivale.servicios.sivalemx.ServiciosSiValeMxTypePortBindingStub;
@@ -27,7 +26,7 @@ import ws.sivale.com.mx.messages.types.TypeTransaccion;
 
 public class SivaleServices {
 
-	private static Logger logger = LoggerFactory.getLogger(SivaleServices.class);
+//	private static Logger logger = LoggerFactory.getLogger(SivaleServices.class);
 	private static Properties props;
 	private static String serviciosSiValeMxAddress;
 	private static String serviciosTarjetaAddress;
@@ -63,10 +62,10 @@ public class SivaleServices {
 			Integer errCodigo = responseError.getCodigo();
 			String errMensaje = responseError.getMensaje();
 
-			logger.debug("mensaje " + mensaje);
-			logger.debug("saldo " + saldo);
-			logger.debug("Err: " + errCodigo);
-			logger.debug("Err: " + errMensaje);
+//			logger.debug("mensaje " + mensaje);
+//			logger.debug("saldo " + saldo);
+//			logger.debug("Err: " + errCodigo);
+//			logger.debug("Err: " + errMensaje);
 
 			if (errCodigo == 0) {
 				return saldo;
@@ -109,9 +108,9 @@ public class SivaleServices {
 
 			TypeTransaccion[] typeTransactions = response.getTransacciones();
 
-			logger.debug("mensaje " + mensaje);
-			logger.debug("Err: " + errCodigo);
-			logger.debug("Err: " + errMensaje);
+//			logger.debug("mensaje " + mensaje);
+//			logger.debug("Err: " + errCodigo);
+//			logger.debug("Err: " + errMensaje);
 
 			if (errCodigo == 0) {
 
@@ -153,9 +152,9 @@ public class SivaleServices {
 			wbind.setHeader(getSivaleHeader(uri));
 
 			String encryptedPass = encrypt.encryptData(pass);
-			logger.info("La contraseña es: "+encryptedPass);
-			logger.info("Authenticating user: " + user);
-			logger.info(encryptedPass);
+//			logger.info("La contraseña es: "+encryptedPass);
+//			logger.info("Authenticating user: " + user);
+//			logger.info(encryptedPass);
 
 			ws.sivale.com.mx.messages.request.sivalemx.RequestBase req = new ws.sivale.com.mx.messages.request.sivalemx.RequestBase(
 					user, encryptedPass);
@@ -165,9 +164,9 @@ public class SivaleServices {
 			Integer errCodigo = responseError.getCodigo();
 			String errMensaje = responseError.getMensaje();
 
-			logger.debug(mensaje);
-			logger.debug("Err:" + errCodigo);
-			logger.debug("Err:" + errMensaje);
+//			logger.debug(mensaje);
+//			logger.debug("Err:" + errCodigo);
+//			logger.debug("Err:" + errMensaje);
 
 			if (errCodigo == 0 && "valido".equals(mensaje)) {
 				return true;

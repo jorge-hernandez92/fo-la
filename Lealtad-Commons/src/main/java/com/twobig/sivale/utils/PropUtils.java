@@ -11,9 +11,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
-import org.apache.log4j.BasicConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 /**
  * This class contains several methods that are useful in all the project.
@@ -26,7 +25,7 @@ public class PropUtils {
 	/**
 	 * Variable to register the logs.
 	 */
-	private static Logger logger = LoggerFactory.getLogger(PropUtils.class);
+	private static final Logger logger = LogManager.getLogger(PropUtils.class);
 
 	/**
 	 * Variable that indicate the name of the configuration properties.
@@ -40,8 +39,6 @@ public class PropUtils {
 	 * @return the configuration properties.
 	 */
 	public static Properties getProperties() {
-		
-		//BasicConfigurator.configure();
 
 		Properties props = new Properties();
 		InputStream input = PropUtils.class.getClassLoader()
@@ -64,8 +61,6 @@ public class PropUtils {
 	 *            Object that can be close.
 	 */
 	private static void close(final Closeable closable) {
-		
-		//BasicConfigurator.configure();
 
 		if (closable == null) {
 			return;
@@ -91,8 +86,6 @@ public class PropUtils {
 	}
 
 	public static String parseDateString(String dateString) {
-		
-		//BasicConfigurator.configure();
 
 		DateFormat indate = new SimpleDateFormat("M/d/yy");
 		SimpleDateFormat outdate = new SimpleDateFormat("yyyyMMdd");

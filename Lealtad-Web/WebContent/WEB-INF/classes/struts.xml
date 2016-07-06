@@ -16,13 +16,12 @@
 		value="com.twobig.sivale.actions" />
 		
 		
-	<constant name="struts.devMode" value="false" />
+	<constant name="struts.devMode" value="true" />
 	
 	<package name="com.twobig.sivale.actions" namespace="/" extends="struts-default">
-		<result-types>
-			<result-type name="tiles"
-				class="org.apache.struts2.views.tiles.TilesResult" />
-		</result-types>		
+<!-- 		<result-types> -->
+<!-- 			<result-type name="tiles" class="org.apache.struts2.views.tiles.TilesResult" /> -->
+<!-- 		</result-types>		 -->
 	</package>
 
 <!-- 	<package name="login" namespace="/secured" extends="struts-default"> -->

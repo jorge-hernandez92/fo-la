@@ -31,6 +31,9 @@ import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.utils.FilesUtil;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 @ParentPackage(value = "json-default")
 @Namespace("/")
 public class UploadFileAction extends ActionSupport implements SessionAware{
@@ -64,6 +67,8 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	public static final String SUCCESS_DELETE_PUBLICATION 	= "Publicación eliminada correctamente";
 	public static final String SUCCESS_UPDATE_PUBLICATION 	= "Publicación actualizada correctamente";
 	
+	private static final Logger logger = LogManager.getLogger(UploadFileAction.class);
+	
 	
 	
 	@Action(value = "UploadFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
@@ -84,6 +89,7 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 		}
 
 		else if(getFile().length >= 3){
+			logger.info("CARGANDO ARCHIVOS");
 			publication = loadImageHtmlExcel(campaign);
 	    	return loadAtachedFiles(publication,campaign, 3, 2);
 		}

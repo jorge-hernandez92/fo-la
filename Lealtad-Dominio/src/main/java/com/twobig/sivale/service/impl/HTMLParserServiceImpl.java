@@ -11,8 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -22,12 +22,10 @@ import com.twobig.sivale.service.HTMLParserService;
 
 public class HTMLParserServiceImpl implements HTMLParserService {
 	
-	final static Logger logger = Logger.getLogger(HTMLParserServiceImpl.class);
+	private static final Logger logger = LogManager.getLogger(HTMLParserServiceImpl.class);
 
 	@Override
 	public String getHTML(String htmlPath, String data) {
-		
-		//BasicConfigurator.configure();
 
 		if(data == null){
 			String file = this.fileToString(htmlPath);

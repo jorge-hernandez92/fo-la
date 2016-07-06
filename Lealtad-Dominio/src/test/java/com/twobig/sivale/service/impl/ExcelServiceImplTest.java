@@ -8,8 +8,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -20,7 +18,7 @@ import com.twobig.sivale.beans.ExcelDataUserBean;
 
 public class ExcelServiceImplTest {
 
-	final static Logger logger = Logger.getLogger(ExcelServiceImplTest.class);
+//	final static Logger logger = Logger.getLogger(ExcelServiceImplTest.class);
 
 	@Test
 	public void getDatabySheet() {
@@ -32,10 +30,10 @@ public class ExcelServiceImplTest {
 		assertNotNull("ExcelBean Null", excelBean);
 
 		for (String key : excelBean.getHeader()) {
-			logger.info(key);
+//			logger.info(key);
 		}
 		for (HashMap<String, String> row : excelBean.getRows()) {
-			logger.info(row.toString());
+//			logger.info(row.toString());
 		}
 	}
 
@@ -46,10 +44,10 @@ public class ExcelServiceImplTest {
 		assertNotNull("ExcelBean Null", excelBean);
 
 		for (String key : excelBean.getHeader()) {
-			logger.info(key);
+//			logger.info(key);
 		}
 		for (HashMap<String, String> row : excelBean.getRows()) {
-			logger.info(row.toString());
+//			logger.info(row.toString());
 		}
 	}
 
@@ -62,7 +60,7 @@ public class ExcelServiceImplTest {
 		assertNotNull("DataList Null", dataList);
 
 		for (ExcelDataUserBean dataUser : dataList) {
-			logger.info("***" + dataUser.getUserId() + "***" + dataUser.getData());
+//			logger.info("***" + dataUser.getUserId() + "***" + dataUser.getData());
 		}
 	}
 	
@@ -80,7 +78,7 @@ public class ExcelServiceImplTest {
 //		map.put("Key4", "value");
 		
 		for (String key : map.keySet()) {
-			logger.info("***" + key + "***");
+//			logger.info("***" + key + "***");
 		}
 	}
 

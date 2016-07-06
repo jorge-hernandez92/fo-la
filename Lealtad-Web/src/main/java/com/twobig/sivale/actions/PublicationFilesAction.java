@@ -6,8 +6,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
-
-import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -44,7 +42,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 	private String[] fileContentType;
 	private String[] fileFileName;
 	
-	final static Logger logger = Logger.getLogger(AttachedFilesAction.class);
+//	final static Logger logger = Logger.getLogger(AttachedFilesAction.class);
 
 	
 	@Action(value = "UploadHtmlAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
@@ -56,7 +54,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 		boolean delete = true;
 		
-		logger.info("Upload html files size = " + getFile().length);
+//		logger.info("Upload html files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
 
@@ -99,13 +97,15 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				try{
 					
 					String pathfile = directory + File.separator + htmlFileName;
-					logger.info("**** archivo adjunto: "+ pathfile);
+//					logger.info("**** archivo adjunto: "+ pathfile);
 					File file = new File(pathfile);
-					if(file.delete())
-					logger.info("**** Se eliminó HTML");
+					if(file.delete()){
+						
+					}
+//					logger.info("**** Se eliminó HTML");
 				
 				}catch(Exception e){
-					logger.info("Error al eliminar HTML");
+//					logger.info("Error al eliminar HTML");
 				}
 				
 				return SUCCESS;
@@ -125,7 +125,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 		boolean delete = true;
 		
-		logger.info("Upload excel files size = " + getFile().length);
+//		logger.info("Upload excel files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
 
@@ -156,13 +156,13 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				try {
 
 					String pathfile = directory + File.separator + publication.getDataFilePath();
-					logger.info("**** archivo adjunto: " + pathfile);
+//					logger.info("**** archivo adjunto: " + pathfile);
 					File file = new File(pathfile);
-					if (file.delete())
-						logger.info("**** Se eliminó Excel");
+					if (file.delete()){}
+//						logger.info("**** Se eliminó Excel");
 
 				} catch (Exception e) {
-					logger.info("Error al eliminar Excel");
+//					logger.info("Error al eliminar Excel");
 				}
 			}
 			

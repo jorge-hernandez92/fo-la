@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -40,12 +40,10 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	@Autowired
 	public UserDAO userDAO;
 	
-	final static Logger logger = Logger.getLogger(ViewPublicationServiceImpl.class);
+	private static final Logger logger = LogManager.getLogger(ViewPublicationServiceImpl.class);
 
 	@Override
 	public PublicationBean showPublication(int userId, int publicationId, int profile) {
-		
-		//BasicConfigurator.configure();
 		
 		List<TUserData>  tUserDate = tUserDateDAO.getTUserDataByPublicationIdAndUserId(userId, publicationId);
 		TPublication tpublication = tpublicationDAO.getPublicationById(publicationId);
@@ -120,9 +118,6 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	@Override
 	public PublicationBean showPublicationByCardNumber(String cardNumber, int publicationId, int profile) {
 		
-		//BasicConfigurator.configure();
-		
-		//Integer userId = userDAO.getUserIdByCard(cardNumber);
 		Integer userId = userDAO.getUserIdByAccountNumber(cardNumber);
 		
 		

@@ -10,7 +10,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -47,7 +48,12 @@ import com.twobig.sivale.service.ViewPublicationService;
 @Namespace("/")
 public class CampaignAction extends ActionSupport implements SessionAware {
 	
-	final static Logger logger = Logger.getLogger(CampaignAction.class);
+//	final static Logger logger = Logger.getLogger(CampaignAction.class);
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@Autowired
 	CatClassificationCampaignService classificationCampaignService;
@@ -95,6 +101,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public static final String SUCCESS_DELETE_CAMPAIGN 	= "Campaña eliminada correctamente";
 	public static final String SUCCESS_UPDATE_CAMPAIGN 	= "Campaña actualizada correctamente";
 	
+	private static final Logger logger = LogManager.getLogger(CampaignAction.class);
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -168,11 +175,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		//campaigns = new ServicesUser().getCampaigns(user.getUserId(),
 		//		classificationCmp.getCatClassificationCampaignsId());
 		
-		//logger.info("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
+		logger.info("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
 		campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
 		for (CampaignDetailBean campaignDetailBean2 : campaigns) {
-			logger.info(campaignDetailBean2.toString());
-			logger.info(campaignDetailBean2.getClassification());
+//			logger.info(campaignDetailBean2.toString());
+//			logger.info(campaignDetailBean2.getClassification());
 		}
 		return SUCCESS;
 
@@ -396,28 +403,28 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		if (!publicationJSON.equals("undefined")) {
 
 			pub = new ViewPublicationBean();
-			//logger.info(pub);
-			//logger.info(publicationJSON);
+			logger.info(pub);
+			logger.info(publicationJSON);
 			try {
 				pub = new ObjectMapper().readValue(publicationJSON, ViewPublicationBean.class);
-				//logger.info("detalle de pub: "+pub.toString());
+				logger.info("detalle de pub: "+pub.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
-				//logger.info("ERROR ERROR ERROR ERROR ERROR ERROR ");
+				logger.info("ERROR ERROR ERROR ERROR ERROR ERROR ");
 				return ERROR;
 			}
 
-			//logger.info("antes del session");
+			logger.info("antes del session");
 			session.put("publication", pub);
-			//logger.info("despues del session");
+			logger.info("despues del session");
 		} else {
-			//logger.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+			logger.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 			return ERROR;
 		}
 
 		this.publication = viewPublicationService.showPublicationByCardNumber(pub.getAcoundNumber(), pub.getPublicationId(), 1);
 		
-		//logger.info(publication);
+		logger.info(publication);
 		
 		if(this.publication.getListFiles()!=null)
 			if(this.publication.getListFiles().size() == 0)
@@ -601,7 +608,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		logger.info("*********** " + formNewCampaign.getCampaignName() + "******************");
 		
-		System.out.println(formNewCampaign.toString());
+		logger.info(formNewCampaign.toString());
 		
 		String idTCampaign = campaignService.insertCampaign(formNewCampaign);
 		
@@ -622,10 +629,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		try {
 			FileUtils.writeByteArrayToFile(file, fileBits);
-			System.out.println("-.-.-.-.-.-.-: "+file.getAbsolutePath());
+			logger.info("-.-.-.-.-.-.-: "+file.getAbsolutePath());
 			
 		} catch (IOException e) {
-			System.out.println("NO SE PUDO GUARDAR LA IMAGEN DE LA CAMPAÑA");
+			logger.info("NO SE PUDO GUARDAR LA IMAGEN DE LA CAMPAÑA");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

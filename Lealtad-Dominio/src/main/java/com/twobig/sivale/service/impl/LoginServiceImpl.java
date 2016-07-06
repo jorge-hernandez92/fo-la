@@ -3,9 +3,8 @@ package com.twobig.sivale.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -53,8 +52,8 @@ public class LoginServiceImpl implements LoginService {
 	/**
 	 * Variable to register the logs.
 	 */
-	private final static Logger logger = LoggerFactory
-			.getLogger(LoginServiceImpl.class);
+	
+	private static final Logger logger = LogManager.getLogger(LoginServiceImpl.class);
 
 	/**
 	 * Variable to specify the length of the card number.
@@ -71,8 +70,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public boolean validateUser(UserBean user) {
-		
-		//BasicConfigurator.configure();
 
 		boolean response = false;
 
@@ -96,8 +93,6 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public TUserLogin validateUserWeb(UserBean user) {
-		
-		//BasicConfigurator.configure();
 
 		TUser tUsers = null;
 		TUserLogin tUserLogin = null;

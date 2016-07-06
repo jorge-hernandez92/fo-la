@@ -5,27 +5,11 @@
 	id="WebApp_ID" version="2.5">
 	<display-name>Lealtad-Web</display-name>
 	
-<!-- 	<context-param> -->
-<!--         <param-name>log4j-config-location</param-name> -->
-<!--         <param-value>WEB-INF/classes/log4j.properties</param-value> -->
-<!--     </context-param> -->
-	
 	<context-param>
 		<param-name>contextConfigLocation</param-name>
 		<param-value>/WEB-INF/config/application-context.xml</param-value>
 	</context-param>
-	<context-param>
-		<param-name>org.apache.tiles.impl.BasicTilesContainer.DEFINITIONS_CONFIG</param-name>
-		<param-value>/WEB-INF/config/tiles.xml</param-value>
-	</context-param>
 	
-	
-	
-	<listener>
-		<listener-class>org.apache.struts2.tiles.StrutsTilesListener</listener-class>
-	</listener>
-	
-
 	<filter>
 		<filter-name>struts2</filter-name>
 		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -33,11 +17,6 @@
 			<param-name>actionPackages</param-name>
 			<param-value>com.twobig.sivale.actions</param-value>
 		</init-param>
-		
-<!-- 		<init-param> -->
-<!-- 			<param-name>struts.action.extension</param-name> -->
-<!--         	<param-value>,</param-value> -->
-<!-- 		</init-param> -->
 
 	</filter>
 	<filter-mapping>
@@ -60,41 +39,5 @@
 	    </jsp-property-group>
 	</jsp-config>
 
-<!-- 	<security-constraint>
-		<display-name>userConstraint</display-name>
-		<web-resource-collection>
-			<web-resource-name>UserRes</web-resource-name>
-			<url-pattern>/secured/*</url-pattern>
-			<url-pattern>*.action</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>userRole</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<security-constraint>
-		<display-name>adminConstraint</display-name>
-		<web-resource-collection>
-			<web-resource-name>AdminRes</web-resource-name>
-			<url-pattern>/secured/*</url-pattern>
-			<url-pattern>*.action</url-pattern>
-		</web-resource-collection>
-		<auth-constraint>
-			<role-name>adminRole</role-name>
-		</auth-constraint>
-	</security-constraint>
-	<login-config>
-		<auth-method>FORM</auth-method>
-		<realm-name>jdbc-auth-realm</realm-name>
-		<form-login-config>
-			<form-login-page>/login.jsp</form-login-page>
-			<form-error-page>/error.jsp</form-error-page>
-		</form-login-config>
-	</login-config>
-	<security-role>
-		<role-name>userRole</role-name>
-	</security-role>
-	<security-role>
-		<role-name>adminRole</role-name>
-	</security-role> -->
 
 </web-app>

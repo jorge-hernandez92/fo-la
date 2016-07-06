@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -53,6 +55,8 @@ public class TPublicationServiceImpl implements TPublicationService {
 	@Autowired
 	public TUserDataDAO tUserDataDAO;
 	
+	private static final Logger logger = LogManager.getLogger(TPublicationServiceImpl.class);
+	
 	@Override
 	public List<TPublication> getTPublicationByUserIdAndCampaignId(int userId, int campaignId) {
 
@@ -86,16 +90,16 @@ public class TPublicationServiceImpl implements TPublicationService {
 					String image64 = imageUtils.imageToBase64(pathImage);
 					/*This have to change with a DTO*/
 					tPublication.setImagePath("data:image/png;base64,"+image64);
-					System.out.println(image64);
+					logger.info(image64);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					System.out.println("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
+					logger.info("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
 					e.printStackTrace();
 				}
 				
 			}
 			else{
-				System.out.println("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+tPublication.toString());
+				logger.info("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+tPublication.toString());
 			}
 		}	
 		return publicaciones;

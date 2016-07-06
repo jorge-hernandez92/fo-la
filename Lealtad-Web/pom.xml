@@ -118,13 +118,6 @@
 			</exclusions>
 		</dependency>
 
-		<!-- Hibernate library dependency start -->
-
-<!-- 		<dependency> -->
-<!-- 			<groupId>org.slf4j</groupId> -->
-<!-- 			<artifactId>slf4j-log4j12</artifactId> -->
-<!-- 		</dependency> -->
-
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>
@@ -157,10 +150,6 @@
 		<!-- Hibernate library dependency end -->
 
 		<dependency>
-			<groupId>org.apache.struts</groupId>
-			<artifactId>struts2-tiles-plugin</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 		</dependency>
@@ -174,6 +163,22 @@
 			<groupId>com.twobig.sivale.lealtad</groupId>
 			<artifactId>Lealtad-Dominio</artifactId>
 			<version>${project.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-compress</artifactId>
+			<version>1.5</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-api</artifactId>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j-core</artifactId>
 		</dependency>
 
 	</dependencies>

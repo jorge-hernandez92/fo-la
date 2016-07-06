@@ -7,8 +7,8 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 
-import org.apache.log4j.BasicConfigurator;
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -25,13 +25,11 @@ import com.twobig.sivale.service.ExcelService;
 @Service
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ExcelServiceImpl implements ExcelService {
-	
-	final static Logger logger = Logger.getLogger(ExcelServiceImpl.class);
+
+	private static final Logger logger = LogManager.getLogger(ExcelServiceImpl.class);
 
 	@Override
 	public ExcelBean getExcelData(String path, String sheetName) {
-		
-		//BasicConfigurator.configure();
 
 		List<String> header = new ArrayList<String>();
 		List<HashMap<String, String>> rows = new ArrayList<HashMap<String, String>>();
@@ -70,15 +68,15 @@ public class ExcelServiceImpl implements ExcelService {
 
 					} else if(colum < header.size()){
 						map.put(header.get(colum), cell.getStringCellValue());
-					} else logger.info("------------- fila : " + count + "-------------");
+					} else{
+						logger.info("------------- fila : " + count + "-------------");
+					}
 					colum++;
 				}
 
 				if (map.size() > 0)
 					rows.add(map);
-
 				count++;
-
 			}
 
 			file.close();

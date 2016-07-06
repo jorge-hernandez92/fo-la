@@ -5,14 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.apache.log4j.BasicConfigurator;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 
 public class FilesUtil {
 	
-	private static Logger logger = LoggerFactory.getLogger(FilesUtil.class);
+	private static final Logger logger = LogManager.getLogger(FilesUtil.class);
 
 	public static void saveFile(File file, String fileName, String filesDirectory) throws IOException{
 		//BasicConfigurator.configure();

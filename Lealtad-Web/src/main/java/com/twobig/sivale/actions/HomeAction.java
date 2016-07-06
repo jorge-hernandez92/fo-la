@@ -6,7 +6,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -34,7 +33,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	private String cardNumber;
 	private String userId;
 	
-	final static Logger logger = Logger.getLogger(HomeAction.class);
+//	final static Logger logger = Logger.getLogger(HomeAction.class);
 	
 	@Autowired
 	TransactionService transactionService;
@@ -96,7 +95,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 					dateFormat = new SimpleDateFormat(CommonsConstants.DATE_FORMAT_TRX_PM);
 				
 				Date dateTemp = dateFormat.parse(tr.getTransactionDate());
-				logger.info("Dates: "+dateFormatResult.format(dateTemp));
+//				logger.info("Dates: "+dateFormatResult.format(dateTemp));
 				tr.setTransactionDate(dateFormatResult.format(dateTemp));
 			}
 		} catch (ParseException e) {
