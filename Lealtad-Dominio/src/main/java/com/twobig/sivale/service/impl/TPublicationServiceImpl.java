@@ -82,7 +82,9 @@ public class TPublicationServiceImpl implements TPublicationService {
 			if(tPublication.getImagePath() != null){ 
 				
 				/* SET IMAGE64 for TCAMPAIGN ICON*/
-				String pathImage = PathConstants.ATTACHED_DIRECTORY + campaignId+File.separator+tPublication.getPublicationId() + File.separator + tPublication.getImagePath();
+				String pathImage = PathConstants.ATTACHED_DIRECTORY +
+						campaignId+File.separator+tPublication.getPublicationId() + 
+						File.separator + tPublication.getImagePath();
 				
 				ImageUtils imageUtils = new ImageUtils();
 
@@ -90,7 +92,7 @@ public class TPublicationServiceImpl implements TPublicationService {
 					String image64 = imageUtils.imageToBase64(pathImage);
 					/*This have to change with a DTO*/
 					tPublication.setImagePath("data:image/png;base64,"+image64);
-					logger.info(image64);
+					//logger.info(image64);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					logger.info("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
