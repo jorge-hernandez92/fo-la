@@ -69,8 +69,6 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 	
 	private static final Logger logger = LogManager.getLogger(UploadFileAction.class);
 	
-	
-	
 	@Action(value = "UploadFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
 	        interceptorRefs={
@@ -87,11 +85,22 @@ public class UploadFileAction extends ActionSupport implements SessionAware{
 			setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
 			return ERROR;
 		}
+		
+		if(getFile() == null){
+			return ERROR; 
+		}
 
 		else if(getFile().length >= 3){
 			logger.info("CARGANDO ARCHIVOS");
 			publication = loadImageHtmlExcel(campaign);
-	    	return loadAtachedFiles(publication,campaign, 3, 2);
+			
+			String result = loadAtachedFiles(publication,campaign, 3, 2);
+			
+			File[] files = getFile();
+			
+			files = null; 
+ 	    	
+			return result;  
 		}
 		
 		setMessage(ERROR_CODE, ERROR_CREATE_PUBLICATION);
