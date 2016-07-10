@@ -160,6 +160,68 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		}
 		
 	}
+	
+	@Action(value="Ford", results = { @Result(name="user", location="/secured/home_user.jsp"),
+			@Result(name="admin", location="/secured/home_admin.jsp"),
+			@Result(name = ERROR, location = "/secured/loginFord.jsp")})
+	public String loginFord() {
+		
+		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
+
+		if ( username == null || password == null || username.equals("") || password.equals("")){
+			
+			TUser user = (TUser)session.get("user");
+		
+			if (user!=null) {
+				UserBean userBean = new UserBean();
+				userBean.setPass(user.getPassword());
+				
+				if(user.getCatProfile()== CommonsConstants.CAT_PROFILE_ADMIN)
+					userBean.setUser(user.getUserLogin());
+				else
+					userBean.setUser(user.getTjCardNumber());
+				
+				user = (TUser) loginService.validateUserWeb(userBean);
+				
+		        if (user != null){
+		        	session.put("user", user);
+		        	
+		        	if(user.getCatProfile() == CommonsConstants.CAT_PROFILE_ADMIN){
+		        		return "admin";
+		        	}
+		        	return "user";
+		        }
+		        
+		        error = "Usuario o password incorrectos!";
+		        
+		        return ERROR;
+			}
+			
+			return ERROR;
+		}
+		else{
+			
+			UserBean userBean = new UserBean();
+			userBean.setPass(password);
+			userBean.setUser(username);
+			
+			user = (TUser) loginService.validateUserWeb(userBean);
+			
+	        if (user != null){
+	        	session.put("user", user);
+	        	
+	        	if(user.getCatProfile() == 0){
+	        		return "admin";
+	        	}
+	        	return "user";
+	        }
+	        
+	        error = "Usuario o password incorrectos!";
+	        
+	        return ERROR;
+		}
+		
+	}
 
 	@Action(value="logout", results = @Result(name="success", location="/secured/login.jsp"))
 	public String logout() {
