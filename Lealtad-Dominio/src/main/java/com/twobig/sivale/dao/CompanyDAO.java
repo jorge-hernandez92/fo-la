@@ -2,23 +2,23 @@ package com.twobig.sivale.dao;
 
 import java.util.List;
 
-import com.twobig.sivale.bd.to.TCompany;
+import com.twobig.sivale.bd.to.Client;
 
 public interface CompanyDAO {
 
 	public static final String QUERY_UPDATE_FLAG_IS_ENABLE = "update TCompanies set isEnable = :isEnable where companyId = :companyId";
 
-	public void insert(TCompany companies);
+	public void insert(Client companies);
 
-	public void update(TCompany companies);
+	public void update(Client companies);
 
-	public void delete(TCompany companies);
+	public void delete(Client companies);
 
-	public List<TCompany> getAll();
+	public List<Client> getAll();
 
-	public TCompany getCompanyById(Integer companyId);
+	public Client getCompanyById(Integer companyId);
 	
-	public List<TCompany> getCompaniesNoDefault();
+	public List<Client> getCompaniesNoDefault();
 	
 
 }

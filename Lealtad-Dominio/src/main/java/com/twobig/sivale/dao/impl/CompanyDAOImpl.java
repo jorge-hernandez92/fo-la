@@ -8,54 +8,54 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Repository;
 
-import com.twobig.sivale.bd.to.TCompany;
+import com.twobig.sivale.bd.to.Client;
 import com.twobig.sivale.dao.CompanyDAO;
 
 import com.twobig.sivale.dao.impl.GenericDAOImpl;
 
 @Repository
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class CompanyDAOImpl extends GenericDAOImpl<TCompany, Long> implements
+public class CompanyDAOImpl extends GenericDAOImpl<Client, Long> implements
 		CompanyDAO {
 
 	public CompanyDAOImpl() {
-		super(TCompany.class);
+		super(Client.class);
 	}
 
 	@Override
-	public void insert(TCompany companies) {
+	public void insert(Client companies) {
 		this.guardar(companies);
 	}
 
 	@Override
-	public void update(TCompany companies) {
+	public void update(Client companies) {
 		this.actualizar(companies);
 	}
 
 	@Override
-	public void delete(TCompany companies) {
+	public void delete(Client companies) {
 		this.borrar(companies);
 	}
 
 	@Override
-	public List<TCompany> getAll() {
+	public List<Client> getAll() {
 		return this.buscar();
 	}
 
 	@Override
-	public TCompany getCompanyById(Integer companyId) {
+	public Client getCompanyById(Integer companyId) {
 
-		DetachedCriteria criteria = DetachedCriteria.forClass(TCompany.class);
+		DetachedCriteria criteria = DetachedCriteria.forClass(Client.class);
 
-		criteria.add(Restrictions.eq(TCompany.FIELD_COMPANY_ID, companyId));
+		criteria.add(Restrictions.eq(Client.FIELD_COMPANY_ID, companyId));
 
 		return getTByCriteria(criteria);
 	}
 
 	@Override
-	public List<TCompany> getCompaniesNoDefault() {
+	public List<Client> getCompaniesNoDefault() {
 
-		DetachedCriteria criteria = DetachedCriteria.forClass(TCompany.class);
+		DetachedCriteria criteria = DetachedCriteria.forClass(Client.class);
 
 		criteria.add(Restrictions.ge("companyId", 0));
 

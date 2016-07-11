@@ -4,7 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 
-import com.twobig.sivale.bd.to.TCompany;
+import com.twobig.sivale.bd.to.Client;
 import com.twobig.sivale.bd.to.TUser;
 
 public class TUserLogin extends TUser {
@@ -30,7 +30,7 @@ public class TUserLogin extends TUser {
 	/**
 	 * TCompanies object.
 	 */
-	private TCompany tCompanies;
+	private Client tCompanies;
 
 	/**
 	 * Get the functionalities associated to the user.
@@ -52,7 +52,7 @@ public class TUserLogin extends TUser {
 	 * Get the tCompanies object.
 	 * @return tCompanies object.
 	 */
-	public TCompany gettCompanies() {
+	public Client gettCompanies() {
 		return tCompanies;
 	}
 
@@ -60,7 +60,7 @@ public class TUserLogin extends TUser {
 	 * Set the tCompanies object.
 	 * @param tCompanies tCompanies object.
 	 */
-	public void settCompanies(TCompany tCompanies) {
+	public void settCompanies(Client tCompanies) {
 		this.tCompanies = tCompanies;
 	}
 
