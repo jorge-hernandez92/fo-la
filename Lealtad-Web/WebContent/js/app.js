@@ -559,17 +559,17 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').removeClass('image-th-p');
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
-			$('#menuTH-A').hide();
+			//$('#menuTH-A').hide();
 			
-			$('#menuTH').show();
+			//$('#menuTH').show();
 			
-			$('#li-separator').hide();
-			
-			$('#li-campaigns').hide();
-			
-			$('#li-campaign').hide();
+//			$('#li-separator').hide();
+//			
+//			$('#li-campaigns').hide();
+//			
+//			$('#li-campaign').hide();
 			
 			$('body').css({ "background-image": "" });
 			
@@ -592,19 +592,19 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').removeClass('image-th-p');
 			
-			$('body').addClass('image-th');
+			//$('body').addClass('image-th');
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
-			$('#menuTH-A').show();
-			
-			$('#menuTH').show();
-			
-			$('#li-separator').hide();
-			
-			$('#li-campaigns').hide();
-			
-			$('#li-campaign').hide();
+//			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+//			
+//			$('#menuTH-A').show();
+//			
+//			$('#menuTH').show();
+//			
+//			$('#li-separator').hide();
+//			
+//			$('#li-campaigns').hide();
+//			
+//			$('#li-campaign').hide();
 			
 			$('body').css({ "background-image": "" });
 			
@@ -627,19 +627,19 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').removeClass('image-th-p');
 			
-			$('body').addClass('image-th');
+			//$('body').addClass('image-th');
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
-			$('#menuTH-A').show();
-			
-			$('#menuTH').show();
-			
-			$('#li-separator').show();
-			
-			$('#li-campaigns').show();
-			
-			$('#li-campaign').hide();
+//			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+//			
+//			$('#menuTH-A').show();
+//			
+//			$('#menuTH').show();
+//			
+//			$('#li-separator').show();
+//			
+//			$('#li-campaigns').show();
+//			
+//			$('#li-campaign').hide();
 			
 			$('body').css({ "background-image": "" });
 			
@@ -660,17 +660,17 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#brandIm').hide();
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
-			$('#menuTH-A').show();
-			
-			$('#menuTH').show();
-			
-			$('#li-separator').show();
-			
-			$('#li-campaigns').show();
-			
-			$('#li-campaign').show();
+//			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+//			
+//			$('#menuTH-A').show();
+//			
+//			$('#menuTH').show();
+//			
+//			$('#li-separator').show();
+//			
+//			$('#li-campaigns').show();
+//			
+//			$('#li-campaign').show();
 			
 		}
 	})

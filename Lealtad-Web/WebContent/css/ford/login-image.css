@@ -1,5 +1,5 @@
 #bg {
-	background-image: url(../../img/ford/dynamic_background/1.jpg);
+	background-image: url(../../img/ford/dynamic_background/l1.jpg);
 	background-size: 100% auto;
 	/* 	transition: all 2s ease-in-out; */
 	/* 	transition-duration: 4s; */
@@ -9,4 +9,5 @@
 	-moz-transition: all 2s ease-in-out;
 	-o-transition: all 2s ease-in-out;
 	transition: all 2s ease-in-out;
+	background-size: cover;
 }

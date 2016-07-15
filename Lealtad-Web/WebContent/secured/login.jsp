@@ -23,6 +23,10 @@
 <link href="css/login.css" rel="stylesheet">
 <link href="css/default-fonts.css" rel="stylesheet">
 
+<!--LOGIN CSS-->
+<link rel="stylesheet" href="css/sticky-footer.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/dynamic-background.js"></script>
 
@@ -37,14 +41,15 @@
 	
 	<br><br><br><br>
 	<br><br><br><br>
-	<br>
 	
 	<div class="row">
 		<div class="col-md-4"></div>
   		<div class="col-md-4">
   			
-  			<div class="jumbotron">
-
+  			<div id="imginthefooter" class="jumbotron">
+  			
+  			<br>
+  			
 				<form class="form-signin" method="post" action="login">
 					<s:if test="%{error != null}">
 						<div class="alert alert-danger" role="alert">
@@ -65,6 +70,8 @@
 							class="form-control text-center" placeholder="PASSWORD"
 							required="" name="password">
 					</div>
+					
+					<br>
 
 					<button class="btn btn-sm btn-default" type="submit">INICIAR
 						SESIÓN</button>
@@ -76,11 +83,21 @@
  		<div class="col-md-4"></div>
 	</div>
 	
-	<div class="row">
-		<div class="col-md-3"></div>
-  		<div class="col-md-6"><h3 class="text-center" style="font-size: 14px; font-family: GothamBold">Programa administrado por Sí Vale México, S.A. de C.V. 2016 ©. V1.1.1</h3></div>
- 		<div class="col-md-3"></div>
-	</div>
+	<footer class="footerLogin">
+		<div class="header_top">
+			<div >
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<h3 class="text-center"
+							style="font-size: 14px; font-family: GothamBold; color: white;">Programa
+							administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3>
+					</div>
+					<div class="col-md-3"></div>
+				</div>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>

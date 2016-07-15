@@ -1,0 +1,20 @@
+.color-default-ford{
+	color: rgb(63, 111, 183);
+}
+
+.navbar-ford {
+    background-color: rgb(63, 111, 183);
+    border-color: rgb(63, 111, 183);
+    max-height: 30px;
+    min-height: 10px;
+}
+
+.color-navbar-font{
+	color: #fff;
+}
+
+.nav>li>a:focus, .nav>li>a:hover {
+    text-decoration: none;
+    background-color: rgb(49, 93, 156);
+}
+

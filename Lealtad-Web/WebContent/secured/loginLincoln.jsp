@@ -21,6 +21,10 @@
 <link href="css/default-fonts.css" rel="stylesheet">
 <link href="css/lincoln/login-image.css" rel="stylesheet">
 
+<!-- LOGIN CSS -->
+<link rel="stylesheet" href="css/sticky-footer.css">
+<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+
 <script type="text/javascript" src="js/jquery-1.10.2.js"></script>
 <script type="text/javascript" src="js/lincoln/dynamic-background-lincoln.js"></script>
 
@@ -29,19 +33,24 @@
 
 	<div class="row">
 		<div class="col-md-1"></div>
-  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 64px;">LINCOLN</h2></div>
+  		<div class="col-md-10">
+  			<h2 class="text-center" style="font-weight: bold; font-size: 64px;">
+  				Bienvenido a los Programas de Incentivos Lincoln
+  			</h2>
+  		</div>
  		<div class="col-md-1"></div>
 	</div>
 	
 	<br><br><br><br>
 	<br><br><br><br>
-	<br>
 	
 	<div class="row">
 		<div class="col-md-4"></div>
   		<div class="col-md-4">
   			
-  			<div class="jumbotron">
+  			<div id="imgLoginLincoln" class="jumbotron">
+  			
+  			<br>
 
 				<form class="form-signin" method="post" action="login">
 					<s:if test="%{error != null}">
@@ -64,6 +73,8 @@
 							required="" name="password">
 					</div>
 					
+					<br>
+					
 					<button class="btn btn-sm btn-default" type="submit">INICIAR
 						SESIÓN</button>
 				</form>
@@ -72,11 +83,22 @@
  		<div class="col-md-4"></div>
 	</div>
 	
-	<div class="row">
-		<div class="col-md-3"></div>
-  		<div class="col-md-6"><h3 class="text-center" style="font-size: 14px; font-family: GothamBold">Programa administrado por Sí Vale México, S.A. de C.V. 2016 ©. V1.1.1</h3></div>
- 		<div class="col-md-3"></div>
-	</div>
+	<footer class="footerLogin">
+		<div class="header_top">
+			<div >
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+						<h3 class="text-center"
+							style="font-size: 14px; font-family: GothamBold; color: white;">Programa
+							administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3>
+					</div>
+					<div class="col-md-3"></div>
+
+				</div>
+			</div>
+		</div>
+	</footer>
 
 </body>
 </html>

@@ -40,7 +40,7 @@
 }
 
 .panel-default>.panel-heading {
-    background-color: #67AEE4;
+    background-color: rgb(63, 111, 183);
     border-color: #ddd;
 	color: #fff;
 }

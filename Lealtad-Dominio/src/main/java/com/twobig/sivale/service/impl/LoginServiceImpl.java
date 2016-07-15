@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.CatProfile;
 import com.twobig.sivale.bd.to.RelProfileFunctionality;
-import com.twobig.sivale.bd.to.Client;
+import com.twobig.sivale.bd.to.CatClient;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.TUserLogin;
 import com.twobig.sivale.dao.CatProfileDAO;
@@ -121,7 +121,7 @@ public class LoginServiceImpl implements LoginService {
 
 			tUserLogin = new TUserLogin(tUsers);
 
-			Client tCompanies = companyDAO.getCompanyById(tUsers
+			CatClient tCompanies = companyDAO.getCompanyById(tUsers
 					.getCompany());
 
 			if (tCompanies == null) {

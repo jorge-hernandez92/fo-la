@@ -119,11 +119,11 @@ body {
 }
 
 .header-image {
-	min-height: 350px;
+	min-height: 500px;
     display: block;
     width: 100%;
     text-align: center;
-    background: url(../img/dynamic_background/2h.jpg);
+    background: url(../img/ford/dynamic_background_home/1h.jpg);
     -webkit-background-size: cover;
     -moz-background-size: cover;
 /*     background-size: cover; */
@@ -216,7 +216,7 @@ body {
 }
 
 .font-color-text{
-	color: #A7A7A7;
+	color: #999999;
 }
 
 .font-color-text2{

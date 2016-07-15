@@ -25,9 +25,10 @@
 <link href="css/default-fonts.css" rel="stylesheet">
 
 <!-- Nuevo rediseño -->
-
 <link rel="stylesheet" type="text/css" href="css/transition-campaigns.css" />
 
+<!-- ESTILO DEL CLIENTE  -->
+<link rel="stylesheet" type="text/css" href="css/ford/ford-style.css" />
 
 
 <!-- JS (load angular, ui-router, and our custom js file) -->
@@ -61,58 +62,148 @@
 
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-static-top"
-		data-ng-controller="updateSession" style="font-family: 'GothamBold'; font-color: white">
+		data-ng-controller="updateSession">
 		
-		<ul class="nav navbar-nav">
+			<div class="navbar-header">
+				<a class="navbar-brand" > <img style="max-width:250px; margin-left: 15px;" src="img/company_logo/Ford/logo.png">
+				</a>
+			</div>
 
-			<li class="dropdown" id="menuTH"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
-					<i class="fa fa-caret-down"></i>
-			</a>
-				<ul class="dropdown-menu dropdown-user">
-					<li><a href="#" ng-click="goToHome()"><i class="fa fa-home" aria-hidden="true"></i>
-							Inicio </a></li>
-							
-					<li id="li-separator" role="separator" class="divider"></li>
-
-					<li id="li-campaigns"><a ui-sref="campaigns">Campañas</a></li>
-					
-					<li id="li-campaign"><a ui-sref="campaign">Publicaciones</a></li>
-
-				</ul></li>
-
-		</ul>
-
-		<ul class="nav navbar-nav navbar-right">
-			<li><a> <i class="fa fa-credit-card"></i> 
-					{{user.tjCardNumber}}
-			</a></li>
-			<li><a> <i class="fa fa-user fa-fw"></i> 
+		<ul class="nav navbar-nav navbar-right" style=" margin-top: 15px;">
+			
+			<li><a> <i class="fa fa-user color-default-ford"></i> 
 					{{user.firstName}}
 			</a></li>
-			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
+			
+			<li><a> <i class="fa fa-credit-card color-default-ford"></i> 
+					{{user.tjCardNumber}}
 			</a></li>
+			
+			<li><a href="logout"> <i class="fa fa-sign-out color-default-ford"></i> 
+					Salir
+			</a></li>
+			
+			<li><a> <i class="fa fa-question color-default-ford"></i> 
+					Dudas o preguntas
+			</a></li>
+			
 		</ul>
+		
+	</nav>
+	
+		<!-- Navigation -->
+	<nav id="menuTH-A" class="navbar navbar-ford navbar-static-top"
+		data-ng-controller="updateSession">
+
+		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
+			
+			<li><a style="color: white;padding: 5px;"> 
+					INICIO
+			</a></li>
+			
+			<li><a style="color: white;padding: 5px;"> 
+					| CAMPAÑAS
+			</a></li>
+			
+			<li><a style="color: white;padding: 5px;"> 
+					| PUBLICACIONES
+			</a></li>
+			
+		</ul>
+		
 	</nav>
 
 	<div ui-view></div>
 
 	<br><br><br>
+	
+	<section id="contact" style="background: #333333;">
+        <div class="container">
+            
+        
 
+		<div class="row">
 
-	<footer class="footer">
-		<div id="imginthefooter" class="header_top">
-			<div class="container width100">
-				<div class="row">
-				
-					<div class="col-md-3"></div>
-  					<div class="col-md-6"><h3 class="text-center" style="font-size: 14px; font-family: GothamBold;color: white;">Programa administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3></div>
- 					<div class="col-md-3"></div>
+			<div class="col-xs-6 col-md-2"></div>
+			<div class="col-xs-6 col-md-8">
+						<div class="text-center">
+							<h4 style="color:rgb(128,128,128)"> ¿DUDAS SOBRE EL PROGRAMA <br>DE INCENTIVOS?</h4>
+						</div>
+			</div>
+			<div class="col-xs-6 col-md-2"></div>
 
+		</div>
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-3"></div>
+			<div class="col-xs-6 col-md-6">
+				<div class="text-center">
+					<h5 style="color:rgb(100,100,100)">
+						Llámanos: 01 (55) 5814 9396
+						de 9 a 18 hrs., lunes a viernes <br> Escríbenos
+						<font style="color: rgb(44, 171, 255);"> 
+							<u>atnincentivos@sivale.com.mx</u>
+						</font>
+					</h5>
 				</div>
 			</div>
+			<div class="col-xs-6 col-md-3"></div>
+
 		</div>
-	</footer>
+		
+		<hr style="width: 700px;border-top: 1px solid rgb(100,100,100);">
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-2"></div>
+			<div class="col-xs-6 col-md-8">
+						<div class="text-center">
+							<h4 style="color:rgb(128,128,128)">
+								¿DUDAS SOBRE LAS TARJETAS SÍVALE?
+							</h4>
+						</div>
+			</div>
+			<div class="col-xs-6 col-md-2"></div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-3"></div>
+			<div class="col-xs-6 col-md-6">
+				<div class="text-center">
+					<h5 style="color:rgb(100,100,100)">
+						Llama al servicio integral
+							para tarjetabientes
+						01 (55) 5814 9396 <br> cualquier día de la semana
+						24 horas al día. Escribenos 
+						<font style="color: rgb(44, 171, 255);">
+							<u>sita@sivale.com.mx</u>
+						</font>
+					</h5>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3"></div>
+
+		</div>
+		
+		<hr style="width: 700px; border-top: 1px solid rgb(100,100,100);">
+		
+		<div class="row">
+			<div class="col-md-3"></div>
+  			<div class="col-md-6"><h5 class="text-center" style="color:rgb(100,100,100)">Programa 
+  										administrado por Sí Vale 
+  										México, S.A. de C.V. 2016 ©
+  								  </h5>
+  			</div>
+ 			<div class="col-md-3"></div>
+
+		</div>
+		
+	</div>
+           
+    </section>
 
 </body>
 </html>

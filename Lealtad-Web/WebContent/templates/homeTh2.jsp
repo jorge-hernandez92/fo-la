@@ -3,43 +3,45 @@
 
 <header class="header-image">
 
-	<nav class="navbar navbar-default navbar-static-top"
-		data-ng-controller="updateSession" style="font-family: 'GothamBold';">
+<!-- 	<nav class="navbar navbar-default navbar-static-top" -->
+<!-- 		data-ng-controller="updateSession" style="font-family: 'GothamBold';"> -->
 		
-		<ul class="nav navbar-nav">
+<!-- 		<ul class="nav navbar-nav"> -->
 
-			<li class="dropdown" id="menuTH-Home" ><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
-					<i class="fa fa-caret-down"></i>
-			</a>
-				<ul class="dropdown-menu dropdown-user">
-					<li><a href="#" ng-click="goToHome()"><i class="fa fa-home" aria-hidden="true"></i>
-							Inicio </a></li>
+<!-- 			<li class="dropdown" id="menuTH-Home" ><a class="dropdown-toggle" -->
+<!-- 				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu -->
+<!-- 					<i class="fa fa-caret-down"></i> -->
+<!-- 			</a> -->
+<!-- 				<ul class="dropdown-menu dropdown-user"> -->
+<!-- 					<li><a href="#" ng-click="goToHome()"><i class="fa fa-home" aria-hidden="true"></i> -->
+<!-- 							Inicio </a></li> -->
 
-				</ul></li>
+<!-- 				</ul></li> -->
 
-		</ul>
+<!-- 		</ul> -->
 
-		<ul class="nav navbar-nav navbar-right">
-			<li><a> <i class="fa fa-credit-card"></i> 
-					{{user.tjCardNumber}}
-			</a></li>
-			<li><a> <i class="fa fa-user fa-fw"></i> 
-					{{user.firstName}}
-			</a></li>
-			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
-			</a></li>
-		</ul>
-	</nav>
+<!-- 		<ul class="nav navbar-nav navbar-right"> -->
+<!-- 			<li><a> <i class="fa fa-credit-card"></i>  -->
+<!-- 					{{user.tjCardNumber}} -->
+<!-- 			</a></li> -->
+<!-- 			<li><a> <i class="fa fa-user fa-fw"></i>  -->
+<!-- 					{{user.firstName}} -->
+<!-- 			</a></li> -->
+<!-- 			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir -->
+<!-- 			</a></li> -->
+<!-- 		</ul> -->
+<!-- 	</nav> -->
 	
 	<div class="headline">
 		<div class="container">
-			<h1 style="font-family: 'GothamBold';font-size: 30px;">
-				<font color="white">Haz clic sobre el logo para conocer las campañas del programa</font>
-			</h1>
+<!-- 			<h1 style="font-family: 'GothamBold';font-size: 30px;"> -->
+<!-- 				<font color="white">Haz clic sobre el logo para conocer las campañas del programa</font> -->
+<!-- 			</h1> -->
 
 		</div>
 	</div>
+	
+	<br><br><br><br>
 	
 	<div class="container">
 				
@@ -75,7 +77,7 @@
 	</div>
 
 
-<br><br><br>
+<br><br><br><br>
 
 
 <!-- 	<a href="#transaction" class="btn btn-circle page-scroll"> <i -->
@@ -84,10 +86,22 @@
 	
 </header>
 
-<br>
+<br><br><br>
 
 <section id="transaction">
 	<div>
+
+		<div class="row">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 40px;">
+					REPORTE DE MOVIMIENTOS
+				</h2>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		
+		<br><br>
 
 		<div class=" font-color-text">
 			<div class="row">
@@ -100,7 +114,7 @@
 								<div class="col-xs-6 col-sm-4"></div>
 
 								<div class="col-xs-6 col-sm-1">
-									<i class="fa fa-user fa-5x" aria-hidden="true"></i>
+									<i class="fa fa-user fa-5x color-default-ford" aria-hidden="true"></i>
 								</div>
 
 								<div class="col-xs-6 col-sm-5">
@@ -124,12 +138,12 @@
 								<div class="col-xs-6 col-sm-1"></div>
 
 								<div class="col-xs-6 col-sm-1">
-									<i class="fa fa-usd fa-5x" aria-hidden="true"></i>
+									<i class="fa fa-usd fa-5x color-default-ford" aria-hidden="true"></i>
 								</div>
 
 								<div class="col-xs-6 col-sm-7">
 
-									<div class="font-title-item">Saldo Actual</div>
+									<div class="font-title-item ">Saldo Actual</div>
 									<div class="huge">&#36;{{(balance | number:2) || '0.00'}}</div>
 
 								</div>
@@ -166,7 +180,6 @@
 						</table>
 					</div>
 				</div>
-
 			</div>
 		</div>
 	</div>
@@ -174,119 +187,119 @@
 
 	<!-- Infp Section -->
 	<!-- 	<section id="transaction2"> -->
-	<div class="container  font-color-text">
+<!-- 	<div class="container  font-color-text"> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-2"></div>
-			<div class="col-xs-6 col-md-8">
-				<div class="panel panel-gris">
-					<div class="panel-heading">
-						<div class="text-center">
-							<h2>¿DUDAS SOBRE EL PROGRAMA DE INCENTIVOS?</h2>
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-2"></div>
+<!-- 			<div class="col-xs-6 col-md-2"></div> -->
+<!-- 			<div class="col-xs-6 col-md-8"> -->
+<!-- 				<div class="panel panel-gris"> -->
+<!-- 					<div class="panel-heading"> -->
+<!-- 						<div class="text-center"> -->
+<!-- 							<h2>¿DUDAS SOBRE EL PROGRAMA DE INCENTIVOS?</h2> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-2"></div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-3"></div>
-			<div class="col-xs-6 col-md-6">
-				<div class="text-center">
-					<h3>
-						<font color="black"> Llámanos </font><br> 01 (55) 5814 9396<br>
-						de 9 a 18 hrs., lunes a viernes
-					</h3>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3"></div>
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
+<!-- 			<div class="col-xs-6 col-md-6"> -->
+<!-- 				<div class="text-center"> -->
+<!-- 					<h3> -->
+<!-- 						<font color="black"> Llámanos </font><br> 01 (55) 5814 9396<br> -->
+<!-- 						de 9 a 18 hrs., lunes a viernes -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-3"></div>
-			<div class="col-xs-6 col-md-6">
-				<div class="text-center">
-					<h3>
-						<font color="black"> O escríbenos </font><br>
-						atnincentivos@sivale.com.mx
-					</h3>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3"></div>
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
+<!-- 			<div class="col-xs-6 col-md-6"> -->
+<!-- 				<div class="text-center"> -->
+<!-- 					<h3> -->
+<!-- 						<font color="black"> O escríbenos </font><br> -->
+<!-- 						atnincentivos@sivale.com.mx -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-2"></div>
-			<div class="col-xs-6 col-md-8">
-				<div class="panel panel-gris">
-					<div class="panel-heading">
-						<div class="text-center">
-							<h2>¿DUDAS SOBRE LAS TARJETAS SÍVALE?</h2>
+<!-- 			<div class="col-xs-6 col-md-2"></div> -->
+<!-- 			<div class="col-xs-6 col-md-8"> -->
+<!-- 				<div class="panel panel-gris"> -->
+<!-- 					<div class="panel-heading"> -->
+<!-- 						<div class="text-center"> -->
+<!-- 							<h2>¿DUDAS SOBRE LAS TARJETAS SÍVALE?</h2> -->
 
-						</div>
-					</div>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-2"></div>
+<!-- 						</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-2"></div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-3"></div>
-			<div class="col-xs-6 col-md-6">
-				<div class="text-center">
-					<h3>
-						<font color="black">Llama al servicio integral <br>
-							para tarjetabientes
-						</font><br> 01 (55) 5814 9396 <br> cualquier día de la semana <br>
-						24 horas al día
-					</h3>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3"></div>
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
+<!-- 			<div class="col-xs-6 col-md-6"> -->
+<!-- 				<div class="text-center"> -->
+<!-- 					<h3> -->
+<!-- 						<font color="black">Llama al servicio integral <br> -->
+<!-- 							para tarjetabientes -->
+<!-- 						</font><br> 01 (55) 5814 9396 <br> cualquier día de la semana <br> -->
+<!-- 						24 horas al día -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-3"></div>
-			<div class="col-xs-6 col-md-6">
-				<div class="text-center">
-					<h3>
-						<font color="black"> O escribenos </font><br>
-						sita@sivale.com.mx
-					</h3>
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-3"></div>
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
+<!-- 			<div class="col-xs-6 col-md-6"> -->
+<!-- 				<div class="text-center"> -->
+<!-- 					<h3> -->
+<!-- 						<font color="black"> O escribenos </font><br> -->
+<!-- 						sita@sivale.com.mx -->
+<!-- 					</h3> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-3"></div> -->
 
-		</div>
-
-
-		<div class="row">
-
-			<div class="col-xs-6 col-md-4"></div>
-			<div class="col-xs-6 col-md-4">
-				<div class="text-center">
-					<img src="img/t-lealtad.png" alt="..." class="img-rounded">
-				</div>
-			</div>
-			<div class="col-xs-6 col-md-4"></div>
-
-		</div>
-
-		<br>
-		<br>
+<!-- 		</div> -->
 
 
-	</div>
+<!-- 		<div class="row"> -->
+
+<!-- 			<div class="col-xs-6 col-md-4"></div> -->
+<!-- 			<div class="col-xs-6 col-md-4"> -->
+<!-- 				<div class="text-center"> -->
+<!-- 					<img src="img/t-lealtad.png" alt="..." class="img-rounded"> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-4"></div> -->
+
+<!-- 		</div> -->
+
+<!-- 		<br> -->
+<!-- 		<br> -->
+
+
+<!-- 	</div> -->
 </section>

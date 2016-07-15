@@ -57,11 +57,12 @@ body {
 /* Main marketing message and sign up button */
 .jumbotron {
   text-align: center;
-  border-bottom: 1px solid #e5e5e5;
+/*   border-bottom: 1px solid #e5e5e5; */
 /*   opacity: 0.8; */
 /*   background: rgb(200, 54, 54); The Fallback */
   background: rgba(242, 242, 242, 0.5); 
-  
+  border-radius: 8px;
+ 
 }
 .jumbotron .btn {
 /*   padding: 14px 24px; */
@@ -88,7 +89,14 @@ body {
 }
 
 
+.btn-login {
+    color: #fff;
+    background-color: rgba(203,35,120,1);
+    border-color: rgba(203,35,120,1);
+}
 
-
-
-
+.btn-login:hover {
+    color: #fff;
+    background-color: rgb(179, 45, 113);
+    border-color: rgb(179, 45, 113);
+}

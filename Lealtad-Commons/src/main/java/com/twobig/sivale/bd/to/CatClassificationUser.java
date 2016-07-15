@@ -23,21 +23,21 @@ public class CatClassificationUser implements java.io.Serializable {
 	private int catClassificationUsersId;
 	private CatClassificationUser catClassificationUsers;
 	private CatView catViews;
-	private Client TCompanies;
+	private CatClient TCompanies;
 	private String className;
 	private String description;
 
 	public CatClassificationUser() {
 	}
 
-	public CatClassificationUser(int catClassificationUsersId, Client TCompanies, String className) {
+	public CatClassificationUser(int catClassificationUsersId, CatClient TCompanies, String className) {
 		this.catClassificationUsersId = catClassificationUsersId;
 		this.TCompanies = TCompanies;
 		this.className = className;
 	}
 
 	public CatClassificationUser(int catClassificationUsersId, CatClassificationUser catClassificationUsers,
-			CatView catViews, Client TCompanies, String className, String description) {
+			CatView catViews, CatClient TCompanies, String className, String description) {
 		this.catClassificationUsersId = catClassificationUsersId;
 		this.catClassificationUsers = catClassificationUsers;
 		this.catViews = catViews;
@@ -79,11 +79,11 @@ public class CatClassificationUser implements java.io.Serializable {
 
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "fk_company", nullable = false)
-	public Client getTCompanies() {
+	public CatClient getTCompanies() {
 		return this.TCompanies;
 	}
 
-	public void setTCompanies(Client TCompanies) {
+	public void setTCompanies(CatClient TCompanies) {
 		this.TCompanies = TCompanies;
 	}
 

@@ -10,7 +10,7 @@ $(document).ready(function () {
 		}
 		r1 = r2;
 		
-		$('#bg').css({ backgroundImage: "url(img/ford/dynamic_background/" + r1 + ".jpg)" });
+		$('#bg').css({ backgroundImage: "url(img/ford/dynamic_background/l" + r1 + ".jpg)" });
 		
     }, 5000);
 
