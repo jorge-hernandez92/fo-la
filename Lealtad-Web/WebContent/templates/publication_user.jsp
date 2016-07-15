@@ -1,6 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
  	pageEncoding="utf-8"%>
+ 	
+ 	
+<header class="header-image-publication">
+	
+	<div class="headline">
+		<div class="container">
+		
+<!-- 			<h1 style="font-family: 'GothamBold';font-size: 30px;"> -->
+<!-- 			<br><br><br><br><br><br><br><br> -->
+<!-- 				<font color="white">CAMPAÑAS</font> -->
+<!-- 			</h1> -->
 
+		</div>
+	</div>
+	
+	<br><br>
+	<br><br>
+	<br><br>
+	<br><br>
+	
+</header>
 
 <div class="panel-body back-sivale">
 	

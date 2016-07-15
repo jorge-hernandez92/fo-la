@@ -97,7 +97,7 @@
 
 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
 			
-			<li><a style="color: white;padding: 5px;"> 
+			<li><a href="#" ng-click="goToHome()"  style="color: white;padding: 5px;"> 
 					INICIO
 			</a></li>
 			
@@ -105,7 +105,7 @@
 					| CAMPAÑAS
 			</a></li>
 			
-			<li><a style="color: white;padding: 5px;"> 
+			<li><a  style="color: white;padding: 5px;"> 
 					| PUBLICACIONES
 			</a></li>
 			
