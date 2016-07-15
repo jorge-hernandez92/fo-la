@@ -207,12 +207,12 @@ appres
 											//console.log(STATE_PUBLICATION);
 											console.log(currentState);
 											
-											if(data.image != null && currentState == STATE_PUBLICATION){
-												
-												$('body').addClass('image-th-p');
-												$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });
-												
-											}
+//											if(data.image != null && currentState == STATE_PUBLICATION){
+//												
+//												$('body').addClass('image-th-p');
+//												$('.image-th-p').css({ backgroundImage: "url("+data.image+")" });
+//												
+//											}
 											
 											$scope.loadingPublicationImage = false;
 											$scope.files = true;
@@ -543,35 +543,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-
-			$('a.page-scroll').bind('click', function(event) {
-				console.log("den scr");
-				var $anchor = $(this);
-				$('html, body').stop().animate({
-					scrollTop : $($anchor.attr('href')).offset().top
-				}, 1500, 'easeInOutExpo');
-				event.preventDefault();
-			});
-			
-			$('#brandIm').show();
-			
-			$('body').removeClass('image-th');
-			
-			$('body').removeClass('image-th-p');
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
-			//$('#menuTH-A').hide();
-			
-			//$('#menuTH').show();
-			
-//			$('#li-separator').hide();
-//			
-//			$('#li-campaigns').hide();
-//			
-//			$('#li-campaign').hide();
-			
-			$('body').css({ "background-image": "" });
 			
 		}
 	})
@@ -588,26 +559,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('#brandIm').hide();
-			
-			$('body').removeClass('image-th-p');
-			
-			//$('body').addClass('image-th');
-			
-//			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-//			
-//			$('#menuTH-A').show();
-//			
-//			$('#menuTH').show();
-//			
-//			$('#li-separator').hide();
-//			
-//			$('#li-campaigns').hide();
-//			
-//			$('#li-campaign').hide();
-			
-			$('body').css({ "background-image": "" });
-			
 		}
 	})
 
@@ -616,32 +567,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaignDetail_user.jsp',
 		controller:	
  			function($scope) {
-			
+
 			currentState = STATE_CAMPAIGN;
 
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			$('#brandIm').hide();
-			
-			$('body').removeClass('image-th-p');
-			
-			//$('body').addClass('image-th');
-			
-//			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-//			
-//			$('#menuTH-A').show();
-//			
-//			$('#menuTH').show();
-//			
-//			$('#li-separator').show();
-//			
-//			$('#li-campaigns').show();
-//			
-//			$('#li-campaign').hide();
-			
-			$('body').css({ "background-image": "" });
 			
 		}
 	})
@@ -657,20 +588,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			$('#brandIm').hide();
-			
-//			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-//			
-//			$('#menuTH-A').show();
-//			
-//			$('#menuTH').show();
-//			
-//			$('#li-separator').show();
-//			
-//			$('#li-campaigns').show();
-//			
-//			$('#li-campaign').show();
 			
 		}
 	})

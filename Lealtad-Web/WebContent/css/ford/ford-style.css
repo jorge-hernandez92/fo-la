@@ -18,3 +18,54 @@
     background-color: rgb(49, 93, 156);
 }
 
+
+.header-image-campaigns {
+	min-height: 500px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url(../../img/ford/campaigns/c1.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+/*     background-size: cover; */
+    -o-background-size: cover;
+    background-size: 100% 100%;
+    -webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+}
+
+.header-image-publications {
+	min-height: 500px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url(../../img/ford/publications/p1.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+/*     background-size: cover; */
+    -o-background-size: cover;
+    background-size: 100% 100%;
+    -webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+}
+
+.header-image-publication {
+	min-height: 500px;
+    display: block;
+    width: 100%;
+    text-align: center;
+    background: url(../../img/ford/publication/p1.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+/*     background-size: cover; */
+    -o-background-size: cover;
+    background-size: 100% 100%;
+    -webkit-transition: all 2s ease-in-out;
+	-moz-transition: all 2s ease-in-out;
+	-o-transition: all 2s ease-in-out;
+	transition: all 2s ease-in-out;
+}

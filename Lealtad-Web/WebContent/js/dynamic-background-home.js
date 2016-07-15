@@ -12,8 +12,6 @@ $(document).ready(function () {
 		
 		$('.header-image').css({ backgroundImage: "url(img/ford/dynamic_background_home/" + r1 + "h.jpg)" });
 		
-		//rl(../img/ford/dynamic_background_home/
-		
 		//console.log(r1);
 		
     }, 5000);
