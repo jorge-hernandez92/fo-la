@@ -544,6 +544,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
+			$('#li-campaigns').hide();
+			
+			$('#li-campaign').hide();
+			
+			$('#menu-files-publication').hide();
 		}
 	})
 
@@ -558,6 +563,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
+			
+			$('#li-campaigns').hide();
+			
+			$('#li-campaign').hide();
+			
+			$('#menu-files-publication').hide();
 			
 		}
 	})
@@ -574,6 +585,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
+			$('#li-campaigns').show();
+			
+			$('#li-campaign').hide();
+			
+			$('#menu-files-publication').hide();
+			
 		}
 	})
 
@@ -588,6 +605,14 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
+			
+			$('#li-campaigns').show();
+			
+			$('#li-campaign').show();
+			
+			$('#menu-files-publication').show();
+			
+			$('body').css({ "display": "" });
 			
 		}
 	})

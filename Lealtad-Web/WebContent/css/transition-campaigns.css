@@ -51,7 +51,7 @@
 	
 	.caption-style-4 .blur{
 		background-color: rgba(0,0,0,0.65);
-		height: 300px;
+		height: 600px;
 		width: 400px;
 		z-index: 5;
 		position: absolute;
@@ -67,9 +67,9 @@
 		color: #fff;
 		position: absolute;
 		width: 400px;
-		height: 300px;
+		height: 600px;
 		text-align: center;
-		top:30px;
+		top:100px;
 	}
 	
 	.btn-campaign {

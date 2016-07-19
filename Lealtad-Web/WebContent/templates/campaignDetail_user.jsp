@@ -22,23 +22,26 @@
 </header>
 
 <div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 40px;">
 					PUBLICACIONES
 				</h2>
+				
+				<br>
+				
+				<h4 class="text-center color-gray-ford"> 
+				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
+				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec 
+				ullamcorper nulla non metus auctor fringilla.
+				</h4>
+				
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-2"></div>
 </div>
 
 <div class="panel-body">
-
-
-	<div class="container">
-		<h1 class="text-center">
-			<font color="white">Da clic en la imagen para ver la publicación.</font>
-		</h1>
-	</div>
 	
 	<br><br>
 	
@@ -50,9 +53,11 @@
 						<div class="blur"></div>
 						<div class="caption-text">
 							<h1>{{publication.name}}</h1>
-							<p>{{publication.catPublicationType.name}}</p>
-							<p>{{publication.publishedDate | date:'dd/MM/yyyy'}}</p>
 							<br>
+							<p>{{publication.catPublicationType.name}}</p>
+							<br>
+							<p>{{publication.publishedDate | date:'dd/MM/yyyy'}}</p>
+							<br><br><br><br><br><br>
 							<button href="#" data-ng-click="updatePublication(publication)"
 									ui-sref="publication" type="button" class="btn btn-campaign">DETALLES</button>
 						</div>
@@ -62,3 +67,27 @@
 		</div>
 
 </div>
+
+
+<br><br><br>
+<br><br><br>
+<br><br><br>
+
+
+	<footer class="footerTH">
+		<div>
+			<div >
+				<div class="row">
+					<div class="col-md-3"></div>
+					<div class="col-md-6">
+					<hr style="border-top: 2px solid rgb(100,100,100);">
+						<h3 class="text-center"
+							style="font-size: 14px; font-family: GothamBold; color:rgb(100,100,100);">Programa
+							administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3>
+					</div>
+					<div class="col-md-3"></div>
+
+				</div>
+			</div>
+		</div>
+	</footer>

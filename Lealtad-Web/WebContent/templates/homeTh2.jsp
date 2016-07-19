@@ -92,13 +92,25 @@
 	<div>
 
 		<div class="row">
-			<div class="col-md-1"></div>
-			<div class="col-md-10">
+			<div class="col-md-2"></div>
+			<div class="col-md-8">
 				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 40px;">
 					REPORTE DE MOVIMIENTOS
 				</h2>
+				
+				<br>
+				
+				<h4 class="text-center color-gray-ford"> 
+				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
+				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
+				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec 
+				ullamcorper nulla non metus auctor fringilla.
+				</h4>
+				
+				<br><br><br>
+				
 			</div>
-			<div class="col-md-1"></div>
+			<div class="col-md-2"></div>
 		</div>
 		
 		<br><br>
@@ -184,3 +196,93 @@
 		</div>
 	</div>
 </section>
+
+<br>
+
+	<section id="contact" style="background: #333333;">
+        <div class="container">
+            
+        
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-2"></div>
+			<div class="col-xs-6 col-md-8">
+						<div class="text-center">
+							<h4 style="color:rgb(128,128,128)"> ¿DUDAS SOBRE EL PROGRAMA <br>DE INCENTIVOS?</h4>
+						</div>
+			</div>
+			<div class="col-xs-6 col-md-2"></div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-3"></div>
+			<div class="col-xs-6 col-md-6">
+				<div class="text-center">
+					<h5 style="color:rgb(100,100,100)">
+						Llámanos: 01 (55) 5814 9396
+						de 9 a 18 hrs., lunes a viernes <br> Escríbenos
+						<font style="color: rgb(44, 171, 255);"> 
+							<u>atnincentivos@sivale.com.mx</u>
+						</font>
+					</h5>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3"></div>
+
+		</div>
+		
+		<hr style="width: 700px;border-top: 1px solid rgb(100,100,100);">
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-2"></div>
+			<div class="col-xs-6 col-md-8">
+						<div class="text-center">
+							<h4 style="color:rgb(128,128,128)">
+								¿DUDAS SOBRE LAS TARJETAS SÍVALE?
+							</h4>
+						</div>
+			</div>
+			<div class="col-xs-6 col-md-2"></div>
+
+		</div>
+
+		<div class="row">
+
+			<div class="col-xs-6 col-md-3"></div>
+			<div class="col-xs-6 col-md-6">
+				<div class="text-center">
+					<h5 style="color:rgb(100,100,100)">
+						Llama al servicio integral
+							para tarjetabientes
+						01 (55) 5814 9396 <br> cualquier día de la semana
+						24 horas al día. Escribenos 
+						<font style="color: rgb(44, 171, 255);">
+							<u>sita@sivale.com.mx</u>
+						</font>
+					</h5>
+				</div>
+			</div>
+			<div class="col-xs-6 col-md-3"></div>
+
+		</div>
+		
+		<hr style="width: 700px; border-top: 1px solid rgb(100,100,100);">
+		
+		<div class="row">
+			<div class="col-md-3"></div>
+  			<div class="col-md-6"><h5 class="text-center" style="color:rgb(100,100,100)">Programa 
+  										administrado por Sí Vale 
+  										México, S.A. de C.V. 2016 ©
+  								  </h5>
+  			</div>
+ 			<div class="col-md-3"></div>
+
+		</div>
+		
+	</div>
+           
+    </section>
