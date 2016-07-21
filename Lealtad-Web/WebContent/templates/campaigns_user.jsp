@@ -30,12 +30,12 @@
 				
 				<br>
 				
-				<h4 class="text-center color-gray-ford"> 
-				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
-				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec 
-				ullamcorper nulla non metus auctor fringilla.
-				</h4>
+<!-- 				<h4 class="text-center color-gray-ford">  -->
+<!-- 				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  -->
+<!-- 				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,  -->
+<!-- 				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec  -->
+<!-- 				ullamcorper nulla non metus auctor fringilla. -->
+<!-- 				</h4> -->
 				
 			</div>
 			<div class="col-md-2"></div>
@@ -70,13 +70,13 @@
 						<div class="caption-text">
 							<h1>{{campaign.campaignName}}</h1>
 							<br>
-							<p>{{campaign.classification[0]}}</p>
+							<h3>{{campaign.classification[0]}}</h3>
 							<br>
 							<p>{{campaign.startDate | date:'dd/MM/yyyy'}} -
 									{{campaign.endDate | date:'dd/MM/yyyy'}}</p>
 							<br><br><br><br><br><br>
 							<button href="#" data-ng-click="updateCampaign(campaign)"
-									ui-sref="campaign" type="button" class="btn btn-campaign">DETALLES</button>
+									ui-sref="campaign" type="button" class="btn btn-campaign btn-lg">DETALLES</button>
 						</div>
 					</div>
 				</li>

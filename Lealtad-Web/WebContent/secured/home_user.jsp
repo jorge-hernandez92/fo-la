@@ -61,7 +61,7 @@
 <body class="sivale" id="init">
 
 	<!-- Navigation -->
-	<nav id="menuTH-A" class="navbar navbar-default navbar-static-top"
+	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top"
 		data-ng-controller="updateSession">
 		
 			<div class="navbar-header">
@@ -83,7 +83,7 @@
 					Salir
 			</a></li>
 			
-			<li><a> <i class="fa fa-question color-default-ford"></i> 
+			<li><a href="#contact" class="page-scroll" ng-click="dudas()" > <i class="fa fa-question color-default-ford"></i> 
 					Dudas o preguntas
 			</a></li>
 			
@@ -92,22 +92,30 @@
 	</nav>
 	
 		<!-- Navigation -->
-	<nav id="menuTH-A" class="navbar navbar-ford navbar-static-top"
-		data-ng-controller="updateSession">
+	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
+		data-ng-controller="updateSession" style="margin-top: 65px;">
 
 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
 			
-			<li><a href="#" ng-click="goToHome()"  style="color: white;padding: 5px;"> INICIO </a></li>
+			<li id="li-home"><a  href="#" ng-click="goToHome()"  style="color: white;padding: 5px;"> INICIO  </a></li>
 			
-			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;"> | CAMPAÑAS       </a></li>
+			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;"> | CAMPAÑAS      </a></li>
 			
-			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;"> | PUBLICACIONES  </a></li>
+			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;"> | PUBLICACIONES  </a></li>	
 			
 		</ul>
 		
+			<p id="p-home" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">INICIO</p>
+			
+			<p id="p-campaigns" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">| CAMPAÑAS</p>
+			
+			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">| PUBLICACIONES</p>
+			
+			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">| DETALLE DE PUBLICACIÓN</p>
+		
 	</nav>
 	
-	<nav style="display:none;" id="menu-files-publication" class="navbar navbar-info-file navbar-static-top"
+	<nav style="display:none; margin-top: 95px;" id="menu-files-publication" class="navbar navbar-info-file navbar-fixed-top"
 		data-ng-controller="updateSession">
 
 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 500px;">
@@ -122,8 +130,12 @@
 		</ul>
 		
 	</nav>
+	
+	<br><br><br><br>
 
 	<div ui-view></div>
+	
+	
 </body>
 </html>
 

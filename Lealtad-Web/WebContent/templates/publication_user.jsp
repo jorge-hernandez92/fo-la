@@ -2,19 +2,19 @@
  	pageEncoding="utf-8"%>
  	
  	
-<header class="header-image-publication">
+<!-- <header class="header-image-publication"> -->
 	
-	<div class="headline">
-		<div class="container">
-		</div>
-	</div>
+<!-- 	<div class="headline"> -->
+<!-- 		<div class="container"> -->
+<!-- 		</div> -->
+<!-- 	</div> -->
 	
-	<br><br>
-	<br><br>
-	<br><br>
-	<br><br>
+<!-- 	<br><br> -->
+<!-- 	<br><br> -->
+<!-- 	<br><br> -->
+<!-- 	<br><br> -->
 	
-</header>
+<!-- </header> -->
 
 <!-- <div class="panel-body back-sivale"> -->
 
@@ -74,6 +74,8 @@
 
 <div data-ng-controller="getAttachedFiles">
 
+	<br>
+	
 	<div class="panel-body publication-html"></div>
 
 	<div class="container" ng-show="files">

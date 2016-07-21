@@ -1,54 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	
+<section id="banner">
 
 <header class="header-image">
-
-<!-- 	<nav class="navbar navbar-default navbar-static-top" -->
-<!-- 		data-ng-controller="updateSession" style="font-family: 'GothamBold';"> -->
-		
-<!-- 		<ul class="nav navbar-nav"> -->
-
-<!-- 			<li class="dropdown" id="menuTH-Home" ><a class="dropdown-toggle" -->
-<!-- 				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu -->
-<!-- 					<i class="fa fa-caret-down"></i> -->
-<!-- 			</a> -->
-<!-- 				<ul class="dropdown-menu dropdown-user"> -->
-<!-- 					<li><a href="#" ng-click="goToHome()"><i class="fa fa-home" aria-hidden="true"></i> -->
-<!-- 							Inicio </a></li> -->
-
-<!-- 				</ul></li> -->
-
-<!-- 		</ul> -->
-
-<!-- 		<ul class="nav navbar-nav navbar-right"> -->
-<!-- 			<li><a> <i class="fa fa-credit-card"></i>  -->
-<!-- 					{{user.tjCardNumber}} -->
-<!-- 			</a></li> -->
-<!-- 			<li><a> <i class="fa fa-user fa-fw"></i>  -->
-<!-- 					{{user.firstName}} -->
-<!-- 			</a></li> -->
-<!-- 			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir -->
-<!-- 			</a></li> -->
-<!-- 		</ul> -->
-<!-- 	</nav> -->
 	
-	<div class="headline">
-		<div class="container">
-<!-- 			<h1 style="font-family: 'GothamBold';font-size: 30px;"> -->
-<!-- 				<font color="white">Haz clic sobre el logo para conocer las campañas del programa</font> -->
-<!-- 			</h1> -->
 
-		</div>
-	</div>
-	
 	<br><br><br><br>
 	
-	<div class="container">
-				
-		<div class="row" data-ng-controller="getClassifications">
+		<div class="row" >
 
-			<div class="col-xs-6 col-md-4"></div>
-			<div class="col-xs-6 col-md-4">
+			<div class="col-xs-6 col-md-3">
+				<div class="text-center" >
+				 	<h3>Da clic en el logo para ver las campañas del programa</h3>					
+				</div>
+			</div>
+
+		</div>
+	
+				
+		<div class="row" style="margin-left: 30px;" data-ng-controller="getClassifications">
+
+			<div class="col-xs-6 col-md-2">
 				<div class="text-center" ng-repeat="class in classifications">
 					
 					<div class="thumbnail" >
@@ -70,25 +43,32 @@
 					
 				</div>
 			</div>
-			<div class="col-xs-6 col-md-4"></div>
 
 		</div>
-		
-	</div>
-
 
 <br><br><br><br>
 
-
-<!-- 	<a href="#transaction" class="btn btn-circle page-scroll"> <i -->
-<!-- 		class="fa fa-angle-double-down animated"></i> -->
-<!-- 	</a> -->
+	<a href="#contact" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:400px;border: 0px;"> 
+		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
+	</a>
+	
+	<a href="#transaction" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:340px;border: 0px;"> 
+		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
+	</a>
+	
+	<a href="#banner" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:280px;border: 0px;"> 
+		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
+	</a>
 	
 </header>
 
-<br><br><br>
+</section>
 
 <section id="transaction">
+
+<br><br><br>
+
+
 	<div>
 
 		<div class="row">
@@ -100,14 +80,14 @@
 				
 				<br>
 				
-				<h4 class="text-center color-gray-ford"> 
-				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. 
-				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus, 
-				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec 
-				ullamcorper nulla non metus auctor fringilla.
-				</h4>
+<!-- 				<h4 class="text-center color-gray-ford">  -->
+<!-- 				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  -->
+<!-- 				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,  -->
+<!-- 				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec  -->
+<!-- 				ullamcorper nulla non metus auctor fringilla. -->
+<!-- 				</h4> -->
 				
-				<br><br><br>
+<!-- 				<br><br><br> -->
 				
 			</div>
 			<div class="col-md-2"></div>
@@ -209,7 +189,7 @@
 			<div class="col-xs-6 col-md-2"></div>
 			<div class="col-xs-6 col-md-8">
 						<div class="text-center">
-							<h4 style="color:rgb(128,128,128)"> ¿DUDAS SOBRE EL PROGRAMA <br>DE INCENTIVOS?</h4>
+							<h4 style="color:rgb(255,255,255)"> ¿DUDAS SOBRE EL PROGRAMA <br>DE INCENTIVOS?</h4>
 						</div>
 			</div>
 			<div class="col-xs-6 col-md-2"></div>
@@ -221,7 +201,7 @@
 			<div class="col-xs-6 col-md-3"></div>
 			<div class="col-xs-6 col-md-6">
 				<div class="text-center">
-					<h5 style="color:rgb(100,100,100)">
+					<h5 style="color:rgb(180,180,180)">
 						Llámanos: 01 (55) 5814 9396
 						de 9 a 18 hrs., lunes a viernes <br> Escríbenos
 						<font style="color: rgb(44, 171, 255);"> 
@@ -241,7 +221,7 @@
 			<div class="col-xs-6 col-md-2"></div>
 			<div class="col-xs-6 col-md-8">
 						<div class="text-center">
-							<h4 style="color:rgb(128,128,128)">
+							<h4 style="color:rgb(255,255,255)">
 								¿DUDAS SOBRE LAS TARJETAS SÍVALE?
 							</h4>
 						</div>
@@ -255,7 +235,7 @@
 			<div class="col-xs-6 col-md-3"></div>
 			<div class="col-xs-6 col-md-6">
 				<div class="text-center">
-					<h5 style="color:rgb(100,100,100)">
+					<h5 style="color:rgb(180,180,180)">
 						Llama al servicio integral
 							para tarjetabientes
 						01 (55) 5814 9396 <br> cualquier día de la semana
@@ -274,7 +254,7 @@
 		
 		<div class="row">
 			<div class="col-md-3"></div>
-  			<div class="col-md-6"><h5 class="text-center" style="color:rgb(100,100,100)">Programa 
+  			<div class="col-md-6"><h5 class="text-center" style="color:rgb(255,255,255)">Programa 
   										administrado por Sí Vale 
   										México, S.A. de C.V. 2016 ©
   								  </h5>

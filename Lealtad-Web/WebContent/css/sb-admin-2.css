@@ -176,14 +176,14 @@ body {
 }
 
 .btn-circle {
-    width: 100px;
-    height: 100px;
+    width: 40px;
+    height: 40px;
     margin-top: 15px;
-    padding: 7px 16px;
-    border: 2px solid #fff;
+    padding: 0px 8px;
+    border: 4px solid #3f6fb7;
     border-radius: 100%!important;
-    font-size: 60px;
-    color: #fff;
+    font-size: 15px;
+    color: #3f6fb7;
     background: 0 0;
     -webkit-transition: background .3s ease-in-out;
     -moz-transition: background .3s ease-in-out;
@@ -193,8 +193,8 @@ body {
 .btn-circle:hover,
 .btn-circle:focus {
     outline: 0;
-    color: #fff;
-    background: rgba(255,255,255,.1);
+    color: #3f6fb7;
+    background: rgba(63, 111, 183, 0.41);
 }
 
 .btn-circle i.animated {

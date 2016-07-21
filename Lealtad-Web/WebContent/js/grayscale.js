@@ -20,7 +20,7 @@ $(document).ready(
 $(function() {
 	
     $('a.page-scroll').bind('click', function(event) {
-    	console.log("den scr");
+    	//console.log("den scr");
         var $anchor = $(this);
         $('html, body').stop().animate({
             scrollTop: $($anchor.attr('href')).offset().top

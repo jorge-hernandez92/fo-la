@@ -33,7 +33,7 @@
 </head>
 <body class="back-image" id="bg">
 
-	<nav class="navbar navbar-default navbar-fixed-top">
+	<nav class="navbar navbar-menu-ford navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
 				<a class="navbar-brand" > <img style="max-width:300px; margin-top: -7px;" src="img/company_logo/Ford/logo.png">

@@ -524,6 +524,20 @@ appres
 							window.open(httpPath, '_blank', '');
 						}
 					};
+					
+					
+					$scope.dudas = function(){
+						$state.go('home');
+						
+					    $('a.page-scroll').bind('click', function(event) {
+					        var $anchor = $(this);
+					        console.log($anchor);
+					        $('html, body').stop().animate({
+					            scrollTop: $($anchor.attr('href')).offset().top
+					        }, 2000, 'easeInOutExpo');
+					        event.preventDefault();
+					    });
+					}
 
 				});
 
@@ -544,11 +558,26 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('#li-campaigns').hide();
+			$('a.page-scroll').bind('click', function(event) {
+		        var $anchor = $(this);
+		        console.log($anchor);
+		        $('html, body').stop().animate({
+		            scrollTop: $($anchor.attr('href')).offset().top
+		        }, 2000, 'easeInOutExpo');
+		        event.preventDefault();
+		    });
 			
+			$('#li-home').hide();
+			$('#li-campaigns').hide();
 			$('#li-campaign').hide();
 			
+			$('#p-home').show();
+			$('#p-campaigns').hide();
+			$('#p-campaign').hide();
+			$('#p-detail-publication').hide();
+			
 			$('#menu-files-publication').hide();
+				
 		}
 	})
 
@@ -564,11 +593,17 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
+			$('#li-home').show();
 			$('#li-campaigns').hide();
-			
 			$('#li-campaign').hide();
 			
+			$('#p-home').hide();
+			$('#p-campaigns').show();
+			$('#p-campaign').hide();
+			$('#p-detail-publication').hide();
+			
 			$('#menu-files-publication').hide();
+			
 			
 		}
 	})
@@ -585,9 +620,14 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
+			$('#li-home').show();
 			$('#li-campaigns').show();
-			
 			$('#li-campaign').hide();
+			
+			$('#p-home').hide();
+			$('#p-campaigns').hide();
+			$('#p-campaign').show();
+			$('#p-detail-publication').hide();
 			
 			$('#menu-files-publication').hide();
 			
@@ -606,11 +646,15 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
+			$('#li-home').show();
 			$('#li-campaigns').show();
-			
 			$('#li-campaign').show();
 			
-			$('#menu-files-publication').show();
+			$('#p-home').hide();
+			$('#p-campaigns').hide();
+			$('#p-campaign').hide();
+			$('#p-detail-publication').show();
+			
 			
 			$('body').css({ "display": "" });
 			
