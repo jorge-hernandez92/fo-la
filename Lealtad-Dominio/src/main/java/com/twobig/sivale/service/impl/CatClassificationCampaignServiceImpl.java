@@ -6,8 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -43,7 +43,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	/**
 	 * Variable to register the logs.
 	 */
-	private static final Logger logger = LogManager.getLogger(CatClassificationCampaignServiceImpl.class);
+	//private static final Logger logger = LogManager.getLogger(CatClassificationCampaignServiceImpl.class);
 
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByUserId(int userId) {
@@ -114,7 +114,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			sccb.setId(catClassificationCampaign.getCatClassificationCampaignsId());
 			sccb.setName(catClassificationCampaign.getClassName());
 			lsccb.add(sccb);
-			logger.info(catClassificationCampaign.toString());
+			//logger.info(catClassificationCampaign.toString());
 		}
 		
 		return lsccb;
@@ -134,7 +134,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 			sccb.setId(catClassificationCampaign.getCatClassificationCampaignsId());
 			sccb.setName(catClassificationCampaign.getClassName());
 			lsccb.add(sccb);
-			logger.info(catClassificationCampaign.toString());
+			//logger.info(catClassificationCampaign.toString());
 		}
 		
 		return lsccb;

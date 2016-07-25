@@ -3,8 +3,8 @@ package com.twobig.sivale.service.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -53,7 +53,7 @@ public class LoginServiceImpl implements LoginService {
 	 * Variable to register the logs.
 	 */
 	
-	private static final Logger logger = LogManager.getLogger(LoginServiceImpl.class);
+	//private static final Logger logger = LogManager.getLogger(LoginServiceImpl.class);
 
 	/**
 	 * Variable to specify the length of the card number.
@@ -81,7 +81,7 @@ public class LoginServiceImpl implements LoginService {
 				response = sivaleServices.validateLogin(user.getUser(),
 						user.getPass());
 			} catch (SivaleServicesException e) {
-				logger.info(e.getMessage(), e);
+				//logger.info(e.getMessage(), e);
 			}
 		}
 
@@ -108,8 +108,8 @@ public class LoginServiceImpl implements LoginService {
 					tUsers = userDAO.getUserByCard(user.getUser());
 				}
 			} catch (SivaleServicesException e) {
-				logger.info(e.getMessage());
-				logger.info(e.getMessage(), e);
+				//logger.info(e.getMessage());
+				//logger.info(e.getMessage(), e);
 			}
 		} else {
 
@@ -125,7 +125,7 @@ public class LoginServiceImpl implements LoginService {
 					.getCompany());
 
 			if (tCompanies == null) {
-				logger.info("There isn't any company associated to this user");
+				//logger.info("There isn't any company associated to this user");
 				return null;
 			}
 

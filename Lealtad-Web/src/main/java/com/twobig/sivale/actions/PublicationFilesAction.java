@@ -54,7 +54,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 		boolean delete = true;
 		
-//		logger.info("Upload html files size = " + getFile().length);
+//		//logger.info("Upload html files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
 
@@ -97,15 +97,15 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				try{
 					
 					String pathfile = directory + File.separator + htmlFileName;
-//					logger.info("**** archivo adjunto: "+ pathfile);
+//					//logger.info("**** archivo adjunto: "+ pathfile);
 					File file = new File(pathfile);
 					if(file.delete()){
 						
 					}
-//					logger.info("**** Se eliminó HTML");
+//					//logger.info("**** Se eliminó HTML");
 				
 				}catch(Exception e){
-//					logger.info("Error al eliminar HTML");
+//					//logger.info("Error al eliminar HTML");
 				}
 				
 				return SUCCESS;
@@ -125,7 +125,7 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 		boolean delete = true;
 		
-//		logger.info("Upload excel files size = " + getFile().length);
+//		//logger.info("Upload excel files size = " + getFile().length);
 
 		if (getFile() !=null && getFile().length > 0) {
 
@@ -156,13 +156,13 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 				try {
 
 					String pathfile = directory + File.separator + publication.getDataFilePath();
-//					logger.info("**** archivo adjunto: " + pathfile);
+//					//logger.info("**** archivo adjunto: " + pathfile);
 					File file = new File(pathfile);
 					if (file.delete()){}
-//						logger.info("**** Se eliminó Excel");
+//						//logger.info("**** Se eliminó Excel");
 
 				} catch (Exception e) {
-//					logger.info("Error al eliminar Excel");
+//					//logger.info("Error al eliminar Excel");
 				}
 			}
 			

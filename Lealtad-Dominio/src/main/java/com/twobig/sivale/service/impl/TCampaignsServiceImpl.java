@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -35,7 +35,7 @@ import com.twobig.sivale.utils.ImageUtils;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TCampaignsServiceImpl implements TCampaignsService {
 	
-	private static final Logger logger = LogManager.getLogger(TCampaignsServiceImpl.class);
+	//private static final Logger logger = LogManager.getLogger(TCampaignsServiceImpl.class);
 
 	@Autowired
 	public RealUserCampaignDAO realUsersCampaignsDAO;
@@ -128,16 +128,16 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 					try {
 						String image64 = imageUtils.imageToBase64(pathImageTCampaign);
 						campaignDetailBean.setImageBase64("data:image/png;base64,"+image64);
-						logger.info(image64);
+						//logger.info(image64);
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						logger.info("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
+						//logger.info("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
 						e.printStackTrace();
 					}
 					
 				}
 				else{
-					logger.info("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailBean.toString());
+					//logger.info("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailBean.toString());
 				}
 				
 				listCampaignDetailBean.add(campaignDetailBean);
@@ -241,13 +241,13 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 					campaignDetailAdminBean.setImageBase64("data:image/png;base64,"+image64);
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
-					logger.error("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
+					//logger.error("ERROR AL CARGAR IMAGEN DE CAMPAÑA DEL SISTEMA DE ARCHIVOS");
 					e.printStackTrace();
 				}
 				
 			}
 			else{
-				logger.info("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailAdminBean.toString());
+				//logger.info("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailAdminBean.toString());
 			}
 			
 			listCampaignDetailAdminBean.add(campaignDetailAdminBean);
@@ -288,7 +288,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 
 		tCampaignDAO.insertTCampaign(tCampaign);
 		
-		logger.info(tCampaign.toString());
+		//logger.info(tCampaign.toString());
 		
 		return ""+tCampaign.getCampaignId();
 	}
@@ -306,7 +306,7 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		
 		tCampaignDAO.updateTCampaign(tCampaign);
 		
-		logger.info(tCampaign.toString());
+		//logger.info(tCampaign.toString());
 		
 		return null;
 	}

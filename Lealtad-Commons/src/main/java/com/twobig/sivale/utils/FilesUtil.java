@@ -5,13 +5,13 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 
 public class FilesUtil {
 	
-	private static final Logger logger = LogManager.getLogger(FilesUtil.class);
+	//private static final Logger logger = LogManager.getLogger(FilesUtil.class);
 
 	public static void saveFile(File file, String fileName, String filesDirectory) throws IOException{
 		//BasicConfigurator.configure();
@@ -23,8 +23,8 @@ public class FilesUtil {
            dir.mkdirs();
         
         String targetPath =  dir.getPath() + File.separator + fileName;
-        logger.info("source file path ::"+file.getAbsolutePath());
-        logger.info("saving file to ::" + targetPath);
+        //logger.info("source file path ::"+file.getAbsolutePath());
+        //logger.info("saving file to ::" + targetPath);
         File destinationFile = new File ( targetPath);
         try {
             in = new FileInputStream( file );

@@ -4,7 +4,7 @@
 <%
 	if (request.getSession().getAttribute("user") != null
 			&& request.getSession(false) != null) {
-		//logger.info("redireccionaodo....");
+		////logger.info("redireccionaodo....");
 		response.sendRedirect("login");
 	}
 %>

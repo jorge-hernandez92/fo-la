@@ -10,8 +10,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -101,7 +101,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public static final String SUCCESS_DELETE_CAMPAIGN 	= "Campaña eliminada correctamente";
 	public static final String SUCCESS_UPDATE_CAMPAIGN 	= "Campaña actualizada correctamente";
 	
-	private static final Logger logger = LogManager.getLogger(CampaignAction.class);
+	//private static final Logger logger = LogManager.getLogger(CampaignAction.class);
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -175,11 +175,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		//campaigns = new ServicesUser().getCampaigns(user.getUserId(),
 		//		classificationCmp.getCatClassificationCampaignsId());
 		
-		logger.info("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
+		//logger.info("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
 		campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
 		for (CampaignDetailBean campaignDetailBean2 : campaigns) {
-//			logger.info(campaignDetailBean2.toString());
-//			logger.info(campaignDetailBean2.getClassification());
+//			//logger.info(campaignDetailBean2.toString());
+//			//logger.info(campaignDetailBean2.getClassification());
 		}
 		return SUCCESS;
 
@@ -201,7 +201,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		campaignsAdmin = campaignService.getCampaingsSuper(user.getUserId());
 
 		for (CampaignDetailAdminBean campaignDetailAdminBean : campaignsAdmin) {
-			logger.info(campaignDetailAdminBean.toString());
+			//logger.info(campaignDetailAdminBean.toString());
 		}
 		
 		return SUCCESS;
@@ -232,7 +232,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 					return ERROR;
 				
 				searchCampaign.setClassificationParentId(classification.getCatClassificationCampaignsId());
-				logger.info(searchCampaign.toString());
+				//logger.info(searchCampaign.toString());
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -253,7 +253,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		searchCampaigns = filterCampaignService.FilterCampaign(user.getUserId(), searchCampaign);
 		
-		logger.info(searchCampaigns.toString());
+		//logger.info(searchCampaigns.toString());
 		return SUCCESS;
 
 	}
@@ -276,7 +276,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			try {
 				searchCampaign = new ObjectMapper().readValue(searchCampaignJSON,
 						SearchCampaignBean.class);
-				logger.info(searchCampaign.toString());
+				//logger.info(searchCampaign.toString());
 				
 			} catch (IOException e) {
 				e.printStackTrace();
@@ -403,37 +403,37 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		if (!publicationJSON.equals("undefined")) {
 
 			pub = new ViewPublicationBean();
-			logger.info(pub);
-			logger.info(publicationJSON);
+			//logger.info(pub);
+			//logger.info(publicationJSON);
 			try {
 				pub = new ObjectMapper().readValue(publicationJSON, ViewPublicationBean.class);
-				logger.info("detalle de pub: "+pub.toString());
+				//logger.info("detalle de pub: "+pub.toString());
 			} catch (IOException e) {
 				e.printStackTrace();
-				logger.info("ERROR ERROR ERROR ERROR ERROR ERROR ");
+				//logger.info("ERROR ERROR ERROR ERROR ERROR ERROR ");
 				return ERROR;
 			}
 
-			logger.info("antes del session");
+			//logger.info("antes del session");
 			session.put("publication", pub);
-			logger.info("despues del session");
+			//logger.info("despues del session");
 		} else {
-			logger.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+			//logger.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
 			return ERROR;
 		}
 
 		this.publication = viewPublicationService.showPublicationByCardNumber(pub.getAcoundNumber(), pub.getPublicationId(), 1);
 		
-		logger.info(publication);
+		//logger.info(publication);
 		
 		if(this.publication.getListFiles()!=null)
 			if(this.publication.getListFiles().size() == 0)
 				this.publication.setListFiles(null);
 			//for (TAttachedFile files : publication.getListFiles()) {
-			//	logger.info(files.toString());
+			//	//logger.info(files.toString());
 			//}
 		
-		logger.info(this.publication.getHtml());
+		//logger.info(this.publication.getHtml());
 		return SUCCESS;
 	}
 	
@@ -483,10 +483,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			if(publication.getListFiles().size() == 0)
 				publication.setListFiles(null);
 			//for (TAttachedFile files : publication.getListFiles()) {
-			//	logger.info(files.toString());
+			//	//logger.info(files.toString());
 			//}
 		
-		logger.info(publication.getHtml());
+		//logger.info(publication.getHtml());
 		return SUCCESS;
 	}
 	
@@ -496,7 +496,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			"message", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String deleteCampaignAction() {
 
-		logger.info("**** " + campaignId + " ****");
+		//logger.info("**** " + campaignId + " ****");
 		campaignService.deleteCampaign(campaignId);
 		setMessage(SUCCESS_CODE, SUCCESS_DELETE_CAMPAIGN);
 		return SUCCESS;
@@ -571,7 +571,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		final HttpServletRequest request = ServletActionContext.getRequest();
 		
 		String classificationCmpJSON = request.getParameter("formNewCampaign");
-		logger.info("*********** " + classificationCmpJSON + "******************");
+		//logger.info("*********** " + classificationCmpJSON + "******************");
 		
 		FormNewCampaignBean formNewCampaign;
 		
@@ -602,13 +602,13 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		formNewCampaign.setCompanyId(user.getCompany());
 		
-		logger.info(formNewCampaign.toString());
-		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
-			logger.info("id: " + classif.getId() + "  name: " + classif.getName());
+		//logger.info(formNewCampaign.toString());
+		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList()){}
+			//logger.info("id: " + classif.getId() + "  name: " + classif.getName());
 		
-		logger.info("*********** " + formNewCampaign.getCampaignName() + "******************");
+		//logger.info("*********** " + formNewCampaign.getCampaignName() + "******************");
 		
-		logger.info(formNewCampaign.toString());
+		//logger.info(formNewCampaign.toString());
 		
 		String idTCampaign = campaignService.insertCampaign(formNewCampaign);
 		
@@ -629,10 +629,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		try {
 			FileUtils.writeByteArrayToFile(file, fileBits);
-			logger.info("-.-.-.-.-.-.-: "+file.getAbsolutePath());
+			//logger.info("-.-.-.-.-.-.-: "+file.getAbsolutePath());
 			
 		} catch (IOException e) {
-			logger.info("NO SE PUDO GUARDAR LA IMAGEN DE LA CAMPAÑA");
+			//logger.info("NO SE PUDO GUARDAR LA IMAGEN DE LA CAMPAÑA");
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
@@ -687,9 +687,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		formNewCampaign.setCompanyId(user.getCompany());
 		
-		logger.info(formNewCampaign.toString());
+		//logger.info(formNewCampaign.toString());
 		for(SelectClassificationCampaignBean classif : formNewCampaign.getClassificationList())
-			logger.info("id: " + classif.getId() + "  name: " + classif.getName());
+			//logger.info("id: " + classif.getId() + "  name: " + classif.getName());
 		campaignService.updateCampaign(formNewCampaign);
 		
 		setMessage(SUCCESS_CODE, SUCCESS_UPDATE_CAMPAIGN);
@@ -753,7 +753,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			selectCampaign.add(updateCampaignBean);
 		}
 		
-		logger.info(selectCampaign.toString());
+		//logger.info(selectCampaign.toString());
 		
 		return SUCCESS;
 	}
@@ -766,7 +766,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 //
 //		String fileJSON = request.getParameter("file");
 //		
-//		logger.info(fileJSON);
+//		//logger.info(fileJSON);
 //		
 //		return SUCCESS;
 //		

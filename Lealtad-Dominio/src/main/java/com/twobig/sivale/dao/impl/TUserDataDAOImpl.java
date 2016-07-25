@@ -49,7 +49,7 @@ implements TUserDataDAO {
 		int result = query.executeUpdate();
 		 
 		if (result > 0) {
-		    logger.info("t_user_data was removed");
+		    //logger.info("t_user_data was removed");
 		}
 	}
 }

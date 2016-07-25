@@ -2,8 +2,8 @@ package com.twobig.sivale.service.impl;
 
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -20,7 +20,7 @@ import ws.sivale.com.mx.messages.types.TypeTransaccion;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TransactionServiceImpl implements TransactionService {
 
-	private static final Logger logger = LogManager.getLogger(TransactionServiceImpl.class);
+	//private static final Logger logger = LogManager.getLogger(TransactionServiceImpl.class);
 
 	@Override
 	public Double getBalance(String cardNumber) throws TravelsNotFoundException {
@@ -30,7 +30,7 @@ public class TransactionServiceImpl implements TransactionService {
 		try {
 			balance = sivaleServices.getBalance(cardNumber);
 		} catch (SivaleServicesException e) {
-			logger.info(e.getMessage(), e);
+			//logger.info(e.getMessage(), e);
 		}
 
 		return balance;
@@ -44,7 +44,7 @@ public class TransactionServiceImpl implements TransactionService {
 			List<TypeTransaccion> transactionList = sivaleServices.getMovements(cardNumber);
 			return transactionList;
 		} catch (SivaleServicesException e) {
-			logger.info(e.getMessage(), e);
+			//logger.info(e.getMessage(), e);
 			return null;
 		}
 	}

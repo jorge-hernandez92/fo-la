@@ -3,8 +3,8 @@ package com.twobig.sivale.utils;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 
 /**
@@ -17,7 +17,7 @@ public final class DateUtil {
 	 * logger instance.
 	 */
 	
-	private static final Logger logger = LogManager.getLogger(DateUtil.class);
+	//private static final Logger logger = LogManager.getLogger(DateUtil.class);
 	/**
 	 * DateUtil instance.
 	 */
@@ -75,28 +75,28 @@ public final class DateUtil {
 					continue;
 				}
 				returnDate =  formatter.parse(dateVerified);
-				if (logger.isInfoEnabled()) logger.info("Date OK with format " + formatter.toPattern());
+				//if (logger.isInfoEnabled()) //logger.info("Date OK with format " + formatter.toPattern());
 				break;
 			} catch (Throwable th) {
-				if (logger.isDebugEnabled()) logger.debug("Date could not be formatted with format " + dates[i]);
+				//if (logger.isDebugEnabled()) logger.debug("Date could not be formatted with format " + dates[i]);
 			}
 		}
 		if (null == returnDate) {
 			throw new RuntimeException("Invalid Date format for:" + dateArg);
 		}
-		if (logger.isDebugEnabled()) logger.debug("Date: " + returnDate);
+		//if (logger.isDebugEnabled()) logger.debug("Date: " + returnDate);
 		return returnDate;
 	}
 	
 	private static String verifyTimezone(String dateString) {
 		
 		boolean hasTimezone = dateString.matches(".+\\.*\\d*[-+]\\d{2}:\\d{2}");
-		if (logger.isDebugEnabled()) logger.debug("Has timezone: " + hasTimezone);
+		//if (logger.isDebugEnabled()) logger.debug("Has timezone: " + hasTimezone);
 		if (hasTimezone) {
 			int timezoneIndex = dateString.lastIndexOf("-");
 			String dateWithoutTimezone = dateString.substring(0, dateString.lastIndexOf("-"));
 			String timezone = dateString.substring(timezoneIndex).replace(":", "");
-			if (logger.isDebugEnabled()) logger.debug("Date with new timezone: " + dateWithoutTimezone + timezone);
+			//if (logger.isDebugEnabled()) logger.debug("Date with new timezone: " + dateWithoutTimezone + timezone);
 			return dateWithoutTimezone + timezone;
 		}
 		

@@ -17,30 +17,30 @@ public class MisPruebas {
 //		
 //		
 //		for (String string : lista) {
-//			logger.info(string.toLowerCase());
+//			//logger.info(string.toLowerCase());
 //		}
 //		
 //		for (String string : lista) {
-//			logger.info(string);
+//			//logger.info(string);
 //		}
 //		
 //		String cadena = "CINco";
 //		
 //		for (String string : lista) {
 //			if(string.toLowerCase().indexOf(cadena.toLowerCase()) != -1){
-//				logger.info(string);
+//				//logger.info(string);
 //			}
 //		}
 		
 //		Date fechaActual = new Date();
 //		
-//		logger.info(fechaActual);
+//		//logger.info(fechaActual);
 		
 		String car = null;
 		
 		
 		if(car == null){
-	//		logger.info(car);
+	//		//logger.info(car);
 		}
 		
 		

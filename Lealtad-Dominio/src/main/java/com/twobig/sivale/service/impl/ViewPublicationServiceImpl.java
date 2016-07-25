@@ -4,8 +4,8 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -40,7 +40,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 	@Autowired
 	public UserDAO userDAO;
 	
-	private static final Logger logger = LogManager.getLogger(ViewPublicationServiceImpl.class);
+	//private static final Logger logger = LogManager.getLogger(ViewPublicationServiceImpl.class);
 
 	@Override
 	public PublicationBean showPublication(int userId, int publicationId, int profile) {
@@ -60,7 +60,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			
 			String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
 					+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
-			logger.info("htmlPath : " + htmlPath);
+			//logger.info("htmlPath : " + htmlPath);
 			
 			String html = htmlParser.getHTML(htmlPath, data);
 
@@ -108,7 +108,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 			
 
 		} else {
-			logger.info("lista vacia");
+			//logger.info("lista vacia");
 			return null;
 		}
 		
@@ -139,7 +139,7 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 				
 				String htmlPath = PathConstants.ATTACHED_DIRECTORY + tpublication.gettCampaignId() + File.separator
 						+ tpublication.getPublicationId() + File.separator + tpublication.getTemplateFilePath();
-				logger.info("htmlPath : " + htmlPath);
+				//logger.info("htmlPath : " + htmlPath);
 				
 				String html = htmlParser.getHTML(htmlPath, data);
 
@@ -186,13 +186,13 @@ public class ViewPublicationServiceImpl implements ViewPublicationService {
 				return publication;
 				
 			} else {
-				logger.info("lista vacia");
+				//logger.info("lista vacia");
 				return null;
 			}
 
 		}
 		else{
-			logger.info("no exite usuario con la tarjeta: "+cardNumber);
+			//logger.info("no exite usuario con la tarjeta: "+cardNumber);
 			return null; 
 		}
 		

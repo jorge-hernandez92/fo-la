@@ -30,10 +30,10 @@ public class ExcelServiceImplTest {
 		assertNotNull("ExcelBean Null", excelBean);
 
 		for (String key : excelBean.getHeader()) {
-//			logger.info(key);
+//			//logger.info(key);
 		}
 		for (HashMap<String, String> row : excelBean.getRows()) {
-//			logger.info(row.toString());
+//			//logger.info(row.toString());
 		}
 	}
 
@@ -44,10 +44,10 @@ public class ExcelServiceImplTest {
 		assertNotNull("ExcelBean Null", excelBean);
 
 		for (String key : excelBean.getHeader()) {
-//			logger.info(key);
+//			//logger.info(key);
 		}
 		for (HashMap<String, String> row : excelBean.getRows()) {
-//			logger.info(row.toString());
+//			//logger.info(row.toString());
 		}
 	}
 
@@ -60,7 +60,7 @@ public class ExcelServiceImplTest {
 		assertNotNull("DataList Null", dataList);
 
 		for (ExcelDataUserBean dataUser : dataList) {
-//			logger.info("***" + dataUser.getUserId() + "***" + dataUser.getData());
+//			//logger.info("***" + dataUser.getUserId() + "***" + dataUser.getData());
 		}
 	}
 	
@@ -78,7 +78,7 @@ public class ExcelServiceImplTest {
 //		map.put("Key4", "value");
 		
 		for (String key : map.keySet()) {
-//			logger.info("***" + key + "***");
+//			//logger.info("***" + key + "***");
 		}
 	}
 

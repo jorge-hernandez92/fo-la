@@ -11,8 +11,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -22,7 +22,7 @@ import com.twobig.sivale.service.HTMLParserService;
 
 public class HTMLParserServiceImpl implements HTMLParserService {
 	
-	private static final Logger logger = LogManager.getLogger(HTMLParserServiceImpl.class);
+	//private static final Logger logger = LogManager.getLogger(HTMLParserServiceImpl.class);
 
 	@Override
 	public String getHTML(String htmlPath, String data) {
@@ -40,7 +40,7 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 
 			String file = this.fileToString(htmlPath);
 			
-			logger.info("Archivo HTML A MESCLAR:    "+file);
+			//logger.info("Archivo HTML A MESCLAR:    "+file);
 
 			for (int i = 0; i < tokens.size(); i++) {
 
@@ -51,7 +51,7 @@ public class HTMLParserServiceImpl implements HTMLParserService {
 							value);
 				}
 			}
-			logger.info(file);
+			//logger.info(file);
 			return file;
 
 		} catch (JSONException e) {

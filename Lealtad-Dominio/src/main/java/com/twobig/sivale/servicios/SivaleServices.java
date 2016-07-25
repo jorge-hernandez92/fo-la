@@ -141,7 +141,7 @@ public class SivaleServices {
 		
 		//BasicConfigurator.configure();
 		
-		//logger.info("En la funcion de validateLogin");
+		////logger.info("En la funcion de validateLogin");
 		try {
 			
 			ServiciosSiValeMxLocator service = new ServiciosSiValeMxLocator();
@@ -152,9 +152,9 @@ public class SivaleServices {
 			wbind.setHeader(getSivaleHeader(uri));
 
 			String encryptedPass = encrypt.encryptData(pass);
-//			logger.info("La contraseña es: "+encryptedPass);
-//			logger.info("Authenticating user: " + user);
-//			logger.info(encryptedPass);
+//			//logger.info("La contraseña es: "+encryptedPass);
+//			//logger.info("Authenticating user: " + user);
+//			//logger.info(encryptedPass);
 
 			ws.sivale.com.mx.messages.request.sivalemx.RequestBase req = new ws.sivale.com.mx.messages.request.sivalemx.RequestBase(
 					user, encryptedPass);

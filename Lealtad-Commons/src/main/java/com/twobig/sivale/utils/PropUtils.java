@@ -11,8 +11,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.Properties;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+//import org.apache.logging.log4j.LogManager;
+//import org.apache.logging.log4j.Logger;
 
 /**
  * This class contains several methods that are useful in all the project.
@@ -25,7 +25,7 @@ public class PropUtils {
 	/**
 	 * Variable to register the logs.
 	 */
-	private static final Logger logger = LogManager.getLogger(PropUtils.class);
+	//private static final Logger logger = LogManager.getLogger(PropUtils.class);
 
 	/**
 	 * Variable that indicate the name of the configuration properties.
@@ -46,7 +46,7 @@ public class PropUtils {
 		try {
 			props.load(input);
 		} catch (IOException e) {
-			logger.info(e.getMessage(), e);
+			//logger.info(e.getMessage(), e);
 		} finally {
 			close(input);
 		}
@@ -68,7 +68,7 @@ public class PropUtils {
 		try {
 			closable.close();
 		} catch (IOException e) {
-			logger.info(e.getMessage(), e);
+			//logger.info(e.getMessage(), e);
 		}
 	}
 
@@ -95,7 +95,7 @@ public class PropUtils {
 			date = indate.parse(dateString);
 			outputDate = outdate.format(date);
 		} catch (ParseException e) {
-			logger.info("Error parsing the date: " + e.getMessage());
+			//logger.info("Error parsing the date: " + e.getMessage());
 		}
 
 		return outputDate;

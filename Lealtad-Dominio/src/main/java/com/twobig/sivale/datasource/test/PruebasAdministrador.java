@@ -29,7 +29,7 @@ public class PruebasAdministrador {
 		List<CampaignDetailAdminBean> listCampaignDetailAdminBean = cccs.getCampaingsSuper(7);
 
 		for (CampaignDetailAdminBean campaignDetailAdminBean : listCampaignDetailAdminBean) {
-//			logger.info(campaignDetailAdminBean.toString());
+//			//logger.info(campaignDetailAdminBean.toString());
 		}
 
 	}
@@ -57,7 +57,7 @@ public class PruebasAdministrador {
 		pib.setAttachedFiles(attachedFiles);
 		
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
-//		logger.info(cccs.addPublication(pib));
+//		//logger.info(cccs.addPublication(pib));
 
 		//PRUEBAS PARA EL EXCEL 
 		//TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
@@ -93,7 +93,7 @@ public class PruebasAdministrador {
 
 		pib.setAttachedFiles(attachedFiles);
 
-//		logger.info(cccs.updatePublication(pib));
+//		//logger.info(cccs.updatePublication(pib));
 
 	}
 
@@ -105,7 +105,7 @@ public class PruebasAdministrador {
 		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationChildren(30);
 
 		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
-//			logger.info(selectClassificationCampaignBean.toString());
+//			//logger.info(selectClassificationCampaignBean.toString());
 		}
 	}
 
@@ -116,7 +116,7 @@ public class PruebasAdministrador {
 		List<SelectClassificationCampaignBean> clasificaciones = cccs.getListClassificationParent(7);
 
 		for (SelectClassificationCampaignBean selectClassificationCampaignBean : clasificaciones) {
-//			logger.info(selectClassificationCampaignBean.toString());
+//			//logger.info(selectClassificationCampaignBean.toString());
 		}
 	}
 
@@ -185,7 +185,7 @@ public class PruebasAdministrador {
 
 	public static void getPublicationType(ClassPathXmlApplicationContext context){
 		TPublicationService cccs = (TPublicationService) context.getBean("TPublicationServiceImpl");
-//		logger.info(cccs.getPublicationType());
+//		//logger.info(cccs.getPublicationType());
 	}
 	
 	public static void updateExcel(ClassPathXmlApplicationContext context){
@@ -264,7 +264,7 @@ public class PruebasAdministrador {
 		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1, 0);
 
 		for (TPublication tPublication : publicaciones) {
-//			logger.info(tPublication.toString() + " ");
+//			//logger.info(tPublication.toString() + " ");
 		}
 		
 	}

@@ -95,7 +95,7 @@ public class HomeAction extends ActionSupport implements SessionAware {
 					dateFormat = new SimpleDateFormat(CommonsConstants.DATE_FORMAT_TRX_PM);
 				
 				Date dateTemp = dateFormat.parse(tr.getTransactionDate());
-//				logger.info("Dates: "+dateFormatResult.format(dateTemp));
+//				//logger.info("Dates: "+dateFormatResult.format(dateTemp));
 				tr.setTransactionDate(dateFormatResult.format(dateTemp));
 			}
 		} catch (ParseException e) {

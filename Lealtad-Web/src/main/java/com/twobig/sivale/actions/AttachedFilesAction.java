@@ -23,7 +23,6 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TPublicationService;
-import com.twobig.sivale.service.impl.ExcelServiceImplTest;
 
 
 
@@ -135,14 +134,14 @@ public class AttachedFilesAction extends ActionSupport implements SessionAware {
 				
 				String directory = PathConstants.ATTACHED_DIRECTORY + pub.gettCampaignId() + File.separator + pub.getPublicationId();
 				String pathfile = directory + File.separator + attachedFile.getFileName() + "." + attachedFile.getFileExtension();
-//				logger.info("**** archivo adjunto a eliminar: "+ pathfile);
+//				//logger.info("**** archivo adjunto a eliminar: "+ pathfile);
 				File file = new File(pathfile);
 				if(file.delete()){}
-//				logger.info("**** Se eliminó archivo adjunto");
+//				//logger.info("**** Se eliminó archivo adjunto");
 			}
 			
 		}catch(Exception e){
-//			logger.info("Error al eliminar archivo adjunto");
+//			//logger.info("Error al eliminar archivo adjunto");
 		}
 		
 		setMessage(SUCCESS_CODE, SUCCESS_DELETE_ATTACHEDFILE);

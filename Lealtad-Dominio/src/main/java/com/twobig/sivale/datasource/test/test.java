@@ -59,10 +59,10 @@ public class test {
 			userDetails.put("userName", 		tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
 			userDetails.put("cardNumber", 		tUserLogin.getTjCardNumber());
 			userDetails.put("clientId", 		tUserLogin.gettCompanies().getIdCompany());	
-//			logger.info(userDetails.toString());
+//			//logger.info(userDetails.toString());
 			
 		} else {
-//			logger.info("Usuario o password incorrectos!");
+//			//logger.info("Usuario o password incorrectos!");
 		}
 		
 	}
@@ -96,10 +96,10 @@ public class test {
 			userDetails.put("userName", 		tUserLogin.getFirstName()+" "+tUserLogin.getLastName1()+" "+tUserLogin.getLastName2());
 			userDetails.put("cardNumber", 		tUserLogin.getTjCardNumber());
 			userDetails.put("clientId", 		tUserLogin.gettCompanies().getIdCompany());	
-//			logger.info(userDetails.toString());
+//			//logger.info(userDetails.toString());
 			
 		} else {
-//			logger.info("Usuario o password incorrectos!");
+//			//logger.info("Usuario o password incorrectos!");
 		}
 	}
 	
@@ -111,8 +111,8 @@ public class test {
 		List<CatClassificationCampaign> clasificaciones = cccs.getCatClassificationCampaignByUserId(7);
 		
 		for (CatClassificationCampaign catClassificationCampaign : clasificaciones) {
-//			logger.info(catClassificationCampaign.toString());
-//			logger.info(catClassificationCampaign.getCatViews().getLogos());
+//			//logger.info(catClassificationCampaign.toString());
+//			//logger.info(catClassificationCampaign.getCatViews().getLogos());
 		}
 		
 	}
@@ -124,8 +124,8 @@ public class test {
 				cccs.getCampaignByUserIdAndClassificationCampaignsId(7, 1);
 		
 		for (CampaignDetailBean campaignDetailBean2 : campaignDetailBeanList) {
-//			logger.info(campaignDetailBean2.toString());
-//			logger.info(campaignDetailBean2.getClassification());
+//			//logger.info(campaignDetailBean2.toString());
+//			//logger.info(campaignDetailBean2.getClassification());
 		}
 	}
 	
@@ -137,7 +137,7 @@ public class test {
 		List<TPublication> publicaciones = cccs.getTPublicationCampaignId(1, 1);
 		
 		for (TPublication tPublication : publicaciones) {
-//			logger.info(tPublication.toString() + " ");
+//			//logger.info(tPublication.toString() + " ");
 		}
 	}
 	
@@ -151,10 +151,10 @@ public class test {
 		if(publicationBean != null){
 			
 			for (TAttachedFile files : publicationBean.getListFiles()) {
-//				logger.info(files.toString());
+//				//logger.info(files.toString());
 			}
 			
-//			logger.info(publicationBean.getHtml());
+//			//logger.info(publicationBean.getHtml());
 		}
 	}
 	
@@ -168,13 +168,13 @@ public class test {
 		if(publicationBean != null){
 			
 			for (TAttachedFile files : publicationBean.getListFiles()) {
-//				logger.info(files.toString());
+//				//logger.info(files.toString());
 			}
 			
-//			logger.info(publicationBean.getHtml());
+//			//logger.info(publicationBean.getHtml());
 		}
 		else {
-//			logger.info("No existe la informacion solicitada");
+//			//logger.info("No existe la informacion solicitada");
 		}
 	}
 			
@@ -192,13 +192,13 @@ public class test {
 		try {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
-//			logger.info(endDate);
+//			//logger.info(endDate);
 
 			searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
 			searchCampaignBean.setStartDate(startDate);
 			searchCampaignBean.setEndDate(endDate);
-//			logger.info(searchCampaignBean.toString());
+//			//logger.info(searchCampaignBean.toString());
 			searchCampaignBean.setClassificationName1("cLaSe5");
 			searchCampaignBean.setClassificationName2("CLAS");
 			
@@ -209,7 +209,7 @@ public class test {
 		List<CampaignDetailBean> listCampaignDetailBean =  cccs.FilterCampaign(7, searchCampaignBean);
 		
 		for (CampaignDetailBean campaignDetailBean : listCampaignDetailBean) {
-//			logger.info(campaignDetailBean);
+//			//logger.info(campaignDetailBean);
 		}
 
 	}
@@ -226,14 +226,14 @@ public class test {
 		try {
 			Date startDate = format.parse("2015-12-01");
 			Date endDate = format.parse("2016-01-01");
-//			logger.info(endDate);
+//			//logger.info(endDate);
 
 			//searchCampaignBean.setClassificationParentId(1);
 			searchCampaignBean.setCampaignName("camp");
 			searchCampaignBean.setCompany("fordt");
 			//searchCampaignBean.setStartDate(startDate);
 			//searchCampaignBean.setEndDate(endDate);
-//			logger.info(searchCampaignBean.toString());
+//			//logger.info(searchCampaignBean.toString());
 			searchCampaignBean.setClassificationName1("cLaSe");
 			searchCampaignBean.setClassificationName2("");
 			
@@ -244,7 +244,7 @@ public class test {
 		List<CampaignDetailAdminBean> listCampaignDetailBean =  cccs.FilterCampaignAdmin(1, searchCampaignBean);
 		
 		for (CampaignDetailAdminBean campaignDetailBean : listCampaignDetailBean) {
-//			logger.info(campaignDetailBean);
+//			//logger.info(campaignDetailBean);
 		}
 	}
 	
@@ -256,14 +256,14 @@ public class test {
 		
 		for (TypeTransaccion typeTransaccion : transactionsList) {
 			 System.out.print(typeTransaccion.getNumberCard());
-//			 logger.info(" "+typeTransaccion.getTransactionDate());
+//			 //logger.info(" "+typeTransaccion.getTransactionDate());
 			 
 		}
 		
 		try {
 			
 			Double saldo = cccs.getBalance("5273740100060052");
-//			logger.info("Saldo: "+saldo);
+//			//logger.info("Saldo: "+saldo);
 		} catch (TravelsNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
