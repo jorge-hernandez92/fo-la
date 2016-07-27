@@ -21,7 +21,7 @@
 <!-- links provicinales  -->
 <link rel="stylesheet" href="css/sticky-footer.css">
 <link rel="stylesheet" type="text/css" href="css/normalize.css" />
-<link rel="stylesheet" type="text/css" href="css/set2.css" />
+<!-- -----------------------------------------------------------------------------<link rel="stylesheet" type="text/css" href="css/set2.css" /> -->
 <link href="css/default-fonts.css" rel="stylesheet">
 
 <!-- Nuevo rediseño -->
@@ -29,6 +29,14 @@
 
 <!-- ESTILO DEL CLIENTE  -->
 <link rel="stylesheet" type="text/css" href="css/ford/ford-style.css" />
+
+<!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
+<!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
+<!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
+<!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
+<!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
+<link rel="stylesheet" type="text/css" href="css/style_button_home_th/hover.css" />
+<link rel="stylesheet" type="text/css" href="css/style_button_home_th/demo-page.css" />
 
 
 <!-- JS (load angular, ui-router, and our custom js file) -->

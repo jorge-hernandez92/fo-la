@@ -19,34 +19,24 @@
 		</div>
 	
 				
-		<div class="row" style="margin-left: 30px;" data-ng-controller="getClassifications">
+		<div class="row" style="margin-left: 10px;" data-ng-controller="getClassifications">
 
 			<div class="col-xs-6 col-md-2">
-				<div class="text-center" ng-repeat="class in classifications">
-					
-					<div class="thumbnail" >
-							<div class="thumbnail2 div-sivale portfolio-box">
-								<div class="thumbnail2_wrapper">
-									<a href="#" data-ng-click="selectClassification(class)"
-										ui-sref="campaigns"> <img
-										ng-src="img/company_logo/{{class.catViews.logos}}/logo.png"
-										class="img-responsive" alt="">
-										<div class="portfolio-box-caption">
-											<div class="portfolio-box-caption-content">
-												<div class="project-name">Ver Campañas</div>
-											</div>
-										</div>
-									</a>
-								</div>
-							</div>
-						</div>
-					
-				</div>
+
+			<br>
+
+			<div class="col-xs-6 col-md-3" ng-repeat="class in classifications">
+					<a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" 
+						class="hvr-glow" style="border: 1px solid #bfbfbf;border-radius: 10px;">
+					</a>
 			</div>
+				
+			</div>
+			
+
 
 		</div>
-
-<br><br><br><br>
+		
 
 	<a href="#contact" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:400px;border: 0px;"> 
 		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
@@ -61,6 +51,8 @@
 	</a>
 	
 </header>
+
+
 
 </section>
 
@@ -174,6 +166,7 @@
 				</div>
 			</div>
 		</div>
+		
 	</div>
 </section>
 
