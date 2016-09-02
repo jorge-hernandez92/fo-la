@@ -5,7 +5,7 @@ $(document).ready(function () {
 	var refreshId = setInterval( function() 
     {
 		
-		if(r1>=4){
+		if(r1>=3){
 			r1=1;
 		}
 		$('.header-image').css({ backgroundImage: "url(img/ford/dynamic_background_home/" + r1 + "h.jpg)" });

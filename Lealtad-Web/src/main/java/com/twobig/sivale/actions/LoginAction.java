@@ -223,7 +223,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		
 	}
 
-	@Action(value="logout", results = @Result(name="success", location="/secured/login.jsp"))
+	@Action(value="logout", results = @Result(name="success", location="/secured/loginFord.jsp"))
 	public String logout() {
 		
 		session.clear();

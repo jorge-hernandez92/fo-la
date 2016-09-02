@@ -12,7 +12,7 @@
 
 			<div class="col-xs-6 col-md-3">
 				<div class="text-center" >
-				 	<h3>Da clic en el logo para ver las campañas del programa</h3>					
+				 	<h3>Da clic en el logo para ver las campañas/promociones de cada área</h3>					
 				</div>
 			</div>
 

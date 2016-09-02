@@ -33,25 +33,21 @@
 </head>
 <body class="back-image" id="bg">
 
-	<nav class="navbar navbar-menu-ford navbar-fixed-top">
-		<div class="container-fluid">
-			<div class="navbar-header">
-				<a class="navbar-brand" > <img style="max-width:300px; margin-top: -7px;" src="img/company_logo/Ford/logo.png">
-				</a>
-			</div>
-		</div>
-	</nav>
-	
-	<br><br><br>
+<!-- 	<nav class="navbar navbar-menu-ford navbar-fixed-top"> -->
+<!-- 		<div class="container-fluid"> -->
+<!-- 			<div class="navbar-header"> -->
+<!-- 				<a class="navbar-brand" > <img style="max-width:300px; margin-top: -7px;" src="img/company_logo/Ford/logo.png"> -->
+<!-- 				</a> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 	</nav> -->
 
 	<div class="row">
 		<div class="col-md-1"></div>
-  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 40px;">Bienvenido a los 
-  		Programas <br> de Incentivos </h2></div>
+  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 40px;">Bienvenido Ford Elite</h2></div>
  		<div class="col-md-1"></div>
 	</div>
 	
-	<br><br><br><br>
 	<br><br>
 	
 	<div class="row">
@@ -96,7 +92,17 @@
 			</div>
   		</div>
 	</div>
-	
+
+	<div class="row">
+		<div class="col-md-3"></div>
+		<div class="col-md-6"></div>
+		<div class="col-md-3">
+			<img style="max-width: 300px; margin-top: -7px;"
+				src="img/company_logo/Ford/LOGO_ELITE_FORD.png">
+		</div>
+
+	</div>
+
 	<footer class="footerLogin">
 		<div class="header_top">
 			<div >
@@ -107,7 +113,7 @@
 							style="font-size: 14px; font-family: GothamBold; color: white;">Programa
 							administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3>
 					</div>
-					<div class="col-md-3"></div>
+					<div class="col-md-3"><img style="max-width:300px; margin-top: -7px;"></div>
 
 				</div>
 			</div>
