@@ -47,6 +47,8 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByUserId(int userId) {
+		
+		List<CatClassificationCampaign> catClassificationCampaigParents = new ArrayList<CatClassificationCampaign>();
 
 		List<RealUserCampaign> listA = realUsersCampaignsDAO.getRealUserCampaignByUserId(userId);
 
@@ -54,6 +56,10 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 
 		for (RealUserCampaign listA2 : listA) {
 			campaignsByUser.add(listA2.getCampaignId());
+		}
+		
+		if(campaignsByUser.isEmpty()){
+			return catClassificationCampaigParents; 
 		}
 
 		List<TCampaign> tCampaign = tCampaignDAO.getTCampaignByCampaignId(campaignsByUser);
@@ -77,7 +83,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 		List<CatClassificationCampaign> catClassificationCampaig = catClassificationCampaignDAO
 				.getCatClassificationCampaignByClassificationId(classificationId);
 
-		List<CatClassificationCampaign> catClassificationCampaigParents = new ArrayList<CatClassificationCampaign>();
+		
 
 		for (CatClassificationCampaign catClassificationCampaign : catClassificationCampaig) {
 

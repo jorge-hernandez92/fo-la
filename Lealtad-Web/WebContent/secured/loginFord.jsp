@@ -57,7 +57,7 @@
   			
   			<br><br>
 
-				<form class="form-inline" role="form" method="post" action="login">
+				<form class="form-inline" role="form" method="post" action="Ford">
 					<s:if test="%{error != null}">
 						<div class="alert alert-danger" role="alert">
 							<span class="glyphicon glyphicon-exclamation-sign"
@@ -101,8 +101,9 @@
 					<div class="col-md-6">
 						<br><br><br><br>
 						<h3 class="text-center"
-							style="font-size: 14px; font-family: GothamBold; color: white;">Programa
-							administrado por Sí Vale México, S.A. de C.V. 2016 ©</h3>
+							style="font-size: 14px; font-family: GothamBold; color: white;">Plataforma elaborada y administrada 
+							por Sí Vale México, S.A. de C.V., para uso exclusivo de Ford Motor Company de México, 
+							S.A. de C.V. y sus filiales.</h3>
 					</div>
 					<div class="col-md-3">
 						<img style="max-width: 300px; margin-top: -7px;"

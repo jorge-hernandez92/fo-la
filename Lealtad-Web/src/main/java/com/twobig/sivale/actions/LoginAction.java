@@ -32,6 +32,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private TUser user;
 	private String error = null;
 	
+	
 	@Override
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
@@ -167,6 +168,17 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	public String loginFord() {
 		
 		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
+		
+		TUser userS = (TUser)session.get("user");
+		
+		if(userS!= null){
+			
+			if(userS.getCatProfile() == CommonsConstants.CAT_PROFILE_ADMIN){
+        		return "admin";
+        	}
+        	return "user";
+			
+		}
 
 		if ( username == null || password == null || username.equals("") || password.equals("")){
 			
@@ -185,6 +197,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 				
 		        if (user != null){
 		        	session.put("user", user);
+		        	session.put("mensaje", 0);
 		        	
 		        	if(user.getCatProfile() == CommonsConstants.CAT_PROFILE_ADMIN){
 		        		return "admin";
@@ -209,6 +222,7 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			
 	        if (user != null){
 	        	session.put("user", user);
+	        	session.put("mensaje", 0);
 	        	
 	        	if(user.getCatProfile() == 0){
 	        		return "admin";

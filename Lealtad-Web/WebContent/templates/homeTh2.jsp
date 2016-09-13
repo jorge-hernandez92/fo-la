@@ -81,7 +81,6 @@
 <!-- 				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec  -->
 <!-- 				ullamcorper nulla non metus auctor fringilla. -->
 <!-- 				</h4> -->
-				
 <!-- 				<br><br><br> -->
 				
 			</div>
@@ -250,9 +249,9 @@
 		
 		<div class="row">
 			<div class="col-md-3"></div>
-  			<div class="col-md-6"><h5 class="text-center" style="color:rgb(255,255,255)">Programa 
-  										administrado por Sí Vale 
-  										México, S.A. de C.V. 2016 ©
+  			<div class="col-md-6"><h5 class="text-center" style="color:rgb(255,255,255)">Plataforma elaborada y administrada 
+							por Sí Vale México, S.A. de C.V., para uso exclusivo de Ford Motor Company de México, 
+							S.A. de C.V. y sus filiales.
   								  </h5>
   			</div>
  			<div class="col-md-3"></div>

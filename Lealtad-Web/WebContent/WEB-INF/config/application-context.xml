@@ -7,7 +7,7 @@
   http://www.springframework.org/schema/context
   http://www.springframework.org/schema/context/spring-context-3.0.xsd 
   http://www.springframework.org/schema/tx 
-  http://www.springframework.org/schema/tx/spring-tx.xsd" >
+  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
 	<tx:annotation-driven />
 
@@ -19,7 +19,7 @@
 		destroy-method="close">
 		
 		<property name="driverClass" value="oracle.jdbc.OracleDriver" />
- 		<property name="jdbcUrl" value="jdbc:oracle:thin:@201.166.171.44:1521:xe" />
+ 		<property name="jdbcUrl" value="jdbc:oracle:thin:@201.166.171.41:1521:orcl" />
 <!-- 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" /> -->
 		<property name="user" value="bolinf" />
 		<property name="password" value="bolinf" />	

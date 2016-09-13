@@ -10,6 +10,7 @@ var STATE_CAMPAIGNS   = 'CAMPAIGNS';
 var STATE_CAMPAIGN    = 'CAMPAIGN';
 var STATE_PUBLICATION = 'PUBLICATION';
 var currentState = '';
+var startSession = 0; 
 
 var appres = angular.module('app', [ 'ngMessages', 'daterangepicker',
 		'ngTable', 'ui.router', 'angular-carousel' ]);
@@ -253,6 +254,13 @@ appres
 												$scope.menuCampaign = true;
 											}
 											console.log(JSON.stringify(data));
+											
+											
+											if(data.mensaje == 1){
+												$('#myModal').modal('show');
+											}
+											
+											console.log(data.mensaje);
 
 										})
 								.error(function(data, status, headers, config) {
@@ -577,6 +585,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#p-detail-publication').hide();
 			
 			$('#menu-files-publication').hide();
+			
+			//$('#myModal').modal('show');
+			
 				
 		}
 	})
