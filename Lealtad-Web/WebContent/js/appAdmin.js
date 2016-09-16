@@ -1151,7 +1151,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('body').removeClass('image-th-p');
 			
@@ -1176,7 +1176,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#init').removeClass('image-th-p');
 			
@@ -1200,7 +1200,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#init').removeClass('image-th-p');
 			
@@ -1224,7 +1224,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#init').removeClass('image-th-p');
 			
@@ -1248,7 +1248,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#init').removeClass('image-th-p');
 			
@@ -1274,7 +1274,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').addClass('image-Admin');
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#li-campaign').show();
 			
@@ -1293,7 +1293,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
 			$('#init').removeClass('image-th-p');
 			

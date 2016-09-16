@@ -44,7 +44,7 @@
 
 	<div class="row">
 		<div class="col-md-1"></div>
-  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 40px;">Bienvenido a Ford Elite</h2></div>
+  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 40px;">Bienvenido</h2></div>
  		<div class="col-md-1"></div>
 	</div>
 	

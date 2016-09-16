@@ -283,7 +283,7 @@
 </div>
 
 	<!-- Navigation -->
-	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top"
+	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top" style="background-color: white;"
 		data-ng-controller="updateSession">
 		
 			<div class="navbar-header">
