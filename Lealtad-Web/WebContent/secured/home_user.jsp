@@ -17,6 +17,7 @@
 <link rel="stylesheet" href="css/angular-carousel.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sb-admin-2.css">
+
 <link ng-href="css/{{css}}" rel="stylesheet">
 <!-- links provicinales  -->
 <link rel="stylesheet" href="css/sticky-footer.css">
@@ -70,6 +71,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
