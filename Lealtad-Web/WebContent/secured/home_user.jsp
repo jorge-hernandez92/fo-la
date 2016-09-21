@@ -70,7 +70,6 @@
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -301,16 +300,16 @@
 					{{user.tjCardNumber}}
 			</a></li>
 			
-			<li><a href="logout"> <i class="fa fa-sign-out color-default-ford"></i> 
-					Salir
-			</a></li>
-			
 			<li><a href="#contact" class="page-scroll" ng-click="dudas()" > <i class="fa fa-question color-default-ford"></i> 
 					Dudas o preguntas
 			</a></li>
 			
 			<li><a href="#contact" data-toggle="modal" data-target="#myModal" > <i class="fa fa-exclamation-triangle color-default-ford"></i> 
 					Aviso
+			</a></li>
+			
+			<li><a href="logout"> <i class="fa fa-sign-out color-default-ford"></i> 
+					Salir
 			</a></li>
 			
 		</ul>

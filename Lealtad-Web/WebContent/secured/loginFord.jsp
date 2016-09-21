@@ -33,14 +33,16 @@
 </head>
 <body class="back-image" id="bg">
 
-<!-- 	<nav class="navbar navbar-menu-ford navbar-fixed-top"> -->
-<!-- 		<div class="container-fluid"> -->
-<!-- 			<div class="navbar-header"> -->
-<!-- 				<a class="navbar-brand" > <img style="max-width:300px; margin-top: -7px;" src="img/company_logo/Ford/logo.png"> -->
-<!-- 				</a> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
-<!-- 	</nav> -->
+	<nav class="navbar navbar-menu-ford navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" > <img style="max-width:250px; margin-top: -7px;" src="img/company_logo/Ford/LOGO_ELITE_FORD.png">
+				</a>
+			</div>
+		</div>
+	</nav>
+	
+	<br><br>
 
 	<div class="row">
 		<div class="col-md-1"></div>
@@ -48,7 +50,7 @@
  		<div class="col-md-1"></div>
 	</div>
 	
-	<br><br>
+	<br><br><br><br>
 	
 	<div class="row">
   		<div class="col-md-3 center-block">
@@ -97,18 +99,19 @@
 		<div class="header_top">
 			<div >
 				<div class="row">
-					<div class="col-md-3"></div>
-					<div class="col-md-6">
+					
+					<div class="col-md-12">
 						<br><br><br><br>
 						<h3 class="text-center"
 							style="font-size: 14px; font-family: GothamBold; color: white;">Plataforma elaborada y administrada 
 							por Sí Vale México, S.A. de C.V., para uso exclusivo de Ford Motor Company de México, 
 							S.A. de C.V. y sus filiales.</h3>
 					</div>
-					<div class="col-md-3">
-						<img style="max-width: 300px; margin-top: -7px;"
-							src="img/company_logo/Ford/LOGO_ELITE_FORD.png">
-					</div>
+					
+<!-- 					<div class="col-md-3"> -->
+<!-- 						<img style="max-width: 300px; margin-top: -7px;" -->
+<!-- 							src="img/company_logo/Ford/LOGO_ELITE_FORD.png"> -->
+<!-- 					</div> -->
 
 				</div>
 			</div>
