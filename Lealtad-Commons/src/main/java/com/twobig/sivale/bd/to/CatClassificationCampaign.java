@@ -42,7 +42,7 @@ public class CatClassificationCampaign implements java.io.Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cat_classification_campaigns_i")
 	@SequenceGenerator(name = "cat_classification_campaigns_i", sequenceName = "CLASSIFICATION_CAMPAIGNS_SEQ", initialValue = 0, allocationSize = 0)
-	@Column(name = "cat_classification_campaigns_i", unique = true, nullable = false)
+	@Column(name = "classification_campaign_id", unique = true, nullable = false)
 	public Integer getCatClassificationCampaignsId() {
 		return this.catClassificationCampaignsId;
 	}

@@ -58,13 +58,24 @@
 						</tr>
 					</table>
 				</div>
+				
 				<div class="navbar-right padding15">
-				<button type="button" class="btn btn-primary" ui-sref="newPublication">
-							
-							<i class="fa fa-plus" aria-hidden="true"></i>
-  							<span  aria-hidden="true"></span>Añadir Publicación
-				</button>
+					
+					<button type="button" class="btn btn-primary"
+						ui-sref="newPublication">
+
+						<i class="fa fa-plus" aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Añadir Publicación
+					</button>
+				
+					<button type="button" class="btn btn-primary"
+						ui-sref="uploadRMFile">
+
+						<i class="fa fa-plus" aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Añadir Reporte de Movimientos
+					</button>
 				</div>
+				
 			</div>
 		</div>
 	</div>

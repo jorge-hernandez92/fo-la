@@ -1307,4 +1307,27 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 		}
 	})
+	
+		.state('uploadRMFile', {
+		url : '/cargar_reporte_de_movimientos',
+		templateUrl : 'templates/admin/UploadRMFile.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-Admin');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+		}
+	})
+	
 })
