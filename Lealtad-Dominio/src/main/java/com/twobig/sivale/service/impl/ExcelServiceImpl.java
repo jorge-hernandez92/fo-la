@@ -27,6 +27,62 @@ import com.twobig.sivale.service.ExcelService;
 public class ExcelServiceImpl implements ExcelService {
 
 	//private static final Logger logger = LogManager.getLogger(ExcelServiceImpl.class);
+	
+	@Override
+	public ExcelBean getExcelData(File file) {
+
+		List<String> header = new ArrayList<String>();
+		List<HashMap<String, String>> rows = new ArrayList<HashMap<String, String>>();
+
+		try {
+
+			XSSFWorkbook workbook = new XSSFWorkbook(file);
+
+			XSSFSheet sheet;
+
+			// it takes the first page of the document 
+			sheet = workbook.getSheetAt(0);
+
+			Iterator<Row> rowIterator = sheet.iterator();
+
+			int count = 0;
+
+			while (rowIterator.hasNext()) {
+				Row row = rowIterator.next();
+				Iterator<Cell> cellIterator = row.cellIterator();
+
+				int colum = 0;
+				HashMap<String, String> map = new HashMap<String, String>();
+
+				while (cellIterator.hasNext()) {
+
+					Cell cell = cellIterator.next();
+					cell.setCellType(Cell.CELL_TYPE_STRING);
+
+					if (count == 0) {
+
+						header.add(cell.getStringCellValue());
+
+					} else if(colum < header.size()){
+						map.put(header.get(colum), cell.getStringCellValue());
+					} else{
+						//logger.info("------------- fila : " + count + "-------------");
+					}
+					colum++;
+				}
+
+				if (map.size() > 0)
+					rows.add(map);
+				count++;
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+
+		return new ExcelBean(header, rows);
+	}
 
 	@Override
 	public ExcelBean getExcelData(String path, String sheetName) {
