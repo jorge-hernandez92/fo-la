@@ -7,8 +7,8 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -20,6 +20,7 @@ import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
+import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.PathConstants;
@@ -35,7 +36,7 @@ import com.twobig.sivale.utils.ImageUtils;
 @Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TCampaignsServiceImpl implements TCampaignsService {
 	
-	//private static final Logger logger = LogManager.getLogger(TCampaignsServiceImpl.class);
+	private static final Logger logger = LogManager.getLogger(TCampaignsServiceImpl.class);
 
 	@Autowired
 	public RealUserCampaignDAO realUsersCampaignsDAO;
@@ -347,6 +348,18 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		tCampaign.setCampaignId(17);
 		tCampaign.setCampaignId(campaignId);
 		tCampaignDAO.deleteTCampaign(tCampaign);
+		return null;
+	}
+
+	
+	@Override
+	public String uploadRMFile(TCampaign tCampaign, File file) {
+		
+		ExcelServiceImpl excelservice = new ExcelServiceImpl();
+		ExcelBean excelBean = excelservice.getExcelData(file);
+		
+		logger.info(excelBean.getHeader().toString());
+		
 		return null;
 	}
 

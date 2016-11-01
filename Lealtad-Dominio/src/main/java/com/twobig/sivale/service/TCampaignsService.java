@@ -1,5 +1,6 @@
 package com.twobig.sivale.service;
 
+import java.io.File;
 import java.util.List;
 
 import com.twobig.sivale.bd.to.TCampaign;
@@ -20,5 +21,7 @@ public interface TCampaignsService {
 	public String updateCampaign(FormNewCampaignBean formNewCampaignBean);
 	
 	public String deleteCampaign(Integer campaignId);
+	
+	public String uploadRMFile(TCampaign tCampaign, File file);
 	
 }

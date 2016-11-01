@@ -9,9 +9,11 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.service.TCampaignsService;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -27,6 +29,9 @@ public class UploadRMFileAction extends ActionSupport implements SessionAware{
 	private String[] fileFileName;
 	
 	private static final Logger logger = LogManager.getLogger(UploadFileAction.class);
+	
+	@Autowired
+	private TCampaignsService tCampaignsService;
 	
 	@Action(value = "UploadRMFile", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
@@ -53,7 +58,7 @@ public class UploadRMFileAction extends ActionSupport implements SessionAware{
 				logger.info("Archivo: "+file[0].getPath());
 				logger.info("Nombre Archivo: "+fileFileName[0]);
 				
-				
+				tCampaignsService.uploadRMFile(campaign, file[0]);
 			}
 			else{
 				logger.info("No se cargó archivo");
