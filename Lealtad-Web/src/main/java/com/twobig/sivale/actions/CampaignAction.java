@@ -113,9 +113,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			"session", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String updateSessionAction() {
 		
-		Integer mensaje = (Integer) session.get("mensaje");
-		mensaje++;
-		session.put("mensaje", mensaje);
+//		Integer mensaje = (Integer) session.get("mensaje");
+//		mensaje++;
+//		session.put("mensaje", mensaje);
 		
 		return SUCCESS;
 

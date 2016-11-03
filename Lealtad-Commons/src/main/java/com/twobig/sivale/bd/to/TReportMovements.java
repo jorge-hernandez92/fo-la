@@ -33,6 +33,12 @@ public class TReportMovements implements java.io.Serializable {
 	private Integer monto;
 	private String movements;
 	private String observaciones;
+	private String month;
+	private Integer year;
+	private String compania;
+	
+	
+	public static final String  FIELD_CAMPAIGN= "campaign";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
@@ -59,7 +65,7 @@ public class TReportMovements implements java.io.Serializable {
 	
 	@Id
 	@ManyToOne(fetch = FetchType.EAGER)
-	@JoinColumn(name = "fk_user", nullable = true)
+	@JoinColumn(name = "fk_user", nullable = false)
 	public TUser getUser() {
 		return user;
 	}
@@ -68,7 +74,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.user = user;
 	}
 	
-	@Column(name = "date", unique = true, nullable = false)
+	@Column(name = "rm_date", unique = true, nullable = true)
 	public Date getDate() {
 		return date;
 	}
@@ -77,7 +83,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.date = date;
 	}
 	
-	@Column(name = "id_stars", unique = true, nullable = false)
+	@Column(name = "id_stars", unique = true, nullable = true)
 	public String getIdStars() {
 		return idStars;
 	}
@@ -86,7 +92,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.idStars = idStars;
 	}
 	
-	@Column(name = "puesto_en_stars", unique = true, nullable = false)
+	@Column(name = "puesto_en_stars", unique = true, nullable = true)
 	public String getPuestoEnStars() {
 		return puestoEnStars;
 	}
@@ -95,7 +101,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.puestoEnStars = puestoEnStars;
 	}
 	
-	@Column(name = "employee_name", unique = true, nullable = false)
+	@Column(name = "employee_name", unique = true, nullable = true)
 	public String getEmployeeName() {
 		return employeeName;
 	}
@@ -104,7 +110,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.employeeName = employeeName;
 	}
 	
-	@Column(name = "sivale_name", unique = true, nullable = false)
+	@Column(name = "sivale_name", unique = true, nullable = true)
 	public String getSivaleName() {
 		return sivaleName;
 	}
@@ -113,7 +119,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.sivaleName = sivaleName;
 	}
 	
-	@Column(name = "card_number", unique = true, nullable = false)
+	@Column(name = "card_number", unique = true, nullable = true)
 	public String getCardNumber() {
 		return cardNumber;
 	}
@@ -122,7 +128,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.cardNumber = cardNumber;
 	}
 	
-	@Column(name = "bid", unique = true, nullable = false)
+	@Column(name = "bid", unique = true, nullable = true)
 	public String getBid() {
 		return bid;
 	}
@@ -131,7 +137,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.bid = bid;
 	}
 	
-	@Column(name = "razon_social", unique = true, nullable = false)
+	@Column(name = "razon_social", unique = true, nullable = true)
 	public String getRazonSocial() {
 		return razonSocial;
 	}
@@ -140,7 +146,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.razonSocial = razonSocial;
 	}
 	
-	@Column(name = "monto", unique = true, nullable = false)
+	@Column(name = "monto", unique = true, nullable = true)
 	public Integer getMonto() {
 		return monto;
 	}
@@ -149,7 +155,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.monto = monto;
 	}
 	
-	@Column(name = "movements", unique = true, nullable = false)
+	@Column(name = "movements", unique = true, nullable = true)
 	public String getMovements() {
 		return movements;
 	}
@@ -158,7 +164,7 @@ public class TReportMovements implements java.io.Serializable {
 		this.movements = movements;
 	}
 	
-	@Column(name = "observaciones", unique = true, nullable = false)
+	@Column(name = "observaciones", unique = true, nullable = true)
 	public String getObservaciones() {
 		return observaciones;
 	}
@@ -166,6 +172,41 @@ public class TReportMovements implements java.io.Serializable {
 	public void setObservaciones(String observaciones) {
 		this.observaciones = observaciones;
 	}
-	
+
+	@Column(name = "month", unique = true, nullable = true)
+	public String getMonth() {
+		return month;
+	}
+
+	public void setMonth(String month) {
+		this.month = month;
+	}
+
+	@Column(name = "year", unique = true, nullable = true)
+	public Integer getYear() {
+		return year;
+	}
+
+	public void setYear(Integer year) {
+		this.year = year;
+	}
+
+	@Column(name = "compania", unique = true, nullable = true)
+	public String getCompania() {
+		return compania;
+	}
+
+	public void setCompania(String compania) {
+		this.compania = compania;
+	}
+
+	@Override
+	public String toString() {
+		return "TReportMovements [campaign=" + campaign + ", user=" + user + ", reportMovementsId=" + reportMovementsId
+				+ ", date=" + date + ", idStars=" + idStars + ", puestoEnStars=" + puestoEnStars + ", employeeName="
+				+ employeeName + ", sivaleName=" + sivaleName + ", cardNumber=" + cardNumber + ", bid=" + bid
+				+ ", razonSocial=" + razonSocial + ", monto=" + monto + ", movements=" + movements + ", observaciones="
+				+ observaciones + "]";
+	}
 
 }
