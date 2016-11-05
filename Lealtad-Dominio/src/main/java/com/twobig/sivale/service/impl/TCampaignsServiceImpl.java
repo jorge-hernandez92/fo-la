@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -18,18 +17,15 @@ import org.springframework.stereotype.Service;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealUserCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
-import com.twobig.sivale.bd.to.TReportMovements;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.CampaignDetailAdminBean;
 import com.twobig.sivale.beans.CampaignDetailBean;
-import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
-import com.twobig.sivale.dao.TReportMovementsDAO;
 import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.utils.ImageUtils;
@@ -52,9 +48,6 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 	
 	@Autowired
 	public UserDAO userDAO;
-	
-	@Autowired
-	public TReportMovementsDAO tReportMovementsDAO;
 
 	@Override
 	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(int userId,
@@ -357,48 +350,6 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		return null;
 	}
 
-	
-	@Override
-	public String uploadRMFile(TCampaign tCampaign, File file) {
-		
-		ExcelServiceImpl excelservice = new ExcelServiceImpl();
-		ExcelBean excelBean = excelservice.getExcelData(file);
-		
-		List<HashMap<String, String>> rows = excelBean.getRows();
-		
-		List<TReportMovements> listTReportMovements = new ArrayList<TReportMovements>();
-		
-		TReportMovements tReportMovements;
-		
-		tReportMovementsDAO.deleteAllByCampaign(tCampaign);
-		
-		for (HashMap<String, String> hashMap : rows) {
-			
-			tReportMovements = new TReportMovements();
-			
-			tReportMovements.setCampaign(tCampaign);
-			
-			tReportMovements.setMonth(hashMap.get("Mes Ejecución"));
-			tReportMovements.setYear(Integer.parseInt(hashMap.get("Año")));
-			tReportMovements.setIdStars(hashMap.get("ID STARS"));
-			tReportMovements.setPuestoEnStars(hashMap.get("Puesto en STARS"));
-			tReportMovements.setEmployeeName(hashMap.get("Nombre del empleado"));
-			tReportMovements.setSivaleName(hashMap.get("Nombre Sí vale"));
-			tReportMovements.setCardNumber(hashMap.get("Numero de Tarjeta Titular"));
-			tReportMovements.setBid(hashMap.get("BID"));
-			tReportMovements.setRazonSocial(hashMap.get("Razón Social"));
-			tReportMovements.setMonto(Integer.parseInt(hashMap.get("Monto")));
-			tReportMovements.setCompania(hashMap.get("Compañía"));
-			tReportMovements.setMovements(hashMap.get("Movimiento"));
-			tReportMovements.setObservaciones(hashMap.get("Observaciones"));
-			
-			listTReportMovements.add(tReportMovements);
-			
-			tReportMovementsDAO.insertRM(tReportMovements);
-			
-		}
-		
-		return null;
-	}
+
 
 }

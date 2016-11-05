@@ -1,14 +1,18 @@
 package com.twobig.sivale.dao;
 
+import java.util.List;
+
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
 
 public interface TReportMovementsDAO {
 	
-	public static final String QUERY_DELETE_ALL_BY_CAMPAIGN= "delete from TReportMovements where campaign = :campaign";
+	static final String QUERY_DELETE_ALL_BY_CAMPAIGN= "delete from TReportMovements where campaign = :campaign";
 	
-	public Boolean insertRM(TReportMovements tReportMovements);
+	Boolean insertRM(TReportMovements tReportMovements);
 	
-	public void deleteAllByCampaign(TCampaign tCampaign);
+	void deleteAllByCampaign(TCampaign tCampaign);
+	
+	List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId);
 
 }

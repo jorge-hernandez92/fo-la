@@ -1330,4 +1330,26 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		}
 	})
 	
+	.state('account_status', {
+		url : '/estado_de_cuenta',
+		templateUrl : 'templates/admin/account_status.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#init').removeClass('image-th-p');
+			
+			$('#init').addClass('image-Admin');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+		}
+	})
+	
 })

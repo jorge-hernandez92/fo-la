@@ -21,6 +21,7 @@ public class TReportMovements implements java.io.Serializable {
 	private static final long serialVersionUID = 1L;
 	private TCampaign campaign;
 	private TUser user;
+	private Integer campaignId;
 	private Integer reportMovementsId; 
 	private Date date; 
 	private String idStars;
@@ -38,7 +39,8 @@ public class TReportMovements implements java.io.Serializable {
 	private String compania;
 	
 	
-	public static final String  FIELD_CAMPAIGN= "campaign";
+	public static final String  FIELD_CAMPAIGN = "campaign";
+	public static final String  FIELD_CAMPAIGN_ID = "campaignId";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
@@ -74,6 +76,15 @@ public class TReportMovements implements java.io.Serializable {
 		this.user = user;
 	}
 	
+	@Column(name = "fk_campaign", insertable = false, updatable = false)
+	public Integer getCampaignId() {
+		return campaignId;
+	}
+
+	public void setCampaignId(Integer campaignId) {
+		this.campaignId = campaignId;
+	}
+
 	@Column(name = "rm_date", unique = true, nullable = true)
 	public Date getDate() {
 		return date;
