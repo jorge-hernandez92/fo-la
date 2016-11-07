@@ -1095,6 +1095,30 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 /*********************************************************************************
 =============================== New Campaign End =================================
 *********************************************************************************/
+					
+					$scope.getRM = function() {
+
+						var data = angular.toJson($scope.campaign);
+						
+						console.log("FUNCION RM");
+
+						$http({
+									method : 'POST',
+									url : 'getListRMAction',
+									data : 'campaign=' + data,
+									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+								})
+								.success(
+										function(data, status, headers, config) {
+
+
+										}).error(function(data, status, headers, config) {
+
+								});
+						
+						
+					};
+					
 
 				}])
 

@@ -25,9 +25,9 @@
 
 			<div class="panel-body back-sivale">
 			
-				<div data-ng-controller="getCampaign" ng-cloak>
-					<table ng-table="tablePublications" class="table">
-						<tr ng-repeat="publication in $data">
+				<div data-ng-controller="getRM" ng-cloak>
+					<table  class="table">
+						<tr>
 							
 							<td title="'Compañia'" header-class="'text-left'"
 								sortable="'name'"></td>
