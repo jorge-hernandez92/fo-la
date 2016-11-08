@@ -1101,6 +1101,8 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						var data = angular.toJson($scope.campaign);
 						
 						console.log("FUNCION RM");
+						
+						
 
 						$http({
 									method : 'POST',
@@ -1110,7 +1112,32 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								})
 								.success(
 										function(data, status, headers, config) {
+											
+											$scope.rm = data;
+											console.log(JSON.stringify(data));
+											
+											$scope.tableRM = new NgTableParams({
+												page : 1,
+												count : 10,
+												filter : $scope.filters,
+											}, {
+												total : $scope.rm.length,
+												counts : [],
+												getData : function($defer, params) {
+													var filteredData = params.filter() ? $filter(
+															'filter')($scope.rm,
+															params.filter().myfilter)
+															: $scope.rm;
 
+													var orderedData = params.sorting() ? $filter(
+															'orderBy')(filteredData, params.orderBy())
+															: $scope.rm;
+
+													$defer.resolve(orderedData.slice(
+															(params.page() - 1) * params.count(),
+															params.page() * params.count()));
+												}
+											});
 
 										}).error(function(data, status, headers, config) {
 

@@ -1,6 +1,7 @@
 package com.twobig.sivale.service.impl;
 
 import java.io.File;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -9,11 +10,16 @@ import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Service;
 
+import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
+import com.twobig.sivale.beans.AccountStatusBean;
 import com.twobig.sivale.beans.ExcelBean;
+import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.RMConstants;
+import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.TReportMovementsDAO;
+import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.TReportMovementsService;
 
 @Service
@@ -22,6 +28,12 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	
 	@Autowired
 	public TReportMovementsDAO tReportMovementsDAO;
+	
+	@Autowired
+	public CatClassificationCampaignDAO catClassificationCampaignDAO;
+	
+	@Autowired
+	public CatClassificationCampaignService catClassificationCampaignService;
 
 	@Override
 	public String uploadRMFile(TCampaign tCampaign, File file) {
@@ -30,8 +42,6 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		ExcelBean excelBean = excelservice.getExcelData(file);
 		
 		List<HashMap<String, String>> rows = excelBean.getRows();
-		
-		//List<TReportMovements> listTReportMovements = new ArrayList<TReportMovements>();
 		
 		TReportMovements tReportMovements;
 		
@@ -57,7 +67,6 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			tReportMovements.setMovements(hashMap.get(RMConstants.MOVIMIENTO));
 			tReportMovements.setObservaciones(hashMap.get(RMConstants.OBSERVACIONES));
 			
-			//listTReportMovements.add(tReportMovements);
 			
 			tReportMovementsDAO.insertRM(tReportMovements);
 			
@@ -70,6 +79,52 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	public List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId) {
 		
 		return tReportMovementsDAO.getAllTReportMovementsByCampaignId(campaignId);
+		
+	}
+	
+	@Override
+	public List<AccountStatusBean> getAllAccountStatusByCampaignId(Integer campaignId) {
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getAllTReportMovementsByCampaignId(campaignId);
+		
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>(); 
+		
+		for (TReportMovements tReportMovements : listTReportMovements) {
+			
+			AccountStatusBean accountStatusBean = new AccountStatusBean();	
+			
+			CatClassificationCampaign catClassificationCampaignUnidad = 
+					catClassificationCampaignDAO.getCatClassificationCampaignById(tReportMovements.getCampaign().getClassificationId());
+			
+			CatClassificationCampaign catClassificationCampaignSubprograma = 
+					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignUnidad.getCatClassificationCampaignsIdParent());
+			
+			CatClassificationCampaign catClassificationCampaignPrograma = 
+					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignSubprograma.getCatClassificationCampaignsIdParent());
+			
+			CatClassificationCampaign catClassificationCampaignCompania = 
+					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignPrograma.getCatClassificationCampaignsIdParent());
+			
+			
+			
+			accountStatusBean.setMonto(tReportMovements.getMonto());
+			accountStatusBean.setMovements(tReportMovements.getMovements());
+			accountStatusBean.setStartDate(tReportMovements.getCampaign().getStartDate());
+			accountStatusBean.setEndDate(tReportMovements.getCampaign().getEndDate());
+			
+			accountStatusBean.setCampaignName(tReportMovements.getCampaign().getCampaignName());
+			accountStatusBean.setCompania(catClassificationCampaignCompania.getClassName());
+			accountStatusBean.setPrograma(catClassificationCampaignPrograma.getClassName());
+			accountStatusBean.setSubprograma(catClassificationCampaignSubprograma.getClassName());
+			accountStatusBean.setUnidadDeNegocio(catClassificationCampaignUnidad.getClassName());
+			//accountStatusBean.setN4();
+			
+			listAccountStatusBean.add(accountStatusBean);
+		}
+		
+		
+		
+		return listAccountStatusBean; 
 		
 	}
 	

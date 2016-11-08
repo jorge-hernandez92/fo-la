@@ -5,6 +5,7 @@ import java.util.List;
 
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
+import com.twobig.sivale.beans.AccountStatusBean;
 
 public interface TReportMovementsService {
 	
@@ -14,8 +15,10 @@ public interface TReportMovementsService {
 	 * @param file with the information of ReportMovements (xls)
 	 * @return
 	 */
-	public String uploadRMFile(TCampaign tCampaign, File file);
+	String uploadRMFile(TCampaign tCampaign, File file);
 	
-	public List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId);
+	List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId);
+	
+	List<AccountStatusBean> getAllAccountStatusByCampaignId(Integer campaignId);
 
 }

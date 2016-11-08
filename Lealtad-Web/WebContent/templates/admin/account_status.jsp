@@ -26,38 +26,38 @@
 			<div class="panel-body back-sivale">
 			
 				<div data-ng-controller="getRM" ng-cloak>
-					<table  class="table">
-						<tr>
+					<table ng-table="tableRM" class="table">
+						<tr ng-repeat="rms in $data">
 							
 							<td title="'Compañia'" header-class="'text-left'"
-								sortable="'name'"></td>
+								sortable="'name'">{{rms.compania}}</td>
 
 							<td title="'Programa'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'programa'">{{rms.programa}}</td>
 								
 							<td title="'Subprograma'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'subprograma'">{{rms.subprograma}}</td>
 								
 							<td title="'Unidad de Negocio'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'publishedDate'">{{rms.unidadDeNegocio}}</td>
 							
 							<td title="'N4'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'publishedDate'">{{rms.N4}}</td>
 								
 							<td title="'Campaña'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>		
+								sortable="'nombreCampaign'">{{rms.campaignName}}</td>		
 							
 							<td title="'Fecha Inicio'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'startDate'">{{rms.startDate | date:'dd/MM/yyyy'}}</td>
 								
 							<td title="'Fecha Fin'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'endDate'">{{rms.endDate | date:'dd/MM/yyyy'}}</td>
 								
 							<td title="'Movimientos'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'movements'">{{rms.movements}}</td>
 								
 							<td title="'Monto'" header-class="'text-left'"
-								sortable="'publishedDate'"></td>
+								sortable="'monto'">{{rms.monto}}</td>
 								
 						</tr>
 					</table>

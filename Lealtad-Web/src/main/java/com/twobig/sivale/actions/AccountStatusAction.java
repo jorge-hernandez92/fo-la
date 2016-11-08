@@ -14,10 +14,13 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
+import com.twobig.sivale.beans.AccountStatusBean;
+import com.twobig.sivale.service.TReportMovementsService;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
@@ -30,11 +33,16 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	
 	private List<TReportMovements> listTReportMovements;
 	
+	private List<AccountStatusBean> listAccountStatusBean;
+	
+	@Autowired
+	private TReportMovementsService tReportMovementsService;
+	
 	private static final Logger logger = LogManager.getLogger(AccountStatusAction.class);
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "getListRMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
-			"listTReportMovements", "excludeNullProperties", "true", "noCache", "true" }) )
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMAction() {
 
 		final HttpServletRequest request = ServletActionContext.getRequest();
@@ -51,29 +59,11 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		}
 		else{
 			logger.info(campaign.toString());
-		}
+		}	
 		
-//		if (!campaignJSON.equals("undefined")) {
-//
-//			campaign = new TCampaign();
-//			try {
-//				campaign = new ObjectMapper().readValue(campaignJSON, TCampaign.class);
-//			} catch (IOException e) {
-//				e.printStackTrace();
-//				return ERROR;
-//			}
-//
-//			session.put("campaign", campaign);
-//		} else {
-//			campaign = (TCampaign) session.get("campaign");
-//
-//			if (campaign == null) {
-//				return ERROR;
-//			}
-//		}
+		//listTReportMovements = tReportMovementsService.getAllTReportMovementsByCampaignId(campaign.getCampaignId());
 		
-		
-		System.out.println("ACTION PARA TENER LISTA DE RM");
+		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCampaignId(campaign.getCampaignId());
 		
 		return SUCCESS;
 
@@ -84,12 +74,12 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		this.session = session;
 	}
 
-	public List<TReportMovements> getListTReportMovements() {
-		return listTReportMovements;
+	public List<AccountStatusBean> getListAccountStatusBean() {
+		return listAccountStatusBean;
 	}
 
-	public void setListTReportMovements(List<TReportMovements> listTReportMovements) {
-		this.listTReportMovements = listTReportMovements;
+	public void setListAccountStatusBean(List<AccountStatusBean> listAccountStatusBean) {
+		this.listAccountStatusBean = listAccountStatusBean;
 	}
 
 }
