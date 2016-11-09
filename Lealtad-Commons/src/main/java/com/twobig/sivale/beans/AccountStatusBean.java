@@ -15,7 +15,10 @@ public class AccountStatusBean {
 	private String programa;
 	private String subprograma;
 	private String unidadDeNegocio;
-	private String N4;
+	
+	private String nombre; 
+	private String bid; 
+	private String idStars; 
 	
 	private String compania; 
 	
@@ -67,23 +70,30 @@ public class AccountStatusBean {
 	public void setUnidadDeNegocio(String unidadDeNegocio) {
 		this.unidadDeNegocio = unidadDeNegocio;
 	}
-	public String getN4() {
-		return N4;
-	}
-	public void setN4(String n4) {
-		N4 = n4;
-	}
 	public String getCompania() {
 		return compania;
 	}
 	public void setCompania(String compania) {
 		this.compania = compania;
 	}
-	@Override
-	public String toString() {
-		return "AccountStatusBean [startDate=" + startDate + ", endDate=" + endDate + ", campaignName=" + campaignName
-				+ ", monto=" + monto + ", movements=" + movements + ", programa=" + programa + ", subprograma="
-				+ subprograma + ", unidadDeNegocio=" + unidadDeNegocio + ", N4=" + N4 + ", compania=" + compania + "]";
+	public String getNombre() {
+		return nombre;
 	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getBid() {
+		return bid;
+	}
+	public void setBid(String bid) {
+		this.bid = bid;
+	}
+	public String getIdStars() {
+		return idStars;
+	}
+	public void setIdStars(String idStars) {
+		this.idStars = idStars;
+	}
+	
 	
 }

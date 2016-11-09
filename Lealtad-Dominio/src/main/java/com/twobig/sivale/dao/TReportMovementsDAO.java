@@ -14,5 +14,9 @@ public interface TReportMovementsDAO {
 	void deleteAllByCampaign(TCampaign tCampaign);
 	
 	List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId);
+	
+	List<TReportMovements> getTReportMovementsNoRepeatByCampaignId(Integer campaignId);
+	
+	List<TReportMovements> getAllTReportMovementsByIdStars(String idStars);
 
 }

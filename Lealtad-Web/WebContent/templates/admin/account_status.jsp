@@ -12,12 +12,32 @@
 
 				</div>
 				
-				<div class="col-md-3">
+				<div class="col-md-4">
 					
 				</div>
 				
-				<div class="col-md-5">
+				<div class="col-md-4">
 				
+					<button type="button" class="btn btn-primary"
+						ui-sref="campaign">
+
+						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Pendientes
+					</button>
+					
+					<button type="button" class="btn btn-primary"
+						ui-sref="campaign">
+
+						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Sin Pendientes
+					</button>
+				
+					<button type="button" class="btn btn-primary"
+						ui-sref="campaign">
+
+						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Salir
+					</button>
 				</div>
 				
 				</div>
@@ -32,20 +52,29 @@
 							<td title="'Compañia'" header-class="'text-left'"
 								sortable="'name'">{{rms.compania}}</td>
 
-							<td title="'Programa'" header-class="'text-left'"
-								sortable="'programa'">{{rms.programa}}</td>
+<!-- 							<td title="'Programa'" header-class="'text-left'" -->
+<!-- 								sortable="'programa'">{{rms.programa}}</td> -->
 								
-							<td title="'Subprograma'" header-class="'text-left'"
-								sortable="'subprograma'">{{rms.subprograma}}</td>
+<!-- 							<td title="'Subprograma'" header-class="'text-left'" -->
+<!-- 								sortable="'subprograma'">{{rms.subprograma}}</td> -->
 								
 							<td title="'Unidad de Negocio'" header-class="'text-left'"
 								sortable="'publishedDate'">{{rms.unidadDeNegocio}}</td>
 							
-							<td title="'N4'" header-class="'text-left'"
-								sortable="'publishedDate'">{{rms.N4}}</td>
+<!-- 							<td title="'N4'" header-class="'text-left'" -->
+<!-- 								sortable="'publishedDate'">{{rms.N4}}</td> -->
 								
 							<td title="'Campaña'" header-class="'text-left'"
-								sortable="'nombreCampaign'">{{rms.campaignName}}</td>		
+								sortable="'nombreCampaign'">{{rms.campaignName}}</td>
+								
+							<td title="'Participante'" header-class="'text-left'"
+								sortable="'participante'">{{rms.idStars}}</td>
+								
+							<td title="'Nombre'" header-class="'text-left'"
+								sortable="'nombre'">{{rms.nombre}}</td>
+								
+							<td title="'BID'" header-class="'text-left'"
+								sortable="'bid'">{{rms.bid}}</td>	
 							
 							<td title="'Fecha Inicio'" header-class="'text-left'"
 								sortable="'startDate'">{{rms.startDate | date:'dd/MM/yyyy'}}</td>
@@ -86,14 +115,6 @@
 						</div>
 						
 					</div>
-
-
-					<button type="button" class="btn btn-primary"
-						ui-sref="campaign">
-
-						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
-							aria-hidden="true"></span>Salir
-					</button>
 
 				</div>
 				

@@ -1118,7 +1118,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 											
 											$scope.tableRM = new NgTableParams({
 												page : 1,
-												count : 10,
+												count : 15,
 												filter : $scope.filters,
 											}, {
 												total : $scope.rm.length,

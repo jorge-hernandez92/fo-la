@@ -41,6 +41,7 @@ public class TReportMovements implements java.io.Serializable {
 	
 	public static final String  FIELD_CAMPAIGN = "campaign";
 	public static final String  FIELD_CAMPAIGN_ID = "campaignId";
+	public static final String  FIELD_IDSTARS = "idStars";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
@@ -221,3 +222,4 @@ public class TReportMovements implements java.io.Serializable {
 	}
 
 }
+

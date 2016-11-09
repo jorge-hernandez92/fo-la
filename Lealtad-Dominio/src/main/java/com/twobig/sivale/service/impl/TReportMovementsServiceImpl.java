@@ -105,19 +105,18 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			CatClassificationCampaign catClassificationCampaignCompania = 
 					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignPrograma.getCatClassificationCampaignsIdParent());
 			
-			
-			
 			accountStatusBean.setMonto(tReportMovements.getMonto());
 			accountStatusBean.setMovements(tReportMovements.getMovements());
 			accountStatusBean.setStartDate(tReportMovements.getCampaign().getStartDate());
 			accountStatusBean.setEndDate(tReportMovements.getCampaign().getEndDate());
-			
 			accountStatusBean.setCampaignName(tReportMovements.getCampaign().getCampaignName());
 			accountStatusBean.setCompania(catClassificationCampaignCompania.getClassName());
 			accountStatusBean.setPrograma(catClassificationCampaignPrograma.getClassName());
 			accountStatusBean.setSubprograma(catClassificationCampaignSubprograma.getClassName());
 			accountStatusBean.setUnidadDeNegocio(catClassificationCampaignUnidad.getClassName());
-			//accountStatusBean.setN4();
+			accountStatusBean.setNombre(tReportMovements.getEmployeeName());
+			accountStatusBean.setBid(tReportMovements.getBid());
+			accountStatusBean.setIdStars(tReportMovements.getIdStars());
 			
 			listAccountStatusBean.add(accountStatusBean);
 		}
@@ -127,6 +126,22 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		return listAccountStatusBean; 
 		
 	}
+
+	@Override
+	public List<AccountStatusBean> getAccountStatusPendingByCampaignId(Integer campaignId) {
+		
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCampaignId(campaignId);
+		
+		for (TReportMovements tReportMovements : listTReportMovements) {
+			
+		}
+		
+		return null;
+	}
+	
+	
 	
 	
 
