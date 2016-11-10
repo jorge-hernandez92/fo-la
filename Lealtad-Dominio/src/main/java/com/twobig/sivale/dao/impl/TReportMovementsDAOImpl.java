@@ -73,9 +73,17 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 	}
 
 	@Override
-	public List<TReportMovements> getAllTReportMovementsByIdStars(String idStars) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<TReportMovements> getTReportMovementsByIdStarsCampaignIdMovement(Integer campaignId, String idStars, String movement) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
+		
+		criteria.add(Restrictions.eq(TReportMovements.FIELD_CAMPAIGN_ID, campaignId));
+		
+		criteria.add(Restrictions.eq(TReportMovements.FIELD_IDSTARS, idStars));
+		
+		criteria.add(Restrictions.eq(TReportMovements.FIELD_MOVEMENT, movement));
+		
+		return getListByCriteria(criteria);
 	}
 
 }

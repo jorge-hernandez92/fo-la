@@ -17,6 +17,6 @@ public interface TReportMovementsDAO {
 	
 	List<TReportMovements> getTReportMovementsNoRepeatByCampaignId(Integer campaignId);
 	
-	List<TReportMovements> getAllTReportMovementsByIdStars(String idStars);
+	List<TReportMovements> getTReportMovementsByIdStarsCampaignIdMovement(Integer campaignId, String idStars, String movement);
 
 }

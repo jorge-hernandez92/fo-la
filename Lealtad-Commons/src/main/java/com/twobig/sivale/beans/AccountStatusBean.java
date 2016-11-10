@@ -6,21 +6,22 @@ public class AccountStatusBean {
 	
 	private Date startDate;
 	private Date endDate;
-	
 	private String campaignName;
-	
 	private Integer monto;
 	private String movements;
-	
 	private String programa;
 	private String subprograma;
 	private String unidadDeNegocio;
-	
 	private String nombre; 
 	private String bid; 
 	private String idStars; 
+	private String compania;
+	private String observaciones;
 	
-	private String compania; 
+	private Integer pendiente;
+	private Integer pagado;
+	private Integer ganado; 
+	
 	
 	public Date getStartDate() {
 		return startDate;
@@ -94,6 +95,36 @@ public class AccountStatusBean {
 	public void setIdStars(String idStars) {
 		this.idStars = idStars;
 	}
-	
+	public String getObservaciones() {
+		return observaciones;
+	}
+	public void setObservaciones(String observaciones) {
+		this.observaciones = observaciones;
+	}
+	public Integer getPendiente() {
+		return pendiente;
+	}
+	public void setPendiente(Integer pendiente) {
+		this.pendiente = pendiente;
+	}
+	public Integer getPagado() {
+		return pagado;
+	}
+	public void setPagado(Integer pagado) {
+		this.pagado = pagado;
+	}
+	public Integer getGanado() {
+		return ganado;
+	}
+	public void setGanado(Integer ganado) {
+		this.ganado = ganado;
+	}
+	@Override
+	public String toString() {
+		return "AccountStatusBean [startDate=" + startDate + ", endDate=" + endDate + ", campaignName=" + campaignName
+				+ ", monto=" + monto + ", movements=" + movements + ", programa=" + programa + ", subprograma="
+				+ subprograma + ", unidadDeNegocio=" + unidadDeNegocio + ", nombre=" + nombre + ", bid=" + bid
+				+ ", idStars=" + idStars + ", compania=" + compania + ", observaciones=" + observaciones + "]";
+	}
 	
 }

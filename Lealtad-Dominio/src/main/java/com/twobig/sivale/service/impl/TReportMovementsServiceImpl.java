@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -15,7 +17,6 @@ import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
 import com.twobig.sivale.beans.AccountStatusBean;
 import com.twobig.sivale.beans.ExcelBean;
-import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.constants.RMConstants;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.TReportMovementsDAO;
@@ -34,6 +35,8 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	
 	@Autowired
 	public CatClassificationCampaignService catClassificationCampaignService;
+	
+	private static final Logger logger = LogManager.getLogger(TReportMovementsServiceImpl.class);
 
 	@Override
 	public String uploadRMFile(TCampaign tCampaign, File file) {
@@ -67,9 +70,7 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			tReportMovements.setMovements(hashMap.get(RMConstants.MOVIMIENTO));
 			tReportMovements.setObservaciones(hashMap.get(RMConstants.OBSERVACIONES));
 			
-			
 			tReportMovementsDAO.insertRM(tReportMovements);
-			
 		}
 		
 		return null;
@@ -79,7 +80,6 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	public List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId) {
 		
 		return tReportMovementsDAO.getAllTReportMovementsByCampaignId(campaignId);
-		
 	}
 	
 	@Override
@@ -89,9 +89,70 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		
 		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>(); 
 		
+		addToListAccountStatusBean(listAccountStatusBean,listTReportMovements);
+		
+		return listAccountStatusBean; 
+	}
+
+	@Override
+	public List<AccountStatusBean> getAccountStatusPendingByCampaignId(Integer campaignId) {
+		
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCampaignId(campaignId);
+		
+		Integer pendiente = 0;
+		Integer ganado = 0;
+		Integer pagado = 0; 
+		
 		for (TReportMovements tReportMovements : listTReportMovements) {
 			
-			AccountStatusBean accountStatusBean = new AccountStatusBean();	
+			List<TReportMovements> listTReportGanado = 
+					tReportMovementsDAO.getTReportMovementsByIdStarsCampaignIdMovement(campaignId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+			
+			Integer ganadoPorUsuario = 0; 
+			
+			for (TReportMovements tReportMovements2 : listTReportGanado) {
+				ganadoPorUsuario += tReportMovements2.getMonto();
+			} 
+			
+			List<TReportMovements> listTReportDispersado = 
+				tReportMovementsDAO.getTReportMovementsByIdStarsCampaignIdMovement(campaignId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+			
+			Integer dispersadoPorUsuario = 0;
+			
+			for (TReportMovements tReportMovements2 : listTReportDispersado) {
+				dispersadoPorUsuario += tReportMovements2.getMonto();
+			} 
+			
+			if(dispersadoPorUsuario == ganadoPorUsuario){
+				//NO PENDIENDE 
+			}
+			else if (dispersadoPorUsuario < ganadoPorUsuario) {
+				pendiente += ganadoPorUsuario - dispersadoPorUsuario;
+				addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
+				addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
+			}
+			
+			ganado += ganadoPorUsuario;
+			pagado += dispersadoPorUsuario; 
+			
+		}
+		
+		if(!listAccountStatusBean.isEmpty()){
+			listAccountStatusBean.get(0).setPagado(pagado);
+			listAccountStatusBean.get(0).setPendiente(pendiente);
+			listAccountStatusBean.get(0).setGanado(ganado);
+		}
+		
+		return listAccountStatusBean;
+	}
+	
+	private void addToListAccountStatusBean(List<AccountStatusBean> listAccountStatusBean, 
+			List<TReportMovements> listTReport){
+		
+		for (TReportMovements tReportMovements : listTReport) {
+			AccountStatusBean accountStatusBean = new AccountStatusBean();
 			
 			CatClassificationCampaign catClassificationCampaignUnidad = 
 					catClassificationCampaignDAO.getCatClassificationCampaignById(tReportMovements.getCampaign().getClassificationId());
@@ -117,32 +178,10 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			accountStatusBean.setNombre(tReportMovements.getEmployeeName());
 			accountStatusBean.setBid(tReportMovements.getBid());
 			accountStatusBean.setIdStars(tReportMovements.getIdStars());
+			accountStatusBean.setObservaciones(tReportMovements.getObservaciones());
 			
 			listAccountStatusBean.add(accountStatusBean);
-		}
-		
-		
-		
-		return listAccountStatusBean; 
-		
+		} 
 	}
-
-	@Override
-	public List<AccountStatusBean> getAccountStatusPendingByCampaignId(Integer campaignId) {
-		
-		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
-		
-		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCampaignId(campaignId);
-		
-		for (TReportMovements tReportMovements : listTReportMovements) {
-			
-		}
-		
-		return null;
-	}
-	
-	
-	
-	
 
 }

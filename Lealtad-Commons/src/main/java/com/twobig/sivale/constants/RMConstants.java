@@ -28,4 +28,8 @@ public class RMConstants {
 	
 	public static final String OBSERVACIONES ="Observaciones";
 	
+	public static final String MOVIMIENTO_GANADO = "Ganado";
+	
+	public static final String MOVIMIENTO_DISPERSADO = "Dispersado";
+	
 }

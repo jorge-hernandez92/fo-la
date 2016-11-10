@@ -18,8 +18,7 @@
 				
 				<div class="col-md-4">
 				
-					<button type="button" class="btn btn-primary"
-						ui-sref="campaign">
+					<button  ng-click="getRMPending()" type="button" class="btn btn-primary">
 
 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
 							aria-hidden="true"></span>Pendientes
@@ -88,6 +87,9 @@
 							<td title="'Monto'" header-class="'text-left'"
 								sortable="'monto'">{{rms.monto}}</td>
 								
+							<td title="'Observaciones'" header-class="'text-left'"
+								sortable="'monto'">{{rms.observaciones}}</td>
+								
 						</tr>
 					</table>
 				</div>
@@ -98,20 +100,22 @@
 
 					<div class="row">
 					
-						<div class="col-sm-3">
-							<h5><strong>Total ganado: </strong></h5>
+						<div class="col-sm-2"></div>
+						
+						<div class="col-sm-2"></div>
+						
+						<div class="col-sm-2"></div>
+					
+						<div class="col-sm-2">
+							<h5><strong>Total ganado: {{ganado}}</strong></h5>
 						</div>
 						
-						<div class="col-sm-3">
-							<h5><strong>Total pagado: </strong></h5>
+						<div class="col-sm-2">
+							<h5><strong>Total pagado: {{pagado}}</strong></h5>
 						</div>
 						
-						<div class="col-sm-3">
-							<h5><strong>Pendiente: </strong></h5>
-						</div>
-						
-						<div class="col-sm-3">
-							<h5><strong>Observaciones: </strong></h5>
+						<div class="col-sm-2">
+							<h5><strong>Pendiente: {{pendiente}}</strong></h5>
 						</div>
 						
 					</div>
