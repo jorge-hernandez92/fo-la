@@ -53,9 +53,7 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		for (HashMap<String, String> hashMap : rows) {
 			
 			tReportMovements = new TReportMovements();
-			
 			tReportMovements.setCampaign(tCampaign);
-			
 			tReportMovements.setMonth(hashMap.get(RMConstants.MES_EJECUCION));
 			tReportMovements.setYear(Integer.parseInt(hashMap.get(RMConstants.YEAR)));
 			tReportMovements.setIdStars(hashMap.get(RMConstants.ID_STARS));
@@ -132,10 +130,9 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 				pendiente += ganadoPorUsuario - dispersadoPorUsuario;
 				addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
 				addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
+				ganado += ganadoPorUsuario;
+				pagado += dispersadoPorUsuario; 
 			}
-			
-			ganado += ganadoPorUsuario;
-			pagado += dispersadoPorUsuario; 
 			
 		}
 		
@@ -146,6 +143,49 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		}
 		
 		return listAccountStatusBean;
+	}
+	
+	@Override
+	public List<AccountStatusBean> getAccountStatusWithoutPendingByCampaignId(Integer campaignId) {
+		
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCampaignId(campaignId);
+		
+		Integer pendiente = 0;
+		Integer ganado = 0;
+		Integer pagado = 0;
+		
+		for (TReportMovements tReportMovements : listTReportMovements) {
+			
+			List<TReportMovements> listTReportGanado = 
+					tReportMovementsDAO.getTReportMovementsByIdStarsCampaignIdMovement(campaignId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+			
+			Integer ganadoPorUsuario = 0; 
+			
+			for (TReportMovements tReportMovements2 : listTReportGanado) {
+				ganadoPorUsuario += tReportMovements2.getMonto();
+			} 
+			
+			List<TReportMovements> listTReportDispersado = 
+				tReportMovementsDAO.getTReportMovementsByIdStarsCampaignIdMovement(campaignId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+			
+			Integer dispersadoPorUsuario = 0;
+			
+			for (TReportMovements tReportMovements2 : listTReportDispersado) {
+				dispersadoPorUsuario += tReportMovements2.getMonto();
+			}
+			
+			if(dispersadoPorUsuario == ganadoPorUsuario){
+				//NO PENDIENDE
+				
+				
+			}
+			
+		}
+		
+		
+		return null;
 	}
 	
 	private void addToListAccountStatusBean(List<AccountStatusBean> listAccountStatusBean, 

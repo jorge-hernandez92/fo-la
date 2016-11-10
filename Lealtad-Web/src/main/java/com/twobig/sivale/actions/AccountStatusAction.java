@@ -18,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TCampaign;
-import com.twobig.sivale.bd.to.TReportMovements;
 import com.twobig.sivale.beans.AccountStatusBean;
 import com.twobig.sivale.service.TReportMovementsService;
 
@@ -42,8 +41,6 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	@Action(value = "getListRMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMAction() {
-
-		final HttpServletRequest request = ServletActionContext.getRequest();
 
 		TCampaign campaign;
 		
