@@ -14,6 +14,7 @@ import org.springframework.stereotype.Repository;
 
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
+import com.twobig.sivale.beans.AccountStatusFilterBean;
 import com.twobig.sivale.dao.TReportMovementsDAO;
 
 
@@ -71,6 +72,8 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		return getListByCriteria(criteria);
 		
 	}
+	
+	
 
 	@Override
 	public List<TReportMovements> getTReportMovementsByIdStarsCampaignIdMovement(Integer campaignId, String idStars, String movement) {
@@ -85,5 +88,28 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		
 		return getListByCriteria(criteria);
 	}
+
+	@Override
+	public List<TReportMovements> getAllTReportMovementsByCampaignIdAndFilter(Integer campaignId,
+			AccountStatusFilterBean filterBean) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
+		
+		criteria.add(Restrictions.eq(TReportMovements.FIELD_CAMPAIGN_ID, campaignId));
+		
+		if(filterBean.getMovimiento() != null){
+			criteria.add(Restrictions.eq(TReportMovements.FIELD_MOVEMENT, "%"+filterBean.getMovimiento().trim()+"%"));
+		}
+		if(filterBean.getObservaciones() != null){
+			criteria.add(Restrictions.eq(TReportMovements.FIELD_OBSERVACIONES, "%"+filterBean.getObservaciones().trim()+"%"));
+		}
+		if(filterBean.getParticipante() != null){
+			criteria.add(Restrictions.eq(TReportMovements.FIELD_IDSTARS, "%"+filterBean.getParticipante().trim()+"%"));
+		}
+		
+		return getListByCriteria(criteria);
+	}
+	
+	
 
 }

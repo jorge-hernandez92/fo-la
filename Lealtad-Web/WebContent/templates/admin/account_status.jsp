@@ -24,8 +24,7 @@
 							aria-hidden="true"></span>Pendientes
 					</button>
 					
-					<button type="button" class="btn btn-primary"
-						ui-sref="campaign">
+					<button ng-click="getRMNoPending()" type="button" class="btn btn-primary">
 
 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
 							aria-hidden="true"></span>Sin Pendientes

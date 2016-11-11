@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
+import com.twobig.sivale.beans.AccountStatusFilterBean;
 
 public interface TReportMovementsDAO {
 	
@@ -18,5 +19,8 @@ public interface TReportMovementsDAO {
 	List<TReportMovements> getTReportMovementsNoRepeatByCampaignId(Integer campaignId);
 	
 	List<TReportMovements> getTReportMovementsByIdStarsCampaignIdMovement(Integer campaignId, String idStars, String movement);
+	
+	List<TReportMovements> getAllTReportMovementsByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean accountStatusFilterBean);
 
 }
+

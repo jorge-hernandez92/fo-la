@@ -85,6 +85,31 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getListRMNoPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getListRMNoPendingAction() {
+		
+		logger.info("getListRMNoPendingAction");
+
+		TCampaign campaign;
+		
+		campaign = (TCampaign) session.get("campaign");
+
+		if (campaign == null) {
+			logger.info("La campaña es nula");
+			return ERROR;
+		}
+		else{
+			logger.info(campaign.toString());
+		}
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCampaignId(campaign.getCampaignId());
+		
+		return SUCCESS;
+
+	}
+	
 	
 
 	@Override

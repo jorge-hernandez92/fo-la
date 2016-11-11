@@ -6,6 +6,7 @@ import java.util.List;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TReportMovements;
 import com.twobig.sivale.beans.AccountStatusBean;
+import com.twobig.sivale.beans.AccountStatusFilterBean;
 
 public interface TReportMovementsService {
 	
@@ -24,5 +25,7 @@ public interface TReportMovementsService {
 	List<AccountStatusBean> getAccountStatusPendingByCampaignId(Integer campaignId);
 	
 	List<AccountStatusBean> getAccountStatusWithoutPendingByCampaignId(Integer campaignId);
+	
+	List<AccountStatusBean> getAccountStatusByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean filterBean);
 
 }

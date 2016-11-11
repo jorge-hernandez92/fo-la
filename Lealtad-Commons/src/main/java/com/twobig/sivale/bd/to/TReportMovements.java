@@ -17,7 +17,6 @@ import javax.persistence.Table;
 @Table(name = "t_report_movements")
 public class TReportMovements implements java.io.Serializable {
 	
-	
 	private static final long serialVersionUID = 1L;
 	private TCampaign campaign;
 	private TUser user;
@@ -38,11 +37,11 @@ public class TReportMovements implements java.io.Serializable {
 	private Integer year;
 	private String compania;
 	
-	
-	public static final String  FIELD_CAMPAIGN = "campaign";
-	public static final String  FIELD_CAMPAIGN_ID = "campaignId";
-	public static final String  FIELD_IDSTARS = "idStars";
-	public static final String  FIELD_MOVEMENT = "movements";
+	public static final String  FIELD_CAMPAIGN 	    = "campaign";
+	public static final String  FIELD_CAMPAIGN_ID   = "campaignId";
+	public static final String  FIELD_IDSTARS       = "idStars";
+	public static final String  FIELD_MOVEMENT      = "movements";
+	public static final String  FIELD_OBSERVACIONES = "observaciones"; 
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
