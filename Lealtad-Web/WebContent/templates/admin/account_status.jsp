@@ -31,7 +31,7 @@
 					</button>
 				
 					<button type="button" class="btn btn-primary"
-						ui-sref="campaign">
+						ui-sref="home">
 
 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
 							aria-hidden="true"></span>Salir

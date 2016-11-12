@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TCampaign;
+import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.AccountStatusBean;
 import com.twobig.sivale.service.TReportMovementsService;
 
@@ -42,19 +43,28 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMAction() {
 
-		TCampaign campaign;
+//		TCampaign campaign;
+//		
+//		campaign = (TCampaign) session.get("campaign");
 		
-		campaign = (TCampaign) session.get("campaign");
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
 
-		if (campaign == null) {
-			logger.info("La campaña es nula");
-			return ERROR;
-		}
-		else{
-			logger.info(campaign.toString());
-		}
-		
-		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCampaignId(campaign.getCampaignId());
+//		if (campaign == null) {
+//			logger.info("La campaña es nula");
+//			return ERROR;
+//		}
+//		else{
+//			logger.info(campaign.toString());
+//		}
+//		
+		//listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCampaignId(campaign.getCampaignId());
+		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany());
 		
 		return SUCCESS;
 
@@ -66,20 +76,8 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	public String getListRMPendingAction() {
 		
 		logger.info("getListRMPendingAction");
-
-		TCampaign campaign;
 		
-		campaign = (TCampaign) session.get("campaign");
-
-		if (campaign == null) {
-			logger.info("La campaña es nula");
-			return ERROR;
-		}
-		else{
-			logger.info(campaign.toString());
-		}
-		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCampaignId(campaign.getCampaignId());
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(0);
 		
 		return SUCCESS;
 
@@ -91,20 +89,8 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	public String getListRMNoPendingAction() {
 		
 		logger.info("getListRMNoPendingAction");
-
-		TCampaign campaign;
 		
-		campaign = (TCampaign) session.get("campaign");
-
-		if (campaign == null) {
-			logger.info("La campaña es nula");
-			return ERROR;
-		}
-		else{
-			logger.info(campaign.toString());
-		}
-		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCampaignId(campaign.getCampaignId());
+		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(0);
 		
 		return SUCCESS;
 

@@ -75,14 +75,6 @@
 							aria-hidden="true"></span>Añadir Reporte de Movimientos
 					</button>
 					
-					
-					<button type="button" class="btn btn-primary"
-						ui-sref="account_status">
-
-						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
-							aria-hidden="true"></span>Estado de Cuenta
-					</button>
-					
 				</div>
 				
 			</div>

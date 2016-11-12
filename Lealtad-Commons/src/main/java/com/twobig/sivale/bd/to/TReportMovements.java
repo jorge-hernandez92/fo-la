@@ -2,6 +2,7 @@ package com.twobig.sivale.bd.to;
 
 import java.util.Date;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -12,6 +13,9 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.NotFound;
+import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "t_report_movements")
@@ -37,11 +41,12 @@ public class TReportMovements implements java.io.Serializable {
 	private Integer year;
 	private String compania;
 	
-	public static final String  FIELD_CAMPAIGN 	    = "campaign";
-	public static final String  FIELD_CAMPAIGN_ID   = "campaignId";
-	public static final String  FIELD_IDSTARS       = "idStars";
-	public static final String  FIELD_MOVEMENT      = "movements";
-	public static final String  FIELD_OBSERVACIONES = "observaciones"; 
+	public static final String  FIELD_CAMPAIGN 	       =  "campaign";
+	public static final String  FIELD_CAMPAIGN_ID      =  "campaignId";
+	public static final String  FIELD_IDSTARS          =  "idStars";
+	public static final String  FIELD_MOVEMENT         =  "movements";
+	public static final String  FIELD_OBSERVACIONES    =  "observaciones";
+	public static final String  FIELD_CAMPAIGN_COMPANY =  "campaign.companyId";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
@@ -56,7 +61,8 @@ public class TReportMovements implements java.io.Serializable {
 	}
 	
 	@Id
-	@ManyToOne(fetch = FetchType.EAGER)
+	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@NotFound(action = NotFoundAction.IGNORE)
 	@JoinColumn(name = "fk_campaign", nullable = false)
 	public TCampaign getCampaign() {
 		return campaign;

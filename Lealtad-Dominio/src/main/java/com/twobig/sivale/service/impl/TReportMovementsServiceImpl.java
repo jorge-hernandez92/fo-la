@@ -90,7 +90,7 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		
 		addToListAccountStatusBean(listAccountStatusBean,listTReportMovements);
 		
-		return listAccountStatusBean; 
+		return listAccountStatusBean;
 	}
 
 	@Override
@@ -233,7 +233,6 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	public List<AccountStatusBean> getAccountStatusByCampaignIdAndFilter(Integer campaignId,
 			AccountStatusFilterBean filterBean) {
 		
-		
 		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getAllTReportMovementsByCampaignIdAndFilter(campaignId, filterBean);
 		
 		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>(); 
@@ -241,6 +240,128 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		addToListAccountStatusBean(listAccountStatusBean,listTReportMovements);
 		
 		return listAccountStatusBean;
+	}
+	
+	//SERVICE WITHOUT CAMPAIGN
+	//SERVICE WITHOUT CAMPAIGN
+	//SERVICE WITHOUT CAMPAIGN
+	//SERVICE WITHOUT CAMPAIGNs
+
+	@Override
+	public List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId) {
+
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getAllTReportMovementsByCompanyId(companyId);
+
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+
+		addToListAccountStatusBean(listAccountStatusBean, listTReportMovements);
+
+		return listAccountStatusBean;
+	}
+
+	@Override
+	public List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId) {
+List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId);
+		
+		int pendiente = 0;
+		int ganado = 0;
+		int pagado = 0; 
+		
+		for (TReportMovements tReportMovements : listTReportMovements) {
+			
+			List<TReportMovements> listTReportGanado = 
+					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+			
+			int ganadoPorUsuario = 0; 
+			
+			for (TReportMovements tReportMovements2 : listTReportGanado) {
+				ganadoPorUsuario += tReportMovements2.getMonto();
+			} 
+			
+			List<TReportMovements> listTReportDispersado = 
+				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+			
+			int dispersadoPorUsuario = 0;
+			
+			for (TReportMovements tReportMovements2 : listTReportDispersado) {
+				dispersadoPorUsuario += tReportMovements2.getMonto();
+			} 
+			
+			if (dispersadoPorUsuario < ganadoPorUsuario) {
+				pendiente += ganadoPorUsuario - dispersadoPorUsuario;
+				addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
+				addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
+				ganado += ganadoPorUsuario;
+				pagado += dispersadoPorUsuario; 
+			}
+			
+		}
+		
+		if(!listAccountStatusBean.isEmpty()){
+			listAccountStatusBean.get(0).setPagado(pagado);
+			listAccountStatusBean.get(0).setPendiente(pendiente);
+			listAccountStatusBean.get(0).setGanado(ganado);
+		}
+		
+		return listAccountStatusBean;
+	}
+
+	@Override
+	public List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId) {
+		
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId);
+		
+		int ganado = 0;
+		int pagado = 0;
+		
+		for (TReportMovements tReportMovements : listTReportMovements) {
+			
+			List<TReportMovements> listTReportGanado = 
+					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+			
+			int ganadoPorUsuario = 0; 
+			
+			for (TReportMovements tReportMovements2 : listTReportGanado) {
+				ganadoPorUsuario += tReportMovements2.getMonto();
+			} 
+			
+			List<TReportMovements> listTReportDispersado = 
+				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+			
+			int dispersadoPorUsuario = 0;
+			
+			for (TReportMovements tReportMovements2 : listTReportDispersado) {
+				dispersadoPorUsuario += tReportMovements2.getMonto();
+			}
+			
+			if(dispersadoPorUsuario == ganadoPorUsuario){
+				ganado += ganadoPorUsuario;
+				pagado += dispersadoPorUsuario; 
+				addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
+				addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
+				
+			}
+			
+		}
+		
+		if(!listAccountStatusBean.isEmpty()){
+			listAccountStatusBean.get(0).setPagado(pagado);
+			listAccountStatusBean.get(0).setPendiente(0);
+			listAccountStatusBean.get(0).setGanado(ganado);
+		}
+		
+		
+		return listAccountStatusBean;
+	}
+
+	@Override
+	public List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 }

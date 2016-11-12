@@ -27,5 +27,16 @@ public interface TReportMovementsService {
 	List<AccountStatusBean> getAccountStatusWithoutPendingByCampaignId(Integer campaignId);
 	
 	List<AccountStatusBean> getAccountStatusByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean filterBean);
+	
+	
+	//SERVICE WITHOUT CAMPAIGN
+	
+	List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId);
+	
+	List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId);
+	
+	List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId);
+	
+	List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean);
 
 }

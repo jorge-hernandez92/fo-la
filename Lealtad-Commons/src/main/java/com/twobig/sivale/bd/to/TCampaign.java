@@ -2,6 +2,7 @@ package com.twobig.sivale.bd.to;
 // Generated 20/11/2015 02:09:49 PM by Hibernate Tools 4.3.1
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,6 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import org.codehaus.jackson.annotate.JsonIgnoreProperties;
+
 import com.google.common.base.MoreObjects;
 
 /**

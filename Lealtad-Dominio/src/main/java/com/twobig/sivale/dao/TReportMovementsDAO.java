@@ -22,5 +22,16 @@ public interface TReportMovementsDAO {
 	
 	List<TReportMovements> getAllTReportMovementsByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean accountStatusFilterBean);
 
+	
+	//SERVICE get TReportMovements by  company
+	
+	List<TReportMovements> getAllTReportMovementsByCompanyId(Integer companyId);
+	
+	List<TReportMovements> getTReportMovementsNoRepeatByCompanyId(Integer companyId);
+	
+	List<TReportMovements> getTReportMovementsByIdStarsCompanyIdMovement(Integer companyId, String idStars, String movement);
+	
+	List<TReportMovements> getAllTReportMovementsByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean accountStatusFilterBean);
+
 }
 

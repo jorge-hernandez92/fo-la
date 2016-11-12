@@ -2,7 +2,9 @@ package com.twobig.sivale.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Criteria;
 import org.hibernate.Query;
+import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -110,6 +112,55 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		return getListByCriteria(criteria);
 	}
 	
-	
+	//SERVICE get TReportMovements by  company
+	//SERVICE get TReportMovements by  company
+	//SERVICE get TReportMovements by  company
+	//SERVICE get TReportMovements by  company
+
+	@Override
+	public List<TReportMovements> getAllTReportMovementsByCompanyId(Integer companyId) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
+		
+		return getListByCriteria(criteria);
+		
+
+	}
+
+	@Override
+	public List<TReportMovements> getTReportMovementsNoRepeatByCompanyId(Integer companyId) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
+		
+		ProjectionList projList = Projections.projectionList();
+		
+		projList.add(Projections.property(TReportMovements.FIELD_IDSTARS), TReportMovements.FIELD_IDSTARS);
+		
+		criteria.setProjection(Projections.distinct(projList));
+		
+		criteria.setResultTransformer(Transformers.aliasToBean(TReportMovements.class));
+
+		return getListByCriteria(criteria);
+	}
+
+	@Override
+	public List<TReportMovements> getTReportMovementsByIdStarsCompanyIdMovement(Integer companyId, String idStars,
+			String movement) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
+		
+		criteria.add(Restrictions.eq(TReportMovements.FIELD_IDSTARS, idStars));
+		
+		criteria.add(Restrictions.eq(TReportMovements.FIELD_MOVEMENT, movement));
+		
+		return getListByCriteria(criteria);
+	}
+
+	@Override
+	public List<TReportMovements> getAllTReportMovementsByCompanyIdAndFilter(Integer companyId,
+			AccountStatusFilterBean accountStatusFilterBean) {
+		// TODO Auto-generated method stub
+		return null;
+	}	
 
 }
