@@ -12,11 +12,17 @@
 
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-3">
 					
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-5">
+				
+					<button  ng-click="getRM()" type="button" class="btn btn-primary">
+
+						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Todo
+					</button>
 				
 					<button  ng-click="getRMPending()" type="button" class="btn btn-primary">
 

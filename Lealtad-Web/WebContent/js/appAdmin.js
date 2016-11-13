@@ -1114,6 +1114,15 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 										function(data, status, headers, config) {
 											
 											$scope.rm = data;
+											
+											$scope.ganado 	 = data[0].ganado;
+											$scope.pagado 	 = data[0].pagado;
+											$scope.pendiente = data[0].pendiente;
+											
+											console.log($scope.ganado);
+											console.log($scope.pagado);
+											console.log($scope.pendiente);
+											
 											console.log(JSON.stringify(data));
 											
 											$scope.tableRM = new NgTableParams({
