@@ -46,7 +46,7 @@ public class TReportMovements implements java.io.Serializable {
 	public static final String  FIELD_IDSTARS          =  "idStars";
 	public static final String  FIELD_MOVEMENT         =  "movements";
 	public static final String  FIELD_OBSERVACIONES    =  "observaciones";
-	public static final String  FIELD_CAMPAIGN_COMPANY =  "campaign.companyId";
+	public static final String  FIELD_CAMPAIGN_OB_ID   =  "campaign.campaignId";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
@@ -60,10 +60,9 @@ public class TReportMovements implements java.io.Serializable {
 		this.reportMovementsId = reportMovementsId;
 	}
 	
-	@Id
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-	@NotFound(action = NotFoundAction.IGNORE)
-	@JoinColumn(name = "fk_campaign", nullable = false)
+	
+	@ManyToOne(fetch = FetchType.EAGER)
+	@JoinColumn(name = "fk_campaign")
 	public TCampaign getCampaign() {
 		return campaign;
 	}

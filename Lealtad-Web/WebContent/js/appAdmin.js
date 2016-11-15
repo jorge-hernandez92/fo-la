@@ -1267,6 +1267,69 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						
 					};
 					
+					$scope.searchAccountStatus = function(date) {
+					    
+						var searchAccountStatusvar = {
+								campaign 		: $rootScope.search.campaing,
+								unidadDeNegocio 	: $rootScope.search.unity,
+								participanteIdStars : $rootScope.search.thIdStars,
+								movimiento 			: $rootScope.search.movement,
+								observaciones 		: $rootScope.search.observation, 
+								startDate 			: date.startDate,
+								endDate 			: date.endDate
+						};
+						
+						var data = angular.toJson(searchAccountStatusvar);
+						console.log(JSON.stringify(searchAccountStatusvar));
+						
+						$http({
+						method : 'POST',
+						url : 'searchAccountStatusAdminAction',
+						data : 'searchAccountStatusvar=' + data,
+						headers : {
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+						}).success(
+							function(data, status, headers, config) {
+								
+							}).error(function(data, status, headers, config) {
+
+							});
+						
+//						
+//						$rootScope.search.campaignName = STRING_DEFAULT;
+//						$rootScope.search.classification = STRING_DEFAULT;
+//						$rootScope.classif.company = STRING_DEFAULT;
+//						
+//						var data = angular.toJson(searchCampaign);
+//						console.log(JSON.stringify(searchCampaign));
+
+//						$http({
+//							method : 'POST',
+//							url : 'searchCampaignsAdminAction',
+//							data : 'searchCampaign=' + data,
+//							headers : {
+//								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+//							}
+//						}).success(
+//								function(data, status, headers, config) {
+//									
+//									console.log('data: '+JSON.stringify(data));
+//									
+//									$scope.campaigns = data;
+//									$scope.tableCampaigns = new NgTableParams({
+//										count : 10
+//									}, {
+//										counts : [],
+//									    dataset: data
+//									});
+//									
+//								}).error(function(data, status, headers, config) {
+//
+//						});
+						
+					};
+					
 
 				}])
 

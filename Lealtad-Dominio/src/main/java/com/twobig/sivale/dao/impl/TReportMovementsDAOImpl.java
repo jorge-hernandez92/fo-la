@@ -1,5 +1,6 @@
 package com.twobig.sivale.dao.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import org.hibernate.Criteria;
@@ -105,16 +106,10 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		if(filterBean.getObservaciones() != null){
 			criteria.add(Restrictions.eq(TReportMovements.FIELD_OBSERVACIONES, "%"+filterBean.getObservaciones().trim()+"%"));
 		}
-		if(filterBean.getParticipante() != null){
-			criteria.add(Restrictions.eq(TReportMovements.FIELD_IDSTARS, "%"+filterBean.getParticipante().trim()+"%"));
-		}
 		
 		return getListByCriteria(criteria);
 	}
 	
-	//SERVICE get TReportMovements by  company
-	//SERVICE get TReportMovements by  company
-	//SERVICE get TReportMovements by  company
 	//SERVICE get TReportMovements by  company
 
 	@Override
@@ -136,6 +131,10 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		
 		projList.add(Projections.property(TReportMovements.FIELD_IDSTARS), TReportMovements.FIELD_IDSTARS);
 		
+		criteria.createAlias("campaign", "campaignOb");
+		
+		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
+		
 		criteria.setProjection(Projections.distinct(projList));
 		
 		criteria.setResultTransformer(Transformers.aliasToBean(TReportMovements.class));
@@ -153,14 +152,52 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		
 		criteria.add(Restrictions.eq(TReportMovements.FIELD_MOVEMENT, movement));
 		
+		criteria.createAlias("campaign", "campaignOb");
+		
+		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
+		
 		return getListByCriteria(criteria);
 	}
 
 	@Override
 	public List<TReportMovements> getAllTReportMovementsByCompanyIdAndFilter(Integer companyId,
-			AccountStatusFilterBean accountStatusFilterBean) {
-		// TODO Auto-generated method stub
-		return null;
+			AccountStatusFilterBean filterBean) {
+		/* 
+		private String campaign;
+		private Date  startDate;
+		private Date endDate; 
+		
+		private String movimiento;
+		private String observaciones;
+		private String participanteIdStars;
+		
+		 */
+		
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
+		
+		ProjectionList projList = Projections.projectionList();
+		
+		projList.add(Projections.property(TReportMovements.FIELD_IDSTARS), TReportMovements.FIELD_IDSTARS);
+		
+		criteria.createAlias("campaign", "campaignOb");
+		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
+		
+		if(filterBean.getMovimiento() != null && !filterBean.getMovimiento().trim().isEmpty()){
+			criteria.add(Restrictions.ilike(TReportMovements.FIELD_MOVEMENT, "%"+filterBean.getMovimiento().trim()+"%"));
+		}
+		if(filterBean.getObservaciones() != null && !filterBean.getObservaciones().trim().isEmpty()){
+			criteria.add(Restrictions.ilike(TReportMovements.FIELD_OBSERVACIONES, "%"+filterBean.getObservaciones().trim()+"%"));
+		}
+		if(filterBean.getParticipanteIdStars() != null && !filterBean.getParticipanteIdStars().trim().isEmpty()){
+			criteria.add(Restrictions.ilike(TReportMovements.FIELD_IDSTARS, "%"+filterBean.getParticipanteIdStars().trim()+"%"));
+		}
+		
+		criteria.setProjection(Projections.distinct(projList));
+		
+		criteria.setResultTransformer(Transformers.aliasToBean(TReportMovements.class));
+		
+		return getListByCriteria(criteria);
 	}	
 
 }

@@ -1,6 +1,7 @@
 package com.twobig.sivale.actions;
 
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
@@ -14,12 +15,15 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.AccountStatusBean;
+import com.twobig.sivale.beans.AccountStatusFilterBean;
+import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.service.TReportMovementsService;
 
 @ParentPackage(value = "json-default")
@@ -42,10 +46,6 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	@Action(value = "getListRMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMAction() {
-
-//		TCampaign campaign;
-//		
-//		campaign = (TCampaign) session.get("campaign");
 		
 		TUser user;
 		
@@ -55,19 +55,9 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			return ERROR; 
 		}
 
-//		if (campaign == null) {
-//			logger.info("La campaña es nula");
-//			return ERROR;
-//		}
-//		else{
-//			logger.info(campaign.toString());
-//		}
-//		
-		//listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCampaignId(campaign.getCampaignId());
 		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany());
 		
 		return SUCCESS;
-
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -77,10 +67,17 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		
 		logger.info("getListRMPendingAction");
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(0);
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany());
 		
 		return SUCCESS;
-
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -90,10 +87,66 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		
 		logger.info("getListRMNoPendingAction");
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(0);
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany());
 		
 		return SUCCESS;
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "searchAccountStatusAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"searchCampaignsAdmin", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String searchAccountStatusAdminAction() {
+		
+		logger.info("searchAccountStatusAdminAction");
+		
+		final HttpServletRequest request = ServletActionContext.getRequest();
 
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		String searchAccountStatusJSON = request.getParameter("searchAccountStatusvar");
+		
+		AccountStatusFilterBean accountStatusFilterBean; 
+		
+		if(!searchAccountStatusJSON.equals("undefined")){
+			accountStatusFilterBean = new AccountStatusFilterBean();
+			
+			try {
+				
+				accountStatusFilterBean = new ObjectMapper().readValue(searchAccountStatusJSON, AccountStatusFilterBean.class);
+				logger.info(accountStatusFilterBean.toString());
+				listAccountStatusBean = tReportMovementsService.getAccountStatusByCompanyIdAndFilter(user.getCompany(), accountStatusFilterBean);
+				
+				for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
+					logger.info(accountStatusBean.toString());
+				}
+				
+		
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				return ERROR; 	
+			}
+			
+		}
+		else{
+			logger.info("ERROR EN EL JSON");
+		}
+		
+		return SUCCESS; 
 	}
 	
 	

@@ -243,9 +243,6 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	}
 	
 	//SERVICE WITHOUT CAMPAIGN
-	//SERVICE WITHOUT CAMPAIGN
-	//SERVICE WITHOUT CAMPAIGN
-	//SERVICE WITHOUT CAMPAIGNs
 
 	@Override
 	public List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId) {
@@ -399,8 +396,55 @@ List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>
 
 	@Override
 	public List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
+		
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getAllTReportMovementsByCompanyIdAndFilter(companyId, filterBean);
+		
+		int pendiente = 0;
+		int ganado = 0;
+		int pagado = 0;
+		
+		addToListAccountStatusBean(listAccountStatusBean,listTReportMovements);
+		
+//		for (TReportMovements tReportMovements : listTReportMovements) {
+//			
+//			List<TReportMovements> listTReportGanado = 
+//					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+//			
+//			int ganadoPorUsuario = 0; 
+//			
+//			for (TReportMovements tReportMovements2 : listTReportGanado) {
+//				ganadoPorUsuario += tReportMovements2.getMonto();
+//			} 
+//			
+//			List<TReportMovements> listTReportDispersado = 
+//				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+//			
+//			int dispersadoPorUsuario = 0;
+//			
+//			for (TReportMovements tReportMovements2 : listTReportDispersado) {
+//				dispersadoPorUsuario += tReportMovements2.getMonto();
+//			}
+//			
+//			addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
+//			addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
+//			ganado += ganadoPorUsuario;
+//			pagado += dispersadoPorUsuario;
+//			
+//			if (dispersadoPorUsuario < ganadoPorUsuario){
+//				pendiente += ganadoPorUsuario - dispersadoPorUsuario;
+//			}
+//			
+//		}
+		
+		if(!listAccountStatusBean.isEmpty()){
+			listAccountStatusBean.get(0).setPagado(pagado);
+			listAccountStatusBean.get(0).setPendiente(pendiente);
+			listAccountStatusBean.get(0).setGanado(ganado);
+		}
+
+		return listAccountStatusBean;
 	}
 
 }
