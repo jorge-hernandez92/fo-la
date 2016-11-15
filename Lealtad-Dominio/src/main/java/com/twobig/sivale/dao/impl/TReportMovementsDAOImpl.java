@@ -161,30 +161,19 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 
 	@Override
 	public List<TReportMovements> getAllTReportMovementsByCompanyIdAndFilter(Integer companyId,
-			AccountStatusFilterBean filterBean) {
-		/* 
-		private String campaign;
-		private Date  startDate;
-		private Date endDate; 
-		
-		private String movimiento;
-		private String observaciones;
-		private String participanteIdStars;
-		
-		 */
-		
+			AccountStatusFilterBean filterBean) {		
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
-		
-		ProjectionList projList = Projections.projectionList();
-		
-		projList.add(Projections.property(TReportMovements.FIELD_IDSTARS), TReportMovements.FIELD_IDSTARS);
 		
 		criteria.createAlias("campaign", "campaignOb");
 		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
 		
-		if(filterBean.getMovimiento() != null && !filterBean.getMovimiento().trim().isEmpty()){
-			criteria.add(Restrictions.ilike(TReportMovements.FIELD_MOVEMENT, "%"+filterBean.getMovimiento().trim()+"%"));
+		if(filterBean.getStartDate() != null && filterBean.getEndDate() != null){
+			criteria.add(Restrictions.ge("campaignOb.startDate",filterBean.getStartDate()));
+			criteria.add(Restrictions.le("campaignOb.endDate",filterBean.getEndDate()));
+		}
+		if(filterBean.getCampaign() != null && !filterBean.getCampaign().trim().isEmpty()){
+			criteria.add(Restrictions.ilike("campaignOb.campaignName", "%"+filterBean.getCampaign().trim()+"%"));
 		}
 		if(filterBean.getObservaciones() != null && !filterBean.getObservaciones().trim().isEmpty()){
 			criteria.add(Restrictions.ilike(TReportMovements.FIELD_OBSERVACIONES, "%"+filterBean.getObservaciones().trim()+"%"));
@@ -192,10 +181,6 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		if(filterBean.getParticipanteIdStars() != null && !filterBean.getParticipanteIdStars().trim().isEmpty()){
 			criteria.add(Restrictions.ilike(TReportMovements.FIELD_IDSTARS, "%"+filterBean.getParticipanteIdStars().trim()+"%"));
 		}
-		
-		criteria.setProjection(Projections.distinct(projList));
-		
-		criteria.setResultTransformer(Transformers.aliasToBean(TReportMovements.class));
 		
 		return getListByCriteria(criteria);
 	}	

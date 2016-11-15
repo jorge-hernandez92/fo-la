@@ -1270,8 +1270,8 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.searchAccountStatus = function(date) {
 					    
 						var searchAccountStatusvar = {
-								campaign 		: $rootScope.search.campaing,
-								unidadDeNegocio 	: $rootScope.search.unity,
+								campaign 			: $rootScope.search.campaing,
+								//unidadDeNegocio 	: $rootScope.search.unity,
 								participanteIdStars : $rootScope.search.thIdStars,
 								movimiento 			: $rootScope.search.movement,
 								observaciones 		: $rootScope.search.observation, 
@@ -1291,6 +1291,41 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						}
 						}).success(
 							function(data, status, headers, config) {
+								
+								$scope.rm = data;
+								
+								$scope.ganado 	 = data[0].ganado;
+								$scope.pagado 	 = data[0].pagado;
+								$scope.pendiente = data[0].pendiente;
+								
+								console.log($scope.ganado);
+								console.log($scope.pagado);
+								console.log($scope.pendiente);
+								
+								console.log(JSON.stringify(data));
+								
+								$scope.tableRM = new NgTableParams({
+									page : 1,
+									count : 15,
+									filter : $scope.filters,
+								}, {
+									total : $scope.rm.length,
+									counts : [],
+									getData : function($defer, params) {
+										var filteredData = params.filter() ? $filter(
+												'filter')($scope.rm,
+												params.filter().myfilter)
+												: $scope.rm;
+
+										var orderedData = params.sorting() ? $filter(
+												'orderBy')(filteredData, params.orderBy())
+												: $scope.rm;
+
+										$defer.resolve(orderedData.slice(
+												(params.page() - 1) * params.count(),
+												params.page() * params.count()));
+									}
+								});
 								
 							}).error(function(data, status, headers, config) {
 

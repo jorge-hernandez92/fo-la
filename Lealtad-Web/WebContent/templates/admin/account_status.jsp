@@ -8,12 +8,13 @@
 
 		<div class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
-				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
-				<input type="text" class="form-control" placeholder="Unidad de Negocio" ng-model="search.unity" style="width: 170px;">
+<!-- 				<input type="text" class="form-control" placeholder="Unidad de Negocio" ng-model="search.unity" style="width: 170px;"> -->
 				<input type="text" class="form-control" placeholder="Campaña" ng-model="search.campaing" style="width: 170px;">
 				<input type="text" class="form-control" placeholder="Participante" ng-model="search.thIdStars" style="width: 170px;">
 				<input type="text" class="form-control" placeholder="Movimiento" ng-model="search.movement" style="width: 170px;">
 				<input type="text" class="form-control" placeholder="Observación" ng-model="search.observation" style="width: 170px;">
+				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
+				
 				<button class="btn btn-primary" ng-click="searchAccountStatus(date)">Buscar</button>						
 			</div>
 		</div>
@@ -73,18 +74,9 @@
 							
 							<td title="'Compañia'" header-class="'text-left'"
 								sortable="'name'">{{rms.compania}}</td>
-
-<!-- 							<td title="'Programa'" header-class="'text-left'" -->
-<!-- 								sortable="'programa'">{{rms.programa}}</td> -->
-								
-<!-- 							<td title="'Subprograma'" header-class="'text-left'" -->
-<!-- 								sortable="'subprograma'">{{rms.subprograma}}</td> -->
 								
 							<td title="'Unidad de Negocio'" header-class="'text-left'"
 								sortable="'publishedDate'">{{rms.unidadDeNegocio}}</td>
-							
-<!-- 							<td title="'N4'" header-class="'text-left'" -->
-<!-- 								sortable="'publishedDate'">{{rms.N4}}</td> -->
 								
 							<td title="'Campaña'" header-class="'text-left'"
 								sortable="'nombreCampaign'">{{rms.campaignName}}</td>

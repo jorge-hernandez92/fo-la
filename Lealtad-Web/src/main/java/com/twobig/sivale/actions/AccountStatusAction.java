@@ -102,7 +102,7 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	
 	@SuppressWarnings("unchecked")
 	@Action(value = "searchAccountStatusAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
-			"searchCampaignsAdmin", "excludeNullProperties", "true", "noCache", "true" }) )
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String searchAccountStatusAdminAction() {
 		
 		logger.info("searchAccountStatusAdminAction");

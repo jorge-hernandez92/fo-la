@@ -405,38 +405,18 @@ List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>
 		int ganado = 0;
 		int pagado = 0;
 		
+		if(filterBean.getMovimiento() != null && !filterBean.getMovimiento().trim().isEmpty() && listTReportMovements != null){
+			
+			for(int i = 0; i < listTReportMovements.size(); i++){
+				if(!listTReportMovements.get(i).getMovements().toLowerCase().contains(filterBean.getMovimiento().trim().toLowerCase())){
+					listTReportMovements.remove(listTReportMovements.get(i));
+					i--;
+				}
+			}
+		}
+		
 		addToListAccountStatusBean(listAccountStatusBean,listTReportMovements);
 		
-//		for (TReportMovements tReportMovements : listTReportMovements) {
-//			
-//			List<TReportMovements> listTReportGanado = 
-//					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
-//			
-//			int ganadoPorUsuario = 0; 
-//			
-//			for (TReportMovements tReportMovements2 : listTReportGanado) {
-//				ganadoPorUsuario += tReportMovements2.getMonto();
-//			} 
-//			
-//			List<TReportMovements> listTReportDispersado = 
-//				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
-//			
-//			int dispersadoPorUsuario = 0;
-//			
-//			for (TReportMovements tReportMovements2 : listTReportDispersado) {
-//				dispersadoPorUsuario += tReportMovements2.getMonto();
-//			}
-//			
-//			addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
-//			addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
-//			ganado += ganadoPorUsuario;
-//			pagado += dispersadoPorUsuario;
-//			
-//			if (dispersadoPorUsuario < ganadoPorUsuario){
-//				pendiente += ganadoPorUsuario - dispersadoPorUsuario;
-//			}
-//			
-//		}
 		
 		if(!listAccountStatusBean.isEmpty()){
 			listAccountStatusBean.get(0).setPagado(pagado);
