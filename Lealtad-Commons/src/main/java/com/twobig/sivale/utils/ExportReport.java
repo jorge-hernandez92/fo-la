@@ -85,7 +85,7 @@ public final class ExportReport {
 
 			for (String attributeName : attributeNames) {
 				logger.info(attributeName + " : " + beanProperties.get(attributeName));
-				String valueToSet = "N/A";				
+				String valueToSet = " ";				
 				Object attributeValue = beanProperties.get(attributeName);				
 				if (attributeValue != null && attributeValue.getClass().equals(String.class)) {
 					String value = attributeValue.toString();

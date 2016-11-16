@@ -4,7 +4,6 @@ package com.twobig.sivale.actions;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -173,6 +172,22 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		
 		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany());
 		
+		if(!listAccountStatusBean.isEmpty()){
+			
+			AccountStatusBean accountStatusBean = new AccountStatusBean();
+			listAccountStatusBean.add(accountStatusBean);
+			accountStatusBean = new AccountStatusBean();
+			accountStatusBean.setObservaciones(String.valueOf(listAccountStatusBean.get(0).getPendiente()));
+			accountStatusBean.setMovements("Pendiente");
+			accountStatusBean.setMonto(listAccountStatusBean.get(0).getPagado());
+			accountStatusBean.setBid("Total Pagado");
+			accountStatusBean.setCompania((String.valueOf(listAccountStatusBean.get(0).getGanado())));
+			accountStatusBean.setIdStars("Total Ganado");
+			
+			listAccountStatusBean.add(accountStatusBean);
+			
+		}
+		
 		String[] cabecera 		=  {"Nombre de la Campaña", "Nombre", "ID STARS", "Compañia", "BID", "Monto", "Movimiento", "Observaciones" };
 		String[] atributos 		=  {"campaignName",			"nombre", "idStars",  "compania", "bid", "monto", "movements",  "observaciones"};
 		String nombreArchivo 	=  "Reporte_de_Movimientos";
@@ -184,6 +199,7 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		try {
 			
 			reportFileBytes = ExportReport.exportReportToFile(objectList, cabecera, atributos, nombreArchivo,"1", nombreArchivo);
+			
 			reportMap.put("valueCode", reportFileBytes);
 			reportMap.put("resultCode", "100");
 			reportMap.put("fileName", nombreArchivo);

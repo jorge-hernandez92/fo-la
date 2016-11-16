@@ -29,7 +29,7 @@ public interface TReportMovementsService {
 	List<AccountStatusBean> getAccountStatusByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean filterBean);
 	
 	
-	//SERVICE WITHOUT CAMPAIGN
+	//SERVICE FOR ADMIN
 	
 	List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId);
 	
@@ -38,5 +38,9 @@ public interface TReportMovementsService {
 	List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId);
 	
 	List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean);
+	
+	//SERVICE FOR TH
+	
+	
 
 }
