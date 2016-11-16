@@ -417,7 +417,6 @@ List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>
 		
 		addToListAccountStatusBean(listAccountStatusBean,listTReportMovements);
 		
-		
 		if(!listAccountStatusBean.isEmpty()){
 			listAccountStatusBean.get(0).setPagado(pagado);
 			listAccountStatusBean.get(0).setPendiente(pendiente);

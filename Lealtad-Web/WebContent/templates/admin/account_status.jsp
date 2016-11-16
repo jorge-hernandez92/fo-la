@@ -31,11 +31,11 @@
 
 				</div>
 				
-				<div class="col-md-3">
+				<div class="col-md-2">
 					
 				</div>
 				
-				<div class="col-md-5">
+				<div class="col-md-6">
 				
 					<button  ng-click="getRM()" type="button" class="btn btn-primary">
 
@@ -53,6 +53,12 @@
 
 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
 							aria-hidden="true"></span>Sin Pendientes
+					</button>
+					
+					<button  ng-click="downloadRMPending()" type="button" class="btn btn-primary">
+
+						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Descargar Reporte
 					</button>
 				
 					<button type="button" class="btn btn-primary"

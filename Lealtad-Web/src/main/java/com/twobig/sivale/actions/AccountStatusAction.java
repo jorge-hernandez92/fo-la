@@ -2,6 +2,10 @@ package com.twobig.sivale.actions;
 
 
 import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,12 +23,11 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
-import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.AccountStatusBean;
 import com.twobig.sivale.beans.AccountStatusFilterBean;
-import com.twobig.sivale.beans.SearchCampaignBean;
 import com.twobig.sivale.service.TReportMovementsService;
+import com.twobig.sivale.utils.ExportReport;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
@@ -36,6 +39,8 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	private Map<String, Object> session;
 	
 	private List<AccountStatusBean> listAccountStatusBean;
+	
+	Map<String, Object> reportMap;
 	
 	@Autowired
 	private TReportMovementsService tReportMovementsService;
@@ -149,7 +154,57 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		return SUCCESS; 
 	}
 	
-	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getRMXLSPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getRMXLSPendingAction() {
+		
+		logger.info("getRMXLSPendingAction");
+		
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		reportMap = new HashMap<>();
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany());
+		
+		String[] cabecera 		=  {"Nombre de la Campaña", "Nombre", "ID STARS", "Compañia", "BID", "Monto", "Movimiento", "Observaciones" };
+		String[] atributos 		=  {"campaignName",			"nombre", "idStars",  "compania", "bid", "monto", "movements",  "observaciones"};
+		String nombreArchivo 	=  "Reporte_de_Movimientos";
+		
+		List<Object> objectList = new ArrayList<Object>(listAccountStatusBean);
+		
+		byte[] reportFileBytes = null;
+		
+		try {
+			
+			reportFileBytes = ExportReport.exportReportToFile(objectList, cabecera, atributos, nombreArchivo,"1", nombreArchivo);
+			reportMap.put("valueCode", reportFileBytes);
+			reportMap.put("resultCode", "100");
+			reportMap.put("fileName", nombreArchivo);
+			
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | IOException e) {
+			
+			e.printStackTrace();
+		} finally{
+			
+		}
+		
+		return SUCCESS;
+	}
+
+	public Map<String, Object> getReportMap() {
+		return reportMap;
+	}
+
+	public void setReportMap(Map<String, Object> reportMap) {
+		this.reportMap = reportMap;
+	}
 
 	@Override
 	public void setSession(Map<String, Object> session) {

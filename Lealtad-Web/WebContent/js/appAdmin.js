@@ -1331,39 +1331,135 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 
 							});
 						
-//						
-//						$rootScope.search.campaignName = STRING_DEFAULT;
-//						$rootScope.search.classification = STRING_DEFAULT;
-//						$rootScope.classif.company = STRING_DEFAULT;
-//						
-//						var data = angular.toJson(searchCampaign);
-//						console.log(JSON.stringify(searchCampaign));
-
-//						$http({
-//							method : 'POST',
-//							url : 'searchCampaignsAdminAction',
-//							data : 'searchCampaign=' + data,
-//							headers : {
-//								'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
-//							}
-//						}).success(
-//								function(data, status, headers, config) {
-//									
-//									console.log('data: '+JSON.stringify(data));
-//									
-//									$scope.campaigns = data;
-//									$scope.tableCampaigns = new NgTableParams({
-//										count : 10
-//									}, {
-//										counts : [],
-//									    dataset: data
-//									});
-//									
-//								}).error(function(data, status, headers, config) {
-//
-//						});
-						
 					};
+					
+					
+					$scope.downloadRMPending = function (){
+						
+						$http({
+							method : 'POST',
+							url : 'getRMXLSPendingAction',
+							//data : 'reportSelectedCon=' + $scope.data.singleSelect,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded'
+							}
+						})
+							.success(function(data, status, headers, config) {
+								var resultCode = data.resultCode;				
+								if(resultCode == '100'){
+									
+									console.log("descargando");
+									
+									downloadReportFile(data.fileName+ '.xls', data.valueCode);
+									
+								}else{
+									
+									
+								}
+							})
+							.error(function(data, status, headers, config) {
+								
+								
+							});
+						
+					}
+					
+					
+					downloadReportFile = function(name,file) {
+
+				        var octetStreamMime = 'application/octet-stream';
+				        var success = false;         
+				        var filename = name;
+				        var contentType =  octetStreamMime;              
+				        
+				       var fileDownload = new Uint8Array(file);
+				        try
+				        {
+				            // Try using msSaveBlob if supported
+				            console.log("Trying saveBlob method ...");
+				            var blob = new Blob([fileDownload], { type: contentType });
+				            if(navigator.msSaveBlob)
+				                navigator.msSaveBlob(blob, filename);
+				            else {
+				                // Try using other saveBlob implementations, if available
+				                var saveBlob = navigator.webkitSaveBlob || navigator.mozSaveBlob || navigator.saveBlob;
+				                if(saveBlob === undefined) throw "Not supported";
+				                saveBlob(blob, filename);
+				            }
+				            console.log("saveBlob succeeded");
+				            success = true;
+				        } catch(ex)
+				        {
+				            console.log("saveBlob method failed with the following exception:");
+				            console.log(ex);
+				        }
+
+				        if(!success)
+				        {
+				            // Get the blob url creator
+				            var urlCreator = window.URL || window.webkitURL || window.mozURL || window.msURL;
+				            if(urlCreator)
+				            {
+				                // Try to use a download link
+				                var link = document.createElement('a');
+				                if('download' in link)
+				                {
+				                    // Try to simulate a click
+				                    try
+				                    {
+				                        // Prepare a blob URL
+				                        console.log("Trying download link method with simulated click ...");
+				                        var blob = new Blob([fileDownload], { type: contentType });
+				                                                
+				                        
+				                        var url = urlCreator.createObjectURL(blob);
+				                        link.setAttribute('href', url);
+
+				                        // Set the download attribute (Supported in Chrome 14+ / Firefox 20+)
+				                        link.setAttribute("download", filename);
+
+				                        // Simulate clicking the download link
+				                        var event = document.createEvent('MouseEvents');
+				                        event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+				                        link.dispatchEvent(event);
+				                        console.log("Download link method with simulated click succeeded");
+				                        success = true;
+
+				                    } catch(ex) {
+				                        console.log("Download link method with simulated click failed with the following exception:");
+				                        console.log(ex);
+				                    }
+				                }
+
+				                if(!success)
+				                {
+				                    // Fallback to window.location method
+				                    try
+				                    {
+				                        // Prepare a blob URL
+				                        // Use application/octet-stream when using window.location to force download
+				                        console.log("Trying download link method with window.location ...");
+				                        var blob = new Blob([fileDownload], { type: octetStreamMime });
+				                        var url = urlCreator.createObjectURL(blob);
+				                        window.location = url;
+				                        console.log("Download link method with window.location succeeded");
+				                        success = true;
+				                    } catch(ex) {
+				                        console.log("Download link method with window.location failed with the following exception:");
+				                        console.log(ex);
+				                    }
+				                }
+				            }
+				        }
+
+				        if(!success)
+				        {
+				            // Fallback to window.open method
+				            console.log("No methods worked for saving the arraybuffer, using last resort window.open");
+				            window.open(httpPath, '_blank', '');
+				        }    
+				};
+						
 					
 
 				}])
