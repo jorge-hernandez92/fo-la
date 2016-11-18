@@ -14,17 +14,6 @@ public interface TReportMovementsDAO {
 	
 	void deleteAllByCampaign(TCampaign tCampaign);
 	
-	List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId);
-	
-	List<TReportMovements> getTReportMovementsNoRepeatByCampaignId(Integer campaignId);
-	
-	List<TReportMovements> getTReportMovementsByIdStarsCampaignIdMovement(Integer campaignId, String idStars, String movement);
-	
-	List<TReportMovements> getAllTReportMovementsByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean accountStatusFilterBean);
-
-	
-	//SERVICE get TReportMovements by  company
-	
 	List<TReportMovements> getAllTReportMovementsByCompanyId(Integer companyId);
 	
 	List<TReportMovements> getTReportMovementsNoRepeatByCompanyId(Integer companyId);

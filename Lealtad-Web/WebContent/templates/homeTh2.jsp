@@ -65,6 +65,22 @@
 
 
 	<div>
+	
+		<div class="row">
+			<div class="col-md-3"></div>
+			<div class="col-md-6">
+				
+					Consulta tu Estado de Cuenta aquí 
+					
+					<i class="fa fa-list-alt" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 50px;""></i>
+				</button>
+				
+				<br>
+				<br>
+				
+			</div>
+			<div class="col-md-3"></div>
+		</div>
 
 		<div class="row">
 			<div class="col-md-2"></div>
@@ -73,16 +89,7 @@
 					REPORTE DE MOVIMIENTOS
 				</h2>
 				
-				<br>
-				
-<!-- 				<h4 class="text-center color-gray-ford">  -->
-<!-- 				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  -->
-<!-- 				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,  -->
-<!-- 				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec  -->
-<!-- 				ullamcorper nulla non metus auctor fringilla. -->
-<!-- 				</h4> -->
-<!-- 				<br><br><br> -->
-				
+				<br>				
 			</div>
 			<div class="col-md-2"></div>
 		</div>

@@ -546,6 +546,372 @@ appres
 					        event.preventDefault();
 					    });
 					}
+					
+					
+					$scope.getRM = function() {
+
+						var data = angular.toJson($scope.campaign);
+						
+						console.log("FUNCION RM");
+						
+						
+
+						$http({
+									method : 'POST',
+									url : 'getListRMAction',
+									data : 'campaign=' + data,
+									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+								})
+								.success(
+										function(data, status, headers, config) {
+											
+											$scope.rm = data;
+											
+											$scope.ganado 	 = data[0].ganado;
+											$scope.pagado 	 = data[0].pagado;
+											$scope.pendiente = data[0].pendiente;
+											
+											console.log($scope.ganado);
+											console.log($scope.pagado);
+											console.log($scope.pendiente);
+											
+											console.log(JSON.stringify(data));
+											
+											$scope.tableRM = new NgTableParams({
+												page : 1,
+												count : 15,
+												filter : $scope.filters,
+											}, {
+												total : $scope.rm.length,
+												counts : [],
+												getData : function($defer, params) {
+													var filteredData = params.filter() ? $filter(
+															'filter')($scope.rm,
+															params.filter().myfilter)
+															: $scope.rm;
+
+													var orderedData = params.sorting() ? $filter(
+															'orderBy')(filteredData, params.orderBy())
+															: $scope.rm;
+
+													$defer.resolve(orderedData.slice(
+															(params.page() - 1) * params.count(),
+															params.page() * params.count()));
+												}
+											});
+
+										}).error(function(data, status, headers, config) {
+
+								});
+						
+						
+					};
+					
+					$scope.getRMPending = function() {
+						
+						var data = angular.toJson($scope.campaign);
+						console.log("getRMPending");	
+
+						$http({
+									method : 'POST',
+									url : 'getListRMPendingAction',
+									data : 'campaign=' + data,
+									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+								})
+								.success(
+										function(data, status, headers, config) {
+											
+											$scope.rm = data;
+											
+											$scope.ganado 	 = data[0].ganado;
+											$scope.pagado 	 = data[0].pagado;
+											$scope.pendiente = data[0].pendiente;
+											
+											console.log($scope.ganado);
+											console.log($scope.pagado);
+											console.log($scope.pendiente);
+											
+											console.log(JSON.stringify(data));
+											
+											$scope.tableRM = new NgTableParams({
+												page : 1,
+												count : 15,
+												filter : $scope.filters,
+											}, {
+												total : $scope.rm.length,
+												counts : [],
+												getData : function($defer, params) {
+													var filteredData = params.filter() ? $filter(
+															'filter')($scope.rm,
+															params.filter().myfilter)
+															: $scope.rm;
+
+													var orderedData = params.sorting() ? $filter(
+															'orderBy')(filteredData, params.orderBy())
+															: $scope.rm;
+
+													$defer.resolve(orderedData.slice(
+															(params.page() - 1) * params.count(),
+															params.page() * params.count()));
+												}
+											});
+
+										}).error(function(data, status, headers, config) {
+
+								});
+						
+						
+					};
+					
+					$scope.getRMNoPending = function() {
+						
+						var data = angular.toJson($scope.campaign);
+						console.log("getRMPending");	
+
+						$http({
+									method : 'POST',
+									url : 'getListRMNoPendingAction',
+									data : 'campaign=' + data,
+									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+								})
+								.success(
+										function(data, status, headers, config) {
+											
+											$scope.rm = data;
+											
+											$scope.ganado 	 = data[0].ganado;
+											$scope.pagado 	 = data[0].pagado;
+											$scope.pendiente = data[0].pendiente;
+											
+											console.log($scope.ganado);
+											console.log($scope.pagado);
+											console.log($scope.pendiente);
+											
+											console.log(JSON.stringify(data));
+											
+											$scope.tableRM = new NgTableParams({
+												page : 1,
+												count : 15,
+												filter : $scope.filters,
+											}, {
+												total : $scope.rm.length,
+												counts : [],
+												getData : function($defer, params) {
+													var filteredData = params.filter() ? $filter(
+															'filter')($scope.rm,
+															params.filter().myfilter)
+															: $scope.rm;
+
+													var orderedData = params.sorting() ? $filter(
+															'orderBy')(filteredData, params.orderBy())
+															: $scope.rm;
+
+													$defer.resolve(orderedData.slice(
+															(params.page() - 1) * params.count(),
+															params.page() * params.count()));
+												}
+											});
+
+										}).error(function(data, status, headers, config) {
+
+								});
+						
+						
+					};
+					
+					$scope.searchAccountStatus = function(date) {
+					    
+						var searchAccountStatusvar = {
+								campaign 			: $rootScope.search.campaing,
+								//unidadDeNegocio 	: $rootScope.search.unity,
+								participanteIdStars : $rootScope.search.thIdStars,
+								movimiento 			: $rootScope.search.movement,
+								observaciones 		: $rootScope.search.observation, 
+								startDate 			: date.startDate,
+								endDate 			: date.endDate
+						};
+						
+						var data = angular.toJson(searchAccountStatusvar);
+						console.log(JSON.stringify(searchAccountStatusvar));
+						
+						$http({
+						method : 'POST',
+						url : 'searchAccountStatusAdminAction',
+						data : 'searchAccountStatusvar=' + data,
+						headers : {
+							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
+						}
+						}).success(
+							function(data, status, headers, config) {
+								
+								$scope.rm = data;
+								
+								$scope.ganado 	 = data[0].ganado;
+								$scope.pagado 	 = data[0].pagado;
+								$scope.pendiente = data[0].pendiente;
+								
+								console.log($scope.ganado);
+								console.log($scope.pagado);
+								console.log($scope.pendiente);
+								
+								console.log(JSON.stringify(data));
+								
+								$scope.tableRM = new NgTableParams({
+									page : 1,
+									count : 15,
+									filter : $scope.filters,
+								}, {
+									total : $scope.rm.length,
+									counts : [],
+									getData : function($defer, params) {
+										var filteredData = params.filter() ? $filter(
+												'filter')($scope.rm,
+												params.filter().myfilter)
+												: $scope.rm;
+
+										var orderedData = params.sorting() ? $filter(
+												'orderBy')(filteredData, params.orderBy())
+												: $scope.rm;
+
+										$defer.resolve(orderedData.slice(
+												(params.page() - 1) * params.count(),
+												params.page() * params.count()));
+									}
+								});
+								
+							}).error(function(data, status, headers, config) {
+
+							});
+						
+					};
+					
+					
+					$scope.downloadRMPending = function (){
+						
+						$http({
+							method : 'POST',
+							url : 'getRMXLSPendingAction',
+							//data : 'reportSelectedCon=' + $scope.data.singleSelect,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded'
+							}
+						})
+							.success(function(data, status, headers, config) {
+								var resultCode = data.resultCode;				
+								if(resultCode == '100'){
+									
+									console.log("descargando");
+									
+									downloadReportFile(data.fileName+ '.xls', data.valueCode);
+									
+								}else{
+									
+									
+								}
+							})
+							.error(function(data, status, headers, config) {
+								
+								
+							});
+						
+					}
+					
+					
+					downloadReportFile = function(name,file) {
+
+				        var octetStreamMime = 'application/octet-stream';
+				        var success = false;         
+				        var filename = name;
+				        var contentType =  octetStreamMime;              
+				        
+				       var fileDownload = new Uint8Array(file);
+				        try
+				        {
+				            // Try using msSaveBlob if supported
+				            console.log("Trying saveBlob method ...");
+				            var blob = new Blob([fileDownload], { type: contentType });
+				            if(navigator.msSaveBlob)
+				                navigator.msSaveBlob(blob, filename);
+				            else {
+				                // Try using other saveBlob implementations, if available
+				                var saveBlob = navigator.webkitSaveBlob || navigator.mozSaveBlob || navigator.saveBlob;
+				                if(saveBlob === undefined) throw "Not supported";
+				                saveBlob(blob, filename);
+				            }
+				            console.log("saveBlob succeeded");
+				            success = true;
+				        } catch(ex)
+				        {
+				            console.log("saveBlob method failed with the following exception:");
+				            console.log(ex);
+				        }
+
+				        if(!success)
+				        {
+				            // Get the blob url creator
+				            var urlCreator = window.URL || window.webkitURL || window.mozURL || window.msURL;
+				            if(urlCreator)
+				            {
+				                // Try to use a download link
+				                var link = document.createElement('a');
+				                if('download' in link)
+				                {
+				                    // Try to simulate a click
+				                    try
+				                    {
+				                        // Prepare a blob URL
+				                        console.log("Trying download link method with simulated click ...");
+				                        var blob = new Blob([fileDownload], { type: contentType });
+				                                                
+				                        
+				                        var url = urlCreator.createObjectURL(blob);
+				                        link.setAttribute('href', url);
+
+				                        // Set the download attribute (Supported in Chrome 14+ / Firefox 20+)
+				                        link.setAttribute("download", filename);
+
+				                        // Simulate clicking the download link
+				                        var event = document.createEvent('MouseEvents');
+				                        event.initMouseEvent('click', true, true, window, 1, 0, 0, 0, 0, false, false, false, false, 0, null);
+				                        link.dispatchEvent(event);
+				                        console.log("Download link method with simulated click succeeded");
+				                        success = true;
+
+				                    } catch(ex) {
+				                        console.log("Download link method with simulated click failed with the following exception:");
+				                        console.log(ex);
+				                    }
+				                }
+
+				                if(!success)
+				                {
+				                    // Fallback to window.location method
+				                    try
+				                    {
+				                        // Prepare a blob URL
+				                        // Use application/octet-stream when using window.location to force download
+				                        console.log("Trying download link method with window.location ...");
+				                        var blob = new Blob([fileDownload], { type: octetStreamMime });
+				                        var url = urlCreator.createObjectURL(blob);
+				                        window.location = url;
+				                        console.log("Download link method with window.location succeeded");
+				                        success = true;
+				                    } catch(ex) {
+				                        console.log("Download link method with window.location failed with the following exception:");
+				                        console.log(ex);
+				                    }
+				                }
+				            }
+				        }
+
+				        if(!success)
+				        {
+				            // Fallback to window.open method
+				            console.log("No methods worked for saving the arraybuffer, using last resort window.open");
+				            window.open(httpPath, '_blank', '');
+				        }    
+				};
+					
 
 				});
 
@@ -671,6 +1037,32 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 		}
 	})
+	
+	.state('account_status', {
+		url : '/estado_de_cuenta',
+		templateUrl : 'templates/th/account_status_th.jsp',
+		controller:	
+ 			function($scope) {
+
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#li-home').show();
+			$('#li-campaigns').hide();
+			$('#li-campaign').hide();
+			
+			$('#p-home').hide();
+			$('#p-campaigns').hide();
+			$('#p-campaign').hide();
+			$('#p-detail-publication').hide();
+			
+			$('#menu-files-publication').hide();
+			
+			
+		}
+	})
+	
 });
 
 angular.bootstrap(document, [ 'app' ]);

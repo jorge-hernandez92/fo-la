@@ -18,19 +18,6 @@ public interface TReportMovementsService {
 	 */
 	String uploadRMFile(TCampaign tCampaign, File file);
 	
-	List<TReportMovements> getAllTReportMovementsByCampaignId(Integer campaignId);
-	
-	List<AccountStatusBean> getAllAccountStatusByCampaignId(Integer campaignId);
-	
-	List<AccountStatusBean> getAccountStatusPendingByCampaignId(Integer campaignId);
-	
-	List<AccountStatusBean> getAccountStatusWithoutPendingByCampaignId(Integer campaignId);
-	
-	List<AccountStatusBean> getAccountStatusByCampaignIdAndFilter(Integer campaignId, AccountStatusFilterBean filterBean);
-	
-	
-	//SERVICE FOR ADMIN
-	
 	List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId);
 	
 	List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId);
