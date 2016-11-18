@@ -70,6 +70,7 @@
 			<div class="col-md-3"></div>
 			<div class="col-md-6">
 				
+				<button type="button" ui-sref="account_status" class="btn btn-default btn-lg btn-block" style="border-color: rgb(63, 111, 183);color: rgb(63, 111, 183);font-size: 20px;font-weight: bold;"> 
 					Consulta tu Estado de Cuenta aquí 
 					
 					<i class="fa fa-list-alt" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 50px;""></i>
