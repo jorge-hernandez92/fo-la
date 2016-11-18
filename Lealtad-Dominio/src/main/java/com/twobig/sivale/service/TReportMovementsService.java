@@ -4,11 +4,12 @@ import java.io.File;
 import java.util.List;
 
 import com.twobig.sivale.bd.to.TCampaign;
-import com.twobig.sivale.bd.to.TReportMovements;
 import com.twobig.sivale.beans.AccountStatusBean;
 import com.twobig.sivale.beans.AccountStatusFilterBean;
 
 public interface TReportMovementsService {
+	
+	//SERVICE FOR ADMIN
 	
 	/**
 	 * This method upload the information of RM to database with his Campaign
@@ -18,16 +19,13 @@ public interface TReportMovementsService {
 	 */
 	String uploadRMFile(TCampaign tCampaign, File file);
 	
-	List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId);
+	List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId, String cardNumber);
 	
-	List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId);
+	List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId, String cardNumber);
 	
-	List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId);
+	List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId, String cardNumber);
 	
-	List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean);
-	
-	//SERVICE FOR TH
-	
+	List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean, String cardNumber);
 	
 
 }

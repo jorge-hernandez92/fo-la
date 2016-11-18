@@ -558,7 +558,7 @@ appres
 
 						$http({
 									method : 'POST',
-									url : 'getListRMAction',
+									url : 'getListRMTHAction',
 									data : 'campaign=' + data,
 									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 								})
@@ -614,7 +614,7 @@ appres
 
 						$http({
 									method : 'POST',
-									url : 'getListRMPendingAction',
+									url : 'getListRMPendingTHAction',
 									data : 'campaign=' + data,
 									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 								})
@@ -670,7 +670,7 @@ appres
 
 						$http({
 									method : 'POST',
-									url : 'getListRMNoPendingAction',
+									url : 'getListRMNoPendingTHAction',
 									data : 'campaign=' + data,
 									headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 								})
@@ -736,7 +736,7 @@ appres
 						
 						$http({
 						method : 'POST',
-						url : 'searchAccountStatusAdminAction',
+						url : 'searchAccountStatusTHAction',
 						data : 'searchAccountStatusvar=' + data,
 						headers : {
 							'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8'
@@ -790,7 +790,7 @@ appres
 						
 						$http({
 							method : 'POST',
-							url : 'getRMXLSPendingAction',
+							url : 'getRMXLSPendingTHAction',
 							//data : 'reportSelectedCon=' + $scope.data.singleSelect,
 							headers : {
 								'Content-Type' : 'application/x-www-form-urlencoded'

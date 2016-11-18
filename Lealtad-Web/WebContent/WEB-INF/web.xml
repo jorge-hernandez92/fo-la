@@ -33,7 +33,7 @@
 	</session-config>
 	
 	<welcome-file-list>
-		<welcome-file>secured/login.jsp</welcome-file>
+		<welcome-file>secured/loginFord.jsp</welcome-file>
 	</welcome-file-list>
 	
 	<jsp-config>

@@ -37,6 +37,7 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	@Autowired
 	public CatClassificationCampaignService catClassificationCampaignService;
 	
+	@SuppressWarnings("unused")
 	private static final Logger logger = LogManager.getLogger(TReportMovementsServiceImpl.class);
 
 	@Override
@@ -82,16 +83,20 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			AccountStatusBean accountStatusBean = new AccountStatusBean();
 			
 			CatClassificationCampaign catClassificationCampaignUnidad = 
-					catClassificationCampaignDAO.getCatClassificationCampaignById(tReportMovements.getCampaign().getClassificationId());
+					catClassificationCampaignDAO.getCatClassificationCampaignById(
+							tReportMovements.getCampaign().getClassificationId());
 			
 			CatClassificationCampaign catClassificationCampaignSubprograma = 
-					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignUnidad.getCatClassificationCampaignsIdParent());
+					catClassificationCampaignDAO.getCatClassificationCampaignById(
+							catClassificationCampaignUnidad.getCatClassificationCampaignsIdParent());
 			
 			CatClassificationCampaign catClassificationCampaignPrograma = 
-					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignSubprograma.getCatClassificationCampaignsIdParent());
+					catClassificationCampaignDAO.getCatClassificationCampaignById(
+							catClassificationCampaignSubprograma.getCatClassificationCampaignsIdParent());
 			
 			CatClassificationCampaign catClassificationCampaignCompania = 
-					catClassificationCampaignDAO.getCatClassificationCampaignById(catClassificationCampaignPrograma.getCatClassificationCampaignsIdParent());
+					catClassificationCampaignDAO.getCatClassificationCampaignById(
+							catClassificationCampaignPrograma.getCatClassificationCampaignsIdParent());
 			
 			accountStatusBean.setMonto(tReportMovements.getMonto());
 			accountStatusBean.setMovements(tReportMovements.getMovements());
@@ -115,11 +120,17 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	//SERVICE WITHOUT CAMPAIGN
 
 	@Override
-	public List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId) {
+	public List<AccountStatusBean> getAllAccountStatusByCompanyId(Integer companyId, String cardNumber) {
 
 		List<AccountStatusBean> listAccountStatusBean= new ArrayList<AccountStatusBean>();
 		
-		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId);
+		List<TReportMovements> listTReportMovements;
+		List<TReportMovements> listTReportGanado;
+		List<TReportMovements> listTReportDispersado;
+		
+		listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId, cardNumber);
+
+		
 		
 		int pendiente = 0;
 		int ganado = 0;
@@ -127,8 +138,9 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		
 		for (TReportMovements tReportMovements : listTReportMovements) {
 			
-			List<TReportMovements> listTReportGanado = 
-					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+			listTReportGanado = 
+					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(
+							companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO, cardNumber);
 			
 			int ganadoPorUsuario = 0; 
 			
@@ -136,8 +148,9 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 				ganadoPorUsuario += tReportMovements2.getMonto();
 			} 
 			
-			List<TReportMovements> listTReportDispersado = 
-				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+			listTReportDispersado = 
+				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(
+						companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO, cardNumber);
 			
 			int dispersadoPorUsuario = 0;
 			
@@ -166,11 +179,11 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	}
 
 	@Override
-	public List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId) {
+	public List<AccountStatusBean> getAccountStatusPendingByCompanyId(Integer companyId, String cardNumber) {
 		
 		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
 		
-		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId);
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId, cardNumber);
 		
 		int pendiente = 0;
 		int ganado = 0;
@@ -179,7 +192,8 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		for (TReportMovements tReportMovements : listTReportMovements) {
 			
 			List<TReportMovements> listTReportGanado = 
-					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(
+							companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO, cardNumber);
 			
 			int ganadoPorUsuario = 0; 
 			
@@ -188,7 +202,8 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			} 
 			
 			List<TReportMovements> listTReportDispersado = 
-				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(
+						companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO, cardNumber);
 			
 			int dispersadoPorUsuario = 0;
 			
@@ -216,11 +231,11 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	}
 
 	@Override
-	public List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId) {
+	public List<AccountStatusBean> getAccountStatusWithoutPendingByCompanyId(Integer companyId, String cardNumber) {
 		
 		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
 		
-		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId);
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getTReportMovementsNoRepeatByCompanyId(companyId, cardNumber);
 		
 		int ganado = 0;
 		int pagado = 0;
@@ -228,7 +243,8 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		for (TReportMovements tReportMovements : listTReportMovements) {
 			
 			List<TReportMovements> listTReportGanado = 
-					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO);
+					tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(
+							companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_GANADO, cardNumber);
 			
 			int ganadoPorUsuario = 0; 
 			
@@ -237,7 +253,8 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			} 
 			
 			List<TReportMovements> listTReportDispersado = 
-				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO);
+				tReportMovementsDAO.getTReportMovementsByIdStarsCompanyIdMovement(
+						companyId, tReportMovements.getIdStars(), RMConstants.MOVIMIENTO_DISPERSADO, cardNumber);
 			
 			int dispersadoPorUsuario = 0;
 			
@@ -266,11 +283,11 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	}
 
 	@Override
-	public List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean) {
+	public List<AccountStatusBean> getAccountStatusByCompanyIdAndFilter(Integer companyId, AccountStatusFilterBean filterBean, String cardNumber) {
 		
 		List<AccountStatusBean> listAccountStatusBean = new ArrayList<AccountStatusBean>();
 		
-		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getAllTReportMovementsByCompanyIdAndFilter(companyId, filterBean);
+		List<TReportMovements> listTReportMovements = tReportMovementsDAO.getAllTReportMovementsByCompanyIdAndFilter(companyId, filterBean, cardNumber);
 		
 		int pendiente = 0;
 		int ganado = 0;
@@ -295,6 +312,7 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		}
 
 		return listAccountStatusBean;
-	}
+	}	
+	
 
 }

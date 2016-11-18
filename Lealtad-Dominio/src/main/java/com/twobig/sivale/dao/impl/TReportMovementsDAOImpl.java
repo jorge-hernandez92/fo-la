@@ -1,11 +1,8 @@
 package com.twobig.sivale.dao.impl;
 
-import java.util.Date;
 import java.util.List;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
-import org.hibernate.criterion.CriteriaSpecification;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.ProjectionList;
 import org.hibernate.criterion.Projections;
@@ -45,22 +42,10 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		query.executeUpdate();
 		
 	}
-	
-	//SERVICE get TReportMovements by  company
+
 
 	@Override
-	public List<TReportMovements> getAllTReportMovementsByCompanyId(Integer companyId) {
-		
-		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
-		
-		return getListByCriteria(criteria);
-		
-
-	}
-
-	@Override
-	public List<TReportMovements> getTReportMovementsNoRepeatByCompanyId(Integer companyId) {
-		
+	public List<TReportMovements> getTReportMovementsNoRepeatByCompanyId(Integer companyId, String numberCard) {
 		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
 		
 		ProjectionList projList = Projections.projectionList();
@@ -71,6 +56,10 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		
 		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
 		
+		if(numberCard != null){
+			criteria.add(Restrictions.eq(TReportMovements.FIELD_CARD_NUMBER, numberCard));
+		}
+		
 		criteria.setProjection(Projections.distinct(projList));
 		
 		criteria.setResultTransformer(Transformers.aliasToBean(TReportMovements.class));
@@ -79,8 +68,8 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 	}
 
 	@Override
-	public List<TReportMovements> getTReportMovementsByIdStarsCompanyIdMovement(Integer companyId, String idStars,
-			String movement) {
+	public List<TReportMovements> getTReportMovementsByIdStarsCompanyIdMovement(Integer companyId,
+			String idStars, String movement, String numberCard) {
 		
 		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
 		
@@ -88,21 +77,30 @@ public class TReportMovementsDAOImpl extends GenericDAOImpl<TReportMovements, Lo
 		
 		criteria.add(Restrictions.eq(TReportMovements.FIELD_MOVEMENT, movement));
 		
+		if(numberCard != null){
+			criteria.add(Restrictions.eq(TReportMovements.FIELD_CARD_NUMBER, numberCard));
+		}
+		
 		criteria.createAlias("campaign", "campaignOb");
 		
 		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
 		
 		return getListByCriteria(criteria);
+		
 	}
 
 	@Override
 	public List<TReportMovements> getAllTReportMovementsByCompanyIdAndFilter(Integer companyId,
-			AccountStatusFilterBean filterBean) {		
-		
+			AccountStatusFilterBean filterBean, String numberCard) {
+
 		DetachedCriteria criteria = DetachedCriteria.forClass(TReportMovements.class);
 		
 		criteria.createAlias("campaign", "campaignOb");
 		criteria.add(Restrictions.eq("campaignOb.companyId", companyId));
+		
+		if(numberCard != null){
+			criteria.add(Restrictions.eq(TReportMovements.FIELD_CARD_NUMBER, numberCard));
+		}
 		
 		if(filterBean.getStartDate() != null && filterBean.getEndDate() != null){
 			criteria.add(Restrictions.ge("campaignOb.startDate",filterBean.getStartDate()));

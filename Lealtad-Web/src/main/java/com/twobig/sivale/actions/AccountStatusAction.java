@@ -46,7 +46,7 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	
 	private static final Logger logger = LogManager.getLogger(AccountStatusAction.class);
 	
-	@SuppressWarnings("unchecked")
+
 	@Action(value = "getListRMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMAction() {
@@ -59,12 +59,12 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			return ERROR; 
 		}
 
-		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany());
+		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), null);
 		
 		return SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+
 	@Action(value = "getListRMPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMPendingAction() {
@@ -79,12 +79,12 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			return ERROR; 
 		}
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany());
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
 		
 		return SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	@Action(value = "getListRMNoPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMNoPendingAction() {
@@ -99,12 +99,12 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			return ERROR; 
 		}
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany());
+		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany(), null);
 		
 		return SUCCESS;
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	@Action(value = "searchAccountStatusAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String searchAccountStatusAdminAction() {
@@ -132,7 +132,7 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 				
 				accountStatusFilterBean = new ObjectMapper().readValue(searchAccountStatusJSON, AccountStatusFilterBean.class);
 				logger.info(accountStatusFilterBean.toString());
-				listAccountStatusBean = tReportMovementsService.getAccountStatusByCompanyIdAndFilter(user.getCompany(), accountStatusFilterBean);
+				listAccountStatusBean = tReportMovementsService.getAccountStatusByCompanyIdAndFilter(user.getCompany(), accountStatusFilterBean, null);
 				
 				for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
 					logger.info(accountStatusBean.toString());
@@ -153,7 +153,7 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		return SUCCESS; 
 	}
 	
-	@SuppressWarnings("unchecked")
+	
 	@Action(value = "getRMXLSPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getRMXLSPendingAction() {
@@ -170,7 +170,192 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		
 		reportMap = new HashMap<>();
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany());
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
+		
+		if(!listAccountStatusBean.isEmpty()){
+			
+			AccountStatusBean accountStatusBean = new AccountStatusBean();
+			listAccountStatusBean.add(accountStatusBean);
+			accountStatusBean = new AccountStatusBean();
+			accountStatusBean.setObservaciones(String.valueOf(listAccountStatusBean.get(0).getPendiente()));
+			accountStatusBean.setMovements("Pendiente");
+			accountStatusBean.setMonto(listAccountStatusBean.get(0).getPagado());
+			accountStatusBean.setBid("Total Pagado");
+			accountStatusBean.setCompania((String.valueOf(listAccountStatusBean.get(0).getGanado())));
+			accountStatusBean.setIdStars("Total Ganado");
+			
+			listAccountStatusBean.add(accountStatusBean);
+			
+		}
+		
+		String[] cabecera 		=  {"Nombre de la Campaña", "Nombre", "ID STARS", "Compañia", "BID", "Monto", "Movimiento", "Observaciones" };
+		String[] atributos 		=  {"campaignName",			"nombre", "idStars",  "compania", "bid", "monto", "movements",  "observaciones"};
+		String nombreArchivo 	=  "Reporte_de_Movimientos";
+		
+		List<Object> objectList = new ArrayList<Object>(listAccountStatusBean);
+		
+		byte[] reportFileBytes = null;
+		
+		try {
+			
+			reportFileBytes = ExportReport.exportReportToFile(objectList, cabecera, atributos, nombreArchivo,"1", nombreArchivo);
+			
+			reportMap.put("valueCode", reportFileBytes);
+			reportMap.put("resultCode", "100");
+			reportMap.put("fileName", nombreArchivo);
+			
+		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | IOException e) {
+			
+			e.printStackTrace();
+		} finally{
+			
+		}
+		
+		return SUCCESS;
+	}
+	
+	@Action(value = "getListRMTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getListRMTHAction() {
+		
+		logger.info("getListRMTHAction");
+		
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+
+		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), user.getTjCardNumber());
+		
+		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
+			logger.info(accountStatusBean.toString());
+		}
+		
+		return SUCCESS;
+	}
+	
+
+	@Action(value = "getListRMPendingTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getListRMPendingTHAction() {
+		
+		logger.info("getListRMPendingTHAction");
+		
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
+		
+		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
+			logger.info(accountStatusBean.toString());
+		}
+		
+		return SUCCESS;
+	}
+	
+	
+	@Action(value = "getListRMNoPendingTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getListRMNoPendingTHAction() {
+		
+		logger.info("getListRMNoPendingTHAction");
+		
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
+		
+		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
+			logger.info(accountStatusBean.toString());
+		}
+		
+		return SUCCESS;
+	}
+	
+	
+	@Action(value = "searchAccountStatusTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String searchAccountStatusTHAction() {
+		
+		logger.info("searchAccountStatusTHAction");
+		
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		String searchAccountStatusJSON = request.getParameter("searchAccountStatusvar");
+		
+		AccountStatusFilterBean accountStatusFilterBean; 
+		
+		if(!searchAccountStatusJSON.equals("undefined")){
+			accountStatusFilterBean = new AccountStatusFilterBean();
+			
+			try {
+				
+				accountStatusFilterBean = new ObjectMapper().readValue(searchAccountStatusJSON, AccountStatusFilterBean.class);
+				logger.info(accountStatusFilterBean.toString());
+				listAccountStatusBean = tReportMovementsService.getAccountStatusByCompanyIdAndFilter(user.getCompany(), accountStatusFilterBean, user.getTjCardNumber());
+				
+				for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
+					logger.info(accountStatusBean.toString());
+				}
+				
+		
+			} catch (IOException e) {
+				
+				e.printStackTrace();
+				return ERROR; 	
+			}
+			
+		}
+		else{
+			logger.info("ERROR EN EL JSON");
+		}
+		
+		return SUCCESS; 
+	}
+	
+	
+	@Action(value = "getRMXLSPendingTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getRMXLSPendingTHAction() {
+		
+		logger.info("getRMXLSPendingTHAction");
+		
+		TUser user;
+		
+		user = (TUser) session.get("user");
+		
+		if(user == null){
+			return ERROR; 
+		}
+		
+		reportMap = new HashMap<>();
+		
+		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
+		
+		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
+			logger.info(accountStatusBean.toString());
+		}
 		
 		if(!listAccountStatusBean.isEmpty()){
 			

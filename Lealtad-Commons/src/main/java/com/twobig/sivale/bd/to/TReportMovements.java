@@ -2,7 +2,7 @@ package com.twobig.sivale.bd.to;
 
 import java.util.Date;
 
-import javax.persistence.CascadeType;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -13,9 +13,6 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.NotFound;
-import org.hibernate.annotations.NotFoundAction;
 
 @Entity
 @Table(name = "t_report_movements")
@@ -47,6 +44,7 @@ public class TReportMovements implements java.io.Serializable {
 	public static final String  FIELD_MOVEMENT         =  "movements";
 	public static final String  FIELD_OBSERVACIONES    =  "observaciones";
 	public static final String  FIELD_CAMPAIGN_OB_ID   =  "campaign.campaignId";
+	public static final String  FIELD_CARD_NUMBER      =  "cardNumber";
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "report_movements_id")
