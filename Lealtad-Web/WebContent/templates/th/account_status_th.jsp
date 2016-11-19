@@ -58,29 +58,29 @@
 
 				</div>
 				
-				<div class="col-md-2">
+				<div class="col-md-5">
 					
 				</div>
 				
-				<div class="col-md-6">
+				<div class="col-md-3">
 				
-					<button  ng-click="getRM()" type="button" class="btn btn-primary">
+<!-- 					<button  ng-click="getRM()" type="button" class="btn btn-primary"> -->
 
-						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
-							aria-hidden="true"></span>Todo
-					</button>
+<!-- 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span -->
+<!-- 							aria-hidden="true"></span>Todo -->
+<!-- 					</button> -->
 				
-					<button  ng-click="getRMPending()" type="button" class="btn btn-primary">
+<!-- 					<button  ng-click="getRMPending()" type="button" class="btn btn-primary"> -->
 
-						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
-							aria-hidden="true"></span>Pendientes
-					</button>
+<!-- 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span -->
+<!-- 							aria-hidden="true"></span>Pendientes -->
+<!-- 					</button> -->
 					
-					<button ng-click="getRMNoPending()" type="button" class="btn btn-primary">
+<!-- 					<button ng-click="getRMNoPending()" type="button" class="btn btn-primary"> -->
 
-						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
-							aria-hidden="true"></span>Sin Pendientes
-					</button>
+<!-- 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span -->
+<!-- 							aria-hidden="true"></span>Sin Pendientes -->
+<!-- 					</button> -->
 					
 					<button  ng-click="downloadRMPending()" type="button" class="btn btn-primary">
 
