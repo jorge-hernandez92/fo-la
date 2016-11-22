@@ -1294,13 +1294,22 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								
 								$scope.rm = data;
 								
-								$scope.ganado 	 = data[0].ganado;
-								$scope.pagado 	 = data[0].pagado;
-								$scope.pendiente = data[0].pendiente;
 								
-								console.log($scope.ganado);
-								console.log($scope.pagado);
-								console.log($scope.pendiente);
+								if(data.length != 0){
+									
+									$scope.ganado 	 = data[0].ganado;
+									$scope.pagado 	 = data[0].pagado;
+									$scope.pendiente = data[0].pendiente;
+									
+									console.log($scope.ganado);
+									console.log($scope.pagado);
+									console.log($scope.pendiente);
+								}
+								else{
+									$scope.tableRM.reload();
+								}
+								
+								
 								
 								console.log(JSON.stringify(data));
 								
