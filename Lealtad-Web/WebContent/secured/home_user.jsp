@@ -339,6 +339,8 @@
 			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">| PUBLICACIONES</p>
 			
 			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">| DETALLE DE PUBLICACIÓN</p>
+			
+			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;">| ESTADO DE CUENTA</p>
 		
 	</nav>
 	

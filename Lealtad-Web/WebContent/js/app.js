@@ -950,6 +950,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#li-home').hide();
 			$('#li-campaigns').hide();
 			$('#li-campaign').hide();
+			$('#p-account').hide();
 			
 			$('#p-home').show();
 			$('#p-campaigns').hide();
@@ -979,6 +980,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#li-home').show();
 			$('#li-campaigns').hide();
 			$('#li-campaign').hide();
+			$('#p-account').hide();
 			
 			$('#p-home').hide();
 			$('#p-campaigns').show();
@@ -1006,6 +1008,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#li-home').show();
 			$('#li-campaigns').show();
 			$('#li-campaign').hide();
+			$('#p-account').hide();
 			
 			$('#p-home').hide();
 			$('#p-campaigns').hide();
@@ -1032,6 +1035,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#li-home').show();
 			$('#li-campaigns').show();
 			$('#li-campaign').show();
+			$('#p-account').hide();
 			
 			$('#p-home').hide();
 			$('#p-campaigns').hide();
@@ -1057,6 +1061,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#li-home').show();
 			$('#li-campaigns').hide();
 			$('#li-campaign').hide();
+			$('#p-account').show();
 			
 			$('#p-home').hide();
 			$('#p-campaigns').hide();
