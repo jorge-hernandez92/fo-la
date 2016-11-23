@@ -41,7 +41,7 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 	private static final Logger logger = LogManager.getLogger(TReportMovementsServiceImpl.class);
 
 	@Override
-	public String uploadRMFile(TCampaign tCampaign, File file) {
+	public String uploadRMFile(TCampaign tCampaign, File file) { 	 
 		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
 		ExcelBean excelBean = excelservice.getExcelData(file);
@@ -53,24 +53,31 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		tReportMovementsDAO.deleteAllByCampaign(tCampaign);
 		
 		for (HashMap<String, String> hashMap : rows) {
-			
-			tReportMovements = new TReportMovements();
-			tReportMovements.setCampaign(tCampaign);
-			tReportMovements.setMonth(hashMap.get(RMConstants.MES_EJECUCION));
-			tReportMovements.setYear(Integer.parseInt(hashMap.get(RMConstants.YEAR)));
-			tReportMovements.setIdStars(hashMap.get(RMConstants.ID_STARS));
-			tReportMovements.setPuestoEnStars(hashMap.get(RMConstants.PUESTO_EN_STARS));
-			tReportMovements.setEmployeeName(hashMap.get(RMConstants.NOMBRE_DEL_EMPLEADO));
-			tReportMovements.setSivaleName(hashMap.get(RMConstants.NOMBRE_SIVALE));
-			tReportMovements.setCardNumber(hashMap.get(RMConstants.NUMERO_DE_TARJETA_TITULAR));
-			tReportMovements.setBid(hashMap.get(RMConstants.BID));
-			tReportMovements.setRazonSocial(hashMap.get(RMConstants.RAZÓN_SOCIAL));
-			tReportMovements.setMonto(Integer.parseInt(hashMap.get(RMConstants.MONTO)));
-			tReportMovements.setCompania(hashMap.get(RMConstants.CAMPAIGN));
-			tReportMovements.setMovements(hashMap.get(RMConstants.MOVIMIENTO));
-			tReportMovements.setObservaciones(hashMap.get(RMConstants.OBSERVACIONES));
-			
-			tReportMovementsDAO.insertRM(tReportMovements);
+
+			try {
+				tReportMovements = new TReportMovements(); 	
+				tReportMovements.setCampaign(tCampaign);
+				tReportMovements.setMonth(hashMap.get(RMConstants.MES_EJECUCION));
+				tReportMovements.setYear(Integer.parseInt(hashMap.get(RMConstants.YEAR)));
+				tReportMovements.setIdStars(hashMap.get(RMConstants.ID_STARS));
+				tReportMovements.setPuestoEnStars(hashMap.get(RMConstants.PUESTO_EN_STARS));
+				tReportMovements.setEmployeeName(hashMap.get(RMConstants.NOMBRE_DEL_EMPLEADO));
+				tReportMovements.setSivaleName(hashMap.get(RMConstants.NOMBRE_SIVALE));
+				tReportMovements.setCardNumber(hashMap.get(RMConstants.NUMERO_DE_TARJETA_TITULAR));
+				tReportMovements.setBid(hashMap.get(RMConstants.BID));
+				tReportMovements.setRazonSocial(hashMap.get(RMConstants.RAZÓN_SOCIAL));
+				tReportMovements.setMonto(Integer.parseInt(hashMap.get(RMConstants.MONTO)));
+				tReportMovements.setCompania(hashMap.get(RMConstants.CAMPAIGN));
+				tReportMovements.setMovements(hashMap.get(RMConstants.MOVIMIENTO));
+				tReportMovements.setObservaciones(hashMap.get(RMConstants.OBSERVACIONES));
+				
+				tReportMovementsDAO.insertRM(tReportMovements);
+
+			} catch (NumberFormatException ex) {
+				logger.info("Error al cargar el archivo. Año o Monto incorrecto");
+
+			}
+
 		}
 		
 		return null;
