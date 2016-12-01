@@ -123,6 +123,43 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 		} 
 	}
 	
+	private void addToListAccountStatusBean(List<AccountStatusBean> listAccountStatusBean, 
+			TReportMovements tReportMovements){
+		
+		AccountStatusBean accountStatusBean = new AccountStatusBean();
+
+		CatClassificationCampaign catClassificationCampaignUnidad = catClassificationCampaignDAO
+				.getCatClassificationCampaignById(tReportMovements.getCampaign().getClassificationId());
+
+		CatClassificationCampaign catClassificationCampaignSubprograma = catClassificationCampaignDAO
+				.getCatClassificationCampaignById(
+						catClassificationCampaignUnidad.getCatClassificationCampaignsIdParent());
+
+		CatClassificationCampaign catClassificationCampaignPrograma = catClassificationCampaignDAO
+				.getCatClassificationCampaignById(
+						catClassificationCampaignSubprograma.getCatClassificationCampaignsIdParent());
+
+		CatClassificationCampaign catClassificationCampaignCompania = catClassificationCampaignDAO
+				.getCatClassificationCampaignById(
+						catClassificationCampaignPrograma.getCatClassificationCampaignsIdParent());
+
+		accountStatusBean.setMonto(tReportMovements.getMonto());
+		accountStatusBean.setMovements(tReportMovements.getMovements());
+		accountStatusBean.setStartDate(tReportMovements.getCampaign().getStartDate());
+		accountStatusBean.setEndDate(tReportMovements.getCampaign().getEndDate());
+		accountStatusBean.setCampaignName(tReportMovements.getCampaign().getCampaignName());
+		accountStatusBean.setCompania(catClassificationCampaignCompania.getClassName());
+		accountStatusBean.setPrograma(catClassificationCampaignPrograma.getClassName());
+		accountStatusBean.setSubprograma(catClassificationCampaignSubprograma.getClassName());
+		accountStatusBean.setUnidadDeNegocio(catClassificationCampaignUnidad.getClassName());
+		accountStatusBean.setNombre(tReportMovements.getEmployeeName());
+		accountStatusBean.setBid(tReportMovements.getBid());
+		accountStatusBean.setIdStars(tReportMovements.getIdStars());
+		accountStatusBean.setObservaciones(tReportMovements.getObservaciones());
+
+		listAccountStatusBean.add(accountStatusBean);
+	}
+	
 	
 	//SERVICE WITHOUT CAMPAIGN
 
@@ -220,8 +257,9 @@ public class TReportMovementsServiceImpl implements TReportMovementsService {
 			
 			if (dispersadoPorUsuario < ganadoPorUsuario) {
 				pendiente += ganadoPorUsuario - dispersadoPorUsuario;
-				addToListAccountStatusBean(listAccountStatusBean,listTReportGanado);
-				addToListAccountStatusBean(listAccountStatusBean,listTReportDispersado);
+				listTReportGanado.get(0).setMovements("Pendiente");
+				listTReportGanado.get(0).setMonto(ganadoPorUsuario - dispersadoPorUsuario);
+				addToListAccountStatusBean(listAccountStatusBean,listTReportGanado.get(0));
 				ganado += ganadoPorUsuario;
 				pagado += dispersadoPorUsuario; 
 			}

@@ -719,17 +719,44 @@ appres
 						
 					};
 					
-					$scope.searchAccountStatus = function(date) {
-					    
-						var searchAccountStatusvar = {
-								campaign 			: $rootScope.search.campaing,
-								//unidadDeNegocio 	: $rootScope.search.unity,
-								participanteIdStars : $rootScope.search.thIdStars,
-								movimiento 			: $rootScope.search.movement,
-								observaciones 		: $rootScope.search.observation, 
-								startDate 			: date.startDate,
-								endDate 			: date.endDate
-						};
+					$scope.changeDate = function(value){
+						console.log(value);
+						
+						if(value){
+							
+							$("#daterange1").prop('disabled', false);
+						}
+						else{
+							$("#daterange1").prop('disabled', true);
+						}
+					}
+					
+					$scope.searchAccountStatus = function(date, stateDate) {
+						
+						console.log(stateDate);
+						
+						if(!stateDate){
+							var searchAccountStatusvar = {
+									campaign 			: $rootScope.search.campaing,
+									//unidadDeNegocio 	: $rootScope.search.unity,
+									participanteIdStars : $rootScope.search.thIdStars,
+									movimiento 			: $rootScope.search.movement,
+									observaciones 		: $rootScope.search.observation, 
+									startDate 			: null,
+									endDate 			: null
+							};
+						}
+						else{
+							var searchAccountStatusvar = {
+									campaign 			: $rootScope.search.campaing,
+									//unidadDeNegocio 	: $rootScope.search.unity,
+									participanteIdStars : $rootScope.search.thIdStars,
+									movimiento 			: $rootScope.search.movement,
+									observaciones 		: $rootScope.search.observation, 
+									startDate 			: date.startDate,
+									endDate 			: date.endDate
+							};
+						}
 						
 						var data = angular.toJson(searchAccountStatusvar);
 						console.log(JSON.stringify(searchAccountStatusvar));
