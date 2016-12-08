@@ -10,7 +10,7 @@
 
 	<div class="panel-body back-sivale">
 		<div class="container">
-			<div class="panel panel-grisT table-top-sivale">
+			<div class="panel panel-grisT table-top-sivale" style="background-color: rgba(210, 210, 210, 0.15);">
 				<div class="panel-heading">
 					<div class="container-fluid">
 						<div class="navbar-header" style="font-family: cursive;font-size: 17px;">Datos de Publicación</div>

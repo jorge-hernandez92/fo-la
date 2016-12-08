@@ -1559,7 +1559,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('body').removeClass('image-th-p');
 			
-			$('body').addClass('image-Admin');
+			//$('body').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1584,7 +1584,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1608,7 +1608,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1632,7 +1632,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1656,7 +1656,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1676,7 +1676,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('body').addClass('image-Admin');
+			//$('body').addClass('image-Admin');
 			
 			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
 			
@@ -1701,7 +1701,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1724,7 +1724,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			
@@ -1746,7 +1746,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			$('#init').removeClass('image-th-p');
 			
-			$('#init').addClass('image-Admin');
+			//$('#init').addClass('image-Admin');
 			
 			$('body').css({ "background-image": "" });
 			

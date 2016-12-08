@@ -4,7 +4,7 @@
 <div class="panel-body back-sivale">
 	
 	<div class="container">
-		<div class="panel panel-grisT table-top-sivale">
+		<div class="panel panel-grisT table-top-sivale" style="background-color: rgba(210, 210, 210, 0.15);">
 			<div class="panel-heading">
 				<div class="container-fluid">
 					<div class="navbar-header">Datos de Campaña</div>
@@ -25,7 +25,7 @@
 					</div>
 
 					<div class="row margin-top10">
-						<div class="col-md-2">Duración</div>
+						<div class="col-md-2">Vigencia</div>
 						<div class="col-md-5">
 							<input date-range-picker="" id="daterange1" name="daterange1"
 								class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched"

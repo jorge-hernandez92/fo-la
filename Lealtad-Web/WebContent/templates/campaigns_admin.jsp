@@ -5,7 +5,7 @@
 
 	<div class="container">
 		<h1 class="text-center">
-			<font color="white">Campañas Recientes</font>
+			<font color="black">Campañas Recientes</font>
 		</h1>
 	</div>
 	
@@ -53,95 +53,95 @@
 			
 		</div>
 
-		<br><br>
+		<br><br><br><br><br><br>
 	
-	<div class="container  font-color-text">
+<!-- 	<div class="container  font-color-text"> -->
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 
-			<div class="col-xs-6 col-md-2"></div>
-			<div class="col-xs-6 col-md-8">
+<!-- 			<div class="col-xs-6 col-md-2"></div> -->
+<!-- 			<div class="col-xs-6 col-md-8"> -->
 					
-			<div class="panel-group" id="accordion" role="tablist"
-			aria-multiselectable="true">
-			<div class="panel panel-infoP">
-				<div class="panel-heading" role="tab" id="headingOne">
-					<h4 class="panel-title">
-						<a role="button" data-toggle="collapse" data-parent="#accordion"
-							href="#collapseOne" aria-expanded="false"
-							aria-controls="collapseOne"> 
-								<div class="text-center">
-							<h4>¿DUDAS SOBRE EL PROGRAMA DE INCENTIVOS?</h4>
-						</div>
-							</a>
-					</h4>
-				</div>
-				<div id="collapseOne" class="panel-collapse collapse"
-					role="tabpanel" aria-labelledby="headingOne">
-					<div class="panel-body">
-						<div class="text-center">
-							<h4>
-								<font color="black"> Llámanos </font><br> 01 (55) 5814
-								9396<br> de 9 a 18 hrs., lunes a viernes
-							</h4>
-						</div>
+<!-- 			<div class="panel-group" id="accordion" role="tablist" -->
+<!-- 			aria-multiselectable="true"> -->
+<!-- 			<div class="panel panel-infoP"> -->
+<!-- 				<div class="panel-heading" role="tab" id="headingOne"> -->
+<!-- 					<h4 class="panel-title"> -->
+<!-- 						<a role="button" data-toggle="collapse" data-parent="#accordion" -->
+<!-- 							href="#collapseOne" aria-expanded="false" -->
+<!-- 							aria-controls="collapseOne">  -->
+<!-- 								<div class="text-center"> -->
+<!-- 							<h4>¿DUDAS SOBRE EL PROGRAMA DE INCENTIVOS?</h4> -->
+<!-- 						</div> -->
+<!-- 							</a> -->
+<!-- 					</h4> -->
+<!-- 				</div> -->
+<!-- 				<div id="collapseOne" class="panel-collapse collapse" -->
+<!-- 					role="tabpanel" aria-labelledby="headingOne"> -->
+<!-- 					<div class="panel-body"> -->
+<!-- 						<div class="text-center"> -->
+<!-- 							<h4> -->
+<!-- 								<font color="black"> Llámanos </font><br> 01 (55) 5814 -->
+<!-- 								9396<br> de 9 a 18 hrs., lunes a viernes -->
+<!-- 							</h4> -->
+<!-- 						</div> -->
 
-						<div class="text-center">
-							<h4>
-								<font color="black"> O escríbenos </font><br>
-										atnincentivos@sivale.com.mx
-							</h4>
-						</div>
+<!-- 						<div class="text-center"> -->
+<!-- 							<h4> -->
+<!-- 								<font color="black"> O escríbenos </font><br> -->
+<!-- 										atnincentivos@sivale.com.mx -->
+<!-- 							</h4> -->
+<!-- 						</div> -->
 
-					</div>
-				</div>
-			</div>
-			<div class="panel panel-infoP">
-				<div class="panel-heading" role="tab" id="headingTwo">
-					<h4 class="panel-title">
-						<a class="collapsed" role="button" data-toggle="collapse"
-							data-parent="#accordion" href="#collapseTwo"
-							aria-expanded="false" aria-controls="collapseTwo">
-							<div class="text-center">
-								<h4>¿DUDAS SOBRE LAS TARJETAS SÍVALE?</h4>
-							</div> 
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="panel panel-infoP"> -->
+<!-- 				<div class="panel-heading" role="tab" id="headingTwo"> -->
+<!-- 					<h4 class="panel-title"> -->
+<!-- 						<a class="collapsed" role="button" data-toggle="collapse" -->
+<!-- 							data-parent="#accordion" href="#collapseTwo" -->
+<!-- 							aria-expanded="false" aria-controls="collapseTwo"> -->
+<!-- 							<div class="text-center"> -->
+<!-- 								<h4>¿DUDAS SOBRE LAS TARJETAS SÍVALE?</h4> -->
+<!-- 							</div>  -->
 							
-							</a>
-					</h4>
-				</div>
-				<div id="collapseTwo" class="panel-collapse collapse"
-					role="tabpanel" aria-labelledby="headingTwo">
-					<div class="panel-body">
+<!-- 							</a> -->
+<!-- 					</h4> -->
+<!-- 				</div> -->
+<!-- 				<div id="collapseTwo" class="panel-collapse collapse" -->
+<!-- 					role="tabpanel" aria-labelledby="headingTwo"> -->
+<!-- 					<div class="panel-body"> -->
 
-								<div class="text-center">
-									<h4>
-										<font color="black">Llama al servicio integral <br>
-											para tarjetabientes
-										</font><br> 01 (55) 5814 9396 <br> cualquier día de la
-										semana <br> 24 horas al día
-									</h4>
-								</div>
+<!-- 								<div class="text-center"> -->
+<!-- 									<h4> -->
+<!-- 										<font color="black">Llama al servicio integral <br> -->
+<!-- 											para tarjetabientes -->
+<!-- 										</font><br> 01 (55) 5814 9396 <br> cualquier día de la -->
+<!-- 										semana <br> 24 horas al día -->
+<!-- 									</h4> -->
+<!-- 								</div> -->
 
-								<div class="text-center">
-									<h4>
-										<font color="black"> O escribenos </font><br>
-										sita@sivale.com.mx
-									</h4>
-								</div>
-					</div>
-				</div>
-			</div>
-		</div>
-			</div>
-			<div class="col-xs-6 col-md-2"></div>
-		</div>
+<!-- 								<div class="text-center"> -->
+<!-- 									<h4> -->
+<!-- 										<font color="black"> O escribenos </font><br> -->
+<!-- 										sita@sivale.com.mx -->
+<!-- 									</h4> -->
+<!-- 								</div> -->
+<!-- 					</div> -->
+<!-- 				</div> -->
+<!-- 			</div> -->
+<!-- 		</div> -->
+<!-- 			</div> -->
+<!-- 			<div class="col-xs-6 col-md-2"></div> -->
+<!-- 		</div> -->
 
-		<br>
-		<br>		
-		<br>		
-		<br>
-		<br>
+<!-- 		<br> -->
+<!-- 		<br>		 -->
+<!-- 		<br>		 -->
+<!-- 		<br> -->
+<!-- 		<br> -->
 
-	</div>
+<!-- 	</div> -->
 	
 </div>

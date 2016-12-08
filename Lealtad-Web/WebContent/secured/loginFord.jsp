@@ -46,7 +46,7 @@
 
 	<div class="row">
 		<div class="col-md-1"></div>
-  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 40px;">Bienvenido</h2></div>
+  		<div class="col-md-10"><h2 class="text-center" style="font-weight: bold; font-size: 40px;">¡Bienvenido a tus programas de incentivos!</h2></div>
  		<div class="col-md-1"></div>
 	</div>
 	
@@ -55,7 +55,7 @@
 	<div class="row">
   		<div class="col-md-3 center-block">
   			
-  			<div id="imgLoginFord" class="jumbotron">
+  			<div  class="jumbotron" style="background: rgba(49, 49, 49, 0.3);">
   			
   			<br><br>
 
@@ -103,9 +103,12 @@
 					<div class="col-md-12">
 						<br><br><br><br>
 						<h3 class="text-center"
-							style="font-size: 14px; font-family: GothamBold; color: white;">Plataforma elaborada y administrada 
+							style="font-size: 14px; font-family: GothamBold; color: white;margin-bottom: 0px;">Plataforma elaborada y administrada 
 							por Sí Vale México, S.A. de C.V., para uso exclusivo de Ford Motor Company de México, 
 							S.A. de C.V. y sus filiales.</h3>
+							
+							<h3 class="text-center"
+							style="font-size: 14px; font-family: GothamBold; color: white;margin-top: 0px;">Copyright ©2016 Ford Motor Company</h3>
 					</div>
 					
 <!-- 					<div class="col-md-3"> -->

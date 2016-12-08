@@ -12,7 +12,7 @@
 
 			<div class="col-xs-6 col-md-3">
 				<div class="text-center" >
-				 	<h3>Da clic en el logo para ver las campañas/promociones de cada área</h3>					
+				 	<h3>Promociones en las que participas</h3>					
 				</div>
 			</div>
 
@@ -41,17 +41,17 @@
 		</div>
 		
 
-	<a href="#contact" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:400px;border: 0px;"> 
-		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
-	</a>
+<!-- 	<a href="#contact" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:400px;border: 0px;">  -->
+<!-- 		<i class="fa fa-circle animated" style="margin-top: 12px;"></i> -->
+<!-- 	</a> -->
 	
-	<a href="#transaction" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:340px;border: 0px;"> 
-		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
-	</a>
+<!-- 	<a href="#transaction" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:340px;border: 0px;">  -->
+<!-- 		<i class="fa fa-circle animated" style="margin-top: 12px;"></i> -->
+<!-- 	</a> -->
 	
-	<a href="#banner" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:280px;border: 0px;"> 
-		<i class="fa fa-circle animated" style="margin-top: 12px;"></i>
-	</a>
+<!-- 	<a href="#banner" class="btn btn-circle page-scroll" style="position: fixed;right: 0px;top:280px;border: 0px;">  -->
+<!-- 		<i class="fa fa-circle animated" style="margin-top: 12px;"></i> -->
+<!-- 	</a> -->
 	
 </header>
 
@@ -259,7 +259,7 @@
 			<div class="col-md-3"></div>
   			<div class="col-md-6"><h5 class="text-center" style="color:rgb(255,255,255)">Plataforma elaborada y administrada 
 							por Sí Vale México, S.A. de C.V., para uso exclusivo de Ford Motor Company de México, 
-							S.A. de C.V. y sus filiales.
+							S.A. de C.V. y sus filiales. Copyright ©2016 Ford Motor Company. 
   								  </h5>
   			</div>
  			<div class="col-md-3"></div>
