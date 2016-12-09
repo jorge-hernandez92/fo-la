@@ -21,7 +21,7 @@
 		<div class="panel panel-default table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
-					<div class="navbar-header">Mis clasificaciones de campaña</div>
+					<div class="navbar-header">Mis clasificaciones de Incentivo</div>
 				</div>
 			</div>				
 							

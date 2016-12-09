@@ -36,7 +36,7 @@
 		<div class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
 <!-- 				<input type="text" class="form-control" placeholder="Unidad de Negocio" ng-model="search.unity" style="width: 170px;"> -->
-				<input type="text" class="form-control" placeholder="Campaña" ng-model="search.campaing" style="width: 170px;">
+				<input type="text" class="form-control" placeholder="Incentivo" ng-model="search.campaing" style="width: 170px;">
 				<input type="text" class="form-control" placeholder="Participante" ng-model="search.thIdStars" style="width: 170px;">
 				<input type="text" class="form-control" placeholder="Movimiento" ng-model="search.movement" style="width: 170px;">
 				<input type="text" class="form-control" placeholder="Observación" ng-model="search.observation" style="width: 170px;">
@@ -114,7 +114,7 @@
 							<td title="'Unidad de Negocio'" header-class="'text-left'"
 								sortable="'publishedDate'">{{rms.unidadDeNegocio}}</td>
 								
-							<td title="'Campaña'" header-class="'text-left'"
+							<td title="'Incentivo'" header-class="'text-left'"
 								sortable="'nombreCampaign'">{{rms.campaignName}}</td>
 								
 							<td title="'Participante'" header-class="'text-left'"

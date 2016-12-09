@@ -7,7 +7,7 @@
 		<div class="panel panel-grisT table-top-sivale" style="background-color: rgba(210, 210, 210, 0.15);">
 			<div class="panel-heading">
 				<div class="container-fluid">
-					<div class="navbar-header">Datos de Campaña</div>
+					<div class="navbar-header">Datos de Incentivo</div>
 				</div>
 			</div>
 
@@ -37,7 +37,7 @@
 					
 					<div class="row margin-top10"
 						data-ng-controller="getClassCompanyList">
-						<div class="col-md-2">Compañía</div>
+						<div class="col-md-2">Incentivo</div>
 						<div class="col-md-5">
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[0].availableOptions track by option.id"
@@ -155,7 +155,7 @@
 						<button type="button" class="btn btn-primary"
 							ng-click="newCampaignForm(date)"
 							ng-disabled="form.campaignName=='' || selectCampaign.items[0].selectedOption=='' || form.myFile==null">
-							Crear Campaña
+							Crear Incentivo
 						</button>
 						<button type="button" class="btn btn-primary left-35"
 							ui-sref="home">

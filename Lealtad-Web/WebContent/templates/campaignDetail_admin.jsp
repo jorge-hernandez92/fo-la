@@ -8,7 +8,7 @@
 			<div class="panel-heading">
 				<div class="row">
 				<div class="col-md-4">
-					<div class="navbar-header" style="font-family: cursive;font-size: 17px;">{{campaign.campaignName}}</div>
+					<div class="navbar-header" style="font-family:font-size: 17px;">{{campaign.campaignName}}</div>
 
 				</div>
 				<div class="col-md-3">
@@ -17,12 +17,12 @@
   							
   							<i class="fa fa-pencil" aria-hidden="true"></i>
   							
-  							<span aria-hidden="true"></span>Editar Campaña
+  							<span aria-hidden="true"></span>Editar Incentivo
   							
 					</button>
 					
 				</div>
-				<div class="col-md-5" style="font-family: cursive;font-size: 17px;">
+				<div class="col-md-5" style="font-family: font-size: 17px;">
 					Duración {{campaign.startDate | date:'dd/MM/yyyy'}} al {{campaign.endDate | date:'dd/MM/yyyy'}}
 				</div>
 				</div>

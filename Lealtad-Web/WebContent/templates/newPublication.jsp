@@ -4,7 +4,7 @@
 <div class="panel-body back-sivale">
 	<div class="navbar container">
 		<ol class="breadcrumb breadcrumb-arrow">
-			<li><a ui-sref="home">Campañas Recientes</a></li>
+			<li><a ui-sref="home">Incentivos Recientes</a></li>
 			<li><a ui-sref="campaign">Publicaciones</a></li>
 			<li class="active"><span>Alta de Publicaciones</span></li>
 		</ol>

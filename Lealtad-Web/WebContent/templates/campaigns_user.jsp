@@ -25,7 +25,7 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 40px;">
-					Listado de Campañas/Promociones
+					Listado de Incentivos/Promociones
 				</h2>
 				
 				<br>
@@ -49,7 +49,7 @@
 
 		<div class="navbar-form" role="search">
 			<div class="form-group">
-                <input type="text" class="form-control" placeholder="Campaña" ng-model="search.campaignName">
+                <input type="text" class="form-control" placeholder="Incentivo" ng-model="search.campaignName">
 				<input type="text" class="form-control" placeholder="Programa" ng-model="search.classification">
 				<input type="text" class="form-control" placeholder="Subprograma" ng-model="classif.classification2">
 				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">

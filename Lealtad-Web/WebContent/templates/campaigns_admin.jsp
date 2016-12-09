@@ -5,7 +5,7 @@
 
 	<div class="container">
 		<h1 class="text-center">
-			<font color="black">Campañas Recientes</font>
+			<font color="black">Incentivos Recientes</font>
 		</h1>
 	</div>
 	
@@ -18,7 +18,7 @@
 				<input date-range-picker="" id="daterange1" name="daterange1" class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched" type="text" ng-model="date" required="">
 				<button class="btn btn-primary" ng-click="searchCampaigns(date)">Buscar</button>
 				<button type="button" class="btn btn-primary " ui-sref="newCampaign" ng-click="cleanSelect()">
-  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Añadir Campaña
+  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span> Añadir Incentivo
 						</button>
 						
 				<button type="button" class="btn btn-primary" ui-sref="account_status"> <i class="fa fa-list-alt " aria-hidden="true"></i> 

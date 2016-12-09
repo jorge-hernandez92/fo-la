@@ -13,7 +13,7 @@
 			<div class="panel panel-grisT table-top-sivale">
 				<div class="panel-heading">
 					<div class="container-fluid">
-						<div class="navbar-header" style="font-family: cursive;font-size: 17px;">Carga de Archivo de Reporte de Movimientos</div>
+						<div class="navbar-header" style="font-family: font-size: 17px;">Carga de Archivo de Reporte de Movimientos</div>
 					</div>
 				</div>
 				<div class="panel-body back-sivale" style="width: 700px;">

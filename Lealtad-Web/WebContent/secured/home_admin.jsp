@@ -70,7 +70,7 @@
 			</a>
 				<ul class="dropdown-menu dropdown-user">
 					<li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i>
-							Campañas </a></li>
+							Incentivos </a></li>
 							
 					<li id="li-separator" role="separator" class="divider"></li>
 					

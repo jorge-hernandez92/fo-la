@@ -7,7 +7,7 @@
 		<div class="panel panel-grisT table-top-sivale">
 			<div class="panel-heading">
 				<div class="container-fluid">
-					<div class="navbar-header" style="font-family: cursive;font-size: 17px;">Datos de Campaña</div>
+					<div class="navbar-header" style="font-family: cursive;font-size: 17px;">Datos de Incentivo</div>
 				</div>
 			</div>
 			<div class="panel-body back-sivale">
@@ -138,7 +138,7 @@
 						<button type="button" class="btn btn-primary"
 							ng-click="updateCampaignForm(date)"
 							ng-disabled="!form.campaignName">
-							Actualizar Campaña
+							Actualizar Incentivo
 						</button>
 						<button type="button" class="btn btn-primary left-35"
 							ng-click="deleteCampaign()">Eliminar</button>

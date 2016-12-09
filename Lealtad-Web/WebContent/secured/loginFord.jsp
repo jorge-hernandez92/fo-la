@@ -36,7 +36,7 @@
 	<nav class="navbar navbar-menu-ford navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" > <img style="max-width:250px; margin-top: -7px;" src="img/company_logo/Ford/LOGO_ELITE_FORD.png">
+				<a class="navbar-brand" > <img style="max-width:250px; margin-top: -7px;" src="img/company_logo/Ford/header.png">
 				</a>
 			</div>
 		</div>
