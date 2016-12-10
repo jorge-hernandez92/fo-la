@@ -25,7 +25,7 @@
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
 				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 40px;">
-					Listado de Publicaciones de la Incentivo/Promoción
+					Listado de Publicaciones de Incentivo/Promoción
 				</h2>
 				
 				<br>
