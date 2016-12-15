@@ -27,10 +27,12 @@
 
 			<br>
 
-			<div class="col-xs-6 col-md-3" ng-repeat="class in classifications">
+			<div class="col-xs-6 col-md-3" ng-repeat="class in classifications" style="margin-left: 80px;">
 					<a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" 
 						class="hvr-glow" style="border: 1px solid #bfbfbf;border-radius: 10px;">
-						<img ng-src="img/company_logo/{{class.catViews.logos}}/header.png" style="border: 0; float: left;max-width: 200px;" />
+<!-- 						<img ng-src="img/company_logo/{{class.catViews.logos}}/header.png" style="border: 0; float: left;max-width: 200px;"  -->
+<!-- 						/> -->
+						{{class.catViews.messages}}
 					</a>
 			</div>
 				

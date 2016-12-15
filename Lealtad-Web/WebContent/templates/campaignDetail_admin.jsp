@@ -23,7 +23,7 @@
 					
 				</div>
 				<div class="col-md-5" style="font-family: font-size: 17px;">
-					Duración {{campaign.startDate | date:'dd/MM/yyyy'}} al {{campaign.endDate | date:'dd/MM/yyyy'}}
+					Vigencia {{campaign.startDate | date:'dd/MM/yyyy'}} al {{campaign.endDate | date:'dd/MM/yyyy'}}
 				</div>
 				</div>
 			</div>

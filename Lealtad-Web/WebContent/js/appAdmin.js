@@ -1571,7 +1571,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 	.state('campaign', {
-		url : '/campaign',
+		url : '/incentivo',
 		templateUrl : 'templates/campaignDetail_admin.jsp',
 		controller:	
  			function($scope) {
@@ -1595,7 +1595,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 	.state('newCampaign', {
-		url : '/nueva_campana',
+		url : '/nuevo_incentivo',
 		templateUrl : 'templates/newCampaign_admin.jsp',
 		controller:	
  			function($scope) {
@@ -1619,7 +1619,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 	
 	.state('updateCampaign', {
-		url : '/actualizar_campaña',
+		url : '/actualizar_incentivo',
 		templateUrl : 'templates/updateCampaign_admin.jsp',
 		controller:	
  			function($scope) {
@@ -1712,7 +1712,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		}
 	})
 	
-		.state('uploadRMFile', {
+	.state('uploadRMFile', {
 		url : '/cargar_reporte_de_movimientos',
 		templateUrl : 'templates/admin/UploadRMFile.jsp',
 		controller:	

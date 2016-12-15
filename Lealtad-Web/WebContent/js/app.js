@@ -993,7 +993,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 	.state('campaigns', {
-		url : '/campaigns',
+		url : '/incentivos',
 		templateUrl : 'templates/campaigns_user.jsp',
 		controller:	
  			function($scope) {
@@ -1021,7 +1021,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	})
 
 	.state('campaign', {
-		url : '/campaign',
+		url : '/incentivo',
 		templateUrl : 'templates/campaignDetail_user.jsp',
 		controller:	
  			function($scope) {
