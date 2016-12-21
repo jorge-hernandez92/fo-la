@@ -4,6 +4,8 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -32,6 +34,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 	private TUser user;
 	private String error = null;
 	
+	private static final Logger logger = LogManager.getLogger(LoginAction.class);
+	
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -43,7 +47,9 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			@Result(name = ERROR, location = "/secured/login.jsp")})
 	public String login() {
 		
-		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
+		//HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
+		
+		logger.info("login");
 
 		if ( username == null || password == null || username.equals("") || password.equals("")){
 			
