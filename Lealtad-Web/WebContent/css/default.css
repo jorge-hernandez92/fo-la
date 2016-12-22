@@ -108,7 +108,7 @@
 
 .btn-home:hover {
     color: #fff;
-    background-color: #A7A9AC;
+    background-color: rgba(4, 160, 123, 0.86);
     border-color: #A7A9AC;
 }
 

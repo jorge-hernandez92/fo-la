@@ -284,6 +284,104 @@
   </div>
 </div>
 
+
+<!-- Modal -->
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog modal-lg" role="document" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <div class="text-center">
+        	<h4 class="modal-title" id="myModalLabel">DUDAS O PREGUNTAS</h4>
+      	</div>
+      </div>
+      <div class="modal-body">
+
+						<div class="row">
+
+							<div class="col-xs-6 col-md-2"></div>
+							<div class="col-xs-6 col-md-8">
+								<div class="text-center">
+									<h4 >
+										¿DUDAS SOBRE EL PROGRAMA <br>DE INCENTIVOS?
+									</h4>
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-2"></div>
+
+						</div>
+
+						<div class="row">
+
+							<div class="col-xs-6 col-md-3"></div>
+							<div class="col-xs-6 col-md-6">
+								<div class="text-center">
+									<h5 >
+										Llámanos: 01 (55) 5814 9396 de 9 a 18 hrs., lunes a viernes <br>
+										Escríbenos <font style="color: rgb(44, 171, 255);"> <u>atnincentivos@sivale.com.mx</u>
+										</font>
+									</h5>
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-3"></div>
+
+						</div>
+
+						<hr
+							style="width: 700px; border-top: 1px solid rgb(100, 100, 100);">
+
+						<div class="row">
+
+							<div class="col-xs-6 col-md-2"></div>
+							<div class="col-xs-6 col-md-8">
+								<div class="text-center">
+									<h4 >¿DUDAS SOBRE LAS
+										TARJETAS SÍVALE?</h4>
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-2"></div>
+
+						</div>
+
+						<div class="row">
+
+							<div class="col-xs-6 col-md-3"></div>
+							<div class="col-xs-6 col-md-6">
+								<div class="text-center">
+									<h5 >
+										Llama al servicio integral para tarjetabientes 01 (55) 5814
+										9396 <br> cualquier día de la semana 24 horas al día.
+										Escribenos <font style="color: rgb(44, 171, 255);"> <u>sita@sivale.com.mx</u>
+										</font>
+									</h5>
+								</div>
+							</div>
+							<div class="col-xs-6 col-md-3"></div>
+
+						</div>
+
+						<hr
+							style="width: 700px; border-top: 1px solid rgb(100, 100, 100);">
+
+						<div class="row">
+							<div class="col-md-3"></div>
+							<div class="col-md-6">
+								<h5 class="text-center" >Plataforma
+									elaborada y administrada por Sí Vale México, S.A. de C.V., para
+									uso exclusivo de Ford Motor Company de México, S.A. de C.V. y
+									sus filiales. Copyright ©2016 Ford Motor Company.</h5>
+							</div>
+							<div class="col-md-3"></div>
+
+						</div>
+				</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top" style="background-color: white;"
 		data-ng-controller="updateSession">
@@ -303,7 +401,11 @@
 					{{user.tjCardNumber}}
 			</a></li>
 			
-			<li><a href="#contact" class="page-scroll" ng-click="dudas()" > <i class="fa fa-question color-default-ford"></i> 
+<!-- 			<li><a href="#contact" class="page-scroll" ng-click="dudas()" > <i class="fa fa-question color-default-ford"></i>  -->
+<!-- 					Dudas o preguntas -->
+<!-- 			</a></li> -->
+			
+			<li><a href="#contact" data-toggle="modal" data-target="#myModal2"  > <i class="fa fa-question color-default-ford"></i> 
 					Dudas o preguntas
 			</a></li>
 			

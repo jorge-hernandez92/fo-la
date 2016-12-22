@@ -1,20 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
 	
-<header class="header-image">
-	
-	<div class="headline">
-		<div class="container">
-
-		</div>
-	</div>
-	
-	<br><br>
-	<br><br>
-	<br><br>
-	<br><br>
-	
-</header>
+<br><br>
 
 <div class="row">
 			<div class="col-md-2"></div>
