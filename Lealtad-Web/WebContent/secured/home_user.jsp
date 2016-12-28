@@ -427,23 +427,23 @@
 
 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
 			
-			<li id="li-home"><a  href="#" ng-click="goToHome()"  style="color: white;padding: 5px;color: #C0C0C0;"> INICIO  </a></li>
+			<li id="li-home"><a  href="#" ng-click="goToHome()"  style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> INICIO  </a></li>
 			
-			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;color: #C0C0C0;"> | INCENTIVOS      </a></li>
+			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | INCENTIVOS      </a></li>
 			
-			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;color: #C0C0C0;"> | PUBLICACIONES  </a></li>	
+			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | PUBLICACIONES  </a></li>	
 			
 		</ul>
 		
-			<p id="p-home" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;">INICIO</p>
+			<p id="p-home" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">INICIO</p>
 			
-			<p id="p-campaigns" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;">| INCENTIVOS</p>
+			<p id="p-campaigns" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| INCENTIVOS</p>
 			
-			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;">| PUBLICACIONES</p>
+			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| PUBLICACIONES</p>
 			
-			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;">| DETALLE DE PUBLICACIÓN</p>
+			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| DETALLE DE PUBLICACIÓN</p>
 			
-			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;">| ESTADO DE CUENTA</p>
+			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| ESTADO DE CUENTA</p>
 		
 	</nav>
 	
