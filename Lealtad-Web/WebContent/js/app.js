@@ -76,10 +76,59 @@ appres
 						
 						return indexImage; 
 					}
+					
+					$scope.getCampaignsByCompany = function() {
+						var data = angular.toJson($scope.classification);
+						
+						$http(
+								{
+									method : 'POST',
+									url : 'getCampaignsByComanyAction',
+									data : 'classificationCmp=' + data,
+									headers : {
+										'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+									}
+								}).success(
+								function(data, status, headers, config) {
+									$scope.campaignsByCom = data;
+									
+									$scope.updateClassification($scope.classification);
+									
+									$scope.tableCampaignByCompany = new NgTableParams({
+										page : 1,
+										count : 5,
+										filter : $scope.filters,
+									}, {
+										total : $scope.campaignsByCom.length,
+										counts : [],
+										getData : function($defer, params) {
+											var filteredData = params.filter() ? $filter(
+													'filter')($scope.rm,
+													params.filter().myfilter)
+													: $scope.campaignsByCom;
+
+											var orderedData = params.sorting() ? $filter(
+													'orderBy')(filteredData, params.orderBy())
+													: $scope.campaignsByCom;
+
+											$defer.resolve(orderedData.slice(
+													(params.page() - 1) * params.count(),
+													params.page() * params.count()));
+										}
+									});
+									
+									
+
+								}).error(
+								function(data, status, headers, config) {
+
+								});
+					}
 
 					$scope.getCampaigns = function() {
 						
 						var data = angular.toJson($scope.classification);
+						//var data = angular.toJson(1);
 
 
 						$http(
@@ -101,6 +150,31 @@ appres
 										$scope.campaigns[index2].indexImage2 = $scope.getIndex2(); 
 									}
 									$scope.updateClassification($scope.classification);
+									
+//									$scope.tableCampaign = new NgTableParams({
+//										page : 1,
+//										count : 5//,
+//										//filter : $scope.filters,
+//									}, {
+//										total : $scope.publications.length,
+//										counts : [],
+//										getData : function($defer, params) {
+//											var filteredData = params.filter() ? $filter(
+//													'filter')($scope.rm,
+//													params.filter().myfilter)
+//													: $scope.campaigns;
+//
+//											var orderedData = params.sorting() ? $filter(
+//													'orderBy')(filteredData, params.orderBy())
+//													: $scope.campaigns;
+//
+//											$defer.resolve(orderedData.slice(
+//													(params.page() - 1) * params.count(),
+//													params.page() * params.count()));
+//										}
+//									});
+									
+									
 
 								}).error(
 								function(data, status, headers, config) {
@@ -157,6 +231,7 @@ appres
 					$scope.getCampaign = function() {
 
 						var data = angular.toJson($scope.campaign);
+						//var data = angular.toJson('1');
 
 						$http(
 								{
@@ -172,9 +247,33 @@ appres
 											$scope.publications = data;
 											
 											var index2;
+											
 											for (index2 = 0; index2 < $scope.publications.length; index2++) {
 												$scope.publications[index2].indexImage2 = $scope.getIndex2(); 
 											}
+											
+//											$scope.tableCampaign = new NgTableParams({
+//												page : 1,
+//												count : 5//,
+//												//filter : $scope.filters,
+//											}, {
+//												total : $scope.publications.length,
+//												counts : [],
+//												getData : function($defer, params) {
+//													var filteredData = params.filter() ? $filter(
+//															'filter')($scope.rm,
+//															params.filter().myfilter)
+//															: $scope.publications;
+//
+//													var orderedData = params.sorting() ? $filter(
+//															'orderBy')(filteredData, params.orderBy())
+//															: $scope.publications;
+//
+//													$defer.resolve(orderedData.slice(
+//															(params.page() - 1) * params.count(),
+//															params.page() * params.count()));
+//												}
+//											});
 
 										})
 								.error(function(data, status, headers, config) {

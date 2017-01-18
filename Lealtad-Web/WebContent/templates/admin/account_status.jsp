@@ -4,6 +4,12 @@
 
 <div class="panel-body back-sivale">
 
+	<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 35px;">
+					Estado de Cuenta
+				</h2>
+				
+				
+
 	<div class="navbar container" style="width: 1300px;">
 
 		<div class="navbar-form navbar-left padding-cero" role="search">
@@ -149,4 +155,7 @@
 			
 		</div>
 	</div>
+	
+	<br><br><br>
+	
 </div>

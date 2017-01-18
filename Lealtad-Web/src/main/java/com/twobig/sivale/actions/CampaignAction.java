@@ -10,6 +10,8 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 
 import org.apache.commons.io.FileUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 //import org.apache.logging.log4j.LogManager;
 //import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
@@ -101,7 +103,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public static final String SUCCESS_DELETE_CAMPAIGN 	= "Campaña eliminada correctamente";
 	public static final String SUCCESS_UPDATE_CAMPAIGN 	= "Campaña actualizada correctamente";
 	
-	//private static final Logger logger = LogManager.getLogger(CampaignAction.class);
+
+	private static final Logger logger = LogManager.getLogger(CampaignAction.class);
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -148,6 +151,8 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 
 		String classificationCmpJSON = request.getParameter("classificationCmp");
 		
+		logger.info("Class: "+classificationCmpJSON);
+		
 		CatClassificationCampaign classificationCmp;
 
 		if (!classificationCmpJSON.equals("undefined")) {
@@ -187,6 +192,27 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		}
 		return SUCCESS;
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getCampaignsByComanyAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"campaigns", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getCampaignsByComanyAction() {
+
+		final HttpServletRequest request = ServletActionContext.getRequest();
+
+		String classificationCmpJSON = request.getParameter("classificationCmp");
+		
+		logger.info("Class: "+classificationCmpJSON);		
+
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+		
+		campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), user.getCompany());
+		
+		return SUCCESS;
 	}
 
 	@SuppressWarnings("unchecked")

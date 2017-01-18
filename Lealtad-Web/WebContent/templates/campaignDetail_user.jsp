@@ -15,12 +15,6 @@
 				
 				<br>
 				
-<!-- 				<h4 class="text-center color-gray-ford">  -->
-<!-- 				Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.  -->
-<!-- 				Donec ullamcorper nulla non metus auctor fringilla. Duis mollis, est non commodo luctus,  -->
-<!-- 				nisi erat porttitor ligula, eget lacinia odio sem nec elit. Donec  -->
-<!-- 				ullamcorper nulla non metus auctor fringilla. -->
-<!-- 				</h4> -->
 				
 			</div>
 			<div class="col-md-2"></div>

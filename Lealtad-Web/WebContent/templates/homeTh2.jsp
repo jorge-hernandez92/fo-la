@@ -4,57 +4,76 @@
 <section id="banner">
 
 	<header>
-		<br><br><br>
+	
+		<br><br><br><br>
+
 		<div class="row">
-		
-			<div class="col-md-4">
-				<p style="padding-left: 30px;">
-					<button type="button" class="btn btn-primary btn-lg" style="cursor: default;background-color: #3f6fb7;font-size: 28px;color: black;">Promocionesen las que participas
-						<i class="fa fa-star-o" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 45px;"></i>
+
+			<div class="col-md-7">
+				<p style="padding-left: 30px;padding-top: 40px;">
+					<button type="button" class="btn btn-primary"
+						style="cursor: default;font-size: 20px;color: black;background-color: #d2d2d2;border-color: #d2d2d2;min-width: 300px;">
+						<b>Campañas activas </b>
 					</button>
 				</p>
 			</div>
-			
-			<div class="col-md-3">
-			
+
+			<div class="col-md-5">
+				<a href="#" data-toggle="modal" data-target="#myModal2"
+					class="hvr-glow"
+					style="border-radius: 10px; font-size: 20px; color: black;padding: 5px;"> <b>Conoce
+						más sobre los programas aquí </b> <i class="fa fa-question-circle fa-3x"
+					aria-hidden="true"
+					></i>
+
+				</a>
+
+<!-- 				<p style="padding-left: 30px;"> -->
+<!-- 					<button type="button" class="btn btn-primary" -->
+<!-- 						style="cursor: default; font-size: 20px; color: black; background-color: #d2d2d2; border-color: #d2d2d2;"> -->
+<!-- 						Conoce más sobre los programas aquí  <i class="fa fa-question-circle" aria-hidden="true" style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i> -->
+<!-- 					</button> -->
+<!-- 				</p> -->
 			</div>
-			
-			<div class="col-md-4" data-ng-controller="getBalance">
-				<p style="padding-left: 30px;">
-					<button type="button" class="btn btn-home btn-lg"
-						style="padding: 30px 0px; cursor: default;min-width: 450px;background-color: #04a07b;">
-						
-						<i class="fa fa-credit-card" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
-						
-						Saldo en tu Tarjeta<br/>&#36; {{(balance | number:2) || '0.00'}}<br/>
-						
-					</button>
-				</p>
-			</div>
-			
+
 		</div>
-		<br>
-		
-		<div class="row" data-ng-controller="getClassifications">
-			<div class="col-md-4">
-			
-				<div class="col-xs-6 col-md-6" ng-repeat="class in classifications" style="margin-left: 10px;">
-					<a href="#" data-ng-click="selectClassification(class)"
-						ui-sref="campaigns" class="hvr-glow"
-						style="border: 1px solid #bfbfbf; border-radius: 10px;font-size: 20px;color: black;">
-						<b>{{class.catViews.messages}} </b></a>
+
+
+		<div class="container-fluid">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<div data-ng-controller="getCampaignsByCompany" ng-cloak>
+						<table ng-table="tableCampaignByCompany" class="table">
+							<tr ng-repeat="campaignsByCom in $data">
+
+								<td title="'Nombre de Incentivo'" header-class="'text-left'">{{campaignsByCom.campaignName}}</td>
+
+								<td title="'Clasificación'" header-class="'text-left'">
+									<span class="label label-primary" style="font-size: 100%;">{{campaignsByCom.classification[0]}}</span>
+									<span class="label label-primary" style="font-size: 100%;">{{campaignsByCom.classification[1]}}</span>
+									<span class="label label-primary" style="font-size: 100%;">{{campaignsByCom.classification[2]}}</span>
+									<span class="label label-primary" style="font-size: 100%;">{{campaignsByCom.classification[3]}}</span>
+								
+								</td>
+
+								<td title="'Inicio'" header-class="'text-left'">{{campaignsByCom.startDate}}</td>
+
+								<td title="'Fin'" header-class="'text-left'">{{campaignsByCom.endDate}}</td>
+
+							</tr>
+						</table>
+					</div>
+
 				</div>
-			
 			</div>
-			
-			<div class="col-md-3">
-			
-			</div>
-			
-			<div class="col-md-4">
-				<p style="padding-left: 30px;">
+		</div>
+
+		<div class="row">
+
+			<div class="col-md-6" >
+				<p style="padding-left: 160px;">
 					<button type="button" ui-sref="account_status" class="btn btn-home btn-lg"
-						style="padding: 30px 0px;min-width: 450px;font-size: 18px;">
+						style="padding: 25px 0px;min-width: 450px;font-size: 18px;">
 						
 						<i class="fa fa-line-chart" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
 						
@@ -62,6 +81,82 @@
 						
 					</button>
 				</p>
+
+			</div>
+
+			<div class="col-md-5" data-ng-controller="getBalance">
+
+				<p style="padding-left: 70px;">
+					<button type="button" class="btn btn-home btn-lg"
+						style="padding: 25px 0px; cursor: default; min-width: 450px; background-color: #04a07b;">
+
+						<i class="fa fa-credit-card" aria-hidden="true"
+							style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i>
+
+						Saldo en tu Tarjeta<br />&#36; {{(balance | number:2) || '0.00'}}<br />
+
+					</button>
+				</p>
+
+			</div>
+
+		</div>
+		
+		<br><br><br>
+		<br><br><br>
+
+
+
+		<div class="row">
+		
+			<div class="col-md-5" data-ng-controller="getClassifications">
+				<p style="padding-left: 30px;">
+					<button type="button" class="btn btn-primary btn-lg" style="cursor: default;background-color: #3f6fb7;font-size: 28px;">Promociones en las que participas
+						<i class="fa fa-star-o" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 45px;"></i>
+					</button>
+				</p>
+				
+				<br><br>
+				
+				<div class="col-xs-6 col-md-6" ng-repeat="class in classifications" style="margin-left: 10px;">
+					<a href="#" data-ng-click="selectClassification(class)"
+						ui-sref="campaigns" class="hvr-glow"
+						style="border: 1px solid #bfbfbf; border-radius: 10px;font-size: 20px;color: black;">
+						<b>{{class.catViews.messages}} </b></a>
+				</div>
+				
+				
+			</div>
+			
+			<div class="col-md-2">
+			
+			</div>
+			
+			<div class="col-md-4" data-ng-controller="getBalance">
+				<p style="padding-left: 30px;">
+					<button type="button" class="btn btn-home btn-lg"
+						style="padding: 25px 0px; cursor: default;min-width: 450px;background-color: #04a07b;">
+						
+						<i class="fa fa-credit-card" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
+						
+						Saldo en tu Tarjeta<br/>&#36; {{(balance | number:2) || '0.00'}}<br/>
+						
+					</button>
+				</p>
+				
+				<br>
+				
+				<p style="padding-left: 30px;">
+					<button type="button" ui-sref="account_status" class="btn btn-home btn-lg"
+						style="padding: 25px 0px;min-width: 450px;font-size: 18px;">
+						
+						<i class="fa fa-line-chart" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
+						
+						Consulta tu estado <br/>de Cuenta<br/>
+						
+					</button>
+				</p>
+				
 			</div>
 			
 		</div>
@@ -69,9 +164,12 @@
 	</header>
 
 
+
+
+
+
+
 </section>
-
-
 
 <section id="transaction">
 
@@ -214,9 +312,7 @@
   								  </h5>
   			</div>
  			<div class="col-md-3"></div>
-
 		</div>
-		
 	</div>
            
     </section>

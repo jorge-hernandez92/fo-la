@@ -383,7 +383,7 @@
 </div>
 
 	<!-- Navigation -->
-	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top" style="background-color: white;"
+	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top" style="background-color: white;min-height: 100px;"
 		data-ng-controller="updateSession">
 		
 			<div class="navbar-header">
@@ -423,7 +423,7 @@
 	
 		<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
-		data-ng-controller="updateSession" style="margin-top: 65px;">
+		data-ng-controller="updateSession" style="margin-top: 80px;">
 
 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
 			
