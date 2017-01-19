@@ -28,12 +28,6 @@
 
 				</a>
 
-<!-- 				<p style="padding-left: 30px;"> -->
-<!-- 					<button type="button" class="btn btn-primary" -->
-<!-- 						style="cursor: default; font-size: 20px; color: black; background-color: #d2d2d2; border-color: #d2d2d2;"> -->
-<!-- 						Conoce más sobre los programas aquí  <i class="fa fa-question-circle" aria-hidden="true" style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i> -->
-<!-- 					</button> -->
-<!-- 				</p> -->
 			</div>
 
 		</div>
@@ -46,7 +40,11 @@
 						<table ng-table="tableCampaignByCompany" class="table">
 							<tr ng-repeat="campaignsByCom in $data">
 
-								<td title="'Nombre de Incentivo'" header-class="'text-left'">{{campaignsByCom.campaignName}}</td>
+								<td title="'Nombre de Incentivo'" header-class="'text-left'">
+								
+									<b><a href="" data-ng-click="updateCampaign(campaignsByCom)" ui-sref="campaign">{{campaignsByCom.campaignName}}</a></b>
+								
+								</td>
 
 								<td title="'Clasificación'" header-class="'text-left'">
 									<span class="label label-primary" style="font-size: 100%;">{{campaignsByCom.classification[0]}}</span>
@@ -103,105 +101,96 @@
 		</div>
 		
 		<br><br><br>
-		<br><br><br>
+		<br>
 
 
 
-		<div class="row">
+<!-- 		<div class="row"> -->
 		
-			<div class="col-md-5" data-ng-controller="getClassifications">
-				<p style="padding-left: 30px;">
-					<button type="button" class="btn btn-primary btn-lg" style="cursor: default;background-color: #3f6fb7;font-size: 28px;">Promociones en las que participas
-						<i class="fa fa-star-o" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 45px;"></i>
-					</button>
-				</p>
+<!-- 			<div class="col-md-5" data-ng-controller="getClassifications"> -->
+<!-- 				<p style="padding-left: 30px;"> -->
+<!-- 					<button type="button" class="btn btn-primary btn-lg" style="cursor: default;background-color: #3f6fb7;font-size: 28px;">Promociones en las que participas -->
+<!-- 						<i class="fa fa-star-o" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 45px;"></i> -->
+<!-- 					</button> -->
+<!-- 				</p> -->
 				
-				<br><br>
+<!-- 				<br><br> -->
 				
-				<div class="col-xs-6 col-md-6" ng-repeat="class in classifications" style="margin-left: 10px;">
-					<a href="#" data-ng-click="selectClassification(class)"
-						ui-sref="campaigns" class="hvr-glow"
-						style="border: 1px solid #bfbfbf; border-radius: 10px;font-size: 20px;color: black;">
-						<b>{{class.catViews.messages}} </b></a>
-				</div>
+<!-- 				<div class="col-xs-6 col-md-6" ng-repeat="class in classifications" style="margin-left: 10px;"> -->
+<!-- 					<a href="#" data-ng-click="selectClassification(class)" -->
+<!-- 						ui-sref="campaigns" class="hvr-glow" -->
+<!-- 						style="border: 1px solid #bfbfbf; border-radius: 10px;font-size: 20px;color: black;"> -->
+<!-- 						<b>{{class.catViews.messages}} </b></a> -->
+<!-- 				</div> -->
 				
 				
-			</div>
+<!-- 			</div> -->
 			
-			<div class="col-md-2">
+<!-- 			<div class="col-md-2"> -->
 			
-			</div>
+<!-- 			</div> -->
 			
-			<div class="col-md-4" data-ng-controller="getBalance">
-				<p style="padding-left: 30px;">
-					<button type="button" class="btn btn-home btn-lg"
-						style="padding: 25px 0px; cursor: default;min-width: 450px;background-color: #04a07b;">
+<!-- 			<div class="col-md-4" data-ng-controller="getBalance"> -->
+<!-- 				<p style="padding-left: 30px;"> -->
+<!-- 					<button type="button" class="btn btn-home btn-lg" -->
+<!-- 						style="padding: 25px 0px; cursor: default;min-width: 450px;background-color: #04a07b;"> -->
 						
-						<i class="fa fa-credit-card" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
+<!-- 						<i class="fa fa-credit-card" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i> -->
 						
-						Saldo en tu Tarjeta<br/>&#36; {{(balance | number:2) || '0.00'}}<br/>
+<!-- 						Saldo en tu Tarjeta<br/>&#36; {{(balance | number:2) || '0.00'}}<br/> -->
 						
-					</button>
-				</p>
+<!-- 					</button> -->
+<!-- 				</p> -->
 				
-				<br>
+<!-- 				<br> -->
 				
-				<p style="padding-left: 30px;">
-					<button type="button" ui-sref="account_status" class="btn btn-home btn-lg"
-						style="padding: 25px 0px;min-width: 450px;font-size: 18px;">
+<!-- 				<p style="padding-left: 30px;"> -->
+<!-- 					<button type="button" ui-sref="account_status" class="btn btn-home btn-lg" -->
+<!-- 						style="padding: 25px 0px;min-width: 450px;font-size: 18px;"> -->
 						
-						<i class="fa fa-line-chart" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
+<!-- 						<i class="fa fa-line-chart" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i> -->
 						
-						Consulta tu estado <br/>de Cuenta<br/>
+<!-- 						Consulta tu estado <br/>de Cuenta<br/> -->
 						
-					</button>
-				</p>
+<!-- 					</button> -->
+<!-- 				</p> -->
 				
-			</div>
+<!-- 			</div> -->
 			
-		</div>
+<!-- 		</div> -->
 		
 	</header>
-
-
-
-
-
-
 
 </section>
 
 <section id="transaction">
 
-<br><br><br><br>
-
 	<div>
-		<div class="row">
-		<div class="col-md-6" style="margin-left: 25px;">
-			<a href="#" data-toggle="modal" data-target="#myModal2"
-						 class="hvr-glow"
-						style="border-radius: 10px;font-size: 28px;color: black;">
-						<b>Conoce más sobre los programas aquí </b>
-						<i class="fa fa-question-circle" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i>
+<!-- 		<div class="row"> -->
+<!-- 		<div class="col-md-6" style="margin-left: 25px;"> -->
+<!-- 			<a href="#" data-toggle="modal" data-target="#myModal2" -->
+<!-- 						 class="hvr-glow" -->
+<!-- 						style="border-radius: 10px;font-size: 28px;color: black;"> -->
+<!-- 						<b>Conoce más sobre los programas aquí </b> -->
+<!-- 						<i class="fa fa-question-circle" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i> -->
 						
-						</a>
-		</div></div>
+<!-- 						</a> -->
+<!-- 		</div></div> -->
 		
-		<hr style="border-top: 20px solid rgb(63, 111, 183);">
+<!-- 		<hr style="border-top: 20px solid rgb(63, 111, 183);"> -->
 
-		<div class="row">
-			<div class="col-md-2"></div>
-			<div class="col-md-8">
-				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 35px;">
-					Movimientos de mi Tarjeta
-				</h2>
+<!-- 		<div class="row"> -->
+<!-- 			<div class="col-md-2"></div> -->
+<!-- 			<div class="col-md-8"> -->
+<!-- 				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 35px;"> -->
+<!-- 					Movimientos de mi Tarjeta -->
+<!-- 				</h2> -->
 				
-				<br>				
-			</div>
-			<div class="col-md-2"></div>
-		</div>
-		
-		<br><br>
+<!-- 				<br>				 -->
+<!-- 			</div> -->
+<!-- 			<div class="col-md-2"></div> -->
+<!-- 		</div> -->
+
 
 		<div class="container font-color-text" style="width: 1170px;" ng-cloak >
 			<div class="panel panel-default table-top-sivale">
