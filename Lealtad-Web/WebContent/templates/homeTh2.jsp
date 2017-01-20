@@ -23,8 +23,7 @@
 					class="hvr-glow"
 					style="border-radius: 10px; font-size: 20px; color: black;padding: 5px;"> <b>Conoce
 						más sobre los programas aquí </b> <i class="fa fa-question-circle fa-3x"
-					aria-hidden="true"
-					></i>
+					aria-hidden="true" style="color: #04a07b;"></i>
 
 				</a>
 
@@ -54,9 +53,9 @@
 								
 								</td>
 
-								<td title="'Inicio'" header-class="'text-left'">{{campaignsByCom.startDate}}</td>
+								<td title="'Inicio'" header-class="'text-left'">{{campaignsByCom.startDate | date:'dd/MM/yyyy'}}</td>
 
-								<td title="'Fin'" header-class="'text-left'">{{campaignsByCom.endDate}}</td>
+								<td title="'Fin'" header-class="'text-left'">{{campaignsByCom.endDate | date:'dd/MM/yyyy'}}</td>
 
 							</tr>
 						</table>
@@ -102,62 +101,6 @@
 		
 		<br><br><br>
 		<br>
-
-
-
-<!-- 		<div class="row"> -->
-		
-<!-- 			<div class="col-md-5" data-ng-controller="getClassifications"> -->
-<!-- 				<p style="padding-left: 30px;"> -->
-<!-- 					<button type="button" class="btn btn-primary btn-lg" style="cursor: default;background-color: #3f6fb7;font-size: 28px;">Promociones en las que participas -->
-<!-- 						<i class="fa fa-star-o" aria-hidden="true" style="vertical-align: middle; padding-left: 30px;font-size: 45px;"></i> -->
-<!-- 					</button> -->
-<!-- 				</p> -->
-				
-<!-- 				<br><br> -->
-				
-<!-- 				<div class="col-xs-6 col-md-6" ng-repeat="class in classifications" style="margin-left: 10px;"> -->
-<!-- 					<a href="#" data-ng-click="selectClassification(class)" -->
-<!-- 						ui-sref="campaigns" class="hvr-glow" -->
-<!-- 						style="border: 1px solid #bfbfbf; border-radius: 10px;font-size: 20px;color: black;"> -->
-<!-- 						<b>{{class.catViews.messages}} </b></a> -->
-<!-- 				</div> -->
-				
-				
-<!-- 			</div> -->
-			
-<!-- 			<div class="col-md-2"> -->
-			
-<!-- 			</div> -->
-			
-<!-- 			<div class="col-md-4" data-ng-controller="getBalance"> -->
-<!-- 				<p style="padding-left: 30px;"> -->
-<!-- 					<button type="button" class="btn btn-home btn-lg" -->
-<!-- 						style="padding: 25px 0px; cursor: default;min-width: 450px;background-color: #04a07b;"> -->
-						
-<!-- 						<i class="fa fa-credit-card" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i> -->
-						
-<!-- 						Saldo en tu Tarjeta<br/>&#36; {{(balance | number:2) || '0.00'}}<br/> -->
-						
-<!-- 					</button> -->
-<!-- 				</p> -->
-				
-<!-- 				<br> -->
-				
-<!-- 				<p style="padding-left: 30px;"> -->
-<!-- 					<button type="button" ui-sref="account_status" class="btn btn-home btn-lg" -->
-<!-- 						style="padding: 25px 0px;min-width: 450px;font-size: 18px;"> -->
-						
-<!-- 						<i class="fa fa-line-chart" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i> -->
-						
-<!-- 						Consulta tu estado <br/>de Cuenta<br/> -->
-						
-<!-- 					</button> -->
-<!-- 				</p> -->
-				
-<!-- 			</div> -->
-			
-<!-- 		</div> -->
 		
 	</header>
 
@@ -166,31 +109,6 @@
 <section id="transaction">
 
 	<div>
-<!-- 		<div class="row"> -->
-<!-- 		<div class="col-md-6" style="margin-left: 25px;"> -->
-<!-- 			<a href="#" data-toggle="modal" data-target="#myModal2" -->
-<!-- 						 class="hvr-glow" -->
-<!-- 						style="border-radius: 10px;font-size: 28px;color: black;"> -->
-<!-- 						<b>Conoce más sobre los programas aquí </b> -->
-<!-- 						<i class="fa fa-question-circle" aria-hidden="true" style="vertical-align: middle; padding-left: -30px;font-size: 45px;"></i> -->
-						
-<!-- 						</a> -->
-<!-- 		</div></div> -->
-		
-<!-- 		<hr style="border-top: 20px solid rgb(63, 111, 183);"> -->
-
-<!-- 		<div class="row"> -->
-<!-- 			<div class="col-md-2"></div> -->
-<!-- 			<div class="col-md-8"> -->
-<!-- 				<h2 class="text-center color-default-ford" style="font-weight: bold; font-size: 35px;"> -->
-<!-- 					Movimientos de mi Tarjeta -->
-<!-- 				</h2> -->
-				
-<!-- 				<br>				 -->
-<!-- 			</div> -->
-<!-- 			<div class="col-md-2"></div> -->
-<!-- 		</div> -->
-
 
 		<div class="container font-color-text" style="width: 1170px;" ng-cloak >
 			<div class="panel panel-default table-top-sivale">

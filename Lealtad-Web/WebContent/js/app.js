@@ -92,7 +92,7 @@ appres
 								function(data, status, headers, config) {
 									$scope.campaignsByCom = data;
 									
-									$scope.updateClassification($scope.classification);
+									//$scope.updateClassification($scope.classification);
 									
 									$scope.tableCampaignByCompany = new NgTableParams({
 										page : 1,
