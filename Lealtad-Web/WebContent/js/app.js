@@ -917,13 +917,18 @@ appres
 						
 					};
 					
+					$scope.data = {
+							singleSelect: '1',
+						    multipleSelect: []
+						   };
 					
 					$scope.downloadRMPending = function (){
+						console.log($scope.data.singleSelect);
 						
 						$http({
 							method : 'POST',
 							url : 'getRMXLSPendingTHAction',
-							//data : 'reportSelectedCon=' + $scope.data.singleSelect,
+							data : 'reportSelectedCon=' + $scope.data.singleSelect,
 							headers : {
 								'Content-Type' : 'application/x-www-form-urlencoded'
 							}

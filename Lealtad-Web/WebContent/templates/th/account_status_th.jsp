@@ -26,15 +26,20 @@
 
 					<div class="navbar-form navbar-left padding-cero" role="search">
 						<div class="form-group">
+						
 							<input type="text" class="form-control" placeholder="Incentivo"
-								ng-model="search.campaing" style="width: 170px;"> <input
-								type="text" class="form-control" placeholder="Participante"
-								ng-model="search.thIdStars" style="width: 170px;"> <input
-								type="text" class="form-control" placeholder="Movimiento"
-								ng-model="search.movement" style="width: 170px;"> <input
-								type="text" class="form-control" placeholder="Observación"
-								ng-model="search.observation" style="width: 170px;"> <input
-								date-range-picker="" id="daterange1" name="daterange1"
+								ng-model="search.campaing" style="width: 170px;">
+								 
+							<input type="text" class="form-control" placeholder="Participante"
+								ng-model="search.thIdStars" style="width: 170px;">
+								 
+							<input type="text" class="form-control" placeholder="Movimiento"
+								ng-model="search.movement" style="width: 170px;">
+								 
+							<input type="text" class="form-control" placeholder="Observación"
+								ng-model="search.observation" style="width: 170px;">
+								 
+							<input date-range-picker="" id="daterange1" name="daterange1"
 								class="form-control date-picker ng-pristine ng-valid ng-isolate-scope ng-valid-required ng-touched"
 								type="text" ng-model="date" required="" disabled>
 
@@ -56,17 +61,17 @@
 
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-1">
 					
 				</div>
 				
-				<div class="col-md-4">
+				<div class="col-md-7">
 				
-<!-- 					<button  ng-click="getRM()" type="button" class="btn btn-primary"> -->
+					<button  ng-click="getRM()" type="button" class="btn btn-primary">
 
-<!-- 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span -->
-<!-- 							aria-hidden="true"></span>Todo -->
-<!-- 					</button> -->
+						<i class="fa fa-list-alt " aria-hidden="true"></i> <span
+							aria-hidden="true"></span>Todo
+					</button>
 				
 					<button  ng-click="getRMPending()" type="button" class="btn btn-primary">
 
@@ -79,6 +84,10 @@
 <!-- 						<i class="fa fa-list-alt " aria-hidden="true"></i> <span -->
 <!-- 							aria-hidden="true"></span>Sin Pendientes -->
 <!-- 					</button> -->
+					<select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+									<option value="1">1.- Reporte Pendientes</option>
+									<option value="2">2.- Reporte de Todo</option>
+								</select> 
 					
 					<button  ng-click="downloadRMPending()" type="button" class="btn btn-primary">
 
@@ -112,14 +121,14 @@
 							<td title="'Incentivo'" header-class="'text-left'"
 								sortable="'nombreCampaign'">{{rms.campaignName}}</td>
 								
-							<td title="'Participante'" header-class="'text-left'"
-								sortable="'participante'">{{rms.idStars}}</td>
+<!-- 							<td title="'Participante'" header-class="'text-left'" -->
+<!-- 								sortable="'participante'">{{rms.idStars}}</td> -->
 								
-							<td title="'Nombre'" header-class="'text-left'"
-								sortable="'nombre'">{{rms.nombre}}</td>
+<!-- 							<td title="'Nombre'" header-class="'text-left'" -->
+<!-- 								sortable="'nombre'">{{rms.nombre}}</td> -->
 								
-							<td title="'BID'" header-class="'text-left'"
-								sortable="'bid'">{{rms.bid}}</td>	
+<!-- 							<td title="'BID'" header-class="'text-left'" -->
+<!-- 								sortable="'bid'">{{rms.bid}}</td>	 -->
 							
 							<td title="'Inicio de La Promoción'" header-class="'text-left'"
 								sortable="'startDate'">{{rms.startDate | date:'dd/MM/yyyy'}}</td>
@@ -131,7 +140,7 @@
 								sortable="'movements'">{{rms.movements}}</td>
 								
 							<td title="'Monto'" header-class="'text-left'"
-								sortable="'monto'">{{rms.monto}}</td>
+								sortable="'monto'">{{rms.monto | currency}}</td>
 								
 							<td title="'Observaciones'" header-class="'text-left'"
 								sortable="'monto'">{{rms.observaciones}}</td>
@@ -153,15 +162,15 @@
 						<div class="col-sm-2"></div>
 					
 						<div class="col-sm-2">
-							<h5><strong>Total ganado: {{ganado}}</strong></h5>
+							<h5><strong>Total ganado: {{ganado | currency}}</strong></h5>
 						</div>
 						
 						<div class="col-sm-2">
-							<h5><strong>Total pagado: {{pagado}}</strong></h5>
+							<h5><strong>Total pagado: {{pagado | currency}}</strong></h5>
 						</div>
 						
 						<div class="col-sm-2">
-							<h5><strong>Pendiente: {{pendiente}}</strong></h5>
+							<h5><strong>Pendiente: {{pendiente | currency}}</strong></h5>
 						</div>
 						
 					</div>

@@ -17,6 +17,7 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ import com.twobig.sivale.utils.ExportReport;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
-public class AccountStatusAction extends ActionSupport implements SessionAware {
+public class AccountStatusAction extends ActionSupport implements SessionAware, ServletRequestAware {
 	
 
 	private static final long serialVersionUID = 1L;
@@ -45,6 +46,11 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 	private TReportMovementsService tReportMovementsService;
 	
 	private static final Logger logger = LogManager.getLogger(AccountStatusAction.class);
+	
+	/**
+	 * Variable used to access to HTTP Servlet request.
+	 */
+	private HttpServletRequest request;
 	
 
 	@Action(value = "getListRMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
@@ -158,6 +164,11 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getRMXLSPendingAction() {
 		
+		
+		String optionSelected = request.getParameter("reportSelectedCon");
+		
+		logger.info(optionSelected);
+		
 		logger.info("getRMXLSPendingAction");
 		
 		TUser user;
@@ -170,7 +181,22 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		
 		reportMap = new HashMap<>();
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
+		
+		switch (optionSelected) {
+		case "1":
+			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
+			break;
+		case "2":
+			listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany(), null);
+			break;
+		case "3":
+			listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), null);
+			break;
+
+		default:
+			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
+			break;
+		}
 		
 		if(!listAccountStatusBean.isEmpty()){
 			
@@ -339,6 +365,10 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getRMXLSPendingTHAction() {
 		
+		String optionSelected = request.getParameter("reportSelectedCon");
+		
+		logger.info(optionSelected);
+		
 		logger.info("getRMXLSPendingTHAction");
 		
 		TUser user;
@@ -351,7 +381,20 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 		
 		reportMap = new HashMap<>();
 		
-		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
+		switch (optionSelected) {
+		case "1":
+			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
+			break;
+		case "2":
+			listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), user.getTjCardNumber());
+			break;
+
+		default:
+			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
+			break;
+		}
+		
+		//listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
 		
 		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
 			logger.info(accountStatusBean.toString());
@@ -418,6 +461,16 @@ public class AccountStatusAction extends ActionSupport implements SessionAware {
 
 	public void setListAccountStatusBean(List<AccountStatusBean> listAccountStatusBean) {
 		this.listAccountStatusBean = listAccountStatusBean;
+	}
+
+
+	/**
+	 * THis method is used to set the HTTP Servlet request 
+	 */
+	@Override
+	public void setServletRequest(HttpServletRequest request) {
+		this.request = request;
+		
 	}
 
 }

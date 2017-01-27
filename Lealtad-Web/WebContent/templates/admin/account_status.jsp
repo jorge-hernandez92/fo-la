@@ -43,9 +43,9 @@
 				<div class="row">
 					<div class="col-md-4"></div>
 
-					<div class="col-md-2"></div>
+<!-- 					<div class="col-md-2"></div> -->
 
-					<div class="col-md-6">
+					<div class="col-md-8">
 
 						<button ng-click="getRM()" type="button" class="btn btn-primary">
 
@@ -66,6 +66,14 @@
 							<i class="fa fa-list-alt " aria-hidden="true"></i> <span
 								aria-hidden="true"></span>Sin Pendientes
 						</button>
+						
+						<select name="singleSelect" id="singleSelect" ng-model="data.singleSelect">
+									<option value="1">1.- Reporte Pendientes</option>
+									<option value="2">2.- Reporte Sin Pendientes</option>
+									<option value="3">3.- Reporte de Todo</option>
+									
+								</select> 
+						
 
 						<button ng-click="downloadRMPending()" type="button"
 							class="btn btn-primary">
