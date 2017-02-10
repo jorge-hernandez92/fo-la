@@ -1380,7 +1380,6 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.downloadRMPending = function (){
 						
-						console.log($scope.data.singleSelect);
 						
 						$http({
 							method : 'POST',
