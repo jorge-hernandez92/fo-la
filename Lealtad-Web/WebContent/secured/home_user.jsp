@@ -383,47 +383,40 @@
 </div>
 
 	<!-- Navigation -->
-	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top" style="background-color: white;min-height: 100px;"
-		data-ng-controller="updateSession">
+	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top "
+		data-ng-controller="updateSession" style="max-height: 60px;">
 		
 			<div class="navbar-header">
-				<a class="navbar-brand" style="padding: 0px 0px;"> <img style="max-width:170px; margin-left: 15px;" src="img/company_logo/Ford/logo1.png">
+				<a class="navbar-brand" style="padding: 0px 0px;"> <img style="max-width:250px; margin-left: 15px;" src="img/company_logo/Ford/header1.png">
 				</a>
 			</div>
 
-		<ul class="nav navbar-nav navbar-right" style=" margin-top: 15px;">
+		<ul class="nav navbar-nav navbar-right ">
+			<li class="divider-vertical color-default-ford"><h3 style="padding-right: 100px; margin-top: 5px;margin-left: 20px;"><b>!Bienvenido! <br /> {{user.firstName }} {{user.lastName1}}</b></h3></li>
 			
-			<li><a> <i class="fa fa-user color-default-ford"></i> 
-					{{user.firstName}}
-			</a></li>
+<!-- 			<li><a> <i class="fa fa-credit-card color-default-ford"></i>  -->
+<!-- 					{{user.tjCardNumber}} -->
+<!-- 			</a></li> -->
 			
-			<li><a> <i class="fa fa-credit-card color-default-ford"></i> 
-					{{user.tjCardNumber}}
-			</a></li>
-			
-<!-- 			<li><a href="#contact" class="page-scroll" ng-click="dudas()" > <i class="fa fa-question color-default-ford"></i>  -->
+<!-- 			<li><a href="#contact" data-toggle="modal" data-target="#myModal2"  > <i class="fa fa-question color-default-ford"></i>  -->
 <!-- 					Dudas o preguntas -->
 <!-- 			</a></li> -->
 			
-			<li><a href="#contact" data-toggle="modal" data-target="#myModal2"  > <i class="fa fa-question color-default-ford"></i> 
-					Dudas o preguntas
-			</a></li>
+<!-- 			<li><a href="#contact" data-toggle="modal" data-target="#myModal" > <i class="fa fa-exclamation-triangle color-default-ford"></i>  -->
+<!-- 					Aviso -->
+<!-- 			</a></li> -->
 			
-			<li><a href="#contact" data-toggle="modal" data-target="#myModal" > <i class="fa fa-exclamation-triangle color-default-ford"></i> 
-					Aviso
-			</a></li>
-			
-			<li><a href="logout"> <i class="fa fa-sign-out color-default-ford"></i> 
-					Salir
-			</a></li>
+			<li><a href="logout"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
 			
 		</ul>
 		
 	</nav>
 	
 		<!-- Navigation -->
+		
+		
 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
-		data-ng-controller="updateSession" style="margin-top: 80px;">
+		data-ng-controller="updateSession" style="margin-top: 60px;">
 
 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
 			
@@ -446,6 +439,31 @@
 			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| ESTADO DE CUENTA</p>
 		
 	</nav>
+	
+<!-- 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top" -->
+<!-- 		data-ng-controller="updateSession" style="margin-top: 80px;"> -->
+
+<!-- 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;"> -->
+			
+<!-- 			<li id="li-home"><a  href="#" ng-click="goToHome()"  style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> INICIO  </a></li> -->
+			
+<!-- 			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | INCENTIVOS      </a></li> -->
+			
+<!-- 			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | PUBLICACIONES  </a></li>	 -->
+			
+<!-- 		</ul> -->
+		
+<!-- 			<p id="p-home" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">INICIO</p> -->
+			
+<!-- 			<p id="p-campaigns" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| INCENTIVOS</p> -->
+			
+<!-- 			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| PUBLICACIONES</p> -->
+			
+<!-- 			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| DETALLE DE PUBLICACIÓN</p> -->
+			
+<!-- 			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| ESTADO DE CUENTA</p> -->
+		
+<!-- 	</nav> -->
 	
 	<nav style="display:none; margin-top: 95px;" id="menu-files-publication" class="navbar navbar-info-file navbar-fixed-top"
 		data-ng-controller="updateSession">
