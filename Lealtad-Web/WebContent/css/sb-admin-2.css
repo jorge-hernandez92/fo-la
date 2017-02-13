@@ -496,8 +496,9 @@ body,
 .navbar-nav > li {
   float: left;
 }
+
 .navbar-nav > li > a {
-  padding: 15px;
+  padding: 0px;
 }
 
 /* Redeclare since we override the float above */

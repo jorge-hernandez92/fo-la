@@ -384,7 +384,7 @@
 
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top "
-		data-ng-controller="updateSession" style="max-height: 60px;">
+		data-ng-controller="updateSession" style="max-height: 60px;background-color: white;">
 		
 			<div class="navbar-header">
 				<a class="navbar-brand" style="padding: 0px 0px;"> <img style="max-width:250px; margin-left: 15px;" src="img/company_logo/Ford/header1.png">
@@ -418,26 +418,33 @@
 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
 		data-ng-controller="updateSession" style="margin-top: 60px;">
 
-		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;">
+		<ul class="nav navbar-nav navbar-right ">
+		
+
+			<li ><a class="color-white-ford" href="logout" style="margin-right: 100px;"><i
+					class="fa fa-user-circle fa-3x color-white-ford"></i> <br />&nbsp;CDS
+			</a></li>
 			
-			<li id="li-home"><a  href="#" ng-click="goToHome()"  style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> INICIO  </a></li>
+			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 100px;color: white;"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i>
+					<br /> Archivos<span class="caret"></span></a>
+				<ul class="dropdown-menu">
+					<li><a href="#">Archivo 1</a></li>
+					<li><a href="#">Archivo 2</a></li>
+				</ul>
+			</li>
 			
-			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | INCENTIVOS      </a></li>
+			<li ><a class="color-white-ford" href="logout" style="margin-right: 100px;"><i
+					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 10px;"></i> <br />IT HELP
+			</a></li>
 			
-			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | PUBLICACIONES  </a></li>	
-			
+			<li ><a class="color-white-ford" href="logout" style="margin-right: 300px;"><i
+					class="fa fa-question-circle fa-3x color-white-ford"></i> <br />&nbsp;FAQ
+			</a></li>
+
 		</ul>
-		
-			<p id="p-home" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">INICIO</p>
-			
-			<p id="p-campaigns" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| INCENTIVOS</p>
-			
-			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| PUBLICACIONES</p>
-			
-			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| DETALLE DE PUBLICACIÓN</p>
-			
-			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| ESTADO DE CUENTA</p>
-		
+
 	</nav>
 	
 <!-- 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top" -->
