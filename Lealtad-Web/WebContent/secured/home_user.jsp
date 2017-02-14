@@ -406,7 +406,7 @@
 <!-- 					Aviso -->
 <!-- 			</a></li> -->
 			
-			<li><a href="logout"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
+			<li><a href="logout" style="padding-top: 10px;"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
 			
 		</ul>
 		
