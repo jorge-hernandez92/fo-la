@@ -438,7 +438,7 @@
 		<ul class="nav navbar-nav navbar-right ">
 		
 
-			<li ><a class="color-white-ford" href="logout" style="margin-right: 100px;"><i
+			<li ><a class="color-white-ford" href="#" style="margin-right: 100px;"><i
 					class="fa fa-user-circle fa-3x color-white-ford"></i> <br />&nbsp;CDS
 			</a></li>
 			
@@ -449,14 +449,15 @@
 				<ul class="dropdown-menu">
 					<li><a href="#">Archivo 1</a></li>
 					<li><a href="#">Archivo 2</a></li>
+					<li><a href="#">Archivo 3</a></li>
 				</ul>
 			</li>
 			
-			<li ><a class="color-white-ford" href="logout" style="margin-right: 100px;"><i
+			<li ><a class="color-white-ford" href="#" style="margin-right: 100px;"><i
 					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 10px;"></i> <br />IT HELP
 			</a></li>
 			
-			<li ><a class="color-white-ford" href="logout" style="margin-right: 300px;"><i
+			<li ><a class="color-white-ford" href="#" style="margin-right: 300px;"><i
 					class="fa fa-question-circle fa-3x color-white-ford"></i> <br />&nbsp;FAQ
 			</a></li>
 
