@@ -442,16 +442,16 @@
 					class="fa fa-user-circle fa-3x color-white-ford"></i> <br />&nbsp;CDS
 			</a></li>
 			
-			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 100px;color: white;"
-				data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i>
-					<br /> Archivos<span class="caret"></span></a>
-				<ul class="dropdown-menu"> 
-					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li>
-					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li> 
-					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li>
-				</ul>
-			</li>
+<!-- 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 100px;color: white;" -->
+<!-- 				data-toggle="dropdown" role="button" aria-haspopup="true" -->
+<!-- 				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i> -->
+<!-- 					<br /> Archivos<span class="caret"></span></a> -->
+<!-- 				<ul class="dropdown-menu">  -->
+<!-- 					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li> -->
+<!-- 					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li>  -->
+<!-- 					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li> -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
 			
 			<li ><a class="color-white-ford" href="#" style="margin-right: 100px;"><i
 					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 10px;"></i> <br />IT HELP
