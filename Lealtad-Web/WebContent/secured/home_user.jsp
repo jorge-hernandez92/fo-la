@@ -387,7 +387,7 @@
 		data-ng-controller="updateSession" style="max-height: 60px;background-color: white;">
 		
 			<div class="navbar-header">
-				<a class="navbar-brand" style="padding: 0px 0px;"> <img style="max-width: 200px;margin-left: 90px;margin-top: 5px;" src="img/company_logo/Ford/header1.png">
+				<a class="navbar-brand" style="padding: 0px 0px;" ui-sref="home"> <img style="max-width: 200px;margin-left: 90px;margin-top: 5px;" src="img/company_logo/Ford/header1.png">
 				</a>
 			</div>
 
@@ -446,10 +446,10 @@
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i>
 					<br /> Archivos<span class="caret"></span></a>
-				<ul class="dropdown-menu">
-					<li><a href="#">Archivo 1</a></li>
-					<li><a href="#">Archivo 2</a></li>
-					<li><a href="#">Archivo 3</a></li>
+				<ul class="dropdown-menu"> 
+					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li>
+					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li> 
+					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li>
 				</ul>
 			</li>
 			
