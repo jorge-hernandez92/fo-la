@@ -15,7 +15,7 @@
 		</ol>
 
 		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox">
+		<div class="carousel-inner" role="listbox" style="height: 400px;">
 			<div class="item active">
 				<img
 					src="https://www.ford.mx/content/ford/mx/es_mx/site-wide-content/billboard-carousels/ford-credit-homepage/_jcr_content/par/billboard/imageComponent/image.imgs.full.high.jpg"
@@ -51,10 +51,8 @@
 
 </section>
 
-<section id="op-home" style="background-color: #F7F7F7;">
+<section id="op-home" style="background-color: #1b394e;">
 
-	<br>
-	<br>
 	<br>
 	<br>
 	<br>
@@ -102,83 +100,81 @@
 	<br>
 	<br>
 	<br>
-	<br>
-	<br>
 
 </section>
 
 
-<section id="op-help" style="background-color: #1b394e;">
+<!-- <section id="op-help" style="background-color: #1b394e;"> -->
 
-	<br>
-	<br>
-	<br>
+<!-- 	<br> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
 	
-	<div class="row">
+<!-- 	<div class="row"> -->
 		
-		<div class="col-md-4">
+<!-- 		<div class="col-md-4"> -->
 		
-		</div>
+<!-- 		</div> -->
 		
-		<div class="col-md-4 color-white-ford" style="text-align: center;">
-			<h1> Contactos y Quejas </h1>
-		</div> 
+<!-- 		<div class="col-md-4 color-white-ford" style="text-align: center;"> -->
+<!-- 			<h1> Contactos y Quejas </h1> -->
+<!-- 		</div>  -->
 		
-		<div class="col-md-4">
+<!-- 		<div class="col-md-4"> -->
 		
-		</div>  
+<!-- 		</div>   -->
 		
-	</div>
+<!-- 	</div> -->
 	
-	<br><br>
+<!-- 	<br><br> -->
 
-	<div class="row">
+<!-- 	<div class="row"> -->
 
-		<div class="col-md-1"></div>
+<!-- 		<div class="col-md-1"></div> -->
 
-		<div class="col-md-5">
+<!-- 		<div class="col-md-5"> -->
 
-			<div style="text-align: center;">
-				<h2>
-					<a class="color-default-ford" href="#"> <i class="fa fa-question-circle"
-						aria-hidden="true"
-						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i>
+<!-- 			<div style="text-align: center;"> -->
+<!-- 				<h2> -->
+<!-- 					<a class="color-default-ford" href="#"> <i class="fa fa-question-circle" -->
+<!-- 						aria-hidden="true" -->
+<!-- 						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i> -->
 
-						Preguntas
+<!-- 						Preguntas -->
 
-					</a>
-				</h2>
-			</div>
+<!-- 					</a> -->
+<!-- 				</h2> -->
+<!-- 			</div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="col-md-5">
+<!-- 		<div class="col-md-5"> -->
 
-			<div style="text-align: center;">
-				<h2>
-					<a class="color-default-ford" href="#"> <i
-						class="fa fa-phone-square" aria-hidden="true"
-						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i>
+<!-- 			<div style="text-align: center;"> -->
+<!-- 				<h2> -->
+<!-- 					<a class="color-default-ford" href="#"> <i -->
+<!-- 						class="fa fa-phone-square" aria-hidden="true" -->
+<!-- 						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i> -->
 
-						Call Center
+<!-- 						Call Center -->
 
-					</a>
-				</h2>
-			</div>
+<!-- 					</a> -->
+<!-- 				</h2> -->
+<!-- 			</div> -->
 
-		</div>
+<!-- 		</div> -->
 
-		<div class="col-md-1"></div>
+<!-- 		<div class="col-md-1"></div> -->
 
-	</div>
+<!-- 	</div> -->
 	
-	<br>
-	<br>
-	<br>
-	<br>
-	<br>
+<!-- 	<br> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
+<!-- 	<br> -->
 
-</section>
+<!-- </section> -->
 
 <section id="contact">
 

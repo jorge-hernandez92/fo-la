@@ -394,18 +394,6 @@
 		<ul class="nav navbar-nav navbar-right ">
 			<li class="divider-vertical color-default-ford"><h3 style="padding-right: 100px; margin-top: 5px;margin-left: 20px;"><b>!Bienvenido! <br /> {{user.firstName }} {{user.lastName1}}</b></h3></li>
 			
-<!-- 			<li><a> <i class="fa fa-credit-card color-default-ford"></i>  -->
-<!-- 					{{user.tjCardNumber}} -->
-<!-- 			</a></li> -->
-			
-<!-- 			<li><a href="#contact" data-toggle="modal" data-target="#myModal2"  > <i class="fa fa-question color-default-ford"></i>  -->
-<!-- 					Dudas o preguntas -->
-<!-- 			</a></li> -->
-			
-<!-- 			<li><a href="#contact" data-toggle="modal" data-target="#myModal" > <i class="fa fa-exclamation-triangle color-default-ford"></i>  -->
-<!-- 					Aviso -->
-<!-- 			</a></li> -->
-			
 			<li><a href="logout" style="padding-top: 10px;"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
 			
 		</ul>
@@ -438,8 +426,8 @@
 		<ul class="nav navbar-nav navbar-right ">
 		
 
-			<li ><a class="color-white-ford" href="#" style="margin-right: 100px;"><i
-					class="fa fa-user-circle fa-3x color-white-ford"></i> <br />&nbsp;CDS
+			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
+					class="fa fa-user-circle fa-3x color-white-ford" style="padding-left: 6px;"></i> <br />&nbsp;Estatus
 			</a></li>
 			
 <!-- 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 100px;color: white;" -->
@@ -453,42 +441,18 @@
 <!-- 				</ul> -->
 <!-- 			</li> -->
 			
-			<li ><a class="color-white-ford" href="#" style="margin-right: 100px;"><i
-					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 10px;"></i> <br />IT HELP
+			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
+					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 12px;"></i> <br />Contacto
 			</a></li>
 			
-			<li ><a class="color-white-ford" href="#" style="margin-right: 300px;"><i
-					class="fa fa-question-circle fa-3x color-white-ford"></i> <br />&nbsp;FAQ
+			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
+					class="fa fa-question-circle fa-3x color-white-ford" style="padding-left: 45px;"></i> <br />&nbsp;Dudas o Preguntas
 			</a></li>
 
 		</ul>
 
 	</nav>
 	
-<!-- 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top" -->
-<!-- 		data-ng-controller="updateSession" style="margin-top: 80px;"> -->
-
-<!-- 		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 15px;"> -->
-			
-<!-- 			<li id="li-home"><a  href="#" ng-click="goToHome()"  style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> INICIO  </a></li> -->
-			
-<!-- 			<li id="li-campaigns"><a ui-sref="campaigns" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | INCENTIVOS      </a></li> -->
-			
-<!-- 			<li id="li-campaign"><a  ui-sref="campaign" style="color: white;padding: 5px;color: #C0C0C0;font-size: 18px;"> | PUBLICACIONES  </a></li>	 -->
-			
-<!-- 		</ul> -->
-		
-<!-- 			<p id="p-home" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">INICIO</p> -->
-			
-<!-- 			<p id="p-campaigns" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| INCENTIVOS</p> -->
-			
-<!-- 			<p id="p-campaign" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| PUBLICACIONES</p> -->
-			
-<!-- 			<p id="p-detail-publication" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| DETALLE DE PUBLICACIÓN</p> -->
-			
-<!-- 			<p id="p-account" class="navbar-text" style="font-weight: bold;margin-top: 5px;margin-left: 5px;margin-right: 5px;color: #C0C0C0;font-size: 18px;">| ESTADO DE CUENTA</p> -->
-		
-<!-- 	</nav> -->
 	
 	<nav style="display:none; margin-top: 95px;" id="menu-files-publication" class="navbar navbar-info-file navbar-fixed-top"
 		data-ng-controller="updateSession">
@@ -500,12 +464,7 @@
 		</ul>
 	</nav>
 
-<!-- 	<div class="alert alert-info navbar-fixed-top" -->
-<!-- 		style="position: fixed; margin-top: 95px;"> -->
-<!-- 		<a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> -->
-<!-- 		<strong>Success!</strong> This alert box could indicate a successful -->
-<!-- 		or positive action. -->
-<!-- 	</div> -->
+
 
 	<br><br><br><br>
 	
