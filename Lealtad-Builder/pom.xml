@@ -207,12 +207,6 @@
 			</dependency>
 			
 			<dependency>
-				<groupId>org.apache.struts</groupId>
-				<artifactId>struts2-tiles-plugin</artifactId>
-				<version>${tiles.version}</version>
-			</dependency>
-			
-			<dependency>
 				<groupId>org.json</groupId>
 				<artifactId>json</artifactId>
 				<version>${json.version}</version>
