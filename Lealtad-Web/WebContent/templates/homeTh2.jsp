@@ -51,6 +51,8 @@
 
 </section>
 
+
+
 <section id="op-home" style="background-color: #1b394e;">
 
 	<br>
@@ -103,21 +105,3 @@
 
 </section>
 
-<section id="contact">
-
-	<div class="row">
-	
-		<div class="col-md-9" style="padding-top: 20px;">Copyright © 2017 Ford Motor Company - Todos los derechos reservados.</div>
-
-		<div class="col-md-3">
-
-			<a class="navbar-brand" style="padding: 0px 0px;"> <img
-				style="max-width: 130px; margin-left: 180px; margin-top: 5px;"
-				src="img/company_logo/Ford/logo1.png">
-			</a>
-
-		</div>
-
-	</div>
-
-</section>

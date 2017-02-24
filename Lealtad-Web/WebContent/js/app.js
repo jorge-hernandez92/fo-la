@@ -150,31 +150,6 @@ appres
 										$scope.campaigns[index2].indexImage2 = $scope.getIndex2(); 
 									}
 									$scope.updateClassification($scope.classification);
-									
-//									$scope.tableCampaign = new NgTableParams({
-//										page : 1,
-//										count : 5//,
-//										//filter : $scope.filters,
-//									}, {
-//										total : $scope.publications.length,
-//										counts : [],
-//										getData : function($defer, params) {
-//											var filteredData = params.filter() ? $filter(
-//													'filter')($scope.rm,
-//													params.filter().myfilter)
-//													: $scope.campaigns;
-//
-//											var orderedData = params.sorting() ? $filter(
-//													'orderBy')(filteredData, params.orderBy())
-//													: $scope.campaigns;
-//
-//											$defer.resolve(orderedData.slice(
-//													(params.page() - 1) * params.count(),
-//													params.page() * params.count()));
-//										}
-//									});
-									
-									
 
 								}).error(
 								function(data, status, headers, config) {
@@ -1190,6 +1165,14 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
+			$('#carousel-examplee').on('slide.bs.carousel', function () {
+				  
+				  $('html, body').animate({
+						scrollTop : $("#init").offset().top
+					});
+					
+				})
+			
 			currentState = STATE_CAMPAIGNS;
 
 			$('html, body').animate({
@@ -1207,7 +1190,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('#p-detail-publication').hide();
 			
 			$('#menu-files-publication').hide();
-			
 			
 		}
 	})
@@ -1296,3 +1278,4 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 });
 
 angular.bootstrap(document, [ 'app' ]);
+
