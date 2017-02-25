@@ -284,104 +284,6 @@
   </div>
 </div>
 
-
-<!-- Modal -->
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-  <div class="modal-dialog modal-lg" role="document" style="overflow-y: scroll; max-height:85%;  margin-top: 50px; margin-bottom:50px;">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <div class="text-center">
-        	<h4 class="modal-title" id="myModalLabel">DUDAS O PREGUNTAS</h4>
-      	</div>
-      </div>
-      <div class="modal-body">
-
-						<div class="row">
-
-							<div class="col-xs-6 col-md-2"></div>
-							<div class="col-xs-6 col-md-8">
-								<div class="text-center">
-									<h4 >
-										¿DUDAS SOBRE EL PROGRAMA <br>DE INCENTIVOS?
-									</h4>
-								</div>
-							</div>
-							<div class="col-xs-6 col-md-2"></div>
-
-						</div>
-
-						<div class="row">
-
-							<div class="col-xs-6 col-md-3"></div>
-							<div class="col-xs-6 col-md-6">
-								<div class="text-center">
-									<h5 >
-										Llámanos: 01 (55) 5814 9396 de 9 a 18 hrs., lunes a viernes <br>
-										Escríbenos <font style="color: rgb(44, 171, 255);"> <u>atnincentivos@sivale.com.mx</u>
-										</font>
-									</h5>
-								</div>
-							</div>
-							<div class="col-xs-6 col-md-3"></div>
-
-						</div>
-
-						<hr
-							style="width: 700px; border-top: 1px solid rgb(100, 100, 100);">
-
-						<div class="row">
-
-							<div class="col-xs-6 col-md-2"></div>
-							<div class="col-xs-6 col-md-8">
-								<div class="text-center">
-									<h4 >¿DUDAS SOBRE LAS
-										TARJETAS SÍVALE?</h4>
-								</div>
-							</div>
-							<div class="col-xs-6 col-md-2"></div>
-
-						</div>
-
-						<div class="row">
-
-							<div class="col-xs-6 col-md-3"></div>
-							<div class="col-xs-6 col-md-6">
-								<div class="text-center">
-									<h5 >
-										Llama al servicio integral para tarjetabientes 01 (55) 5814
-										9396 <br> cualquier día de la semana 24 horas al día.
-										Escribenos <font style="color: rgb(44, 171, 255);"> <u>sita@sivale.com.mx</u>
-										</font>
-									</h5>
-								</div>
-							</div>
-							<div class="col-xs-6 col-md-3"></div>
-
-						</div>
-
-						<hr
-							style="width: 700px; border-top: 1px solid rgb(100, 100, 100);">
-
-						<div class="row">
-							<div class="col-md-3"></div>
-							<div class="col-md-6">
-								<h5 class="text-center" >Plataforma
-									elaborada y administrada por Sí Vale México, S.A. de C.V., para
-									uso exclusivo de Ford Motor Company de México, S.A. de C.V. y
-									sus filiales. Copyright ©2016 Ford Motor Company.</h5>
-							</div>
-							<div class="col-md-3"></div>
-
-						</div>
-				</div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-      </div>
-    </div>
-  </div>
-</div>
-
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top "
 		data-ng-controller="updateSession" style="max-height: 60px;background-color: white;">
@@ -430,23 +332,23 @@
 					class="fa fa-user-circle fa-3x color-white-ford" style="padding-left: 6px;"></i> <br />&nbsp;Estatus
 			</a></li>
 			
-<!-- 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 100px;color: white;" -->
-<!-- 				data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i> -->
-<!-- 					<br /> Archivos<span class="caret"></span></a> -->
-<!-- 				<ul class="dropdown-menu">  -->
-<!-- 					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li> -->
-<!-- 					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li>  -->
-<!-- 					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li> -->
-<!-- 				</ul> -->
-<!-- 			</li> -->
+			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 50px;color: white;"
+				data-toggle="dropdown" role="button" aria-haspopup="true"
+				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i>
+					<br /> Archivos<span class="caret"></span></a>
+				<ul class="dropdown-menu"> 
+					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li>
+					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li> 
+					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li>
+				</ul>
+			</li>
 			
 			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
 					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 12px;"></i> <br />Contacto
 			</a></li>
 			
-			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
-					class="fa fa-question-circle fa-3x color-white-ford" style="padding-left: 45px;"></i> <br />&nbsp;Dudas o Preguntas
+			<li ><a class="color-white-ford" href="#" style="margin-right: 20px;" ui-sref="questions"><i
+					class="fa fa-question-circle fa-3x color-white-ford" style="padding-left: 15px;"></i> <br />&nbsp;Preguntas
 			</a></li>
 
 		</ul>

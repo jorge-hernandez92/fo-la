@@ -1179,18 +1179,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('#li-home').show();
-			$('#li-campaigns').hide();
-			$('#li-campaign').hide();
-			$('#p-account').hide();
-			
-			$('#p-home').hide();
-			$('#p-campaigns').show();
-			$('#p-campaign').hide();
-			$('#p-detail-publication').hide();
-			
-			$('#menu-files-publication').hide();
-			
 		}
 	})
 
@@ -1205,18 +1193,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			$('#li-home').show();
-			$('#li-campaigns').show();
-			$('#li-campaign').hide();
-			$('#p-account').hide();
-			
-			$('#p-home').hide();
-			$('#p-campaigns').hide();
-			$('#p-campaign').show();
-			$('#p-detail-publication').hide();
-			
-			$('#menu-files-publication').hide();
 			
 		}
 	})
@@ -1233,19 +1209,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('#li-home').show();
-			$('#li-campaigns').show();
-			$('#li-campaign').show();
-			$('#p-account').hide();
-			
-			$('#p-home').hide();
-			$('#p-campaigns').hide();
-			$('#p-campaign').hide();
-			$('#p-detail-publication').show();
-			
-			
-			$('body').css({ "display": "" });
-			
 		}
 	})
 	
@@ -1259,23 +1222,27 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 				scrollTop : $("#init").offset().top
 			});
 			
-			$('#li-home').show();
-			$('#li-campaigns').hide();
-			$('#li-campaign').hide();
-			$('#p-account').show();
-			
-			$('#p-home').hide();
-			$('#p-campaigns').hide();
-			$('#p-campaign').hide();
-			$('#p-detail-publication').hide();
-			
-			$('#menu-files-publication').hide();
-			
 			
 		}
 	})
 	
+	.state('questions', {
+		url : '/preguntas',
+		templateUrl : 'templates/th/questions.jsp',
+		controller:	
+ 			function($scope) {
+
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
+					
+			
+		}
+	})
+	
+
+	
 });
 
-angular.bootstrap(document, [ 'app' ]);
+//angular.bootstrap(document, [ 'app' ]);
 
