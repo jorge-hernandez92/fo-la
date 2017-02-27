@@ -1141,17 +1141,17 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		        event.preventDefault();
 		    });
 			
-			$('#li-home').hide();
-			$('#li-campaigns').hide();
-			$('#li-campaign').hide();
-			$('#p-account').hide();
-			
-			$('#p-home').show();
-			$('#p-campaigns').hide();
-			$('#p-campaign').hide();
-			$('#p-detail-publication').hide();
-			
-			$('#menu-files-publication').hide();
+//			$('#li-home').hide();
+//			$('#li-campaigns').hide();
+//			$('#li-campaign').hide();
+//			$('#p-account').hide();
+//			
+//			$('#p-home').show();
+//			$('#p-campaigns').hide();
+//			$('#p-campaign').hide();
+//			$('#p-detail-publication').hide();
+//			
+//			$('#menu-files-publication').hide();
 			
 			//$('#myModal').modal('show');
 			
@@ -1175,9 +1175,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			currentState = STATE_CAMPAIGNS;
 
-			$('html, body').animate({
-				scrollTop : $("#init").offset().top
-			});
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
 			
 		}
 	})
@@ -1190,9 +1190,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 
 			currentState = STATE_CAMPAIGN;
 
-			$('html, body').animate({
-				scrollTop : $("#init").offset().top
-			});
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
 			
 		}
 	})
@@ -1205,10 +1205,10 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 			currentState = STATE_PUBLICATION;
 
-			$('html, body').animate({
-				scrollTop : $("#init").offset().top
-			});
-			
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
+//			
 		}
 	})
 	
@@ -1218,10 +1218,10 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 
-			$('html, body').animate({
-				scrollTop : $("#init").offset().top
-			});
-			
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
+//			
 			
 		}
 	})
