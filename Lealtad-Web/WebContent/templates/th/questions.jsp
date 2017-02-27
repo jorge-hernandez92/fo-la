@@ -156,8 +156,10 @@
 						<div class="panel-body">
 
 							<ol>
+								<li>Llama al <u>58 14 93 93</u> (Cd de México) o al <u>01 800 881 93 93</u> (Interior de la república)*<br><br></li>
 								<li>Consulta la página web de Si Vale www.sivale.mx "Operación en Línea", y selecciona como usuario Tarjetahabiente (en esta opción también se pueden consultar los movimientos de 6 meses a la fecha)<br><br></li>
 								<li>Consulta la APP de Sí vale en tu celular (descargable en Play Store o Apple Store) ingresa tu número de tarjeta y contraseña (en esta opción también se pueden consultar los últimos 5 movimientos)<br><br></li>
+								<li>Envía un mensaje de texto desde tu celular al número <u>21616</u>, con la palabra sí vale seguida  del tu número de tarjeta Por ejemplo: Sivale <u>5349260300000000</u>*<br><br></li>
 								
 							</ol>
 							
@@ -238,7 +240,12 @@
 						role="tabpanel" aria-labelledby="heading10">
 						<div class="panel-body">
 							<ul>
+								<li>Extensión de garantía, Paola Vallejo <u>pvallej2@ford.com</u><br><br></li>
+								<li>Ford Credit , Itzel Garrido <u>igarrid2@ford.com</u><br><br></li>
+								<li>Altas de eCAPS <u>slfocus@ford.com</u><br><br></li>
 								<li>Servicio y Refacciones, Leonardo Aguilar
+									<u>laguil26@ford.com</u><br><br></li>
+								<li>Ford Elite Silvia Camarena <u>scamare1@ford.com</u></li>
 
 							</ul>
 						</div>
