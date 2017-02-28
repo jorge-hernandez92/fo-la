@@ -83,7 +83,7 @@
 
 			<div style="text-align: center;">
 				<h2>
-					<a class="color-default-ford" href="#"> <i
+					<a class="color-default-ford" href="#" ui-sref="transactions"> <i
 						class="fa fa-credit-card" aria-hidden="true"
 						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i>
 

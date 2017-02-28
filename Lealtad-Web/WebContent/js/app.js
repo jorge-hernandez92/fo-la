@@ -1126,19 +1126,19 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 
-			$('html, body').animate({
-				scrollTop : $("#init").offset().top
-			});
+//			$('html, body').animate({
+//				scrollTop : $("#init").offset().top
+//			});
 			
-			$('a.page-scroll').bind('click', function(event) {
-		        var $anchor = $(this);
-		        console.log($anchor);
-		        $('html, body').stop().animate({
-		            scrollTop: $($anchor.attr('href')).offset().top
-		        }, 2000, 'easeInOutExpo');
-		        event.preventDefault();
-		    });
-			
+//			$('a.page-scroll').bind('click', function(event) {
+//		        var $anchor = $(this);
+//		        console.log($anchor);
+//		        $('html, body').stop().animate({
+//		            scrollTop: $($anchor.attr('href')).offset().top
+//		        }, 2000, 'easeInOutExpo');
+//		        event.preventDefault();
+//		    });
+//			
 				
 		}
 	})
@@ -1156,10 +1156,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 					});
 					
 				})
-			
-			
-
-			
 		}
 	})
 
@@ -1186,7 +1182,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/account_status_th.jsp',
 		controller:	
  			function($scope) {
-		
 			
 		}
 	})
@@ -1201,9 +1196,16 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		}
 	})
 	
+	.state('transactions', {
+		url : '/ultimas-transacciones',
+		templateUrl : 'templates/th/last_transactions.jsp',
+		controller:	
+ 			function($scope) {
+					
+			
+		}
+	})
 
 	
 });
-
-//angular.bootstrap(document, [ 'app' ]);
 
