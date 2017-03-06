@@ -9,7 +9,7 @@
 		</h1>
 	</div>
 	
-	<div class="navbar container" style="width: 1100px;">
+	<div class="navbar container" style="width: 1150px;">
 
 		<div class="navbar-form navbar-left padding-cero" role="search">
 			<div class="form-group">
@@ -23,6 +23,13 @@
 						
 				<button type="button" class="btn btn-primary" ui-sref="account_status"> <i class="fa fa-list-alt " aria-hidden="true"></i> 
 					<span aria-hidden="true"></span>Estado de Cuenta</button>
+					
+					
+				<button type="button" class="btn btn-primary " ui-sref="addCampaign" ng-click="cleanSelect()">
+  							<span class="glyphicon glyphicon-plus-sign" aria-hidden="true"></span>IncentivoV2
+						</button>
+						
+						
 						
 			</div>
 		</div>

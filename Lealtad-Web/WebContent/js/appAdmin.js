@@ -1625,6 +1625,30 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		}
 	})
 	
+	.state('addCampaign', {
+		url : '/agregar_incentivo',
+		templateUrl : 'templates/admin/upload_files_campaign.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
+			
+			$('#init').removeClass('image-th-p');
+			
+			//$('#init').addClass('image-Admin');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').hide();
+			
+			$('#li-separator').hide();
+		}
+	})
+	
 	.state('updateCampaign', {
 		url : '/actualizar_incentivo',
 		templateUrl : 'templates/updateCampaign_admin.jsp',

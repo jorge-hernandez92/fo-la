@@ -27,6 +27,7 @@ public class TAttachedFile implements java.io.Serializable {
 	private String fileName;
 	private String filePath;
 	private String fileExtension;
+	private Integer tCampaignId; 
 
 	public static final String FIELD_TPUBLICATION_ID = "tPublicationId";
 
@@ -87,10 +88,20 @@ public class TAttachedFile implements java.io.Serializable {
 		this.fileExtension = fileExtension;
 	}
 
+	@Column(name = "fk_campaign")
+	public Integer gettCampaignId() {
+		return tCampaignId;
+	}
+
+	public void settCampaignId(Integer tCampaignId) {
+		this.tCampaignId = tCampaignId;
+	}
+
 	@Override
 	public String toString() {
 		return "TAttachedFile [attachedFileId=" + attachedFileId + ", tPublicationId=" + tPublicationId + ", isPublic="
 				+ isPublic + ", fileName=" + fileName + ", filePath=" + filePath + ", fileExtension=" + fileExtension
-				+ "]";
+				+ ", tCampaignId=" + tCampaignId + "]";
 	}
+	
 }
