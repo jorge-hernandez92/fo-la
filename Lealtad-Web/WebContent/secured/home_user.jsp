@@ -308,7 +308,24 @@
 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
 		data-ng-controller="updateSession" style="margin-top: 60px;">
 		
-		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassifications">
+<!-- 		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassifications"> -->
+			
+<!-- 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;" -->
+<!-- 				data-toggle="dropdown" role="button" aria-haspopup="true" -->
+<!-- 				aria-expanded="false"> <i class="fa fa-angle-double-down   fa-2x color-white-ford" style="vertical-align: sub;"></i> -->
+<!-- 					FORD  ELITE  /  FORD  PREMIER<span class="caret"></span></a> -->
+<!-- 				<ul class="dropdown-menu" style="width: 320px;" ng-repeat="class in classifications"> -->
+				
+<!-- 					<li><a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" style="padding-left: 60px;"> -->
+<!-- 						{{class.catViews.logos}} -->
+<!-- 					</a></li> -->
+					
+<!-- 				</ul> -->
+<!-- 			</li> -->
+
+<!-- 		</ul> -->
+
+		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassificationsCam">
 			
 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"

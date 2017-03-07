@@ -196,6 +196,29 @@ appres
 								});
 
 					};
+					
+					$scope.getClassificationsCam = function() {
+
+						$http
+								.get('getClassificationsAction')
+								.success(
+										function(data, status, headers, config) {
+
+											$scope.classifications = data;
+//											
+//											if (data.length == 1) {
+//												$scope
+//														.updateClassification($scope.classifications[0]);
+//												$scope.companyMenu = false;
+//											} else
+//												$scope.companyMenu = true;
+
+										})
+								.error(function(data, status, headers, config) {
+
+								});
+
+					};
 
 					$scope.selectClassification = function(classification) {
 						$state.go('home');

@@ -13,6 +13,9 @@ public interface TCampaignsService {
 	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(
 			int userId,int classificationCampaignsId);
 	
+	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationId(
+			int userId,int classificationCampaignsId);
+	
 	public List<CampaignDetailAdminBean> getCampaingsSuper(Integer userId);
 	
 	public String insertCampaign(FormNewCampaignBean formNewCampaignBean);

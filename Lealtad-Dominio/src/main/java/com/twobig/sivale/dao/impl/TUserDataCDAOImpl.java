@@ -50,4 +50,14 @@ public class TUserDataCDAOImpl extends GenericDAOImpl<TUserDataC, Long> implemen
 		
 	}
 
+	@Override
+	public List<TUserDataC> getTUserDataByUserId(int userId) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TUserDataC.class);
+		
+		criteria.add(Restrictions.eq(TUserDataC.FIELD_USER_ID, userId));
+		
+		return getListByCriteria(criteria);
+	}
+
 }

@@ -6,8 +6,8 @@ import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -17,10 +17,12 @@ import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealUserCampaign;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.bd.to.TUserDataC;
 import com.twobig.sivale.beans.SelectClassificationCampaignBean;
 import com.twobig.sivale.dao.CatClassificationCampaignDAO;
 import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
+import com.twobig.sivale.dao.TUserDataCDAO;
 import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 
@@ -39,11 +41,14 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 	
 	@Autowired
 	public UserDAO userDAO;
+	
+	@Autowired
+	public TUserDataCDAO tUserDataCDAO; 
 
 	/**
 	 * Variable to register the logs.
 	 */
-	//private static final Logger logger = LogManager.getLogger(CatClassificationCampaignServiceImpl.class);
+	private static final Logger logger = LogManager.getLogger(CatClassificationCampaignServiceImpl.class);
 
 	@Override
 	public List<CatClassificationCampaign> getCatClassificationCampaignByUserId(int userId) {
@@ -67,9 +72,7 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 		List<Integer> classificationId = new ArrayList<Integer>();
 
 		for (TCampaign tCampaign2 : tCampaign) {
-
 			classificationId.add(tCampaign2.getClassificationId());
-
 		}
 
 		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
@@ -144,6 +147,67 @@ public class CatClassificationCampaignServiceImpl implements CatClassificationCa
 		}
 		
 		return lsccb;
+	}
+
+	@Override
+	public List<CatClassificationCampaign> getClassificationCampaignByUserId(int userId) {
+		
+		List<CatClassificationCampaign> catClassificationCampaigParents = new ArrayList<CatClassificationCampaign>();
+		
+		List<TUserDataC> listTUserDataC = tUserDataCDAO.getTUserDataByUserId(userId);
+		
+		List<Integer> campaignsByUser = new ArrayList<Integer>();
+		
+		for (TUserDataC tUserDataC : listTUserDataC) {
+			campaignsByUser.add(tUserDataC.getCampaignId());
+		}
+		
+		if(campaignsByUser.isEmpty()){
+			return catClassificationCampaigParents; 
+		}
+
+		List<TCampaign> tCampaign = tCampaignDAO.getTCampaignByCampaignId(campaignsByUser);
+
+		List<Integer> classificationId = new ArrayList<Integer>();
+
+		for (TCampaign tCampaign2 : tCampaign) {
+			classificationId.add(tCampaign2.getClassificationId());
+		}
+
+		Set<Integer> linkedHashSet = new LinkedHashSet<Integer>();
+
+		linkedHashSet.addAll(classificationId);
+
+		classificationId.clear();
+
+		classificationId.addAll(linkedHashSet);
+
+		List<CatClassificationCampaign> catClassificationCampaig = catClassificationCampaignDAO
+				.getCatClassificationCampaignByClassificationId(classificationId);
+
+		
+
+		for (CatClassificationCampaign catClassificationCampaign : catClassificationCampaig) {
+
+			while (catClassificationCampaign.getLevel() > 0) {
+
+				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
+
+				catClassificationCampaign = catClassificationCampaignDAO
+						.getCatClassificationCampaignById(parentId);
+			}
+			catClassificationCampaigParents.add(catClassificationCampaign);
+		}
+
+		Set<CatClassificationCampaign> linkedHashSet2 = new HashSet<CatClassificationCampaign>();
+
+		linkedHashSet2.addAll(catClassificationCampaigParents);
+
+		catClassificationCampaigParents.clear();
+
+		catClassificationCampaigParents.addAll(linkedHashSet2);
+		  
+		return catClassificationCampaigParents;
 	}
 	
 	

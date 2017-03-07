@@ -141,6 +141,24 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		classifications = classificationCampaignService.getCatClassificationCampaignByUserId(user.getUserId());
 		return SUCCESS;
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getClassificationsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"classifications", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getClassificationsAction() {
+		
+		logger.info("getClassificationsAction");
+
+		TUser user = (TUser)session.get("user");
+		
+		if (user==null) {
+			return ERROR;
+		}
+		
+		classifications = classificationCampaignService.getClassificationCampaignByUserId(user.getUserId());
+		
+		return SUCCESS;
+	}
 
 	@SuppressWarnings("unchecked")
 	@Action(value = "getCampaignsAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
@@ -185,11 +203,11 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		//		classificationCmp.getCatClassificationCampaignsId());
 		
 		//logger.info("------userId: " + user.getUserId() + "  classId: " + classificationCmp.getCatClassificationCampaignsId());
-		campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
-		for (CampaignDetailBean campaignDetailBean2 : campaigns) {
-//			//logger.info(campaignDetailBean2.toString());
-//			//logger.info(campaignDetailBean2.getClassification());
-		}
+		//campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
+		
+		campaigns = campaignService.getCampaignByUserIdAndClassificationId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
+		
+
 		return SUCCESS;
 
 	}

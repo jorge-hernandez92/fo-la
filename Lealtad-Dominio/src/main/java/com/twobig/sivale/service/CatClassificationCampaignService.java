@@ -36,4 +36,6 @@ public interface CatClassificationCampaignService {
 	 */
 	public List<SelectClassificationCampaignBean> getListClassificationParent(int userId);
 	
+	
+	List<CatClassificationCampaign> getClassificationCampaignByUserId(int userId);
 }
