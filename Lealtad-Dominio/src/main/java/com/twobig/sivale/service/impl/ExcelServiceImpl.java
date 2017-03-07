@@ -19,6 +19,7 @@ import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.ExcelDataUserBean;
+import com.twobig.sivale.beans.ExcelUserCampaignBean;
 import com.twobig.sivale.service.ExcelService;
 
 @Service
@@ -185,6 +186,34 @@ public class ExcelServiceImpl implements ExcelService {
 				return true;
 		}
 		return false;
+	}
+
+	@Override
+	public List<ExcelUserCampaignBean> getListUserCampaign(ExcelBean excelBean, String Id) {
+
+		List<ExcelUserCampaignBean> list = new ArrayList<ExcelUserCampaignBean>();
+
+		if (excelBean != null) {
+			if (excelBean.getHeader() != null && excelBean.getHeader().size() > 0 && excelBean.getRows() != null
+					&& excelBean.getRows().size() > 0) {
+
+				if (!this.existKey(excelBean, Id))
+					return null;
+
+				for (HashMap<String, String> row : excelBean.getRows()) {
+
+					ExcelUserCampaignBean userData = new ExcelUserCampaignBean();
+					userData.setUserId(row.get(Id));
+
+					list.add(userData);
+				}
+				return list;
+			}
+			return null;
+		} else {
+			return null;
+
+		}
 	}
 
 }

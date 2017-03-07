@@ -19,11 +19,16 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.bd.to.TUserDataC;
 import com.twobig.sivale.beans.ExcelBean;
-import com.twobig.sivale.beans.FormNewCampaignBean;
+
+import com.twobig.sivale.beans.ExcelUserCampaignBean;
+import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.constants.PathConstants;
+import com.twobig.sivale.dao.UserDAO;
 import com.twobig.sivale.service.TAttachedFileService;
 import com.twobig.sivale.service.TCampaignsService;
+import com.twobig.sivale.service.TUserDataCService;
 import com.twobig.sivale.service.impl.ExcelServiceImpl;
 import com.twobig.sivale.utils.FilesUtil;
 
@@ -47,10 +52,16 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 	private File[] files;
 	
 	@Autowired
-	TCampaignsService campaignService;
+	public TCampaignsService campaignService;
 	
 	@Autowired 
-	TAttachedFileService tAttachedFileService;
+	public TAttachedFileService tAttachedFileService;
+	
+	@Autowired
+	public UserDAO userDAO; 
+	
+	@Autowired
+	public TUserDataCService tUserDataCService;
 	
 	@Action(value = "uploadFileCampaingAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
@@ -84,24 +95,42 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 		tCampaign.setImagePath(filesFileName[0]);
 		tCampaign.setXlsPath(filesFileName[1]);
 
-		String idCampaign = campaignService.insertCampaign(tCampaign);
+		String campaignId = campaignService.insertCampaign(tCampaign);
 
-		saveFileOnDiskFile(idCampaign);
+		saveFileOnDiskFile(campaignId);
 
 		if (files.length > 2) {
-			saveFileOnDataBase(idCampaign);
+			saveFileOnDataBase(campaignId);
 		}
+		
+		loadDataExcel(campaignId);
 
 		return SUCCESS;
 	}
 	
-	private void loadDataExcel(String idCampaign){
+	private void loadDataExcel(String campaignId){
 		
-		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + idCampaign + File.separator;
+		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignId + File.separator;
 		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
 		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName[1]);
+		List<ExcelUserCampaignBean> excelCampaign = excelservice.getListUserCampaign(excelBean,CommonsConstants.COLUMN_ID_EXCEL);
 		
+		List<String> listAccountNumber = new ArrayList<String>();
+		for (ExcelUserCampaignBean excelUserCampaignBean : excelCampaign) {
+			listAccountNumber.add(excelUserCampaignBean.getUserId());
+		}
+		
+		List<TUser> listUser= userDAO.getListUserByAccountNumber(listAccountNumber);
+		
+		for (TUser tUser : listUser) {
+			
+			TUserDataC userDataC = new TUserDataC();
+			userDataC.setCampaignId(Integer.parseInt(campaignId));
+			userDataC.setUserId(tUser.getUserId());
+			tUserDataCService.insertTUserData(userDataC);
+			
+		}
 		
 	}
 	
