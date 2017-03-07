@@ -552,14 +552,14 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 			SelectClassificationCampaignBean first = new SelectClassificationCampaignBean();
 			SelectClassificationCampaignBean last  = new SelectClassificationCampaignBean();
 			
-			first.setId(-1);
-			first.setName("Ninguno");
-			
-			last.setId(-2);
-			last.setName("Añadir nuevo");
-			
-			classificationLevel.add(0, first);
-			classificationLevel.add(last);
+//			first.setId(-1);
+//			first.setName("Ninguno");
+//			
+//			last.setId(-2);
+//			last.setName("Añadir nuevo");
+//			
+//			classificationLevel.add(0, first);
+//			classificationLevel.add(last);
 		}
 		return SUCCESS;
 

@@ -715,8 +715,10 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					};
 					
 					$scope.getBasicSelect = function() {
-						var data =  [	{ id : '-1', name : 'Ninguno' },
-                                    	{ id : '-2', name : 'Añadir nuevo' } ];
+						var data =  [	{ id : '-1', name : 'Ninguno' }
+										,{ id : '-2', name : 'Añadir nuevo' } 
+										
+										];
 						return data;
 					};
 					

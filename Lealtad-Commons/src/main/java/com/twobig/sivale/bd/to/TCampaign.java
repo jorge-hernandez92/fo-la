@@ -36,6 +36,7 @@ public class TCampaign implements java.io.Serializable {
 	private Integer classificationId;
 	private Integer companyId;
 	private String imagePath;
+	private String xlsPath;
 
 	public static final String FIELD_COMPAIGN_ID = "campaignId";
 	public static final String FIELD_COMPAIGN_NAME = "campaignName";
@@ -118,6 +119,15 @@ public class TCampaign implements java.io.Serializable {
 
 	public void setImagePath(String imagePath) {
 		this.imagePath = imagePath;
+	}
+	
+	@Column(name = "excel_file_path", length = 45)
+	public String getXlsPath() {
+		return xlsPath;
+	}
+
+	public void setXlsPath(String xlsPath) {
+		this.xlsPath = xlsPath;
 	}
 
 	@Override

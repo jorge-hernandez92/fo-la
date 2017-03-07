@@ -32,7 +32,7 @@
 							
 							<div class="row margin-top10"
 						data-ng-controller="getClassCompanyList">
-						<div class="col-md-3">Incentivo</div>
+						<div class="col-md-3">Compañia</div>
 						<div class="col-md-6">
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[0].availableOptions track by option.id"
@@ -96,41 +96,41 @@
 						</div>
 					</div>
 
-					<div class="row margin-top10"
-						ng-if="selectCampaign.isEnabled(selectCampaign.items[3])">
-						<div class="col-md-3">Nivel 4</div>
-						<div class="col-md-6">
-							<select class="form-control"
-								ng-options="option.name for option in selectCampaign.items[4].availableOptions track by option.id"
-								ng-model="selectCampaign.items[4].selectedOption"
-								ng-change="changeLevel4()">
-							</select>
-						</div>
-						<div class="col-md-3"
-							ng-if="selectCampaign.isNewClass(selectCampaign.items[4])">
-							<input ng-model="selectCampaign.items[4].className" type="text"
-								class="form-control" placeholder="Nombre"
-								aria-describedby="basic-addon1">
-						</div>
-					</div>
+<!-- 					<div class="row margin-top10" -->
+<!-- 						ng-if="selectCampaign.isEnabled(selectCampaign.items[3])"> -->
+<!-- 						<div class="col-md-3">Nivel 4</div> -->
+<!-- 						<div class="col-md-6"> -->
+<%-- 							<select class="form-control" --%>
+<%-- 								ng-options="option.name for option in selectCampaign.items[4].availableOptions track by option.id" --%>
+<%-- 								ng-model="selectCampaign.items[4].selectedOption" --%>
+<%-- 								ng-change="changeLevel4()"> --%>
+<%-- 							</select> --%>
+<!-- 						</div> -->
+<!-- 						<div class="col-md-3" -->
+<!-- 							ng-if="selectCampaign.isNewClass(selectCampaign.items[4])"> -->
+<!-- 							<input ng-model="selectCampaign.items[4].className" type="text" -->
+<!-- 								class="form-control" placeholder="Nombre" -->
+<!-- 								aria-describedby="basic-addon1"> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 
-					<div class="row margin-top10"
-						ng-if="selectCampaign.isEnabled(selectCampaign.items[4])">
-						<div class="col-md-3">Nivel 5</div>
-						<div class="col-md-6">
-							<select class="form-control"
-								ng-options="option.name for option in selectCampaign.items[5].availableOptions track by option.id"
-								ng-model="selectCampaign.items[5].selectedOption"
-								ng-change="changeLevel5()">
-							</select>
-						</div>
-						<div class="col-md-3"
-							ng-if="selectCampaign.isNewClass(selectCampaign.items[5])">
-							<input ng-model="selectCampaign.items[5].className" type="text"
-								class="form-control" placeholder="Nombre"
-								aria-describedby="basic-addon1">
-						</div>
-					</div>
+<!-- 					<div class="row margin-top10" -->
+<!-- 						ng-if="selectCampaign.isEnabled(selectCampaign.items[4])"> -->
+<!-- 						<div class="col-md-3">Nivel 5</div> -->
+<!-- 						<div class="col-md-6"> -->
+<%-- 							<select class="form-control" --%>
+<%-- 								ng-options="option.name for option in selectCampaign.items[5].availableOptions track by option.id" --%>
+<%-- 								ng-model="selectCampaign.items[5].selectedOption" --%>
+<%-- 								ng-change="changeLevel5()"> --%>
+<%-- 							</select> --%>
+<!-- 						</div> -->
+<!-- 						<div class="col-md-3" -->
+<!-- 							ng-if="selectCampaign.isNewClass(selectCampaign.items[5])"> -->
+<!-- 							<input ng-model="selectCampaign.items[5].className" type="text" -->
+<!-- 								class="form-control" placeholder="Nombre" -->
+<!-- 								aria-describedby="basic-addon1"> -->
+<!-- 						</div> -->
+<!-- 					</div> -->
 					
 							
 							<div class="row margin-top10">

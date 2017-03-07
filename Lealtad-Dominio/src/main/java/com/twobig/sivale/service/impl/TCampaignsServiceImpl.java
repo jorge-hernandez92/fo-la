@@ -293,6 +293,15 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 		return ""+tCampaign.getCampaignId();
 	}
 	
+	@Override
+	public String insertCampaign(TCampaign tCampaign) {
+
+		tCampaignDAO.insertTCampaign(tCampaign);
+		
+		return ""+tCampaign.getCampaignId();
+	}
+	
+	
 	
 
 	@Override

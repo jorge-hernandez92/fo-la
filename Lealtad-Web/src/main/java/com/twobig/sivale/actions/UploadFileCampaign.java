@@ -17,9 +17,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
+import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.constants.PathConstants;
+import com.twobig.sivale.service.TAttachedFileService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.utils.FilesUtil;
 
@@ -44,6 +46,9 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 	
 	@Autowired
 	TCampaignsService campaignService;
+	
+	@Autowired 
+	TAttachedFileService tAttachedFileService;
 	
 	@Action(value = "uploadFileCampaingAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
@@ -80,17 +85,35 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 				logger.info(filesFileName[i]);
 			}
 			
-			FormNewCampaignBean campaignBean = new FormNewCampaignBean();
+//			FormNewCampaignBean campaignBean = new FormNewCampaignBean();
+//			
+//			campaignBean.setCampaignName(this.nombreIncentivo);
+//			campaignBean.setClassificationId(this.unidadDeNegocio);
+//			campaignBean.setStartDate(new Date());
+//			campaignBean.setEndDate(new Date());
+//			campaignBean.setCampaignName(this.nombreIncentivo);
+//			campaignBean.setCompanyId(this.incentivo);
+//			campaignBean.setImagePath(filesFileName[0]);
+//			
+//			String idCampaign = campaignService.insertCampaign(campaignBean);
 			
-			campaignBean.setCampaignName(this.nombreIncentivo);
-			campaignBean.setClassificationId(this.unidadDeNegocio);
-			campaignBean.setStartDate(new Date());
-			campaignBean.setEndDate(new Date());
-			campaignBean.setCampaignName(this.nombreIncentivo);
-			campaignBean.setCampaignId(this.incentivo);
-			campaignBean.setImagePath(filesFileName[0]);
+			TCampaign tCampaign = new TCampaign();
+			tCampaign.setCampaignName(this.nombreIncentivo);
+			tCampaign.setClassificationId(this.unidadDeNegocio);
+			tCampaign.setStartDate(new Date());
+			tCampaign.setEndDate(new Date());
+			tCampaign.setCampaignName(this.nombreIncentivo);
+			tCampaign.setCompanyId(this.incentivo);
+			tCampaign.setImagePath(filesFileName[0]);
+			tCampaign.setXlsPath(filesFileName[1]);
 			
-			campaignService.insertCampaign(campaignBean);
+			String idCampaign = campaignService.insertCampaign(tCampaign);
+			
+			saveFileOnDiskFile(idCampaign);
+			
+			if(files.length>2){
+				saveFileOnDataBase(idCampaign);
+			}
 			
 		}
 		
@@ -99,28 +122,32 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 	
 	private void saveFileOnDiskFile(String idCampaign){
 		
-		String directory = PathConstants.ATTACHED_CAMPAIGN_FILE + idCampaign + File.separator;
+		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + idCampaign + File.separator;
 		
 		for (int i = 0; i < files.length; i++) {
-			
 			try {
-				FilesUtil.saveFile(files[i], filesFileName[i], directory+filesFileName[i]);
+				FilesUtil.saveFile(files[i], filesFileName[i], directory);
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
-			
 		}
 		
 	}
 	
-	public void saveFileOnDataBase(String idCampaign){
+	private void saveFileOnDataBase(String idCampaign){
 		
 		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
-		for (int i = 0; i < files.length; i++) {
+		
+		for (int i = 2; i < files.length; i++) {
 			TAttachedFile attachedFile = new TAttachedFile();
 			attachedFile.settCampaignId(Integer.parseInt(idCampaign));
-			
+			attachedFile.setFileName(filesFileName[i]);
+			//attachedFile.setIsPublic(true);
+			//attachedFile.setFileExtension("ext");
+			attachedFiles.add(attachedFile);
 		}
+		
+		tAttachedFileService.insertTAttachedFile(attachedFiles);
 		
 	}
 
