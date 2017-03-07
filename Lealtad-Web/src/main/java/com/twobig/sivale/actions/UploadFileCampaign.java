@@ -19,10 +19,12 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.beans.ExcelBean;
 import com.twobig.sivale.beans.FormNewCampaignBean;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.TAttachedFileService;
 import com.twobig.sivale.service.TCampaignsService;
+import com.twobig.sivale.service.impl.ExcelServiceImpl;
 import com.twobig.sivale.utils.FilesUtil;
 
 public class UploadFileCampaign extends ActionSupport implements SessionAware{
@@ -57,67 +59,50 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 			        @InterceptorRef("defaultStack"),
 			        @InterceptorRef("validation")}
 	)
-	public String uploadFileCampaingAction(){
-		
+	
+	public String uploadFileCampaingAction() {
+
 		TUser user = (TUser) session.get("user");
-		
+
 		logger.info("uploadFileCampaingAction. CARGA DE ARCHIVOS DE CAMPAÑA");
-		
+
 		if (user == null) {
 			return ERROR;
-		} else{
-			
-			logger.info("NombreIncentivo: "+this.nombreIncentivo);
-			logger.info("Compañia: "+this.incentivo);
-			logger.info("Programa: "+this.programa);
-			logger.info("Subprograma: "+this.subprograma);
-			logger.info("Unidad de Negocio: "+this.unidadDeNegocio);
-			
-			if(files == null || files.length == 0){
-				return ERROR;
-			}
-			
-			logger.info("Archivos: "+files.toString());
-			logger.info("Tamaño: "+files.length);
-			logger.info("Nombre Archivos: "+filesFileName.toString());
-			
-			for (int i = 0; i < filesFileName.length; i++) {
-				logger.info(filesFileName[i]);
-			}
-			
-//			FormNewCampaignBean campaignBean = new FormNewCampaignBean();
-//			
-//			campaignBean.setCampaignName(this.nombreIncentivo);
-//			campaignBean.setClassificationId(this.unidadDeNegocio);
-//			campaignBean.setStartDate(new Date());
-//			campaignBean.setEndDate(new Date());
-//			campaignBean.setCampaignName(this.nombreIncentivo);
-//			campaignBean.setCompanyId(this.incentivo);
-//			campaignBean.setImagePath(filesFileName[0]);
-//			
-//			String idCampaign = campaignService.insertCampaign(campaignBean);
-			
-			TCampaign tCampaign = new TCampaign();
-			tCampaign.setCampaignName(this.nombreIncentivo);
-			tCampaign.setClassificationId(this.unidadDeNegocio);
-			tCampaign.setStartDate(new Date());
-			tCampaign.setEndDate(new Date());
-			tCampaign.setCampaignName(this.nombreIncentivo);
-			tCampaign.setCompanyId(this.incentivo);
-			tCampaign.setImagePath(filesFileName[0]);
-			tCampaign.setXlsPath(filesFileName[1]);
-			
-			String idCampaign = campaignService.insertCampaign(tCampaign);
-			
-			saveFileOnDiskFile(idCampaign);
-			
-			if(files.length>2){
-				saveFileOnDataBase(idCampaign);
-			}
-			
 		}
+
+		if (files == null || files.length == 0) {
+			return ERROR;
+		}
+
+		TCampaign tCampaign = new TCampaign();
+		tCampaign.setCampaignName(this.nombreIncentivo);
+		tCampaign.setClassificationId(this.unidadDeNegocio);
+		tCampaign.setStartDate(new Date());
+		tCampaign.setEndDate(new Date());
+		tCampaign.setCampaignName(this.nombreIncentivo);
+		tCampaign.setCompanyId(this.incentivo);
+		tCampaign.setImagePath(filesFileName[0]);
+		tCampaign.setXlsPath(filesFileName[1]);
+
+		String idCampaign = campaignService.insertCampaign(tCampaign);
+
+		saveFileOnDiskFile(idCampaign);
+
+		if (files.length > 2) {
+			saveFileOnDataBase(idCampaign);
+		}
+
+		return SUCCESS;
+	}
+	
+	private void loadDataExcel(String idCampaign){
 		
-		return SUCCESS; 
+		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + idCampaign + File.separator;
+		
+		ExcelServiceImpl excelservice = new ExcelServiceImpl();
+		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName[1]);
+		
+		
 	}
 	
 	private void saveFileOnDiskFile(String idCampaign){
@@ -142,13 +127,10 @@ public class UploadFileCampaign extends ActionSupport implements SessionAware{
 			TAttachedFile attachedFile = new TAttachedFile();
 			attachedFile.settCampaignId(Integer.parseInt(idCampaign));
 			attachedFile.setFileName(filesFileName[i]);
-			//attachedFile.setIsPublic(true);
-			//attachedFile.setFileExtension("ext");
 			attachedFiles.add(attachedFile);
 		}
 		
 		tAttachedFileService.insertTAttachedFile(attachedFiles);
-		
 	}
 
 	public String getNombreIncentivo() {
