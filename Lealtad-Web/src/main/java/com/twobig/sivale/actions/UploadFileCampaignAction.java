@@ -32,14 +32,14 @@ import com.twobig.sivale.service.TUserDataCService;
 import com.twobig.sivale.service.impl.ExcelServiceImpl;
 import com.twobig.sivale.utils.FilesUtil;
 
-public class UploadFileCampaign extends ActionSupport implements SessionAware{
+public class UploadFileCampaignAction extends ActionSupport implements SessionAware{
 	
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	private static final Logger logger = LogManager.getLogger(UploadFileCampaign.class);
+	private static final Logger logger = LogManager.getLogger(UploadFileCampaignAction.class);
 	
 	private Map<String, Object> session;
 	

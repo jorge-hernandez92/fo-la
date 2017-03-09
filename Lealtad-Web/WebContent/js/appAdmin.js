@@ -1789,5 +1789,27 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		}
 	})
 	
+	.state('load_user', {
+		url : '/carga_de_usuarios',
+		templateUrl : 'templates/admin/load_user.jsp',
+		controller:	
+ 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
+			$('#init').removeClass('image-th-p');
+			
+			//$('#init').addClass('image-Admin');
+			
+			$('body').css({ "background-image": "" });
+			
+			$('#li-campaign').show();
+			
+			$('#li-separator').show();
+		}
+	})
+	
 })
 
