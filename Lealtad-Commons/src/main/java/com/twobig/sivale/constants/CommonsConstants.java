@@ -193,4 +193,10 @@ public class CommonsConstants {
 															"Junio", "Julio", "Agosto", "Septiembre", 
 															"Octubre", "Noviembre", "Diciembre"};
 	
+	/**
+	 * CONSTANTES PARA CARGA DE USUARIOS 
+	 */
+	
+	public static final String COLUMN_CARD_NUMBER = "ULTIMA TARJETA";
+	
 }
