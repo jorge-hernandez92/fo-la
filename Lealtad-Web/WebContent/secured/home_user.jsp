@@ -330,11 +330,11 @@
 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false"> <i class="fa fa-angle-double-down   fa-2x color-white-ford" style="vertical-align: sub;"></i>
-					FORD  ELITE  /  FORD  PREMIER<span class="caret"></span></a>
+					LINCOLN PREMIER<span class="caret"></span></a>
 				<ul class="dropdown-menu" style="width: 320px;" ng-repeat="class in classifications">
 				
 					<li><a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" style="padding-left: 60px;">
-						{{class.catViews.logos}}
+						{{class.className}}
 					</a></li>
 					
 				</ul>

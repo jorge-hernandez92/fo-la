@@ -91,7 +91,9 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 		tCampaign.setStartDate(new Date());
 		tCampaign.setEndDate(new Date());
 		tCampaign.setCampaignName(this.nombreIncentivo);
-		tCampaign.setCompanyId(this.incentivo);
+		
+		tCampaign.setCompanyId(user.getCompany());
+		
 		tCampaign.setImagePath(filesFileName[0]);
 		tCampaign.setXlsPath(filesFileName[1]);
 
