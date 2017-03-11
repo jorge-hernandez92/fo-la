@@ -45,6 +45,16 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 	public void deleteTAttachedFile(TAttachedFile tAttachedFile) {
 		this.borrar(tAttachedFile);
 	}
+
+	@Override
+	public List<TAttachedFile> getListTAttachedFileByCampaignId(Integer campaignId) {
+		
+		DetachedCriteria criteria = DetachedCriteria.forClass(TAttachedFile.class);
+
+		criteria.add(Restrictions.eq(TAttachedFile.FIELD_TCAMPAIGN_ID, campaignId));
+		
+		return getListByCriteria(criteria);
+	}
 	
 	
 }

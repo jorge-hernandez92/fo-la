@@ -8,11 +8,13 @@ import com.twobig.sivale.bd.to.TAttachedFile;
 
 public interface TAttachedFileDAO {
 	
-	public List<TAttachedFile> getTAttachedFileByPublicationId(int publicationId);
+	List<TAttachedFile> getTAttachedFileByPublicationId(int publicationId);
 	
-	public void insertTAttachedFile(TAttachedFile tAttachedFile) throws DataIntegrityViolationException;
+	void insertTAttachedFile(TAttachedFile tAttachedFile) throws DataIntegrityViolationException;
 	
-	public void updateTAttachedFile(TAttachedFile tAttachedFile);
+	void updateTAttachedFile(TAttachedFile tAttachedFile);
 	
-	public void deleteTAttachedFile(TAttachedFile tAttachedFile);
+	void deleteTAttachedFile(TAttachedFile tAttachedFile);
+	
+	List<TAttachedFile> getListTAttachedFileByCampaignId(Integer campaignId);
 }

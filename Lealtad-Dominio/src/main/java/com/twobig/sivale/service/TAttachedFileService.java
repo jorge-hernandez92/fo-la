@@ -9,5 +9,7 @@ public interface TAttachedFileService {
 	void insertTAttachedFile(TAttachedFile tAttachedFile);
 	
 	void insertTAttachedFile(List<TAttachedFile> tAttachedFileList);
+	
+	List<TAttachedFile> getListTAttachedFile(Integer campaignId); 
 
 }

@@ -30,6 +30,7 @@ public class TAttachedFile implements java.io.Serializable {
 	private Integer tCampaignId; 
 
 	public static final String FIELD_TPUBLICATION_ID = "tPublicationId";
+	public static final String FIELD_TCAMPAIGN_ID = "tCampaignId";  
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "attached_file_id")

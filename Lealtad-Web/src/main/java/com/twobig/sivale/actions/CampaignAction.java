@@ -40,9 +40,11 @@ import com.twobig.sivale.beans.ViewPublicationBean;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.service.CatClassificationCampaignService;
 import com.twobig.sivale.service.FilterCampaignService;
+import com.twobig.sivale.service.TAttachedFileService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.service.ViewPublicationService;
+import com.twobig.sivale.service.impl.TAttachedFileServiceImpl;
 
 
 
@@ -74,6 +76,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	
 	@Autowired
 	CatClassificationCampaignService classificationService;
+	
+	@Autowired
+	TAttachedFileService tAttachedFileService; 
 	
 	private Map<String, Object> session;
 	private List<CatClassificationCampaign> classifications;
@@ -206,6 +211,10 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		//campaigns = campaignService.getCampaignByUserIdAndClassificationCampaignsId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
 		
 		campaigns = campaignService.getCampaignByUserIdAndClassificationId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
+		
+		for (CampaignDetailBean campaignDetailBean : campaigns) {
+			 campaignDetailBean.setListTAttachedFile(tAttachedFileService.getListTAttachedFile(campaignDetailBean.getCampaignId()));
+		}
 		
 
 		return SUCCESS;

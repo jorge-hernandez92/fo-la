@@ -32,4 +32,9 @@ public class TAttachedFileServiceImpl implements com.twobig.sivale.service.TAtta
 		
 	}
 
+	@Override
+	public List<TAttachedFile> getListTAttachedFile(Integer campaignId) {
+		return tAttachedFileDAO.getListTAttachedFileByCampaignId(campaignId);
+	}
+
 }
