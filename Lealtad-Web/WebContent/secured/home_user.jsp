@@ -294,7 +294,7 @@
 			</div>
 
 		<ul class="nav navbar-nav navbar-right ">
-			<li class="divider-vertical color-default-ford"><h3 style="padding-right: 100px; margin-top: 5px;margin-left: 20px;"><b>!Bienvenido! <br /> {{user.firstName }} {{user.lastName1}}</b></h3></li>
+			<li class="divider-vertical color-default-ford"><h3 style="padding-right: 100px; margin-top: 5px;margin-left: 20px;"><b>¡Bienvenido! <br /> {{user.firstName }} {{user.lastName1}}</b></h3></li>
 			
 			<li><a href="logout" style="padding-top: 10px;"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
 			
@@ -330,7 +330,7 @@
 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false"> <i class="fa fa-angle-double-down   fa-2x color-white-ford" style="vertical-align: sub;"></i>
-					LINCOLN PREMIER<span class="caret"></span></a>
+					Ford Elite / Lincoln Premier<span class="caret"></span></a>
 				<ul class="dropdown-menu" style="width: 320px;" ng-repeat="class in classifications">
 				
 					<li><a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" style="padding-left: 60px;">
@@ -344,14 +344,24 @@
 
 		<ul class="nav navbar-nav navbar-right ">
 		
+		
+<!-- 			<li class="dropdown" id="downReportRM" style="display:none;"><a class="color-white-ford" href="#" class="dropdown-toggle " style="margin-right: 200px;" -->
+<!-- 				data-toggle="dropdown" role="button" aria-haspopup="true" -->
+<!-- 				aria-expanded="false"> <i class="fa fa-download  fa-2x color-yellow-ford " style="padding-left: 90px;padding-top: 6px;"></i> -->
+<!-- 					<br /> Reportes de Estado de Cuenta<span class="caret"></span></a> -->
+<!-- 				<ul class="dropdown-menu dropdown-menu-left">  -->
+<!-- 					<li style="width: 205px;"><a href="#" ng-click="downloadStaticXLSFile()">Reporte de Pendientes</a></li> -->
+<!-- 					<li ><a href="#" ng-click="getFormatoAcuseFCMAction()">Reporte de Todo</a></li>  -->
+<!-- 				</ul> -->
+<!-- 			</li> -->
 
 			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
-					class="fa fa-user-circle fa-3x color-white-ford" style="padding-left: 6px;"></i> <br />&nbsp;Estatus
+					class="fa fa-user-circle fa-2x color-white-ford" style="padding-left: 12px;padding-top: 6px;"></i> <br />&nbsp;Estatus
 			</a></li>
 			
-			<li class="dropdown"><a href="#" class="dropdown-toggle" style="margin-right: 50px;color: white;"
+			<li class="dropdown"><a class="color-white-ford" href="#" class="dropdown-toggle " style="margin-right: 50px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false"> <i class="fa fa-cloud-download  fa-3x color-white-ford" style="padding-left: 8px;"></i>
+				aria-expanded="false"> <i class="fa fa-cloud-download  fa-2x color-white-ford " style="padding-left: 15px;padding-top: 6px;"></i>
 					<br /> Archivos<span class="caret"></span></a>
 				<ul class="dropdown-menu"> 
 					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li>
@@ -361,11 +371,11 @@
 			</li>
 			
 			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
-					class="fa fa-child  fa-3x color-white-ford" style="padding-left: 12px;"></i> <br />Contacto
+					class="fa fa-child  fa-2x color-white-ford" style="padding-left: 16px;padding-top: 6px;"></i> <br />Contacto
 			</a></li>
 			
 			<li ><a class="color-white-ford" href="#" style="margin-right: 20px;" ui-sref="questions"><i
-					class="fa fa-question-circle fa-3x color-white-ford" style="padding-left: 15px;"></i> <br />&nbsp;Preguntas
+					class="fa fa-question-circle fa-2x color-white-ford" style="padding-left: 22px;padding-top: 6px;"></i> <br />&nbsp;Preguntas
 			</a></li>
 
 		</ul>

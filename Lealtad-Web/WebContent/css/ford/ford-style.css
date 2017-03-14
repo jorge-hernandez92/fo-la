@@ -38,7 +38,8 @@
 
 .nav>li>a:focus, .nav>li>a:hover {
     text-decoration: none;
-    background-color: rgb(49, 93, 156);
+    background-color: rgba(49, 93, 156, 0);
+    color: #d4d2d2;
 }
 
 
@@ -91,4 +92,9 @@
 	-moz-transition: all 2s ease-in-out;
 	-o-transition: all 2s ease-in-out;
 	transition: all 2s ease-in-out;
+}
+
+.nav .open>a, .nav .open>a:focus, .nav .open>a:hover {
+    background-color: rgba(238, 238, 238, 0.21);
+    border-color: #337ab7;
 }

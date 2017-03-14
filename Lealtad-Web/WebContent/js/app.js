@@ -1147,7 +1147,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/home',
 		templateUrl : 'templates/homeTh2.jsp',
 		controller:	
- 			function($scope) {	
+ 			function($scope) {
+			
+			$("#downReportRM").css("display", "none");
 				
 		}
 	})
@@ -1157,6 +1159,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaigns_user.jsp',
 		controller:	
  			function($scope) {
+			
+//			$("#downReportRM").css("display", "none");
 			
 			$('#carousel-examplee').on('slide.bs.carousel', function () {
 				  
@@ -1176,6 +1180,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
+//			$("#downReportRM").css("display", "none");
+			
 		}
 	})
 
@@ -1185,6 +1191,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
+//			$("#downReportRM").css("display", "none");
+			
 		}
 	})
 	
@@ -1193,6 +1201,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/account_status_th.jsp',
 		controller:	
  			function($scope) {
+			 
+//			 $("#downReportRM").css("display", "block");
 			
 		}
 	})
@@ -1202,6 +1212,8 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/questions.jsp',
 		controller:	
  			function($scope) {
+			
+//			$("#downReportRM").css("display", "none");
 					
 			
 		}
@@ -1213,7 +1225,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 					
-			
+//			$("#downReportRM").css("display", "none");
 		}
 	})
 

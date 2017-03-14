@@ -6,39 +6,12 @@
 		<br><br><br>
 
 	<div style="text-align: center;">
-		<h1>Dudas o Preguntas</h1>
+		<h1>Últimos movimientos de tu tarjeta</h1>
 	</div>
 	
 	<br>
 
-	<div>
 
-		<div class="container font-color-text" style="width: 1170px;" ng-cloak >
-			<div class="panel panel-default table-top-sivale">
-				<div class="panel-heading" style="background-color: #2d96cd;">Últimas Transacciones</div>
-
-				<div class="panel-body back-sivale">
-					<div data-ng-controller="getLastTransactionByCard" ng-cloak>
-						<table data-ng-table="tableLastTransactions"
-							class="table table-striped table-responsive table-hover">
-							<tr data-ng-repeat="lastTransaction in $data">
-
-								<td data-title="'Fecha'">{{lastTransaction.transactionDate}}</td>
-
-								<td data-title="'Establecimiento'">
-									{{lastTransaction.acceptorName}}</td>
-
-								<td data-title="'Monto'">&#36;
-									{{convertToPositive(lastTransaction.amount) | number:2}}</td>
-
-							</tr>
-						</table>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-	</div>
 	
 	<br><br>
 	
@@ -77,5 +50,34 @@
 		</div>
 		
 		<br>
+		
+			<div>
+
+		<div class="container font-color-text" style="width: 1090px;" ng-cloak >
+			<div class="panel panel-default table-top-sivale">
+				<div class="panel-heading" style="background-color: #2d96cd;"></div>
+
+				<div class="panel-body back-sivale">
+					<div data-ng-controller="getLastTransactionByCard" ng-cloak>
+						<table data-ng-table="tableLastTransactions"
+							class="table table-striped table-responsive table-hover">
+							<tr data-ng-repeat="lastTransaction in $data">
+
+								<td data-title="'Fecha'">{{lastTransaction.transactionDate}}</td>
+
+								<td data-title="'Establecimiento'">
+									{{lastTransaction.acceptorName}}</td>
+
+								<td data-title="'Monto'">&#36;
+									{{convertToPositive(lastTransaction.amount) | number:2}}</td>
+
+							</tr>
+						</table>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+	</div>
 	
 </section>
