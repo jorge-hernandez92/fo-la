@@ -11,23 +11,28 @@
 
 <title>Lealtad-Incentivos</title>
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<!-- <!-- Bootstrap --> -->
+<!-- <link href="css/bootstrap.min.css" rel="stylesheet"> -->
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
 <link rel="stylesheet" href="css/daterangepicker.min.css">
-<link rel="stylesheet" href="css/ng-table.min.css">
-<link rel="stylesheet" href="css/angular-carousel.css">
+<!-- <link rel="stylesheet" href="css/ng-table.min.css"> -->
+<!-- <link rel="stylesheet" href="css/angular-carousel.css"> -->
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sb-admin-2.css">
 
-<link ng-href="css/{{css}}" rel="stylesheet">
+<!-- <link ng-href="css/{{css}}" rel="stylesheet"> -->
 <!-- links provicinales  -->
-<link rel="stylesheet" href="css/sticky-footer.css">
-<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+<!-- <link rel="stylesheet" href="css/sticky-footer.css"> -->
+<!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
 <!-- -----------------------------------------------------------------------------<link rel="stylesheet" type="text/css" href="css/set2.css" /> -->
-<link href="css/default-fonts.css" rel="stylesheet">
+<!-- <link href="css/default-fonts.css" rel="stylesheet"> -->
 
 <!-- Nuevo rediseño -->
-<link rel="stylesheet" type="text/css" href="css/transition-campaigns.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/transition-campaigns.css" /> -->
 
 <!-- ESTILO DEL CLIENTE  -->
 <link rel="stylesheet" type="text/css" href="css/ford/ford-style.css" />
@@ -37,8 +42,8 @@
 <!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
 <!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
 <!-- ESTILO DE BOTONES DE INICIO DE PROGRAMAS -->
-<link rel="stylesheet" type="text/css" href="css/style_button_home_th/hover.css" />
-<link rel="stylesheet" type="text/css" href="css/style_button_home_th/demo-page.css" />
+<!-- <link rel="stylesheet" type="text/css" href="css/style_button_home_th/hover.css" /> -->
+<!-- <link rel="stylesheet" type="text/css" href="css/style_button_home_th/demo-page.css" /> -->
 
 
 <!-- JS (load angular, ui-router, and our custom js file) -->

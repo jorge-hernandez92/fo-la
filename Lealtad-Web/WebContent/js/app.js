@@ -718,40 +718,45 @@ appres
 								.success(
 										function(data, status, headers, config) {
 											
-											$scope.rm = data;
 											
-											$scope.ganado 	 = data[0].ganado;
-											$scope.pagado 	 = data[0].pagado;
-											$scope.pendiente = data[0].pendiente;
-											
-											console.log($scope.ganado);
-											console.log($scope.pagado);
-											console.log($scope.pendiente);
-											
-											console.log(JSON.stringify(data));
-											
-											$scope.tableRM = new NgTableParams({
-												page : 1,
-												count : 15,
-												filter : $scope.filters,
-											}, {
-												total : $scope.rm.length,
-												counts : [],
-												getData : function($defer, params) {
-													var filteredData = params.filter() ? $filter(
-															'filter')($scope.rm,
-															params.filter().myfilter)
-															: $scope.rm;
+											if( (data != null) && (data.length > 0)){
+												$scope.rm = data;
+												
+												$scope.ganado 	 = data[0].ganado;
+												$scope.pagado 	 = data[0].pagado;
+												$scope.pendiente = data[0].pendiente;
+												
+												console.log($scope.ganado);
+												console.log($scope.pagado);
+												console.log($scope.pendiente);
+												
+												console.log(JSON.stringify(data));
+												
+												$scope.tableRM = new NgTableParams({
+													page : 1,
+													count : 15,
+													filter : $scope.filters,
+												}, {
+													total : $scope.rm.length,
+													counts : [],
+													getData : function($defer, params) {
+														var filteredData = params.filter() ? $filter(
+																'filter')($scope.rm,
+																params.filter().myfilter)
+																: $scope.rm;
 
-													var orderedData = params.sorting() ? $filter(
-															'orderBy')(filteredData, params.orderBy())
-															: $scope.rm;
+														var orderedData = params.sorting() ? $filter(
+																'orderBy')(filteredData, params.orderBy())
+																: $scope.rm;
 
-													$defer.resolve(orderedData.slice(
-															(params.page() - 1) * params.count(),
-															params.page() * params.count()));
-												}
-											});
+														$defer.resolve(orderedData.slice(
+																(params.page() - 1) * params.count(),
+																params.page() * params.count()));
+													}
+												});
+											}
+											
+											
 
 										}).error(function(data, status, headers, config) {
 
@@ -828,6 +833,25 @@ appres
 						}
 					}
 					
+					$scope.moverm = ""; 
+					
+					$scope.movep = function(){
+						$scope.moverm = "pendiente";
+					}
+					
+					$scope.moveg = function(){
+						$scope.moverm = "dispersado";
+					}
+					
+					$scope.moved = function(){
+						$scope.moverm = "ganado";
+					}
+					
+					$scope.movet = function(){
+						$scope.moverm = "";
+					}
+					
+					
 					$scope.searchAccountStatus = function(date, stateDate) {
 						
 						console.log(stateDate);
@@ -837,7 +861,7 @@ appres
 									campaign 			: $rootScope.search.campaing,
 									//unidadDeNegocio 	: $rootScope.search.unity,
 									participanteIdStars : $rootScope.search.thIdStars,
-									movimiento 			: $rootScope.search.movement,
+									movimiento 			: $scope.moverm,
 									observaciones 		: $rootScope.search.observation, 
 									startDate 			: null,
 									endDate 			: null
@@ -848,7 +872,7 @@ appres
 									campaign 			: $rootScope.search.campaing,
 									//unidadDeNegocio 	: $rootScope.search.unity,
 									participanteIdStars : $rootScope.search.thIdStars,
-									movimiento 			: $rootScope.search.movement,
+									movimiento 			: $scope.moverm,
 									observaciones 		: $rootScope.search.observation, 
 									startDate 			: date.startDate,
 									endDate 			: date.endDate
@@ -1008,8 +1032,11 @@ appres
 							});
 					}
 					
-					$scope.downloadRMPending = function (){
-						console.log($scope.data.singleSelect);
+					$scope.downloadRMPending = function (option){
+						
+//						console.log(option);
+//						
+//						console.log($scope.data.singleSelect);
 						
 						$http({
 							method : 'POST',
