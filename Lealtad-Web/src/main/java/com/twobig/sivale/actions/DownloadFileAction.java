@@ -90,6 +90,9 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 			"excludeNullProperties", "true", "noCache", "true" }) )
 	public String getFileCampaignAction() {
 		
+//		logger.info("getFileCampaignAction");
+//		logger.info("FileName: "+fileName);
+//		logger.info("Campaing: "+campaignId);
 		
 		String path = String.valueOf(campaignId + "/" + fileName);
 
