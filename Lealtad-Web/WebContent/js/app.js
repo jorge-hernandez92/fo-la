@@ -837,18 +837,22 @@ appres
 					
 					$scope.movep = function(){
 						$scope.moverm = "pendiente";
-					}
-					
-					$scope.moveg = function(){
-						$scope.moverm = "dispersado";
+						$("#btnRM").html('Movimiento: Pendiente <span class="caret"></span>');
 					}
 					
 					$scope.moved = function(){
+						$scope.moverm = "dispersado";
+						$("#btnRM").html('Movimiento: Dispersado <span class="caret"></span>');
+					}
+					
+					$scope.moveg = function(){
 						$scope.moverm = "ganado";
+						$("#btnRM").html('Movimiento: Ganado <span class="caret"></span>');
 					}
 					
 					$scope.movet = function(){
 						$scope.moverm = "";
+						$("#btnRM").html('Movimiento: Todo <span class="caret"></span>');
 					}
 					
 					

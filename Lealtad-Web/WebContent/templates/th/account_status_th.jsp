@@ -60,13 +60,27 @@
 <!-- 								</span>  -->
 <!-- 							</div> -->
 
+<!-- 							<div class="btn-group"> -->
+<!-- 								<button type="button" id="btnRM"  class="btn btn-default">Movimiento: Todos</button> -->
+<!-- 								<button type="button" class="btn btn-default dropdown-toggle" -->
+<!-- 									data-toggle="dropdown" aria-haspopup="true" -->
+<!-- 									aria-expanded="false"> -->
+<!-- 									<span class="caret"></span> <span class="sr-only">Toggle -->
+<!-- 										Dropdown</span> -->
+<!-- 								</button> -->
+<!-- 								<ul class="dropdown-menu"> -->
+<!-- 									<li><a ng-click="moveg()" href="#">Ganado</a></li> -->
+<!-- 									<li><a ng-click="moved()" href="#">Dispersado</a></li> -->
+<!-- 									<li><a ng-click="movep()" href="#">Pendiente</a></li> -->
+<!-- 									<li><a ng-click="movet()" href="#">Todos</a></li> -->
+<!-- 								</ul> -->
+<!-- 							</div> -->
+
 							<div class="btn-group">
-								<button type="button" id="btnRM"class="btn btn-default">Movimiento: Todos</button>
-								<button type="button" class="btn btn-default dropdown-toggle"
+								<button type="button" id="btnRM"  class="btn btn-default dropdown-toggle"
 									data-toggle="dropdown" aria-haspopup="true"
 									aria-expanded="false">
-									<span class="caret"></span> <span class="sr-only">Toggle
-										Dropdown</span>
+									Movimiento: Todos <span class="caret"></span>
 								</button>
 								<ul class="dropdown-menu">
 									<li><a ng-click="moveg()" href="#">Ganado</a></li>
