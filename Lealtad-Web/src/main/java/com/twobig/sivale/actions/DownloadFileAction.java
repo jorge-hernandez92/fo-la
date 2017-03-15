@@ -43,6 +43,8 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 	private InputStream fileInputStream;
 
 	private String fileName;
+	
+	private String campaignId;
 
 	private byte[] file;
 	
@@ -81,6 +83,28 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 		}
 		return SUCCESS;
 
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getFileCampaignAction", results = @Result(name = SUCCESS, type = "json", params = { "root", "file",
+			"excludeNullProperties", "true", "noCache", "true" }) )
+	public String getFileCampaignAction() {
+		
+		
+		String path = String.valueOf(campaignId + "/" + fileName);
+
+		try {
+			fileInputStream = new FileInputStream(new File(PathConstants.ATTACHED_IMAGE_CAMPAIGN + path));
+			file = IOUtils.toByteArray(fileInputStream);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+			return ERROR;
+		} catch (IOException e) {
+			e.printStackTrace();
+			return ERROR;
+		}
+		
+		return SUCCESS;
 	}
 	
 	
@@ -227,6 +251,14 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 
 	public void setFile(byte[] file) {
 		this.file = file;
+	}
+
+	public String getCampaignId() {
+		return campaignId;
+	}
+
+	public void setCampaignId(String campaignId) {
+		this.campaignId = campaignId;
 	}
 
 }

@@ -156,6 +156,21 @@ appres
 
 								});
 					};
+					
+					
+					$scope.getFileCampaign = function(file, campaign) {
+						$http.get(
+								'getFileCampaignAction?fileName=' + file.fileName +'&campaignId='+campaign.campaignId).success(
+								function(data, status, headers, config) {
+
+									$scope.downloadFile(file.fileName, data)
+
+								}).error(
+								function(data, status, headers, config) {
+
+								});
+					};
+					
 
 					$scope.getFile = function(file) {
 						$http.get(

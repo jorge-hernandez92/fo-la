@@ -16,9 +16,17 @@
 				<img ng-src="{{campaign.imageBase64}}" alt="...">
 
 				<div class="carousel-caption">
-					<h3>{{campaign.campaignName}}</h3>
+
+				<div class="list-group" style="width: 400px;">
+					<a class="list-group-item active text-center">ARCHIVOS ANEXOS</a> <a
+						class="list-group-item" href="#" ng-repeat="file in campaign.listTAttachedFile"
+						data-ng-click="getFileCampaign(file, campaign)">{{file.fileName}}</a>
+				</div>
+
+				<h3>{{campaign.campaignName}}</h3>
 					<p>{{campaign.startDate | date:'dd/MM/yyyy'}} -
 						{{campaign.endDate | date:'dd/MM/yyyy'}}</p>
+						
 				</div>
 
 			</div>
