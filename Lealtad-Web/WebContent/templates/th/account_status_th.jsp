@@ -9,9 +9,9 @@
 		
 			<div class="col-md-2"></div>
 			<div class="col-md-8">
-				<h5 class="text-center color-default-ford" style="font-weight: bold; font-size: 40px;">
+				<h2 class="text-center color-default-ford" style="font-weight: bold;">
 					Estado de Cuenta General
-				</h5>
+				</h2>
 				
 				<br>
 				
@@ -135,8 +135,8 @@
 									<i class="fa fa-download  fa-lg"></i>
 								</button>
 								<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1">
-									<li><a ng-click="downloadRMPending(1)" href="#">Descargar reporte de pendientes</a></li>
-									<li><a ng-click="downloadRMPending(2)" href="#">Descargar reporte completo</a></li>
+									<li><a ng-click="downloadRMPending1()" href="#">Descargar reporte de pendientes</a></li>
+									<li><a ng-click="downloadRMPending2()" href="#">Descargar reporte completo</a></li>
 								</ul>
 							</div>
 

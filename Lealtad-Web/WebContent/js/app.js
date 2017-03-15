@@ -852,7 +852,7 @@ appres
 					
 					$scope.movet = function(){
 						$scope.moverm = "";
-						$("#btnRM").html('Movimiento: Todo <span class="caret"></span>');
+						$("#btnRM").html('Movimiento: Todos <span class="caret"></span>');
 					}
 					
 					
@@ -1035,6 +1035,72 @@ appres
 								
 							});
 					}
+					
+					$scope.downloadRMPending1 = function (option){
+						
+						var date = 1; 
+						
+						$http({
+							method : 'POST',
+							url : 'getRMXLSPendingTHAction',
+							data : 'reportSelectedCon=' + date,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded'
+							}
+						})
+							.success(function(data, status, headers, config) {
+								var resultCode = data.resultCode;				
+								if(resultCode == '100'){
+									
+									console.log("descargando");
+									
+									downloadReportFile(data.fileName+ '.xls', data.valueCode);
+									
+								}else{
+									
+									
+								}
+							})
+							.error(function(data, status, headers, config) {
+								
+								
+							});
+						
+					}
+					
+					$scope.downloadRMPending2 = function (option){
+						
+						var date = 2; 
+						
+						$http({
+							method : 'POST',
+							url : 'getRMXLSPendingTHAction',
+							data : 'reportSelectedCon=' + date,
+							headers : {
+								'Content-Type' : 'application/x-www-form-urlencoded'
+							}
+						})
+							.success(function(data, status, headers, config) {
+								var resultCode = data.resultCode;				
+								if(resultCode == '100'){
+									
+									console.log("descargando");
+									
+									downloadReportFile(data.fileName+ '.xls', data.valueCode);
+									
+								}else{
+									
+									
+								}
+							})
+							.error(function(data, status, headers, config) {
+								
+								
+							});
+						
+					}
+					
+					
 					
 					$scope.downloadRMPending = function (option){
 						
