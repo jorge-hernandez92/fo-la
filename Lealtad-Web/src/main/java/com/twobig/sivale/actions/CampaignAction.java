@@ -214,13 +214,20 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		
 		//campaigns = campaignService.getCampaignByUserIdAndClassificationId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
 		
-		List<CampaignDetailBean> listCampaignDetailBean = campaignService.getFullCampaignByUserIdAndClassificationId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
 		
-		List<CampaignDetailBean> list  = new ArrayList<CampaignDetailBean>(); 
 		
-		list.add(listCampaignDetailBean.get(0));
 		
-		campaigns = list; 
+		
+//		List<CampaignDetailBean> listCampaignDetailBean = campaignService.getFullCampaignByUserIdAndClassificationId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());
+//		
+//		List<CampaignDetailBean> list  = new ArrayList<CampaignDetailBean>(); 
+//		
+//		list.add(listCampaignDetailBean.get(0));
+//		
+//		campaigns = list;
+		
+		
+		campaigns = campaignService.getFullCampaignByUserIdAndClassificationId(user.getUserId(), classificationCmp.getCatClassificationCampaignsId());	 
 
 		return SUCCESS;
 

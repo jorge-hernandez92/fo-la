@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Order;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -22,11 +23,9 @@ public class TCampaignDAOImpl extends GenericDAOImpl<TCampaign, Long> implements
 
 	@Override
 	public List<TCampaign> getTCampaignByCampaignId(List<Integer> campaignId) {
-
 		DetachedCriteria criteria = DetachedCriteria.forClass(TCampaign.class);
-
 		criteria.add(Restrictions.in(TCampaign.FIELD_COMPAIGN_ID, campaignId));
-
+		criteria.addOrder(Order.asc(TCampaign.FIELD_COMPAIGN_ID));
 		return getListByCriteria(criteria);
 	}
 

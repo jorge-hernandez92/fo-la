@@ -98,6 +98,7 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 		tCampaign.setCampaignName(this.nombreIncentivo);
 		tCampaign.setCompanyId(user.getCompany());
 		tCampaign.setXlsPath(xlsFileFileName);
+		tCampaign.setImagePath(filesImageFileName[0]);
 		String campaignId = campaignService.insertCampaign(tCampaign);
 		saveFileOnDiskFile(campaignId);
 		saveFileOnDataBase(campaignId);

@@ -524,9 +524,11 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 						if(tAttachedFile.getIsPublic() != null && tAttachedFile.getIsPublic()){
 							String pathImageTCampaign = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignDetailBean.getCampaignId() + File.separator + tAttachedFile.getFileName();			
 							ImageUtils imageUtils = new ImageUtils();
+							
 							try {
 								String image64 = imageUtils.imageToBase64(pathImageTCampaign);
 								listImageBase64.add("data:image/png;base64,"+image64);
+								//campaignDetailBean.setImageBase64("data:image/png;base64,"+image64);//ERROR//QUITAR
 							} catch (IOException e) {
 								e.printStackTrace();
 							}
