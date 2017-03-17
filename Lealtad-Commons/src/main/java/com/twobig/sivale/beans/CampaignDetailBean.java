@@ -17,6 +17,8 @@ public class CampaignDetailBean extends TCampaign {
 	
 	private String imageBase64;
 	
+	private List<String> listImageBase64;
+	
 	private List<TAttachedFile> listTAttachedFile;
 
 	public String getImageBase64() {
@@ -49,6 +51,14 @@ public class CampaignDetailBean extends TCampaign {
 	
 	public void setListTAttachedFile(List<TAttachedFile> listTAttachedFile) {
 		this.listTAttachedFile = listTAttachedFile;
+	}
+
+	public List<String> getListImageBase64() {
+		return listImageBase64;
+	}
+
+	public void setListImageBase64(List<String> listImageBase64) {
+		this.listImageBase64 = listImageBase64;
 	}
 	
 }

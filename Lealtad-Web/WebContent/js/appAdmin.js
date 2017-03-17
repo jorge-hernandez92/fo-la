@@ -65,6 +65,10 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					  
 					$scope.counter = 0;
 					
+					$scope.rows2 = [];
+					  
+					$scope.counter2 = 0;
+					
 					$scope.attachedFileTemp = '';
 					
 					$scope.selectPublicationView = {
@@ -121,6 +125,16 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					
 					$scope.removeRow = function(index){
 					    $scope.rows.splice(index, 1);
+					}
+					
+					$scope.addRow2 = function() {
+					    
+						$scope.rows2.push( {index : $scope.counter2 + 2, value : false} );
+						$scope.counter2++;
+					}
+					
+					$scope.removeRow2 = function(index){
+					    $scope.rows2.splice(index, 1);
 					}
 					
 					$scope.removeAttachedFile = function(index){

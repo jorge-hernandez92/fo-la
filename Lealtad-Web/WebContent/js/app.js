@@ -157,6 +157,32 @@ appres
 								});
 					};
 					
+					$scope.getLastCampaign = function() {
+						
+						var data = angular.toJson($scope.classification);
+
+						$http(
+								{
+									method : 'POST',
+									url : 'getCampaignsAction',
+									data : 'classificationCmp=' + data,
+									headers : {
+										'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+									}
+								}).success(
+								function(data, status, headers, config) {
+									
+									if(data != null){
+										$scope.lastCampaign = data[0];
+									}
+									
+
+								}).error(
+								function(data, status, headers, config) {
+
+								});
+					};
+					
 					
 					$scope.getFileCampaign = function(file, campaign) {
 						$http.get(
@@ -365,14 +391,14 @@ appres
 														+ '/header.png';
 												$scope.menuCampaign = true;
 											}
-											console.log(JSON.stringify(data));
+											//console.log(JSON.stringify(data));
 											
 											
 											if(data.mensaje == 1){
 												$('#myModal').modal('show');
 											}
 											
-											console.log(data.mensaje);
+											//console.log(data.mensaje);
 
 										})
 								.error(function(data, status, headers, config) {
@@ -1261,7 +1287,7 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-			$("#downReportRM").css("display", "none");
+//			$("#downReportRM").css("display", "none");
 				
 		}
 	})

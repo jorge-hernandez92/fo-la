@@ -16,6 +16,7 @@ import org.springframework.stereotype.Service;
 
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
 import com.twobig.sivale.bd.to.RealUserCampaign;
+import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.bd.to.TUserDataC;
@@ -29,6 +30,7 @@ import com.twobig.sivale.dao.RealUserCampaignDAO;
 import com.twobig.sivale.dao.TCampaignDAO;
 import com.twobig.sivale.dao.TUserDataCDAO;
 import com.twobig.sivale.dao.UserDAO;
+import com.twobig.sivale.service.TAttachedFileService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.utils.ImageUtils;
 
@@ -52,7 +54,10 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 	public UserDAO userDAO;
 	
 	@Autowired
-	public TUserDataCDAO tUserDataCDAO; 
+	public TUserDataCDAO tUserDataCDAO;
+	
+	@Autowired
+	TAttachedFileService tAttachedFileService;
 
 	@Override
 	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(int userId,
@@ -454,6 +459,107 @@ public class TCampaignsServiceImpl implements TCampaignsService {
 					//logger.info("NO HAY IMAGEN PARA ESTA CAMPAÑA: "+campaignDetailBean.toString());
 				}
 				
+				listCampaignDetailBean.add(campaignDetailBean);
+			}
+		}
+
+		Collections.reverse(listCampaignDetailBean);
+		
+		return listCampaignDetailBean;
+	}
+	
+	@Override
+	public List<CampaignDetailBean> getFullCampaignByUserIdAndClassificationId(int userId, int classificationCampaignsId) {
+		List<TUserDataC> listA = tUserDataCDAO.getTUserDataByUserId(userId); 
+		
+
+		List<Integer> campaignsByUser = new ArrayList<Integer>();
+		
+		for (TUserDataC tUserDataC : listA) {
+			campaignsByUser.add(tUserDataC.getCampaignId());
+		}
+
+		List<TCampaign> tCampaign = tCampaignDAO.getTCampaignByCampaignId(campaignsByUser);
+
+		List<Integer> classificationId = new ArrayList<Integer>();
+		
+		
+
+		for (TCampaign tCampaign2 : tCampaign) {
+
+			classificationId.add(tCampaign2.getClassificationId());
+
+		}
+		
+		List<CatClassificationCampaign> catClassificationCampaig =
+				new ArrayList<CatClassificationCampaign>();
+		
+		for (Integer integer : classificationId) {
+			
+			catClassificationCampaig.add(
+					catClassificationCampaignDAO.getCatClassificationCampaignById(integer));
+			
+		}
+		
+
+		// LIST FOR CampaignDetailBean
+		List<CampaignDetailBean> listCampaignDetailBean = new ArrayList<CampaignDetailBean>();
+		
+		
+		for(int i = 0; i < catClassificationCampaig.size(); i++){
+			
+			CatClassificationCampaign catClassificationCampaign = catClassificationCampaig.get(i);
+			
+			CampaignDetailBean campaignDetailBean = tCampaignToCampaignDetailBean(tCampaign.get(i));
+			
+			List<CatClassificationCampaign> listClassificationC = new ArrayList<CatClassificationCampaign>();
+
+			List<String> listClassificationString = new ArrayList<String>();
+			
+			while (catClassificationCampaign.getLevel() > 0) {
+
+				listClassificationC.add(catClassificationCampaign);
+				listClassificationString.add(0, catClassificationCampaign.getClassName());
+				Integer parentId = catClassificationCampaign.getCatClassificationCampaignsIdParent();
+
+				catClassificationCampaign = catClassificationCampaignDAO
+						.getCatClassificationCampaignById(parentId);
+			}
+
+			listClassificationC.add(catClassificationCampaign);
+			listClassificationString.add(0, catClassificationCampaign.getClassName());
+
+			if (catClassificationCampaign.getCatClassificationCampaignsId() == classificationCampaignsId) {
+				
+				campaignDetailBean.setCatClassificationCampaign(listClassificationC);
+				campaignDetailBean.setClassification(listClassificationString);
+				
+				List<TAttachedFile> listTAttachedFile = tAttachedFileService.getListTAttachedFile(campaignDetailBean.getCampaignId());
+				List<String> listImageBase64 = new ArrayList<String>();
+				
+				if(listTAttachedFile != null && !listTAttachedFile.isEmpty()){
+					
+					for (TAttachedFile tAttachedFile : listTAttachedFile) {
+						
+						if(tAttachedFile.getIsPublic() != null && tAttachedFile.getIsPublic()){
+							
+							String pathImageTCampaign = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignDetailBean.getCampaignId() + File.separator + tAttachedFile.getFileName();			
+							ImageUtils imageUtils = new ImageUtils();
+
+							try {
+								String image64 = imageUtils.imageToBase64(pathImageTCampaign);
+								//campaignDetailBean.setImageBase64("data:image/png;base64,"+image64);
+								listImageBase64.add("data:image/png;base64,"+image64);
+							} catch (IOException e) {
+								e.printStackTrace();
+							}
+							//listTAttachedFile.remove(tAttachedFile);
+						}
+					}
+					
+				}
+				campaignDetailBean.setListTAttachedFile(listTAttachedFile);
+				campaignDetailBean.setListImageBase64(listImageBase64);				
 				listCampaignDetailBean.add(campaignDetailBean);
 			}
 		}

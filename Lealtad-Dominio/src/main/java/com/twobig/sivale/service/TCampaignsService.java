@@ -10,20 +10,22 @@ import com.twobig.sivale.beans.FormNewCampaignBean;
 public interface TCampaignsService {
 	
 	
-	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(
+	List<CampaignDetailBean> getCampaignByUserIdAndClassificationCampaignsId(
 			int userId,int classificationCampaignsId);
 	
-	public List<CampaignDetailBean> getCampaignByUserIdAndClassificationId(
+	List<CampaignDetailBean> getCampaignByUserIdAndClassificationId(
 			int userId,int classificationCampaignsId);
 	
-	public List<CampaignDetailAdminBean> getCampaingsSuper(Integer userId);
+	List<CampaignDetailAdminBean> getCampaingsSuper(Integer userId);
 	
-	public String insertCampaign(FormNewCampaignBean formNewCampaignBean);
+	String insertCampaign(FormNewCampaignBean formNewCampaignBean);
 	
-	public String insertCampaign(TCampaign tCampaign);
+	String insertCampaign(TCampaign tCampaign);
 	
-	public String updateCampaign(FormNewCampaignBean formNewCampaignBean);
+	String updateCampaign(FormNewCampaignBean formNewCampaignBean);
 	
-	public String deleteCampaign(Integer campaignId);	
+	String deleteCampaign(Integer campaignId);
+	
+	List<CampaignDetailBean> getFullCampaignByUserIdAndClassificationId(int userId, int classificationCampaignsId);
 	
 }

@@ -50,6 +50,8 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 	private int unidadDeNegocio;
 	private String[] filesFileName;
 	private File[] files;
+	private File[] filesImage;
+	private String[] filesImageFileName;
 	
 	@Autowired
 	public TCampaignsService campaignService;
@@ -84,6 +86,14 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 		if (files == null || files.length == 0) {
 			return ERROR;
 		}
+		
+		if(filesImage == null || filesImage.length == 0){
+			return ERROR; 
+		}
+		
+//		for (int i = 0; i < filesImageFileName.length; i++) {
+//			logger.info(filesImageFileName[i]);
+//		}
 
 		TCampaign tCampaign = new TCampaign();
 		tCampaign.setCampaignName(this.nombreIncentivo);
@@ -148,6 +158,14 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 			}
 		}
 		
+		for (int i = 0; i < filesImage.length; i++) {
+			try {
+				FilesUtil.saveFile(filesImage[i], filesImageFileName[i], directory);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		
 	}
 	
 	private void saveFileOnDataBase(String idCampaign){
@@ -158,6 +176,14 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 			TAttachedFile attachedFile = new TAttachedFile();
 			attachedFile.settCampaignId(Integer.parseInt(idCampaign));
 			attachedFile.setFileName(filesFileName[i]);
+			attachedFiles.add(attachedFile);
+		}
+		
+		for (int i = 0; i < filesImage.length; i++) {
+			TAttachedFile attachedFile = new TAttachedFile();
+			attachedFile.settCampaignId(Integer.parseInt(idCampaign));
+			attachedFile.setFileName(filesImageFileName[i]);
+			attachedFile.setIsPublic(true);
 			attachedFiles.add(attachedFile);
 		}
 		
@@ -218,6 +244,22 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 
 	public void setFilesFileName(String[] filesFileName) {
 		this.filesFileName = filesFileName;
+	}
+	
+	public File[] getFilesImage() {
+		return filesImage;
+	}
+
+	public void setFilesImage(File[] filesImage) {
+		this.filesImage = filesImage;
+	}
+
+	public String[] getFilesImageFileName() {
+		return filesImageFileName;
+	}
+
+	public void setFilesImageFileName(String[] filesImageFileName) {
+		this.filesImageFileName = filesImageFileName;
 	}
 
 	@Override
