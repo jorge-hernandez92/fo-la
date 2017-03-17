@@ -48,10 +48,12 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 	private String programa; 
 	private String subprograma; 
 	private int unidadDeNegocio;
-	private String[] filesFileName;
 	private File[] files;
 	private File[] filesImage;
+	private File xlsFile;
+	private String[] filesFileName;
 	private String[] filesImageFileName;
+	private String xlsFileFileName;
 	
 	@Autowired
 	public TCampaignsService campaignService;
@@ -74,82 +76,55 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 	)
 	
 	public String uploadFileCampaingAction() {
-
-		TUser user = (TUser) session.get("user");
-
 		logger.info("uploadFileCampaingAction. CARGA DE ARCHIVOS DE CAMPAÑA");
-
+		TUser user = (TUser) session.get("user");
 		if (user == null) {
 			return ERROR;
 		}
-
 		if (files == null || files.length == 0) {
 			return ERROR;
 		}
-		
 		if(filesImage == null || filesImage.length == 0){
 			return ERROR; 
 		}
-		
-//		for (int i = 0; i < filesImageFileName.length; i++) {
-//			logger.info(filesImageFileName[i]);
-//		}
-
+		if(xlsFile == null){
+			return ERROR;
+		}
 		TCampaign tCampaign = new TCampaign();
 		tCampaign.setCampaignName(this.nombreIncentivo);
 		tCampaign.setClassificationId(this.unidadDeNegocio);
 		tCampaign.setStartDate(new Date());
 		tCampaign.setEndDate(new Date());
 		tCampaign.setCampaignName(this.nombreIncentivo);
-		
 		tCampaign.setCompanyId(user.getCompany());
-		
-		tCampaign.setImagePath(filesFileName[0]);
-		tCampaign.setXlsPath(filesFileName[1]);
-
+		tCampaign.setXlsPath(xlsFileFileName);
 		String campaignId = campaignService.insertCampaign(tCampaign);
-
 		saveFileOnDiskFile(campaignId);
-
-		if (files.length > 2) {
-			saveFileOnDataBase(campaignId);
-		}
-		
+		saveFileOnDataBase(campaignId);
 		loadDataExcel(campaignId);
-
 		return SUCCESS;
 	}
 	
 	private void loadDataExcel(String campaignId){
-		
 		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignId + File.separator;
-		
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
-		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName[1]);
+		ExcelBean excelBean = excelservice.getExcelData(directory+xlsFileFileName);
 		List<ExcelUserCampaignBean> excelCampaign = excelservice.getListUserCampaign(excelBean,CommonsConstants.COLUMN_ID_EXCEL);
-		
 		List<String> listAccountNumber = new ArrayList<String>();
 		for (ExcelUserCampaignBean excelUserCampaignBean : excelCampaign) {
 			listAccountNumber.add(excelUserCampaignBean.getUserId());
 		}
-		
 		List<TUser> listUser= userDAO.getListUserByAccountNumber(listAccountNumber);
-		
 		for (TUser tUser : listUser) {
-			
 			TUserDataC userDataC = new TUserDataC();
 			userDataC.setCampaignId(Integer.parseInt(campaignId));
 			userDataC.setUserId(tUser.getUserId());
 			tUserDataCService.insertTUserData(userDataC);
-			
 		}
-		
 	}
 	
 	private void saveFileOnDiskFile(String idCampaign){
-		
 		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + idCampaign + File.separator;
-		
 		for (int i = 0; i < files.length; i++) {
 			try {
 				FilesUtil.saveFile(files[i], filesFileName[i], directory);
@@ -157,7 +132,6 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 				e.printStackTrace();
 			}
 		}
-		
 		for (int i = 0; i < filesImage.length; i++) {
 			try {
 				FilesUtil.saveFile(filesImage[i], filesImageFileName[i], directory);
@@ -165,20 +139,21 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 				e.printStackTrace();
 			}
 		}
-		
+		try {
+			FilesUtil.saveFile(xlsFile, xlsFileFileName, directory);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	private void saveFileOnDataBase(String idCampaign){
-		
 		List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
-		
-		for (int i = 2; i < files.length; i++) {
+		for (int i = 0; i < files.length; i++) {
 			TAttachedFile attachedFile = new TAttachedFile();
 			attachedFile.settCampaignId(Integer.parseInt(idCampaign));
 			attachedFile.setFileName(filesFileName[i]);
 			attachedFiles.add(attachedFile);
 		}
-		
 		for (int i = 0; i < filesImage.length; i++) {
 			TAttachedFile attachedFile = new TAttachedFile();
 			attachedFile.settCampaignId(Integer.parseInt(idCampaign));
@@ -186,7 +161,6 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 			attachedFile.setIsPublic(true);
 			attachedFiles.add(attachedFile);
 		}
-		
 		tAttachedFileService.insertTAttachedFile(attachedFiles);
 	}
 
@@ -260,6 +234,22 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 
 	public void setFilesImageFileName(String[] filesImageFileName) {
 		this.filesImageFileName = filesImageFileName;
+	}
+	
+	public File getXlsFile() {
+		return xlsFile;
+	}
+
+	public void setXlsFile(File xlsFile) {
+		this.xlsFile = xlsFile;
+	}
+
+	public String getXlsFileFileName() {
+		return xlsFileFileName;
+	}
+
+	public void setXlsFileFileName(String xlsFileFileName) {
+		this.xlsFileFileName = xlsFileFileName;
 	}
 
 	@Override

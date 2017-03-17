@@ -98,18 +98,18 @@
 
 					
 							
-							<div class="row margin-top10">
-								<div class="col-md-3">Imagen de Campaña</div>
-								<div class="col-md-6">
-									<input type="file" name="files" class="test" accept="image/*" required>
-								</div>
-							</div>
+<!-- 							<div class="row margin-top10"> -->
+<!-- 								<div class="col-md-3">Imagen de Campaña</div> -->
+<!-- 								<div class="col-md-6"> -->
+<!-- 									<input type="file" name="files" class="test" accept="image/*" required> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
 							
 							
 							<div class="row margin-top10">
 								<div class="col-md-3">Documento excel</div>
 								<div class="col-md-6">
-									<input type="file" name="files" class="test" accept=".xlsx" required>
+									<input type="file" name="xlsFile" class="test" accept=".xlsx" required>
 								</div>
 							</div>
 

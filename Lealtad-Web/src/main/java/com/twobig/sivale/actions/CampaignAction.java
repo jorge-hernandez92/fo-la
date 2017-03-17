@@ -221,17 +221,6 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		list.add(listCampaignDetailBean.get(0));
 		
 		campaigns = list; 
-	
-		/*
-		for (CampaignDetailBean campaignDetailBean : campaigns) {
-			 campaignDetailBean.setListTAttachedFile(tAttachedFileService.getListTAttachedFile(campaignDetailBean.getCampaignId()));
-		}
-	
-		
-		for (CampaignDetailBean campaignDetailBean : campaigns) {
-			logger.info(""+campaignDetailBean.getListTAttachedFile().toString());
-		}
-		*/	
 
 		return SUCCESS;
 
