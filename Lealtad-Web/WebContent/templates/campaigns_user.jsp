@@ -6,25 +6,19 @@
 <div id="carousel-examplee" class="carousel slide" data-ride="carousel" data-ng-controller="getLastCampaign">
 
 
-
 	<ol class="carousel-indicators">
 		<li data-target="#/incentivos#carousel-examplee" data-slide-to="$index" ng-class="{'active': $index == 0}"ng-repeat="imageBase64 in lastCampaign.listImageBase64" style="background-color: #1b394e;"></li>
 	</ol>
 
-
 	<div class="carousel-inner" role="listbox"
 		data-ng-controller="getLastCampaign" ng-cloak style="height: 550px;">
-
-
+		
 		<div class="item" ng-class="{active:!$index}"
 			ng-repeat="imageBase64 in lastCampaign.listImageBase64">
 			<img ng-src="{{imageBase64}}" alt="...">
 
 		</div>
-
 	</div>
-	
-	
 
 	<!-- Controls -->
 	<a class="left carousel-control" href="#/incentivos#carousel-examplee"
@@ -37,7 +31,7 @@
 		<span class="sr-only">Next</span>
 	</a>
 	
-		<div class="list-group" style="width: 300px; position: absolute;bottom: 30px;">
+		<div class="list-group" style="position: absolute;bottom: 30px;">
 	
 		<a class="list-group-item active text-center"
 			style="background-color: #1b394e; color: white;">ARCHIVOS ANEXOS</a>
