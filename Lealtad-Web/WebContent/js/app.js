@@ -877,29 +877,30 @@ appres
 					$scope.moverm = ""; 
 					
 					$scope.movep = function(){
-						$scope.moverm = "pendiente";
+						$scope.getRMPending();
 						$("#btnRM").html('Movimiento: Pendiente <span class="caret"></span>');
 					}
 					
 					$scope.moved = function(){
 						$scope.moverm = "dispersado";
 						$("#btnRM").html('Movimiento: Dispersado <span class="caret"></span>');
+						$scope.searchAccountStatus(null, false); 
 					}
 					
 					$scope.moveg = function(){
 						$scope.moverm = "ganado";
 						$("#btnRM").html('Movimiento: Ganado <span class="caret"></span>');
+						$scope.searchAccountStatus(null, false);
 					}
 					
 					$scope.movet = function(){
 						$scope.moverm = "";
 						$("#btnRM").html('Movimiento: Todos <span class="caret"></span>');
+						$scope.searchAccountStatus(null, false);
 					}
 					
 					
 					$scope.searchAccountStatus = function(date, stateDate) {
-						
-						console.log(stateDate);
 						
 						if(!stateDate){
 							var searchAccountStatusvar = {
