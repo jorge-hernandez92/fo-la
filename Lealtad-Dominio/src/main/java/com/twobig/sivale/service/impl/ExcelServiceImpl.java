@@ -182,29 +182,25 @@ public class ExcelServiceImpl implements ExcelService {
 
 	private boolean existKey(ExcelBean excelBean, String headKey) {
 		for (String key : excelBean.getHeader()) {
-			if (headKey.equals(key))
+			if (headKey.equals(key)){
 				return true;
+			}
 		}
 		return false;
 	}
 
 	@Override
 	public List<ExcelUserCampaignBean> getListUserCampaign(ExcelBean excelBean, String Id) {
-
 		List<ExcelUserCampaignBean> list = new ArrayList<ExcelUserCampaignBean>();
-
 		if (excelBean != null) {
 			if (excelBean.getHeader() != null && excelBean.getHeader().size() > 0 && excelBean.getRows() != null
 					&& excelBean.getRows().size() > 0) {
-
-				if (!this.existKey(excelBean, Id))
+				if (!this.existKey(excelBean, Id)){
 					return null;
-
+				}
 				for (HashMap<String, String> row : excelBean.getRows()) {
-
 					ExcelUserCampaignBean userData = new ExcelUserCampaignBean();
 					userData.setUserId(row.get(Id));
-
 					list.add(userData);
 				}
 				return list;
@@ -212,8 +208,6 @@ public class ExcelServiceImpl implements ExcelService {
 			return null;
 		} else {
 			return null;
-
 		}
 	}
-
 }

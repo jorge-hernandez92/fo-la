@@ -198,5 +198,6 @@ public class CommonsConstants {
 	 */
 	
 	public static final String COLUMN_CARD_NUMBER = "ULTIMA TARJETA";
+	public static final String COLUMN_STARS = "STARS";
 	
 }

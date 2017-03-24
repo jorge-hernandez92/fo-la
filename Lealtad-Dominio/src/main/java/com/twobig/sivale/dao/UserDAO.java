@@ -9,53 +9,24 @@ import com.twobig.sivale.bd.to.TUser;
 public interface UserDAO {
 
 	public static final String QUERY_UDPATE_PASSWORD = "update TUsers set password = :password where userId = :userId";
-
-	/**
-	 * Method to get TUser by id.
-	 * 
-	 * @param userId
-	 * @return
-	 */
-	public TUser getUserById(Integer userId);
-
-	/**
-	 * Method to get all users from MYSQL Table.
-	 * 
-	 * @return
-	 */
-	public List<TUser> getAllUsers();
-
-	public TUser getUserByUserName(String userName);
-
-	public void insert(TUser tUsers);
-
-	public List<TUser> getAllUsersWithCard();
-
-	public Integer getUserIdByCard(String cardNumber);
-
-	public TUser getUserByCard(String cardNumber);
-
-	public TUser validateUserByUserAndPwd(String user, String pwd);
-
-	public void update(TUser tUsers);
-
-	public void delete(TUser tUsers);
-
-	public List<TUser> getAllUsersWithCardNumberByCompany(Integer company);
-
-	public List<TUser> getUserByCliente(Integer clientId);
-
-	public void insertUser(TUser tUsers)
-			throws DataIntegrityViolationException;
-
-	public List<TUser> getUserByLevelAndCompany(List<Integer> profileList,
-			Integer company);
-
-	public void updatePassword(Integer userId, String password);
-
-	public List<String> getAllAccountNumberByCompanies(List<Integer> companyList);
 	
-	public List<TUser> getListUserByAccountNumber(List<String> accountNumber);
-	
-	public Integer getUserIdByAccountNumber(String accountNumber);
+	void insert(TUser tUsers);
+	void update(TUser tUsers);
+	void delete(TUser tUsers);
+	void insertUser(TUser tUsers)throws DataIntegrityViolationException;
+	void updatePassword(Integer userId, String password);
+	TUser getUserById(Integer userId);
+	TUser getUserByUserName(String userName);
+	TUser getUserByCard(String cardNumber);
+	TUser validateUserByUserAndPwd(String user, String pwd);
+	List<TUser> getAllUsersWithCardNumberByCompany(Integer company);
+	List<TUser> getUserByCliente(Integer clientId);
+	List<TUser> getUserByLevelAndCompany(List<Integer> profileList,Integer company);
+	List<TUser> getListUserByAccountNumber(List<String> accountNumber);
+	List<TUser> getAllUsers();
+	List<TUser> getAllUsersWithCard();
+	List<TUser> getUsersByStars(List<String> listStars);
+	List<String> getAllAccountNumberByCompanies(List<Integer> companyList);
+	Integer getUserIdByCard(String cardNumber);
+	Integer getUserIdByAccountNumber(String accountNumber);
 }

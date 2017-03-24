@@ -42,15 +42,30 @@ public class TUser implements java.io.Serializable {
 	private String tjReference;
 	private String tjAccountStatus;
 	private String tjCardStatus;
+	
+	//user load
+	private String tjBid;
+	private String tjRazonSocial;
+	private String tjStars;
+	private String tjEcaps;
+	private Boolean tjIdentificacion; 
+	private Boolean tjAcuseFordLincoln;
+	private Boolean tjInscritoEnPrograma;
+	private Boolean tjAcuseFordCredit;
+	private Boolean tjCarta_doble_perfil;
+	private Integer tj_codigo_procedencia;
+	private String tjComentarios;
+	private String tjEstatusGeneral; 
 
-	public static final String FIELD_USER_ID = "userId";
-	public static final String FIELD_USER_FIRST_NAME = "firstName";
-	public static final String FIELD_USER_CARD_NUMBER = "tjCardNumber";
-	public static final String FIELD_USER_USER = "userLogin";
-	public static final String FIELD_USER_PASS = "password";
-	public static final String FIELD_USER_COMPANY = "tCompany";
-	public static final String FIELD_USER_CAT_PROFILE = "catProfile";
-	public static final String FIELD_USER_ACCOUNT_NUMBER = "tjAccountNumber";
+	public static final String FIELD_USER_ID 				= "userId";
+	public static final String FIELD_USER_FIRST_NAME 		= "firstName";
+	public static final String FIELD_USER_CARD_NUMBER 		= "tjCardNumber";
+	public static final String FIELD_USER_USER 				= "userLogin";
+	public static final String FIELD_USER_PASS 				= "password";
+	public static final String FIELD_USER_COMPANY 			= "tCompany";
+	public static final String FIELD_USER_CAT_PROFILE 		= "catProfile";
+	public static final String FIELD_USER_ACCOUNT_NUMBER 	= "tjAccountNumber";
+	public static final String FIELD_USER_STARS 			= "tjStars";
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "user_id")
@@ -225,11 +240,127 @@ public class TUser implements java.io.Serializable {
 	public void setCompany(int company) {
 		this.company = company;
 	}
+	
+	@Column(name = "TJ_BID")
+	public String getTjBid() {
+		return tjBid;
+	}
 
+	public void setTjBid(String tjBid) {
+		this.tjBid = tjBid;
+	}
+
+	@Column(name = "TJ_RAZON_SOCIAL")
+	public String getTjRazonSocial() {
+		return tjRazonSocial;
+	}
+
+	public void setTjRazonSocial(String tjRazonSocial) {
+		this.tjRazonSocial = tjRazonSocial;
+	}
+
+	@Column(name = "TJ_STARS")
+	public String getTjStars() {
+		return tjStars;
+	}
+
+	public void setTjStars(String tjStars) {
+		this.tjStars = tjStars;
+	}
+
+	@Column(name = "TJ_ECAPS")
+	public String getTjEcaps() {
+		return tjEcaps;
+	}
+
+	public void setTjEcaps(String tjEcaps) {
+		this.tjEcaps = tjEcaps;
+	}
+
+	@Column(name = "TJ_IDENTIFICACION")
+	public Boolean getTjIdentificacion() {
+		return tjIdentificacion;
+	}
+
+	public void setTjIdentificacion(Boolean tjIdentificacion) {
+		this.tjIdentificacion = tjIdentificacion;
+	}
+
+	@Column(name = "TJ_ACUSE_FORD_LINCOLN")
+	public Boolean getTjAcuseFordLincoln() {
+		return tjAcuseFordLincoln;
+	}
+
+	public void setTjAcuseFordLincoln(Boolean tjAcuseFordLincoln) {
+		this.tjAcuseFordLincoln = tjAcuseFordLincoln;
+	}
+
+	@Column(name = "TJ_INSCRITO_EN_PROGRAMA")
+	public Boolean getTjInscritoEnPrograma() {
+		return tjInscritoEnPrograma;
+	}
+
+	public void setTjInscritoEnPrograma(Boolean tjInscritoEnPrograma) {
+		this.tjInscritoEnPrograma = tjInscritoEnPrograma;
+	}
+
+	@Column(name = "TJ_ACUSE_FORD_CREDIT")
+	public Boolean getTjAcuseFordCredit() {
+		return tjAcuseFordCredit;
+	}
+
+	public void setTjAcuseFordCredit(Boolean tjAcuseFordCredit) {
+		this.tjAcuseFordCredit = tjAcuseFordCredit;
+	}
+
+	@Column(name = "TJ_CARTA_DOBLE_PERFIL")
+	public Boolean getTjCarta_doble_perfil() {
+		return tjCarta_doble_perfil;
+	}
+
+	public void setTjCarta_doble_perfil(Boolean tjCarta_doble_perfil) {
+		this.tjCarta_doble_perfil = tjCarta_doble_perfil;
+	}
+
+	@Column(name = "TJ_CODIGO_PROCEDENCIA")
+	public Integer getTj_codigo_procedencia() {
+		return tj_codigo_procedencia;
+	}
+
+	public void setTj_codigo_procedencia(Integer tj_codigo_procedencia) {
+		this.tj_codigo_procedencia = tj_codigo_procedencia;
+	}
+
+	@Column(name = "TJ_COMENTARIOS")
+	public String getTjComentarios() {
+		return tjComentarios;
+	}
+
+	public void setTjComentarios(String tjComentarios) {
+		this.tjComentarios = tjComentarios;
+	}
+	
+	@Column(name = "TJ_ESTATUS_GENERAL")
+	public String getTjEstatusGeneral() {
+		return tjEstatusGeneral;
+	}
+
+	public void setTjEstatusGeneral(String tjEstatusGeneral) {
+		this.tjEstatusGeneral = tjEstatusGeneral;
+	}
+	
 	@Override
 	public String toString() {
 		return "TUser [userId=" + userId + ", catProfile=" + catProfile + ", company=" + company + ", userLogin="
-				+ userLogin + ", password=" + password + ", firstName=" + firstName + ", lastName1=" + lastName1
-				+ ", lastName2=" + lastName2 + ", tjCardNumber=" + tjCardNumber + "]";
+				+ userLogin + ", password=" + password + ", email=" + email + ", fullName=" + fullName + ", firstName="
+				+ firstName + ", lastName1=" + lastName1 + ", lastName2=" + lastName2 + ", tjCardNumber=" + tjCardNumber
+				+ ", tjAccountNumber=" + tjAccountNumber + ", tjEmployer=" + tjEmployer + ", tjOrigin=" + tjOrigin
+				+ ", tjCardType=" + tjCardType + ", tjProduct=" + tjProduct + ", tjReference=" + tjReference
+				+ ", tjAccountStatus=" + tjAccountStatus + ", tjCardStatus=" + tjCardStatus + ", tjBid=" + tjBid
+				+ ", tjRazonSocial=" + tjRazonSocial + ", tjStars=" + tjStars + ", tjEcaps=" + tjEcaps
+				+ ", tjIdentificacion=" + tjIdentificacion + ", tjAcuseFordLincoln=" + tjAcuseFordLincoln
+				+ ", tjInscritoEnPrograma=" + tjInscritoEnPrograma + ", tjAcuseFordCredit=" + tjAcuseFordCredit
+				+ ", tjCarta_doble_perfil=" + tjCarta_doble_perfil + ", tj_codigo_procedencia=" + tj_codigo_procedencia
+				+ ", tjComentarios=" + tjComentarios + ", tjEstatusGeneral=" + tjEstatusGeneral + "]";
 	}
 }

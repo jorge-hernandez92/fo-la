@@ -1573,23 +1573,13 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaigns_admin.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('body').removeClass('image-th-p');
-			
-			//$('body').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').hide();
-			
 			$('#li-separator').hide();
-			
 		}
 	})
 
@@ -1598,21 +1588,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaignDetail_admin.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
 		}
 	})
@@ -1621,22 +1602,13 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		url : '/nuevo_incentivo',
 		templateUrl : 'templates/newCampaign_admin.jsp',
 		controller:	
- 			function($scope) {
-			
+ 			function($scope) {	
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').hide();
-			
 			$('#li-separator').hide();
 		}
 	})
@@ -1646,21 +1618,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/admin/upload_files_campaign.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').hide();
-			
 			$('#li-separator').hide();
 		}
 	})
@@ -1670,21 +1633,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/updateCampaign_admin.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').hide();
-			
 			$('#li-separator').hide();
 		}
 	})
@@ -1694,21 +1648,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/UploadFile.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
 		}
 	})
@@ -1718,19 +1663,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/publication_admin.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('body').addClass('image-Admin');
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
-			
 		}
 	})
 	
@@ -1739,23 +1676,13 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/updatePublication.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
-			//$('.navbar-default .navbar-nav>li>a').css( "color", "#FFF" );
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
-			
 		}
 	})
 	
@@ -1764,19 +1691,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/admin/UploadRMFile.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
 		}
 	})
@@ -1786,19 +1706,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/admin/account_status.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
 		}
 	})
@@ -1808,19 +1721,12 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/admin/load_user.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
 			$('#init').removeClass('image-th-p');
-			
-			//$('#init').addClass('image-Admin');
-			
 			$('body').css({ "background-image": "" });
-			
 			$('#li-campaign').show();
-			
 			$('#li-separator').show();
 		}
 	})
