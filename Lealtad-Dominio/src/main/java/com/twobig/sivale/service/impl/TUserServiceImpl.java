@@ -29,4 +29,9 @@ public class TUserServiceImpl implements TUserService {
 		return userDAO.getUsersByStars(stars);
 	}
 
+	@Override
+	public void updateUser(TUser tUser) {
+		userDAO.update(tUser);
+	}
+	
 }

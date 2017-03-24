@@ -48,14 +48,14 @@ public class TUser implements java.io.Serializable {
 	private String tjRazonSocial;
 	private String tjStars;
 	private String tjEcaps;
+	private Integer tjCodigoProcedencia;
+	private String tjComentarios;
+	private String tjEstatusGeneral;
 	private Boolean tjIdentificacion; 
 	private Boolean tjAcuseFordLincoln;
 	private Boolean tjInscritoEnPrograma;
 	private Boolean tjAcuseFordCredit;
-	private Boolean tjCarta_doble_perfil;
-	private Integer tj_codigo_procedencia;
-	private String tjComentarios;
-	private String tjEstatusGeneral; 
+	private Boolean tjCartaDoblePerfil;
 
 	public static final String FIELD_USER_ID 				= "userId";
 	public static final String FIELD_USER_FIRST_NAME 		= "firstName";
@@ -312,23 +312,23 @@ public class TUser implements java.io.Serializable {
 	public void setTjAcuseFordCredit(Boolean tjAcuseFordCredit) {
 		this.tjAcuseFordCredit = tjAcuseFordCredit;
 	}
-
+	
 	@Column(name = "TJ_CARTA_DOBLE_PERFIL")
-	public Boolean getTjCarta_doble_perfil() {
-		return tjCarta_doble_perfil;
+	public Boolean getTjCartaDoblePerfil() {
+		return tjCartaDoblePerfil;
 	}
 
-	public void setTjCarta_doble_perfil(Boolean tjCarta_doble_perfil) {
-		this.tjCarta_doble_perfil = tjCarta_doble_perfil;
+	public void setTjCartaDoblePerfil(Boolean tjCartaDoblePerfil) {
+		this.tjCartaDoblePerfil = tjCartaDoblePerfil;
 	}
 
 	@Column(name = "TJ_CODIGO_PROCEDENCIA")
-	public Integer getTj_codigo_procedencia() {
-		return tj_codigo_procedencia;
+	public Integer getTjCodigoProcedencia() {
+		return tjCodigoProcedencia;
 	}
 
-	public void setTj_codigo_procedencia(Integer tj_codigo_procedencia) {
-		this.tj_codigo_procedencia = tj_codigo_procedencia;
+	public void setTjCodigoProcedencia(Integer tjCodigoProcedencia) {
+		this.tjCodigoProcedencia = tjCodigoProcedencia;
 	}
 
 	@Column(name = "TJ_COMENTARIOS")
@@ -348,7 +348,7 @@ public class TUser implements java.io.Serializable {
 	public void setTjEstatusGeneral(String tjEstatusGeneral) {
 		this.tjEstatusGeneral = tjEstatusGeneral;
 	}
-	
+
 	@Override
 	public String toString() {
 		return "TUser [userId=" + userId + ", catProfile=" + catProfile + ", company=" + company + ", userLogin="
@@ -360,7 +360,8 @@ public class TUser implements java.io.Serializable {
 				+ ", tjRazonSocial=" + tjRazonSocial + ", tjStars=" + tjStars + ", tjEcaps=" + tjEcaps
 				+ ", tjIdentificacion=" + tjIdentificacion + ", tjAcuseFordLincoln=" + tjAcuseFordLincoln
 				+ ", tjInscritoEnPrograma=" + tjInscritoEnPrograma + ", tjAcuseFordCredit=" + tjAcuseFordCredit
-				+ ", tjCarta_doble_perfil=" + tjCarta_doble_perfil + ", tj_codigo_procedencia=" + tj_codigo_procedencia
+				+ ", tjCartaDoblePerfil=" + tjCartaDoblePerfil + ", tjCodigoProcedencia=" + tjCodigoProcedencia
 				+ ", tjComentarios=" + tjComentarios + ", tjEstatusGeneral=" + tjEstatusGeneral + "]";
 	}
+	
 }
