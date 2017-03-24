@@ -19,6 +19,7 @@ public interface UserDAO {
 	TUser getUserByUserName(String userName);
 	TUser getUserByCard(String cardNumber);
 	TUser validateUserByUserAndPwd(String user, String pwd);
+	TUser getUsersByStars(String stars);
 	List<TUser> getAllUsersWithCardNumberByCompany(Integer company);
 	List<TUser> getUserByCliente(Integer clientId);
 	List<TUser> getUserByLevelAndCompany(List<Integer> profileList,Integer company);

@@ -24,4 +24,9 @@ public class TUserServiceImpl implements TUserService {
 		return userDAO.getUsersByStars(listStars);
 	}
 
+	@Override
+	public TUser getUsersByStars(String stars) {
+		return userDAO.getUsersByStars(stars);
+	}
+
 }

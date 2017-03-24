@@ -172,5 +172,12 @@ public class UserDAOImpl extends GenericDAOImpl<TUser, Long> implements
 		criteria.add(Restrictions.in(TUser.FIELD_USER_STARS, listStars));
 		return getListByCriteria(criteria);
 	}
+
+	@Override
+	public TUser getUsersByStars(String stars) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(TUser.class);
+		criteria.add(Restrictions.eq(TUser.FIELD_USER_STARS, stars));
+		return getTByCriteria(criteria);
+	}
 	
 }

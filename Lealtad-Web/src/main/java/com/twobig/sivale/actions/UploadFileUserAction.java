@@ -29,9 +29,6 @@ import com.twobig.sivale.utils.FilesUtil;
 
 public class UploadFileUserAction extends ActionSupport implements SessionAware {
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LogManager.getLogger(UploadFileUserAction.class);
 	private Map<String, Object> session;
@@ -73,16 +70,18 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName[0]);
 		logger.info(excelBean.getHeader().toString());
 		logger.info(excelBean.getRows().toString());
-		List<String> listStars = getListStars(excelBean,CommonsConstants.COLUMN_STARS);
-		for (String string : listStars) {
-			if(!string.isEmpty()){
-				logger.info(string);
-			}
-		}
-		List<TUser> listUser = tUserService.getUsersByStars(listStars);
-		for (TUser tUser : listUser) {
-			logger.info(tUser.toString());
-		}
+		updateInsertUser(excelBean);
+		
+//		List<String> listStars = getListStars(excelBean,CommonsConstants.COLUMN_STARS);
+//		for (String string : listStars) {
+//			if(!string.isEmpty()){
+//				logger.info(string);
+//			}
+//		}
+//		List<TUser> listUser = tUserService.getUsersByStars(listStars);
+//		for (TUser tUser : listUser) {
+//			logger.info(tUser.toString());
+//		}
 	}
 	
 	private void saveFileOnDiskFile(Integer attachedFileId){
@@ -101,6 +100,41 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		attachedFile.setFileName(filesFileName[0]);
 		tAttachedFileService.insertTAttachedFile(attachedFile);
 		return attachedFile.getAttachedFileId();
+	}
+	
+	public void updateInsertUser(ExcelBean excelBean){
+		if(excelBean != null){
+			List<HashMap<String, String>> rows = excelBean.getRows();
+			if (existKey(excelBean, CommonsConstants.COLUMN_STARS)){
+				for (HashMap<String, String> hashMap : rows) {
+					String stars = hashMap.get(CommonsConstants.COLUMN_STARS);
+					TUser user = tUserService.getUsersByStars(stars);
+					if(user != null){
+						logger.info("Actualizar registro");
+						logger.info(user.toString());
+						String bid = hashMap.get("BID");
+						String razonSocial = hashMap.get("Razón/Denominación Social");
+						String ecaps =  hashMap.get("eCAPS");
+						String identificacion = hashMap.get("Identificación");
+						String acuseFordLincoln = hashMap.get("Acuse Ford/ Lincoln");
+						String inscritoPrograma = hashMap.get("Inscrito en el programa (Servicio)");
+						String acuseFordCredit = hashMap.get("Acuse Ford Credit");
+						String cartaDoblePerfil = hashMap.get("Carta doble perfil");
+						String comentarios = hashMap.get("Comentarios");
+						String estatusGeneral = hashMap.get("Estatus general participante");
+						String codigoProcedencia = hashMap.get("Código"); 
+						
+						if(!bid.isEmpty()){
+							user.setTjBid(bid);
+						}
+						
+					}
+					else{
+						logger.info("Nuevo registro");
+					}
+				}
+			}
+		}
 	}
 	
 	public List<String> getListStars(ExcelBean excelBean, String Id) {
