@@ -33,5 +33,10 @@ public class TUserServiceImpl implements TUserService {
 	public void updateUser(TUser tUser) {
 		userDAO.update(tUser);
 	}
-	
+
+	@Override
+	public void insertUser(TUser tUser) {
+		userDAO.insertUser(tUser);
+	}
+
 }

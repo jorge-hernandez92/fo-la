@@ -9,6 +9,6 @@ public interface TUserService {
 	List<TUser> getUsersByStars(List<String> listStars);
 	TUser getUsersByStars(String stars);
 	void updateUser(TUser tUser);
-	void insertUser();
+	void insertUser(TUser tUser);
 	
 }

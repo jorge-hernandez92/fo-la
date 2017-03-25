@@ -203,97 +203,107 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 					}
 					else{
 						
-						tUser = new TUser();
-								
-						String bid = hashMap.get(UserLoadConstants.COL_USER_LOAD_BID);
-						String razonSocial = hashMap.get(UserLoadConstants.COL_USER_LOAD_RAZON_SOCIAL);
-						String ecaps =  hashMap.get(UserLoadConstants.COL_USER_LOAD_ECAPS);
-						String identificacion = hashMap.get(UserLoadConstants.COL_USER_LOAD_IDENTIFICACION);
-						String acuseFordLincoln = hashMap.get(UserLoadConstants.COL_USER_LOAD_ACUSE_FORD_LINCOLN);
-						String inscritoPrograma = hashMap.get(UserLoadConstants.COL_USER_LOAD_INSCRITO_EN_PROGRAMA);
-						String acuseFordCredit = hashMap.get(UserLoadConstants.COL_USER_LOAD_ACUSE_FORD_CREDIT);
-						String cartaDoblePerfil = hashMap.get(UserLoadConstants.COL_USER_LOAD_CARTA_DOBLE_PERFIL);
-						String comentarios = hashMap.get(UserLoadConstants.COL_USER_LOAD_COMENTARIOS);
-						String estatusGeneral = hashMap.get(UserLoadConstants.COL_USER_LOAD_ESTATUS_GENERAL_PARTICIPANTE);
-						String codigoProcedencia = hashMap.get(UserLoadConstants.COL_USER_LOAD_CODIGO);
-						String nombreParticipante = hashMap.get(UserLoadConstants.COL_USER_LOAD_NOMBRE_PARTICIPANTE);
-						String tarjetaActiva = hashMap.get(UserLoadConstants.COL_USER_LOAD_TARJETA_ACTIVA);
-						if(!nombreParticipante.isEmpty()){
-							tUser.setFullName(nombreParticipante);
-						}
-						if(!tarjetaActiva.isEmpty()){
-							tUser.setTjCardNumber(tarjetaActiva);
-						}
-						if(!bid.isEmpty()){
-							tUser.setTjBid(bid);
-						}
-						if(!razonSocial.isEmpty()){
-							tUser.setTjRazonSocial(razonSocial);
-						}
-						if(!ecaps.isEmpty()){
-							tUser.setTjEcaps(ecaps);
-						}
-						if(!identificacion.isEmpty()){
-							if(identificacion.toLowerCase().contains("sí") || identificacion.toLowerCase().contains("si")){
-								tUser.setTjIdentificacion(true);
+						if(!stars.isEmpty()){
+							logger.info("Nuevo registro");
+							tUser = new TUser();
+							tUser.setTjStars(stars);
+							String bid = hashMap.get(UserLoadConstants.COL_USER_LOAD_BID);
+							String razonSocial = hashMap.get(UserLoadConstants.COL_USER_LOAD_RAZON_SOCIAL);
+							String ecaps =  hashMap.get(UserLoadConstants.COL_USER_LOAD_ECAPS);
+							String identificacion = hashMap.get(UserLoadConstants.COL_USER_LOAD_IDENTIFICACION);
+							String acuseFordLincoln = hashMap.get(UserLoadConstants.COL_USER_LOAD_ACUSE_FORD_LINCOLN);
+							String inscritoPrograma = hashMap.get(UserLoadConstants.COL_USER_LOAD_INSCRITO_EN_PROGRAMA);
+							String acuseFordCredit = hashMap.get(UserLoadConstants.COL_USER_LOAD_ACUSE_FORD_CREDIT);
+							String cartaDoblePerfil = hashMap.get(UserLoadConstants.COL_USER_LOAD_CARTA_DOBLE_PERFIL);
+							String comentarios = hashMap.get(UserLoadConstants.COL_USER_LOAD_COMENTARIOS);
+							String estatusGeneral = hashMap.get(UserLoadConstants.COL_USER_LOAD_ESTATUS_GENERAL_PARTICIPANTE);
+							String codigoProcedencia = hashMap.get(UserLoadConstants.COL_USER_LOAD_CODIGO);
+							String nombreParticipante = hashMap.get(UserLoadConstants.COL_USER_LOAD_NOMBRE_PARTICIPANTE);
+							String tarjetaActiva = hashMap.get(UserLoadConstants.COL_USER_LOAD_TARJETA_ACTIVA);
+							if(!nombreParticipante.isEmpty()){
+								tUser.setFullName(nombreParticipante);
 							}
-						}
-						else{
-							tUser.setTjIdentificacion(false);
-						}
-						if(!acuseFordLincoln.isEmpty()){
-							if(acuseFordLincoln.toLowerCase().contains("sí") || acuseFordLincoln.toLowerCase().contains("si")){
-								tUser.setTjIdentificacion(true);
+							if(!tarjetaActiva.isEmpty()){
+								tUser.setTjCardNumber(tarjetaActiva);
 							}
-						}
-						else{
-							tUser.setTjIdentificacion(false);
-						}
-						if(!inscritoPrograma.isEmpty()){
-							if(inscritoPrograma.toLowerCase().contains("sí") || inscritoPrograma.toLowerCase().contains("si")){
-								tUser.setTjInscritoEnPrograma(true);
+							if(!bid.isEmpty()){
+								tUser.setTjBid(bid);
 							}
-						}
-						else{
-							tUser.setTjInscritoEnPrograma(false);
-						}
-						if(!acuseFordCredit.isEmpty()){
-							if(acuseFordCredit.toLowerCase().contains("sí") || acuseFordCredit.toLowerCase().contains("si")){
-								tUser.setTjAcuseFordCredit(true);
+							if(!razonSocial.isEmpty()){
+								tUser.setTjRazonSocial(razonSocial);
 							}
-						}
-						else{
-							tUser.setTjAcuseFordCredit(false);
-						}
-						if(!cartaDoblePerfil.isEmpty()){
-							if(cartaDoblePerfil.toLowerCase().contains("sí") || cartaDoblePerfil.toLowerCase().contains("si")){
+							if(!ecaps.isEmpty()){
+								tUser.setTjEcaps(ecaps);
+							}
+							if(!identificacion.isEmpty()){
+								if(identificacion.toLowerCase().contains("sí") || identificacion.toLowerCase().contains("si")){
+									tUser.setTjIdentificacion(true);
+								}
+							}
+							else{
+								tUser.setTjIdentificacion(false);
+							}
+							if(!acuseFordLincoln.isEmpty()){
+								if(acuseFordLincoln.toLowerCase().contains("sí") || acuseFordLincoln.toLowerCase().contains("si")){
+									tUser.setTjIdentificacion(true);
+								}
+							}
+							else{
+								tUser.setTjIdentificacion(false);
+							}
+							if(!inscritoPrograma.isEmpty()){
+								if(inscritoPrograma.toLowerCase().contains("sí") || inscritoPrograma.toLowerCase().contains("si")){
+									tUser.setTjInscritoEnPrograma(true);
+								}
+							}
+							else{
+								tUser.setTjInscritoEnPrograma(false);
+							}
+							if(!acuseFordCredit.isEmpty()){
+								if(acuseFordCredit.toLowerCase().contains("sí") || acuseFordCredit.toLowerCase().contains("si")){
+									tUser.setTjAcuseFordCredit(true);
+								}
+							}
+							else{
+								tUser.setTjAcuseFordCredit(false);
+							}
+							if(!cartaDoblePerfil.isEmpty()){
+								if(cartaDoblePerfil.toLowerCase().contains("sí") || cartaDoblePerfil.toLowerCase().contains("si")){
+									tUser.setTjCartaDoblePerfil(true);
+								}
+							}
+							else{
 								tUser.setTjCartaDoblePerfil(true);
 							}
-						}
-						else{
-							tUser.setTjCartaDoblePerfil(true);
-						}
-						if(!comentarios.isEmpty()){
-							tUser.setTjComentarios(comentarios);
-						}
-						if(!estatusGeneral.isEmpty()){
-							tUser.setTjEstatusGeneral(estatusGeneral);
-						}
-						if(!codigoProcedencia.isEmpty()){
-							Integer codigo;
-							try{
-								codigo = Integer.parseInt(codigoProcedencia);
-								tUser.setTjCodigoProcedencia(codigo);
+							if(!comentarios.isEmpty()){
+								tUser.setTjComentarios(comentarios);
 							}
-							catch(NumberFormatException e){
-								logger.error("ERRORde CODIGO ORIGEN: "+codigoProcedencia);
-								e.getStackTrace();
+							if(!estatusGeneral.isEmpty()){
+								tUser.setTjEstatusGeneral(estatusGeneral);
 							}
+							if(!codigoProcedencia.isEmpty()){
+								Integer codigo;
+								try{
+									codigo = Integer.parseInt(codigoProcedencia);
+									tUser.setTjCodigoProcedencia(codigo);
+								}
+								catch(NumberFormatException e){
+									logger.error("ERRORde CODIGO ORIGEN: "+codigoProcedencia);
+									e.getStackTrace();
+								}
+							}
+							logger.info(tUser.toString());
+							
+							TUser user = (TUser) session.get("user");
+							tUser.setCompany(user.getCompany());
+							tUser.setCatProfile(1);
+							tUser.setUserLogin("login"+stars);
+							tUser.setPassword("pass"+stars);
+							
+							tUserService.insertUser(tUser);
 						}
-						logger.info(tUser.toString());
-						tUserService.updateUser(tUser);
 						
-						logger.info("Nuevo registro");
+						
 					}
 				}
 			}
