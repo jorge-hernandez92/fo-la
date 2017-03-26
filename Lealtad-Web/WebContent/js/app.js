@@ -985,6 +985,27 @@ appres
 						
 					};
 					
+					$scope.getUserStatus = function (){
+						console.log("getUserStatus");
+						
+						$http({
+							method : 'POST',
+							url : 'getUserStatusAction',
+							data : 'campaign=',
+							headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
+						})
+						.success(
+								function(data, status, headers, config) {
+									
+									console.log(data);
+									
+								}).error(function(data, status, headers, config) {
+
+						});
+						
+						
+					}
+					
 					$scope.data = {
 							singleSelect: '1',
 						    multipleSelect: []
@@ -1288,8 +1309,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-//			$("#downReportRM").css("display", "none");
-				
 		}
 	})
 
@@ -1298,18 +1317,11 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaigns_user.jsp',
 		controller:	
  			function($scope) {
-			
-//			$("#downReportRM").css("display", "none");
-			
-			$('#carousel-examplee').on('slide.bs.carousel', function () {
-				  
+			$('#carousel-examplee').on('slide.bs.carousel', function () {	  
 				  $('html, body').animate({
 						scrollTop : $("#init").offset().top
 					});
-					
 			})
-				
-				
 		}
 	})
 
@@ -1318,8 +1330,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaignDetail_user.jsp',
 		controller:	
  			function($scope) {
-			
-//			$("#downReportRM").css("display", "none");
 			
 		}
 	})
@@ -1330,8 +1340,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-//			$("#downReportRM").css("display", "none");
-			
 		}
 	})
 	
@@ -1340,8 +1348,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/account_status_th.jsp',
 		controller:	
  			function($scope) {
-			 
-//			 $("#downReportRM").css("display", "block");
 			
 		}
 	})
@@ -1352,9 +1358,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
-//			$("#downReportRM").css("display", "none");
-					
-			
 		}
 	})
 	
@@ -1363,8 +1366,16 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/last_transactions.jsp',
 		controller:	
  			function($scope) {
-					
-//			$("#downReportRM").css("display", "none");
+			
+		}
+	})
+	
+	.state('user_status', {
+		url : '/estatus',
+		templateUrl : 'templates/th/user_status.jsp',
+		controller:	
+ 			function($scope) {
+			
 		}
 	})
 

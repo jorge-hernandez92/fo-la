@@ -47,19 +47,6 @@
 							<button class="btn btn-primary"
 								ng-click="searchAccountStatus(date,checkboxModel.value)">Buscar</button>
 						</div>
-<!-- 						<div class="btn-group"> -->
-<!-- 							<div class="dropdown"> -->
-<!-- 								<button class="btn btn-default dropdown-toggle" type="button" -->
-<!-- 									id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" -->
-<!-- 									aria-expanded="true"> -->
-<!-- 									<i class="fa fa-eye  fa-lg"></i> -->
-<!-- 								</button> -->
-<!-- 								<ul class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenu1"> -->
-<!-- 									<li><a ng-click="getRMPending()" href="#">Visualizar reporte de pendientes</a></li> -->
-<!-- 									<li><a ng-click="getRM()" href="#">Visualizar reporte completo</a></li> -->
-<!-- 								</ul> -->
-<!-- 							</div> -->
-<!-- 						</div> -->
 						<div class="btn-group">
 							<div class="dropdown">
 								<button class="btn btn-default dropdown-toggle" type="button"

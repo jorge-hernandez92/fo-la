@@ -64,10 +64,10 @@ public class TUserLogin extends TUser {
 		this.tCompanies = tCompanies;
 	}
 
-	@Override
-	public String toString() {
-		return "TUserLogin [functionalities=" + functionalities + "]";
-	}
-	
+//	@Override
+//	public String toString() {
+//		return "TUserLogin [functionalities=" + functionalities + "]";
+//	}
+//	
 	
 }
