@@ -986,24 +986,16 @@ appres
 					};
 					
 					$scope.getUserStatus = function (){
-						console.log("getUserStatus");
-						
 						$http({
 							method : 'POST',
 							url : 'getUserStatusAction',
-							data : 'campaign=',
 							headers : { 'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8' }
 						})
 						.success(
-								function(data, status, headers, config) {
-									
-									console.log(data);
-									
+								function(data, status, headers, config) {				
+									$scope.userStatus = data.user;
 								}).error(function(data, status, headers, config) {
-
 						});
-						
-						
 					}
 					
 					$scope.data = {

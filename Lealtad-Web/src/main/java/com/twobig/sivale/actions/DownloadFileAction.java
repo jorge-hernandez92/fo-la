@@ -5,14 +5,10 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.Reader;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardCopyOption;
 import java.util.HashMap;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
 import java.util.Map;
 
 import org.apache.commons.io.IOUtils;
@@ -23,16 +19,13 @@ import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
-import org.bouncycastle.util.io.pem.PemReader;
 
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
 import com.twobig.sivale.bd.to.TUser;
-//import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.constants.PathConstants;
-//import com.xm.sivale.services.test.ServicesUser;
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
@@ -89,13 +82,7 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 	@Action(value = "getFileCampaignAction", results = @Result(name = SUCCESS, type = "json", params = { "root", "file",
 			"excludeNullProperties", "true", "noCache", "true" }) )
 	public String getFileCampaignAction() {
-		
-//		logger.info("getFileCampaignAction");
-//		logger.info("FileName: "+fileName);
-//		logger.info("Campaing: "+campaignId);
-		
 		String path = String.valueOf(campaignId + "/" + fileName);
-
 		try {
 			fileInputStream = new FileInputStream(new File(PathConstants.ATTACHED_IMAGE_CAMPAIGN + path));
 			file = IOUtils.toByteArray(fileInputStream);

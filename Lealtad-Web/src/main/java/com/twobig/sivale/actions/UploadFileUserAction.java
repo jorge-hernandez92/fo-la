@@ -19,7 +19,6 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TAttachedFile;
 import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.beans.ExcelBean;
-import com.twobig.sivale.beans.ExcelUserCampaignBean;
 import com.twobig.sivale.constants.CommonsConstants;
 import com.twobig.sivale.constants.PathConstants;
 import com.twobig.sivale.constants.UserLoadConstants;
