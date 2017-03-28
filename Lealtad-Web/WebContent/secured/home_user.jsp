@@ -7,9 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
 <meta http-equiv="refresh" content="<%=(session.getMaxInactiveInterval())%>; url=Ford" />
 
-
-
-<title>Lealtad-Incentivos</title>
+<title>Ford-Incentivos</title>
 
 <!-- <!-- Bootstrap -->
 <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -264,82 +262,36 @@
     </div>
   </div>
 </div>
-
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top "
 		data-ng-controller="updateSession" style="max-height: 60px;background-color: white;">
-		
 			<div class="navbar-header">
 				<a class="navbar-brand" style="padding: 0px 0px;" ui-sref="home"> <img style="max-width: 200px;margin-left: 90px;margin-top: 5px;" src="img/company_logo/Ford/header1.png">
 				</a>
 			</div>
-
 		<ul class="nav navbar-nav navbar-right ">
 			<li class="divider-vertical color-default-ford"><h3 style="padding-right: 100px; margin-top: 5px;margin-left: 20px;"><b>¡Bienvenido! <br /> {{user.firstName }} {{user.lastName1}}</b></h3></li>
-			
 			<li><a href="logout" style="padding-top: 10px;"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
-			
 		</ul>
-		
 	</nav>
-	
-		<!-- Navigation -->
-		
-		
 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
 		data-ng-controller="updateSession" style="margin-top: 60px;">
-		
-<!-- 		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassifications"> -->
-			
-<!-- 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;" -->
-<!-- 				data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 				aria-expanded="false"> <i class="fa fa-angle-double-down   fa-2x color-white-ford" style="vertical-align: sub;"></i> -->
-<!-- 					FORD  ELITE  /  FORD  PREMIER<span class="caret"></span></a> -->
-<!-- 				<ul class="dropdown-menu" style="width: 320px;" ng-repeat="class in classifications"> -->
-				
-<!-- 					<li><a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" style="padding-left: 60px;"> -->
-<!-- 						{{class.catViews.logos}} -->
-<!-- 					</a></li> -->
-					
-<!-- 				</ul> -->
-<!-- 			</li> -->
-
-<!-- 		</ul> -->
-
 		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassificationsCam">
-			
 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false"> <i class="fa fa-angle-double-down   fa-2x color-white-ford" style="vertical-align: sub;"></i>
 					Ford Elite / Lincoln Premier<span class="caret"></span></a>
 				<ul class="dropdown-menu" style="width: 320px;" ng-repeat="class in classifications">
-				
 					<li><a href="#" data-ng-click="selectClassification(class)" ui-sref="campaigns" style="padding-left: 60px;">
 						{{class.className}}
 					</a></li>
-					
 				</ul>
 			</li>
-
 		</ul>
-
 		<ul class="nav navbar-nav navbar-right ">
-		
-		
-<!-- 			<li class="dropdown" id="downReportRM" style="display:none;"><a class="color-white-ford" href="#" class="dropdown-toggle " style="margin-right: 200px;" -->
-<!-- 				data-toggle="dropdown" role="button" aria-haspopup="true" -->
-<!-- 				aria-expanded="false"> <i class="fa fa-download  fa-2x color-yellow-ford " style="padding-left: 90px;padding-top: 6px;"></i> -->
-<!-- 					<br /> Reportes de Estado de Cuenta<span class="caret"></span></a> -->
-<!-- 				<ul class="dropdown-menu dropdown-menu-left">  -->
-<!-- 					<li style="width: 205px;"><a href="#" ng-click="downloadStaticXLSFile()">Reporte de Pendientes</a></li> -->
-<!-- 					<li ><a href="#" ng-click="getFormatoAcuseFCMAction()">Reporte de Todo</a></li>  -->
-<!-- 				</ul> -->
-<!-- 			</li> -->
-
 			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;" ui-sref="user_status"><i
 					class="fa fa-user-circle fa-2x color-white-ford" style="padding-left: 12px;padding-top: 6px;"></i> <br />&nbsp;Estatus
 			</a></li>
-			
 			<li class="dropdown"><a class="color-white-ford" href="#" class="dropdown-toggle " style="margin-right: 50px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false"> <i class="fa fa-cloud-download  fa-2x color-white-ford " style="padding-left: 15px;padding-top: 6px;"></i>
@@ -350,58 +302,27 @@
 					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li>
 				</ul>
 			</li>
-			
-			<li ><a class="color-white-ford" href="#" style="margin-right: 50px;"><i
+			<li ><a ui-sref="contac" class="color-white-ford" href="#" style="margin-right: 50px;"><i
 					class="fa fa-child  fa-2x color-white-ford" style="padding-left: 16px;padding-top: 6px;"></i> <br />Contacto
 			</a></li>
-			
 			<li ><a class="color-white-ford" href="#" style="margin-right: 20px;" ui-sref="questions"><i
 					class="fa fa-question-circle fa-2x color-white-ford" style="padding-left: 22px;padding-top: 6px;"></i> <br />&nbsp;Preguntas
 			</a></li>
-
-		</ul>
-
-	</nav>
-	
-	
-	<nav style="display:none; margin-top: 95px;" id="menu-files-publication" class="navbar navbar-info-file navbar-fixed-top"
-		data-ng-controller="updateSession">
-		<ul class="nav navbar-nav navbar-left" style=" margin-top: 0px; margin-left: 500px;">
-			<li><a href="#"  style="color: black; padding: 5px;"> 
-				NO OLVIDES CONSULTAR LOS ARCHIVOS ADJUNTOS 
-				<i class="fa fa-download color-default-ford"></i>
-			</a></li>
 		</ul>
 	</nav>
-
-
-
 	<br><br><br><br>
-	
-
-
 	<div ui-view></div>
-	
 	<section id="contact">
-
 	<div class="row">
-	
 		<div class="col-md-9" style="padding-top: 20px;">Copyright © 2017 Ford Motor Company - Todos los derechos reservados.</div>
-
 		<div class="col-md-3">
-
 			<a class="navbar-brand" style="padding: 0px 0px;"> <img
 				style="max-width: 130px; margin-left: 180px; margin-top: 5px;"
 				src="img/company_logo/Ford/logo1.png">
 			</a>
-
 		</div>
-
 	</div>
-
 </section>
-
-	
 </body>
 </html>
 

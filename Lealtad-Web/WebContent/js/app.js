@@ -1370,7 +1370,15 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			
 		}
 	})
-
+	
+	.state('contac', {
+		url : '/contacto',
+		templateUrl : 'templates/th/contac.jsp',
+		controller:	
+ 			function($scope) {
+			
+		}
+	})
 	
 });
 
