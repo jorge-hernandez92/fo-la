@@ -18,19 +18,19 @@
 		<div class="carousel-inner" role="listbox" style="height: 400px;">
 			<div class="item active">
 				<img
-					src="https://www.ford.mx/content/ford/mx/es_mx/site-wide-content/billboard-carousels/ford-credit-homepage/_jcr_content/par/billboard/imageComponent/image.imgs.full.high.jpg"
+					src="img/home_th/h1.jpg"
 					alt="...">
 				<div class="carousel-caption">...</div>
 			</div>
 			<div class="item">
 				<img
-					src="https://www.ford.mx/content/ford/mx/es_mx/site-wide-content/billboard-carousels/ford-credit-homepage/_jcr_content/par/billboard_1837208109/imageComponent/image.imgs.full.high.jpeg"
+					src="img/home_th/h2.jpeg"
 					alt="...">
 				<div class="carousel-caption">...</div>
 			</div>
 			<div class="item">
 				<img
-					src="https://www.ford.mx/content/ford/mx/es_mx/site-wide-content/billboard-carousels/ford-credit-homepage/_jcr_content/par/billboard_1634010234/imageComponent/image.imgs.full.high.jpg"
+					src="img/home_th/h3.jpeg"
 					alt="...">
 				<div class="carousel-caption">...</div>
 			</div>
@@ -67,7 +67,7 @@
 
 			<div style="text-align: center;">
 				<h2>
-					<a class="color-default-ford" href="#" ui-sref="account_status"> <i class="fa fa-usd"
+					<a style="text-decoration: blink;" class="color-default-ford" href="#" ui-sref="account_status"> <i class="fa fa-usd"
 						aria-hidden="true"
 						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i>
 
@@ -83,7 +83,7 @@
 
 			<div style="text-align: center;">
 				<h2>
-					<a class="color-default-ford" href="#" ui-sref="transactions"> <i
+					<a style="text-decoration: blink;" class="color-default-ford" href="#" ui-sref="transactions"> <i
 						class="fa fa-credit-card" aria-hidden="true"
 						style="vertical-align: middle; padding-left: -30px; font-size: 45px;"></i>
 

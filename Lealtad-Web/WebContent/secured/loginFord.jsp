@@ -36,7 +36,7 @@
 	<nav class="navbar navbar-menu-ford navbar-fixed-top">
 		<div class="container-fluid">
 			<div class="navbar-header">
-				<a class="navbar-brand" > <img style="max-width:250px; margin-top: -7px;" src="img/company_logo/Ford/header.png">
+				<a class="navbar-brand" > <img style="max-width:200px; margin-top: -7px;" src="img/company_logo/Ford/header.png">
 				</a>
 			</div>
 		</div>
@@ -70,7 +70,7 @@
 
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-user" ></i></span> 
-						<input type="text" id="inputUserName" class="form-control" placeholder="NOMBRE DE USUARIO"
+						<input type="text" id="inputUserName" class="form-control" placeholder="Usuario"
 							required="" autofocus="" name="username">
 					</div>
 					
@@ -78,12 +78,12 @@
 					
 					<div class="input-group">
 						<span class="input-group-addon"><i class="fa fa-unlock-alt"></i></span> 
-						<input type="password" id="inputPassword" class="form-control" placeholder="PASSWORD"
+						<input type="password" id="inputPassword" class="form-control" placeholder="Contraseña"
 							required="" name="password">
 					</div>
 			
 
-					<br><br><br><br>
+					<br><br><br>
 					
 					<button class="btn btn-sm btn-login" type="submit">INICIAR
 						SESIÓN</button>

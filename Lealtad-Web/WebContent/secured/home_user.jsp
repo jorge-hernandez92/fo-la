@@ -270,12 +270,12 @@
 				</a>
 			</div>
 		<ul class="nav navbar-nav navbar-right ">
-			<li class="divider-vertical color-default-ford"><h3 style="padding-right: 100px; margin-top: 5px;margin-left: 20px;"><b>¡Bienvenido! <br /> {{user.firstName }} {{user.lastName1}}</b></h3></li>
-			<li><a href="logout" style="padding-top: 10px;"> <i class="fa fa-power-off color-default-ford fa-3x"></i> 	</a></li>
-		</ul>
+			<li class="color-default-ford"><h4 style="padding-right: 90px; margin-top: 22px;margin-left: 15px;"><b>¡Bienvenido!  {{user.firstName }} {{user.lastName1}}</b></h4></li>
+			<li><h4 style="padding-top: 10px;padding-right: 50px;"><a style="text-decoration: blink;" href="logout" "><i class="fa fa-power-off color-default-ford " style="vertical-align: middle;"></i>&ensp;Cerrar Sesión</a></h4></li>
+		</ul> 
 	</nav>
 	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
-		data-ng-controller="updateSession" style="margin-top: 60px;">
+		data-ng-controller="updateSession" style="margin-top: 50px;">
 		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassificationsCam">
 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
