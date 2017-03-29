@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<br>
+	
+<div class="container" style="padding: 0px;">
 <div id="carousel-examplee" class="carousel slide" data-ride="carousel" data-ng-controller="getLastCampaign" style="margin-top: 10px;">
 	<ol class="carousel-indicators">
 		<li data-target="#/incentivos#carousel-examplee" data-slide-to="$index" ng-class="{'active': $index == 0}"ng-repeat="imageBase64 in lastCampaign.listImageBase64" style="background-color: #1b394e;"></li>
@@ -31,5 +32,6 @@
 			data-ng-click="getFileCampaign(file, lastCampaign)"
 			style="background-color: rgb(44, 92, 125); color: white;">{{file.fileName}}</a>
 	</div>
+</div>
 </div>
 

@@ -2,18 +2,19 @@
 	pageEncoding="utf-8"%>
 	
 	<br><br><br>
-
-
-<section id="carousel-home">
-
-	<div style="text-align: center;">
-		<h1>Dudas o Preguntas</h1>
+<div class="row">
+	<div class="col-md-2"></div>
+	<div class="col-md-8">
+		<h2 class="text-center color-default-ford" style="font-weight: bold;">
+			Dudas o Preguntas</h2>
+		<br>
 	</div>
+	<div class="col-md-2"></div>
+</div>
 
+<section id="questions">
 	<div class="panel panel-default" style="padding-left: 100px;border-color: white;padding-right: 100px;">
-
 		<div class="panel-body">
-
 			<div class="panel-group" id="accordion" role="tablist"
 				aria-multiselectable="true">
 				<div class="panel panel-default">
@@ -27,9 +28,7 @@
 					<div id="collapseOne" class="panel-collapse collapse in"
 						role="tabpanel" aria-labelledby="headingOne">
 						<div class="panel-body">
-
 							Éste es el proceso de inscripción al programa:
-
 							<ul>
 								<br>
 								<li>Solicitar al coordinador de entrenamiento en tu
@@ -63,22 +62,14 @@
 										<li>Firma del Solicitante (igual que en INE)</li>
 										<li>Firma del Representante Legal del distribuidor (igual
 											que en INE)</li>
-											
-										
-										
 									</ul>
 									<br>
 									Nota: La información deberá coincidir con la registrada en la base STARS
 									<br>
-									
 									<br>
-
 								</li>
-								
-								
 								<li>Una vez que la solicitud sea aprobada, se entregará un paquete que incluye una tarjeta de Lealtad Sí Vale y dos formatos de acuse que deberán ser llenados y enviados, en original, a la dirección antes mencionada </li>
 							</ul>
-
 						</div>
 					</div>
 				</div>
@@ -252,10 +243,7 @@
 					</div>
 				</div>
 			</div>
-
 		</div>
-
 	</div></div>
-
 </section>
 

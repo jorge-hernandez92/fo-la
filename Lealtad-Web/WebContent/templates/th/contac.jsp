@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+<div class="container" style="padding: 0px;">
 <br><br>
 <div class="row">
 	<div class="col-md-2"></div>
@@ -12,7 +13,7 @@
 </div>
 
 
-<div class="container">
+<div class="container" style="padding: 0px 200px;">
 	<table class="table table-bordered">
 		<thead>
 			<tr>
@@ -133,5 +134,6 @@
 			</tr>
 		</tbody>
 	</table>
+</div>
 </div>
 

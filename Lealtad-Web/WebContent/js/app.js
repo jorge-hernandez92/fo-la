@@ -705,9 +705,9 @@ appres
 											
 											$scope.rm = data;
 											
-											$scope.ganado 	 = data[0].ganado;
-											$scope.pagado 	 = data[0].pagado;
-											$scope.pendiente = data[0].pendiente;
+//											$scope.ganado 	 = data[0].ganado;
+//											$scope.pagado 	 = data[0].pagado;
+//											$scope.pendiente = data[0].pendiente;
 											
 											console.log($scope.ganado);
 											console.log($scope.pagado);
@@ -746,10 +746,8 @@ appres
 					};
 					
 					$scope.getRMPending = function() {
-						
 						var data = angular.toJson($scope.campaign);
 						console.log("getRMPending");	
-
 						$http({
 									method : 'POST',
 									url : 'getListRMPendingTHAction',
@@ -758,21 +756,17 @@ appres
 								})
 								.success(
 										function(data, status, headers, config) {
-											
-											
 											if( (data != null) && (data.length > 0)){
 												$scope.rm = data;
-												
-												$scope.ganado 	 = data[0].ganado;
-												$scope.pagado 	 = data[0].pagado;
-												$scope.pendiente = data[0].pendiente;
-												
-												console.log($scope.ganado);
-												console.log($scope.pagado);
-												console.log($scope.pendiente);
-												
-												console.log(JSON.stringify(data));
-												
+												if(data[0].ganado != null && data[0].ganado != 0){
+													$scope.ganado 	 = data[0].ganado;
+												}
+												if(data[0].pagado != null && data[0].pagado != 0){
+													$scope.pagado 	 = data[0].pagado;
+												}
+												if(data[0].pendiente != null && data[0].pendiente != 0){
+													$scope.pendiente = data[0].pendiente;
+												}
 												$scope.tableRM = new NgTableParams({
 													page : 1,
 													count : 15,
@@ -796,21 +790,13 @@ appres
 													}
 												});
 											}
-											
-											
-
 										}).error(function(data, status, headers, config) {
-
 								});
-						
-						
 					};
 					
 					$scope.getRMNoPending = function() {
-						
 						var data = angular.toJson($scope.campaign);
 						console.log("getRMPending");	
-
 						$http({
 									method : 'POST',
 									url : 'getListRMNoPendingTHAction',
@@ -819,19 +805,7 @@ appres
 								})
 								.success(
 										function(data, status, headers, config) {
-											
 											$scope.rm = data;
-											
-											$scope.ganado 	 = data[0].ganado;
-											$scope.pagado 	 = data[0].pagado;
-											$scope.pendiente = data[0].pendiente;
-											
-											console.log($scope.ganado);
-											console.log($scope.pagado);
-											console.log($scope.pendiente);
-											
-											console.log(JSON.stringify(data));
-											
 											$scope.tableRM = new NgTableParams({
 												page : 1,
 												count : 15,
@@ -844,29 +818,21 @@ appres
 															'filter')($scope.rm,
 															params.filter().myfilter)
 															: $scope.rm;
-
 													var orderedData = params.sorting() ? $filter(
 															'orderBy')(filteredData, params.orderBy())
 															: $scope.rm;
-
 													$defer.resolve(orderedData.slice(
 															(params.page() - 1) * params.count(),
 															params.page() * params.count()));
 												}
 											});
-
 										}).error(function(data, status, headers, config) {
-
 								});
-						
-						
 					};
 					
 					$scope.changeDate = function(value){
 						console.log(value);
-						
 						if(value){
-							
 							$("#daterange1").prop('disabled', false);
 						}
 						else{
@@ -905,7 +871,6 @@ appres
 						if(!stateDate){
 							var searchAccountStatusvar = {
 									campaign 			: $rootScope.search.campaing,
-									//unidadDeNegocio 	: $rootScope.search.unity,
 									participanteIdStars : $rootScope.search.thIdStars,
 									movimiento 			: $scope.moverm,
 									observaciones 		: $rootScope.search.observation, 
@@ -916,7 +881,6 @@ appres
 						else{
 							var searchAccountStatusvar = {
 									campaign 			: $rootScope.search.campaing,
-									//unidadDeNegocio 	: $rootScope.search.unity,
 									participanteIdStars : $rootScope.search.thIdStars,
 									movimiento 			: $scope.moverm,
 									observaciones 		: $rootScope.search.observation, 
@@ -927,7 +891,6 @@ appres
 						
 						var data = angular.toJson(searchAccountStatusvar);
 						console.log(JSON.stringify(searchAccountStatusvar));
-						
 						$http({
 						method : 'POST',
 						url : 'searchAccountStatusTHAction',
@@ -937,15 +900,8 @@ appres
 						}
 						}).success(
 							function(data, status, headers, config) {
-								
 								$scope.rm = data;
-								
 								if(data.length != 0){
-									
-									$scope.ganado 	 = data[0].ganado;
-									$scope.pagado 	 = data[0].pagado;
-									$scope.pendiente = data[0].pendiente;
-									
 									console.log($scope.ganado);
 									console.log($scope.pagado);
 									console.log($scope.pendiente);
@@ -953,9 +909,7 @@ appres
 								else{
 									$scope.tableRM.reload();
 								}
-								
 								console.log(JSON.stringify(data));
-								
 								$scope.tableRM = new NgTableParams({
 									page : 1,
 									count : 15,
@@ -980,7 +934,6 @@ appres
 								});
 								
 							}).error(function(data, status, headers, config) {
-
 							});
 						
 					};
@@ -1301,6 +1254,10 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			
 		}
 	})
 
@@ -1309,31 +1266,14 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaigns_user.jsp',
 		controller:	
  			function($scope) {
-			$('#carousel-examplee').on('slide.bs.carousel', function () {	  
-				  $('html, body').animate({
-						scrollTop : $("#init").offset().top
-					});
-			})
-		}
-	})
-
-	.state('campaign', {
-		url : '/incentivo',
-		templateUrl : 'templates/campaignDetail_user.jsp',
-		controller:	
- 			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
 			
 		}
 	})
 
-	.state('publication', {
-		url : '/publicacion',
-		templateUrl : 'templates/publication_user.jsp',
-		controller:	
- 			function($scope) {
-			
-		}
-	})
 	
 	.state('account_status', {
 		url : '/estado_de_cuenta',
@@ -1350,6 +1290,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		controller:	
  			function($scope) {
 			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
 		}
 	})
 	
@@ -1376,6 +1319,10 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/contac.jsp',
 		controller:	
  			function($scope) {
+			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
 			
 		}
 	})

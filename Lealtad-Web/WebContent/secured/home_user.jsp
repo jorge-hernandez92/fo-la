@@ -10,11 +10,17 @@
 <title>Ford-Incentivos</title>
 
 <!-- <!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom styles for this template -->
+    <link href="css/non-responsive.css" rel="stylesheet">
 
 <link rel="stylesheet" href="css/daterangepicker.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sb-admin-2.css">
+
+<!-- Custom styles for this template -->
+<!--     <link href="css/non-responsive.css" rel="stylesheet"> -->
 
 <!-- ESTILO DEL CLIENTE  -->
 <link rel="stylesheet" type="text/css" href="css/ford/ford-style.css" />
@@ -48,6 +54,7 @@
 </head>
 
 <body class="sivale" id="init">
+<div class="container" style="padding: 0px;">
 
 <!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -265,17 +272,20 @@
 	<!-- Navigation -->
 	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top "
 		data-ng-controller="updateSession" style="max-height: 60px;background-color: white;">
+		<div class="container">
 			<div class="navbar-header">
 				<a class="navbar-brand" style="padding: 0px 0px;" ui-sref="home"> <img style="max-width: 200px;margin-left: 90px;margin-top: 5px;" src="img/company_logo/Ford/header1.png">
 				</a>
 			</div>
 		<ul class="nav navbar-nav navbar-right ">
 			<li class="color-default-ford"><h4 style="padding-right: 90px; margin-top: 22px;margin-left: 15px;"><b>¡Bienvenido!  {{user.firstName }} {{user.lastName1}}</b></h4></li>
-			<li><h4 style="padding-top: 10px;padding-right: 50px;"><a style="text-decoration: blink;" href="logout" "><i class="fa fa-power-off color-default-ford " style="vertical-align: middle;"></i>&ensp;Cerrar Sesión</a></h4></li>
+			<li><h4 style="padding-top: 10px;padding-right: 80px;"><a style="text-decoration: blink;" href="logout" "><i class="fa fa-power-off color-default-ford " style="vertical-align: middle;"></i>&ensp;Cerrar Sesión</a></h4></li>
 		</ul> 
+		</div>
 	</nav>
-	<nav id="menuTH-A" class="navbar navbar-ford navbar-fixed-top"
+	<nav id="menuTH-A" class="navbar navbar-fixed-top"
 		data-ng-controller="updateSession" style="margin-top: 50px;">
+		<div class="container" style="background-color: #2d96cd;">
 		<ul class="nav navbar-nav navbar-left " data-ng-controller="getClassificationsCam">
 			<li class="dropdown"><a href="#" class="dropdown-toggle" style="color: white;padding-top: 15px;background-color: #1B394E;height: 60px;padding-left: 40px;width: 320px;"
 				data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -305,24 +315,46 @@
 			<li ><a ui-sref="contac" class="color-white-ford" href="#" style="margin-right: 50px;"><i
 					class="fa fa-child  fa-2x color-white-ford" style="padding-left: 16px;padding-top: 6px;"></i> <br />Contacto
 			</a></li>
-			<li ><a class="color-white-ford" href="#" style="margin-right: 20px;" ui-sref="questions"><i
+			<li ><a class="color-white-ford" href="#" style="margin-right: 80px;" ui-sref="questions"><i
 					class="fa fa-question-circle fa-2x color-white-ford" style="padding-left: 22px;padding-top: 6px;"></i> <br />&nbsp;Preguntas
 			</a></li>
 		</ul>
+		</div>
 	</nav>
 	<br><br><br><br>
+	<br>
 	<div ui-view></div>
-	<section id="contact">
-	<div class="row">
-		<div class="col-md-9" style="padding-top: 20px;">Copyright © 2017 Ford Motor Company - Todos los derechos reservados.</div>
-		<div class="col-md-3">
-			<a class="navbar-brand" style="padding: 0px 0px;"> <img
-				style="max-width: 130px; margin-left: 180px; margin-top: 5px;"
-				src="img/company_logo/Ford/logo1.png">
-			</a>
-		</div>
+		<section id="contact">
+			<div class="row">
+				<div class="col-md-5" style="padding-top: 20px;">Copyright ©
+					2017 Ford Motor Company - Todos los derechos reservados.</div>
+				<div class="col-md-2">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width: 230px; margin-left: 180px; margin-top: 5px;"
+						src="img/company_logo/FordCredit/header.png">
+					</a>
+				</div>
+				<div class="col-md-1">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width:97px; margin-left: 180px; margin-top: 5px;"
+						src="img/company_logo/Lincoln/logo.png">
+					</a>
+				</div>
+				<div class="col-md-1">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width:97px; margin-left: 180px; margin-top: 5px;"
+						src="img/company_logo/Ford/logo1.png">
+					</a>
+				</div>
+				<div class="col-md-1">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width: 130px; margin-left: 180px; margin-top: 12px;"
+						src="img/company_logo/FordCredit/logo.png">
+					</a>
+				</div>
+			</div>
+		</section>
 	</div>
-</section>
 </body>
 </html>
 
