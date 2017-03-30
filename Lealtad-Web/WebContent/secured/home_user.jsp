@@ -326,32 +326,32 @@
 	<div ui-view></div>
 		<section id="contact">
 			<div class="row">
+			
+				<div class="col-md-4">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width: 130px;margin-left: 15px;margin-top: 15px;"
+						src="img/company_logo/Ford/logo.png">
+					</a>
+				</div>
+				
 				<div class="col-md-5" style="padding-top: 20px;">Copyright ©
-					2017 Ford Motor Company - Todos los derechos reservados.</div>
+					2017 Ford Motor Company - Todos los derechos reservados.
+				</div>
+				
 				<div class="col-md-2">
 					<a class="navbar-brand" style="padding: 0px 0px;"> <img
-						style="max-width: 230px; margin-left: 180px; margin-top: 5px;"
+						style="max-width: 230px; margin-left: 0px; margin-top: 5px;"
 						src="img/company_logo/FordCredit/header.png">
 					</a>
 				</div>
+				
 				<div class="col-md-1">
 					<a class="navbar-brand" style="padding: 0px 0px;"> <img
-						style="max-width:97px; margin-left: 180px; margin-top: 5px;"
+						style="max-width:97px; margin-left: 0px; margin-top: 5px;"
 						src="img/company_logo/Lincoln/logo.png">
 					</a>
 				</div>
-				<div class="col-md-1">
-					<a class="navbar-brand" style="padding: 0px 0px;"> <img
-						style="max-width:97px; margin-left: 180px; margin-top: 5px;"
-						src="img/company_logo/Ford/logo1.png">
-					</a>
-				</div>
-				<div class="col-md-1">
-					<a class="navbar-brand" style="padding: 0px 0px;"> <img
-						style="max-width: 130px; margin-left: 180px; margin-top: 12px;"
-						src="img/company_logo/FordCredit/logo.png">
-					</a>
-				</div>
+				
 			</div>
 		</section>
 	</div>
