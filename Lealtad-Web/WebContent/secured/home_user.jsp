@@ -10,7 +10,7 @@
 <title>Ford-Incentivos</title>
 
 <!-- <!-- Bootstrap -->
-<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="css/bootstrap.min.css" rel="stylesheet">
 
 <!-- Custom styles for this template -->
     <link href="css/non-responsive.css" rel="stylesheet">
@@ -18,9 +18,6 @@
 <link rel="stylesheet" href="css/daterangepicker.min.css">
 <link rel="stylesheet" href="css/font-awesome.min.css">
 <link rel="stylesheet" href="css/sb-admin-2.css">
-
-<!-- Custom styles for this template -->
-<!--     <link href="css/non-responsive.css" rel="stylesheet"> -->
 
 <!-- ESTILO DEL CLIENTE  -->
 <link rel="stylesheet" type="text/css" href="css/ford/ford-style.css" />
@@ -326,32 +323,27 @@
 	<div ui-view></div>
 		<section id="contact">
 			<div class="row">
-			
-				<div class="col-md-4">
+				<div class="col-md-3">
 					<a class="navbar-brand" style="padding: 0px 0px;"> <img
 						style="max-width: 130px;margin-left: 15px;margin-top: 15px;"
 						src="img/company_logo/Ford/logo.png">
 					</a>
 				</div>
-				
 				<div class="col-md-5" style="padding-top: 20px;">Copyright ©
 					2017 Ford Motor Company - Todos los derechos reservados.
 				</div>
-				
 				<div class="col-md-2">
 					<a class="navbar-brand" style="padding: 0px 0px;"> <img
-						style="max-width: 230px; margin-left: 0px; margin-top: 5px;"
+						style="max-width: 230px;margin-top: 5px;"
 						src="img/company_logo/FordCredit/header.png">
 					</a>
 				</div>
-				
 				<div class="col-md-1">
-					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+					<a class="navbar-brand" style="padding-top: 0px;padding-left: 60px;"> <img
 						style="max-width:97px; margin-left: 0px; margin-top: 5px;"
 						src="img/company_logo/Lincoln/logo.png">
 					</a>
 				</div>
-				
 			</div>
 		</section>
 	</div>

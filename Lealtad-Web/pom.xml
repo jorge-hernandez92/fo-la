@@ -137,12 +137,7 @@
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>antlr</groupId>
-			<artifactId>antlr</artifactId>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>c3p0</groupId>
 			<artifactId>c3p0</artifactId>
@@ -153,12 +148,7 @@
 			<groupId>org.json</groupId>
 			<artifactId>json</artifactId>
 		</dependency>
-
-		<dependency>
-			<groupId>org.quartz-scheduler</groupId>
-			<artifactId>quartz</artifactId>
-		</dependency>
-
+		
 		<dependency>
 			<groupId>com.twobig.sivale.lealtad</groupId>
 			<artifactId>Lealtad-Dominio</artifactId>

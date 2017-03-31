@@ -12,7 +12,7 @@
 			<li data-target="#carousel-example-generic" data-slide-to="2"></li>
 		</ol>
 		<!-- Wrapper for slides -->
-		<div class="carousel-inner" role="listbox" style="height: 400px;">
+		<div class="carousel-inner" role="listbox" style="height: 470px;">
 			<div class="item active">
 				<img
 					src="img/home_th/h1.jpg"

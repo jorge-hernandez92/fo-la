@@ -1253,11 +1253,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/homeTh2.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
 		}
 	})
 
@@ -1266,11 +1264,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/campaigns_user.jsp',
 		controller:	
  			function($scope) {
-			
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			
 		}
 	})
 
@@ -1310,7 +1306,9 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 		templateUrl : 'templates/th/user_status.jsp',
 		controller:	
  			function($scope) {
-			
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
 		}
 	})
 	
