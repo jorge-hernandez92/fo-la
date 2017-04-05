@@ -24,6 +24,7 @@ public class TAttachedFile implements java.io.Serializable {
 	private Integer attachedFileId;
 	private Integer tPublicationId;
 	private Boolean isPublic;
+	private Boolean isAcuse; 
 	private String fileName;
 	private String filePath;
 	private String fileExtension;
@@ -96,6 +97,15 @@ public class TAttachedFile implements java.io.Serializable {
 
 	public void settCampaignId(Integer tCampaignId) {
 		this.tCampaignId = tCampaignId;
+	}
+	
+	@Column(name = "is_acuse")
+	public Boolean getIsAcuse() {
+		return isAcuse;
+	}
+
+	public void setIsAcuse(Boolean isAcuse) {
+		this.isAcuse = isAcuse;
 	}
 
 	@Override

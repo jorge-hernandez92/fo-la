@@ -12,7 +12,7 @@
 			<div class="panel" style="background-color: rgba(210, 210, 210, 0.15);">
 				<div class="panel-heading">
 					<div class="container-fluid">
-						<div class="navbar-header" style="font-family:font-size: 17px;">Carga de usuarios</div>
+						<div class="navbar-header" style="font-family:font-size: 17px;">Carga ACUSE</div>
 					</div>
 				</div>
 				<div class="panel-body back-sivale">
