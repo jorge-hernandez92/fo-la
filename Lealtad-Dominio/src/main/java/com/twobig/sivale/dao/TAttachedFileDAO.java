@@ -14,4 +14,5 @@ public interface TAttachedFileDAO {
 	void deleteTAttachedFile(TAttachedFile tAttachedFile);
 	void deleteAcuseTAttachedFile();
 	List<TAttachedFile> getListTAttachedFileByCampaignId(Integer campaignId);
+	List<TAttachedFile> getListTAttachedFileAcuse();
 }

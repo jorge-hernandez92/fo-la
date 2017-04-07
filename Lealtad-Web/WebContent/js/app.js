@@ -183,17 +183,40 @@ appres
 								});
 					};
 					
+					$scope.getListAcuseFiles = function(){
+						$http(
+								{
+									method : 'POST',
+									url : 'getListAcuseFilesAction',
+									headers : {
+										'Content-Type' : 'application/x-www-form-urlencoded; charset=UTF-8'
+									}
+								}).success(
+								function(data, status, headers, config) {
+									$scope.listAcuseFiles = data;
+								}).error(
+								function(data, status, headers, config) {
+								})
+					}
+					
+					$scope.getFileAcuse = function(file) {
+						$http.get(
+								'getFileAcuseAction?acuseName=' + file.fileName +'&acuseId='+file.attachedFileId).success(
+								function(data, status, headers, config) {
+									$scope.downloadFile(file.fileName, data)
+								}).error(
+								function(data, status, headers, config) {
+								});
+					};
+					
 					
 					$scope.getFileCampaign = function(file, campaign) {
 						$http.get(
 								'getFileCampaignAction?fileName=' + file.fileName +'&campaignId='+campaign.campaignId).success(
 								function(data, status, headers, config) {
-
 									$scope.downloadFile(file.fileName, data)
-
 								}).error(
 								function(data, status, headers, config) {
-
 								});
 					};
 					
@@ -203,13 +226,10 @@ appres
 								'getFileAction?fileName=' + file.fileName + '.'
 										+ file.fileExtension).success(
 								function(data, status, headers, config) {
-
 									$scope.downloadFile(file.fileName + '.'
 											+ file.fileExtension, data)
-
 								}).error(
 								function(data, status, headers, config) {
-
 								});
 					};
 

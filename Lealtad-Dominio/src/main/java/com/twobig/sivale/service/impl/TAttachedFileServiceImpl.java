@@ -39,4 +39,9 @@ public class TAttachedFileServiceImpl implements com.twobig.sivale.service.TAtta
 		tAttachedFileDAO.deleteAcuseTAttachedFile();
 	}
 
+	@Override
+	public List<TAttachedFile> getListTAttachedFileAcuse() {
+		return tAttachedFileDAO.getListTAttachedFileAcuse();
+	}
+
 }

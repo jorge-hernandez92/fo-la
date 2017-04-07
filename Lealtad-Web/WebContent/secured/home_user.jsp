@@ -303,10 +303,11 @@
 				data-toggle="dropdown" role="button" aria-haspopup="true"
 				aria-expanded="false"> <i class="fa fa-cloud-download  fa-2x color-white-ford " style="padding-left: 15px;padding-top: 6px;"></i>
 					<br /> Archivos<span class="caret"></span></a>
-				<ul class="dropdown-menu"> 
-					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li>
-					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li> 
-					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li>
+				<ul class="dropdown-menu" data-ng-controller="getListAcuseFiles">
+					<li><a href="#" ng-repeat="fileAcuse in listAcuseFiles" data-ng-click="getFileAcuse(fileAcuse)">{{fileAcuse.fileName}}</a></li>
+<!-- 					<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li> -->
+<!-- 					<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a></li>  -->
+<!-- 					<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li> -->
 				</ul>
 			</li>
 			<li ><a ui-sref="contac" class="color-white-ford" href="#" style="margin-right: 50px;"><i

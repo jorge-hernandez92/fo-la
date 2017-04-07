@@ -56,6 +56,13 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 		Query query = getSession().createQuery(QUERY_DELETE_ACUSE_FILE);
 		query.executeUpdate();
 	}
+
+	@Override
+	public List<TAttachedFile> getListTAttachedFileAcuse() {
+		DetachedCriteria criteria = DetachedCriteria.forClass(TAttachedFile.class);
+		criteria.add(Restrictions.eq(TAttachedFile.FIELD_TCAMPAIGN_IS_ACUSE, true));
+		return getListByCriteria(criteria);
+	}
 	
 	
 }

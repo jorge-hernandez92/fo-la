@@ -9,4 +9,5 @@ public interface TAttachedFileService {
 	void insertTAttachedFile(List<TAttachedFile> tAttachedFileList);
 	List<TAttachedFile> getListTAttachedFile(Integer campaignId);
 	void deleteAcuses();
+	List<TAttachedFile> getListTAttachedFileAcuse();
 }

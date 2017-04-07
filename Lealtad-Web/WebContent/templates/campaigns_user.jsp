@@ -23,7 +23,8 @@
 		<span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
 		<span class="sr-only">Next</span>
 	</a>
-		<div class="list-group" style="position: absolute;bottom: 30px;">
+	
+	<div class="list-group" style="position: absolute;bottom: 30px;">
 		<a class="list-group-item active text-center"
 			style="background-color: #1b394e; color: white;">ARCHIVOS ANEXOS</a>
 		<a class="list-group-item" href="#"
