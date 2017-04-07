@@ -62,13 +62,12 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					$scope.buttonCampaig = '';
 					
 					$scope.rows = [];
-					  
 					$scope.counter = 0;
-					
 					$scope.rows2 = [];
-					  
 					$scope.counter2 = 0;
-					
+					$scope.rows3 = [];
+					$scope.counter3 = 0;
+	
 					$scope.attachedFileTemp = '';
 					
 					$scope.selectPublicationView = {
@@ -118,7 +117,6 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					 }
 					  
 					$scope.addRow = function() {
-					    
 						$scope.rows.push( {index : $scope.counter + 2, value : false} );
 						$scope.counter++;
 					}
@@ -128,7 +126,6 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					}
 					
 					$scope.addRow2 = function() {
-					    
 						$scope.rows2.push( {index : $scope.counter2 + 2, value : false} );
 						$scope.counter2++;
 					}
@@ -137,14 +134,21 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					    $scope.rows2.splice(index, 1);
 					}
 					
+					$scope.addRow3 = function() {
+						$scope.rows3.push( {index : $scope.counter3 + 2, value : false} );
+						$scope.counter3++;
+					}
+					
+					$scope.removeRow3 = function(index){
+					    $scope.rows3.splice(index, 1);
+					}
+					
 					$scope.removeAttachedFile = function(index){
 					    $scope.updateAttachedFiles.splice(index, 1);
 					}
 					
 					$scope.deleteAttacherFile = function() {
-						
 						var data = angular.toJson($scope.attachedFileTemp);
-						
 						$http({
 							method : 'POST',
 							url : 'deleteAttachedFileAction',
@@ -156,9 +160,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 							  }
 							  $scope.showNotify(data);
 						  }).error(function(data, status, headers, config) {
-							  
 						  });
-						
 					};
 					
 					$scope.updateAttacherFile = function() {
@@ -1719,6 +1721,21 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	.state('load_user', {
 		url : '/carga_de_usuarios',
 		templateUrl : 'templates/admin/load_user.jsp',
+		controller:	
+ 			function($scope) {
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			$('#init').removeClass('image-th-p');
+			$('body').css({ "background-image": "" });
+			$('#li-campaign').show();
+			$('#li-separator').show();
+		}
+	})
+	
+	.state('load_acuse', {
+		url : '/carga_de_acuses',
+		templateUrl : 'templates/admin/upload_acuse.jsp',
 		controller:	
  			function($scope) {
 			$('html, body').animate({

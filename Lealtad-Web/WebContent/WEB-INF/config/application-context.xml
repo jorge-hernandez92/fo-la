@@ -23,7 +23,6 @@
 		<property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe" />
 		<property name="user" value="bolinf" />
 		<property name="password" value="bolinf" />	
-
 		<property name="minPoolSize" value="5" />
 		<property name="maxPoolSize" value="30" />
 		<property name="maxStatements" value="10" />

@@ -33,7 +33,7 @@
 								</button>
 								<ul class="dropdown-menu">
 									<li><a ui-sref="load_user" href="#">Carga de Usuarios</a></li>
-									<li><a ng-click="moved()" href="#">Carga de Acuses</a></li>
+									<li><a ui-sref="load_acuse" href="#">Carga de Acuses</a></li>
 								</ul>
 				</div>
 			</div>

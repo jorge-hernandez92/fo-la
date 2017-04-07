@@ -121,11 +121,9 @@
 										<button type="button" class="btn btn-primary left-35"
 										ng-click="addRow2()">Añadir Archivo</button>
 									<div class="row row margin-top10" ng-repeat="rowContent in rows2">
-										
 											<div class="col-md-10">
 												<input type="file" name="filesImage" id="filestyle-{{rowContent.index}}">
 											</div>
-											
 											<div class="col-md-1">
 												<button type="button" class="btn btn-primary" data-ng-click="removeRow2($index)">
   													<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>

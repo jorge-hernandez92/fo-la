@@ -20,21 +20,23 @@ public class TAttachedFileServiceImpl implements com.twobig.sivale.service.TAtta
 	@Override
 	public void insertTAttachedFile(TAttachedFile tAttachedFile) {
 		tAttachedFileDAO.insertTAttachedFile(tAttachedFile);
-
 	}
 	
 	@Override
 	public void insertTAttachedFile(List<TAttachedFile> tAttachedFileList){
-		
 		for (TAttachedFile tAttachedFile : tAttachedFileList) {
 			tAttachedFileDAO.insertTAttachedFile(tAttachedFile);
 		}
-		
 	}
 
 	@Override
 	public List<TAttachedFile> getListTAttachedFile(Integer campaignId) {
 		return tAttachedFileDAO.getListTAttachedFileByCampaignId(campaignId);
+	}
+
+	@Override
+	public void deleteAcuses() {
+		tAttachedFileDAO.deleteAcuseTAttachedFile();
 	}
 
 }

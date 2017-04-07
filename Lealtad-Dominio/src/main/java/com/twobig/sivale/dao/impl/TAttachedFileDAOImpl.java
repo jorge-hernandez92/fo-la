@@ -2,6 +2,7 @@ package com.twobig.sivale.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.criterion.DetachedCriteria;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -23,11 +24,8 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 
 	@Override
 	public List<TAttachedFile> getTAttachedFileByPublicationId(int publicationId) {
-
 		DetachedCriteria criteria = DetachedCriteria.forClass(TAttachedFile.class);
-
 		criteria.add(Restrictions.eq(TAttachedFile.FIELD_TPUBLICATION_ID, publicationId));
-		
 		return getListByCriteria(criteria);
 	}
 
@@ -48,12 +46,15 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 
 	@Override
 	public List<TAttachedFile> getListTAttachedFileByCampaignId(Integer campaignId) {
-		
 		DetachedCriteria criteria = DetachedCriteria.forClass(TAttachedFile.class);
-
 		criteria.add(Restrictions.eq(TAttachedFile.FIELD_TCAMPAIGN_ID, campaignId));
-		
 		return getListByCriteria(criteria);
+	}
+
+	@Override
+	public void deleteAcuseTAttachedFile() {
+		Query query = getSession().createQuery(QUERY_DELETE_ACUSE_FILE);
+		query.executeUpdate();
 	}
 	
 	

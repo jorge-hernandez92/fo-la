@@ -46,7 +46,6 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 			        @InterceptorRef("defaultStack"),
 			        @InterceptorRef("validation")}
 	)
-	
 	public String uploadFileUserAction(){
 		TUser user = (TUser) session.get("user");
 		logger.info("uploadFileUserAction. CARGA DE ARCHIVO DE USUARIOS");
@@ -71,17 +70,6 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		logger.info(excelBean.getHeader().toString());
 		logger.info(excelBean.getRows().toString());
 		updateInsertUser(excelBean);
-		
-//		List<String> listStars = getListStars(excelBean,CommonsConstants.COLUMN_STARS);
-//		for (String string : listStars) {
-//			if(!string.isEmpty()){
-//				logger.info(string);
-//			}
-//		}
-//		List<TUser> listUser = tUserService.getUsersByStars(listStars);
-//		for (TUser tUser : listUser) {
-//			logger.info(tUser.toString());
-//		}
 	}
 	
 	private void saveFileOnDiskFile(Integer attachedFileId){
