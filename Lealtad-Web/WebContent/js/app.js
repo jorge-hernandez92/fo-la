@@ -978,9 +978,6 @@ appres
 					
 					
 					$scope.downloadStaticXLSFile = function (){
-						
-						console.log("Metodo downloadStaticXLSFile");
-						
 						$http({
 							method : 'POST',
 							url : 'getStaticFilesHomeTH',
@@ -989,27 +986,15 @@ appres
 							}
 						})
 							.success(function(data, status, headers, config) {
-								
 								var resultCode = data.resultCode;				
 								if(resultCode == '100'){
-									
-									console.log("descargando");
-									
 									downloadReportFile(data.fileName+ '.xlsm', data.valueCode);
-									
 								}
-								
 							})
-							.error(function(data, status, headers, config) {
-								
-								
-							});
+							.error(function(data, status, headers, config) {});
 					}
 					
 					$scope.getFormatoAcuseFCMAction = function (){
-						
-						console.log("Metodo getFormatoAcuseFCMAction");
-						
 						$http({
 							method : 'POST',
 							url : 'getFormatoAcuseFCMAction',
@@ -1018,27 +1003,15 @@ appres
 							}
 						})
 							.success(function(data, status, headers, config) {
-								
 								var resultCode = data.resultCode;				
 								if(resultCode == '100'){
-									
-									console.log("descargando");
-									
 									downloadReportFile(data.fileName+ '.pdf', data.valueCode);
-									
 								}
-								
 							})
-							.error(function(data, status, headers, config) {
-								
-								
-							});
+							.error(function(data, status, headers, config) {});
 					}
 					
 					$scope.getFormatoAcuse2016FORDAction = function (){
-						
-						console.log("Metodo getFormatoAcuse2016FORDAction");
-						
 						$http({
 							method : 'POST',
 							url : 'getFormatoAcuse2016FORDAction',
@@ -1047,21 +1020,12 @@ appres
 							}
 						})
 							.success(function(data, status, headers, config) {
-								
 								var resultCode = data.resultCode;				
-								if(resultCode == '100'){
-									
-									console.log("descargando");
-									
+								if(resultCode == '100'){	
 									downloadReportFile(data.fileName+ '.pdf', data.valueCode);
-									
 								}
-								
 							})
-							.error(function(data, status, headers, config) {
-								
-								
-							});
+							.error(function(data, status, headers, config) {});
 					}
 					
 					$scope.downloadRMPending1 = function (option){
