@@ -12,8 +12,6 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.commons.io.FileUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-//import org.apache.logging.log4j.LogManager;
-//import org.apache.logging.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -25,6 +23,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.CatClassificationCampaign;
+import com.twobig.sivale.bd.to.CatClient;
 import com.twobig.sivale.bd.to.CatPublicationType;
 import com.twobig.sivale.bd.to.TCampaign;
 import com.twobig.sivale.bd.to.TPublication;
@@ -44,15 +43,13 @@ import com.twobig.sivale.service.TAttachedFileService;
 import com.twobig.sivale.service.TCampaignsService;
 import com.twobig.sivale.service.TPublicationService;
 import com.twobig.sivale.service.ViewPublicationService;
-import com.twobig.sivale.service.impl.TAttachedFileServiceImpl;
+import com.twobig.sivale.service.impl.CompanyServiceImpl;
 
 
 
 @ParentPackage(value = "json-default")
 @Namespace("/")
 public class CampaignAction extends ActionSupport implements SessionAware {
-	
-//	final static Logger logger = Logger.getLogger(CampaignAction.class);
 
 	/**
 	 * 
@@ -80,6 +77,9 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	@Autowired
 	TAttachedFileService tAttachedFileService; 
 	
+	@Autowired
+	CompanyServiceImpl companyServiceImpl;
+	
 	private Map<String, Object> session;
 	private List<CatClassificationCampaign> classifications;
 	private List<CampaignDetailBean> campaigns;
@@ -95,6 +95,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	private List<UpdateCampaignBean> selectCampaign;
 	private List<SelectClassificationCampaignBean> selectPublicationTypes;
 	private Map<String, String> message;
+	private List<CatClient> listCompany;
 
 	public static final String CODE = "code";
 	public static final String MESSAGE = "message";
@@ -577,32 +578,31 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	@Action(value = "getClassificationLevelAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"classificationLevel", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getClassificationLevelAction() {
-		
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
 			return ERROR;
 		}
-		
 		if(classificationId < 0)
 			classificationLevel = classificationService.getListClassificationParent(user.getUserId());
 		else{
 			classificationLevel = classificationService.getListClassificationChildren(classificationId);
-			
-			SelectClassificationCampaignBean first = new SelectClassificationCampaignBean();
-			SelectClassificationCampaignBean last  = new SelectClassificationCampaignBean();
-			
-//			first.setId(-1);
-//			first.setName("Ninguno");
-//			
-//			last.setId(-2);
-//			last.setName("Añadir nuevo");
-//			
-//			classificationLevel.add(0, first);
-//			classificationLevel.add(last);
 		}
 		return SUCCESS;
-
 	}
+	
+	@SuppressWarnings("unchecked")
+	@Action(value = "getAllCompaniesAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
+			"listCompany", "excludeNullProperties", "true", "noCache", "true" }) )
+	public String getAllCompaniesAction() {
+		TUser user = (TUser) session.get("user");
+		if (user == null) {
+			return ERROR;
+		}
+		listCompany = companyServiceImpl.getAllCompanies();
+		return SUCCESS;
+	}
+	
+	
 
 	@SuppressWarnings("unchecked")
 	@Action(value = "getPublicationTypesAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
@@ -927,7 +927,13 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	public void setCardNumber(String cardNumber) {
 		this.cardNumber = cardNumber;
 	}
-	
-	
 
+	public List<CatClient> getListCompany() {
+		return listCompany;
+	}
+
+	public void setListCompany(List<CatClient> listCompany) {
+		this.listCompany = listCompany;
+	}
+	
 }

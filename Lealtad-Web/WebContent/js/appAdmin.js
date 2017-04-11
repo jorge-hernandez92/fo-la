@@ -688,6 +688,17 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 								});
 					};
 					
+					$scope.getAllCompanies = function() {
+						$http.get('getAllCompaniesAction').success(
+								function(data, status, headers, config) {
+									console.log(data);
+									$scope.allCompanies = data;
+								}).error(
+								function(data, status, headers, config) {
+									$scope.allCompanies = data; 
+								});
+					};
+					
 					$scope.getClassCompanyList = function() {
 						
 						$scope.formCampaingInit();
@@ -1736,6 +1747,21 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 	.state('load_acuse', {
 		url : '/carga_de_acuses',
 		templateUrl : 'templates/admin/upload_acuse.jsp',
+		controller:	
+ 			function($scope) {
+			$('html, body').animate({
+				scrollTop : $("#init").offset().top
+			});
+			$('#init').removeClass('image-th-p');
+			$('body').css({ "background-image": "" });
+			$('#li-campaign').show();
+			$('#li-separator').show();
+		}
+	})
+	
+	.state('new_admin', {
+		url : '/nuevo_administrador',
+		templateUrl : 'templates/admin/new_admin.jsp',
 		controller:	
  			function($scope) {
 			$('html, body').animate({

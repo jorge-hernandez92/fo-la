@@ -64,4 +64,9 @@ public class CatClient implements java.io.Serializable {
 		this.description = description;
 	}
 
+	@Override
+	public String toString() {
+		return "CatClient [idCompany=" + idCompany + ", name=" + name + ", description=" + description + "]";
+	}
+
 }

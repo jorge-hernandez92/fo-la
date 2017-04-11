@@ -6,19 +6,11 @@ import com.twobig.sivale.bd.to.CatClient;
 
 public interface CompanyDAO {
 
-	public static final String QUERY_UPDATE_FLAG_IS_ENABLE = "update TCompanies set isEnable = :isEnable where companyId = :companyId";
-
-	public void insert(CatClient companies);
-
-	public void update(CatClient companies);
-
-	public void delete(CatClient companies);
-
-	public List<CatClient> getAll();
-
-	public CatClient getCompanyById(Integer companyId);
-	
-	public List<CatClient> getCompaniesNoDefault();
-	
+	void insert(CatClient companies);
+	void update(CatClient companies);
+	void delete(CatClient companies);
+	List<CatClient> getAll();
+	CatClient getCompanyById(Integer companyId);
+	List<CatClient> getCompaniesNoDefault();
 
 }
