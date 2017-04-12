@@ -29,6 +29,8 @@
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
 <link href="css/default-fonts.css" rel="stylesheet">
 
+
+
 <!-- Nuevo rediseño -->
 
 <link rel="stylesheet" type="text/css" href="css/transition-campaigns.css" />
@@ -52,64 +54,56 @@
 <script src="js/bootstrap.min.js"></script>
 <script src="js/daterangepicker.min.js"></script>
 <!-- endbower -->
-
 <script src="js/angular-daterangepicker.min.js"></script>
-
 </head>
-
 <body class="sivale" id="init">
-
-	<!-- Navigation -->
-	<nav  class="navbar navbar-default navbar-static-top" data-ng-controller="updateSession" style="font-family: 'GothamBold';background-color: #ececec;">
-		
+	<nav id="menuTH-A" class="navbar navbar-default navbar-fixed-top "
+		data-ng-controller="updateSession" style="max-height: 60px;background-color: #f0f0e9;">
+		<div class="container">
 		<ul class="nav navbar-nav">
-
-			<li class="dropdown" id="menuTH"><a class="dropdown-toggle"
-				data-toggle="dropdown" href="#"> <i class="fa fa-bars"></i> Menu
-					<i class="fa fa-caret-down"></i>
-			</a>
+			<li class="dropdown" id="menuTH">
+				<a class="dropdown-toggle" data-toggle="dropdown" style="padding: 0px 0px;" href="#"> <img style="max-width: 200px;margin-left: 40px;margin-top: 5px;" src="img/company_logo/Ford/header1.png"> <i class="fa fa-caret-down"></i></a>
 				<ul class="dropdown-menu dropdown-user">
-					<li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i>
-							Incentivos </a></li>
-							
-					<li id="li-separator" role="separator" class="divider"></li>
-					
-					<li id="li-campaign"><a ui-sref="campaign">Publicaciones</a></li>
-
-				</ul></li>
-
+					<li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i>Incentivos </a></li>
+				</ul>
+			</li>
 		</ul>
-
-		<ul class="nav navbar-nav navbar-right">
-			<li><a> <i class="fa fa-user fa-fw"></i>{{user.firstName}}
-			</a></li>
-			<li><a href="logout"> <i class="fa fa-sign-out"></i> Salir
-			</a></li>
-		</ul>
+		<ul class="nav navbar-nav navbar-right ">
+			<li class="color-default-ford"><h4 style="padding-right: 90px; margin-top: 22px;margin-left: 15px;"><b>¡Bienvenido!  {{user.firstName }} {{user.lastName1}}</b></h4></li>
+			<li><h4 style="padding-top: 10px;padding-right: 80px;"><a style="text-decoration: blink;" href="logout" "><i class="fa fa-power-off color-default-ford " style="vertical-align: middle;"></i>&ensp;Cerrar Sesión</a></h4></li>
+		</ul> 
+		</div>
 	</nav>
-	
+	<br><br>
 	<div ui-view></div>	
-
 	<footer class="footer">
-		<div id="imginthefooter" class="header_top">
+		<div  class="header_top">
 			<div class="container width100">
-				<div class="row">
-
-					<div class="col-md-3"></div>
-					<div class="col-md-6">
-						<h3 class="text-center"
-							style="font-size: 14px; font-family: GothamBold; color: white;">Programa
-							administrado por Sí Vale México, S.A. de C.V. 2016 ©. Copyright ©2016 Ford Motor Company</h3>
-					</div>
-					<div class="col-md-3"></div>
-
+			<div class="row">
+				<div class="col-md-3">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width: 130px;margin-left: 15px;margin-top: 15px;"
+						src="img/company_logo/Ford/logo.png">
+					</a>
 				</div>
+				<div class="col-md-5" style="padding-top: 20px;">Copyright ©
+					2017 Ford Motor Company - Todos los derechos reservados.
+				</div>
+				<div class="col-md-2">
+					<a class="navbar-brand" style="padding: 0px 0px;"> <img
+						style="max-width: 230px;margin-top: 5px;"
+						src="img/company_logo/FordCredit/header.png">
+					</a>
+				</div>
+				<div class="col-md-1">
+					<a class="navbar-brand" style="padding-top: 0px;padding-left: 60px;"> <img
+						style="max-width:97px; margin-left: 0px; margin-top: 5px;"
+						src="img/company_logo/Lincoln/logo.png">
+					</a>
+				</div>
+			</div>
 			</div>
 		</div>
 	</footer>
-
 </body>
-
-
-
 </html>

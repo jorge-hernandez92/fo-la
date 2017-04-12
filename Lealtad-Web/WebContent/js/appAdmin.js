@@ -1556,10 +1556,6 @@ appres.service('upload', ['$http', '$q', function ($http, $q)
 {
 	this.uploadFile = function(file)
 	{
-		//var deferred = $q.defer();
-		//var formData = new FormData();
-		//formData.append('file', file);
-		
 		var data = angular.toJson(file);
 		
 		$http({
@@ -1589,10 +1585,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('body').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').hide();
-			$('#li-separator').hide();
 		}
 	})
 
@@ -1604,10 +1596,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 
@@ -1619,10 +1607,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').hide();
-			$('#li-separator').hide();
 		}
 	})
 	
@@ -1634,10 +1618,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').hide();
-			$('#li-separator').hide();
 		}
 	})
 	
@@ -1649,10 +1629,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').hide();
-			$('#li-separator').hide();
 		}
 	})
 	
@@ -1664,10 +1640,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1679,8 +1651,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1692,10 +1662,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1707,10 +1673,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1722,10 +1684,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1737,10 +1695,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1752,10 +1706,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
@@ -1767,10 +1717,6 @@ appres.config(function($stateProvider, $urlRouterProvider) {
 			$('html, body').animate({
 				scrollTop : $("#init").offset().top
 			});
-			$('#init').removeClass('image-th-p');
-			$('body').css({ "background-image": "" });
-			$('#li-campaign').show();
-			$('#li-separator').show();
 		}
 	})
 	
