@@ -8,9 +8,11 @@ import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Result;
 import org.apache.struts2.interceptor.SessionAware;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import com.opensymphony.xwork2.ActionSupport;
 import com.twobig.sivale.bd.to.TUser;
+import com.twobig.sivale.service.TUserService;
 
 public class AdminAction extends ActionSupport implements SessionAware{
 	
@@ -20,6 +22,9 @@ public class AdminAction extends ActionSupport implements SessionAware{
 	private static final Logger logger = LogManager.getLogger(AdminAction.class);
 	
 	private Map<String, Object> session;
+	
+	@Autowired
+	TUserService tUserService;
 	
 	private String nombre;
 	private String apellidoPaterno;
@@ -41,14 +46,15 @@ public class AdminAction extends ActionSupport implements SessionAware{
 		if (user == null) {
 			return ERROR;
 		}
-		logger.info(""+nombre);
-		logger.info(""+apellidoPaterno);
-		logger.info(""+apellidoMaterno);
-		logger.info(""+usuario);
-		logger.info(""+password);
-		logger.info(""+selectCompany);
 		TUser userAdmin = new TUser();
-		
+		userAdmin.setFirstName(nombre);
+		userAdmin.setLastName1(apellidoPaterno);
+		userAdmin.setLastName2(apellidoMaterno);
+		userAdmin.setUserLogin(usuario);
+		userAdmin.setPassword(password);
+		userAdmin.setCompany(selectCompany);
+		userAdmin.setCatProfile(0);
+		tUserService.insertUser(userAdmin);
 		return SUCCESS; 
 	}
 	
