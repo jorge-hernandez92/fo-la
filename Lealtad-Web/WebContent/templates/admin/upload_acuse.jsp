@@ -8,7 +8,6 @@
 </head>
 <body>
 	<div class="panel-body back-sivale">
-		<div class="container">
 			<div class="panel" style="background-color: rgba(210, 210, 210, 0.15);">
 				<div class="panel-heading">
 					<div class="container-fluid">
@@ -16,8 +15,7 @@
 					</div>
 				</div>
 				<div class="panel-body back-sivale">
-					<form id="newFileAcuse" action="uploadAcuseFileAction" method="post"
-						enctype="multipart/form-data">
+					<form id="newFileAcuse" action="uploadAcuseFileAction" method="post" enctype="multipart/form-data">
 						<div class="text-right">
 							<div class="row margin-top10">
 								<div class="col-md-3">Información de Campaña</div>
@@ -48,7 +46,6 @@
 						</div>
 					</form>
 				</div>
-			</div>
 		</div>
 	</div>
 	<br><br><br>

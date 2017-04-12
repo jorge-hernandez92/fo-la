@@ -8,7 +8,6 @@
 </head>
 <body>
 		<div class="panel-body back-sivale">
-		<div class="container">
 			<div class="panel" style="background-color: rgba(210, 210, 210, 0.15);">
 				<div class="panel-heading">
 					<div class="container-fluid">
@@ -49,7 +48,6 @@
 									<input type="password" class="form-control" name="password" required>
 								</div>
 							</div>
-							
 							<div class="row margin-top10" data-ng-controller="getAllCompanies">
 								<div class="col-md-3">Compañia</div>
 								<div class="col-md-6">
@@ -76,7 +74,6 @@
 							});
 						</script>
 					</form>
-				</div>
 			</div>
 		</div>
 	</div>

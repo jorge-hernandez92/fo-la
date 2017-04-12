@@ -7,9 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=US-ASCII">
 </head>
 <body>
-
 	<div class="panel-body back-sivale">
-		<div class="container">
 			<div class="panel panel-grisT table-top-sivale">
 				<div class="panel-heading">
 					<div class="container-fluid">
@@ -17,41 +15,34 @@
 					</div>
 				</div>
 				<div class="panel-body back-sivale" style="width: 700px;">
-
 					<form id="newPublication" action="UploadRMFile" method="post"
 						enctype="multipart/form-data">
 						<div class="text-right">
-
 							<div class="row margin-top10">
 								<div class="col-md-4">Nombre</div>
 								<div class="col-md-8">
 									<input type="text" class="form-control" name="publication" required>
 								</div>
 							</div>
-							
 							<div class="row margin-top10">
 								<div class="col-md-4">Tipo de Archivo</div>
 								<div class="col-md-8">
 									<input type="text" class="form-control" name="publicationType" value="Reporte de Movimientos de la Compañia" disabled required>
 								</div>
 							</div>
-							
 							<div class="row margin-top10">
 								<div class="col-md-4">Documento excel</div>
 								<div class="col-md-8">
 									<input type="file" name="file" class="test" accept=".xlsx" required>
 								</div>
 							</div>
-
 							<div class="row margin-top10">
 								<div class="col-md-4">Descripción</div>
 								<div class="col-md-8">
 									<textarea class="form-control" rows="3" name="description" required></textarea>
 								</div>
 							</div>
-
 						</div>
-
 						<div class="row margin-top10">
 							<div class="col-md-4"></div>
 
@@ -62,7 +53,6 @@
 
 							</div>
 						</div>
-
 						<script type="text/javascript">
 							// nultiple initialize
 							$('.test').filestyle({
@@ -71,12 +61,8 @@
 						</script>
 					</form>
 				</div>
-
 			</div>
 		</div>
-	</div>
-	
 	<br><br><br>
-	
 </body>
 </html>

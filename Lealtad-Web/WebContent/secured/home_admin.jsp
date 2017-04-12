@@ -29,10 +29,7 @@
 <link rel="stylesheet" type="text/css" href="css/set2.css" />
 <link href="css/default-fonts.css" rel="stylesheet">
 
-
-
 <!-- Nuevo rediseño -->
-
 <link rel="stylesheet" type="text/css" href="css/transition-campaigns.css" />
 
 
@@ -74,7 +71,7 @@
 		</ul> 
 		</div>
 	</nav>
-	<br><br>
+	<br><br><br>
 	<div ui-view></div>	
 	<footer class="footer">
 		<div  class="header_top">

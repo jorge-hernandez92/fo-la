@@ -9,7 +9,6 @@
 <body>
 
 	<div class="panel-body back-sivale">
-		<div class="container">
 			<div class="panel" style="background-color: rgba(210, 210, 210, 0.15);">
 				<div class="panel-heading">
 					<div class="container-fluid">
@@ -179,7 +178,6 @@
 
 			</div>
 		</div>
-	</div>
 	
 	<br><br><br>
 	
