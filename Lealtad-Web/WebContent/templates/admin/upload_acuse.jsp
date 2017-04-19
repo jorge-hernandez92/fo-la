@@ -11,17 +11,38 @@
 			<div class="panel" style="background-color: rgba(210, 210, 210, 0.15);">
 				<div class="panel-heading">
 					<div class="container-fluid">
-						<div class="navbar-header" style="font-family:font-size: 17px;">Carga Acuse</div>
+						<div class="navbar-header" style="font-family:font-size: 17px;">Carga Archivos Acuse</div>
 					</div>
 				</div>
 				<div class="panel-body back-sivale">
 					<form id="newFileAcuse" action="uploadAcuseFileAction" method="post" enctype="multipart/form-data">
 						<div class="text-right">
 							<div class="row margin-top10">
-								<div class="col-md-3">Información de Campaña</div>
+								<div class="col-md-3">Solicitud de tarjeta Lealtad Sí Vale</div>
+								<div class="col-md-6">
+									<input type="file" name="xlsFileFormat" class="test" accept=".xlsx, .xlsm" required>
+								</div>
+							</div>
+							<br>
+							<div class="row margin-top10">
+								<div class="col-md-3">Acuse 2</div>
+								<div class="col-md-6">
+									<input type="file" name="filesAcuse" class="test" required>
+								</div>
+							</div>
+							<br>
+							<div class="row margin-top10">
+								<div class="col-md-3">Acuse 2</div>
+								<div class="col-md-6">
+									<input type="file" name="filesAcuse" class="test" required>
+								</div>
+							</div>
+							<br>
+							<div class="row margin-top10">
+								<div class="col-md-3">Cargar mas archivos</div>
 								<div class="col-md-6">
 										<button type="button" class="btn btn-primary left-35"
-										ng-click="addRow3()">Añadir Archivo</button>
+										ng-click="addRow3()">Añadir Mas Archivos</button>
 									<div class="row row margin-top10" ng-repeat="rowContent in rows3">
 											<div class="col-md-10">
 												<input type="file" name="filesAcuse" id="filestyle-{{rowContent.index}}">

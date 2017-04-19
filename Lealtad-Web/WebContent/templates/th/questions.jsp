@@ -17,7 +17,7 @@
 		<div class="panel-body">
 			<div class="panel-group" id="accordion" role="tablist"
 				aria-multiselectable="true">
-				<div class="panel panel-default">
+				<div class="panel panel-default" data-ng-controller="getListAcuseFiles">
 					<div class="panel-heading" role="tab" id="headingOne">
 						<h4 class="panel-title">
 							<a role="button" data-toggle="collapse" data-parent="#accordion"
@@ -85,7 +85,7 @@
 						role="tabpanel" aria-labelledby="headingTwo">
 						<div class="panel-body">
 							<ul>
-								<li><a href="#" ng-click="downloadStaticXLSFile()">Solicitud de Tarjetas</a></li>
+								<li  ng-repeat="fileAcuse in listAcuseFiles" data-ng-click="getFileAcuse(fileAcuse)" ng-if="fileAcuse.isAcuse == 0"><a href="#">{{fileAcuse.fileName}}</a></li>
 							</ul>
 						</div>
 				</div>
@@ -101,8 +101,7 @@
 						role="tabpanel" aria-labelledby="headingThree">
 						<div class="panel-body">
 							<ul>
-								<li><a href="#" ng-click="getFormatoAcuseFCMAction()">Formato Acuse FCM 2016</a><br><br></li> 
-								<li><a href="#" ng-click="getFormatoAcuse2016FORDAction()">Formato Acuse FORD 2016</a></li>
+								<li ng-repeat="fileAcuse in listAcuseFiles" data-ng-click="getFileAcuse(fileAcuse)" ng-if="fileAcuse.isAcuse == 1"><a href="#" >{{fileAcuse.fileName}}</a></li>
 							</ul>
 
 						</div>

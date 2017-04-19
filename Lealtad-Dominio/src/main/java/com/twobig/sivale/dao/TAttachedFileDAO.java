@@ -7,7 +7,7 @@ import org.springframework.dao.DataIntegrityViolationException;
 import com.twobig.sivale.bd.to.TAttachedFile;
 
 public interface TAttachedFileDAO {
-	static final String QUERY_DELETE_ACUSE_FILE = "delete from TAttachedFile where isAcuse = 1";
+	static final String QUERY_DELETE_ACUSE_FILE = "delete from TAttachedFile where isAcuse = 1 or isAcuse = 0";
 	List<TAttachedFile> getTAttachedFileByPublicationId(int publicationId);
 	void insertTAttachedFile(TAttachedFile tAttachedFile) throws DataIntegrityViolationException;
 	void updateTAttachedFile(TAttachedFile tAttachedFile);

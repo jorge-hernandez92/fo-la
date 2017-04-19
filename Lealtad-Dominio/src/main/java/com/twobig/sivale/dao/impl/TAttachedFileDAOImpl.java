@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.criterion.DetachedCriteria;
+import org.hibernate.criterion.Disjunction;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -60,7 +61,10 @@ public class TAttachedFileDAOImpl extends GenericDAOImpl<TAttachedFile, Long> im
 	@Override
 	public List<TAttachedFile> getListTAttachedFileAcuse() {
 		DetachedCriteria criteria = DetachedCriteria.forClass(TAttachedFile.class);
-		criteria.add(Restrictions.eq(TAttachedFile.FIELD_TCAMPAIGN_IS_ACUSE, true));
+		Disjunction or = Restrictions.disjunction();
+		or.add(Restrictions.eq(TAttachedFile.FIELD_TCAMPAIGN_IS_ACUSE, true));
+		or.add(Restrictions.eq(TAttachedFile.FIELD_TCAMPAIGN_IS_ACUSE, false));
+		criteria.add(or);
 		return getListByCriteria(criteria);
 	}
 	

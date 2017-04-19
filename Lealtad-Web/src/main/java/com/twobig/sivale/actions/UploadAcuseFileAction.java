@@ -38,6 +38,8 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 	private String acuseName;
 	private String[] filesAcuseFileName;
 	private File[] filesAcuse;
+	private File xlsFileFormat;
+	private String xlsFileFormatFileName;
 	private Map<String, Object> session;
 	private List<TAttachedFile> listAcuseFile;
 	@Autowired 
@@ -60,6 +62,7 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 		}
 		tAttachedFileService.deleteAcuses();
 		saveFiles();
+		saveXlsFormat();
 		return SUCCESS; 
 	}
 	
@@ -76,6 +79,19 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 			} catch (IOException e) {
 				e.printStackTrace();
 			}
+		}
+	}
+	
+	private void saveXlsFormat(){
+		TAttachedFile attachedFile = new TAttachedFile();
+		attachedFile.setFileName(xlsFileFormatFileName);
+		attachedFile.setIsAcuse(false);
+		tAttachedFileService.insertTAttachedFile(attachedFile);
+		String directory = PathConstants.ATTACHED_ACUSE_FILE + attachedFile.getAttachedFileId() + File.separator;
+		try {
+			FilesUtil.saveFile(xlsFileFormat, xlsFileFormatFileName, directory);
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
 	}
 	
@@ -156,6 +172,22 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 
 	public void setByteFileAcuse(byte[] byteFileAcuse) {
 		this.byteFileAcuse = byteFileAcuse;
+	}
+	
+	public File getXlsFileFormat() {
+		return xlsFileFormat;
+	}
+
+	public void setXlsFileFormat(File xlsFileFormat) {
+		this.xlsFileFormat = xlsFileFormat;
+	}
+	
+	public String getXlsFileFormatFileName() {
+		return xlsFileFormatFileName;
+	}
+
+	public void setXlsFileFormatFileName(String xlsFileFormatFileName) {
+		this.xlsFileFormatFileName = xlsFileFormatFileName;
 	}
 
 	@Override
