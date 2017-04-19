@@ -64,7 +64,7 @@
 							<div class="col-md-4"></div>
 							<div class="col-md-6 text-left">
 								<button type="submit" class="btn btn-primary" form="newAdmin">Guardar</button>
-								<button type="button" class="btn btn-primary left-35" ui-sref="campaign">Cancelar</button>
+								<button type="button" class="btn btn-primary left-35" ui-sref="home">Cancelar</button>
 							</div>
 						</div>
 						<script type="text/javascript">

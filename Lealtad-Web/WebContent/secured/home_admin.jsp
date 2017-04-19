@@ -61,7 +61,7 @@
 			<li class="dropdown" id="menuTH">
 				<a class="dropdown-toggle" data-toggle="dropdown" style="padding: 0px 0px;" href="#"> <img style="max-width: 200px;margin-left: 40px;margin-top: 5px;" src="img/company_logo/Ford/header1.png"> <i class="fa fa-caret-down"></i></a>
 				<ul class="dropdown-menu dropdown-user">
-					<li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i>Incentivos </a></li>
+					<li><a ui-sref="home"><i class="fa fa-home" aria-hidden="true"></i>Inicio</a></li>
 				</ul>
 			</li>
 		</ul>
