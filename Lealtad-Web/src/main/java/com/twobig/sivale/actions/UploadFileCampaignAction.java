@@ -104,12 +104,12 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 		String directory = PathConstants.ATTACHED_IMAGE_CAMPAIGN + campaignId + File.separator;
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
 		ExcelBean excelBean = excelservice.getExcelData(directory+xlsFileFileName);
-		List<ExcelUserCampaignBean> excelCampaign = excelservice.getListUserCampaign(excelBean,CommonsConstants.COLUMN_ID_EXCEL);
-		List<String> listAccountNumber = new ArrayList<String>();
+		List<ExcelUserCampaignBean> excelCampaign = excelservice.getListUserCampaign(excelBean,CommonsConstants.COLUMN_ID_EXCEL_TARJETA);
+		List<String> listCard = new ArrayList<String>();
 		for (ExcelUserCampaignBean excelUserCampaignBean : excelCampaign) {
-			listAccountNumber.add(excelUserCampaignBean.getUserId());
+			listCard.add(excelUserCampaignBean.getUserId());
 		}
-		List<TUser> listUser= userDAO.getListUserByAccountNumber(listAccountNumber);
+		List<TUser> listUser= userDAO.getListUserByCard(listCard);
 		for (TUser tUser : listUser) {
 			TUserDataC userDataC = new TUserDataC();
 			userDataC.setCampaignId(Integer.parseInt(campaignId));

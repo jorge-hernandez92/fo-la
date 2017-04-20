@@ -186,5 +186,12 @@ public class UserDAOImpl extends GenericDAOImpl<TUser, Long> implements
 		criteria.add(Restrictions.eq(TUser.FIELD_USER_USER, userLogin));
 		return getTByCriteria(criteria);
 	}
+
+	@Override
+	public List<TUser> getListUserByCard(List<String> listCard) {
+		DetachedCriteria criteria = DetachedCriteria.forClass(TUser.class);
+		criteria.add(Restrictions.in(TUser.FIELD_USER_CARD_NUMBER, listCard));
+		return getListByCriteria(criteria);
+	}
 	
 }

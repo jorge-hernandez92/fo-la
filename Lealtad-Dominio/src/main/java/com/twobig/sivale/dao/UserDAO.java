@@ -28,6 +28,7 @@ public interface UserDAO {
 	List<TUser> getAllUsersWithCard();
 	List<TUser> getUsersByStars(List<String> listStars);
 	List<String> getAllAccountNumberByCompanies(List<Integer> companyList);
+	List<TUser> getListUserByCard(List<String> listCard);
 	Integer getUserIdByCard(String cardNumber);
 	Integer getUserIdByAccountNumber(String accountNumber);
 	TUser getUserByUserLogin(String userLogin);
