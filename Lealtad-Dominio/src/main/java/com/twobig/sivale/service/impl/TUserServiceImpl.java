@@ -39,4 +39,9 @@ public class TUserServiceImpl implements TUserService {
 		userDAO.insertUser(tUser);
 	}
 
+	@Override
+	public TUser getUserByUserLogin(String userLogin) {
+		return userDAO.getUserByUserLogin(userLogin); 
+	}
+
 }

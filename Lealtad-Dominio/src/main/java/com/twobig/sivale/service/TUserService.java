@@ -10,5 +10,6 @@ public interface TUserService {
 	TUser getUsersByStars(String stars);
 	void updateUser(TUser tUser);
 	void insertUser(TUser tUser);
+	TUser getUserByUserLogin(String userLogin);
 	
 }

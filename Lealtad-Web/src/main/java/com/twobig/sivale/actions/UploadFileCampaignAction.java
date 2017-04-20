@@ -38,11 +38,8 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
 	private static final Logger logger = LogManager.getLogger(UploadFileCampaignAction.class);
-	
 	private Map<String, Object> session;
-	
 	private String nombreIncentivo;
 	private int incentivo; 
 	private String programa; 
@@ -57,13 +54,10 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 	
 	@Autowired
 	public TCampaignsService campaignService;
-	
 	@Autowired 
 	public TAttachedFileService tAttachedFileService;
-	
 	@Autowired
 	public UserDAO userDAO; 
-	
 	@Autowired
 	public TUserDataCService tUserDataCService;
 	

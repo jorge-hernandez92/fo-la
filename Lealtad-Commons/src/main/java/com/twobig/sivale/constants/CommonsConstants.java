@@ -184,6 +184,7 @@ public class CommonsConstants {
 	//public static final Integer NEW_BUDGET_STATUS = 9;
 	
 	public static final String COLUMN_ID_EXCEL = "NUMERO DE CUENTA";
+	public static final String COLUMN_ID_EXCEL_TARJETA = "TARJETA";
 	
 	public static final String UNDEFINED_VALUE = "undefined";
 	

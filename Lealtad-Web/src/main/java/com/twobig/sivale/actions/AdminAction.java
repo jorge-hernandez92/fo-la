@@ -15,12 +15,9 @@ import com.twobig.sivale.bd.to.TUser;
 import com.twobig.sivale.service.TUserService;
 
 public class AdminAction extends ActionSupport implements SessionAware{
-	
-	
-	private static final long serialVersionUID = 1L;
 
+	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LogManager.getLogger(AdminAction.class);
-	
 	private Map<String, Object> session;
 	
 	@Autowired
@@ -41,10 +38,14 @@ public class AdminAction extends ActionSupport implements SessionAware{
 			        @InterceptorRef("validation")}
 	)
 	public String newAdminAction() {
-		logger.info("newAdminAction");
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
 			return ERROR;
+		}
+		TUser userC = tUserService.getUserByUserLogin(usuario);
+		if(userC != null){
+			logger.error("Error al crear el usuario. Ya existe en la base de datos");
+			return ERROR; 
 		}
 		TUser userAdmin = new TUser();
 		userAdmin.setFirstName(nombre);

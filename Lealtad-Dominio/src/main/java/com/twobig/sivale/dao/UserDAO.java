@@ -30,4 +30,5 @@ public interface UserDAO {
 	List<String> getAllAccountNumberByCompanies(List<Integer> companyList);
 	Integer getUserIdByCard(String cardNumber);
 	Integer getUserIdByAccountNumber(String accountNumber);
+	TUser getUserByUserLogin(String userLogin);
 }
