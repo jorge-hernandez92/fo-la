@@ -40,6 +40,7 @@ public class AdminAction extends ActionSupport implements SessionAware{
 	public String newAdminAction() {
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
+			logger.error("No existe una sesión");
 			return ERROR;
 		}
 		TUser userC = tUserService.getUserByUserLogin(usuario);
