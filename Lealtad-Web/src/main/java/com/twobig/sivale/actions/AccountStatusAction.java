@@ -1,6 +1,5 @@
 package com.twobig.sivale.actions;
 
-
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
@@ -33,80 +32,52 @@ import com.twobig.sivale.utils.ExportReport;
 @Namespace("/")
 public class AccountStatusAction extends ActionSupport implements SessionAware, ServletRequestAware {
 	
-
 	private static final long serialVersionUID = 1L;
-	
 	private Map<String, Object> session;
-	
 	private List<AccountStatusBean> listAccountStatusBean;
-	
 	Map<String, Object> reportMap;
 	
 	@Autowired
 	private TReportMovementsService tReportMovementsService;
-	
 	private static final Logger logger = LogManager.getLogger(AccountStatusAction.class);
-	
-	/**
-	 * Variable used to access to HTTP Servlet request.
-	 */
 	private HttpServletRequest request;
 	
-
 	@Action(value = "getListRMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMAction() {
-		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-
 		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), null);
-		
 		return SUCCESS;
 	}
 	
-
 	@Action(value = "getListRMPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMPendingAction() {
-		
-		logger.info("getListRMPendingAction");
-		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
-		
 		return SUCCESS;
 	}
-	
 	
 	@Action(value = "getListRMNoPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMNoPendingAction() {
-		
-		logger.info("getListRMNoPendingAction");
-		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany(), null);
-		
 		return SUCCESS;
 	}
 	
@@ -114,74 +85,43 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 	@Action(value = "searchAccountStatusAdminAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String searchAccountStatusAdminAction() {
-		
-		logger.info("searchAccountStatusAdminAction");
-		
 		final HttpServletRequest request = ServletActionContext.getRequest();
-
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		String searchAccountStatusJSON = request.getParameter("searchAccountStatusvar");
-		
 		AccountStatusFilterBean accountStatusFilterBean; 
-		
 		if(!searchAccountStatusJSON.equals("undefined")){
 			accountStatusFilterBean = new AccountStatusFilterBean();
-			
 			try {
-				
 				accountStatusFilterBean = new ObjectMapper().readValue(searchAccountStatusJSON, AccountStatusFilterBean.class);
-				logger.info(accountStatusFilterBean.toString());
 				listAccountStatusBean = tReportMovementsService.getAccountStatusByCompanyIdAndFilter(user.getCompany(), accountStatusFilterBean, null);
-				
-				for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
-					logger.info(accountStatusBean.toString());
-				}
-				
-		
 			} catch (IOException e) {
-				
+				logger.error("Error al generar JSON");
 				e.printStackTrace();
 				return ERROR; 	
 			}
-			
 		}
 		else{
-			logger.info("ERROR EN EL JSON");
+			logger.error("ERROR EN EL JSON");
 		}
-		
 		return SUCCESS; 
 	}
-	
 	
 	@Action(value = "getRMXLSPendingAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getRMXLSPendingAction() {
-		
-		
 		String optionSelected = request.getParameter("reportSelectedCon");
-		
-		logger.info(optionSelected);
-		
-		logger.info("getRMXLSPendingAction");
-		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		reportMap = new HashMap<>();
-		
-		
 		switch (optionSelected) {
 		case "1":
 			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
@@ -192,14 +132,11 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 		case "3":
 			listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), null);
 			break;
-
 		default:
 			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), null);
 			break;
 		}
-		
 		if(!listAccountStatusBean.isEmpty()){
-			
 			AccountStatusBean accountStatusBean = new AccountStatusBean();
 			listAccountStatusBean.add(accountStatusBean);
 			accountStatusBean = new AccountStatusBean();
@@ -209,105 +146,62 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 			accountStatusBean.setBid("Total Pagado");
 			accountStatusBean.setCompania((String.valueOf(listAccountStatusBean.get(0).getGanado())));
 			accountStatusBean.setIdStars("Total Ganado");
-			
 			listAccountStatusBean.add(accountStatusBean);
-			
 		}
-		
 		String[] cabecera 		=  {"Nombre de la Campaña", "Nombre", "ID STARS", "Compañia", "BID", "Monto", "Movimiento", "Observaciones" };
 		String[] atributos 		=  {"campaignName",			"nombre", "idStars",  "compania", "bid", "monto", "movements",  "observaciones"};
 		String nombreArchivo 	=  "Reporte_de_Movimientos";
-		
 		List<Object> objectList = new ArrayList<Object>(listAccountStatusBean);
-		
 		byte[] reportFileBytes = null;
-		
 		try {
-			
 			reportFileBytes = ExportReport.exportReportToFile(objectList, cabecera, atributos, nombreArchivo,"1", nombreArchivo);
-			
 			reportMap.put("valueCode", reportFileBytes);
 			reportMap.put("resultCode", "100");
 			reportMap.put("fileName", nombreArchivo);
-			
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | IOException e) {
-			
+			logger.error("Error al generar archivo");
 			e.printStackTrace();
 		} finally{
-			
 		}
-		
 		return SUCCESS;
 	}
 	
 	@Action(value = "getListRMTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListRMTHAction() {
-		
-		logger.info("getListRMTHAction");
-		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-
 		listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), user.getTjCardNumber());
-		
-		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
-			logger.info(accountStatusBean.toString());
-		}
-		
 		return SUCCESS;
 	}
-	
 
 	@Action(value = "getListRMPendingTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
-	public String getListRMPendingTHAction() {
-		
-		logger.info("getListRMPendingTHAction");
-		
+	public String getListRMPendingTHAction() {	
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
-		
-		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
-			logger.info(accountStatusBean.toString());
-		}
-		
 		return SUCCESS;
 	}
 	
-	
 	@Action(value = "getListRMNoPendingTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
-	public String getListRMNoPendingTHAction() {
-		
-		logger.info("getListRMNoPendingTHAction");
-		
+	public String getListRMNoPendingTHAction() {	
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		listAccountStatusBean = tReportMovementsService.getAccountStatusWithoutPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
-		
-		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
-			logger.info(accountStatusBean.toString());
-		}
-		
 		return SUCCESS;
 	}
 	
@@ -315,48 +209,29 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 	@Action(value = "searchAccountStatusTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAccountStatusBean", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String searchAccountStatusTHAction() {
-		
-		logger.info("searchAccountStatusTHAction");
-		
 		final HttpServletRequest request = ServletActionContext.getRequest();
-
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		String searchAccountStatusJSON = request.getParameter("searchAccountStatusvar");
-		
 		AccountStatusFilterBean accountStatusFilterBean; 
-		
 		if(!searchAccountStatusJSON.equals("undefined")){
 			accountStatusFilterBean = new AccountStatusFilterBean();
-			
 			try {
-				
 				accountStatusFilterBean = new ObjectMapper().readValue(searchAccountStatusJSON, AccountStatusFilterBean.class);
-				logger.info(accountStatusFilterBean.toString());
 				listAccountStatusBean = tReportMovementsService.getAccountStatusByCompanyIdAndFilter(user.getCompany(), accountStatusFilterBean, user.getTjCardNumber());
-				
-				for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
-					logger.info(accountStatusBean.toString());
-				}
-				
-		
 			} catch (IOException e) {
-				
+				logger.error("Error al generar JSON");
 				e.printStackTrace();
 				return ERROR; 	
 			}
-			
 		}
 		else{
-			logger.info("ERROR EN EL JSON");
+			logger.error("ERROR EN EL JSON");
 		}
-		
 		return SUCCESS; 
 	}
 	
@@ -364,23 +239,14 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 	@Action(value = "getRMXLSPendingTHAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getRMXLSPendingTHAction() {
-		
 		String optionSelected = request.getParameter("reportSelectedCon");
-		
-		logger.info(optionSelected);
-		
-		logger.info("getRMXLSPendingTHAction");
-		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		reportMap = new HashMap<>();
-		
 		switch (optionSelected) {
 		case "1":
 			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
@@ -388,20 +254,11 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 		case "2":
 			listAccountStatusBean = tReportMovementsService.getAllAccountStatusByCompanyId(user.getCompany(), user.getTjCardNumber());
 			break;
-
 		default:
 			listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
 			break;
 		}
-		
-		//listAccountStatusBean = tReportMovementsService.getAccountStatusPendingByCompanyId(user.getCompany(), user.getTjCardNumber());
-		
-		for (AccountStatusBean accountStatusBean : listAccountStatusBean) {
-			logger.info(accountStatusBean.toString());
-		}
-		
-		if(!listAccountStatusBean.isEmpty()){
-			
+		if(!listAccountStatusBean.isEmpty()){	
 			AccountStatusBean accountStatusBean = new AccountStatusBean();
 			listAccountStatusBean.add(accountStatusBean);
 			accountStatusBean = new AccountStatusBean();
@@ -411,34 +268,22 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 			accountStatusBean.setBid("Total Pagado");
 			accountStatusBean.setCompania((String.valueOf(listAccountStatusBean.get(0).getGanado())));
 			accountStatusBean.setIdStars("Total Ganado");
-			
 			listAccountStatusBean.add(accountStatusBean);
-			
 		}
-		
 		String[] cabecera 		=  {"Nombre de la Campaña", "Nombre", "ID STARS", "Compañia", "BID", "Monto", "Movimiento", "Observaciones" };
 		String[] atributos 		=  {"campaignName",			"nombre", "idStars",  "compania", "bid", "monto", "movements",  "observaciones"};
 		String nombreArchivo 	=  "Reporte_de_Movimientos";
-		
 		List<Object> objectList = new ArrayList<Object>(listAccountStatusBean);
-		
 		byte[] reportFileBytes = null;
-		
 		try {
-			
 			reportFileBytes = ExportReport.exportReportToFile(objectList, cabecera, atributos, nombreArchivo,"1", nombreArchivo);
-			
 			reportMap.put("valueCode", reportFileBytes);
 			reportMap.put("resultCode", "100");
 			reportMap.put("fileName", nombreArchivo);
-			
 		} catch (IllegalAccessException | InvocationTargetException | NoSuchMethodException | IOException e) {
-			
+			logger.error("Error al generar archivo");
 			e.printStackTrace();
-		} finally{
-			
 		}
-		
 		return SUCCESS;
 	}
 
@@ -462,15 +307,10 @@ public class AccountStatusAction extends ActionSupport implements SessionAware, 
 	public void setListAccountStatusBean(List<AccountStatusBean> listAccountStatusBean) {
 		this.listAccountStatusBean = listAccountStatusBean;
 	}
-
-
-	/**
-	 * THis method is used to set the HTTP Servlet request 
-	 */
+	
 	@Override
 	public void setServletRequest(HttpServletRequest request) {
 		this.request = request;
 		
 	}
-
 }
