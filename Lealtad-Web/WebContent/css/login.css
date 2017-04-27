@@ -91,13 +91,13 @@ body {
 
 .btn-login {
     color: #fff;
-    background-color: rgb(1, 75, 138);
-    border-color: rgb(1, 75, 138);
+    background-color: rgb(46,149,205);
+    border-color: rgb(46,149,205);
 }
 
 .btn-login:hover {
     color: #fff;
-    background-color: rgb(0, 45, 104);
-    border-color: rgb(0, 45, 104);
+    background-color: rgb(28, 111, 156);
+    border-color: rgb(28, 111, 156);
     
 }
