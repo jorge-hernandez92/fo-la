@@ -6,6 +6,8 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.Namespace;
 import org.apache.struts2.convention.annotation.ParentPackage;
@@ -27,19 +29,14 @@ import ws.sivale.com.mx.messages.types.TypeTransaccion;
 public class HomeAction extends ActionSupport implements SessionAware {
 
 	public Map<String, Object> session;
-
 	private double balance;
-	private double averageBalance;
 	private String cardNumber;
-	private String userId;
+	private List<TypeTransaccion> lastTransactions;
 	
-//	final static Logger logger = Logger.getLogger(HomeAction.class);
+	private static final Logger logger = LogManager.getLogger(HomeAction.class);
 	
 	@Autowired
 	TransactionService transactionService;
-	
-	private List<TypeTransaccion> lastTransactions;	
-
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -49,42 +46,24 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	@Action(value = "getBalanceAction", results = { @Result(name = SUCCESS, type = "json", params = { "root", "balance",
 			"excludeNullProperties", "true", "noCache", "true" }), @Result(name = ERROR, location = "/error.jsp") })
 	public String getBalanceAction() {
-		
-		
-		//balance = 2000;
 		TUser user =(TUser) session.get("user");
 		cardNumber = user.getTjCardNumber();
-		 
 		try {
 			balance = transactionService.getBalance(cardNumber);
 		} catch (TravelsNotFoundException e) {
-			// TODO Auto-generated catch block
+			logger.error("No se puede consultar el balance");
 			e.printStackTrace();
 			return ERROR;
 		}
-		
 		return SUCCESS;
 	}
-	
 	
 	@Action(value = "getLastTransactionByCardAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"lastTransactions", "excludeNullProperties", "true", "noCache", "true" }))
 	public String getLastTransactionByCardAction(){
-		
-		 TUser user =(TUser) session.get("user");
-		 cardNumber = user.getTjCardNumber();
-		
-		
-		//START SERVICE
+		TUser user =(TUser) session.get("user");
+		cardNumber = user.getTjCardNumber();
 		lastTransactions = transactionService.getLastTransactionByCard(cardNumber);
-		//END SERVICE		 	
-		
-		
-		//START HARDCODE
-		//lastTransactions = new ServicesUser().getLastTransactions();
-		//END HARDCODE
-		 
-		
 		SimpleDateFormat dateFormat = null;
 		SimpleDateFormat dateFormatResult = new SimpleDateFormat(CommonsConstants.DATE_FORMAT_TRX_RESULT);
 		try {
@@ -93,16 +72,13 @@ public class HomeAction extends ActionSupport implements SessionAware {
 					dateFormat = new SimpleDateFormat(CommonsConstants.DATE_FORMAT_TRX_AM);
 				if(tr.getTransactionDate().length() == CommonsConstants.DATE_LENGTH_PM )
 					dateFormat = new SimpleDateFormat(CommonsConstants.DATE_FORMAT_TRX_PM);
-				
 				Date dateTemp = dateFormat.parse(tr.getTransactionDate());
-//				//logger.info("Dates: "+dateFormatResult.format(dateTemp));
 				tr.setTransactionDate(dateFormatResult.format(dateTemp));
 			}
 		} catch (ParseException e) {
+			logger.error("Error con las Fechas");
 			e.printStackTrace();
 		}
-		 
-		
 		return SUCCESS;
 	}
 
@@ -113,7 +89,4 @@ public class HomeAction extends ActionSupport implements SessionAware {
 	public double getBalance() {
 		return balance;
 	}
-
-	
-	
 }

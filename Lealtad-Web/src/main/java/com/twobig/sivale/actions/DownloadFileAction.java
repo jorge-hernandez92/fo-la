@@ -32,17 +32,11 @@ import com.twobig.sivale.constants.PathConstants;
 public class DownloadFileAction extends ActionSupport implements SessionAware {
 
 	private Map<String, Object> session;
-
 	private InputStream fileInputStream;
-
 	private String fileName;
-	
 	private String campaignId;
-
 	private byte[] file;
-	
 	Map<String, Object> reportMap;
-	
 	private static final Logger logger = LogManager.getLogger(DownloadFileAction.class);
 
 	@Override
@@ -54,28 +48,27 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 	@Action(value = "getFileAction", results = @Result(name = SUCCESS, type = "json", params = { "root", "file",
 			"excludeNullProperties", "true", "noCache", "true" }) )
 	public String getFileAction() {
-
 		TCampaign campaign = (TCampaign) session.get("campaign");
 		TPublication publication = (TPublication) session.get("publication");
-
-		if (campaign == null || publication == null)
+		if (campaign == null || publication == null){
+			logger.error("No existe una campaña o publicación");
 			return ERROR;
-
+		}
 		String path = String.valueOf(campaign.getCampaignId()) + "/" + String.valueOf(publication.getPublicationId()) + "/"
 				+ fileName;
-
 		try {
 			fileInputStream = new FileInputStream(new File(PathConstants.ATTACHED_DIRECTORY + path));
 			file = IOUtils.toByteArray(fileInputStream);
 		} catch (FileNotFoundException e) {
+			logger.error("El archivo no existe");
 			e.printStackTrace();
 			return ERROR;
 		} catch (IOException e) {
+			logger.error("Error con el archivo");
 			e.printStackTrace();
 			return ERROR;
 		}
 		return SUCCESS;
-
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -87,136 +80,107 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 			fileInputStream = new FileInputStream(new File(PathConstants.ATTACHED_IMAGE_CAMPAIGN + path));
 			file = IOUtils.toByteArray(fileInputStream);
 		} catch (FileNotFoundException e) {
+			logger.error("El archivo no existe");
 			e.printStackTrace();
 			return ERROR;
 		} catch (IOException e) {
+			logger.error("Erro con el archivo");
 			e.printStackTrace();
 			return ERROR;
 		}
-		
 		return SUCCESS;
 	}
 	
-	
-	/**
-	 * 
-	 * @return
-	 */
 	@Action(value = "getStaticFilesHomeTH", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
-	public String getStaticFilesHomeTH() {
-		
-		logger.info("getStaticFilesHomeTH");
-		
+	public String getStaticFilesHomeTH() {		
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
 			return ERROR; 
 		}
-		
 		reportMap = new HashMap<>();
 		String fileName = "Solicitud de Tarjetas";
-		
 		try {
 			Path temp = Files.createTempFile("solicitud_de_tarjetas", ".xlsm");
 			Files.copy(getClass().getClassLoader().getResourceAsStream("solicitud_de_tarjetas.xlsm"), temp, StandardCopyOption.REPLACE_EXISTING);
 			fileInputStream = new FileInputStream(temp.toFile());
 			file = IOUtils.toByteArray(fileInputStream);
 		} catch (FileNotFoundException e) {
+			logger.error("Error al leer el archivo");
 			e.printStackTrace();
 			return ERROR;
 		} catch (IOException e) {
+			logger.error("Error con el archivo");
 			e.printStackTrace();
 			return ERROR;
 		}
-		
 		reportMap.put("valueCode", file);
 		reportMap.put("resultCode", "100");
 		reportMap.put("fileName", fileName);
-		
 		return SUCCESS;
-		
 	}
-	
 	
 	@Action(value = "getFormatoAcuseFCMAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
-	public String getFormatoAcuseFCMAction() {
-		
-		logger.info("getFormatoAcuseFCMAction");
-		
+	public String getFormatoAcuseFCMAction() {	
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		reportMap = new HashMap<>();
 		String fileName = "Formato_Acuse_FCM_2016";
-		
 		try {
 			Path temp = Files.createTempFile("Formato_Acuse_FCM_2016", "pdf");
 			Files.copy(getClass().getClassLoader().getResourceAsStream("Formato_Acuse_FCM_2016.pdf"), temp, StandardCopyOption.REPLACE_EXISTING);
 			fileInputStream = new FileInputStream(temp.toFile());
 			file = IOUtils.toByteArray(fileInputStream);
 		} catch (FileNotFoundException e) {
+			logger.error("No se puede leer el archivo");
 			e.printStackTrace();
 			return ERROR;
 		} catch (IOException e) {
+			logger.error("Error con el archivo");
 			e.printStackTrace();
 			return ERROR;
 		}
-		
 		reportMap.put("valueCode", file);
 		reportMap.put("resultCode", "100");
 		reportMap.put("fileName", fileName);
-		
 		return SUCCESS;
-		
 	}
-	
-	
 	
 	@Action(value = "getFormatoAcuse2016FORDAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
-	public String getFormatoAcuse2016FORDAction() {
-		
-		logger.info("getFormatoAcuseFCMAction");
-		
+	public String getFormatoAcuse2016FORDAction() {	
 		TUser user;
-		
 		user = (TUser) session.get("user");
-		
 		if(user == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		reportMap = new HashMap<>();
 		String fileName = "Formato_Acuse_2016_FORD";
-		
 		try {
 			Path temp = Files.createTempFile("Formato_Acuse_2016_FORD", ".pdf");
 			Files.copy(getClass().getClassLoader().getResourceAsStream("Formato_Acuse_2016_FORD.pdf"), temp, StandardCopyOption.REPLACE_EXISTING);
 			fileInputStream = new FileInputStream(temp.toFile());
 			file = IOUtils.toByteArray(fileInputStream);
 		} catch (FileNotFoundException e) {
+			logger.error("No existe una sesión");
 			e.printStackTrace();
 			return ERROR;
 		} catch (IOException e) {
+			logger.error("No existe una sesión");
 			e.printStackTrace();
 			return ERROR;
 		}
-		
 		reportMap.put("valueCode", file);
 		reportMap.put("resultCode", "100");
 		reportMap.put("fileName", fileName);
-		
 		return SUCCESS;
-		
 	}
 	
 	public Map<String, Object> getReportMap() {
@@ -250,5 +214,4 @@ public class DownloadFileAction extends ActionSupport implements SessionAware {
 	public void setCampaignId(String campaignId) {
 		this.campaignId = campaignId;
 	}
-
 }

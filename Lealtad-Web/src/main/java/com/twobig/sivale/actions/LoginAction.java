@@ -26,16 +26,12 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	@Autowired
 	LoginService loginService;
-	
 	private Map<String, Object> session;
-
 	private String username;
 	private String password;
 	private TUser user;
 	private String error = null;
-	
 	private static final Logger logger = LogManager.getLogger(LoginAction.class);
-	
 	
 	@Override
 	public void setSession(Map<String, Object> session) {
@@ -46,126 +42,86 @@ public class LoginAction extends ActionSupport implements SessionAware {
 			@Result(name="admin", location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/login.jsp")})
 	public String login() {
-		
-		//HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
-		
-		logger.info("login");
-
 		if ( username == null || password == null || username.equals("") || password.equals("")){
-			
 			TUser user = (TUser)session.get("user");
-		
 			if (user!=null) {
 				UserBean userBean = new UserBean();
-				userBean.setPass(user.getPassword());
-				
+				userBean.setPass(user.getPassword());	
 				if(user.getCatProfile()== CommonsConstants.CAT_PROFILE_ADMIN)
 					userBean.setUser(user.getUserLogin());
 				else
 					userBean.setUser(user.getTjCardNumber());
-				
 				user = (TUser) loginService.validateUserWeb(userBean);
-				
 		        if (user != null){
 		        	session.put("user", user);
-		        	
 		        	if(user.getCatProfile() == CommonsConstants.CAT_PROFILE_ADMIN){
 		        		return "admin";
 		        	}
 		        	return "user";
 		        }
-		        
 		        error = "Usuario o password incorrectos!";
-		        
 		        return ERROR;
 			}
-			
 			return ERROR;
 		}
 		else{
-			
 			UserBean userBean = new UserBean();
 			userBean.setPass(password);
 			userBean.setUser(username);
-			
 			user = (TUser) loginService.validateUserWeb(userBean);
-			
 	        if (user != null){
 	        	session.put("user", user);
-	        	
 	        	if(user.getCatProfile() == 0){
 	        		return "admin";
 	        	}
 	        	return "user";
 	        }
-	        
 	        error = "Usuario o password incorrectos!";
-	        
 	        return ERROR;
 		}
-		
 	}
 	
 	@Action(value="Lincoln", results = { @Result(name="user", location="/secured/home_user.jsp"),
 			@Result(name="admin", location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/loginLincoln.jsp")})
 	public String loginLincoln() {
-		
-		HttpServletRequest requestPrincipal = ServletActionContext.getRequest();
-
 		if ( username == null || password == null || username.equals("") || password.equals("")){
-			
 			TUser user = (TUser)session.get("user");
-		
 			if (user!=null) {
 				UserBean userBean = new UserBean();
 				userBean.setPass(user.getPassword());
-				
 				if(user.getCatProfile()== CommonsConstants.CAT_PROFILE_ADMIN)
 					userBean.setUser(user.getUserLogin());
 				else
 					userBean.setUser(user.getTjCardNumber());
-				
 				user = (TUser) loginService.validateUserWeb(userBean);
-				
 		        if (user != null){
 		        	session.put("user", user);
-		        	
 		        	if(user.getCatProfile() == CommonsConstants.CAT_PROFILE_ADMIN){
 		        		return "admin";
 		        	}
 		        	return "user";
 		        }
-		        
 		        error = "Usuario o password incorrectos!";
-		        
 		        return ERROR;
 			}
-			
 			return ERROR;
 		}
 		else{
-			
 			UserBean userBean = new UserBean();
 			userBean.setPass(password);
 			userBean.setUser(username);
-			
 			user = (TUser) loginService.validateUserWeb(userBean);
-			
 	        if (user != null){
 	        	session.put("user", user);
-	        	
 	        	if(user.getCatProfile() == 0){
 	        		return "admin";
 	        	}
 	        	return "user";
 	        }
-	        
 	        error = "Usuario o password incorrectos!";
-	        
 	        return ERROR;
 		}
-		
 	}
 	
 	@Action(value="Ford", results = { @Result(name="user", location="/secured/home_user.jsp"),
@@ -224,10 +180,8 @@ public class LoginAction extends ActionSupport implements SessionAware {
 
 	@Action(value="logout", results = @Result(name="success", location="/secured/loginFord.jsp"))
 	public String logout() {
-		
 		session.clear();
 		return SUCCESS;		
-		
 	}
 
 	public String getUsername() {
@@ -254,20 +208,11 @@ public class LoginAction extends ActionSupport implements SessionAware {
 		this.user = user;
 	}
 
-	/**
-	 * @return the error
-	 */
 	public String getError() {
 		return error;
 	}
 
-	/**
-	 * @param error the error to set
-	 */
 	public void setError(String error) {
 		this.error = error;
-	}
-	
-	
-	
+	}	
 }

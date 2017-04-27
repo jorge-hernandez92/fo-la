@@ -26,15 +26,13 @@ public class EstatusUserAction extends ActionSupport implements SessionAware{
 	@Action(value = "getUserStatusAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"reportMap", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getUserStatusAction() {
-		logger.info("getUserStatusAction");
 		TUserLogin us = (TUserLogin) session.get("user");
 		if(us == null){
+			logger.error("No existe una sesión");
 			return ERROR; 
 		}
-		
 		reportMap = new HashMap<>();
 		reportMap.put("user", us);
-
 		return SUCCESS; 
 	}
 	
