@@ -42,6 +42,7 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 	private String xlsFileFormatFileName;
 	private Map<String, Object> session;
 	private List<TAttachedFile> listAcuseFile;
+	
 	@Autowired 
 	public TAttachedFileService tAttachedFileService;
 	
@@ -52,12 +53,13 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 			        @InterceptorRef("defaultStack"),
 			        @InterceptorRef("validation")})
 	public String uploadAcuseFileAction(){
-		logger.info("uploadAcuseFileAction");
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
+			logger.error("No existe una sesión");
 			return ERROR;
 		}
 		if (filesAcuse == null || filesAcuse.length == 0) {
+			logger.error("No se encontró el archivo");
 			return ERROR;
 		}
 		tAttachedFileService.deleteAcuses();
@@ -77,6 +79,7 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 			try {
 				FilesUtil.saveFile(filesAcuse[i], filesAcuseFileName[i], directory);
 			} catch (IOException e) {
+				logger.error("Error al guardar el archivo: "+filesAcuseFileName[i]);
 				e.printStackTrace();
 			}
 		}
@@ -91,6 +94,7 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 		try {
 			FilesUtil.saveFile(xlsFileFormat, xlsFileFormatFileName, directory);
 		} catch (IOException e) {
+			logger.error("Error al guardar el archivo: "+xlsFileFormatFileName);
 			e.printStackTrace();
 		}
 	}
@@ -99,9 +103,9 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 	@Action(value = "getListAcuseFilesAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"listAcuseFile", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getListAcuseFilesAction() {
-		logger.info("getListAcuseFiles");
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
+			logger.error("No existe una sesión");
 			return ERROR;
 		}
 		listAcuseFile = tAttachedFileService.getListTAttachedFileAcuse();
@@ -117,9 +121,11 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 			fileInputStream = new FileInputStream(new File(PathConstants.ATTACHED_ACUSE_FILE + path));
 			byteFileAcuse = IOUtils.toByteArray(fileInputStream);
 		} catch (FileNotFoundException e) {
+			logger.error("No se encontró el archivo");
 			e.printStackTrace();
 			return ERROR;
 		} catch (IOException e) {
+			logger.error("Arror al leer el archivo");
 			e.printStackTrace();
 			return ERROR;
 		}
@@ -194,5 +200,4 @@ public class UploadAcuseFileAction extends ActionSupport implements SessionAware
 	public void setSession(Map<String, Object> session) {
 		this.session = session;
 	}
-
 }

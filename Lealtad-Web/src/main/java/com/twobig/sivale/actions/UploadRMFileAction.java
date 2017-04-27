@@ -40,34 +40,21 @@ public class UploadRMFileAction extends ActionSupport implements SessionAware{
 			        @InterceptorRef("defaultStack"),
 			        @InterceptorRef("validation")}
 	)
-	public String uploadRMAction(){
-		
-		logger.info("UPLOA RM ACTION");
-		
+	public String uploadRMAction(){	
 		TCampaign campaign = (TCampaign) session.get("campaign");
-		
 		if (campaign == null) {
+			logger.error("No existe una campaña en sesión");
 			return ERROR;
 		}
 		else{
-			logger.info("Datos de la campaña: "+campaign.toString());
-			
-			if(file!=null){
-				logger.info("Archivo: "+file[0].getName());
-				logger.info("Archivo: "+file[0].getParent());
-				logger.info("Archivo: "+file[0].getPath());
-				logger.info("Nombre Archivo: "+fileFileName[0]);
-				
+			if(file!=null){	
 				tReportMovementsService.uploadRMFile(campaign, file[0]);
 			}
 			else{
-				logger.info("No se cargó archivo");
+				logger.error("No se cargó archivo");
 			}
 		}
-		
-		
 		return SUCCESS;
-		
 	}
 	
 	public File[] getFile() {

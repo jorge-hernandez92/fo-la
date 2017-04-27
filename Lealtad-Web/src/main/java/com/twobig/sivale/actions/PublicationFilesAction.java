@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.apache.struts2.convention.annotation.Action;
 import org.apache.struts2.convention.annotation.InterceptorRef;
 import org.apache.struts2.convention.annotation.Namespace;
@@ -32,18 +34,14 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 
 	@Autowired
 	private TPublicationService publicationService;
-	
 	@Autowired
 	private ExcelService excelService;
 
 	private Map<String, Object> session;
-
 	private File[] file;
 	private String[] fileContentType;
 	private String[] fileFileName;
-	
-//	final static Logger logger = Logger.getLogger(AttachedFilesAction.class);
-
+	private static final Logger logger = LogManager.getLogger(PublicationFilesAction.class);
 	
 	@Action(value = "UploadHtmlAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
 			@Result(name = ERROR, location = "/secured/home_admin.jsp")},
@@ -51,69 +49,47 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 			@InterceptorRef(params = { "maximumSize", "104857600" }, value = "fileUpload"),
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
 	public String uploadHtmlAction() {
-
 		boolean delete = true;
-		
-//		//logger.info("Upload html files size = " + getFile().length);
-
 		if (getFile() !=null && getFile().length > 0) {
-
 			TCampaign campaign = (TCampaign) session.get("campaign");
-
 			if (campaign == null) {
+				logger.error("No existe campaña");
 				return ERROR;
 			}
-
 			TPublication publication = (TPublication) session.get("publication");
 			if (publication == null) {
+				logger.error("No existe publicación");
 				return ERROR;
 			}
-			
 			if(publication.getTemplateFilePath().equals(getFileFileName()[0]))
-				delete = false;
-				
+				delete = false;	
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();
-
 			try {
 				FilesUtil.saveFile(getFile()[0], getFileFileName()[0], directory);
 			} catch (IOException e) {
+				logger.error("Error al guardar archivo");
 				e.printStackTrace();
 				return ERROR;
 			}
 			String htmlFileName = publication.getTemplateFilePath();
-			
 			publication.setTemplateFilePath(this.getFileFileName()[0]);
-			
 			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
 			publicationBean.setPublication(publication);
-
 			List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
 			publicationBean.setAttachedFiles(attachedFiles);
-
 			String status =  publicationService.updatePublication(publicationBean);
-
 			if( status.equals("SUCCESS") && delete){
-				
 				try{
-					
 					String pathfile = directory + File.separator + htmlFileName;
-//					//logger.info("**** archivo adjunto: "+ pathfile);
 					File file = new File(pathfile);
-					if(file.delete()){
-						
-					}
-//					//logger.info("**** Se eliminó HTML");
-				
+					if(file.delete()){}		
 				}catch(Exception e){
-//					//logger.info("Error al eliminar HTML");
+					logger.error("Error al eliminar HTML");
 				}
-				
 				return SUCCESS;
 			}
 		}
-
 		return ERROR;
-
 	}
 	
 	@Action(value = "UploadExcelAction", results = { @Result(name=SUCCESS, location="/secured/home_admin.jsp"),
@@ -122,80 +98,58 @@ public class PublicationFilesAction extends ActionSupport implements SessionAwar
 			@InterceptorRef(params = { "maximumSize", "104857600" }, value = "fileUpload"),
 			@InterceptorRef("defaultStack"), @InterceptorRef("validation") })
 	public String uploadExcelAction() {
-
 		boolean delete = true;
-		
-//		//logger.info("Upload excel files size = " + getFile().length);
-
 		if (getFile() !=null && getFile().length > 0) {
-
 			TCampaign campaign = (TCampaign) session.get("campaign");
-
 			if (campaign == null) {
+				logger.error("No existe campaña");
 				return ERROR;
 			}
-
 			TPublication publication = (TPublication) session.get("publication");
 			if (publication == null) {
+				logger.error("No existe publicacion");
 				return ERROR;
 			}
-			
 			if(publication.getDataFilePath().equals(getFileFileName()[0]))
 				delete = false;
-			
 			String directory = PathConstants.ATTACHED_DIRECTORY + campaign.getCampaignId() + File.separator + publication.getPublicationId();
-
 			try {
 				FilesUtil.saveFile(getFile()[0], getFileFileName()[0], directory);
 			} catch (IOException e) {
+				logger.error("Arror al guardar el archivo");
 				e.printStackTrace();
 				return ERROR;
 			}
-			
 			if (delete) {
 				try {
-
 					String pathfile = directory + File.separator + publication.getDataFilePath();
-//					//logger.info("**** archivo adjunto: " + pathfile);
 					File file = new File(pathfile);
 					if (file.delete()){}
-//						//logger.info("**** Se eliminó Excel");
-
 				} catch (Exception e) {
-//					//logger.info("Error al eliminar Excel");
+					logger.error("Error al generar archivo");
 				}
 			}
-			
 			publication.setDataFilePath(this.getFileFileName()[0]);
-			
 			PublicationCRUDBean publicationBean = new PublicationCRUDBean();
 			publicationBean.setPublication(publication);
-
 			List<TAttachedFile> attachedFiles = new ArrayList<TAttachedFile>();
 			publicationBean.setAttachedFiles(attachedFiles);
-
 			String status =  publicationService.updatePublication(publicationBean);
-			
 			if( status.equals("ERROR")){
 				return ERROR;
 			}
-			
 			String excelPath = directory+ File.separator + publication.getDataFilePath();
 			ExcelBean excelBean = excelService.getExcelData(excelPath);
-			
-			if(excelBean == null)
+			if(excelBean == null){
 				return ERROR;
-			
-			if(excelService.getFormatList(excelBean, CommonsConstants.COLUMN_ID_EXCEL) == null)
+			}
+			if(excelService.getFormatList(excelBean, CommonsConstants.COLUMN_ID_EXCEL) == null){
 				return ERROR;
-			
+			}
 			publicationService.updateExcel(publication, excelPath);
-			
 			return SUCCESS;
 		}
-
 		return ERROR;
-
 	}
 	
 	public File[] getFile() {

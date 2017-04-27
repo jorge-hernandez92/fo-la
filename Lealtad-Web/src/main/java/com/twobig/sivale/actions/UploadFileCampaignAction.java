@@ -34,9 +34,6 @@ import com.twobig.sivale.utils.FilesUtil;
 
 public class UploadFileCampaignAction extends ActionSupport implements SessionAware{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LogManager.getLogger(UploadFileCampaignAction.class);
 	private Map<String, Object> session;
@@ -70,18 +67,21 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 	)
 	
 	public String uploadFileCampaingAction() {
-		logger.info("uploadFileCampaingAction. CARGA DE ARCHIVOS DE CAMPAÑA");
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
+			logger.error("No existe una sesión");
 			return ERROR;
 		}
 		if (files == null || files.length == 0) {
+			logger.error("No se cargaron los archivo");
 			return ERROR;
 		}
 		if(filesImage == null || filesImage.length == 0){
+			logger.error("No se cargaron las imagenes");
 			return ERROR; 
 		}
 		if(xlsFile == null){
+			logger.error("No se cargo el archivo Excel");
 			return ERROR;
 		}
 		TCampaign tCampaign = new TCampaign();
@@ -124,6 +124,7 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 			try {
 				FilesUtil.saveFile(files[i], filesFileName[i], directory);
 			} catch (IOException e) {
+				logger.error("No se guardaron los archivos");
 				e.printStackTrace();
 			}
 		}
@@ -131,12 +132,14 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 			try {
 				FilesUtil.saveFile(filesImage[i], filesImageFileName[i], directory);
 			} catch (IOException e) {
+				logger.error("No se guardaron las imagenes");
 				e.printStackTrace();
 			}
 		}
 		try {
 			FilesUtil.saveFile(xlsFile, xlsFileFileName, directory);
 		} catch (IOException e) {
+			logger.error("No se pudo guardar el archivo Excel");
 			e.printStackTrace();
 		}
 	}

@@ -48,15 +48,14 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 	)
 	public String uploadFileUserAction(){
 		TUser user = (TUser) session.get("user");
-		logger.info("uploadFileUserAction. CARGA DE ARCHIVO DE USUARIOS");
 		if (user == null) {
+			logger.error("No existe una sesión");
 			return ERROR;
 		}
 		if (files == null || files.length == 0) {
+			logger.error("No se cargaron los achivos");
 			return ERROR;
 		}
-		logger.info(""+files[0]);
-		logger.info(""+filesFileName[0]);
 		Integer attachedFileId  = saveFileOnDataBase();
 		saveFileOnDiskFile(attachedFileId);
 		loadDataExcel(attachedFileId);
@@ -67,8 +66,6 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		String directory = PathConstants.ATTACHED_USER_FILE + attachedFileId + File.separator;
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
 		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName[0]);
-		logger.info(excelBean.getHeader().toString());
-		logger.info(excelBean.getRows().toString());
 		updateInsertUser(excelBean);
 	}
 	
@@ -78,6 +75,7 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 			try {
 				FilesUtil.saveFile(files[i], filesFileName[i], directory);
 			} catch (IOException e) {
+				logger.error("Error al guardar archivo");
 				e.printStackTrace();
 			}
 		}
@@ -98,8 +96,6 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 					String stars = hashMap.get(CommonsConstants.COLUMN_STARS);
 					TUser tUser = tUserService.getUsersByStars(stars);
 					if(tUser != null){
-						logger.info("Actualizar registro");
-						logger.info(tUser.toString());
 						String bid = hashMap.get(UserLoadConstants.COL_USER_LOAD_BID);
 						String razonSocial = hashMap.get(UserLoadConstants.COL_USER_LOAD_RAZON_SOCIAL);
 						String ecaps =  hashMap.get(UserLoadConstants.COL_USER_LOAD_ECAPS);
@@ -185,13 +181,11 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 								e.getStackTrace();
 							}
 						}
-						logger.info(tUser.toString());
 						tUserService.updateUser(tUser);
 					}
 					else{
 						
 						if(!stars.isEmpty()){
-							logger.info("Nuevo registro");
 							tUser = new TUser();
 							tUser.setTjStars(stars);
 							String bid = hashMap.get(UserLoadConstants.COL_USER_LOAD_BID);
@@ -279,18 +273,13 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 									e.getStackTrace();
 								}
 							}
-							logger.info(tUser.toString());
-							
 							TUser user = (TUser) session.get("user");
 							tUser.setCompany(user.getCompany());
 							tUser.setCatProfile(1);
 							tUser.setUserLogin("login"+stars);
 							tUser.setPassword("pass"+stars);
-							
 							tUserService.insertUser(tUser);
-						}
-						
-						
+						}	
 					}
 				}
 			}
