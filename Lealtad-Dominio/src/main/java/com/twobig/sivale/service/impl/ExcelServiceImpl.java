@@ -120,10 +120,10 @@ public class ExcelServiceImpl implements ExcelService {
 
 					if (count == 0) {
 
-						header.add(cell.getStringCellValue());
+						header.add(cell.getStringCellValue().trim());
 
 					} else if(colum < header.size()){
-						map.put(header.get(colum), cell.getStringCellValue());
+						map.put(header.get(colum).trim(), cell.getStringCellValue().trim());
 					} else{
 						//logger.info("------------- fila : " + count + "-------------");
 					}

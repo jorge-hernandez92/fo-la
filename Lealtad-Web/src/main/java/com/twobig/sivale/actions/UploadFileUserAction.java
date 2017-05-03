@@ -32,8 +32,8 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 	private static final long serialVersionUID = 1L;
 	private static final Logger logger = LogManager.getLogger(UploadFileUserAction.class);
 	private Map<String, Object> session;
-	private String[] filesFileName;
-	private File[] files;
+	private String filesFileName;
+	private File files;
 	@Autowired 
 	public TAttachedFileService tAttachedFileService;	
 	@Autowired
@@ -52,7 +52,7 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 			logger.error("No existe una sesión");
 			return ERROR;
 		}
-		if (files == null || files.length == 0) {
+		if (files == null) {
 			logger.error("No se cargaron los achivos");
 			return ERROR;
 		}
@@ -65,25 +65,23 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 	private void loadDataExcel(Integer attachedFileId){
 		String directory = PathConstants.ATTACHED_USER_FILE + attachedFileId + File.separator;
 		ExcelServiceImpl excelservice = new ExcelServiceImpl();
-		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName[0]);
+		ExcelBean excelBean = excelservice.getExcelData(directory+filesFileName);
 		updateInsertUser(excelBean);
 	}
 	
-	private void saveFileOnDiskFile(Integer attachedFileId){
+	private void saveFileOnDiskFile(Integer attachedFileId) {
 		String directory = PathConstants.ATTACHED_USER_FILE + attachedFileId + File.separator;
-		for (int i = 0; i < files.length; i++) {
-			try {
-				FilesUtil.saveFile(files[i], filesFileName[i], directory);
-			} catch (IOException e) {
-				logger.error("Error al guardar archivo");
-				e.printStackTrace();
-			}
+		try {
+			FilesUtil.saveFile(files, filesFileName, directory);
+		} catch (IOException e) {
+			logger.error("Error al guardar archivo");
+			e.printStackTrace();
 		}
 	}
 	
 	private Integer saveFileOnDataBase(){
 		TAttachedFile attachedFile = new TAttachedFile();
-		attachedFile.setFileName(filesFileName[0]);
+		attachedFile.setFileName(filesFileName);
 		tAttachedFileService.insertTAttachedFile(attachedFile);
 		return attachedFile.getAttachedFileId();
 	}
@@ -114,6 +112,9 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 					}
 				}
 			}
+			else{
+				logger.error("No existe la columna STARS en el archivo: "+filesFileName);
+			}
 		}
 	}
 	
@@ -131,34 +132,34 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		String codigoProcedencia = hashMap.get(UserLoadConstants.COL_USER_LOAD_CODIGO);
 		String nombreParticipante = hashMap.get(UserLoadConstants.COL_USER_LOAD_NOMBRE_PARTICIPANTE);
 		String tarjetaActiva = hashMap.get(UserLoadConstants.COL_USER_LOAD_TARJETA_ACTIVA);
-		String app = hashMap.get(UserLoadConstants.COL_USER_LOAD_NOMBRE);
-		String apm = hashMap.get(UserLoadConstants.COL_USER_LOAD_APP);
-		String nombre = hashMap.get(UserLoadConstants.COL_USER_LOAD_APM);
-		if(!app.isEmpty()){
-			tUser.setFirstName(apm);
+		String app = hashMap.get(UserLoadConstants.COL_USER_LOAD_APP);
+		String apm = hashMap.get(UserLoadConstants.COL_USER_LOAD_APM);
+		String nombre = hashMap.get(UserLoadConstants.COL_USER_LOAD_NOMBRE);
+		if(app != null && !app.isEmpty()){
+			tUser.setLastName1(app);
 		}
-		if(!apm.isEmpty()){
-			tUser.setLastName1(apm);
+		if(apm != null && !apm.isEmpty()){
+			tUser.setLastName2(apm);
 		}
-		if(!nombre.isEmpty()){
+		if(nombre != null &&!nombre.isEmpty()){
 			tUser.setFirstName(nombre);
 		}
-		if(!nombreParticipante.isEmpty()){
+		if(nombreParticipante != null && !nombreParticipante.isEmpty()){
 			tUser.setFullName(nombreParticipante);
 		}
-		if(!tarjetaActiva.isEmpty()){
+		if(tarjetaActiva != null && !tarjetaActiva.isEmpty()){
 			tUser.setTjCardNumber(tarjetaActiva);
 		}
-		if(!bid.isEmpty()){
+		if(bid != null && !bid.isEmpty()){
 			tUser.setTjBid(bid);
 		}
-		if(!razonSocial.isEmpty()){
+		if(razonSocial != null && !razonSocial.isEmpty()){
 			tUser.setTjRazonSocial(razonSocial);
 		}
-		if(!ecaps.isEmpty()){
+		if(ecaps != null && !ecaps.isEmpty()){
 			tUser.setTjEcaps(ecaps);
 		}
-		if(!identificacion.isEmpty()){
+		if(identificacion != null && !identificacion.isEmpty()){
 			if(identificacion.toLowerCase().contains("sí") || identificacion.toLowerCase().contains("si")){
 				tUser.setTjIdentificacion(true);
 			}
@@ -166,7 +167,7 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		else{
 			tUser.setTjIdentificacion(false);
 		}
-		if(!acuseFordLincoln.isEmpty()){
+		if(acuseFordLincoln != null && !acuseFordLincoln.isEmpty()){
 			if(acuseFordLincoln.toLowerCase().contains("sí") || acuseFordLincoln.toLowerCase().contains("si")){
 				tUser.setTjIdentificacion(true);
 			}
@@ -174,7 +175,7 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		else{
 			tUser.setTjIdentificacion(false);
 		}
-		if(!inscritoPrograma.isEmpty()){
+		if(inscritoPrograma != null && !inscritoPrograma.isEmpty()){
 			if(inscritoPrograma.toLowerCase().contains("sí") || inscritoPrograma.toLowerCase().contains("si")){
 				tUser.setTjInscritoEnPrograma(true);
 			}
@@ -182,7 +183,7 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		else{
 			tUser.setTjInscritoEnPrograma(false);
 		}
-		if(!acuseFordCredit.isEmpty()){
+		if(acuseFordCredit != null && !acuseFordCredit.isEmpty()){
 			if(acuseFordCredit.toLowerCase().contains("sí") || acuseFordCredit.toLowerCase().contains("si")){
 				tUser.setTjAcuseFordCredit(true);
 			}
@@ -190,7 +191,7 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		else{
 			tUser.setTjAcuseFordCredit(false);
 		}
-		if(!cartaDoblePerfil.isEmpty()){
+		if(cartaDoblePerfil != null && !cartaDoblePerfil.isEmpty()){
 			if(cartaDoblePerfil.toLowerCase().contains("sí") || cartaDoblePerfil.toLowerCase().contains("si")){
 				tUser.setTjCartaDoblePerfil(true);
 			}
@@ -198,13 +199,13 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		else{
 			tUser.setTjCartaDoblePerfil(true);
 		}
-		if(!comentarios.isEmpty()){
+		if(comentarios != null && !comentarios.isEmpty()){
 			tUser.setTjComentarios(comentarios);
 		}
-		if(!estatusGeneral.isEmpty()){
+		if(estatusGeneral != null && !estatusGeneral.isEmpty()){
 			tUser.setTjEstatusGeneral(estatusGeneral);
 		}
-		if(!codigoProcedencia.isEmpty()){
+		if(codigoProcedencia != null && !codigoProcedencia.isEmpty()){
 			Integer codigo;
 			try{
 				codigo = Integer.parseInt(codigoProcedencia);
@@ -217,26 +218,6 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		}
 	}
 	
-	public List<String> getListStars(ExcelBean excelBean, String Id) {
-		List<String> listStars = new ArrayList<String>();
-		if (excelBean != null) {
-			if (excelBean.getHeader() != null && excelBean.getHeader().size() > 0 && excelBean.getRows() != null
-					&& excelBean.getRows().size() > 0) {
-				if (!this.existKey(excelBean, Id)){
-					return null;
-				}
-				for (HashMap<String, String> row : excelBean.getRows()) {
-					String stars = row.get(Id);
-					listStars.add(stars);
-				}
-				return listStars;
-			}
-			return null;
-		} else {
-			return null;
-		}
-	}
-	
 	private boolean existKey(ExcelBean excelBean, String headKey) {
 		for (String key : excelBean.getHeader()) {
 			if (headKey.equals(key)){
@@ -246,19 +227,19 @@ public class UploadFileUserAction extends ActionSupport implements SessionAware 
 		return false;
 	}
 
-	public String[] getFilesFileName() {
+	public String getFilesFileName() {
 		return filesFileName;
 	}
 
-	public void setFilesFileName(String[] filesFileName) {
+	public void setFilesFileName(String filesFileName) {
 		this.filesFileName = filesFileName;
 	}
 
-	public File[] getFiles() {
+	public File getFiles() {
 		return files;
 	}
 
-	public void setFiles(File[] files) {
+	public void setFiles(File files) {
 		this.files = files;
 	}
 	

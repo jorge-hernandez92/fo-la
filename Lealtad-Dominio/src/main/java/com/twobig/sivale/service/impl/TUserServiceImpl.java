@@ -44,4 +44,10 @@ public class TUserServiceImpl implements TUserService {
 		return userDAO.getUserByUserLogin(userLogin); 
 	}
 
+	@Override
+	public List<TUser> getAllUsers() {
+		return userDAO.getAllUsers();
+	}
+
+
 }

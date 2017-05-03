@@ -11,5 +11,6 @@ public interface TUserService {
 	void updateUser(TUser tUser);
 	void insertUser(TUser tUser);
 	TUser getUserByUserLogin(String userLogin);
+	List<TUser> getAllUsers();
 	
 }
