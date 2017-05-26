@@ -115,7 +115,23 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					    });
 					    
 					 }
-					  
+
+					$scope.only1Row = function() {
+						$scope.counter = 0;
+						$scope.rows = [];
+						$scope.rows.push( {index : $scope.counter + 2, value : false} );
+						$scope.counter++;
+						console.log('only one counter : ' + $scope.counter);
+					}
+					
+					$scope.only1Row2 = function() {
+						$scope.counter2 = 0;
+						$scope.rows2 = [];
+						$scope.rows2.push( {index : $scope.counter2 + 2, value : false} );
+						$scope.counter2++;
+						console.log('only one counter2 : ' + $scope.counter2);
+					}
+					
 					$scope.addRow = function() {
 						$scope.rows.push( {index : $scope.counter + 2, value : false} );
 						$scope.counter++;
@@ -912,6 +928,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 					                        };
 
 					$scope.cleanSelect = function(){
+						console.log('method clean()')
 						$scope.form.campaignName = '';
 						$scope.date.startDate = moment();
 						$scope.date.endDate = moment();

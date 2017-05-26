@@ -48,7 +48,7 @@
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[1].availableOptions track by option.id"
 								ng-model="selectCampaign.items[1].selectedOption"
-								ng-change="changeProgram()" name="programa">
+								ng-change="changeProgram()" name="programa" required>
 							</select>
 						</div>
 						<div class="col-md-3"
@@ -66,7 +66,7 @@
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[2].availableOptions track by option.id"
 								ng-model="selectCampaign.items[2].selectedOption"
-								ng-change="changeSubProgram()" name="subprograma">
+								ng-change="changeSubProgram()" name="subprograma" required>
 							</select>
 						</div>
 						<div class="col-md-3"
@@ -84,7 +84,7 @@
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[3].availableOptions track by option.id"
 								ng-model="selectCampaign.items[3].selectedOption"
-								ng-change="changeBusinessUnit()" name="unidadDeNegocio">
+								ng-change="changeBusinessUnit()" name="unidadDeNegocio" required>
 							</select>
 						</div>
 						<div class="col-md-3"
@@ -104,12 +104,12 @@
 							<br>
 							<div class="row margin-top10">
 								<div class="col-md-3">Información de Campaña</div>
-								<div class="col-md-6">
+								<div class="col-md-6" ng-controller="only1Row2">
 										<button type="button" class="btn btn-primary left-35"
 										ng-click="addRow2()">Añadir Archivo</button>
 									<div class="row row margin-top10" ng-repeat="rowContent in rows2">
 											<div class="col-md-10">
-												<input type="file" name="filesImage" id="filestyle-{{rowContent.index}}">
+												<input type="file" name="filesImage" id="filestyle-{{rowContent.index}}" required>
 											</div>
 											<div class="col-md-1">
 												<button type="button" class="btn btn-primary" data-ng-click="removeRow2($index)">
@@ -122,13 +122,13 @@
 
 							<div class="row margin-top10">
 								<div class="col-md-3">Documentación anexa</div>
-								<div class="col-md-6">
+								<div class="col-md-6" ng-controller="only1Row">
 										<button type="button" class="btn btn-primary left-35"
 										ng-click="addRow()">Añadir Archivo</button>
 									<div class="row row margin-top10" ng-repeat="rowContent in rows">
 										
 											<div class="col-md-10">
-												<input type="file" name="files" id="filestyle-{{rowContent.index}}">
+												<input type="file" name="files" id="filestyle-{{rowContent.index}}" required>
 											</div>
 											
 											<div class="col-md-1">
