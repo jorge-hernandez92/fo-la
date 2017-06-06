@@ -410,6 +410,7 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 	@Action(value = "getClassificationLevelAction", results = @Result(name = SUCCESS, type = "json", params = { "root",
 			"classificationLevel", "excludeNullProperties", "true", "noCache", "true" }) )
 	public String getClassificationLevelAction() {
+		
 		TUser user = (TUser) session.get("user");
 		if (user == null) {
 			logger.error("No existe una sesión");
@@ -420,6 +421,27 @@ public class CampaignAction extends ActionSupport implements SessionAware {
 		else{
 			classificationLevel = classificationService.getListClassificationChildren(classificationId);
 		}
+		
+		// se agrega esta linea para obtener los subprogramas y unidad de negocio default, esto para el caso que no se requiera
+		// seleccionarlos del combobox, y se jale los default en un catalogo precargado.
+		logger.info("classificationLevel : "+classificationLevel.toString());
+		
+		if(classificationLevel != null && !classificationLevel.isEmpty()){
+			SelectClassificationCampaignBean subprogram = classificationLevel.get(0);
+			Integer subProgramId = subprogram.getId();
+			if(subProgramId != null){
+				List<SelectClassificationCampaignBean> unitBList = classificationService.getListClassificationChildren(subProgramId);
+				if(unitBList != null && !unitBList.isEmpty()){
+					SelectClassificationCampaignBean unitB = unitBList.get(0);
+					Integer unitBId = unitB.getId();
+					logger.info("subProgramId : " + subProgramId + "  unitCId : " + unitBId);
+					session.put("unitBId", unitBId.toString());
+				}
+			}
+		}
+		
+		logger.info("Session : "+session.toString());
+		
 		return SUCCESS;
 	}
 	

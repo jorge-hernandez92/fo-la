@@ -86,6 +86,7 @@ public class UploadFileCampaignAction extends ActionSupport implements SessionAw
 		}
 		TCampaign tCampaign = new TCampaign();
 		tCampaign.setCampaignName(this.nombreIncentivo);
+		this.unidadDeNegocio = Integer.parseInt(session.get("unitBId").toString());
 		tCampaign.setClassificationId(this.unidadDeNegocio);
 		tCampaign.setStartDate(new Date());
 		tCampaign.setEndDate(new Date());

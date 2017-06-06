@@ -805,7 +805,7 @@ appres.controller('campaignAdminController', ['$scope', 'upload', '$filter', '$r
 						} else {
 							
 							$scope.getClassSubProgramList();
-							
+							console.log(JSON.stringify($scope.selectCampaign.items[2].availableOptions));
 							$scope.selectCampaign.items[2].selectedOption =	$scope.getSelectNone();
 							$scope.selectCampaign.items[3].selectedOption =	$scope.getSelectNone();
 							$scope.selectCampaign.items[4].selectedOption =	$scope.getSelectNone();

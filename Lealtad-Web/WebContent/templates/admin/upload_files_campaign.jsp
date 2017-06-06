@@ -58,7 +58,7 @@
 								aria-describedby="basic-addon1">
 						</div>
 					</div>
-
+<!--
 					<div class="row margin-top10"
 						ng-if="selectCampaign.isEnabled(selectCampaign.items[1])">
 						<div class="col-md-3">Subprograma</div>
@@ -66,7 +66,7 @@
 							<select class="form-control"
 								ng-options="option.name for option in selectCampaign.items[2].availableOptions track by option.id"
 								ng-model="selectCampaign.items[2].selectedOption"
-								ng-change="changeSubProgram()" name="subprograma" required>
+								ng-change="changeSubProgram()" name="subprograma" >
 							</select>
 						</div>
 						<div class="col-md-3"
@@ -94,7 +94,7 @@
 								aria-describedby="basic-addon1">
 						</div>
 					</div>
-					
+ -->					
 							<div class="row margin-top10">
 								<div class="col-md-3">Documento excel</div>
 								<div class="col-md-6">
